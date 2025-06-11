@@ -53,7 +53,7 @@ const ServicesContent = () => {
       y: 20,
       rotateY: -10
     },
-    visible: (index) => ({
+    visible: (index: number) => ({
       opacity: 1,
       y: 0,
       rotateY: 0,
