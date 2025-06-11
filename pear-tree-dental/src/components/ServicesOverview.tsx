@@ -70,7 +70,7 @@ const ServicesContent = () => {
       rotate: -15,
       opacity: 0
     },
-    visible: (index) => ({
+   visible: (index: number) => ({
       rotate: [15, -8, 0],
       opacity: 1,
       transition: {
