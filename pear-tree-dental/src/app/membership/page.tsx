@@ -1,0 +1,100 @@
+import type { Metadata } from "next";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  Check,
+  Star,
+  Users,
+  Shield,
+  Heart,
+  Clock,
+  ArrowRight,
+  X,
+  Phone,
+  Mail
+} from "lucide-react";
+import PlanSelector from "@/components/membership/PlanSelector";
+import ExaminationSection from "@/components/membership/ExaminationSection";
+import PlanComparisonSlider from "@/components/membership/PlanComparisonSlider";
+import PlanSavingsChart from "@/components/membership/PlanSavingsChart";
+import BenefitsSection from "@/components/membership/BenefitsSection";
+import FaqSection from "@/components/membership/FaqSection";
+import CtaSection from "@/components/membership/CtaSection";
+
+export const metadata: Metadata = {
+  title: "Membership Plans - Skip NHS Waiting Lists",
+  description: "Join our dental membership plans from £8.99/month. Skip NHS waiting lists, get premium care, and save money. No hidden fees, cancel anytime.",
+};
+
+export default function MembershipPage() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="py-16 bg-gradient-to-br from-pear-background/50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
+            Simple Dental Plans
+            <span className="block text-dental-green">For Your Smile</span>
+          </h1>
+
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+            Choose the right plan and take control of your dental health with our
+            transparent, affordable membership options. No hidden fees, just care you can trust.
+          </p>
+        </div>
+      </section>
+
+      {/* Component Sections - Reordered as requested */}
+      {/* 1. Examination */}
+      <ExaminationSection />
+
+      {/* 2. Plan Selector */}
+      <PlanSelector />
+
+      {/* 3. Compare */}
+      <PlanComparisonSlider />
+
+      {/* 4. Save */}
+      <PlanSavingsChart />
+
+      {/* 5. Worldwide (Benefits) */}
+      <BenefitsSection />
+
+      {/* 6. Exclusions */}
+      <section className="py-12 md:py-16 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h3 className="text-xl font-semibold text-pear-primary mb-6">
+              Important: Pear Tree Dental Care Plan does not cover:
+            </h3>
+            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+              <ul className="space-y-3 text-gray-700">
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Laboratory fees and prescriptions</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
+                  <span>Orthodontics, implants</span>
+                </li>
+              </ul>
+              <div className="mt-4 text-sm text-gray-600">
+                All other routine treatments receive 20% discount with membership plans
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ */}
+      <FaqSection />
+      <CtaSection />
+    </div>
+  );
+}

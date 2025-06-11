@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Pear Tree Dental Brand Colors */
+  --primary: #09394d; /* Deep teal */
+  --background: #FAF9F6; /* Off-white */
+  --accent-gold: #D4AF37; /* Gold */
+  --dental-green: #4a7c59; /* Dental green for medical treatments */
+  --soft-blue: #7fb3d3; /* Soft blue for medical treatments */
+  --soft-pink: #e8c5c5; /* Soft pink for cosmetic treatments */
+  --soft-lavender: #d1c4e9; /* Soft lavender for cosmetic treatments */
+
+  /* Shadcn variables */
+  --foreground: #09394d;
+  --card: #ffffff;
+  --card-foreground: #09394d;
+  --popover: #ffffff;
+  --popover-foreground: #09394d;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #09394d;
+  --chart-1: #09394d;
+  --chart-2: #D4AF37;
+  --chart-3: #4a7c59;
+  --chart-4: #7fb3d3;
+  --chart-5: #e8c5c5;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+  --primary: #09394d;
+  --primary-foreground: #f8fafc;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f8fafc;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #09394d;
+  --chart-1: #09394d;
+  --chart-2: #D4AF37;
+  --chart-3: #4a7c59;
+  --chart-4: #7fb3d3;
+  --chart-5: #e8c5c5;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: var(--background);
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Brand Typography Classes */
+.brand-logo {
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.brand-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.heading-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+}
+
+.text-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Medical Treatment Colors */
+.medical-theme {
+  --theme-primary: var(--dental-green);
+  --theme-secondary: var(--soft-blue);
+}
+
+/* Cosmetic Treatment Colors */
+.cosmetic-theme {
+  --theme-primary: var(--soft-pink);
+  --theme-secondary: var(--soft-lavender);
+}
+
+/* Plan Color Classes */
+.plan-a {
+  background: linear-gradient(135deg, #48cc6c 0%, #2d8a47 100%);
+}
+
+.plan-b {
+  background: linear-gradient(135deg, #09394d 0%, #1e5f73 100%);
+}
+
+.plan-c {
+  background: linear-gradient(135deg, #4A90A4 0%, #2d6b7a 100%);
+}
+
+.plan-d {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+}
+
+.plan-e {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+}
+
+/* Animation Classes */
+@keyframes accordion-down {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Premium animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium button styles */
+.btn-premium {
+  background: linear-gradient(135deg, var(--primary) 0%, #0b4d66 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(9, 57, 77, 0.2);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(9, 57, 77, 0.3);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #b8941f 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}

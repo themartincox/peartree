@@ -1,0 +1,362 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu, Phone, Calendar, Star, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const Navigation = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const services = [
+    {
+      title: "General Dentistry",
+      href: "/services/general",
+      description: "Comprehensive dental care for your everyday needs",
+      theme: "medical"
+    },
+    {
+      title: "Restorative Dentistry",
+      href: "/services/restorative",
+      description: "Repair and restore your teeth to optimal health",
+      theme: "medical"
+    },
+    {
+      title: "Cosmetic Dentistry",
+      href: "/services/cosmetic",
+      description: "Transform your smile with aesthetic treatments",
+      theme: "cosmetic"
+    },
+    {
+      title: "Implant Dentistry",
+      href: "/services/implants",
+      description: "Permanent tooth replacement solutions",
+      theme: "cosmetic"
+    },
+    {
+      title: "Orthodontics",
+      href: "/services/orthodontics",
+      description: "Invisalign and ClearCorrect aligners",
+      theme: "cosmetic"
+    },
+    {
+      title: "Emergency Dentistry",
+      href: "/services/emergency",
+      description: "Urgent dental care when you need it most",
+      theme: "medical"
+    },
+  ];
+
+  const about = [
+    {
+      title: "Our Team",
+      href: "/about/team",
+      description: "Meet our experienced dental professionals"
+    },
+    {
+      title: "Our Practice",
+      href: "/about/practice",
+      description: "State-of-the-art facilities in Burton Joyce"
+    },
+  ];
+
+  return (
+    <>
+      {/* Main Navigation */}
+      <header className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-lg border-b border-gray-200",
+        isScrolled
+          ? "transform -translate-y-full opacity-0 pointer-events-none"
+          : "transform translate-y-0 opacity-100"
+      )}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="flex flex-col">
+                <div className="brand-logo text-2xl sm:text-3xl text-pear-primary">
+                  PEAR<span className="ml-20px">TREE</span>
+                </div>
+                <div className="brand-subtitle text-sm text-pear-primary mt-4px">
+                  DENTAL
+                </div>
+              </div>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <NavigationMenu className="hidden lg:flex">
+              <NavigationMenuList className="space-x-6">
+                <NavigationMenuItem>
+                  <Link href="/services/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    Veneers
+                  </Link>
+                </NavigationMenuItem>
+
+                {/* Services Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-pear-primary hover:text-pear-gold">
+                    Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-96 gap-3 p-4 md:grid-cols-2">
+                      {services.map((service) => (
+                        <li key={service.title}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
+                              )}
+                            >
+                              <div className="text-sm font-medium leading-none text-pear-primary">
+                                {service.title}
+                              </div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {service.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/membership" className="text-pear-gold hover:text-pear-primary transition-colors font-semibold">
+                    Membership Plan
+                  </Link>
+                </NavigationMenuItem>
+
+                {/* About Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-pear-primary hover:text-pear-gold">
+                    About
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-80 gap-3 p-4">
+                      {about.map((item) => (
+                        <li key={item.title}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={item.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-medium leading-none text-pear-primary">
+                                {item.title}
+                              </div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                {item.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    New Patients
+                  </Link>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    Contact
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild className="lg:hidden">
+                <Button variant="ghost" size="icon" className="text-pear-primary">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-80">
+                <div className="flex flex-col space-y-6 mt-8">
+                  {/* Mobile Logo */}
+                  <Link href="/" className="flex items-center">
+                    <div className="flex flex-col">
+                      <div className="brand-logo text-xl text-pear-primary">
+                        PEAR<span className="ml-20px">TREE</span>
+                      </div>
+                      <div className="brand-subtitle text-xs text-pear-primary mt-4px">
+                        DENTAL
+                      </div>
+                    </div>
+                  </Link>
+
+                  {/* Mobile CTAs */}
+                  <div className="flex flex-col space-y-3">
+                    <Link href="/services/general">
+                      <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full">
+                        <Calendar className="w-4 h-4 mr-2" />
+                        Book Hygienist
+                      </Button>
+                    </Link>
+                    <Link href="/smile-design">
+                      <Button className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white w-full font-semibold">
+                        <Sparkles className="w-4 h-4 mr-2" />
+                        Smile Design Service
+                      </Button>
+                    </Link>
+                    <Link href="/membership">
+                      <Button className="btn-gold text-white w-full font-semibold">
+                        <Star className="w-4 h-4 mr-2" />
+                        Join Membership
+                      </Button>
+                    </Link>
+                    <Button variant="outline" className="text-pear-primary border-pear-primary w-full">
+                      <Phone className="w-4 h-4 mr-2" />
+                      0115 931 2525
+                    </Button>
+                  </div>
+
+                  {/* Mobile Navigation Links */}
+                  <nav className="flex flex-col space-y-4">
+                    <Link href="/services/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                      Veneers
+                    </Link>
+
+                    <div className="space-y-2">
+                      <div className="text-pear-primary font-semibold">Services</div>
+                      <div className="ml-4 space-y-2">
+                        {services.map((service) => (
+                          <Link
+                            key={service.title}
+                            href={service.href}
+                            className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
+                          >
+                            {service.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link href="/membership" className="text-pear-gold hover:text-pear-primary transition-colors font-semibold">
+                      Membership Plan
+                    </Link>
+
+                    <div className="space-y-2">
+                      <div className="text-pear-primary font-semibold">About</div>
+                      <div className="ml-4 space-y-2">
+                        {about.map((item) => (
+                          <Link
+                            key={item.title}
+                            href={item.href}
+                            className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
+                          >
+                            {item.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                      New Patients
+                    </Link>
+                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                      Contact
+                    </Link>
+                  </nav>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </header>
+
+      {/* Secondary CTA Bar - Always visible, changes appearance when scrolled */}
+      <div className={cn(
+        "fixed left-0 right-0 z-40 transition-all duration-500 ease-in-out",
+        isScrolled
+          ? "top-0 bg-pear-primary shadow-lg"
+          : "top-20 bg-white/95 backdrop-blur-lg shadow-md"
+      )}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className={cn(
+            "flex items-center py-3 transition-all duration-500 ease-in-out",
+            isScrolled ? "justify-center" : "justify-center space-x-4"
+          )}>
+            {/* Logo - only shows when scrolled, positioned absolutely */}
+            {isScrolled && (
+              <Link href="/" className="absolute left-4 flex items-center">
+                <div className="flex flex-col">
+                  <div className="brand-logo text-xl text-white">
+                    PEAR<span className="ml-20px">TREE</span>
+                  </div>
+                  <div className="brand-subtitle text-xs text-white/80 mt-4px">
+                    DENTAL
+                  </div>
+                </div>
+              </Link>
+            )}
+
+            {/* CTAs - always centered */}
+            <div className="flex items-center space-x-4">
+              <Link href="/services/general">
+                <Button size="sm" className={cn(
+                  "shadow-lg hover:shadow-xl transition-all",
+                  isScrolled
+                    ? "bg-white text-pear-primary hover:bg-white/90"
+                    : "bg-gradient-to-r from-dental-green to-soft-blue text-white"
+                )}>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Book Hygienist
+                </Button>
+              </Link>
+              <Link href="/membership">
+                <Button size="sm" className={cn(
+                  "shadow-lg hover:shadow-xl transition-all font-semibold",
+                  isScrolled
+                    ? "bg-pear-gold text-white hover:bg-pear-gold/90"
+                    : "btn-gold text-white"
+                )}>
+                  <Star className="w-4 h-4 mr-2" />
+                  Join Membership
+                </Button>
+              </Link>
+              <Link href="/smile-design">
+                <Button size="sm" className={cn(
+                  "shadow-lg hover:shadow-xl transition-all font-semibold",
+                  isScrolled
+                    ? "bg-white text-pear-primary hover:bg-white/90"
+                    : "bg-gradient-to-r from-soft-pink to-soft-lavender text-white"
+                )}>
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Smile Design Service
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Navigation;
