@@ -36,14 +36,9 @@ const ServicesOverview = () => {
     </section>
   );
 };
-
-const ServiceCard = ({ service, index, cardVariants, iconVariants }: {
-  service: any;
-  index: number;
-  cardVariants: any;
-  iconVariants: any;
-}) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ServiceCard = ({ service, index, cardVariants, iconVariants }: any) => {
+    const [isExpanded, setIsExpanded] = useState(false);
   const Icon = service.icon;
   const isTeal = service.theme === "medical";
   const isMutedGold = service.theme === "cosmetic";
