@@ -220,38 +220,42 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     ]
   };
 
-  if (includeDentistSpecific) {
-    // Add additional dental-specific schema
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-const myData: any[]   = fetchSchemaData();
-const moreData: any   = transformData(myData);
-/* eslint-enable @typescript-eslint/no-explicit-any */
-    (localBusinessSchema as any).medicalSpecialty = [
-      "General Dentistry",
-      "Cosmetic Dentistry",
-      "Restorative Dentistry",
-      "Emergency Dentistry",
-      "Orthodontics"
-    ];
+  4. **Paste** in this instead—note you’re not overwriting anything else, just replacing those four lines with this block:
 
-    (localBusinessSchema as any).availableService = [
-      {
-        "@type": "MedicalProcedure",
-        "name": "Dental Examination",
-        "procedureType": "Diagnostic"
-      },
-      {
-        "@type": "MedicalProcedure",
-        "name": "Dental Cleaning",
-        "procedureType": "Preventive"
-      },
-      {
-        "@type": "MedicalProcedure",
-        "name": "Teeth Whitening",
-        "procedureType": "Cosmetic"
-      }
-    ];
-  }
+```ts
+if (includeDentistSpecific) {
+  // Add additional dental-specific schema
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+  const myData: any[] = fetchSchemaData();
+  const moreData: any = transformData(myData);
+
+  (localBusinessSchema as any).medicalSpecialty = [
+    "General Dentistry",
+    "Cosmetic Dentistry",
+    "Restorative Dentistry",
+    "Emergency Dentistry",
+    "Orthodontics"
+  ];
+
+  (localBusinessSchema as any).availableService = [
+    {
+      "@type": "MedicalProcedure",
+      "name": "Dental Examination",
+      "procedureType": "Diagnostic"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Dental Cleaning",
+      "procedureType": "Preventive"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "name": "Teeth Whitening",
+      "procedureType": "Cosmetic"
+    }
+  ];
+  /* eslint-enable @typescript-eslint/no-explicit-any */
+}
 
   return (
     <Script
