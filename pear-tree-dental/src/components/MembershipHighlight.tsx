@@ -95,12 +95,12 @@ const MembershipHighlight = () => {
         </div>
 
         {/* Main Membership Card */}
-        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl border-2 border-pear-primary/10 mb-12">
+        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl border-2 border-pear-primary/10 mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-4">
 
             {/* Tabs Sidebar */}
-            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-8">
-              <h3 className="text-white font-semibold text-lg mb-6">Choose Your Plan</h3>
+            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6 lg:p-8">
+              <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Choose Your Plan</h3>
 
               <div className="space-y-3">
                 {Object.entries(membershipPlans).map(([key, plan]) => {
@@ -110,7 +110,7 @@ const MembershipHighlight = () => {
                     <button
                       key={key}
                       onClick={() => setActiveTab(key)}
-                      className={`w-full text-left p-4 rounded-xl transition-all duration-300 ${
+                      className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 ${
                         isActive
                           ? key === 'adult' ? 'bg-white text-pear-primary shadow-lg transform scale-105'
                           : key === 'child' ? 'bg-soft-pink/20 text-white shadow-lg transform scale-105 border border-soft-pink/30'
@@ -118,11 +118,11 @@ const MembershipHighlight = () => {
                           : 'text-white/80 hover:text-white hover:bg-white/10'
                       }`}
                     >
-                      <div className="flex items-center space-x-3">
-                        <TabIcon className="w-5 h-5" />
+                      <div className="flex items-center space-x-2 sm:space-x-3">
+                        <TabIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                         <div>
-                          <div className="font-semibold">{plan.name}</div>
-                          <div className="text-sm opacity-80">{plan.price}{plan.period}</div>
+                          <div className="font-semibold text-sm sm:text-base">{plan.name}</div>
+                          <div className="text-xs sm:text-sm opacity-80">{plan.price}{plan.period}</div>
                         </div>
                       </div>
                     </button>
@@ -153,24 +153,24 @@ const MembershipHighlight = () => {
             </div>
 
             {/* Content Area */}
-            <div className="lg:col-span-3 p-8 lg:p-12">
-              <div className="space-y-8">
+            <div className="lg:col-span-3 p-4 sm:p-6 lg:p-8 xl:p-12">
+              <div className="space-y-6 sm:space-y-8">
 
                 {/* Plan Header */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg ${
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
+                  <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg ${
                       activeTab === 'adult' ? 'bg-pear-primary' :
                       activeTab === 'child' ? 'bg-soft-pink' : 'bg-pear-gold'
                     }`}>
-                      <Icon className="w-8 h-8 text-white" />
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-3xl font-bold text-pear-primary">{currentPlan.name}</h3>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-pear-primary">{currentPlan.name}</h3>
                       <div className="flex items-baseline space-x-2">
-                        <span className="text-4xl font-bold text-pear-primary">{currentPlan.price}</span>
-                        <span className="text-gray-500">{currentPlan.period}</span>
-                        <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold">
+                        <span className="text-3xl sm:text-4xl font-bold text-pear-primary">{currentPlan.price}</span>
+                        <span className="text-gray-500 text-sm sm:text-base">{currentPlan.period}</span>
+                        <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">
                           Save 25%
                         </Badge>
                       </div>
@@ -179,18 +179,18 @@ const MembershipHighlight = () => {
                 </div>
 
                 {/* Description */}
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                   {currentPlan.description}
                 </p>
 
                 {/* Key Features Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {currentPlan.keyFeatures.map((feature, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-pear-gold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-4 h-4 text-white" />
+                    <div key={index} className="flex items-start space-x-2 sm:space-x-3">
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 bg-pear-gold rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                       </div>
-                      <span className="text-gray-700 font-medium">{feature}</span>
+                      <span className="text-gray-700 font-medium text-sm sm:text-base">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -214,14 +214,14 @@ const MembershipHighlight = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Link href={`/membership#${activeTab}`}>
-                    <Button size="lg" className="btn-gold text-white font-semibold group">
+                    <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                       View Full {currentPlan.name} Details
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
-                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                     Compare All Plans
                   </Button>
                 </div>
@@ -232,8 +232,8 @@ const MembershipHighlight = () => {
 
         {/* Hygiene-Only Option */}
         <Card className="max-w-6xl mx-auto bg-gradient-to-r from-dental-green/5 to-soft-blue/5 border border-dental-green/20">
-          <CardContent className="p-4">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-center">
+          <CardContent className="p-4 sm:p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 items-center">
 
               <div className="lg:col-span-3 space-y-3">
                 <div className="flex items-center space-x-3">

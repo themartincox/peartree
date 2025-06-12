@@ -346,18 +346,18 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 sm:py-20 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-4 bg-pear-background text-pear-primary">
-            <HelpCircle className="w-4 h-4 mr-2" />
+        <div className="text-center mb-12 sm:mb-16">
+          <Badge variant="secondary" className="mb-4 bg-pear-background text-pear-primary text-xs sm:text-sm">
+            <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
             Frequently Asked Questions
           </Badge>
-          <h2 className="heading-serif text-4xl sm:text-5xl font-bold text-pear-primary mb-6">
+          <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
             Your Questions Answered
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Find answers to common questions about our dental services, treatments, and practice.
             Can't find what you're looking for? Contact us directly.
           </p>
@@ -368,8 +368,8 @@ const FAQSection = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4">
 
             {/* Category Tabs Sidebar */}
-            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-6">
-              <h3 className="text-white font-semibold text-lg mb-6">Choose Category</h3>
+            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6">
+              <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Choose Category</h3>
 
               <div className="space-y-2">
                 {Object.entries(faqCategories).map(([key, category]) => {
@@ -381,15 +381,15 @@ const FAQSection = () => {
                         setActiveTab(key);
                         setOpenQuestion(null); // Close any open questions when switching tabs
                       }}
-                      className={`w-full text-left p-3 rounded-lg transition-all duration-300 ${
+                      className={`w-full text-left p-2 sm:p-3 rounded-lg transition-all duration-300 ${
                         activeTab === key
                           ? 'bg-white text-pear-primary shadow-lg'
                           : 'text-white/80 hover:text-white hover:bg-white/10'
                       }`}
                     >
-                      <div className="flex items-center space-x-3">
-                        <TabIcon className="w-5 h-5" />
-                        <span className="font-medium text-sm">{category.name}</span>
+                      <div className="flex items-center space-x-2 sm:space-x-3">
+                        <TabIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="font-medium text-xs sm:text-sm">{category.name}</span>
                       </div>
                     </button>
                   );
@@ -397,9 +397,9 @@ const FAQSection = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="mt-8 pt-6 border-t border-white/20">
-                <h4 className="text-white font-semibold text-sm mb-4">Still have questions?</h4>
-                <div className="text-sm text-white/90 space-y-2">
+              <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
+                <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Still have questions?</h4>
+                <div className="text-xs sm:text-sm text-white/90 space-y-1 sm:space-y-2">
                   <p>Call us: <span className="font-semibold">0115 931 2525</span></p>
                   <p>Email: <span className="font-semibold">info@peartreedental.co.uk</span></p>
                 </div>
@@ -407,12 +407,12 @@ const FAQSection = () => {
             </div>
 
             {/* Questions Content */}
-            <div className="lg:col-span-3 p-8">
-              <div className="space-y-6">
+            <div className="lg:col-span-3 p-4 sm:p-6 lg:p-8">
+              <div className="space-y-4 sm:space-y-6">
 
                 {/* Category Header */}
-                <div className="flex items-center space-x-3 mb-8">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-lg ${
+                <div className="flex items-center space-x-3 mb-6 sm:mb-8">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg ${
                     currentCategory.color === 'dental-green' ? 'bg-dental-green' :
                     currentCategory.color === 'soft-pink' ? 'bg-soft-pink' :
                     currentCategory.color === 'pear-gold' ? 'bg-pear-gold' :
@@ -420,11 +420,11 @@ const FAQSection = () => {
                     currentCategory.color === 'soft-lavender' ? 'bg-soft-lavender' :
                     'bg-pear-primary'
                   }`}>
-                    <CategoryIcon className="w-6 h-6 text-white" />
+                    <CategoryIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-pear-primary">{currentCategory.name}</h3>
-                    <p className="text-gray-600">{currentCategory.questions.length} frequently asked questions</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-pear-primary">{currentCategory.name}</h3>
+                    <p className="text-gray-600 text-sm sm:text-base">{currentCategory.questions.length} frequently asked questions</p>
                   </div>
                 </div>
 
@@ -437,19 +437,19 @@ const FAQSection = () => {
                     >
                       <button
                         onClick={() => toggleQuestion(faq.id)}
-                        className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        className="w-full p-3 sm:p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
                       >
-                        <span className="font-semibold text-pear-primary pr-4">{faq.question}</span>
+                        <span className="font-semibold text-pear-primary pr-3 sm:pr-4 text-sm sm:text-base">{faq.question}</span>
                         {openQuestion === faq.id ? (
-                          <Minus className="w-5 h-5 text-pear-gold flex-shrink-0" />
+                          <Minus className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
                         ) : (
-                          <Plus className="w-5 h-5 text-pear-gold flex-shrink-0" />
+                          <Plus className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
                         )}
                       </button>
 
                       {openQuestion === faq.id && (
-                        <div className="px-4 pb-4 pt-0">
-                          <div className="text-gray-700 leading-relaxed pl-0">
+                        <div className="px-3 sm:px-4 pb-3 sm:pb-4 pt-0">
+                          <div className="text-gray-700 leading-relaxed pl-0 text-sm sm:text-base">
                             {faq.answer}
                           </div>
                         </div>
@@ -463,28 +463,28 @@ const FAQSection = () => {
         </Card>
 
         {/* CTA Buttons Section */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16">
           <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-pear-primary mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-pear-primary mb-3 sm:mb-4">
               Ready to Start Your Dental Journey?
             </h3>
-            <p className="text-lg text-gray-600 mb-8">
+            <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
               Book your appointment today or discover our membership plans for ongoing care and savings.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/services/general">
-                <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
-                  <Calendar className="w-5 h-5 mr-2" />
+                <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Book Now
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link href="/membership">
-                <Button size="lg" className="btn-gold text-white font-semibold group">
-                  <Star className="w-5 h-5 mr-2" />
+                <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                  <Star className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Join Membership Plan
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </div>

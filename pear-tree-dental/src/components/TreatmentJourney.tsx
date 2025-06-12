@@ -194,13 +194,13 @@ const TreatmentJourney = () => {
         style={{ height: `${journeySteps.length * 100}vh` }}
       >
         {/* Header Section */}
-        <div className="absolute top-0 left-0 right-0 z-40 bg-white py-8">
+        <div className="absolute top-0 left-0 right-0 z-40 bg-white py-6 sm:py-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <h2 className="heading-serif text-4xl sm:text-5xl font-bold text-pear-primary mb-6">
+              <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
                 Your Treatment Journey
               </h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Every patient is unique which is why your patient journey with Pear Tree Dental is different.
                 By taking the time to get to know you, your immediate dental needs and your smile goals we build
                 a relationship with our patients for the long-term.
@@ -226,41 +226,41 @@ const TreatmentJourney = () => {
               }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center ${
                   isReverse ? 'lg:grid-flow-col-dense' : ''
                 }`}>
 
                   {/* Content */}
-                  <div className={`space-y-6 ${isReverse ? 'lg:col-start-2' : ''}`}>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-2xl flex items-center justify-center shadow-lg">
-                        <Icon className="w-8 h-8 text-white" />
+                  <div className={`space-y-4 sm:space-y-6 ${isReverse ? 'lg:col-start-2' : ''}`}>
+                    <div className="flex items-center space-x-3 sm:space-x-4">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div>
-                        <h3 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary">
+                        <h3 className="heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-pear-primary">
                           {step.title}
                         </h3>
                       </div>
                     </div>
 
-                    <p className="text-xl text-gray-600 leading-relaxed">
+                    <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
 
-                    <ul className="space-y-3">
+                    <ul className="space-y-2 sm:space-y-3">
                       {step.features.map((feature, featureIndex) => (
-                        <li key={`feature-${index}-${featureIndex}`} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-pear-gold mt-1 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
+                        <li key={`feature-${index}-${featureIndex}`} className="flex items-start space-x-2 sm:space-x-3">
+                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-1 flex-shrink-0" />
+                          <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                         </li>
                       ))}
                     </ul>
 
                     {index === journeySteps.length - 1 && (
-                      <div className="pt-6">
-                        <Button size="lg" className="btn-gold text-white font-semibold group">
+                      <div className="pt-4 sm:pt-6">
+                        <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                           Start Your Journey
-                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                         </Button>
                       </div>
                     )}
@@ -270,9 +270,9 @@ const TreatmentJourney = () => {
                   <div className={`${isReverse ? 'lg:col-start-1' : 'lg:col-start-2'}`}>
                     <Card className="overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                       <div className="aspect-[4/3] relative bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <div className="text-center">
-                          <h4 className="text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
-                          <p className="text-gray-600 text-sm">{step.imageDescription}</p>
+                        <div className="text-center px-4">
+                          <h4 className="text-base sm:text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
+                          <p className="text-gray-600 text-xs sm:text-sm">{step.imageDescription}</p>
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent" />
 

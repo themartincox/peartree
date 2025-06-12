@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,7 +15,9 @@ import {
   Smile,
   AlertTriangle,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Plus,
+  Minus
 } from "lucide-react";
 
 const ServicesOverview = () => {
@@ -31,6 +34,110 @@ const ServicesOverview = () => {
         <ServicesContent />
       </div>
     </section>
+  );
+};
+
+const ServiceCard = ({ service, index, cardVariants, iconVariants }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const Icon = service.icon;
+  const isTeal = service.theme === "medical";
+  const isMutedGold = service.theme === "cosmetic";
+
+  return (
+    <motion.div
+      key={service.id}
+      custom={index}
+      variants={cardVariants}
+      whileHover={{
+        rotateY: index === 0 ? -3 : index === 1 ? 0 : 3,
+        rotateX: -2,
+        y: -4,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
+      className="h-full"
+      style={{ perspective: 1000 }}
+    >
+      <Card
+        className={`group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full ${
+          isTeal ? 'bg-gradient-to-br from-white to-dental-green/5' : 'bg-gradient-to-br from-white to-pear-gold/5'
+        }`}
+      >
+        <CardHeader className="pb-4">
+          <div className="flex items-center justify-between mb-4">
+            <motion.div
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg ${
+                isTeal ? 'bg-gradient-to-br from-dental-green to-soft-blue' : 'bg-gradient-to-br from-pear-gold/70 to-pear-gold'
+              }`}
+              custom={index}
+              variants={iconVariants}
+              whileHover={{
+                rotate: 5,
+                scale: 1.05,
+                transition: { duration: 0.2, ease: "easeOut" }
+              }}
+            >
+              <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+            </motion.div>
+
+            {/* Mobile expand/collapse button */}
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="sm:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label={isExpanded ? "Collapse details" : "Expand details"}
+            >
+              {isExpanded ? (
+                <Minus className="w-5 h-5 text-pear-primary" />
+              ) : (
+                <Plus className="w-5 h-5 text-pear-primary" />
+              )}
+            </button>
+          </div>
+
+          <Link href={service.href}>
+            <CardTitle className="text-lg sm:text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors cursor-pointer hover:underline">
+              {service.title}
+            </CardTitle>
+          </Link>
+          <CardDescription className="text-gray-600 text-sm sm:text-base">
+            {service.description}
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent>
+          <div className="space-y-4 sm:space-y-6">
+            {/* Treatment List - Hidden on mobile unless expanded, always visible on desktop */}
+            <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
+              {service.treatments.map((treatment) => (
+                <div key={treatment} className="flex items-center space-x-2">
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
+                  <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA - Always visible */}
+            <Link href={service.href}>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Button
+                  className={`w-full group/btn text-sm ${
+                    isTeal
+                      ? 'bg-gradient-to-r from-dental-green to-soft-blue hover:shadow-lg'
+                      : 'bg-gradient-to-r from-pear-gold/70 to-pear-gold hover:shadow-lg'
+                  } text-white`}
+                  size="sm"
+                >
+                  Learn More
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
@@ -53,7 +160,7 @@ const ServicesContent = () => {
       y: 20,
       rotateY: -10
     },
-    visible: (index: number) => ({
+    visible: (index) => ({
       opacity: 1,
       y: 0,
       rotateY: 0,
@@ -70,7 +177,7 @@ const ServicesContent = () => {
       rotate: -15,
       opacity: 0
     },
-   visible: (index: number) => ({
+    visible: (index) => ({
       rotate: [15, -8, 0],
       opacity: 1,
       transition: {
@@ -181,190 +288,33 @@ const ServicesContent = () => {
 
         {/* Services Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Top Row: Cosmetic, General, Restorative */}
-          {[services[1], services[0], services[2]].map((service, index) => {
-            const Icon = service.icon;
-            const isTeal = service.theme === "medical";
-            const isMutedGold = service.theme === "cosmetic";
-
-            return (
-              <motion.div
-                key={service.id}
-                custom={index}
-                variants={cardVariants}
-                whileHover={{
-                  rotateY: index === 0 ? -3 : index === 1 ? 0 : 3,
-                  rotateX: -2,
-                  y: -4,
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-                className="h-full"
-                style={{ perspective: 1000 }}
-              >
-                <Card
-                  className={`group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full ${
-                    isTeal ? 'bg-gradient-to-br from-white to-dental-green/5' : 'bg-gradient-to-br from-white to-pear-gold/5'
-                  }`}
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <motion.div
-                        className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${
-                          isTeal ? 'bg-gradient-to-br from-dental-green to-soft-blue' : 'bg-gradient-to-br from-pear-gold/70 to-pear-gold'
-                        }`}
-                        custom={index}
-                        variants={iconVariants}
-                        whileHover={{
-                          rotate: 5,
-                          scale: 1.05,
-                          transition: { duration: 0.2, ease: "easeOut" }
-                        }}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
-                      </motion.div>
-                    </div>
-                  <Link href={service.href}>
-                    <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors cursor-pointer hover:underline">
-                      {service.title}
-                    </CardTitle>
-                  </Link>
-                  <CardDescription className="text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    {/* Treatment List */}
-                    <div className="space-y-2">
-                      {service.treatments.map((treatment) => (
-                        <div key={treatment} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{treatment}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <Link href={service.href}>
-                      <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Button
-                          className={`w-full group/btn ${
-                            isTeal
-                              ? 'bg-gradient-to-r from-dental-green to-soft-blue hover:shadow-lg'
-                              : 'bg-gradient-to-r from-pear-gold/70 to-pear-gold hover:shadow-lg'
-                          } text-white`}
-                          size="sm"
-                        >
-                          Learn More
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </motion.div>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-            );
-          })}
+          {[services[1], services[0], services[2]].map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index}
+              cardVariants={cardVariants}
+              iconVariants={iconVariants}
+            />
+          ))}
 
           {/* Bottom Row: Implants, Orthodontics, Emergency */}
-          {[services[3], services[4], services[5]].map((service, index) => {
-            const Icon = service.icon;
-            const isTeal = service.id === "emergency";
-            const isMutedGold = service.id === "implants" || service.id === "orthodontics";
-            const bottomRowIndex = index + 3; // Offset for bottom row
-
-            return (
-              <motion.div
-                key={service.id}
-                custom={bottomRowIndex}
-                variants={cardVariants}
-                whileHover={{
-                  rotateY: index === 0 ? -3 : index === 1 ? 0 : 3,
-                  rotateX: -2,
-                  y: -4,
-                  transition: { duration: 0.3, ease: "easeOut" }
-                }}
-                className="h-full"
-                style={{ perspective: 1000 }}
-              >
-                <Card
-                  className={`group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full ${
-                    isTeal ? 'bg-gradient-to-br from-white to-dental-green/5' : 'bg-gradient-to-br from-white to-pear-gold/5'
-                  }`}
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <motion.div
-                        className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg ${
-                          isTeal ? 'bg-gradient-to-br from-dental-green to-soft-blue' : 'bg-gradient-to-br from-pear-gold/70 to-pear-gold'
-                        }`}
-                        custom={bottomRowIndex}
-                        variants={iconVariants}
-                        whileHover={{
-                          rotate: 5,
-                          scale: 1.05,
-                          transition: { duration: 0.2, ease: "easeOut" }
-                        }}
-                      >
-                        <Icon className="w-7 h-7 text-white" />
-                      </motion.div>
-                    </div>
-                  <Link href={service.href}>
-                    <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors cursor-pointer hover:underline">
-                      {service.title}
-                    </CardTitle>
-                  </Link>
-                  <CardDescription className="text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-6">
-                    {/* Treatment List */}
-                    <div className="space-y-2">
-                      {service.treatments.map((treatment) => (
-                        <div key={treatment} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{treatment}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* CTA */}
-                    <Link href={service.href}>
-                      <motion.div
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <Button
-                          className={`w-full group/btn ${
-                            isTeal
-                              ? 'bg-gradient-to-r from-dental-green to-soft-blue hover:shadow-lg'
-                              : 'bg-gradient-to-r from-pear-gold/70 to-pear-gold hover:shadow-lg'
-                          } text-white`}
-                          size="sm"
-                        >
-                          Learn More
-                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
-                        </Button>
-                      </motion.div>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-            );
-          })}
+          {[services[3], services[4], services[5]].map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              service={service}
+              index={index + 3} // Offset for bottom row animation
+              cardVariants={cardVariants}
+              iconVariants={iconVariants}
+            />
+          ))}
         </motion.div>
 
         {/* Simple CTA */}

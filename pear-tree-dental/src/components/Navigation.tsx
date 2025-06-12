@@ -88,14 +88,14 @@ const Navigation = () => {
           : "transform translate-y-0 opacity-100"
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+          <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <div className="flex flex-col">
-                <div className="brand-logo text-2xl sm:text-3xl text-pear-primary">
+                <div className="brand-logo text-xl sm:text-2xl lg:text-3xl text-pear-primary">
                   PEAR<span className="ml-20px">TREE</span>
                 </div>
-                <div className="brand-subtitle text-sm text-pear-primary mt-4px">
+                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-4px">
                   DENTAL
                 </div>
               </div>
@@ -196,12 +196,12 @@ const Navigation = () => {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80">
-                <div className="flex flex-col space-y-6 mt-8">
+              <SheetContent side="right" className="w-80 sm:w-96">
+                <div className="flex flex-col space-y-6 mt-6">
                   {/* Mobile Logo */}
                   <Link href="/" className="flex items-center">
                     <div className="flex flex-col">
-                      <div className="brand-logo text-xl text-pear-primary">
+                      <div className="brand-logo text-lg text-pear-primary">
                         PEAR<span className="ml-20px">TREE</span>
                       </div>
                       <div className="brand-subtitle text-xs text-pear-primary mt-4px">
@@ -213,24 +213,24 @@ const Navigation = () => {
                   {/* Mobile CTAs */}
                   <div className="flex flex-col space-y-3">
                     <Link href="/services/general">
-                      <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full">
+                      <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-12 text-sm">
                         <Calendar className="w-4 h-4 mr-2" />
                         Book Hygienist
                       </Button>
                     </Link>
                     <Link href="/smile-design">
-                      <Button className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white w-full font-semibold">
+                      <Button className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white w-full h-12 font-semibold text-sm">
                         <Sparkles className="w-4 h-4 mr-2" />
                         Smile Design Service
                       </Button>
                     </Link>
                     <Link href="/membership">
-                      <Button className="btn-gold text-white w-full font-semibold">
+                      <Button className="btn-gold text-white w-full h-12 font-semibold text-sm">
                         <Star className="w-4 h-4 mr-2" />
                         Join Membership
                       </Button>
                     </Link>
-                    <Button variant="outline" className="text-pear-primary border-pear-primary w-full">
+                    <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
                       <Phone className="w-4 h-4 mr-2" />
                       0115 931 2525
                     </Button>
@@ -295,12 +295,12 @@ const Navigation = () => {
         "fixed left-0 right-0 z-40 transition-all duration-500 ease-in-out",
         isScrolled
           ? "top-0 bg-pear-primary shadow-lg"
-          : "top-20 bg-white/95 backdrop-blur-lg shadow-md"
+          : "top-16 sm:top-20 bg-white/95 backdrop-blur-lg shadow-md"
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={cn(
-            "flex items-center py-3 transition-all duration-500 ease-in-out",
-            isScrolled ? "justify-center" : "justify-center space-x-4"
+            "flex items-center py-2 sm:py-3 transition-all duration-500 ease-in-out",
+            isScrolled ? "justify-center" : "justify-center space-x-2 sm:space-x-4"
           )}>
             {/* Logo - only shows when scrolled, positioned absolutely */}
             {isScrolled && (
@@ -317,38 +317,41 @@ const Navigation = () => {
             )}
 
             {/* CTAs - always centered */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap justify-center">
               <Link href="/services/general">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all",
+                  "shadow-lg hover:shadow-xl transition-all text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
                   isScrolled
                     ? "bg-white text-pear-primary hover:bg-white/90"
                     : "bg-gradient-to-r from-dental-green to-soft-blue text-white"
                 )}>
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Book Hygienist
+                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Book Hygienist</span>
+                  <span className="sm:hidden">Book</span>
                 </Button>
               </Link>
               <Link href="/membership">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold",
+                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
                   isScrolled
                     ? "bg-pear-gold text-white hover:bg-pear-gold/90"
                     : "btn-gold text-white"
                 )}>
-                  <Star className="w-4 h-4 mr-2" />
-                  Join Membership
+                  <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <span className="hidden sm:inline">Join Membership</span>
+                  <span className="sm:hidden">Membership</span>
                 </Button>
               </Link>
               <Link href="/smile-design">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold",
+                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
                   isScrolled
                     ? "bg-white text-pear-primary hover:bg-white/90"
                     : "bg-gradient-to-r from-soft-pink to-soft-lavender text-white"
                 )}>
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Smile Design Service
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <span className="hidden lg:inline">Smile Design Service</span>
+                  <span className="lg:hidden">Smile Design</span>
                 </Button>
               </Link>
             </div>
