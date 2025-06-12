@@ -222,6 +222,10 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
 
   if (includeDentistSpecific) {
     // Add additional dental-specific schema
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+const myData: any[]   = fetchSchemaData();
+const moreData: any   = transformData(myData);
+/* eslint-enable @typescript-eslint/no-explicit-any */
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Cosmetic Dentistry",
