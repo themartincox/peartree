@@ -37,7 +37,12 @@ const ServicesOverview = () => {
   );
 };
 
-const ServiceCard = ({ service, index, cardVariants, iconVariants }) => {
+const ServiceCard = ({ service, index, cardVariants, iconVariants }: {
+  service: any;
+  index: number;
+  cardVariants: any;
+  iconVariants: any;
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const Icon = service.icon;
   const isTeal = service.theme === "medical";
