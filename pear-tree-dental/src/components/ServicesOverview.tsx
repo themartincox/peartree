@@ -39,6 +39,7 @@ const ServicesOverview = () => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ServiceCard = ({ service, index, cardVariants, iconVariants }: any) => {
     const [isExpanded, setIsExpanded] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Icon = service.icon;
   const isTeal = service.theme === "medical";
   const isMutedGold = service.theme === "cosmetic";
@@ -160,7 +161,7 @@ const ServicesContent = () => {
       y: 20,
       rotateY: -10
     },
-    visible: (index) => ({
+    visible: (index: number) => ({
       opacity: 1,
       y: 0,
       rotateY: 0,
@@ -177,7 +178,7 @@ const ServicesContent = () => {
       rotate: -15,
       opacity: 0
     },
-    visible: (index) => ({
+    visible: (index: number) => ({
       rotate: [15, -8, 0],
       opacity: 1,
       transition: {
