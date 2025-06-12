@@ -1,4 +1,25 @@
-'use client';
+// Add this global type declaration
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
+// Your existing component code here...
+// Then update your gtag usage to:
+
+try {
+  // Google Analytics 4 tracking
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'ab_test_variant_assigned', {
+      variant: variant,
+      event_category: 'AB_Test',
+      // ... rest of your tracking properties
+    });
+  }
+} catch (error) {
+  console.error('Analytics tracking failed:', error);
+}'use client';
 
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
