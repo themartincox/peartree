@@ -107,7 +107,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: any) => {
           <div className="space-y-4 sm:space-y-6">
             {/* Treatment List - Hidden on mobile unless expanded, always visible on desktop */}
             <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
-              {service.treatments.map((treatment) => (
+              {service.treatments.map((treatment: string) => (
                 <div key={treatment} className="flex items-center space-x-2">
                   <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
