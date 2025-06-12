@@ -175,26 +175,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       }
     ],
     "areaServed": [
-      {
-        "@type": "City",
-        "name": "Burton Joyce"
-      },
-      {
-        "@type": "City",
-        "name": "Nottingham"
-      },
-      {
-        "@type": "City",
-        "name": "Colwick"
-      },
-      {
-        "@type": "City",
-        "name": "East Bridgford"
-      },
-      {
-        "@type": "City",
-        "name": "Lowdham"
-      }
+      { "@type": "City", "name": "Burton Joyce" },
+      { "@type": "City", "name": "Nottingham" },
+      { "@type": "City", "name": "Colwick" },
+      { "@type": "City", "name": "East Bridgford" },
+      { "@type": "City", "name": "Lowdham" }
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -206,64 +191,52 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "review": [
       {
         "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": "Sarah M."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5"
-        },
+        "author": { "@type": "Person", "name": "Sarah M." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
         "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean."
       }
     ]
   };
 
-  4. **Paste** in this instead—note you’re not overwriting anything else, just replacing those four lines with this block:
+  if (includeDentistSpecific) {
+    // Add additional dental-specific schema
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const myData: any[] = fetchSchemaData();
+    const moreData: any = transformData(myData);
 
-```ts
-if (includeDentistSpecific) {
-  // Add additional dental-specific schema
-  /* eslint-disable @typescript-eslint/no-explicit-any */
-  const myData: any[] = fetchSchemaData();
-  const moreData: any = transformData(myData);
+    (localBusinessSchema as any).medicalSpecialty = [
+      "General Dentistry",
+      "Cosmetic Dentistry",
+      "Restorative Dentistry",
+      "Emergency Dentistry",
+      "Orthodontics"
+    ];
 
-  (localBusinessSchema as any).medicalSpecialty = [
-    "General Dentistry",
-    "Cosmetic Dentistry",
-    "Restorative Dentistry",
-    "Emergency Dentistry",
-    "Orthodontics"
-  ];
-
-  (localBusinessSchema as any).availableService = [
-    {
-      "@type": "MedicalProcedure",
-      "name": "Dental Examination",
-      "procedureType": "Diagnostic"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Dental Cleaning",
-      "procedureType": "Preventive"
-    },
-    {
-      "@type": "MedicalProcedure",
-      "name": "Teeth Whitening",
-      "procedureType": "Cosmetic"
-    }
-  ];
-  /* eslint-enable @typescript-eslint/no-explicit-any */
-}
+    (localBusinessSchema as any).availableService = [
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Examination",
+        "procedureType": "Diagnostic"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Cleaning",
+        "procedureType": "Preventive"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Teeth Whitening",
+        "procedureType": "Cosmetic"
+      }
+    ];
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+  }
 
   return (
     <Script
       id="local-business-schema"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify(localBusinessSchema)
-      }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
     />
   );
 }
