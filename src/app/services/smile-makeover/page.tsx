@@ -491,14 +491,14 @@ export default function SmileMakeoverPage() {
                 </div>
               </Card>
 
-              {/* Digital badge */}
-              <Card className="absolute -top-4 -right-4 bg-pink-600 text-white p-3 shadow-lg">
+              {/* Social Proof Sticker */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-full px-4 py-2 shadow-lg transform rotate-12">
                 <div className="text-center">
-                  <Monitor className="w-6 h-6 mx-auto mb-1" />
-                  <p className="text-xs font-bold">DIGITAL</p>
-                  <p className="text-xs">PREVIEW</p>
+                  <div className="text-sm font-bold">LIFE-CHANGED BY</div>
+                  <div className="text-lg font-extrabold">394+</div>
+                  <div className="text-xs">NEW SMILES</div>
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
         </div>
