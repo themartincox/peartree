@@ -175,11 +175,26 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       }
     ],
     "areaServed": [
-      { "@type": "City", "name": "Burton Joyce" },
-      { "@type": "City", "name": "Nottingham" },
-      { "@type": "City", "name": "Colwick" },
-      { "@type": "City", "name": "East Bridgford" },
-      { "@type": "City", "name": "Lowdham" }
+      {
+        "@type": "City",
+        "name": "Burton Joyce"
+      },
+      {
+        "@type": "City",
+        "name": "Nottingham"
+      },
+      {
+        "@type": "City",
+        "name": "Colwick"
+      },
+      {
+        "@type": "City",
+        "name": "East Bridgford"
+      },
+      {
+        "@type": "City",
+        "name": "Lowdham"
+      }
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -191,8 +206,15 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "review": [
       {
         "@type": "Review",
-        "author": { "@type": "Person", "name": "Sarah M." },
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah M."
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        },
         "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean."
       }
     ]
@@ -201,9 +223,6 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
   if (includeDentistSpecific) {
     // Add additional dental-specific schema
     /* eslint-disable @typescript-eslint/no-explicit-any */
-    const myData: any[] = fetchSchemaData();
-    const moreData: any = transformData(myData);
-
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Cosmetic Dentistry",
@@ -236,7 +255,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     <Script
       id="local-business-schema"
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(localBusinessSchema)
+      }}
     />
   );
 }
