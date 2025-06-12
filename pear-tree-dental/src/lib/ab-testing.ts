@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag?: (...args: any[]) => void;
+  }
+}
 import type { Variant } from '../../middleware';
 
 export type { Variant } from '../../middleware';
@@ -61,8 +67,8 @@ export function trackVariantAssignment(variant: Variant, isServerSide = false) {
   // Client-side tracking
   try {
     // Google Analytics 4
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'ab_test_variant_assigned', {
+   if (typeof window !== 'undefined' && window.gtag) {
+     window.gtag('event', 'ab_test_variant_assigned', {
         event_category: 'AB_Test',
         event_label: 'homepage_welcome_server',
         custom_parameter_1: variant,
