@@ -20,6 +20,27 @@ import {
   Minus
 } from "lucide-react";
 
+// TypeScript interfaces
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  icon: React.ComponentType<any>;
+  theme: "medical" | "cosmetic";
+  treatments: string[];
+  href: string;
+}
+
+interface ServiceCardProps {
+  service: Service;
+  index: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  cardVariants: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  iconVariants: any;
+}
+
 const ServicesOverview = () => {
   return (
     <section className="py-16 bg-white">
@@ -37,7 +58,7 @@ const ServicesOverview = () => {
   );
 };
 
-const ServiceCard = ({ service, index, cardVariants, iconVariants }) => {
+const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const Icon = service.icon;
   const isTeal = service.theme === "medical";
@@ -107,7 +128,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }) => {
           <div className="space-y-4 sm:space-y-6">
             {/* Treatment List - Hidden on mobile unless expanded, always visible on desktop */}
             <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
-              {service.treatments.map((treatment) => (
+              {service.treatments.map((treatment: string) => (
                 <div key={treatment} className="flex items-center space-x-2">
                   <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
@@ -160,7 +181,7 @@ const ServicesContent = () => {
       y: 20,
       rotateY: -10
     },
-    visible: (index) => ({
+    visible: (index: number) => ({
       opacity: 1,
       y: 0,
       rotateY: 0,
@@ -177,7 +198,7 @@ const ServicesContent = () => {
       rotate: -15,
       opacity: 0
     },
-    visible: (index) => ({
+    visible: (index: number) => ({
       rotate: [15, -8, 0],
       opacity: 1,
       transition: {
@@ -192,15 +213,14 @@ const ServicesContent = () => {
     })
   };
 
-  const services = [
+  const services: Service[] = [
     {
       id: "general",
       title: "General Dentistry",
       description: "Comprehensive dental care for your everyday needs. Preventive treatments and routine care to keep your smile healthy.",
       icon: Shield,
-      theme: "medical",
+      theme: "medical" as const,
       treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
-      price: "From £45",
       href: "/services/general"
     },
     {
@@ -208,9 +228,8 @@ const ServicesContent = () => {
       title: "Cosmetic Dentistry",
       description: "Transform your smile with our aesthetic treatments. Professional whitening and smile makeovers.",
       icon: Sparkles,
-      theme: "cosmetic",
+      theme: "cosmetic" as const,
       treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
-      price: "From £350",
       href: "/services/cosmetic"
     },
     {
@@ -218,9 +237,8 @@ const ServicesContent = () => {
       title: "Restorative Dentistry",
       description: "Repair and restore your teeth to optimal health and function with modern techniques. Be proud of your smile again.",
       icon: ShieldCheck,
-      theme: "medical",
+      theme: "medical" as const,
       treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
-      price: "From £450",
       href: "/services/restorative"
     },
     {
@@ -228,9 +246,8 @@ const ServicesContent = () => {
       title: "Implant Dentistry",
       description: "Permanent tooth replacement solutions that look, feel, and function like natural teeth. We can find the right outcomes for you.",
       icon: Zap,
-      theme: "cosmetic",
+      theme: "cosmetic" as const,
       treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
-      price: "From £2,500",
       href: "/services/implants"
     },
     {
@@ -238,9 +255,8 @@ const ServicesContent = () => {
       title: "Orthodontics",
       description: "Straighten your teeth discreetly with modern clear aligner technology. Choose from the market leading options.",
       icon: Smile,
-      theme: "cosmetic",
+      theme: "cosmetic" as const,
       treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
-      price: "From £2,800",
       href: "/services/orthodontics"
     },
     {
@@ -248,9 +264,8 @@ const ServicesContent = () => {
       title: "Emergency Dentistry",
       description: "Urgent dental care when you need it most. Same-day appointments available for dental emergencies.",
       icon: AlertTriangle,
-      theme: "medical",
+      theme: "medical" as const,
       treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
-      price: "From £85",
       href: "/services/emergency"
     }
   ];
@@ -295,7 +310,7 @@ const ServicesContent = () => {
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Top Row: Cosmetic, General, Restorative */}
-          {[services[1], services[0], services[2]].map((service, index) => (
+          {[services[1], services[0], services[2]].map((service: Service, index: number) => (
             <ServiceCard
               key={service.id}
               service={service}
@@ -306,7 +321,7 @@ const ServicesContent = () => {
           ))}
 
           {/* Bottom Row: Implants, Orthodontics, Emergency */}
-          {[services[3], services[4], services[5]].map((service, index) => (
+          {[services[3], services[4], services[5]].map((service: Service, index: number) => (
             <ServiceCard
               key={service.id}
               service={service}
