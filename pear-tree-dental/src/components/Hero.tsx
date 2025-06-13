@@ -17,11 +17,11 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-end">
           {/* Left Column - Main Content */}
           <div className="space-y-6 sm:space-y-8">
-            {/* Main Headline - Simplified structure */}
+            {/* Main Headline - SEO Optimized */}
             <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary leading-tight">
-              Premium Dentistry
-              <span className="block">with a <span className="text-pear-gold">Personal</span></span>
-              <span className="text-pear-gold block">Touch</span>
+              Premium Dental Care in
+              <span className="block">Burton Joyce, <span className="text-pear-gold">Nottinghamshire</span></span>
+              <span className="text-pear-gold block">with a Personal Touch</span>
             </h1>
 
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">

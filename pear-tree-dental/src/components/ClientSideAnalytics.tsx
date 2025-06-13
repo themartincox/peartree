@@ -3,6 +3,14 @@
 import { useEffect } from 'react';
 import { type Variant, trackVariantAssignment } from '@/lib/ab-testing';
 
+// Declare gtag function for TypeScript
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 interface ClientSideAnalyticsProps {
   variant: Variant;
 }
@@ -13,8 +21,8 @@ export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProp
     trackVariantAssignment(variant, false);
 
     // Track page view with variant information
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'page_view', {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'page_view', {
         event_category: 'AB_Test',
         event_label: `homepage_variant_${variant}`,
         custom_parameter_1: variant,
@@ -35,8 +43,8 @@ export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProp
 
         // Track milestone scroll depths
         if ([25, 50, 75, 90].includes(scrollPercent)) {
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'scroll_depth', {
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('event', 'scroll_depth', {
               event_category: 'AB_Test',
               event_label: `variant_${variant}_scroll_${scrollPercent}`,
               value: scrollPercent,
@@ -52,8 +60,8 @@ export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProp
     const trackTimeOnPage = () => {
       const timeSpent = Math.round((Date.now() - startTime) / 1000);
 
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'time_on_page', {
+      if (typeof window !== 'undefined' && window.gtag) {
+        window.gtag('event', 'time_on_page', {
           event_category: 'AB_Test',
           event_label: `variant_${variant}_time_${timeSpent}s`,
           value: timeSpent,
@@ -72,8 +80,8 @@ export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProp
       if (navigationTiming) {
         const loadTime = navigationTiming.loadEventEnd - navigationTiming.fetchStart;
 
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'page_load_time', {
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'page_load_time', {
             event_category: 'AB_Test',
             event_label: `variant_${variant}_load_${Math.round(loadTime)}ms`,
             value: Math.round(loadTime),

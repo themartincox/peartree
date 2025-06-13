@@ -61,8 +61,10 @@ export function trackVariantAssignment(variant: Variant, isServerSide = false) {
   // Client-side tracking
   try {
     // Google Analytics 4
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'ab_test_variant_assigned', {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).gtag('event', 'ab_test_variant_assigned', {
         event_category: 'AB_Test',
         event_label: 'homepage_welcome_server',
         custom_parameter_1: variant,
@@ -86,31 +88,31 @@ export function trackVariantAssignment(variant: Variant, isServerSide = false) {
  */
 export function getVariantMetadata(variant: Variant) {
   const baseMetadata = {
-    title: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire",
-    description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, membership plans from £8.99/month.",
+    title: "Dentist Burton Joyce | Pear Tree Dental - Premium Dental Care Nottinghamshire",
+    description: "Leading dentist in Burton Joyce, Nottinghamshire offering comprehensive dental care. NHS & private treatments, emergency dentist, dental membership plans from £8.99/month. Book online.",
   };
 
-  // Variant-specific optimizations
+  // Variant-specific optimizations for A/B testing
   switch (variant) {
     case 'A':
       return {
         ...baseMetadata,
-        title: baseMetadata.title,
-        description: baseMetadata.description,
+        title: "Dentist Burton Joyce | Pear Tree Dental - Premium Dental Care Nottinghamshire",
+        description: "Leading dentist in Burton Joyce, Nottinghamshire offering comprehensive dental care. NHS & private treatments, emergency dentist, dental membership plans from £8.99/month. Book online.",
       };
 
     case 'B':
       return {
         ...baseMetadata,
-        title: "Welcome to Pear Tree Dental - Premium Dentistry Burton Joyce",
-        description: "Welcome to premium dental care in Burton Joyce. Modern dentistry with a personal touch. Book your consultation today.",
+        title: "Welcome to Pear Tree Dental | Burton Joyce Dentist | Nottinghamshire",
+        description: "Welcome to Burton Joyce's premier dental practice. Comprehensive dental care, cosmetic dentistry, emergency appointments. Serving Nottinghamshire families since 2008.",
       };
 
     case 'C':
       return {
         ...baseMetadata,
-        title: "Pear Tree Dental - Your Premium Dental Practice in Burton Joyce",
-        description: "Experience premium dental care in our modern Burton Joyce practice. Professional treatments in a welcoming environment.",
+        title: "Pear Tree Dental Practice | Burton Joyce Dentist | Family Dental Care",
+        description: "Your local Burton Joyce dental practice providing family-friendly dental care. Modern treatments, experienced dentists, flexible appointment times. Call 0115 931 2525.",
       };
 
     default:

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import FAQStructuredData from "@/components/seo/FAQStructuredData";
 import {
   Shield,
   Sparkles,
@@ -347,6 +348,15 @@ const FAQSection = () => {
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      {/* Add FAQ Structured Data for current category */}
+      <FAQStructuredData
+        faqs={currentCategory.questions.map(q => ({
+          question: q.question,
+          answer: q.answer
+        }))}
+        category={currentCategory.name}
+      />
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">

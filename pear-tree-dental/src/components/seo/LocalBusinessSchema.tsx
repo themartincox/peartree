@@ -222,8 +222,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
 
   if (includeDentistSpecific) {
     // Add additional dental-specific schema
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(localBusinessSchema as any).medicalSpecialty = [
+    (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Cosmetic Dentistry",
       "Restorative Dentistry",
@@ -231,8 +232,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "Orthodontics"
     ];
 
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(localBusinessSchema as any).availableService = [
+    (localBusinessSchema as any).availableService = [
       {
         "@type": "MedicalProcedure",
         "name": "Dental Examination",
@@ -260,4 +262,4 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       }}
     />
   );
-  }
+}

@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
 import {
   Check,
   Star,
@@ -43,13 +45,43 @@ const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
 });
 
 export const metadata: Metadata = {
-  title: "Membership Plans - Skip NHS Waiting Lists",
-  description: "Join our dental membership plans from £8.99/month. Skip NHS waiting lists, get premium care, and save money. No hidden fees, cancel anytime.",
+  title: "Dental Membership Plans from £8.99/month | Pear Tree Dental",
+  description: "Join our affordable dental membership plans in Burton Joyce from £8.99/month. Skip NHS waiting lists, get premium care, save money. Adult, child & family plans available.",
+  keywords: [
+    "dental membership plans Nottingham",
+    "dental plan Burton Joyce",
+    "private dental care Nottinghamshire",
+    "NHS alternative dental care",
+    "affordable dental membership",
+    "family dental plans",
+    "child dental membership",
+    "dental check-ups included",
+    "dental hygienist appointments",
+    "dental treatment discounts"
+  ],
+  openGraph: {
+    title: "Dental Membership Plans from £8.99/month | Pear Tree Dental",
+    description: "Join our affordable dental membership plans in Burton Joyce from £8.99/month. Skip NHS waiting lists, get premium care, save money.",
+    type: "website",
+    url: "https://peartreedental.co.uk/membership"
+  }
 };
 
 export default function MembershipPage() {
+  const breadcrumbItems = [
+    { name: "Membership Plans" }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Schema */}
+      <MedicalOrganizationSchema page="membership" />
+
+      {/* Breadcrumb Navigation */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <BreadcrumbSchema items={breadcrumbItems} />
+      </div>
+
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-pear-background/50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">

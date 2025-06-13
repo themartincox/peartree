@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       variant: variant as Variant,
       event,
       user_agent: request.headers.get('user-agent'),
-      ip: request.ip || request.headers.get('x-forwarded-for') || 'unknown',
+      ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
       referer: request.headers.get('referer'),
       data,
     };
