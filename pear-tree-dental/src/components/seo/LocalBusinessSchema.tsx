@@ -222,6 +222,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
 
   if (includeDentistSpecific) {
     // Add additional dental-specific schema
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Cosmetic Dentistry",
@@ -230,6 +231,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "Orthodontics"
     ];
 
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
     (localBusinessSchema as any).availableService = [
       {
         "@type": "MedicalProcedure",

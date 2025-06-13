@@ -29,7 +29,7 @@ export default function PriceComparisonTooltip({
           </div>
         </div>
         <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-1">
-          <div className="border-4 border-transparent border-t-white"></div>
+          <div className="border-4 border-transparent border-t-white" />
         </div>
       </div>
     </div>

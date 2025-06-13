@@ -23,11 +23,11 @@ import ExaminationSection from "@/components/membership/ExaminationSection";
 
 // Non-critical components - loaded dynamically with loading states
 const PlanComparisonSlider = dynamic(() => import("@/components/membership/PlanComparisonSlider"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />,
+  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
 });
 
 const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavingsChart"), {
-  loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />,
+  loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />
 });
 
 const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {

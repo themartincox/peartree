@@ -81,16 +81,25 @@ const Navigation = () => {
   return (
     <>
       {/* Main Navigation */}
-      <header className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-lg border-b border-gray-200",
-        isScrolled
-          ? "transform -translate-y-full opacity-0 pointer-events-none"
-          : "transform translate-y-0 opacity-100"
-      )}>
+      <header
+        id="navigation"
+        role="banner"
+        className={cn(
+          "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-lg border-b border-gray-200",
+          isScrolled
+            ? "transform -translate-y-full opacity-0 pointer-events-none"
+            : "transform translate-y-0 opacity-100"
+        )}
+        aria-label="Main navigation"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2">
+            <Link
+              href="/"
+              className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+              aria-label="Pear Tree Dental - Return to homepage"
+            >
               <div className="flex flex-col">
                 <div className="brand-logo text-xl sm:text-2xl lg:text-3xl text-pear-primary">
                   PEAR<span className="ml-20px">TREE</span>
@@ -102,35 +111,47 @@ const Navigation = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu className="hidden lg:flex">
+            <NavigationMenu className="hidden lg:flex" role="navigation" aria-label="Main site navigation">
               <NavigationMenuList className="space-x-6">
                 <NavigationMenuItem>
-                  <Link href="/services/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                  <Link
+                    href="/services/veneers"
+                    className="text-pear-primary hover:text-pear-gold transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md px-2 py-1"
+                    aria-label="Dental Veneers - Cosmetic dentistry service"
+                  >
                     Veneers
                   </Link>
                 </NavigationMenuItem>
 
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-pear-primary hover:text-pear-gold">
+                  <NavigationMenuTrigger
+                    className="text-pear-primary hover:text-pear-gold focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                    aria-label="Services menu"
+                  >
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-96 gap-3 p-4 md:grid-cols-2">
+                  <NavigationMenuContent role="menu" aria-label="Dental services">
+                    <ul className="grid w-96 gap-3 p-4 md:grid-cols-2" role="none">
                       {services.map((service) => (
-                        <li key={service.title}>
+                        <li key={service.title} role="none">
                           <NavigationMenuLink asChild>
                             <Link
                               href={service.href}
+                              role="menuitem"
                               className={cn(
-                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
                                 service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
                               )}
+                              aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">
                                 {service.title}
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                              >
                                 {service.description}
                               </p>
                             </Link>
@@ -192,14 +213,30 @@ const Navigation = () => {
             {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="text-pear-primary">
-                  <Menu className="h-6 w-6" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                  aria-label="Open mobile navigation menu"
+                  aria-expanded="false"
+                >
+                  <Menu className="h-6 w-6" aria-hidden="true" />
+                  <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 sm:w-96">
-                <div className="flex flex-col space-y-6 mt-6">
+              <SheetContent
+                side="right"
+                className="w-80 sm:w-96"
+                role="dialog"
+                aria-label="Mobile navigation menu"
+              >
+                <div className="flex flex-col space-y-6 mt-6" role="navigation" aria-label="Mobile site navigation">
                   {/* Mobile Logo */}
-                  <Link href="/" className="flex items-center">
+                  <Link
+                    href="/"
+                    className="flex items-center focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                    aria-label="Pear Tree Dental - Return to homepage"
+                  >
                     <div className="flex flex-col">
                       <div className="brand-logo text-lg text-pear-primary">
                         PEAR<span className="ml-20px">TREE</span>
