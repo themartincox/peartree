@@ -10,13 +10,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'cormorant': ['Cormorant Garamond', 'serif'],
-        'montserrat': ['Montserrat', 'sans-serif'],
+        'cormorant': ['var(--font-cormorant)', 'Cormorant Garamond', 'serif'],
+        'montserrat': ['var(--font-montserrat)', 'Montserrat', 'sans-serif'],
       },
       colors: {
         'pear-primary': '#09394d',
         'pear-background': '#FAF9F6',
         'pear-gold': '#D4AF37',
+        'accent-gold': '#D4AF37',
         'dental-green': '#4a7c59',
         'soft-blue': '#7fb3d3',
         'soft-pink': '#e8c5c5',
