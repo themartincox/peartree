@@ -3,14 +3,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Add this global type declaration
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag?: (...args: any[]) => void;
-  }
-}
-
 type Variant = 'A' | 'B' | 'C';
 
 interface ABTestWrapperProps {
@@ -21,8 +13,8 @@ interface ABTestWrapperProps {
 const trackVariantAssignment = (variant: Variant) => {
   try {
     // Google Analytics 4 tracking
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'ab_test_variant_assigned', {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'ab_test_variant_assigned', {
         variant: variant,
         event_category: 'AB_Test',
         event_label: 'homepage_welcome_test',

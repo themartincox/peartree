@@ -15,13 +15,34 @@ import {
   Phone,
   Mail
 } from "lucide-react";
+import dynamic from "next/dynamic";
+
+// Critical components - loaded immediately
 import PlanSelector from "@/components/membership/PlanSelector";
 import ExaminationSection from "@/components/membership/ExaminationSection";
-import PlanComparisonSlider from "@/components/membership/PlanComparisonSlider";
-import PlanSavingsChart from "@/components/membership/PlanSavingsChart";
-import BenefitsSection from "@/components/membership/BenefitsSection";
-import FaqSection from "@/components/membership/FaqSection";
-import CtaSection from "@/components/membership/CtaSection";
+
+// Non-critical components - loaded dynamically with loading states
+const PlanComparisonSlider = dynamic(() => import("@/components/membership/PlanComparisonSlider"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />,
+  ssr: false // This component is interactive and can be client-side only
+});
+
+const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavingsChart"), {
+  loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />,
+  ssr: false
+});
+
+const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
+  loading: () => <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
+});
+
+const FaqSection = dynamic(() => import("@/components/membership/FaqSection"), {
+  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
+});
+
+const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
+  loading: () => <div className="h-32 animate-pulse bg-gray-100 rounded-lg" />
+});
 
 export const metadata: Metadata = {
   title: "Membership Plans - Skip NHS Waiting Lists",

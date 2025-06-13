@@ -36,10 +36,9 @@ const ServicesOverview = () => {
     </section>
   );
 };
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ServiceCard = ({ service, index, cardVariants, iconVariants }: any) => {
-    const [isExpanded, setIsExpanded] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+const ServiceCard = ({ service, index, cardVariants, iconVariants }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const Icon = service.icon;
   const isTeal = service.theme === "medical";
   const isMutedGold = service.theme === "cosmetic";
@@ -108,7 +107,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: any) => {
           <div className="space-y-4 sm:space-y-6">
             {/* Treatment List - Hidden on mobile unless expanded, always visible on desktop */}
             <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
-              {service.treatments.map((treatment: string) => (
+              {service.treatments.map((treatment) => (
                 <div key={treatment} className="flex items-center space-x-2">
                   <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
@@ -161,7 +160,7 @@ const ServicesContent = () => {
       y: 20,
       rotateY: -10
     },
-    visible: (index: number) => ({
+    visible: (index) => ({
       opacity: 1,
       y: 0,
       rotateY: 0,
@@ -178,7 +177,7 @@ const ServicesContent = () => {
       rotate: -15,
       opacity: 0
     },
-    visible: (index: number) => ({
+    visible: (index) => ({
       rotate: [15, -8, 0],
       opacity: 1,
       transition: {

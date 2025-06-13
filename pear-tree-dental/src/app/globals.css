@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* Google Fonts now loaded via Next.js font optimization */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -194,4 +194,326 @@ html {
 .btn-gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Hero Component Optimizations */
+.hero-bg-pattern {
+  position: relative;
+}
+
+.hero-bg-pattern::before {
+  content: '';
+  position: absolute;
+  top: 5rem;
+  left: 2.5rem;
+  width: 8rem;
+  height: 8rem;
+  background: var(--primary);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.hero-bg-pattern::after {
+  content: '';
+  position: absolute;
+  top: 10rem;
+  right: 5rem;
+  width: 12rem;
+  height: 12rem;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.hero-image-container::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 5rem;
+  height: 5rem;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  z-index: -1;
+}
+
+.hero-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  width: 4rem;
+  height: 4rem;
+  background: rgba(232, 197, 197, 0.3);
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  z-index: -1;
+}
+
+/* A/B Test Utility Classes */
+.pt-screen {
+  padding-top: 100vh;
+}
+
+/* Ensure smooth animations for A/B test transitions */
+.ab-test-welcome-screen {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+/* Optimized animations for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  .ab-test-welcome-screen {
+    will-change: opacity, transform;
+  }
+}
+
+/* Handle reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ab-test-welcome-screen {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Server-side A/B Testing Styles */
+
+/* Variant A - No additional styles needed */
+.ab-variant-a {
+  /* Standard homepage styling */
+}
+
+/* Variant B - Clean welcome screen with animations */
+.welcome-screen-b {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: welcomeFadeOut 0.5s ease-in-out 1s forwards;
+}
+
+.welcome-content-b {
+  animation: welcomeSlideUp 0.6s ease-out;
+}
+
+.welcome-text-b {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #374151;
+  text-align: center;
+  padding: 0 1rem;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.ab-variant-b-content {
+  padding-top: 100vh;
+  animation: contentSlideIn 0.8s ease-out 1.4s both;
+}
+
+/* Variant C - Background image welcome screen */
+.welcome-screen-c {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: welcomeFadeOut 0.5s ease-in-out 1s forwards;
+}
+
+.welcome-screen-c.image-loaded {
+  background-image: url('/images/dental-office-welcome.svg');
+}
+
+.welcome-overlay-c {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.welcome-content-c {
+  position: relative;
+  z-index: 10;
+  animation: welcomeSlideUp 0.6s ease-out;
+}
+
+.welcome-text-c {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ab-variant-c-content {
+  padding-top: 100vh;
+  animation: contentSlideIn 0.8s ease-out 1.4s both;
+}
+
+/* CSS-only animations for better performance */
+@keyframes welcomeFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes welcomeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll behavior for all variants */
+.ab-variant-a,
+.ab-variant-b,
+.ab-variant-c {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimizations */
+
+/* Reduce paint complexity for animations */
+.btn-premium,
+.btn-gold {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+/* Optimize gradient performance */
+.plan-a,
+.plan-b,
+.plan-c,
+.plan-d,
+.plan-e {
+  background-attachment: local;
+}
+
+/* Optimize backdrop-blur performance */
+.hero-bg-pattern::before,
+.hero-bg-pattern::after {
+  will-change: auto;
+  contain: layout style paint;
+}
+
+/* Reduce layout shifts with proper sizing */
+.hero-image-container {
+  contain: layout style;
+}
+
+/* Optimize transform animations */
+@media (prefers-reduced-motion: no-preference) {
+
+  .transform.scale-105 {
+    transform: scale(1.05);
+  }
+}
+
+/* Critical CSS inline optimization */
+.critical-above-fold {
+  font-display: swap;
+  contain: layout style paint;
+}
+
+/* Performance optimizations */
+.welcome-screen-b,
+.welcome-screen-c {
+  will-change: opacity, visibility;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+.welcome-content-b,
+.welcome-content-c {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .welcome-text-b,
+  .welcome-text-c {
+    font-size: 2rem;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text-b,
+  .welcome-text-c {
+    font-size: 1.75rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Ensure proper stacking context */
+.ab-variant-b .welcome-screen-b,
+.ab-variant-c .welcome-screen-c {
+  isolation: isolate;
+}
+
+/* Server-side accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen-b,
+  .welcome-screen-c,
+  .ab-variant-b-content,
+  .ab-variant-c-content,
+  .welcome-content-b,
+  .welcome-content-c {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ab-variant-b-content,
+  .ab-variant-c-content {
+    padding-top: 0;
+  }
+
+  .welcome-screen-b,
+  .welcome-screen-c {
+    display: none;
+  }
 }

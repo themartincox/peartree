@@ -86,6 +86,15 @@ export default function ImplantsPage() {
                 </div>
               </Card>
 
+              {/* Social Proof Sticker */}
+              <div className="absolute -top-4 -left-4 bg-gradient-to-r from-pear-primary to-teal-600 text-white rounded-full px-4 py-2 shadow-lg transform -rotate-12">
+                <div className="text-center">
+                  <div className="text-sm font-bold">RESTORED BY</div>
+                  <div className="text-lg font-extrabold">627+</div>
+                  <div className="text-xs">PERFECT TEETH</div>
+                </div>
+              </div>
+
               {/* Floating Elements */}
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border border-pear-primary/20">
                 <div className="flex items-center space-x-3">

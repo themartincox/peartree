@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,66 +9,99 @@ import TestimonialBanner from "@/components/TestimonialBanner";
 import {
   Check,
   Crown,
-  Users,
-  Heart,
-  ShieldCheck,
   ArrowRight,
-  Sparkles,
   Baby,
   User,
-  UserPlus
+  UserPlus,
+  Sparkles,
+  ShieldCheck,
+  Heart,
+  Users
 } from "lucide-react";
+
+// Memoize membership data to prevent recreation on each render
+const membershipPlans = {
+  adult: {
+    name: "Adult Plan",
+    price: "£14.99",
+    period: "/month",
+    description: "Complete dental care for adults with comprehensive coverage and preventive focus.",
+    keyFeatures: [
+      "2 check-ups per year included",
+      "2 hygiene appointments included",
+      "20% discount on all treatments",
+      "Worldwide dental trauma cover"
+    ],
+    icon: User,
+    color: "pear-primary"
+  },
+  child: {
+    name: "Child Plan",
+    price: "£8.99",
+    period: "/month",
+    description: "Specialized dental care for children with focus on prevention and education.",
+    keyFeatures: [
+      "2 check-ups per year included",
+      "Fluoride treatments included",
+      "Fissure sealants when required",
+      "No charge for most treatments"
+    ],
+    icon: Baby,
+    color: "soft-pink"
+  },
+  family: {
+    name: "Family Plan",
+    price: "£39.99",
+    period: "/month",
+    description: "Comprehensive coverage for the whole family with significant savings.",
+    keyFeatures: [
+      "2 adults + 2 children covered",
+      "All individual plan benefits",
+      "Priority family appointments",
+      "25% discount on treatments"
+    ],
+    icon: UserPlus,
+    color: "pear-gold"
+  }
+};
 
 const MembershipHighlight = () => {
   const [activeTab, setActiveTab] = useState("adult");
 
-  const membershipPlans = {
-    adult: {
-      name: "Adult Plan",
-      price: "£14.99",
-      period: "/month",
-      description: "Complete dental care for adults with comprehensive coverage and preventive focus.",
-      keyFeatures: [
-        "2 check-ups per year included",
-        "2 hygiene appointments included",
-        "20% discount on all treatments",
-        "Worldwide dental trauma cover"
-      ],
-      icon: User,
-      color: "pear-primary"
-    },
-    child: {
-      name: "Child Plan",
-      price: "£8.99",
-      period: "/month",
-      description: "Specialized dental care for children with focus on prevention and education.",
-      keyFeatures: [
-        "2 check-ups per year included",
-        "Fluoride treatments included",
-        "Fissure sealants when required",
-        "No charge for most treatments"
-      ],
-      icon: Baby,
-      color: "soft-pink"
-    },
-    family: {
-      name: "Family Plan",
-      price: "£39.99",
-      period: "/month",
-      description: "Comprehensive coverage for the whole family with significant savings.",
-      keyFeatures: [
-        "2 adults + 2 children covered",
-        "All individual plan benefits",
-        "Priority family appointments",
-        "25% discount on treatments"
-      ],
-      icon: UserPlus,
-      color: "pear-gold"
-    }
-  };
+  // Memoize current plan to prevent recalculation
+  const currentPlan = useMemo(() => {
+    const plan = membershipPlans[activeTab as keyof typeof membershipPlans];
+    return { ...plan, Icon: plan.icon };
+  }, [activeTab]);
 
-  const currentPlan = membershipPlans[activeTab as keyof typeof membershipPlans];
-  const Icon = currentPlan.icon;
+  // Memoize tab buttons to prevent recreation
+  const tabButtons = useMemo(() => {
+    return Object.entries(membershipPlans).map(([key, plan]) => {
+      const TabIcon = plan.icon;
+      const isActive = activeTab === key;
+      return (
+        <button
+          key={key}
+          onClick={() => setActiveTab(key)}
+          className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 ${
+            isActive
+              ? key === 'adult' ? 'bg-white text-pear-primary shadow-lg transform scale-105'
+              : key === 'child' ? 'bg-soft-pink/20 text-white shadow-lg transform scale-105 border border-soft-pink/30'
+              : 'bg-pear-gold/20 text-white shadow-lg transform scale-105 border border-pear-gold/30'
+              : 'text-white/80 hover:text-white hover:bg-white/10'
+          }`}
+        >
+          <div className="flex items-center space-x-2 sm:space-x-3">
+            <TabIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+            <div>
+              <div className="font-semibold text-sm sm:text-base">{plan.name}</div>
+              <div className="text-xs sm:text-sm opacity-80">{plan.price}{plan.period}</div>
+            </div>
+          </div>
+        </button>
+      );
+    });
+  }, [activeTab]);
 
   return (
     <section className="py-16 bg-gradient-to-br from-pear-background to-white">
@@ -79,7 +112,8 @@ const MembershipHighlight = () => {
           author="Michael Thompson"
           className="max-w-4xl mx-auto mb-16"
         />
-        {/* Section Header */}
+
+        {/* Section Header - Simplified */}
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4 bg-pear-gold text-white">
             <Crown className="w-4 h-4 mr-2" />
@@ -94,43 +128,18 @@ const MembershipHighlight = () => {
           </p>
         </div>
 
-        {/* Main Membership Card */}
+        {/* Main Membership Card - Optimized structure */}
         <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl border-2 border-pear-primary/10 mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-4">
-
             {/* Tabs Sidebar */}
             <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6 lg:p-8">
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Choose Your Plan</h3>
 
               <div className="space-y-3">
-                {Object.entries(membershipPlans).map(([key, plan]) => {
-                  const TabIcon = plan.icon;
-                  const isActive = activeTab === key;
-                  return (
-                    <button
-                      key={key}
-                      onClick={() => setActiveTab(key)}
-                      className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 ${
-                        isActive
-                          ? key === 'adult' ? 'bg-white text-pear-primary shadow-lg transform scale-105'
-                          : key === 'child' ? 'bg-soft-pink/20 text-white shadow-lg transform scale-105 border border-soft-pink/30'
-                          : 'bg-pear-gold/20 text-white shadow-lg transform scale-105 border border-pear-gold/30'
-                          : 'text-white/80 hover:text-white hover:bg-white/10'
-                      }`}
-                    >
-                      <div className="flex items-center space-x-2 sm:space-x-3">
-                        <TabIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <div>
-                          <div className="font-semibold text-sm sm:text-base">{plan.name}</div>
-                          <div className="text-xs sm:text-sm opacity-80">{plan.price}{plan.period}</div>
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
+                {tabButtons}
               </div>
 
-              {/* Key Benefits */}
+              {/* Key Benefits - Simplified */}
               <div className="mt-8 pt-6 border-t border-white/20">
                 <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
                   All Plans Include:
@@ -163,7 +172,7 @@ const MembershipHighlight = () => {
                       activeTab === 'adult' ? 'bg-pear-primary' :
                       activeTab === 'child' ? 'bg-soft-pink' : 'bg-pear-gold'
                     }`}>
-                      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                      <currentPlan.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
                     <div>
                       <h3 className="text-2xl sm:text-3xl font-bold text-pear-primary">{currentPlan.name}</h3>
@@ -298,6 +307,24 @@ const MembershipHighlight = () => {
               <Crown className="w-5 h-5 text-pear-gold" />
               <span>Immediate benefits</span>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA - Simplified */}
+        <div className="text-center">
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate, premium dental care.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg" className="btn-gold text-white px-8 py-4">
+              <Link href="/membership">
+                Explore All Plans
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-8 py-4">
+              <Link href="/contact">Book Free Consultation</Link>
+            </Button>
           </div>
         </div>
       </div>

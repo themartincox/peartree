@@ -222,7 +222,6 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
 
   if (includeDentistSpecific) {
     // Add additional dental-specific schema
-    /* eslint-disable @typescript-eslint/no-explicit-any */
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Cosmetic Dentistry",
@@ -248,7 +247,6 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
         "procedureType": "Cosmetic"
       }
     ];
-    /* eslint-enable @typescript-eslint/no-explicit-any */
   }
 
   return (

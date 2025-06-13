@@ -242,6 +242,15 @@ export default function ClearCorrectPage() {
                   </div>
                 </div>
               </Card>
+
+              {/* Social Proof Sticker */}
+              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-full px-4 py-2 shadow-lg transform rotate-12">
+                <div className="text-center">
+                  <div className="text-sm font-bold">LOVED BY</div>
+                  <div className="text-lg font-extrabold">164+</div>
+                  <div className="text-xs">SMART CHOICES</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

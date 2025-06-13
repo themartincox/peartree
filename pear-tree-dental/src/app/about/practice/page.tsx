@@ -96,8 +96,8 @@ export default function PracticePage() {
                 <Building2 className="h-12 w-12" />
               </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-gold">Modern</span> Practice
+            <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              Our <span className="text-pear-gold">Modern</span> Practice
             </h1>
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-8">
               State-of-the-Art Facilities in Burton Joyce
@@ -120,13 +120,13 @@ export default function PracticePage() {
                   <div className="p-2 bg-pear-primary/10 rounded-full">
                     <MapPin className="h-6 w-6 text-pear-primary" />
                   </div>
-                  <h2 className="text-3xl font-bold text-pear-primary">
+                  <h2 className="heading-serif text-3xl font-bold text-pear-primary">
                     Conveniently Located
                   </h2>
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">Address</h3>
+                    <h3 className="heading-serif text-xl font-semibold mb-2 text-gray-800">Address</h3>
                     <p className="text-gray-600 leading-relaxed">
                       22 Nottingham Road<br />
                       Burton Joyce<br />
@@ -134,7 +134,7 @@ export default function PracticePage() {
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">Contact Information</h3>
+                    <h3 className="heading-serif text-xl font-semibold mb-2 text-gray-800">Contact Information</h3>
                     <div className="space-y-2">
                       <p className="text-gray-600">
                         📞 <a href="tel:01159312520" className="text-pear-primary hover:underline">0115 931 2520</a>
@@ -147,7 +147,7 @@ export default function PracticePage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">Opening Hours</h3>
+                    <h3 className="heading-serif text-xl font-semibold mb-2 text-gray-800">Opening Hours</h3>
                     <div className="space-y-1 text-gray-600">
                       <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
                       <p>Saturday: 8:00 AM - 2:00 PM</p>
@@ -162,7 +162,7 @@ export default function PracticePage() {
                     <div className="aspect-video bg-gradient-to-br from-pear-primary/10 to-pear-primary/5 flex items-center justify-center">
                       <div className="text-center p-8">
                         <Building2 className="h-16 w-16 text-pear-primary mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold text-pear-primary mb-2">
+                        <h3 className="heading-serif text-xl font-semibold text-pear-primary mb-2">
                           Modern Dental Practice
                         </h3>
                         <p className="text-gray-600">
@@ -182,7 +182,7 @@ export default function PracticePage() {
       <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               State-of-the-Art Facilities
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -199,7 +199,7 @@ export default function PracticePage() {
                     <div className="p-3 bg-pear-primary/10 rounded-full w-fit mx-auto mb-4 group-hover:bg-pear-primary/20 transition-colors">
                       <IconComponent className="h-8 w-8 text-pear-primary" />
                     </div>
-                    <h3 className="text-lg font-bold text-pear-primary mb-3">
+                    <h3 className="heading-serif text-lg font-bold text-pear-primary mb-3">
                       {facility.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -217,7 +217,7 @@ export default function PracticePage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Our Values & Approach
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -234,7 +234,7 @@ export default function PracticePage() {
                       {value.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-pear-primary mb-3">
+                      <h3 className="heading-serif text-xl font-bold text-pear-primary mb-3">
                         {value.title}
                       </h3>
                       <p className="text-gray-600 leading-relaxed">
@@ -253,7 +253,7 @@ export default function PracticePage() {
       <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Patient Amenities
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -270,7 +270,7 @@ export default function PracticePage() {
                     <div className="p-2 bg-pear-primary/10 rounded-full w-fit mx-auto mb-3 group-hover:bg-pear-primary/20 transition-colors">
                       <IconComponent className="h-6 w-6 text-pear-primary" />
                     </div>
-                    <h3 className="font-bold text-pear-primary mb-2">
+                    <h3 className="heading-serif font-bold text-pear-primary mb-2">
                       {amenity.title}
                     </h3>
                     <p className="text-sm text-gray-600">
@@ -288,7 +288,7 @@ export default function PracticePage() {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
               Investment in Advanced Technology
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
@@ -319,7 +319,7 @@ export default function PracticePage() {
       <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Experience Our Modern Practice
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
@@ -335,7 +335,7 @@ export default function PracticePage() {
               </a>
               <a
                 href="/about/team"
-                className="bg-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-gold/90 transition-colors duration-300"
+                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold/90 transition-colors duration-300"
               >
                 Meet Our Team
               </a>

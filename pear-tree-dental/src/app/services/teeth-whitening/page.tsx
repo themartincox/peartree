@@ -201,6 +201,15 @@ export default function TeethWhiteningPage() {
                   </div>
                 </div>
               </Card>
+
+              {/* Social Proof Sticker */}
+              <div className="absolute -top-4 -left-4 bg-gradient-to-r from-yellow-600 to-orange-600 text-white rounded-full px-4 py-2 shadow-lg transform -rotate-12">
+                <div className="text-center">
+                  <div className="text-sm font-bold">BRIGHTENED BY</div>
+                  <div className="text-lg font-extrabold">1,247+</div>
+                  <div className="text-xs">HAPPY PATIENTS</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

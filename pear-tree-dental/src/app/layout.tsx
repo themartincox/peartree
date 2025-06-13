@@ -1,8 +1,27 @@
 import type { Metadata } from "next";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+
+// Optimize Google Fonts loading with font-display: swap
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-cormorant'
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-montserrat'
+});
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_GB",
-    url: "https://peartreedental.co.uk",
+    url: "https://peartree.dental",
     siteName: "Pear Tree Dental",
     title: "Pear Tree Dental - Premium Dentistry in Burton Joyce",
     description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch.",
@@ -70,64 +89,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://peartreedental.co.uk" />
+        {/* DNS Prefetch for faster font loading */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+        {/* Preconnect for critical font resources */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+        <link rel="canonical" href="https://peartree.dental" />
         <meta name="geo.region" content="GB-NTT" />
         <meta name="geo.placename" content="Burton Joyce" />
         <meta name="geo.position" content="52.9769;-1.0085" />
         <meta name="ICBM" content="52.9769, -1.0085" />
 
-        {/* Local Business Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "DentalClinic",
-              "name": "Pear Tree Dental",
-              "image": "https://peartreedental.co.uk/og-image.jpg",
-              "description": "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch.",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "The Old School House, Main Street",
-                "addressLocality": "Burton Joyce",
-                "addressRegion": "Nottinghamshire",
-                "postalCode": "NG14 5DP",
-                "addressCountry": "GB"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "52.9769",
-                "longitude": "-1.0085"
-              },
-              "telephone": "+44115931252",
-              "email": "info@peartreedental.co.uk",
-              "url": "https://peartreedental.co.uk",
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "08:00",
-                  "closes": "17:00"
-                }
-              ],
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5",
-                "reviewCount": "400"
-              },
-              "medicalSpecialty": [
-                "General Dentistry",
-                "Cosmetic Dentistry",
-                "Restorative Dentistry",
-                "Implant Dentistry",
-                "Orthodontics",
-                "Emergency Dentistry"
-              ]
-            })
-          }}
-        />
+        <LocalBusinessSchema includeDentistSpecific={true} />
       </head>
-      <body className="min-h-screen bg-pear-background">
+      <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
         <Navigation />
         <main className="min-h-screen">
           <PageTransition>

@@ -120,8 +120,8 @@ export default function TeamPage() {
                 <Users className="h-12 w-12" />
               </div>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-gold">Dedicated</span> Team
+            <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              Our <span className="text-pear-gold">Dedicated</span> Team
             </h1>
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-8">
               Dedication. Expertise. Passion.
@@ -144,7 +144,7 @@ export default function TeamPage() {
                 <Award className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Principal Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -169,7 +169,7 @@ export default function TeamPage() {
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                     </div>
-                    <h3 className="text-2xl font-bold text-pear-primary mb-2">
+                    <h3 className="heading-serif text-2xl font-bold text-pear-primary mb-2">
                       {dentist.name}
                     </h3>
                     <div className="space-y-2 mb-4">
@@ -199,7 +199,7 @@ export default function TeamPage() {
                 <Stethoscope className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Associate Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -224,7 +224,7 @@ export default function TeamPage() {
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                     </div>
-                    <h3 className="text-xl font-bold text-pear-primary mb-2">
+                    <h3 className="heading-serif text-xl font-bold text-pear-primary mb-2">
                       {dentist.name}
                     </h3>
                     <div className="space-y-2 mb-4">
@@ -254,7 +254,7 @@ export default function TeamPage() {
                 <Heart className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Support Team
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -279,7 +279,7 @@ export default function TeamPage() {
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                     </div>
-                    <h3 className="text-lg font-bold text-pear-primary mb-2">
+                    <h3 className="heading-serif text-lg font-bold text-pear-primary mb-2">
                       {member.name}
                     </h3>
                     <div className="space-y-1 mb-3">
@@ -305,7 +305,7 @@ export default function TeamPage() {
       <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Meet Our Nurses
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -330,7 +330,7 @@ export default function TeamPage() {
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                     </div>
-                    <h3 className="text-sm font-bold text-pear-primary mb-1">
+                    <h3 className="heading-serif text-sm font-bold text-pear-primary mb-1">
                       {nurse.name}
                     </h3>
                     <p className="text-xs font-semibold text-gray-700">{nurse.role}</p>
@@ -346,7 +346,7 @@ export default function TeamPage() {
       <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Ready to Meet Our Team?
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
@@ -361,7 +361,7 @@ export default function TeamPage() {
               </a>
               <a
                 href="/membership"
-                className="bg-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-gold/90 transition-colors duration-300"
+                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold/90 transition-colors duration-300"
               >
                 Join Our Practice
               </a>
