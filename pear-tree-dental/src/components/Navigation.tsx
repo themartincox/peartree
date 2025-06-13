@@ -329,21 +329,23 @@ const Navigation = () => {
 
       {/* Secondary CTA Bar - Always visible, changes appearance when scrolled */}
       <div className={cn(
-        "fixed left-0 right-0 z-40 transition-all duration-500 ease-in-out",
+        "fixed left-0 right-0 transition-all duration-500 ease-in-out",
         isScrolled
-          ? "top-0 bg-pear-primary shadow-lg"
-          : "top-16 sm:top-20 bg-white/95 backdrop-blur-lg shadow-md"
+          ? "top-0 bg-pear-primary shadow-lg z-[60]"
+          : "top-16 sm:top-20 bg-white/95 backdrop-blur-lg shadow-md z-40"
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={cn(
-            "flex items-center py-2 sm:py-3 transition-all duration-500 ease-in-out",
-            isScrolled ? "justify-center" : "justify-center space-x-2 sm:space-x-4"
+            "flex items-center transition-all duration-500 ease-in-out",
+            isScrolled
+              ? "py-2 sm:py-3 justify-center"
+              : "py-2 sm:py-3 justify-center"
           )}>
             {/* Logo - only shows when scrolled, positioned absolutely */}
             {isScrolled && (
-              <Link href="/" className="absolute left-4 flex items-center">
+              <Link href="/" className="absolute left-4 hidden sm:flex items-center">
                 <div className="flex flex-col">
-                  <div className="brand-logo text-xl text-white">
+                  <div className="brand-logo text-lg sm:text-xl text-white">
                     PEAR<span className="ml-20px">TREE</span>
                   </div>
                   <div className="brand-subtitle text-xs text-white/80 mt-4px">
@@ -353,42 +355,50 @@ const Navigation = () => {
               </Link>
             )}
 
-            {/* CTAs - always centered */}
-            <div className="flex items-center space-x-2 sm:space-x-4 flex-wrap justify-center">
-              <Link href="/services/general">
+            {/* CTAs - Responsive layout for mobile */}
+            <div className={cn(
+              "flex items-center justify-center w-full max-w-full",
+              isScrolled
+                ? "space-x-1 px-2 sm:space-x-2 md:space-x-4 sm:px-4"
+                : "space-x-2 sm:space-x-4"
+            )}>
+              <Link href="/services/general" className="flex-shrink-0">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
+                  "shadow-lg hover:shadow-xl transition-all text-xs sm:text-sm",
+                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
                   isScrolled
                     ? "bg-white text-pear-primary hover:bg-white/90"
                     : "bg-gradient-to-r from-dental-green to-soft-blue text-white"
                 )}>
-                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
                   <span className="hidden sm:inline">Book Hygienist</span>
                   <span className="sm:hidden">Book</span>
                 </Button>
               </Link>
-              <Link href="/membership">
+              <Link href="/membership" className="flex-shrink-0">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
+                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm",
+                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
                   isScrolled
                     ? "bg-pear-gold text-white hover:bg-pear-gold/90"
                     : "btn-gold text-white"
                 )}>
-                  <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                  <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
                   <span className="hidden sm:inline">Join Membership</span>
-                  <span className="sm:hidden">Membership</span>
+                  <span className="sm:hidden">Plan</span>
                 </Button>
               </Link>
-              <Link href="/smile-design">
+              <Link href="/smile-design" className="flex-shrink-0">
                 <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm h-8 sm:h-9 px-2 sm:px-3",
+                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm",
+                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
                   isScrolled
                     ? "bg-white text-pear-primary hover:bg-white/90"
                     : "bg-gradient-to-r from-soft-pink to-soft-lavender text-white"
                 )}>
-                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                  <span className="hidden lg:inline">Smile Design Service</span>
-                  <span className="lg:hidden">Smile Design</span>
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                  <span className="hidden md:inline">Smile Design</span>
+                  <span className="md:hidden">Smile</span>
                 </Button>
               </Link>
             </div>
