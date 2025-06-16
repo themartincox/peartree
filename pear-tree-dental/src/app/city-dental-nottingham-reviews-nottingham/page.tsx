@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "Variable consultation fees",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to City Dental Nottingham?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our suburban location provides a more relaxed environment compared to busy city center practices."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our suburban location provides a more relaxed environment compared to busy city center practices."
   },
   {
     question: "What are the advantages of a suburban dental practice?",
@@ -164,7 +164,7 @@ function ComparisonTable() {
         <div className="mt-6 p-4 bg-accent-gold/10 rounded-lg">
           <h3 className="heading-serif font-semibold mb-2">Key Advantages Summary:</h3>
           <ul className="text-sm space-y-1">
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>Same-Day Emergency Care:</strong> Available for urgent needs</li>
             <li>• <strong>Stress-Free Environment:</strong> Suburban location with free parking</li>
             <li>• <strong>No City Center Hassles:</strong> Avoid traffic and parking charges</li>
@@ -254,7 +254,7 @@ export default function CityDentalNottinghamReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">City Dental Nottingham</p>
@@ -428,7 +428,7 @@ export default function CityDentalNottinghamReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Location</h4>

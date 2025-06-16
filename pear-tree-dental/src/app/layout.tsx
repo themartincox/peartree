@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
 // Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Pear Tree Dental - Premium Dentistry in Burton Joyce",
     default: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire"
   },
-  description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, membership plans from £8.99/month. Book your consultation today.",
+  description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, membership plans from £10.95/month. Book your consultation today.",
   keywords: [
     "dentist Burton Joyce",
     "dental practice Nottinghamshire",
@@ -104,6 +105,7 @@ export default function RootLayout({
         <meta name="ICBM" content="52.9769, -1.0085" />
 
         <LocalBusinessSchema includeDentistSpecific={true} />
+        <VoiceSearchSchema />
       </head>
       <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
         {/* Skip Links for Screen Readers */}

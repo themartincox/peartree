@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Dentist in East Bridgford - Pear Tree Dental | Modern Dental Care Near You',
-    description: 'Modern dental care for East Bridgford residents. Membership plans from £8.99/month. Same-day emergency appointments available.',
+    description: 'Modern dental care for East Bridgford residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
     url: 'https://peartreedental.co.uk/east-bridgford'
   },
   alternates: {

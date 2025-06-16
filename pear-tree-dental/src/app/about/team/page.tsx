@@ -30,7 +30,7 @@ const principals = [
     role: "Principal Dentist",
     gdc: "252578",
     image: "https://ext.same-assets.com/523564123/3375693680.jpeg",
-    description: "Imrana brings specialized expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available."
+    description: "Imrana brings specialised expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available."
   }
 ];
 
@@ -65,7 +65,7 @@ const supportTeam = [
     qualifications: "BSc (Hons)",
     role: "Dental Therapist",
     image: "https://ext.same-assets.com/523564123/221362571.jpeg",
-    description: "Jade specializes in preventive treatments and oral health education, working closely with our dentists to maintain your oral health."
+    description: "Jade specialises in preventive treatments and oral health education, working closely with our dentists to maintain your oral health."
   },
   {
     name: "Lee-Anne Smith",
@@ -203,7 +203,7 @@ export default function TeamPage() {
               Associate Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals providing specialized care across all areas of dentistry
+              Experienced professionals providing specialised care across all areas of dentistry
             </p>
           </div>
 

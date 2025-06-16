@@ -45,23 +45,23 @@ const Footer = () => {
               <div className="flex items-start space-x-2 sm:space-x-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                 <div className="text-xs sm:text-sm text-white/80">
-                  <div>The Old School House</div>
-                  <div>Main Street, Burton Joyce</div>
-                  <div>Nottinghamshire NG14 5DP</div>
+                  <div>22 Nottingham Road</div>
+                  <div>Burton Joyce, Nottingham</div>
+                  <div>UK, NG14 5AE</div>
                 </div>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
-                <a href="tel:01159312525" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors">
-                  0115 931 2525
+                <a href="tel:01159312935" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors">
+                  0115 931 2935
                 </a>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
-                <a href="mailto:info@peartreedental.co.uk" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all">
-                  info@peartreedental.co.uk
+                <a href="mailto:Peartreedentalcentre@outlook.com" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all">
+                  Peartreedentalcentre@outlook.com
                 </a>
               </div>
             </div>
@@ -74,23 +74,23 @@ const Footer = () => {
             <div className="space-y-1 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Monday</span>
-                <span className="text-white">8:00 - 17:00</span>
+                <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Tuesday</span>
-                <span className="text-white">8:00 - 17:00</span>
+                <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Wednesday</span>
-                <span className="text-white">8:00 - 17:00</span>
+                <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Thursday</span>
-                <span className="text-white">8:00 - 17:00</span>
+                <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Friday</span>
-                <span className="text-white">8:00 - 17:00</span>
+                <span className="text-white">8 am - 3:30 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
                 <span className="text-white/80">Saturday</span>
@@ -104,7 +104,7 @@ const Footer = () => {
 
             <div className="flex items-center space-x-2 text-xs sm:text-sm text-pear-gold">
               <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span>Emergency appointments available</span>
+              <span>Emergencies and out of hours by arrangement</span>
             </div>
           </div>
 
@@ -175,7 +175,7 @@ const Footer = () => {
 
           <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-white/60">
             <span>Regulated by the General Dental Council</span>
-            <span>GDC Registration: 123456</span>
+            <span>Website delivered by <a href="https://www.postino.cc" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Postino</a></span>
           </div>
         </div>
       </div>

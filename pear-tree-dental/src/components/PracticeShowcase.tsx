@@ -76,17 +76,31 @@ const PracticeShowcase = () => {
                     <div className="flex items-start space-x-3">
                       <MapPin className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <div className="text-gray-700">
-                        <div className="font-medium">The Old School House</div>
-                        <div>Main Street, Burton Joyce</div>
-                        <div>Nottinghamshire NG14 5DP</div>
+                        <div className="font-medium">22 Nottingham Rd</div>
+                        <div>Burton Joyce, Nottingham</div>
+                        <div>UK, NG14 5AE</div>
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-pear-gold flex-shrink-0" />
+                    <div className="flex items-start space-x-3">
+                      <Clock className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <div className="text-gray-700">
-                        <div className="font-medium">Mon-Fri: 8:00-17:00</div>
-                        <div className="text-sm text-gray-600">Emergency appointments available</div>
+                        <div className="font-medium mb-1">Opening Hours</div>
+                        <div className="text-sm space-y-1">
+                          <div className="flex justify-between">
+                            <span>Monday - Thursday</span>
+                            <span>8:45 am - 5 pm</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Friday</span>
+                            <span>8 am - 3:30 pm</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span>Weekend</span>
+                            <span>Closed</span>
+                          </div>
+                        </div>
+                        <div className="text-xs text-gray-600 mt-2">Emergencies by arrangement</div>
                       </div>
                     </div>
                   </div>

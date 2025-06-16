@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { 
+import {
   Root,
   List,
   Item,
@@ -93,7 +93,7 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof Viewport>,
   React.ComponentPropsWithoutRef<typeof Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
+  <div className={cn("absolute left-1/2 top-full flex justify-center -translate-x-1/2")}>
     <Viewport
       className={cn(
         "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",

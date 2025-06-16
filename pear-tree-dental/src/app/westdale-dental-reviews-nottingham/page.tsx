@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "Variable treatment pricing",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to Westdale Dental?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our membership model provides predictable costs and comprehensive care, offering a modern alternative to traditional fee-per-treatment practices."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our membership model provides predictable costs and comprehensive care, offering a modern alternative to traditional fee-per-treatment practices."
   },
   {
     question: "What are the benefits of dental membership plans over traditional pricing?",
@@ -164,7 +164,7 @@ function ComparisonTable() {
         <div className="mt-6 p-4 bg-accent-gold/10 rounded-lg">
           <h3 className="heading-serif font-semibold mb-2">Key Advantages Summary:</h3>
           <ul className="text-sm space-y-1">
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>Same-Day Emergency Care:</strong> Available for urgent needs</li>
             <li>• <strong>Modern Facilities:</strong> Purpose-built practice with latest technology</li>
             <li>• <strong>Free Parking:</strong> Convenient on-site parking</li>
@@ -254,7 +254,7 @@ export default function WestdaleDentalReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">Westdale Dental</p>
@@ -428,7 +428,7 @@ export default function WestdaleDentalReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Location</h4>

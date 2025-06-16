@@ -143,7 +143,7 @@ export default function GeneralDentistryPage() {
               },
               {
                 title: "Children's Dentistry",
-                description: "Gentle, specialized care for young patients",
+                description: "Gentle, specialised care for young patients",
                 features: ["Fissure sealants", "Fluoride treatments", "Gentle techniques", "Education & prevention"],
                 price: "From £35",
                 nhsPrice: "NHS: Free under 18",
@@ -278,7 +278,7 @@ export default function GeneralDentistryPage() {
                     <li>• 20% off all treatments</li>
                     <li>• Free check-ups included</li>
                     <li>• Emergency cover</li>
-                    <li>• Plans from £8.99/month</li>
+                    <li>• Plans from £10.95/month</li>
                   </ul>
                 </div>
 

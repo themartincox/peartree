@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "Traditional pricing structure",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to Mapperley Dental Practice?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern purpose-built facilities with the latest dental technology. Our Burton Joyce location provides convenient access with free parking, offering a comprehensive alternative to traditional community practices."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern purpose-built facilities with the latest dental technology. Our Burton Joyce location provides convenient access with free parking, offering a comprehensive alternative to traditional community practices."
   },
   {
     question: "What are the benefits of modern dental facilities?",
@@ -165,7 +165,7 @@ function ComparisonTable() {
           <h3 className="heading-serif font-semibold mb-2">Key Advantages Summary:</h3>
           <ul className="text-sm space-y-1">
             <li>• <strong>Modern Technology:</strong> Latest digital dental equipment</li>
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>Same-Day Emergency Care:</strong> Available for urgent needs</li>
             <li>• <strong>Purpose-Built Facilities:</strong> Designed for modern dental care</li>
             <li>• <strong>Family Plans:</strong> Comprehensive care for whole family</li>
@@ -254,7 +254,7 @@ export default function MapperleyDentalPracticeReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">Mapperley Dental Practice</p>
@@ -428,7 +428,7 @@ export default function MapperleyDentalPracticeReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Transparent Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Modern Location</h4>

@@ -26,7 +26,7 @@ const Hero = () => {
 
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">
               Modern dental care in Burton Joyce, Nottinghamshire.
-              Skip the NHS waiting lists with our membership plans from just £8.99/month.
+              Skip the NHS waiting lists with our membership plans from just £10.95/month.
             </p>
 
             {/* CTA Buttons - Optimized for performance */}
@@ -63,7 +63,7 @@ const Hero = () => {
                 <span className="text-white font-bold text-xl sm:text-2xl">£</span>
               </div>
               <div>
-                <p className="text-pear-primary font-semibold text-lg sm:text-xl">Membership from just 29p per day</p>
+                <p className="text-pear-primary font-semibold text-lg sm:text-xl">Membership from just 36p per day</p>
                 <p className="text-gray-600 text-sm sm:text-base">No hidden fees • Cancel anytime • Immediate access</p>
               </div>
             </div>

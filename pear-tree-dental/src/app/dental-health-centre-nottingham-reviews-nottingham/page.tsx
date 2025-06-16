@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "NHS charges + private fees",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to Dental Health Centre Nottingham?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern facilities without NHS restrictions. Our membership model provides predictable costs and immediate access to all treatments, unlike traditional NHS practices with waiting lists and limited treatment options."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern facilities without NHS restrictions. Our membership model provides predictable costs and immediate access to all treatments, unlike traditional NHS practices with waiting lists and limited treatment options."
   },
   {
     question: "What are the advantages of membership over NHS dental care?",
@@ -166,7 +166,7 @@ function ComparisonTable() {
           <ul className="text-sm space-y-1">
             <li>• <strong>No NHS Waiting Lists:</strong> Immediate access to care</li>
             <li>• <strong>All Treatments Available:</strong> No NHS funding restrictions</li>
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>Same-Day Emergency Care:</strong> Available for urgent needs</li>
             <li>• <strong>Modern Facilities:</strong> Purpose-built practice with latest technology</li>
           </ul>
@@ -254,7 +254,7 @@ export default function DentalHealthCentreNottinghamReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Simple membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Simple membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">Dental Health Centre</p>
@@ -428,7 +428,7 @@ export default function DentalHealthCentreNottinghamReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Transparent Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Modern Location</h4>

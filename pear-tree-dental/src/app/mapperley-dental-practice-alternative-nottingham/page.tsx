@@ -135,7 +135,7 @@ const faqs = [
   },
   {
     question: "What are the benefits of membership plans over traditional dental fees?",
-    answer: "Membership plans from £8.99/month provide predictable costs, no surprise consultation fees, priority emergency care, family discounts, and comprehensive coverage including preventive care and treatment discounts with access to the latest technology."
+    answer: "Membership plans from £10.95/month provide predictable costs, no surprise consultation fees, priority emergency care, family discounts, and comprehensive coverage including preventive care and treatment discounts with access to the latest technology."
   }
 ];
 
@@ -444,7 +444,7 @@ export default function MapperleyDentalPracticeAlternativePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Transparent Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">🏢 Modern Facilities</h4>

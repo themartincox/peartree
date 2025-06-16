@@ -101,7 +101,7 @@ const faqs = [
   },
   {
     question: "What are the benefits of your membership plans?",
-    answer: "Our membership plans from £8.99/month provide predictable costs, no surprise consultation fees, priority emergency care, family discounts, and comprehensive coverage including preventive care and treatment discounts."
+    answer: "Our membership plans from £10.95/month provide predictable costs, no surprise consultation fees, priority emergency care, family discounts, and comprehensive coverage including preventive care and treatment discounts."
   }
 ];
 
@@ -237,7 +237,7 @@ export default function ParkDentalCareAlternativePage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground mb-4">
-                    Know exactly what you'll pay each month with our membership plans starting from £8.99.
+                    Know exactly what you'll pay each month with our membership plans starting from £10.95.
                   </p>
                   <ul className="text-sm space-y-2">
                     <li>• No surprise consultation fees</li>
@@ -412,7 +412,7 @@ export default function ParkDentalCareAlternativePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Location</h4>

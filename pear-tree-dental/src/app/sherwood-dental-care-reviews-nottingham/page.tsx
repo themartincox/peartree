@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "NHS charges + private fees",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to Sherwood Dental Care?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month with no NHS waiting lists or restrictions. Our membership model provides predictable costs, same-day emergency appointments, and access to all treatments without the limitations of NHS funding."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month with no NHS waiting lists or restrictions. Our membership model provides predictable costs, same-day emergency appointments, and access to all treatments without the limitations of NHS funding."
   },
   {
     question: "What's the difference between NHS and membership dental care?",
@@ -165,7 +165,7 @@ function ComparisonTable() {
           <h3 className="heading-serif font-semibold mb-2">Key Advantages Summary:</h3>
           <ul className="text-sm space-y-1">
             <li>• <strong>No NHS Waiting Lists:</strong> Immediate access to care</li>
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>All Treatments Available:</strong> No NHS funding restrictions</li>
             <li>• <strong>Same-Day Emergency Care:</strong> No emergency charges</li>
             <li>• <strong>Modern Facilities:</strong> Latest technology without funding delays</li>
@@ -254,7 +254,7 @@ export default function SherwoodDentalCareReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Simple membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Simple membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">Sherwood Dental Care</p>
@@ -428,7 +428,7 @@ export default function SherwoodDentalCareReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Transparent Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Modern Location</h4>

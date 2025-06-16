@@ -21,6 +21,10 @@ const MembershipHighlight = dynamic(() => import("@/components/MembershipHighlig
 const FAQSection = dynamic(() => import("@/components/FAQSection"), {
   loading: () => <div className="h-96 animate-pulse bg-gray-50 rounded-lg mx-4" />
 });
+
+const VoiceSearchOptimization = dynamic(() => import("@/components/VoiceSearchOptimization"), {
+  loading: () => <div className="h-64 animate-pulse bg-gray-50 rounded-lg mx-4" />
+});
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
@@ -50,6 +54,7 @@ export default async function HomePage() {
       <ServicesOverview />
       <TreatmentJourney />
       <MembershipHighlight />
+      <VoiceSearchOptimization />
       <FAQSection />
     </ServerSideABWrapper>
   );

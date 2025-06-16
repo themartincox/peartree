@@ -450,7 +450,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Simple Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">🎯 All Treatments</h4>

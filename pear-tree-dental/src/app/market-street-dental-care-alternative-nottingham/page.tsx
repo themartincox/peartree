@@ -444,7 +444,7 @@ export default function MarketStreetDentalCareAlternativePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Transparent Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">🚗 Free Parking</h4>

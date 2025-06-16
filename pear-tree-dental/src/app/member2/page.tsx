@@ -20,18 +20,10 @@ import {
 import dynamic from "next/dynamic";
 
 // Critical components - loaded immediately
-import PlanSelector from "@/components/membership/PlanSelector";
+import SimplifiedPlanSelector from "@/components/membership/SimplifiedPlanSelector";
 import ExaminationSection from "@/components/membership/ExaminationSection";
 
 // Non-critical components - loaded dynamically with loading states
-const PlanComparisonSlider = dynamic(() => import("@/components/membership/PlanComparisonSlider"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
-});
-
-const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavingsChart"), {
-  loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />
-});
-
 const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
   loading: () => <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
 });
@@ -45,31 +37,30 @@ const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
 });
 
 export const metadata: Metadata = {
-  title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-  description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money. Adult, child & family plans available.",
+  title: "Simplified Dental Membership Plans | Pear Tree Dental",
+  description: "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49. Simple billing, complete peace of mind.",
   keywords: [
-    "dental membership plans Nottingham",
+    "simplified dental membership plans",
     "dental plan Burton Joyce",
     "private dental care Nottinghamshire",
     "NHS alternative dental care",
     "affordable dental membership",
     "family dental plans",
-    "child dental membership",
     "dental check-ups included",
     "dental hygienist appointments",
     "dental treatment discounts"
   ],
   openGraph: {
-    title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-    description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
+    title: "Simplified Dental Membership Plans | Pear Tree Dental",
+    description: "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49.",
     type: "website",
-    url: "https://peartreedental.co.uk/membership"
+    url: "https://peartreedental.co.uk/member2"
   }
 };
 
-export default function MembershipPage() {
+export default function SimplifiedMembershipPage() {
   const breadcrumbItems = [
-    { name: "Membership Plans" }
+    { name: "Simplified Membership Plans" }
   ];
 
   return (
@@ -87,33 +78,42 @@ export default function MembershipPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
             Simple Dental Plans
-            <span className="block text-dental-green">For Your Smile</span>
+            <span className="block text-dental-green">Made Easy</span>
           </h1>
 
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-            Choose the right plan and take control of your dental health with our
-            transparent, affordable membership options. No hidden fees, just care you can trust.
+            We've simplified our membership plans to make choosing easier.
+            Four clear options with everything you need for excellent dental care.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <span className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm">
+              <Check className="w-4 h-4 text-dental-green" />
+              No hidden fees
+            </span>
+            <span className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm">
+              <Check className="w-4 h-4 text-dental-green" />
+              Simple billing
+            </span>
+            <span className="flex items-center gap-2 bg-white rounded-full px-4 py-2 shadow-sm">
+              <Check className="w-4 h-4 text-dental-green" />
+              Complete peace of mind
+            </span>
+          </div>
         </div>
       </section>
 
-      {/* Component Sections - Reordered as requested */}
+      {/* Component Sections */}
       {/* 1. Examination */}
       <ExaminationSection />
 
-      {/* 2. Plan Selector */}
-      <PlanSelector />
+      {/* 2. Simplified Plan Selector */}
+      <SimplifiedPlanSelector />
 
-      {/* 3. Compare */}
-      <PlanComparisonSlider />
-
-      {/* 4. Save */}
-      <PlanSavingsChart />
-
-      {/* 5. Worldwide (Benefits) */}
+      {/* 3. Benefits */}
       <BenefitsSection />
 
-      {/* 6. Exclusions */}
+      {/* 4. Exclusions */}
       <section className="py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -136,14 +136,14 @@ export default function MembershipPage() {
                 </li>
               </ul>
               <div className="mt-4 text-sm text-gray-600">
-                All other routine treatments receive 20% discount with membership plans
+                All other routine treatments receive 20% discount with membership plans (25% with Premium, 20% with All-in for Waterpik products)
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 5. FAQ */}
       <FaqSection />
       <CtaSection />
     </div>

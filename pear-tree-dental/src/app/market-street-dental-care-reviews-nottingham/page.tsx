@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const competitorComparisons = [
   {
     feature: "Starting Price",
-    pearTree: "£8.99/month membership",
+    pearTree: "£10.95/month membership",
     competitor: "Per-treatment pricing",
     isHighlight: true
   },
@@ -91,7 +91,7 @@ const patientTestimonials = [
 const faqs = [
   {
     question: "How does Pear Tree Dental compare to Market Street Dental Care?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our suburban location provides a more relaxed environment compared to busy city center practices on Market Street."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our suburban location provides a more relaxed environment compared to busy city center practices on Market Street."
   },
   {
     question: "What are the benefits of suburban vs city center dental care?",
@@ -164,7 +164,7 @@ function ComparisonTable() {
         <div className="mt-6 p-4 bg-accent-gold/10 rounded-lg">
           <h3 className="heading-serif font-semibold mb-2">Key Advantages Summary:</h3>
           <ul className="text-sm space-y-1">
-            <li>• <strong>Transparent Pricing:</strong> Membership plans from £8.99/month</li>
+            <li>• <strong>Transparent Pricing:</strong> Membership plans from £10.95/month</li>
             <li>• <strong>Same-Day Emergency Care:</strong> Available for urgent needs</li>
             <li>• <strong>Suburban Environment:</strong> Peaceful setting away from city center bustle</li>
             <li>• <strong>Free Parking:</strong> No Market Street parking challenges</li>
@@ -254,7 +254,7 @@ export default function MarketStreetDentalCareReviewsPage() {
                   <div className="space-y-3">
                     <div>
                       <p className="font-semibold text-primary">Pear Tree Dental</p>
-                      <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                      <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                     </div>
                     <div>
                       <p className="font-semibold">Market Street Dental Care</p>
@@ -428,7 +428,7 @@ export default function MarketStreetDentalCareReviewsPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Location</h4>

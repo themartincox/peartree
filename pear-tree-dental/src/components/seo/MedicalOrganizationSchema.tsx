@@ -22,7 +22,7 @@ export default function MedicalOrganizationSchema({
       "https://peartreedental.co.uk/images/practice-interior.jpg",
       "https://peartreedental.co.uk/images/dental-team.jpg"
     ],
-    "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £8.99/month.",
+    "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £10.95/month.",
 
     // Contact Information
     "telephone": "+441159312520",
@@ -204,7 +204,7 @@ export default function MedicalOrganizationSchema({
       {
         "@type": "Offer",
         "name": "Child Dental Membership Plan",
-        "description": "Specialized dental care for children with preventive focus and most treatments included",
+        "description": "Specialised dental care for children with preventive focus and most treatments included",
         "price": "8.99",
         "priceCurrency": "GBP",
         "priceSpecification": {

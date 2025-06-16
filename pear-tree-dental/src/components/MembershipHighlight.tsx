@@ -37,9 +37,9 @@ const membershipPlans = {
   },
   child: {
     name: "Child Plan",
-    price: "£8.99",
+    price: "£10.95",
     period: "/month",
-    description: "Specialized dental care for children with focus on prevention and education.",
+    description: "Specialised dental care for children with focus on prevention and education.",
     keyFeatures: [
       "2 check-ups per year included",
       "Fluoride treatments included",

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Dentist in Lowdham - Pear Tree Dental | Modern Dental Care Near You',
-    description: 'Modern dental care for Lowdham residents. Membership plans from £8.99/month. Same-day emergency appointments available.',
+    description: 'Modern dental care for Lowdham residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
     url: 'https://peartreedental.co.uk/lowdham'
   },
   alternates: {

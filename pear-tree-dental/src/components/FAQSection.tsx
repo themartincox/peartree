@@ -53,7 +53,7 @@ const FAQSection = () => {
         {
           id: "gen5",
           question: "What should I do in a dental emergency?",
-          answer: "Contact our emergency line immediately at 0115 931 2525. We reserve same-day appointments for urgent dental problems. For severe pain, swelling, or trauma, don't wait - call us right away for guidance and treatment."
+          answer: "Contact our emergency line immediately at 0115 931 2935. We reserve same-day appointments for urgent dental problems. For severe pain, swelling, or trauma, don't wait - call us right away for guidance and treatment."
         },
         {
           id: "gen6",
@@ -323,7 +323,7 @@ const FAQSection = () => {
         {
           id: "about8",
           question: "Do you treat nervous or anxious patients?",
-          answer: "Absolutely! We specialize in caring for nervous patients with gentle techniques, clear communication, and sedation options when appropriate. Many anxious patients become comfortable and confident with our caring approach."
+          answer: "Absolutely! We specialise in caring for nervous patients with gentle techniques, clear communication, and sedation options when appropriate. Many anxious patients become comfortable and confident with our caring approach."
         },
         {
           id: "about9",

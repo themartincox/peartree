@@ -97,7 +97,7 @@ const faqs = [
   },
   {
     question: "How does Pear Tree Dental compare to The Dental Suite?",
-    answer: "Pear Tree Dental offers transparent membership pricing from £8.99/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our membership model provides predictable costs and comprehensive care."
+    answer: "Pear Tree Dental offers transparent membership pricing from £10.95/month, same-day emergency appointments, and modern facilities in Burton Joyce with free parking. Our membership model provides predictable costs and comprehensive care."
   },
   {
     question: "What are the benefits of dental membership plans?",
@@ -219,7 +219,7 @@ export default function TheDentalSuiteAlternativePage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground mb-4">
-                    Know exactly what you'll pay each month with our membership plans starting from £8.99.
+                    Know exactly what you'll pay each month with our membership plans starting from £10.95.
                   </p>
                   <ul className="text-sm space-y-2">
                     <li>• No surprise consultation fees</li>
@@ -361,7 +361,7 @@ export default function TheDentalSuiteAlternativePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">💷 Pricing</h4>
-                  <p className="text-sm text-muted-foreground">Membership from £8.99/month</p>
+                  <p className="text-sm text-muted-foreground">Membership from £10.95/month</p>
                 </div>
                 <div>
                   <h4 className="font-semibold mb-1">📍 Location</h4>
