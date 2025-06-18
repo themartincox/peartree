@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import {
   Zap,
   Shield,
@@ -18,9 +20,40 @@ import {
   Camera
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Dental Implants Burton Joyce | Permanent Tooth Replacement | Pear Tree Dental",
+  description: "Premium dental implants in Burton Joyce. Replace missing teeth permanently with 98% success rate. Consultation, surgery, and crown from £2,500. Finance available.",
+  keywords: [
+    "dental implants Burton Joyce",
+    "tooth replacement Nottingham",
+    "missing teeth solution",
+    "implant dentist Nottinghamshire",
+    "permanent teeth replacement",
+    "single tooth implant Burton Joyce",
+    "multiple teeth implants Nottingham",
+    "implant surgery Burton Joyce"
+  ],
+  openGraph: {
+    title: "Dental Implants | Pear Tree Dental",
+    description: "Permanent tooth replacement solutions with 98% success rate",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/implants"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/implants"
+  }
+};
+
 export default function ImplantsPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Schema */}
+      <ServiceStructuredData
+        serviceName="Dental Implants"
+        description="Premium dental implants for permanent tooth replacement with 98% success rate"
+        price="From £2,500 per implant"
+        category="Restorative Dentistry"
+      />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-pear-background via-white to-pear-background overflow-hidden">
         <div className="absolute inset-0 opacity-5">

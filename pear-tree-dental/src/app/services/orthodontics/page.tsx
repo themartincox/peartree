@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import {
   Smile,
   Star,
@@ -19,9 +21,40 @@ import {
   TrendingUp
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "Orthodontics Burton Joyce | Invisalign & Clear Aligners | Pear Tree Dental",
+  description: "Orthodontic treatment in Burton Joyce. Invisalign, ClearCorrect clear aligners. Straighten teeth invisibly. Free consultation. Treatment from £2,400.",
+  keywords: [
+    "orthodontics Burton Joyce",
+    "Invisalign Nottingham",
+    "clear aligners Burton Joyce",
+    "teeth straightening Nottinghamshire",
+    "invisible braces Burton Joyce",
+    "ClearCorrect Nottingham",
+    "adult orthodontics Burton Joyce",
+    "teen braces Nottinghamshire"
+  ],
+  openGraph: {
+    title: "Orthodontics & Clear Aligners | Pear Tree Dental",
+    description: "Invisible teeth straightening with Invisalign and ClearCorrect",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/orthodontics"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/orthodontics"
+  }
+};
+
 export default function OrthodonticsPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Schema */}
+      <ServiceStructuredData
+        serviceName="Orthodontics & Clear Aligners"
+        description="Invisible teeth straightening with Invisalign and ClearCorrect clear aligners"
+        price="From £2,400"
+        category="Orthodontics"
+      />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">

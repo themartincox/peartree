@@ -17,8 +17,26 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Invisalign Clear Aligners | Invisible Braces Burton Joyce - Pear Tree Dental",
-  description: "Invisalign clear aligners in Burton Joyce. Straighten teeth invisibly with custom aligners. Professional Invisalign treatment from £3,500.",
+  title: "Invisalign Clear Aligners Burton Joyce | From £2,800",
+  description: "Invisalign clear aligners in Burton Joyce. Straighten teeth invisibly with custom aligners. Professional Invisalign treatment from £2,800. Free consultation available.",
+  keywords: [
+    "Invisalign Burton Joyce",
+    "clear aligners Nottingham",
+    "invisible braces Burton Joyce",
+    "teeth straightening Nottinghamshire",
+    "Invisalign cost Burton Joyce",
+    "adult braces Nottingham",
+    "orthodontics Burton Joyce"
+  ],
+  openGraph: {
+    title: "Invisalign Clear Aligners | Pear Tree Dental",
+    description: "Invisalign clear aligners for invisible teeth straightening from £2,800",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/invisalign"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/invisalign"
+  }
 };
 
 const invisalignTreatmentOptions = [

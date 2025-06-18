@@ -17,8 +17,26 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ClearCorrect Clear Aligners | Affordable Invisalign Alternative Burton Joyce - Pear Tree Dental",
+  title: "ClearCorrect Burton Joyce | Affordable Clear Aligners from £2,500",
   description: "ClearCorrect clear aligners in Burton Joyce. Affordable alternative to Invisalign with excellent results. Straighten teeth invisibly from £2,500.",
+  keywords: [
+    "ClearCorrect Burton Joyce",
+    "clear aligners Nottingham",
+    "Invisalign alternative Burton Joyce",
+    "teeth straightening Nottinghamshire",
+    "affordable orthodontics Burton Joyce",
+    "ClearCorrect cost Nottingham",
+    "clear braces Burton Joyce"
+  ],
+  openGraph: {
+    title: "ClearCorrect Clear Aligners | Pear Tree Dental",
+    description: "Affordable ClearCorrect clear aligners - excellent alternative to Invisalign from £2,500",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/clearcorrect"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/clearcorrect"
+  }
 };
 
 const clearCorrectOptions = [

@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import {
   Heart,
   Shield,
@@ -18,9 +20,40 @@ import {
   UserCheck
 } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "General Dentistry Burton Joyce | NHS & Private Care | Pear Tree Dental",
+  description: "Comprehensive general dentistry in Burton Joyce. Check-ups, cleanings, fillings, extractions. NHS and private options. Book your dental appointment today.",
+  keywords: [
+    "general dentistry Burton Joyce",
+    "dental check-up Nottinghamshire",
+    "NHS dentist Burton Joyce",
+    "dental cleaning Nottingham",
+    "tooth fillings Burton Joyce",
+    "dental extractions Burton Joyce",
+    "family dentist Nottinghamshire",
+    "preventive dental care Nottingham"
+  ],
+  openGraph: {
+    title: "General Dentistry | Pear Tree Dental",
+    description: "Comprehensive dental care for the whole family in Burton Joyce",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/general"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/general"
+  }
+};
+
 export default function GeneralDentistryPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* SEO Schema */}
+      <ServiceStructuredData
+        serviceName="General Dentistry"
+        description="Comprehensive general dentistry including check-ups, cleanings, fillings, and extractions"
+        price="From £25 (NHS) / From £65 (Private)"
+        category="General Dentistry"
+      />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">

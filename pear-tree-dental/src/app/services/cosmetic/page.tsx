@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import Link from "next/link";
 import {
   Sparkles,
   Star,
@@ -17,7 +19,26 @@ import {
 
 export const metadata: Metadata = {
   title: "Cosmetic Dentistry - Transform Your Smile in Burton Joyce",
-  description: "Premium cosmetic dentistry in Burton Joyce. Teeth whitening, veneers, smile makeovers. Transform your confidence with our expert cosmetic treatments.",
+  description: "Transform your smile with cosmetic dentistry in Burton Joyce. Teeth whitening, veneers, composite bonding, smile makeovers. Expert treatments to boost your confidence and oral health.",
+  keywords: [
+    "cosmetic dentistry Burton Joyce",
+    "smile makeover Nottingham",
+    "teeth whitening Burton Joyce",
+    "dental veneers Nottinghamshire",
+    "composite bonding Burton Joyce",
+    "smile transformation Nottingham",
+    "cosmetic dental treatments Burton Joyce",
+    "aesthetic dentistry Nottinghamshire"
+  ],
+  openGraph: {
+    title: "Cosmetic Dentistry | Transform Your Smile | Pear Tree Dental",
+    description: "Transform your smile with our expert cosmetic dental treatments in Burton Joyce",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/cosmetic"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/cosmetic"
+  }
 };
 
 export default function CosmeticDentistryPage() {
@@ -28,15 +49,17 @@ export default function CosmeticDentistryPage() {
       price: "From £350",
       duration: "1 hour",
       results: "Immediate",
-      popular: true
+      popular: true,
+      link: "/services/cosmetic/whitening"
     },
     {
-      name: "Porcelain Veneers",
-      description: "Ultra-thin porcelain shells for a perfect, natural-looking smile transformation",
-      price: "From £450 per tooth",
-      duration: "2-3 visits",
-      results: "Permanent",
-      popular: false
+      name: "Dental Veneers",
+      description: "Transform your smile with ultra-thin, porcelain, or composite veneers - choose your perfect option",
+      price: "From £180 per tooth",
+      duration: "Same day to 2-3 visits",
+      results: "Immediate to Permanent",
+      popular: false,
+      link: "/veneers"
     },
     {
       name: "Composite Bonding",
@@ -44,7 +67,8 @@ export default function CosmeticDentistryPage() {
       price: "From £180 per tooth",
       duration: "30-60 minutes",
       results: "Immediate",
-      popular: false
+      popular: false,
+      link: "/services/cosmetic/bonding"
     },
     {
       name: "Complete Smile Makeover",
@@ -52,7 +76,8 @@ export default function CosmeticDentistryPage() {
       price: "From £2,500",
       duration: "4-6 weeks",
       results: "Life-changing",
-      popular: false
+      popular: false,
+      link: "/services/cosmetic/smile-makeover"
     }
   ];
 
@@ -64,8 +89,8 @@ export default function CosmeticDentistryPage() {
     },
     {
       title: "Veneer Smile Makeover",
-      description: "Complete smile transformation with porcelain veneers",
-      treatment: "Porcelain Veneers"
+      description: "Complete smile transformation with dental veneers",
+      treatment: "Dental Veneers"
     },
     {
       title: "Gap Closure with Bonding",
@@ -122,6 +147,13 @@ export default function CosmeticDentistryPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
+      {/* SEO Schema */}
+      <ServiceStructuredData
+        serviceName="Cosmetic Dentistry"
+        description="Transform your smile with cosmetic dentistry treatments including teeth whitening, veneers, and smile makeovers"
+        price="From £180"
+        category="Cosmetic Dentistry"
+      />
       {/* Hero Section - Cosmetic Theme */}
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -296,10 +328,19 @@ export default function CosmeticDentistryPage() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-soft-pink hover:bg-soft-pink/90 text-white">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  {treatment.link ? (
+                    <Link href={treatment.link}>
+                      <Button className="w-full bg-soft-pink hover:bg-soft-pink/90 text-white">
+                        Learn More
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button className="w-full bg-soft-pink hover:bg-soft-pink/90 text-white">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  )}
                 </CardContent>
               </Card>
             ))}

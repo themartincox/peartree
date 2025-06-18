@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import {
   ShieldCheck,
   Wrench,
@@ -20,7 +21,26 @@ import {
 
 export const metadata: Metadata = {
   title: "Restorative Dentistry - Repair & Restore Teeth in Burton Joyce",
-  description: "Expert restorative dentistry in Burton Joyce. Crowns, bridges, dentures, and tooth restoration. High-quality materials and modern techniques.",
+  description: "Expert restorative dentistry in Burton Joyce. Crowns, bridges, dentures, and tooth restoration. High-quality materials and modern techniques for lasting results.",
+  keywords: [
+    "restorative dentistry Burton Joyce",
+    "dental crowns Nottingham",
+    "dental bridges Burton Joyce",
+    "dentures Nottinghamshire",
+    "tooth restoration Burton Joyce",
+    "dental repairs Nottingham",
+    "crown and bridge work Burton Joyce",
+    "partial dentures Nottinghamshire"
+  ],
+  openGraph: {
+    title: "Restorative Dentistry | Repair & Restore | Pear Tree Dental",
+    description: "Expert restorative dentistry to repair and restore your teeth with high-quality materials",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/restorative"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/restorative"
+  }
 };
 
 export default function RestorativeDentistryPage() {

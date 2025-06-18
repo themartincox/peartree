@@ -17,8 +17,26 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Professional Teeth Whitening | Brighter Smile Burton Joyce - Pear Tree Dental",
-  description: "Professional teeth whitening in Burton Joyce. Safe, effective whitening treatments for a brighter, more confident smile. Results up to 8 shades whiter.",
+  title: "Professional Teeth Whitening Burton Joyce | 8 Shades Brighter",
+  description: "Professional teeth whitening in Burton Joyce. Safe, effective whitening treatments for a brighter, more confident smile. Results up to 8 shades whiter in 90 minutes.",
+  keywords: [
+    "teeth whitening Burton Joyce",
+    "professional whitening Nottingham",
+    "teeth bleaching Burton Joyce",
+    "dental whitening Nottinghamshire",
+    "laser teeth whitening Burton Joyce",
+    "same day whitening Nottingham",
+    "cosmetic whitening Burton Joyce"
+  ],
+  openGraph: {
+    title: "Professional Teeth Whitening | Pear Tree Dental",
+    description: "Professional teeth whitening treatments - up to 8 shades brighter in 90 minutes",
+    type: "website",
+    url: "https://peartreedental.co.uk/services/teeth-whitening"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/services/teeth-whitening"
+  }
 };
 
 const whiteningOptions = [
