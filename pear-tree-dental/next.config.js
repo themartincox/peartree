@@ -1,17 +1,14 @@
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true',
+// });
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Modern JavaScript targeting for performance
-  experimental: {
-    // Enable modern JavaScript output
-    modularizeImports: {
-      'lucide-react': {
-        transform: 'lucide-react/dist/esm/icons/{{member}}',
-        skipDefaultConversion: true,
-      },
+  modularizeImports: {
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{member}}',
+      skipDefaultConversion: true,
     },
   },
 
@@ -80,4 +77,4 @@ const nextConfig = {
   output: 'standalone',
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;
