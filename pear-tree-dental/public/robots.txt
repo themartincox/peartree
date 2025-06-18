@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://peartreedental.co.uk/sitemap.xml
+
+# Allow all search engines to crawl all content
+Allow: /about/
+Allow: /services/
+Allow: /membership/
+Allow: /contact/
+Allow: /burton-joyce/
+Allow: /colwick/
+Allow: /east-bridgford/
+Allow: /lowdham/
+
+# Allow competitor comparison pages for SEO
+Allow: /*-alternative-*/
+Allow: /*-reviews-*/
+
+# Block crawling of certain files and directories
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /.*
+
+# Allow specific AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Crawl-delay for general bots (in seconds)
+Crawl-delay: 1
