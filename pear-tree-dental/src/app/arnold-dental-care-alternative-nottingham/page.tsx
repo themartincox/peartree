@@ -31,8 +31,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Arnold Dental Care? Consider Pear Tree Dental',
     description: 'Upgrade to modern dental care with state-of-the-art technology and transparent membership pricing.',
+    type: 'website',
     url: 'https://peartreedental.co.uk/arnold-dental-care-alternative-nottingham'
   },
+  alternates: {
+    canonical: 'https://peartreedental.co.uk/arnold-dental-care-alternative-nottingham'
+  }
   alternates: {
     canonical: 'https://peartreedental.co.uk/arnold-dental-care-alternative-nottingham'
   }
