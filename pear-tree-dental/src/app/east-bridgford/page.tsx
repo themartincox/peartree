@@ -86,13 +86,13 @@ export default function EastBridgfordPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-6">
-              <MapPin className="h-6 w-6 text-dental-green" />
-              <span className="text-dental-green font-medium">Serving East Bridgford</span>
+              <MapPin className="h-6 w-6 text-pear-gold" />
+              <span className="text-pear-gold font-medium">Serving East Bridgford</span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               Your Local Dentist
-              <span className="text-dental-green block">Near East Bridgford</span>
+              <span className="text-pear-gold block">Near East Bridgford</span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">

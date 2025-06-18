@@ -22,12 +22,24 @@ import {
 export const metadata: Metadata = {
   title: "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
   description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2520 or use our contact form.",
-  keywords: "contact Pear Tree Dental, book appointment Burton Joyce, dental enquiries Nottingham, emergency dental",
+  keywords: [
+    "contact Pear Tree Dental",
+    "book appointment Burton Joyce",
+    "dental enquiries Nottingham",
+    "emergency dental Burton Joyce",
+    "dental practice Nottinghamshire",
+    "dentist contact details",
+    "Burton Joyce dental clinic"
+  ],
   openGraph: {
     title: "Contact Us | Pear Tree Dental",
     description: "Get in touch with our friendly dental team in Burton Joyce. Book appointments or ask questions about our services.",
     type: "website",
+    url: "https://peartreedental.co.uk/contact"
   },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/contact"
+  }
 };
 
 const contactInfo = [

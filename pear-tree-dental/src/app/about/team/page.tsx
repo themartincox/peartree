@@ -5,7 +5,7 @@ import { Stethoscope, Users, Award, Heart } from "lucide-react";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Our Team | Pear Tree Dental - Experienced Dental Professionals in Burton Joyce",
+  title: "Our Dental Team Burton Joyce | Expert Professionals | Pear Tree",
   description: "Meet our experienced team of dental professionals at Pear Tree Dental. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated team provides exceptional dental care.",
   keywords: "dental team, dentists Burton Joyce, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham",
   openGraph: {

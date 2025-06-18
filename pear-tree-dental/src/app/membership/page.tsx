@@ -64,6 +64,9 @@ export const metadata: Metadata = {
     description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
     type: "website",
     url: "https://peartreedental.co.uk/membership"
+  },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/membership"
   }
 };
 

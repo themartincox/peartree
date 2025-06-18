@@ -7,12 +7,24 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "Our Practice | Pear Tree Dental - State-of-the-Art Dental Facilities in Burton Joyce",
   description: "Discover our modern dental practice in Burton Joyce, Nottingham. State-of-the-art facilities, advanced technology, and a patient-centered approach to dental care.",
-  keywords: "dental practice Burton Joyce, modern dental clinic Nottingham, dental facilities, advanced dental technology",
+  keywords: [
+    "dental practice Burton Joyce",
+    "modern dental clinic Nottingham",
+    "dental facilities Nottinghamshire",
+    "advanced dental technology",
+    "state-of-the-art dentistry",
+    "patient-centered dental care",
+    "dental clinic Burton Joyce"
+  ],
   openGraph: {
     title: "Our Practice | Pear Tree Dental",
     description: "State-of-the-art dental facilities with a patient-centered approach in Burton Joyce, Nottingham.",
     type: "website",
+    url: "https://peartreedental.co.uk/about/practice"
   },
+  alternates: {
+    canonical: "https://peartreedental.co.uk/about/practice"
+  }
 };
 
 const facilities = [

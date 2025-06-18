@@ -133,6 +133,10 @@ body {
   background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
 }
 
+.family-plan {
+  background: linear-gradient(135deg, #09394d 0%, #48cc6c 100%);
+}
+
 /* Animation Classes */
 @keyframes accordion-down {
   from { height: 0 }
