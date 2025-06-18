@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import {
   Zap,
   Shield,
@@ -45,14 +47,63 @@ export const metadata: Metadata = {
 };
 
 export default function ImplantsPage() {
+  const implantFAQs = [
+    {
+      question: "How much do dental implants cost?",
+      answer: "Dental implants start from £2,500 per implant including the crown. The total cost depends on your specific needs, the number of implants required, and any additional procedures. We offer 0% finance options and membership discounts of 20%."
+    },
+    {
+      question: "How long do dental implants last?",
+      answer: "With proper care, dental implants can last 25+ years or even a lifetime. They have a 98% success rate and are the most durable tooth replacement option available."
+    },
+    {
+      question: "Are dental implants painful?",
+      answer: "The implant procedure is performed under local anesthesia, so you won't feel pain during treatment. Most patients experience only mild discomfort afterward, which can be managed with over-the-counter pain medication."
+    },
+    {
+      question: "How long does the implant process take?",
+      answer: "The complete process typically takes 3-6 months. This includes initial consultation, implant placement, healing time for osseointegration, and final crown placement. Some cases may qualify for same-day teeth."
+    },
+    {
+      question: "Am I suitable for dental implants?",
+      answer: "Most adults with good general health are suitable for implants. You need adequate bone density and healthy gums. We'll assess your suitability during a comprehensive consultation including 3D scans."
+    },
+    commonDentalFAQs.insurance
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* SEO Schema */}
-      <ServiceStructuredData
+      {/* Enhanced SEO Schema */}
+      <EnhancedServiceSchema
         serviceName="Dental Implants"
-        description="Premium dental implants for permanent tooth replacement with 98% success rate"
+        description="Premium dental implants for permanent tooth replacement with 98% success rate using titanium fixtures"
         price="From £2,500 per implant"
-        category="Restorative Dentistry"
+        category="Oral Surgery & Implantology"
+        duration="3-6 months total treatment time"
+        preparation="Comprehensive assessment, 3D imaging, treatment planning"
+        recovery="3-6 months healing period for osseointegration"
+        benefits={[
+          "98% success rate",
+          "25+ year lifespan",
+          "Preserves jawbone",
+          "Natural function and appearance",
+          "No impact on adjacent teeth"
+        ]}
+        risks={[
+          "Infection (rare with proper care)",
+          "Implant rejection (very rare)",
+          "Sinus problems (upper jaw only)",
+          "Nerve damage (extremely rare)"
+        ]}
+        rating={4.9}
+        reviewCount={243}
+        url="https://peartreedental.co.uk/services/implants"
+        procedureType="MedicalProcedure"
+      />
+
+      <ServiceFAQSchema
+        serviceName="Dental Implants"
+        faqs={implantFAQs}
       />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-pear-background via-white to-pear-background overflow-hidden">

@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import Link from "next/link";
 import {
   Sparkles,
@@ -42,6 +44,30 @@ export const metadata: Metadata = {
 };
 
 export default function CosmeticDentistryPage() {
+  const cosmeticFAQs = [
+    {
+      question: "How much does cosmetic dentistry cost?",
+      answer: "Cosmetic treatments start from £180 for composite bonding and range up to £4,500 for complete smile makeovers. We offer free consultations, 0% finance options, and 20% membership discounts to make treatments affordable."
+    },
+    {
+      question: "Will cosmetic dental treatments look natural?",
+      answer: "Yes, our cosmetic treatments are designed to look completely natural. We use high-quality materials and advanced techniques to ensure your results blend seamlessly with your natural teeth."
+    },
+    {
+      question: "How long do cosmetic dental results last?",
+      answer: "Results vary by treatment: composite bonding (5-8 years), veneers (10-20 years), teeth whitening (1-3 years). Proper oral hygiene and regular check-ups help maximize longevity."
+    },
+    {
+      question: "Can I see what my smile will look like before treatment?",
+      answer: "Yes, we use digital smile design technology to show you exactly how your new smile will look before we begin any treatment. This ensures you're completely happy with the planned results."
+    },
+    {
+      question: "Is cosmetic dentistry painful?",
+      answer: "Most cosmetic treatments are minimally invasive and cause little to no discomfort. We use local anesthesia when needed and provide detailed aftercare instructions for your comfort."
+    },
+    commonDentalFAQs.insurance
+  ];
+
   const treatments = [
     {
       name: "Professional Teeth Whitening",
@@ -147,12 +173,37 @@ export default function CosmeticDentistryPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
-      {/* SEO Schema */}
-      <ServiceStructuredData
+      {/* Enhanced SEO Schema */}
+      <EnhancedServiceSchema
         serviceName="Cosmetic Dentistry"
-        description="Transform your smile with cosmetic dentistry treatments including teeth whitening, veneers, and smile makeovers"
+        description="Transform your smile with professional cosmetic dentistry treatments including teeth whitening, veneers, bonding, and complete smile makeovers"
         price="From £180"
-        category="Cosmetic Dentistry"
+        category="Cosmetic & Aesthetic Dentistry"
+        duration="Single visit to 4-6 weeks"
+        preparation="Consultation, digital smile design, treatment planning"
+        recovery="Minimal to no downtime depending on treatment"
+        benefits={[
+          "Boost confidence and self-esteem",
+          "Natural-looking results",
+          "Immediate smile transformation",
+          "Long-lasting improvements",
+          "Improved oral health"
+        ]}
+        risks={[
+          "Temporary sensitivity (whitening)",
+          "Slight discomfort initially",
+          "Regular maintenance required",
+          "Not suitable for all cases"
+        ]}
+        rating={4.9}
+        reviewCount={312}
+        url="https://peartreedental.co.uk/services/cosmetic"
+        procedureType="Service"
+      />
+
+      <ServiceFAQSchema
+        serviceName="Cosmetic Dentistry"
+        faqs={cosmeticFAQs}
       />
       {/* Hero Section - Cosmetic Theme */}
       <section className="pt-32 pb-16">

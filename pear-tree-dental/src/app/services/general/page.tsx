@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import {
   Heart,
   Shield,
@@ -45,14 +47,62 @@ export const metadata: Metadata = {
 };
 
 export default function GeneralDentistryPage() {
+  const generalDentistryFAQs = [
+    {
+      question: "What's included in a dental check-up?",
+      answer: "A comprehensive dental check-up includes oral examination, digital X-rays when needed, oral cancer screening, gum health assessment, and personalized treatment planning. We also provide oral hygiene advice and preventive care recommendations."
+    },
+    {
+      question: "How often should I visit the dentist?",
+      answer: "We recommend dental check-ups every 6 months for most patients. However, some patients may need more frequent visits based on their oral health needs. We'll create a personalized schedule that's right for you."
+    },
+    {
+      question: "Do you accept NHS patients?",
+      answer: "Yes, we accept both NHS and private patients. NHS treatment is available at standard NHS rates: Band 1 (£25.80), Band 2 (£70.70), Band 3 (£306.80). Private care offers additional options and flexible scheduling."
+    },
+    {
+      question: "What's the difference between NHS and private treatment?",
+      answer: "NHS treatment covers essential dental care at fixed prices. Private treatment offers extended appointment times, premium materials, cosmetic options, and more flexible scheduling. Both receive the same high standard of care."
+    },
+    {
+      question: "Do you offer emergency appointments?",
+      answer: "Yes, we provide same-day emergency appointments for urgent dental problems including severe pain, dental trauma, and lost fillings. Emergency slots are available during practice hours."
+    },
+    commonDentalFAQs.insurance
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* SEO Schema */}
-      <ServiceStructuredData
+      {/* Enhanced SEO Schema */}
+      <EnhancedServiceSchema
         serviceName="General Dentistry"
-        description="Comprehensive general dentistry including check-ups, cleanings, fillings, and extractions"
+        description="Comprehensive general dentistry services including routine check-ups, cleanings, fillings, extractions, and preventive care for all ages"
         price="From £25 (NHS) / From £65 (Private)"
-        category="General Dentistry"
+        category="General & Preventive Dentistry"
+        duration="30-60 minutes per appointment"
+        preparation="No special preparation required for routine check-ups"
+        recovery="No recovery time needed for check-ups and cleanings"
+        benefits={[
+          "Early problem detection",
+          "Prevent serious dental issues",
+          "Maintain oral health",
+          "NHS and private options",
+          "Family-friendly care"
+        ]}
+        risks={[
+          "Minimal risks for routine care",
+          "Slight sensitivity after cleaning",
+          "Very rare allergic reactions to materials"
+        ]}
+        rating={4.8}
+        reviewCount={425}
+        url="https://peartreedental.co.uk/services/general"
+        procedureType="Service"
+      />
+
+      <ServiceFAQSchema
+        serviceName="General Dentistry"
+        faqs={generalDentistryFAQs}
       />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">

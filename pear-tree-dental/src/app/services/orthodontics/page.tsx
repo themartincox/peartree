@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import {
   Smile,
   Star,
@@ -46,14 +48,66 @@ export const metadata: Metadata = {
 };
 
 export default function OrthodonticsPage() {
+  const orthodonticsFAQs = [
+    {
+      question: "How much do clear aligners cost?",
+      answer: "Clear aligner treatment starts from £2,400 for ClearCorrect and £2,800 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer 0% finance and 20% membership discounts."
+    },
+    {
+      question: "How long does clear aligner treatment take?",
+      answer: "Treatment typically takes 6-18 months depending on the complexity of tooth movement required. Simple cases may be completed in 6 months, while complex cases may take up to 18 months."
+    },
+    {
+      question: "Are clear aligners really invisible?",
+      answer: "Yes, clear aligners are 95% invisible. They're made from clear, medical-grade plastic that's virtually undetectable when worn. Most people won't notice you're wearing them."
+    },
+    {
+      question: "Do I need to wear aligners all the time?",
+      answer: "Clear aligners should be worn 20-22 hours per day for optimal results. You can remove them for eating, drinking (except water), and cleaning your teeth."
+    },
+    {
+      question: "What's the difference between Invisalign and ClearCorrect?",
+      answer: "Both are excellent clear aligner systems. Invisalign is the premium option with advanced features, while ClearCorrect offers similar results at a more affordable price point. We'll recommend the best option for your specific case."
+    },
+    {
+      question: "Am I suitable for clear aligners?",
+      answer: "Clear aligners can treat most orthodontic issues including crowding, spacing, and bite problems. About 85% of cases are suitable for clear aligner treatment. We'll assess your suitability during a free consultation."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
-      {/* SEO Schema */}
-      <ServiceStructuredData
+      {/* Enhanced SEO Schema */}
+      <EnhancedServiceSchema
         serviceName="Orthodontics & Clear Aligners"
-        description="Invisible teeth straightening with Invisalign and ClearCorrect clear aligners"
+        description="Invisible teeth straightening with Invisalign and ClearCorrect clear aligners for all ages"
         price="From £2,400"
-        category="Orthodontics"
+        category="Orthodontics & Teeth Straightening"
+        duration="6-18 months treatment time"
+        preparation="Digital impressions, treatment planning, aligner fabrication"
+        recovery="No recovery needed - continue normal activities"
+        benefits={[
+          "95% invisible treatment",
+          "Removable for eating and cleaning",
+          "No food restrictions",
+          "Comfortable smooth plastic",
+          "Shorter treatment time than braces"
+        ]}
+        risks={[
+          "Temporary speech changes initially",
+          "Mild discomfort with new aligners",
+          "Requires patient compliance",
+          "Not suitable for all complex cases"
+        ]}
+        rating={4.8}
+        reviewCount={186}
+        url="https://peartreedental.co.uk/services/orthodontics"
+        procedureType="MedicalProcedure"
+      />
+
+      <ServiceFAQSchema
+        serviceName="Orthodontics & Clear Aligners"
+        faqs={orthodonticsFAQs}
       />
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10 overflow-hidden">
