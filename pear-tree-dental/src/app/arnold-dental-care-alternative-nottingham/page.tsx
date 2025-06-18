@@ -37,9 +37,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://peartreedental.co.uk/arnold-dental-care-alternative-nottingham'
   }
-  alternates: {
-    canonical: 'https://peartreedental.co.uk/arnold-dental-care-alternative-nottingham'
-  }
 };
 
 const reasonsToSwitch = [
