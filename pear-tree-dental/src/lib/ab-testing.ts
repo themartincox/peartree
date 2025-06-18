@@ -1,6 +1,5 @@
-import type { Variant } from '../../middleware';
-
-export type { Variant } from '../../middleware';
+// Define the Variant type locally to avoid build issues
+export type Variant = 'A' | 'B' | 'C';
 
 /**
  * Get the current A/B test variant from server-side headers

@@ -115,7 +115,7 @@ const Navigation = () => {
               <NavigationMenuList className="space-x-6">
                 <NavigationMenuItem>
                   <Link
-                    href="/services/veneers"
+                    href="/veneers"
                     className="text-pear-primary hover:text-pear-gold transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md px-2 py-1"
                     aria-label="Dental Veneers - Cosmetic dentistry service"
                   >
@@ -275,7 +275,7 @@ const Navigation = () => {
 
                   {/* Mobile Navigation Links */}
                   <nav className="flex flex-col space-y-4">
-                    <Link href="/services/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    <Link href="/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
                       Veneers
                     </Link>
 
