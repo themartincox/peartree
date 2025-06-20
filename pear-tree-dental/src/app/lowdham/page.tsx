@@ -90,7 +90,7 @@ export default function LowdhamPage() {
               <span className="text-pear-gold font-medium">Serving Lowdham</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="heading-serif text-4xl md:text-6xl font-bold mb-6 text-white">
               Your Local Dentist
               <span className="text-pear-gold block">Near Lowdham</span>
             </h1>
@@ -176,7 +176,7 @@ export default function LowdhamPage() {
       <section className="py-16 bg-gray-50 text-dental-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="heading-serif text-3xl font-bold text-center mb-12">
               Comprehensive Dental Care for Lowdham Residents
             </h2>
 
@@ -249,7 +249,7 @@ export default function LowdhamPage() {
       <section className="py-16 bg-white text-dental-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="heading-serif text-3xl font-bold text-center mb-12">
               What Lowdham Patients Say
             </h2>
 
@@ -319,7 +319,7 @@ export default function LowdhamPage() {
       <section className="py-16 bg-dental-navy text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">
+            <h2 className="heading-serif text-3xl font-bold mb-8">
               Special Membership Plans for Lowdham Residents
             </h2>
             <p className="text-xl text-gray-300 mb-12">
@@ -403,7 +403,7 @@ export default function LowdhamPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl font-bold mb-8">Visit Us from Lowdham</h2>
+                <h2 className="heading-serif text-3xl font-bold mb-8">Visit Us from Lowdham</h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <MapPin className="h-6 w-6 text-dental-green mt-1 flex-shrink-0" />

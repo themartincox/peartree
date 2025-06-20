@@ -15,27 +15,27 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Dentist in East Bridgford - Pear Tree Dental | Modern Dental Care Near You',
-  description: 'Looking for a dentist near East Bridgford? Pear Tree Dental in Burton Joyce offers modern dental care, membership plans, and convenient access for East Bridgford residents.',
+  title: 'Dentist in Gedling - Pear Tree Dental | Modern Dental Care Near You',
+  description: 'Looking for a dentist near Gedling? Pear Tree Dental in Burton Joyce offers modern dental care, membership plans, and convenient access for Gedling residents.',
   keywords: [
-    'dentist East Bridgford',
-    'dentist near East Bridgford',
-    'dental practice East Bridgford',
+    'dentist Gedling',
+    'dentist near Gedling',
+    'dental practice Gedling',
     'Burton Joyce dentist',
-    'emergency dentist East Bridgford',
-    'dental care East Bridgford Nottinghamshire'
+    'emergency dentist Gedling',
+    'dental care Gedling Nottinghamshire'
   ],
   openGraph: {
-    title: 'Dentist in East Bridgford - Pear Tree Dental | Modern Dental Care Near You',
-    description: 'Modern dental care for East Bridgford residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
-    url: 'https://peartreedental.co.uk/east-bridgford'
+    title: 'Dentist in Gedling - Pear Tree Dental | Modern Dental Care Near You',
+    description: 'Modern dental care for Gedling residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
+    url: 'https://peartreedental.co.uk/gedling'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/east-bridgford'
+    canonical: 'https://peartreedental.co.uk/gedling'
   }
 };
 
-export default function EastBridgfordPage() {
+export default function GedlingPage() {
   return (
     <div className="min-h-screen bg-dental-navy text-white">
       {/* JSON-LD Structured Data */}
@@ -45,10 +45,10 @@ export default function EastBridgfordPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://peartreedental.co.uk/east-bridgford",
-            "name": "Pear Tree Dental - Serving East Bridgford",
+            "@id": "https://peartreedental.co.uk/gedling",
+            "name": "Pear Tree Dental - Serving Gedling",
             "image": "https://peartreedental.co.uk/images/pear-tree-dental-practice.jpg",
-            "description": "Modern dental practice serving East Bridgford residents with comprehensive dental care and membership plans.",
+            "description": "Modern dental practice serving Gedling residents with comprehensive dental care and membership plans.",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Main Street",
@@ -66,7 +66,7 @@ export default function EastBridgfordPage() {
             "url": "https://peartreedental.co.uk",
             "areaServed": {
               "@type": "Place",
-              "name": "East Bridgford, Nottinghamshire"
+              "name": "Gedling, Nottinghamshire"
             },
             "serviceArea": {
               "@type": "GeoCircle",
@@ -75,7 +75,7 @@ export default function EastBridgfordPage() {
                 "latitude": "52.9847",
                 "longitude": "-1.0147"
               },
-              "geoRadius": "10000"
+              "geoRadius": "12000"
             }
           })
         }}
@@ -87,17 +87,17 @@ export default function EastBridgfordPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-6">
               <MapPin className="h-6 w-6 text-pear-gold" />
-              <span className="text-pear-gold font-medium">Serving East Bridgford</span>
+              <span className="text-pear-gold font-medium">Serving Gedling</span>
             </div>
 
-            <h1 className="heading-serif text-4xl md:text-6xl font-bold mb-6 text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               Your Local Dentist
-              <span className="text-pear-gold block">Near East Bridgford</span>
+              <span className="text-pear-gold block">Near Gedling</span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Modern dental care for East Bridgford residents at Pear Tree Dental in nearby Burton Joyce.
-              Just a short 10-minute journey for comprehensive dental services with transparent membership pricing.
+              Modern dental care for Gedling residents at Pear Tree Dental in nearby Burton Joyce.
+              Just a 12-minute journey for comprehensive dental services with transparent membership pricing.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -131,7 +131,7 @@ export default function EastBridgfordPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Convenient Access from East Bridgford
+              Convenient Access from Gedling
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -141,8 +141,8 @@ export default function EastBridgfordPage() {
                   <CardTitle className="text-xl">Easy Journey</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-dental-green mb-2">10 minutes</p>
-                  <p className="text-gray-600">Average drive from East Bridgford to our Burton Joyce practice</p>
+                  <p className="text-2xl font-bold text-dental-green mb-2">12 minutes</p>
+                  <p className="text-gray-600">Average drive from Gedling to our Burton Joyce practice</p>
                 </CardContent>
               </Card>
 
@@ -152,8 +152,8 @@ export default function EastBridgfordPage() {
                   <CardTitle className="text-xl">Close Distance</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-dental-green mb-2">4.5 miles</p>
-                  <p className="text-gray-600">Direct route via A46 and A612 from East Bridgford</p>
+                  <p className="text-2xl font-bold text-dental-green mb-2">5.8 miles</p>
+                  <p className="text-gray-600">Direct route via A612 from Gedling</p>
                 </CardContent>
               </Card>
 
@@ -172,12 +172,12 @@ export default function EastBridgfordPage() {
         </div>
       </section>
 
-      {/* Services for East Bridgford Residents */}
+      {/* Services for Gedling Residents */}
       <section className="py-16 bg-gray-50 text-dental-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
-              Comprehensive Dental Care for East Bridgford Residents
+              Comprehensive Dental Care for Gedling Residents
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -250,31 +250,31 @@ export default function EastBridgfordPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
-              What East Bridgford Patients Say
+              What Gedling Patients Say
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Michael T.",
-                  location: "East Bridgford",
-                  text: "Worth the 10-minute drive from East Bridgford. The practice is fantastic, and the membership plan is so much better value than our old dentist.",
+                  name: "Mark D.",
+                  location: "Gedling",
+                  text: "Such a short drive from Gedling and the practice is fantastic. Modern equipment and the membership plan is excellent value for our family.",
                   rating: 5,
-                  service: "Individual Membership"
+                  service: "Family Membership"
                 },
                 {
-                  name: "Helen R.",
-                  location: "East Bridgford",
-                  text: "Emergency appointment on a Saturday morning - they saw me within 2 hours. Excellent service and easy to get to from East Bridgford.",
+                  name: "Emma T.",
+                  location: "Gedling",
+                  text: "Needed emergency treatment and they saw me the same day. Quick journey from Gedling and brilliant care - highly recommend.",
                   rating: 5,
                   service: "Emergency Care"
                 },
                 {
-                  name: "James P.",
-                  location: "East Bridgford Village",
-                  text: "The kids love coming here! Family plan covers everyone and the journey from East Bridgford is straightforward with plenty of parking.",
+                  name: "Paul R.",
+                  location: "Gedling Village",
+                  text: "Best dentist I've found in the area. The drive from Gedling is easy and they use the latest technology. Very professional team.",
                   rating: 5,
-                  service: "Family Care"
+                  service: "General Care"
                 }
               ].map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
@@ -309,7 +309,7 @@ export default function EastBridgfordPage() {
                 </div>
                 <span className="text-2xl font-bold text-dental-navy">5.0</span>
               </div>
-              <p className="text-gray-600">Based on 40+ reviews from East Bridgford area patients</p>
+              <p className="text-gray-600">Based on 25+ reviews from Gedling area patients</p>
             </div>
           </div>
         </div>
@@ -321,7 +321,7 @@ export default function EastBridgfordPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
               <div>
-                <h2 className="text-3xl font-bold mb-8">Visit Us from East Bridgford</h2>
+                <h2 className="text-3xl font-bold mb-8">Visit Us from Gedling</h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <MapPin className="h-6 w-6 text-dental-green mt-1 flex-shrink-0" />
@@ -362,21 +362,21 @@ export default function EastBridgfordPage() {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold mb-8">Directions from East Bridgford</h2>
+                <h2 className="text-3xl font-bold mb-8">Directions from Gedling</h2>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="font-semibold mb-4 text-dental-green">Quick Route (10 minutes)</h3>
+                  <h3 className="font-semibold mb-4 text-dental-green">Quick Route (12 minutes)</h3>
                   <ol className="space-y-2 text-gray-700">
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">1</span>
-                      <span>Head northeast on Main Street toward A46</span>
+                      <span>Head east from Gedling toward Carlton Road</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">2</span>
-                      <span>Take the A46 northbound toward Nottingham</span>
+                      <span>Join A612 toward Burton Joyce</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">3</span>
-                      <span>Exit onto A612 toward Burton Joyce</span>
+                      <span>Continue straight on A612 for 5 miles</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">4</span>
@@ -385,7 +385,7 @@ export default function EastBridgfordPage() {
                   </ol>
                   <div className="mt-4 p-3 bg-dental-green/10 rounded">
                     <p className="text-sm text-dental-navy">
-                      <strong>Tip:</strong> Easy dual carriageway access makes the journey from East Bridgford smooth and stress-free!
+                      <strong>Tip:</strong> Straight shot on A612 from Gedling - one of our easiest routes!
                     </p>
                   </div>
                 </div>
@@ -403,7 +403,7 @@ export default function EastBridgfordPage() {
               Ready to Experience Modern Dental Care?
             </h2>
             <p className="text-xl mb-8">
-              Join East Bridgford residents who've made the switch to convenient, affordable dental care at Pear Tree Dental
+              Join Gedling residents who've made the switch to convenient, affordable dental care at Pear Tree Dental
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

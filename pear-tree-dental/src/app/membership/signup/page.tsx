@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Crown,
-  CheckCircle,
+  CircleCheck,
   Shield,
   ArrowRight,
   ArrowLeft,
@@ -43,13 +43,6 @@ export default function MembershipSignupPage() {
     postcode: "",
     emergencyContact: "",
     emergencyPhone: "",
-
-    // Medical Information
-    medicalConditions: "",
-    currentMedications: "",
-    allergies: "",
-    previousDentist: "",
-    lastCheckup: "",
 
     // Payment Details
     cardNumber: "",
@@ -167,7 +160,7 @@ export default function MembershipSignupPage() {
   };
 
   const nextStep = () => {
-    if (currentStep < 5) setCurrentStep(currentStep + 1);
+    if (currentStep < 4) setCurrentStep(currentStep + 1);
   };
 
   const prevStep = () => {
@@ -217,7 +210,7 @@ export default function MembershipSignupPage() {
                 Secure Signup
               </Badge>
               <div className="text-sm text-gray-500">
-                Step {currentStep} of 5
+                Step {currentStep} of 4
               </div>
             </div>
           </div>
@@ -229,21 +222,20 @@ export default function MembershipSignupPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="flex justify-between">
-              {[1, 2, 3, 4, 5].map((step) => (
+              {[1, 2, 3, 4].map((step) => (
                 <div key={step} className="flex flex-col items-center py-4">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
                     step <= currentStep
                       ? 'bg-dental-green text-white'
                       : 'bg-gray-200 text-gray-500'
                   }`}>
-                    {step < currentStep ? <CheckCircle className="w-5 h-5" /> : step}
+                    {step < currentStep ? <CircleCheck className="w-5 h-5" /> : step}
                   </div>
                   <div className="text-xs mt-2 text-center">
                     {step === 1 && "Plan"}
                     {step === 2 && "Details"}
-                    {step === 3 && "Medical"}
-                    {step === 4 && "Payment"}
-                    {step === 5 && "Confirm"}
+                    {step === 3 && "Payment"}
+                    {step === 4 && "Confirm"}
                   </div>
                 </div>
               ))}
@@ -251,7 +243,7 @@ export default function MembershipSignupPage() {
             <div className="absolute top-8 left-0 right-0 h-0.5 bg-gray-200">
               <div
                 className="h-full bg-dental-green transition-all duration-500"
-                style={{ width: `${((currentStep - 1) / 4) * 100}%` }}
+                style={{ width: `${((currentStep - 1) / 3) * 100}%` }}
               />
             </div>
           </div>
@@ -300,7 +292,7 @@ export default function MembershipSignupPage() {
                         <div className="space-y-2">
                           {plan.features.map((feature, index) => (
                             <div key={index} className="flex items-start space-x-2">
-                              <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                              <CircleCheck className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
                                 selectedPlan === key ? 'text-white' : `text-${plan.color}`
                               }`} />
                               <span className={`text-sm ${
@@ -314,7 +306,7 @@ export default function MembershipSignupPage() {
 
                         {selectedPlan === key && (
                           <div className="mt-4 text-center">
-                            <CheckCircle className="w-6 h-6 text-white mx-auto" />
+                            <CircleCheck className="w-6 h-6 text-white mx-auto" />
                             <div className="text-sm font-semibold mt-1">Selected</div>
                           </div>
                         )}
@@ -549,108 +541,8 @@ export default function MembershipSignupPage() {
               </Card>
             )}
 
-            {/* Step 3: Medical Information */}
+            {/* Step 3: Payment Details */}
             {currentStep === 3 && (
-              <Card className="shadow-xl">
-                <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-pear-primary mb-4">Medical Information</CardTitle>
-                  <p className="text-gray-600">Help us provide you with the best care</p>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <div className="space-y-6">
-                    <div>
-                      <Label htmlFor="medicalConditions">Do you have any medical conditions?</Label>
-                      <Textarea
-                        id="medicalConditions"
-                        value={formData.medicalConditions}
-                        onChange={(e) => handleInputChange("medicalConditions", e.target.value)}
-                        placeholder="Please list any medical conditions, or write 'None'"
-                        className="mt-1"
-                        rows={3}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="currentMedications">Are you currently taking any medications?</Label>
-                      <Textarea
-                        id="currentMedications"
-                        value={formData.currentMedications}
-                        onChange={(e) => handleInputChange("currentMedications", e.target.value)}
-                        placeholder="Please list any medications, or write 'None'"
-                        className="mt-1"
-                        rows={3}
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="allergies">Do you have any allergies?</Label>
-                      <Textarea
-                        id="allergies"
-                        value={formData.allergies}
-                        onChange={(e) => handleInputChange("allergies", e.target.value)}
-                        placeholder="Please list any allergies, or write 'None'"
-                        className="mt-1"
-                        rows={2}
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <Label htmlFor="previousDentist">Previous Dentist</Label>
-                        <Input
-                          id="previousDentist"
-                          value={formData.previousDentist}
-                          onChange={(e) => handleInputChange("previousDentist", e.target.value)}
-                          placeholder="Name and location (if applicable)"
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="lastCheckup">Last Dental Checkup</Label>
-                        <Input
-                          id="lastCheckup"
-                          type="date"
-                          value={formData.lastCheckup}
-                          onChange={(e) => handleInputChange("lastCheckup", e.target.value)}
-                          className="mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="preferredAppointmentTime">Preferred Appointment Times</Label>
-                      <select
-                        className="w-full mt-1 p-2 border border-gray-300 rounded-md"
-                        value={formData.preferredAppointmentTime}
-                        onChange={(e) => handleInputChange("preferredAppointmentTime", e.target.value)}
-                      >
-                        <option value="">Select preference</option>
-                        <option value="morning">Morning (9am-12pm)</option>
-                        <option value="afternoon">Afternoon (12pm-5pm)</option>
-                        <option value="evening">Evening (5pm-8pm)</option>
-                        <option value="weekend">Weekend</option>
-                        <option value="flexible">Flexible</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between mt-8">
-                    <Button onClick={prevStep} variant="outline">
-                      <ArrowLeft className="w-4 h-4 mr-2" />
-                      Back
-                    </Button>
-                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green/90 text-white">
-                      Continue
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Step 4: Payment Details */}
-            {currentStep === 4 && (
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-pear-primary mb-4">Payment Details</CardTitle>
@@ -755,8 +647,8 @@ export default function MembershipSignupPage() {
               </Card>
             )}
 
-            {/* Step 5: Confirmation */}
-            {currentStep === 5 && (
+            {/* Step 4: Confirmation */}
+            {currentStep === 4 && (
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-pear-primary mb-4">Confirm Your Membership</CardTitle>
@@ -778,7 +670,7 @@ export default function MembershipSignupPage() {
                         <div className="mt-4 space-y-2">
                           {currentPlan.features.map((feature, index) => (
                             <div key={index} className="flex items-center space-x-2">
-                              <CheckCircle className="w-4 h-4 text-white" />
+                              <CircleCheck className="w-4 h-4 text-white" />
                               <span className="text-sm">{feature}</span>
                             </div>
                           ))}

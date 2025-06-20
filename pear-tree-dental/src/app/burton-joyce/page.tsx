@@ -15,7 +15,7 @@ import {
   Heart,
   Car,
   Navigation,
-  Home
+  House
 } from "lucide-react";
 
 export default function BurtonJoycePage() {
@@ -90,7 +90,7 @@ export default function BurtonJoycePage() {
               <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-dental-green/20">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center">
-                    <Home className="w-6 h-6 text-white" />
+                    <House className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-semibold text-pear-primary">Local Practice</p>

@@ -205,7 +205,6 @@ export default function GeneralDentistryPage() {
                 description: "Comprehensive examinations to detect issues early",
                 features: ["Full oral examination", "Digital X-rays", "Oral cancer screening", "Treatment planning"],
                 price: "From £45",
-                nhsPrice: "NHS Band 1: £25.80",
                 icon: Stethoscope
               },
               {
@@ -213,7 +212,6 @@ export default function GeneralDentistryPage() {
                 description: "Professional cleaning to remove plaque and tartar",
                 features: ["Plaque removal", "Tartar cleaning", "Stain removal", "Fluoride treatment"],
                 price: "From £65",
-                nhsPrice: "NHS Band 1: £25.80",
                 icon: Shield
               },
               {
@@ -221,7 +219,6 @@ export default function GeneralDentistryPage() {
                 description: "White composite and amalgam fillings for cavities",
                 features: ["Tooth-colored fillings", "Pain-free treatment", "Same-day completion", "Natural appearance"],
                 price: "From £120",
-                nhsPrice: "NHS Band 2: £70.70",
                 icon: Heart
               },
               {
@@ -229,7 +226,6 @@ export default function GeneralDentistryPage() {
                 description: "Gentle, specialised care for young patients",
                 features: ["Fissure sealants", "Fluoride treatments", "Gentle techniques", "Education & prevention"],
                 price: "From £35",
-                nhsPrice: "NHS: Free under 18",
                 icon: Baby
               },
               {
@@ -237,7 +233,6 @@ export default function GeneralDentistryPage() {
                 description: "Learn proper techniques for optimal oral hygiene",
                 features: ["Brushing technique", "Flossing guidance", "Diet advice", "Preventive care"],
                 price: "Included",
-                nhsPrice: "NHS: Included",
                 icon: UserCheck
               },
               {
@@ -245,7 +240,6 @@ export default function GeneralDentistryPage() {
                 description: "Treatment and management of periodontal conditions",
                 features: ["Deep cleaning", "Root planing", "Maintenance therapy", "Monitoring"],
                 price: "From £150",
-                nhsPrice: "NHS Band 2: £70.70",
                 icon: Users
               }
             ].map((service, index) => {
@@ -272,7 +266,6 @@ export default function GeneralDentistryPage() {
                     </ul>
                     <div className="pt-3 border-t">
                       <div className="text-dental-green font-semibold">{service.price}</div>
-                      <div className="text-sm text-gray-600">{service.nhsPrice}</div>
                     </div>
                   </div>
                 </Card>
@@ -282,97 +275,7 @@ export default function GeneralDentistryPage() {
         </div>
       </section>
 
-      {/* NHS vs Private */}
-      <section className="py-16 bg-gradient-to-br from-dental-green/5 to-soft-blue/5">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
-              NHS & Private Options
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We offer both NHS and private treatments, giving you choice and flexibility in your dental care
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="p-8 border-2 border-dental-green/20">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-pear-primary">NHS Treatment</h3>
-                <p className="text-gray-600 mt-2">Quality care at NHS prices</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="bg-dental-green/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-dental-green mb-2">NHS Band 1 - £25.80</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• Examination, diagnosis & advice</li>
-                    <li>• Scale & polish if needed</li>
-                    <li>• Preventive care</li>
-                  </ul>
-                </div>
-
-                <div className="bg-dental-green/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-dental-green mb-2">NHS Band 2 - £70.70</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• All Band 1 treatments plus:</li>
-                    <li>• Fillings</li>
-                    <li>• Root canal treatment</li>
-                    <li>• Tooth removal</li>
-                  </ul>
-                </div>
-
-                <div className="bg-dental-green/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-dental-green mb-2">NHS Band 3 - £306.80</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• All Band 1 & 2 treatments plus:</li>
-                    <li>• Crowns, dentures & bridges</li>
-                    <li>• Complex treatments</li>
-                  </ul>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-8 border-2 border-pear-gold/20 bg-gradient-to-br from-pear-gold/5 to-white">
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-pear-primary">Private Treatment</h3>
-                <p className="text-gray-600 mt-2">Enhanced care with membership savings</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="bg-pear-gold/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-pear-gold mb-2">Enhanced Benefits</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• Extended appointment times</li>
-                    <li>• Premium materials</li>
-                    <li>• Cosmetic options</li>
-                    <li>• Flexible scheduling</li>
-                  </ul>
-                </div>
-
-                <div className="bg-pear-gold/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-pear-gold mb-2">Membership Savings</h4>
-                  <ul className="text-sm text-gray-700 space-y-1">
-                    <li>• 20% off all treatments</li>
-                    <li>• Free check-ups included</li>
-                    <li>• Emergency cover</li>
-                    <li>• Plans from £10.95/month</li>
-                  </ul>
-                </div>
-
-                <Button className="w-full btn-gold text-white">
-                  Join Membership Plan
-                </Button>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
 
       {/* Preventive Care Focus */}
       <section className="py-16 bg-white">

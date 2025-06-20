@@ -15,7 +15,7 @@ import {
   Heart,
   Car,
   Navigation,
-  Home,
+  House,
   Route
 } from "lucide-react";
 
