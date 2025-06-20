@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { FaStar } from "react-icons/fa";
 
 interface TestimonialBannerProps {
   text: string;
@@ -21,7 +21,7 @@ const TestimonialBanner = ({ text, author, className = "" }: TestimonialBannerPr
         {/* 5 Stars */}
         <div className="flex space-x-1">
           {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+            <FaStar key={i} className="w-4 h-4 text-yellow-400 fill-current" />
           ))}
         </div>
       </div>

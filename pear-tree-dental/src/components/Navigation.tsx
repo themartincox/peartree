@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Phone, Calendar, Star, Sparkles } from "lucide-react";
+import { FaBars, FaPhone, FaCalendarAlt, FaStar, FaSparkles } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
@@ -220,7 +220,7 @@ const Navigation = () => {
                   aria-label="Open mobile navigation menu"
                   aria-expanded="false"
                 >
-                  <Menu className="h-6 w-6" aria-hidden="true" />
+                  <FaBars className="h-6 w-6" aria-hidden="true" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>

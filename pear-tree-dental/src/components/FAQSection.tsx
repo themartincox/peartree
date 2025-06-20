@@ -15,7 +15,7 @@ import {
   Users,
   Plus,
   Minus,
-  HelpCircle,
+  CircleHelp,
   Calendar,
   ArrowRight
 } from "lucide-react";
@@ -361,7 +361,7 @@ const FAQSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <Badge variant="secondary" className="mb-4 bg-pear-background text-pear-primary text-xs sm:text-sm">
-            <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+            <CircleHelp className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
             Frequently Asked Questions
           </Badge>
           <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">

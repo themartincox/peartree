@@ -1,6 +1,6 @@
 import Script from "next/script";
 import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
+import { ChevronRight, House } from "lucide-react";
 
 interface BreadcrumbItem {
   name: string;
@@ -49,7 +49,7 @@ export default function BreadcrumbSchema({ items, className = "" }: BreadcrumbSc
               className="flex items-center hover:text-pear-primary transition-colors focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
               aria-label="Home page"
             >
-              <Home className="w-4 h-4 mr-1" aria-hidden="true" />
+              <House className="w-4 h-4 mr-1" aria-hidden="true" />
               <span className="sr-only">Home</span>
             </Link>
           </li>

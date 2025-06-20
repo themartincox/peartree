@@ -11,7 +11,7 @@ import {
   CreditCard,
   Heart,
   ArrowRight,
-  CheckCircle
+  CircleCheck
 } from "lucide-react";
 
 const TreatmentJourney = () => {
@@ -250,7 +250,7 @@ const TreatmentJourney = () => {
                     <ul className="space-y-2 sm:space-y-3">
                       {step.features.map((feature, featureIndex) => (
                         <li key={`feature-${index}-${featureIndex}`} className="flex items-start space-x-2 sm:space-x-3">
-                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-1 flex-shrink-0" />
+                          <CircleCheck className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-1 flex-shrink-0" />
                           <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                         </li>
                       ))}
