@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Mail, Clock, Star } from "lucide-react";
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { MapPin, Phone, Mail, Clock, Star, Facebook, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -143,13 +142,13 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
               <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
-                <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
-                <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
-                <FaTwitter className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
           </div>

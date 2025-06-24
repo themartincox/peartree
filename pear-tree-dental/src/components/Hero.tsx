@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { FaStar, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import { Star, CalendarDays, ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -19,9 +19,7 @@ const Hero = () => {
           <div className="space-y-6 sm:space-y-8">
             {/* Main Headline - SEO Optimized */}
             <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary leading-tight">
-              Premium Dental Care in
-              <span className="block">Burton Joyce, <span className="text-pear-gold">Nottinghamshire</span></span>
-              <span className="text-pear-gold block">with a Personal Touch</span>
+              Expert dental care with a <span className="text-pear-gold">personal touch</span>
             </h1>
 
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">
@@ -37,7 +35,7 @@ const Hero = () => {
                 aria-label="Join our dental membership plan starting at £8.99 per month"
               >
                 Join Membership Plan
-                <FaArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Button>
               <Button
                 size="lg"
@@ -45,7 +43,7 @@ const Hero = () => {
                 className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
                 aria-label="Schedule a free dental consultation with our team"
               >
-                <FaCalendarAlt className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
+                <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
                 Book Free Consultation
               </Button>
             </div>
@@ -90,7 +88,7 @@ const Hero = () => {
               >
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="w-8 h-8 sm:w-12 sm:h-12 bg-pear-gold rounded-lg sm:rounded-xl flex items-center justify-center" aria-hidden="true">
-                    <FaStar className="w-4 h-4 sm:w-6 sm:h-6 text-white fill-current" />
+                    <Star className="w-4 h-4 sm:w-6 sm:h-6 text-white fill-current" />
                   </div>
                   <div>
                     <p className="font-semibold text-pear-primary text-sm sm:text-base">4.9 Rating</p>

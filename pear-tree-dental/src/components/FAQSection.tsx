@@ -15,8 +15,9 @@ import {
   Users,
   Plus,
   Minus,
-  CircleHelp,
-  Calendar,
+  HelpCircle,
+  CalendarDays,
+  ChevronRight,
   ArrowRight
 } from "lucide-react";
 
@@ -361,7 +362,7 @@ const FAQSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16">
           <Badge variant="secondary" className="mb-4 bg-pear-background text-pear-primary text-xs sm:text-sm">
-            <CircleHelp className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+            <HelpCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
             Frequently Asked Questions
           </Badge>
           <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
@@ -485,7 +486,7 @@ const FAQSection = () => {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link href="/services/general">
                 <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
-                  <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Book Now
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>

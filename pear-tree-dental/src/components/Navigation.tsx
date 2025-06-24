@@ -12,7 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { FaBars, FaPhone, FaCalendarAlt, FaStar, FaSparkles } from "react-icons/fa";
+import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
@@ -113,16 +113,6 @@ const Navigation = () => {
             {/* Desktop Navigation */}
             <NavigationMenu className="hidden lg:flex" role="navigation" aria-label="Main site navigation">
               <NavigationMenuList className="space-x-6">
-                <NavigationMenuItem>
-                  <Link
-                    href="/veneers"
-                    className="text-pear-primary hover:text-pear-gold transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md px-2 py-1"
-                    aria-label="Dental Veneers - Cosmetic dentistry service"
-                  >
-                    Veneers
-                  </Link>
-                </NavigationMenuItem>
-
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
@@ -132,8 +122,35 @@ const Navigation = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent role="menu" aria-label="Dental services">
-                    <ul className="grid w-96 gap-3 p-4 md:grid-cols-2" role="none">
-                      {services.map((service) => (
+                    <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-3" role="none">
+                      {/* Top Row: Restorative, General, Cosmetic */}
+                      {[services[2], services[0], services[1]].map((service) => (
+                        <li key={service.title} role="none">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              role="menuitem"
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
+                                service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
+                              )}
+                              aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                            >
+                              <div className="text-sm font-medium leading-none text-pear-primary">
+                                {service.title}
+                              </div>
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                              >
+                                {service.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                      {/* Bottom Row: Implants, Orthodontics, Emergency */}
+                      {[services[3], services[4], services[5]].map((service) => (
                         <li key={service.title} role="none">
                           <NavigationMenuLink asChild>
                             <Link
@@ -220,7 +237,7 @@ const Navigation = () => {
                   aria-label="Open mobile navigation menu"
                   aria-expanded="false"
                 >
-                  <FaBars className="h-6 w-6" aria-hidden="true" />
+                  <Menu className="h-6 w-6" aria-hidden="true" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
@@ -251,7 +268,7 @@ const Navigation = () => {
                   <div className="flex flex-col space-y-3">
                     <Link href="/services/general">
                       <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-12 text-sm">
-                        <Calendar className="w-4 h-4 mr-2" />
+                        <CalendarDays className="w-4 h-4 mr-2" />
                         Book Hygienist
                       </Button>
                     </Link>
@@ -275,10 +292,6 @@ const Navigation = () => {
 
                   {/* Mobile Navigation Links */}
                   <nav className="flex flex-col space-y-4">
-                    <Link href="/veneers" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
-                      Veneers
-                    </Link>
-
                     <div className="space-y-2">
                       <div className="text-pear-primary font-semibold">Services</div>
                       <div className="ml-4 space-y-2">
@@ -370,7 +383,7 @@ const Navigation = () => {
                     ? "bg-white text-pear-primary hover:bg-white/90"
                     : "bg-gradient-to-r from-dental-green to-soft-blue text-white"
                 )}>
-                  <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                  <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
                   <span className="hidden sm:inline">Book Hygienist</span>
                   <span className="sm:hidden">Book</span>
                 </Button>

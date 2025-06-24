@@ -9,14 +9,16 @@ import TestimonialBanner from "@/components/TestimonialBanner";
 import {
   Check,
   Crown,
-  ArrowRight,
-  Baby,
+  ChevronRight,
+  UserRound,
   User,
   UserPlus,
+  Baby,
   Sparkles,
   ShieldCheck,
   Heart,
-  Users
+  Users,
+  ArrowRight
 } from "lucide-react";
 
 // Memoize membership data to prevent recreation on each render

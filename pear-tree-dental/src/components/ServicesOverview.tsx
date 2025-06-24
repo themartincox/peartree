@@ -13,11 +13,12 @@ import {
   ShieldCheck,
   Zap,
   Smile,
-  TriangleAlert,
-  ArrowRight,
-  CircleCheck,
+  AlertTriangle,
+  ChevronRight,
+  CheckCircle,
   Plus,
-  Minus
+  Minus,
+  ArrowRight
 } from "lucide-react";
 
 // TypeScript interfaces
@@ -130,7 +131,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
             <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
               {service.treatments.map((treatment: string) => (
                 <div key={treatment} className="flex items-center space-x-2">
-                  <CircleCheck className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
                 </div>
               ))}
@@ -263,7 +264,7 @@ const ServicesContent = () => {
       id: "emergency",
       title: "Emergency Dentistry",
       description: "Urgent dental care when you need it most. Same-day appointments available for dental emergencies.",
-      icon: TriangleAlert,
+      icon: AlertTriangle,
       theme: "medical" as const,
       treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
       href: "/services/emergency"

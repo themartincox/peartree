@@ -7,11 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import {
   MessageCircle,
   Stethoscope,
-  ClipboardList,
+  Clipboard,
   CreditCard,
   Heart,
-  ArrowRight,
-  CircleCheck
+  ChevronRight,
+  CheckCircle,
+  ArrowRight
 } from "lucide-react";
 
 const TreatmentJourney = () => {
@@ -52,7 +53,7 @@ const TreatmentJourney = () => {
       number: "Three",
       title: "Discuss your treatment plan",
       description: "Now we understand your concerns and have a 360-degree view of your oral health, we can determine which treatments will be most effective in optimising your oral health and appearance.",
-      icon: ClipboardList,
+      icon: Clipboard,
       image: "planning",
       imageDescription: "Treatment planning discussion with patient",
       features: [
@@ -250,7 +251,7 @@ const TreatmentJourney = () => {
                     <ul className="space-y-2 sm:space-y-3">
                       {step.features.map((feature, featureIndex) => (
                         <li key={`feature-${index}-${featureIndex}`} className="flex items-start space-x-2 sm:space-x-3">
-                          <CircleCheck className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-1 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-1 flex-shrink-0" />
                           <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                         </li>
                       ))}
