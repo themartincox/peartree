@@ -76,6 +76,11 @@ const Navigation = () => {
       href: "/about/practice",
       description: "State-of-the-art facilities in Burton Joyce"
     },
+    {
+      title: "Pricing",
+      href: "/pricing",
+      description: "Transparent dental treatment pricing"
+    },
   ];
 
   return (
@@ -224,6 +229,17 @@ const Navigation = () => {
                     Contact
                   </Link>
                 </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <Link href="/urgent-dental-pain">
+                    <Button
+                      size="sm"
+                      className="bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-4 py-2 ml-4"
+                    >
+                      Dental Pain?
+                    </Button>
+                  </Link>
+                </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -266,6 +282,11 @@ const Navigation = () => {
 
                   {/* Mobile CTAs */}
                   <div className="flex flex-col space-y-3">
+                    <Link href="/urgent-dental-pain">
+                      <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-12 text-sm font-bold rounded-full">
+                        🚨 Dental Pain? Call Now
+                      </Button>
+                    </Link>
                     <Link href="/services/general">
                       <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-12 text-sm">
                         <CalendarDays className="w-4 h-4 mr-2" />

@@ -119,8 +119,14 @@ const Footer = () => {
               <Link href="/services/emergency" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
                 Emergency Dentistry
               </Link>
+              <Link href="/urgent-dental-pain" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 mt-2 text-center transition-colors">
+                🚨 Dental Pain?
+              </Link>
               <Link href="/new-patients" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
                 New Patient Information
+              </Link>
+              <Link href="/pricing" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+                Pricing
               </Link>
               <Link href="/testimonials" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
                 Patient Reviews

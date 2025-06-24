@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
 import {
   Camera,
   Play,
@@ -27,7 +28,7 @@ const PracticeShowcase = () => {
                 </div>
               </div>
 
-              <div className="relative p-8 h-full flex flex-col justify-start bg-gradient-to-br from-pear-primary/95 to-pear-primary/90">
+              <div className="relative p-8 h-full flex flex-col justify-between bg-gradient-to-br from-pear-primary/95 to-pear-primary/90">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">
                     Experience Excellence in Every Detail
@@ -38,16 +39,10 @@ const PracticeShowcase = () => {
                     with your experience in mind.
                   </p>
 
-                  {/* Google Reviews Widget Space */}
-                  <div className="bg-white/10 rounded-2xl p-6 mt-6">
-                    <h4 className="text-white font-semibold mb-3">Google Reviews Widget</h4>
-                    <p className="text-white/80 text-sm">
-                      This space will display live Google reviews with ratings and testimonials.
-                    </p>
-                  </div>
+
                 </div>
 
-                <div className="flex space-x-4 mt-auto">
+                <div className="flex space-x-4">
                   <Button variant="secondary" className="bg-white text-pear-primary hover:bg-white/90">
                     <Camera className="w-4 h-4 mr-2" />
                     Practice Gallery
