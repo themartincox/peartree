@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
@@ -125,6 +126,12 @@ export default function RootLayout({
         </a>
 
         <Navigation />
+
+        {/* Global Google Reviews Widget */}
+        <div className="relative">
+          <GoogleReviewsWidget />
+        </div>
+
         <main id="main-content" className="min-h-screen" role="main">
           <PageTransition>
             {children}
