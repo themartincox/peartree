@@ -5,12 +5,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Modern JavaScript targeting for performance
-  modularizeImports: {
-    'lucide-react': {
-      transform: 'lucide-react/dist/esm/icons/{{member}}',
-      skipDefaultConversion: true,
-    },
-  },
+  // Note: modularizeImports removed - lucide-react now supports tree-shaking natively
 
   // Modern browser targeting - excludes legacy polyfills
   compiler: {
