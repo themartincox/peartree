@@ -10,7 +10,7 @@ import {
   Phone,
   CheckCircle,
   CreditCard,
-  Calendar,
+  CalendarDays,
   Users,
   Shield
 } from 'lucide-react';
@@ -50,7 +50,7 @@ const reasonsToSwitch = [
     benefit: "Budget confidently without unexpected bills"
   },
   {
-    icon: Calendar,
+    icon: CalendarDays,
     title: "Priority Access",
     description: "Same-day emergency appointments and priority booking for all members",
     benefit: "Get urgent care without NHS emergency queues"
@@ -332,7 +332,7 @@ export default function SherwoodDentalCareAlternativePage() {
 
               <Card className="bg-green-50 border-green-200">
                 <CardHeader className="text-center">
-                  <Calendar className="h-12 w-12 mx-auto text-green-600 mb-4" />
+                  <CalendarDays className="h-12 w-12 mx-auto text-green-600 mb-4" />
                   <CardTitle className="heading-serif">Immediate Access</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">

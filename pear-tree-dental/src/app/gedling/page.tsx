@@ -9,7 +9,7 @@ import {
   Star,
   CheckCircle,
   Car,
-  Calendar,
+  CalendarDays,
   Shield,
   Heart
 } from 'lucide-react';

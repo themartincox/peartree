@@ -6,7 +6,7 @@ import {
   Sparkles,
   CheckCircle,
   ArrowRight,
-  Calendar,
+  CalendarDays,
   Clock,
   Star,
   Shield,
@@ -181,7 +181,7 @@ export default function TeethWhiteningPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" className="bg-yellow-600 hover:bg-yellow-700 text-white">
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white">
@@ -395,7 +395,7 @@ export default function TeethWhiteningPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button size="lg" className="bg-white text-yellow-600 hover:bg-gray-100">
-              <Calendar className="w-5 h-5 mr-2" />
+              <CalendarDays className="w-5 h-5 mr-2" />
               Book Whitening Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600">

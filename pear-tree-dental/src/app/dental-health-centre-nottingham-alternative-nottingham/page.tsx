@@ -11,7 +11,7 @@ import {
   CheckCircle,
   Shield,
   CreditCard,
-  Calendar,
+  CalendarDays,
   Users,
   Zap
 } from 'lucide-react';
@@ -51,7 +51,7 @@ const reasonsToSwitch = [
     benefit: "Budget confidently with predictable monthly costs"
   },
   {
-    icon: Calendar,
+    icon: CalendarDays,
     title: "Immediate Access",
     description: "Same-day emergency appointments and priority booking without NHS waiting lists",
     benefit: "No more months-long waits for routine care"
@@ -339,7 +339,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
 
               <Card className="bg-green-50 border-green-200">
                 <CardHeader className="text-center">
-                  <Calendar className="h-12 w-12 mx-auto text-green-600 mb-4" />
+                  <CalendarDays className="h-12 w-12 mx-auto text-green-600 mb-4" />
                   <CardTitle className="heading-serif">Immediate Access</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">

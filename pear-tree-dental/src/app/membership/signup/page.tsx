@@ -9,11 +9,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Crown,
-  CircleCheck,
+  CheckCircle,
   Shield,
   ArrowRight,
   ArrowLeft,
-  Calendar,
+  CalendarDays,
   Phone,
   Mail,
   User,
@@ -229,7 +229,7 @@ export default function MembershipSignupPage() {
                       ? 'bg-dental-green text-white'
                       : 'bg-gray-200 text-gray-500'
                   }`}>
-                    {step < currentStep ? <CircleCheck className="w-5 h-5" /> : step}
+                    {step < currentStep ? <CheckCircle className="w-5 h-5" /> : step}
                   </div>
                   <div className="text-xs mt-2 text-center">
                     {step === 1 && "Plan"}
@@ -292,7 +292,7 @@ export default function MembershipSignupPage() {
                         <div className="space-y-2">
                           {plan.features.map((feature, index) => (
                             <div key={index} className="flex items-start space-x-2">
-                              <CircleCheck className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                              <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
                                 selectedPlan === key ? 'text-white' : `text-${plan.color}`
                               }`} />
                               <span className={`text-sm ${
@@ -306,7 +306,7 @@ export default function MembershipSignupPage() {
 
                         {selectedPlan === key && (
                           <div className="mt-4 text-center">
-                            <CircleCheck className="w-6 h-6 text-white mx-auto" />
+                            <CheckCircle className="w-6 h-6 text-white mx-auto" />
                             <div className="text-sm font-semibold mt-1">Selected</div>
                           </div>
                         )}
@@ -670,7 +670,7 @@ export default function MembershipSignupPage() {
                         <div className="mt-4 space-y-2">
                           {currentPlan.features.map((feature, index) => (
                             <div key={index} className="flex items-center space-x-2">
-                              <CircleCheck className="w-4 h-4 text-white" />
+                              <CheckCircle className="w-4 h-4 text-white" />
                               <span className="text-sm">{feature}</span>
                             </div>
                           ))}

@@ -11,7 +11,7 @@ import {
   Clock,
   Car,
   Bus,
-  Calendar,
+  CalendarDays,
   MessageSquare,
   Send,
   Shield,
@@ -397,7 +397,7 @@ export default function ContactPage() {
                     </div>
                     <div className="mt-6 p-4 bg-pear-primary/10 rounded-lg">
                       <p className="text-sm text-pear-primary font-medium flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
+                        <CalendarDays className="h-4 w-4" />
                         Same-day emergency appointments available
                       </p>
                     </div>

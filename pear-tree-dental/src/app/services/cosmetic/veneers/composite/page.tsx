@@ -26,7 +26,7 @@ import {
   Paintbrush2,
   Repeat,
   Hammer,
-  Calendar,
+  CalendarDays,
   ShieldCheck
 } from "lucide-react";
 
@@ -245,7 +245,7 @@ export default function CompositeVeneersPage() {
     {
       title: "Regular Check-ups",
       description: "Professional cleanings every 6 months help maintain appearance and identify any needed touch-ups.",
-      icon: Calendar
+      icon: CalendarDays
     },
     {
       title: "Protective Habits",

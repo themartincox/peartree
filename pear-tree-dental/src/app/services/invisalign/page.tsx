@@ -6,7 +6,7 @@ import {
   Eye,
   CheckCircle,
   ArrowRight,
-  Calendar,
+  CalendarDays,
   Clock,
   Star,
   Shield,
@@ -198,7 +198,7 @@ export default function InvisalignPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
@@ -412,7 +412,7 @@ export default function InvisalignPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-              <Calendar className="w-5 h-5 mr-2" />
+              <CalendarDays className="w-5 h-5 mr-2" />
               Book Invisalign Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">

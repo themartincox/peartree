@@ -9,7 +9,7 @@ import {
   Shield,
   Eye,
   ArrowRight,
-  Calendar,
+  CalendarDays,
   Phone,
   Users,
   Award,
@@ -50,7 +50,7 @@ export default function SmileDesignPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="btn-gold text-white font-semibold group">
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <CalendarDays className="w-5 h-5 mr-2" />
                   Book FREE Consultation
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -382,7 +382,7 @@ export default function SmileDesignPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button size="lg" className="bg-white text-pear-gold hover:bg-white/90 font-semibold">
-                <Calendar className="w-5 h-5 mr-2" />
+                <CalendarDays className="w-5 h-5 mr-2" />
                 Book FREE Consultation
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-gold">

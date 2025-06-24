@@ -7,7 +7,7 @@ import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchem
 import {
   Clock,
   Phone,
-  Calendar,
+  CalendarDays,
   Shield,
   Wrench,
   AlertTriangle,
@@ -97,7 +97,7 @@ export default function EmergencyRepairsPage() {
               Call Emergency Line: 0115 931 2525
             </Button>
             <Button size="lg" variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
-              <Calendar className="w-5 h-5 mr-2" />
+              <CalendarDays className="w-5 h-5 mr-2" />
               Book Urgent Appointment
             </Button>
           </div>

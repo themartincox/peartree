@@ -10,7 +10,7 @@ import {
   Phone,
   CheckCircle,
   CreditCard,
-  Calendar,
+  CalendarDays,
   Users,
   Zap,
   Building2
@@ -57,7 +57,7 @@ const reasonsToSwitch = [
     benefit: "Comfortable environment with accessibility features"
   },
   {
-    icon: Calendar,
+    icon: CalendarDays,
     title: "Better Availability",
     description: "Same-day emergency appointments and priority booking for members",
     benefit: "Get the care you need when you need it"

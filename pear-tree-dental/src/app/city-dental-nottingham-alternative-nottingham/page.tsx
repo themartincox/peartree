@@ -11,7 +11,7 @@ import {
   CheckCircle,
   Car,
   CreditCard,
-  Calendar,
+  CalendarDays,
   TreePine,
   Users
 } from 'lucide-react';

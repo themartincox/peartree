@@ -6,7 +6,7 @@ import {
   Eye,
   CheckCircle,
   ArrowRight,
-  Calendar,
+  CalendarDays,
   Clock,
   Star,
   Shield,
@@ -222,7 +222,7 @@ export default function ClearCorrectPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white">
-                  <Calendar className="w-5 h-5 mr-2" />
+                  <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
@@ -480,7 +480,7 @@ export default function ClearCorrectPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
-              <Calendar className="w-5 h-5 mr-2" />
+              <CalendarDays className="w-5 h-5 mr-2" />
               Book ClearCorrect Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">

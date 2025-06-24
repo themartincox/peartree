@@ -11,7 +11,7 @@ import {
   CheckCircle,
   Car,
   CreditCard,
-  Calendar,
+  CalendarDays,
   Users
 } from 'lucide-react';
 
@@ -44,7 +44,7 @@ const reasonsToSwitch = [
     benefit: "Budget confidently for your dental care"
   },
   {
-    icon: Calendar,
+    icon: CalendarDays,
     title: "Better Availability",
     description: "Same-day emergency appointments and priority booking for members",
     benefit: "Get the care you need when you need it"
