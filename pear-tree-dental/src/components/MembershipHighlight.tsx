@@ -24,14 +24,14 @@ import {
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   adult: {
-    name: "Adult Plan",
-    price: "£14.99",
+    name: "Adult Plan A",
+    price: "£10.95",
     period: "/month",
-    description: "Complete dental care for adults with comprehensive coverage and preventive focus.",
+    description: "Our most affordable adult plan with essential dental care and comprehensive coverage.",
     keyFeatures: [
       "2 check-ups per year included",
       "2 hygiene appointments included",
-      "20% discount on all treatments",
+      "10% discount on all treatments",
       "Worldwide dental trauma cover"
     ],
     icon: User,
@@ -39,28 +39,28 @@ const membershipPlans = {
   },
   child: {
     name: "Child Plan",
-    price: "£10.95",
+    price: "£5.20",
     period: "/month",
-    description: "Specialised dental care for children with focus on prevention and education.",
+    description: "Specialised dental care for children. FREE when joining with an adult plan.",
     keyFeatures: [
       "2 check-ups per year included",
       "Fluoride treatments included",
       "Fissure sealants when required",
-      "No charge for most treatments"
+      "FREE when parent has adult plan"
     ],
     icon: Baby,
     color: "soft-pink"
   },
   family: {
     name: "Family Plan",
-    price: "£39.99",
+    price: "£49.50",
     period: "/month",
-    description: "Comprehensive coverage for the whole family with significant savings.",
+    description: "Complete coverage for 2 adults and 3 children with significant family savings.",
     keyFeatures: [
-      "2 adults + 2 children covered",
+      "2 adults + 3 children covered",
       "All individual plan benefits",
       "Priority family appointments",
-      "25% discount on treatments"
+      "Best value for larger families"
     ],
     icon: UserPlus,
     color: "pear-gold"
@@ -110,8 +110,8 @@ const MembershipHighlight = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Testimonial Before Membership */}
         <TestimonialBanner
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          author="Michael Thompson"
+          text="I'm frightened about going to the dentist. So glad I found this one. Great dentist. She is very patient and positive with me. Wouldn't go anywhere else!"
+          author="Charlotte P"
           className="max-w-4xl mx-auto mb-16"
         />
 
@@ -241,54 +241,7 @@ const MembershipHighlight = () => {
           </div>
         </Card>
 
-        {/* Hygiene-Only Option */}
-        <Card className="max-w-6xl mx-auto bg-gradient-to-r from-dental-green/5 to-soft-blue/5 border border-dental-green/20">
-          <CardContent className="p-4 sm:p-6">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6 items-center">
 
-              <div className="lg:col-span-3 space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-dental-green to-soft-blue rounded-xl flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-pear-primary">Hygiene-Only Plan</h3>
-                    <p className="text-dental-green font-semibold text-sm">Perfect for maintenance</p>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-dental-green" />
-                    <span>3 hygiene appointments per year</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-dental-green" />
-                    <span>Professional cleaning & advice</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Check className="w-4 h-4 text-dental-green" />
-                    <span>Gum health monitoring</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="text-center space-y-3">
-                <div>
-                  <div className="text-2xl font-bold text-dental-green">£9.99</div>
-                  <div className="text-sm text-gray-500">/month</div>
-                </div>
-
-                <Link href="/membership#hygiene">
-                  <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white font-semibold">
-                    Learn More
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Trust Indicators */}
         <div className="mt-16 text-center">
@@ -314,8 +267,7 @@ const MembershipHighlight = () => {
 
         {/* Bottom CTA - Simplified */}
         <div className="text-center">
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate, premium dental care.
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care..
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-gold text-white px-8 py-4">

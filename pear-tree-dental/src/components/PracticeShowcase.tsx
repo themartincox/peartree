@@ -1,24 +1,24 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import {
   Camera,
   Play,
   MapPin,
   Clock,
   Users,
-  ShieldCheck,
-  Award,
   Heart
 } from "lucide-react";
 
 const PracticeShowcase = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {/* Main Practice Showcase */}
             <Card className="relative overflow-hidden bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white h-[520px]">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
@@ -28,7 +28,7 @@ const PracticeShowcase = () => {
                 </div>
               </div>
 
-              <div className="relative p-8 h-full flex flex-col justify-between bg-gradient-to-br from-pear-primary/95 to-pear-primary/90">
+              <div className="relative p-8 h-full flex flex-col justify-start bg-gradient-to-br from-pear-primary/95 to-pear-primary/90">
                 <div>
                   <h3 className="text-2xl font-semibold mb-4">
                     Experience Excellence in Every Detail
@@ -39,10 +39,16 @@ const PracticeShowcase = () => {
                     with your experience in mind.
                   </p>
 
+                  {/* Sticky Trigger Element - invisible marker for when widget should become sticky */}
+                  <div id="reviews-sticky-trigger" className="absolute w-1 h-1 opacity-0 pointer-events-none"></div>
 
+                  {/* Google Reviews Widget - Homepage Position */}
+                  <div className="mt-6">
+                    <GoogleReviewsWidget />
+                  </div>
                 </div>
 
-                <div className="flex space-x-4">
+                <div className="flex space-x-4 mt-auto">
                   <Button variant="secondary" className="bg-white text-pear-primary hover:bg-white/90">
                     <Camera className="w-4 h-4 mr-2" />
                     Practice Gallery
@@ -61,10 +67,20 @@ const PracticeShowcase = () => {
             </Card>
 
             {/* Practice Features & Info */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Location & Hours */}
-              <Card className="p-6 border-pear-primary/10">
-                <div className="space-y-4">
+              <Card className="p-6 border-pear-primary/10 relative overflow-hidden">
+                {/* Elegant Map Pin Background */}
+                <div className="absolute top-4 right-4 opacity-10">
+                  <img
+                    src="https://ugc.same-assets.com/CjXYYl01zrLFATFwb3l6e4HvL-v703DH.png"
+                    alt=""
+                    className="w-16 h-16 object-contain"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                <div className="space-y-4 relative">
                   <h4 className="font-semibold text-pear-primary text-lg">Visit Our Practice</h4>
 
                   <div className="space-y-3">
@@ -100,7 +116,13 @@ const PracticeShowcase = () => {
                     </div>
                   </div>
 
-                  <Button variant="outline" className="w-full border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="w-full border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white transition-all duration-300"
+                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=22+Nottingham+Rd,+Burton+Joyce,+Nottingham,+UK,+NG14+5AE', '_blank')}
+                    aria-label="Get directions to Pear Tree Dental practice in Burton Joyce"
+                  >
+                    <MapPin className="w-4 h-4 mr-2" />
                     Get Directions
                   </Button>
                 </div>
@@ -108,22 +130,6 @@ const PracticeShowcase = () => {
 
               {/* Practice Features */}
               <div className="grid grid-cols-2 gap-4">
-                <Card className="p-4 text-center border-dental-green/20">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <ShieldCheck className="w-6 h-6 text-dental-green" />
-                  </div>
-                  <h5 className="font-semibold text-pear-primary text-sm">CQC Rated</h5>
-                  <p className="text-xs text-gray-600 mt-1">Outstanding care quality</p>
-                </Card>
-
-                <Card className="p-4 text-center border-pear-gold/20">
-                  <div className="w-12 h-12 bg-pear-gold/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <Award className="w-6 h-6 text-pear-gold" />
-                  </div>
-                  <h5 className="font-semibold text-pear-primary text-sm">Award Winning</h5>
-                  <p className="text-xs text-gray-600 mt-1">Excellence in dentistry</p>
-                </Card>
-
                 <Card className="p-4 text-center border-soft-blue/20">
                   <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Users className="w-6 h-6 text-soft-blue" />

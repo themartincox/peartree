@@ -1,52 +1,58 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Star, CalendarDays, ArrowRight } from "lucide-react";
+import LiveGoogleRatingWidget from "@/components/LiveGoogleRatingWidget";
+import GoogleReviewsModal from "@/components/GoogleReviewsModal";
 
 const Hero = () => {
+  const [isReviewsModalOpen, setIsReviewsModalOpen] = useState(false);
+
   return (
     <section
-      className="relative min-h-screen bg-gradient-to-br from-pear-background via-white to-pear-background overflow-hidden"
+      className="relative min-h-screen from-pear-background via-white to-pear-background overflow-hidden bg-[#ffffff]"
       aria-label="Welcome to Pear Tree Dental"
       role="main"
     >
       {/* Background Pattern - Pure CSS for better performance */}
       <div className="absolute inset-0 opacity-5 hero-bg-pattern" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 lg:pt-36 pb-8 sm:pb-12 lg:pb-16 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-end">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 lg:pb-10 relative xl:py-[60px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
           {/* Left Column - Main Content */}
-          <div className="space-y-6 sm:space-y-8">
+          <div className="space-y-4 sm:space-y-6">
             {/* Main Headline - SEO Optimized */}
-            <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary leading-tight">
+            <h1 className="heading-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary text-[60px]">
               Expert dental care with a <span className="text-pear-gold">personal touch</span>
             </h1>
 
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">
-              Modern dental care in Burton Joyce, Nottinghamshire.
-              Skip the NHS waiting lists with our membership plans from just £10.95/month.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS waiting lists with our great value membership plans from just £10.95/month.
             </p>
 
-            {/* CTA Buttons - Optimized for performance */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6" role="group" aria-label="Primary actions">
+            {/* CTA Buttons - Aligned with membership box width */}
+            <div className="flex flex-col gap-3" role="group" aria-label="Primary actions">
               <Button
                 size="lg"
-                className="btn-gold text-white font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2"
-                aria-label="Join our dental membership plan starting at £8.99 per month"
-              >
-                Join Membership Plan
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold group px-6 py-3 text-base h-12 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
                 aria-label="Schedule a free dental consultation with our team"
               >
-                <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
+                <CalendarDays className="w-5 h-5 mr-2" aria-hidden="true" />
                 Book Free Consultation
               </Button>
+              <Link href="/membership#plans">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-pear-gold border-pear-gold hover:bg-pear-gold hover:text-white px-6 py-3 text-base h-12 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2 group"
+                  aria-label="Join our dental membership plan starting at £8.99 per month"
+                >
+                  Join Membership Plan
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                </Button>
+              </Link>
             </div>
 
             {/* Value Proposition - Simplified structure */}
@@ -72,34 +78,30 @@ const Hero = () => {
           <div className="relative mt-8 lg:mt-0 hero-image-container" role="img" aria-label="Dental care showcase">
             {/* Main Hero Image */}
             <div
-              className="relative h-64 sm:h-80 lg:h-96 xl:h-[500px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center"
+              className="relative h-56 sm:h-72 lg:h-80 xl:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
               role="img"
-              aria-label="Placeholder for hero image showing beautiful woman with perfect white teeth smiling confidently"
+              aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
             >
-              <div className="text-center">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-600 mb-2" aria-hidden="true">HERO IMAGE</h3>
-                <p className="text-gray-500 text-sm sm:text-base px-4" aria-hidden="true">Beautiful woman with perfect white teeth smiling confidently</p>
-              </div>
+              <Image
+                src="https://ugc.same-assets.com/GF63vuccKk71TOjC1WwlpI9IJ5ollfb4.jpeg"
+                alt="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care and smile transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+              />
 
               {/* Floating Elements - Optimized positioning */}
               <div
-                className="absolute top-3 left-3 sm:top-6 sm:left-6 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg"
+                className="absolute top-3 left-3 sm:top-6 sm:left-6 opacity-75 hover:opacity-100 transition-opacity duration-300"
                 role="region"
                 aria-label="Patient rating information"
               >
-                <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-8 h-8 sm:w-12 sm:h-12 bg-pear-gold rounded-lg sm:rounded-xl flex items-center justify-center" aria-hidden="true">
-                    <Star className="w-4 h-4 sm:w-6 sm:h-6 text-white fill-current" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-pear-primary text-sm sm:text-base">4.9 Rating</p>
-                    <p className="text-xs sm:text-sm text-gray-600">400+ Reviews</p>
-                  </div>
-                </div>
+                <LiveGoogleRatingWidget onClick={() => setIsReviewsModalOpen(true)} />
               </div>
 
               <div
-                className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg"
+                className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 bg-white/70 backdrop-blur-sm rounded-xl sm:rounded-2xl p-2 sm:p-4 shadow-lg opacity-80 hover:opacity-100 transition-opacity duration-300"
                 role="region"
                 aria-label="Emergency care availability"
               >
@@ -110,22 +112,45 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Secondary Color Blocks - Grid optimized */}
+            {/* Secondary Service Images - Hover reveal effect */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6" role="group" aria-label="Featured dental services">
-              <div
-                className="h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg bg-gradient-to-br from-soft-pink to-soft-lavender flex items-center justify-center"
-                role="img"
-                aria-label="Orthodontics service - teeth straightening treatments"
+              {/* Orthodontics Service Image */}
+              <Link
+                href="/services/orthodontics"
+                className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                aria-label="Orthodontics service - Invisalign and ClearCorrect clear aligner treatments"
               >
-                <span className="text-white font-bold text-sm sm:text-base lg:text-lg tracking-wider">ORTHODONTICS</span>
-              </div>
-              <div
-                className="h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg bg-gradient-to-br from-pear-gold to-pear-gold/80 flex items-center justify-center"
-                role="img"
-                aria-label="Teeth whitening service - professional smile brightening"
+                <div className="relative h-full">
+                  <Image
+                    src="/images/invisalign_clearcorrect_combined.png"
+                    alt="Invisalign and ClearCorrect orthodontic treatment options - clear aligners for teeth straightening"
+                    fill
+                    className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                  />
+                  {/* Placeholder overlay */}
+                  <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0 rounded-xl sm:rounded-2xl"></div>
+                </div>
+              </Link>
+
+              {/* Whitening Service Image */}
+              <Link
+                href="/services/cosmetic"
+                className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                aria-label="Teeth whitening service - Boutique Whitening and Enlighten professional treatments"
               >
-                <span className="text-white font-bold text-sm sm:text-base lg:text-lg tracking-wider">WHITENING</span>
-              </div>
+                <div className="relative h-full">
+                  <Image
+                    src="/images/boutique_enlighten_combined.png"
+                    alt="Boutique Whitening and Enlighten teeth whitening treatment options - professional smile brightening"
+                    fill
+                    className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                  />
+                  {/* Placeholder overlay */}
+                  <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0 rounded-xl sm:rounded-2xl"></div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -140,6 +165,12 @@ const Hero = () => {
           />
         </svg>
       </div>
+
+      {/* Google Reviews Modal */}
+      <GoogleReviewsModal
+        isOpen={isReviewsModalOpen}
+        onClose={() => setIsReviewsModalOpen(false)}
+      />
     </section>
   );
 };

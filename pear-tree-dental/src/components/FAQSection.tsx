@@ -18,7 +18,10 @@ import {
   HelpCircle,
   CalendarDays,
   ChevronRight,
-  ArrowRight
+  ArrowRight,
+  MapPin,
+  Clock,
+  Phone
 } from "lucide-react";
 
 const FAQSection = () => {
@@ -26,6 +29,33 @@ const FAQSection = () => {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
   const faqCategories = {
+    location: {
+      name: "Location & Hours",
+      icon: MapPin,
+      color: "dental-green",
+      questions: [
+        {
+          id: "loc1",
+          question: "Where is the nearest dentist to me?",
+          answer: "Pear Tree Dental Centre is conveniently located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We're in the heart of Burton Joyce village, just 2 minutes from the main shops and easily accessible from Colwick, Lowdham, and East Bridgford. Free parking available, 5 minutes from A612, with bus routes 100 and 200 nearby."
+        },
+        {
+          id: "loc2",
+          question: "What time is the dentist open today?",
+          answer: "We're open Monday to Thursday 8:45 AM to 5:00 PM, and Friday 8:00 AM to 3:30 PM. Weekend appointments are available for emergencies only. Call us at 0115 931 2935 to book your appointment or check our current availability."
+        },
+        {
+          id: "loc3",
+          question: "How do I get to your dental practice?",
+          answer: "We're located on Nottingham Road (A612) in Burton Joyce village center. Free parking is available directly outside the practice. Public transport options include buses 100 and 200, and we're easily accessible from Nottingham city center, Colwick, Carlton, and surrounding areas."
+        },
+        {
+          id: "loc4",
+          question: "Do you have parking available?",
+          answer: "Yes, we provide free parking directly outside the practice for all our patients. The car park is easily accessible and we have spaces available throughout the day. No need to worry about parking fees or time limits."
+        }
+      ]
+    },
     general: {
       name: "General Dentistry",
       icon: Shield,
@@ -44,7 +74,7 @@ const FAQSection = () => {
         {
           id: "gen3",
           question: "Are your treatments painful?",
-          answer: "We prioritize patient comfort and use modern pain management techniques. Most routine treatments are completely painless, and for more complex procedures, we offer various anesthesia options to ensure your comfort throughout the treatment."
+          answer: "We prioritise patient comfort and use modern pain management techniques. Most routine treatments are completely painless, and for more complex procedures, we offer various anesthesia options to ensure your comfort throughout the treatment."
         },
         {
           id: "gen4",
@@ -53,8 +83,8 @@ const FAQSection = () => {
         },
         {
           id: "gen5",
-          question: "What should I do in a dental emergency?",
-          answer: "Contact our emergency line immediately at 0115 931 2935. We reserve same-day appointments for urgent dental problems. For severe pain, swelling, or trauma, don't wait - call us right away for guidance and treatment."
+          question: "How do I book an emergency dental appointment?",
+          answer: "Call us immediately at 0115 931 2935 for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible."
         },
         {
           id: "gen6",
@@ -157,7 +187,7 @@ const FAQSection = () => {
         },
         {
           id: "ven6",
-          question: "Can veneers fix crooked teeth?",
+          question: "Can veneers fix all orthodontic problems?",
           answer: "Veneers can improve the appearance of mildly crooked or misaligned teeth by creating the illusion of straight teeth. For significant misalignment, we may recommend orthodontic treatment first for the best long-term results."
         },
         {
@@ -288,53 +318,58 @@ const FAQSection = () => {
       questions: [
         {
           id: "about1",
+          question: "What's the best dentist in Burton Joyce?",
+          answer: "Pear Tree Dental Centre is Burton Joyce's highest-rated dental practice with a 4.9-star rating from over 400 patient reviews. We're CQC rated and offer both NHS and private care with flexible membership plans. Our experienced team has been serving the community for over 15 years with modern technology and personalized care."
+        },
+        {
+          id: "about2",
+          question: "How much does it cost to see a private dentist?",
+          answer: "Our membership plans start at just £10.95 per month (36p per day) and include checkups, cleaning, and 20% off all treatments. This is often more affordable than NHS charges with no waiting lists. NHS checkups cost £25.80, while our Plan A includes checkups plus 20% off treatments and same-day emergency access."
+        },
+        {
+          id: "about3",
           question: "How long has Pear Tree Dental been serving the community?",
           answer: "We've been proudly serving Burton Joyce and the surrounding Nottinghamshire communities for over 15 years, building lasting relationships with patients and families through quality dental care and personalized service."
         },
         {
-          id: "about2",
+          id: "about4",
           question: "What makes Pear Tree Dental different from other practices?",
           answer: "We combine modern technology with a personal touch, offering both NHS and private care options. Our membership plans provide affordable access to premium dentistry, and we focus on preventive care to keep you healthy long-term."
         },
         {
-          id: "about3",
+          id: "about5",
           question: "Are your dentists qualified and registered?",
           answer: "All our dentists are fully qualified, GDC (General Dental Council) registered, and regularly undertake continuing professional development. We maintain the highest standards of clinical excellence and patient safety."
         },
         {
-          id: "about4",
+          id: "about6",
           question: "What areas do you serve?",
           answer: "We're based in Burton Joyce and serve patients from Nottingham, Colwick, Carlton, Gedling, Southwell, Lowdham, and surrounding areas. We welcome patients from across Nottinghamshire seeking quality dental care."
         },
         {
-          id: "about5",
+          id: "about7",
           question: "Do you offer payment plans or financing options?",
           answer: "Yes, we offer various payment options including membership plans, payment plans for larger treatments, and financing options. Our goal is to make quality dental care accessible and affordable for everyone."
         },
         {
-          id: "about6",
+          id: "about8",
           question: "What safety measures do you have in place?",
           answer: "We follow strict infection control protocols, use modern sterilization equipment, and maintain the highest hygiene standards. Our practice is regularly inspected and meets all CQC (Care Quality Commission) requirements."
         },
         {
-          id: "about7",
+          id: "about9",
           question: "How do I register as a new patient?",
-          answer: "Simply call us at 0115 931 2525 or book online. We'll arrange a consultation to discuss your needs and medical history. New patient appointments include a comprehensive examination and treatment planning discussion."
+          answer: "Simply call us at 0115 931 2935 or book online. We'll arrange a consultation to discuss your needs and medical history. New patient appointments include a comprehensive examination and treatment planning discussion."
         },
         {
-          id: "about8",
+          id: "about10",
           question: "Do you treat nervous or anxious patients?",
           answer: "Absolutely! We specialise in caring for nervous patients with gentle techniques, clear communication, and sedation options when appropriate. Many anxious patients become comfortable and confident with our caring approach."
         },
         {
-          id: "about9",
-          question: "What are your practice opening hours?",
-          answer: "We're open Monday through Friday, 8:00 AM to 5:00 PM. We also offer emergency appointments and have an out-of-hours emergency contact number for urgent dental problems."
-        },
-        {
-          id: "about10",
+          id: "about11",
           question: "How can I contact the practice?",
-          answer: "You can call us at 0115 931 2525, email info@peartreedental.co.uk, or visit us at The Old School House, Main Street, Burton Joyce, Nottinghamshire NG14 5DP. We also offer online booking for your convenience."
+          answer: "You can call us at 0115 931 2935, email info@peartreedental.co.uk, or visit us at 22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE. We also offer online booking for your convenience."
         }
       ]
     }
@@ -411,8 +446,8 @@ const FAQSection = () => {
               <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
                 <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Still have questions?</h4>
                 <div className="text-xs sm:text-sm text-white/90 space-y-1 sm:space-y-2">
-                  <p>Call us: <span className="font-semibold">0115 931 2525</span></p>
-                  <p>Email: <span className="font-semibold">info@peartreedental.co.uk</span></p>
+                  <p>Call us: <span className="font-semibold">0115 931 2935</span></p>
+                  <p>Email: <span className="font-semibold">info@peartree.dental</span></p>
                 </div>
               </div>
             </div>

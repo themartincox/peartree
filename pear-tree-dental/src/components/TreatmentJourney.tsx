@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +13,8 @@ import {
   Heart,
   ChevronRight,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Play
 } from "lucide-react";
 
 const TreatmentJourney = () => {
@@ -21,6 +23,7 @@ const TreatmentJourney = () => {
   const [isInJourneySection, setIsInJourneySection] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const journeySteps = [
     {
@@ -28,8 +31,9 @@ const TreatmentJourney = () => {
       title: "Your consultation",
       description: "Following an initial phone call with our patient concierge, your treatment journey begins with a consultation at our modern, comfortable practice in Burton Joyce, Nottinghamshire.",
       icon: MessageCircle,
-      image: "consultation",
-      imageDescription: "Patient consultation with dental professional",
+      type: "image",
+      imagePath: "/images/treatment-journey/consultation.jpg",
+      imageAlt: "Professional dental consultation between dentist and patient discussing treatment options in modern dental office",
       features: [
         "Meet your Pear Tree dental consultant",
         "Discuss your concerns or the issues that you'd like to address",
@@ -41,8 +45,10 @@ const TreatmentJourney = () => {
       title: "Oral health assessment",
       description: "You'll undergo a comprehensive oral health assessment where your dentist will:",
       icon: Stethoscope,
-      image: "assessment",
-      imageDescription: "Dental examination and X-ray imaging",
+      type: "video",
+      videoPath: "/images/treatment-journey/assessment.mp4",
+      videoPoster: "/images/treatment-journey/assessment-poster.webp",
+      imageAlt: "Comprehensive dental examination with modern imaging technology and X-ray equipment in action",
       features: [
         "Look at the condition and health of your teeth and gums",
         "Take images of your mouth and teeth using the latest imaging technologies",
@@ -54,8 +60,9 @@ const TreatmentJourney = () => {
       title: "Discuss your treatment plan",
       description: "Now we understand your concerns and have a 360-degree view of your oral health, we can determine which treatments will be most effective in optimising your oral health and appearance.",
       icon: Clipboard,
-      image: "planning",
-      imageDescription: "Treatment planning discussion with patient",
+      type: "image",
+      imagePath: "/images/treatment-journey/planning.jpg",
+      imageAlt: "Dentist and patient reviewing personalized treatment plan on tablet in consultation room",
       features: [
         "Personalised recommendations",
         "Ask any questions you may have",
@@ -67,8 +74,9 @@ const TreatmentJourney = () => {
       title: "Discuss your payment options",
       description: "We believe that everyone deserves to have healthy, beautiful teeth and offer a range of payment plans to help spread the cost.",
       icon: CreditCard,
-      image: "payment",
-      imageDescription: "Payment options and financial planning",
+      type: "image",
+      imagePath: "/images/treatment-journey/payment.webp",
+      imageAlt: "Friendly consultation about flexible payment options and dental financing plans",
       features: [
         "Transparent pricing",
         "Routine dentistry plans",
@@ -80,8 +88,9 @@ const TreatmentJourney = () => {
       title: "Get started with your treatment",
       description: "Our experienced and compassionate team are on hand to support you at every stage of your treatment.",
       icon: Heart,
-      image: "treatment",
-      imageDescription: "Dental treatment in progress",
+      type: "image",
+      imagePath: "/images/treatment-journey/treatment.webp",
+      imageAlt: "Professional dental treatment in progress with caring dentist and comfortable patient",
       features: [
         "Tips for treatment preparation",
         "Answer any questions you have at any stage",
@@ -91,6 +100,33 @@ const TreatmentJourney = () => {
   ];
 
   useEffect(() => {
+    // Video autoplay intersection observer
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target as HTMLVideoElement;
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            // Video is 50%+ visible, start autoplay
+            video.play().catch(console.error);
+          } else {
+            // Video is out of view, pause it
+            video.pause();
+          }
+        });
+      },
+      {
+        threshold: [0.5], // Trigger when 50% of video is visible
+        rootMargin: '0px'
+      }
+    );
+
+    // Observe all videos
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        videoObserver.observe(video);
+      }
+    });
+
     const handleScroll = () => {
       if (!containerRef.current) return;
 
@@ -138,7 +174,10 @@ const TreatmentJourney = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      videoObserver.disconnect();
+    };
   }, [journeySteps.length]);
 
   const scrollToStep = (stepIndex: number) => {
@@ -230,7 +269,6 @@ const TreatmentJourney = () => {
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center ${
                   isReverse ? 'lg:grid-flow-col-dense' : ''
                 }`}>
-
                   {/* Content */}
                   <div className={`space-y-4 sm:space-y-6 ${isReverse ? 'lg:col-start-2' : ''}`}>
                     <div className="flex items-center space-x-3 sm:space-x-4">
@@ -267,33 +305,72 @@ const TreatmentJourney = () => {
                     )}
                   </div>
 
-                  {/* Image */}
+                  {/* Media (Image or Video) */}
                   <div className={`${isReverse ? 'lg:col-start-1' : 'lg:col-start-2'}`}>
                     <Card className="overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                      <div className="aspect-[4/3] relative bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <div className="text-center px-4">
-                          <h4 className="text-base sm:text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
-                          <p className="text-gray-600 text-xs sm:text-sm">{step.imageDescription}</p>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent" />
-
-                        {/* Decorative SVG Overlay */}
-                        <div className="absolute inset-0 pointer-events-none opacity-30">
-                          <svg
-                            width="100%"
-                            height="100%"
-                            viewBox="0 0 400 300"
-                            className="absolute inset-0"
+                      <div className="aspect-[4/3] relative">
+                        {step.type === "video" ? (
+                          <video
+                            className="w-full h-full object-cover"
+                            poster={step.videoPoster}
+                            controls
+                            muted
+                            playsInline
+                            preload="metadata"
+                            loop
+                            aria-label={step.imageAlt}
+                            ref={(el) => {
+                              videoRefs.current[index] = el;
+                            }}
                           >
-                            <path
-                              d="M50,150 Q200,50 350,150 Q200,250 50,150"
-                              fill="none"
-                              stroke="white"
-                              strokeWidth="2"
-                              strokeOpacity="0.6"
+                            <source src={step.videoPath} type="video/mp4" />
+                            <track
+                              kind="captions"
+                              src="/captions/assessment-video-captions.vtt"
+                              srcLang="en"
+                              label="English"
+                              default
                             />
-                          </svg>
+                            Your browser does not support the video tag.
+                          </video>
+                        ) : step.imagePath ? (
+                          <Image
+                            src={step.imagePath}
+                            alt={step.imageAlt}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 40vw, 33vw"
+                            priority={index === 0}
+                            quality={85}
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkrHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                            loading={index === 0 ? "eager" : "lazy"}
+                          />
+                        ) : null}
+
+                        {/* Overlay for better text readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/20 to-transparent pointer-events-none" />
+
+                        {/* Step number badge */}
+                        <div className="absolute top-4 left-4 pointer-events-none">
+                          <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center shadow-lg">
+                            <span className="text-white font-bold text-sm">{index + 1}</span>
+                          </div>
                         </div>
+
+                        {/* Decorative element */}
+                        <div className="absolute bottom-4 right-4 opacity-20 pointer-events-none">
+                          <Icon className="w-8 h-8 text-white" />
+                        </div>
+
+                        {/* Video play indicator for better UX */}
+                        {step.type === "video" && (
+                          <div className="absolute top-4 right-4 pointer-events-none">
+                            <div className="w-8 h-8 bg-white/80 rounded-full flex items-center justify-center">
+                              <Play className="w-4 h-4 text-pear-primary" />
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </Card>
                   </div>

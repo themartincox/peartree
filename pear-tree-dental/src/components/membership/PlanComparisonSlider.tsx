@@ -186,13 +186,13 @@ export default function PlanComparisonSlider() {
                       ))}
                       <li className="flex items-start gap-3">
                         <Check className="h-5 w-5 text-pear-primary mt-0.5 flex-shrink-0" />
-                        <span>Worldwide dental accident & emergency cover</span>
+                        <span className="xl:text-left">Worldwide dental accident & emergency cover</span>
                       </li>
                     </ul>
                   </CardContent>
 
                   <CardFooter className="px-6 pb-6 pt-2">
-                    <a href="/membership/signup" className="w-full">
+                    <a href="/membership/signup/direct-debit" className="w-full">
                       <Button className="w-full rounded-md bg-dental-green hover:bg-dental-green/90 text-white">
                         Join {selectedPlan.name}
                       </Button>

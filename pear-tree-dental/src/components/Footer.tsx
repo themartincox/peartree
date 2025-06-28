@@ -147,13 +147,31 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a
+                href="https://www.facebook.com/peartreedental"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a
+                href="https://www.instagram.com/peartreedental"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a
+                href="https://twitter.com/peartreedental"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>

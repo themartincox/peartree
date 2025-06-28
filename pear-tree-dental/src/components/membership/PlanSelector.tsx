@@ -162,6 +162,15 @@ export default function PlanSelector() {
           ))}
         </div>
 
+        {/* Join Selected Plan Button */}
+        <div className="text-center mb-8">
+          <a href={`/membership/signup/direct-debit?plan=${selectedPlan}`}>
+            <Button size="lg" className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white px-8 py-4 text-lg">
+              Join {plans.find(p => p.id === selectedPlan)?.name}
+            </Button>
+          </a>
+        </div>
+
         {/* Family Plan Section */}
         <div className="mt-8 mb-10">
           <div className="text-center mb-6">
@@ -169,65 +178,89 @@ export default function PlanSelector() {
             <p className="text-gray-600">Perfect solution for families at one address</p>
           </div>
 
-          <div className="max-w-md mx-auto">
+          <div className="w-full">
             <div className="relative">
               <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-10 bg-pear-gold text-white font-semibold text-xs px-3 py-1">
                 Perfect for Families
               </Badge>
               <Card className="border-2 border-pear-primary">
-                <CardHeader className="bg-gradient-to-r from-pear-primary to-dental-green text-white rounded-t-xl pb-4 pt-8">
-                  <div className="text-center">
-                    <Users className="w-8 h-8 mx-auto mb-2" />
-                    <CardTitle className="text-xl mb-2">FAMILY PLAN</CardTitle>
-                    <div className="text-center">
-                      <span className="text-3xl font-bold">£49.50</span>
-                      <span className="text-sm font-medium"> / MONTH</span>
+                <CardHeader className="bg-gradient-to-r from-pear-primary to-dental-green text-white rounded-t-xl pb-6 pt-8">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    {/* Family Icon and Title */}
+                    <div className="text-center md:text-left">
+                      <Users className="w-12 h-12 mx-auto md:mx-0 mb-2" />
+                      <CardTitle className="text-2xl mb-2">FAMILY PLAN</CardTitle>
+                      <p className="text-sm text-white/90">2 Adults + up to 3 Children</p>
                     </div>
-                    <p className="text-sm text-white/90 mt-2">2 Adults + up to 3 Children</p>
+
+                    {/* Price */}
+                    <div className="text-center">
+                      <div className="text-center">
+                        <span className="text-4xl font-bold">£49.50</span>
+                        <span className="text-lg font-medium"> / MONTH</span>
+                      </div>
+                      <p className="text-sm text-white/90 mt-1">£1.65 per day for the whole family</p>
+                    </div>
+
+                    {/* Call to Action */}
+                    <div className="text-center md:text-right">
+                      <div className="inline-flex bg-white/20 rounded-full px-4 py-2 text-sm font-semibold">
+                        Perfect for Families
+                      </div>
+                    </div>
                   </div>
                 </CardHeader>
 
                 <CardContent className="pt-6 pb-6">
-                  <div className="mb-4 p-3 bg-green-50 rounded-lg border border-green-200">
-                    <p className="text-xs text-green-800 font-medium text-center">
-                      Easy single payment for whole family peace of mind
-                    </p>
-                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Benefits Column */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-pear-primary mb-3">What's Included</h4>
+                      <ul className="space-y-2 text-sm">
+                        <li className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
+                          <span>All adults get Plan C benefits (2 check-ups, 2 scale & polishes)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
+                          <span>Children under 18 included free</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
+                          <span>10% discount on all treatments</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
+                          <span>Simplified billing for whole family</span>
+                        </li>
+                      </ul>
+                    </div>
 
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                      <span>All adults get Plan C benefits</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                      <span>Children under 18 included free</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                      <span>Same address requirement</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                      <span>20% discount on all treatments</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                      <span>Simplified billing for whole family</span>
-                    </li>
-                  </ul>
+                    {/* Value Proposition Column */}
+                    <div>
+                      <div className="mb-4 p-4 bg-green-50 rounded-lg border border-green-200">
+                        <h4 className="text-sm font-semibold text-green-800 mb-2">Family Benefits</h4>
+                        <p className="text-xs text-green-700">
+                          One simple payment covers your entire family's dental care. Save money and ensure everyone gets the care they need.
+                        </p>
+                      </div>
 
-                  <div className="mt-4 text-center">
-                    <span className="inline-flex bg-gray-100 rounded-full px-3 py-1 text-xs font-medium">
-                      £1.65 per day for the whole family
-                    </span>
+                      <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <h4 className="text-sm font-semibold text-gray-800 mb-2">Requirements</h4>
+                        <p className="text-xs text-gray-600">
+                          All family members must live at the same address. Children under 18 automatically included.
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
 
                 <CardFooter>
-                  <Button className="w-full bg-pear-primary hover:bg-pear-primary/90">
-                    Choose Family Plan
-                  </Button>
+                  <a href="/membership/signup/direct-debit?plan=family" className="w-full">
+                    <Button className="w-full bg-pear-primary hover:bg-pear-primary/90 py-3 text-lg">
+                      Choose Family Plan
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             </div>
@@ -235,15 +268,9 @@ export default function PlanSelector() {
         </div>
 
         <div className="border-t pt-8 text-center">
-          <p className="text-sm text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-600 max-w-2xl mx-auto">
             <strong>Under 18s join free</strong> when a parent joins the plan. Or £5.20/month for under 18s joining alone.
           </p>
-
-          <a href="/membership/signup">
-            <Button size="lg" className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white">
-              Join {plans.find(p => p.id === selectedPlan)?.name} Now
-            </Button>
-          </a>
         </div>
       </div>
     </section>

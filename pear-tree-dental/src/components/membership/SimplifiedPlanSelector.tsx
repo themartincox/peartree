@@ -261,12 +261,12 @@ export default function SimplifiedPlanSelector() {
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          <a href="/membership/signup">
+          <a href="/membership/signup/direct-debit">
             <Button
               size="lg"
               className={`rounded-full bg-gradient-to-r ${selectedPlanData?.bgColor || 'from-[#4A90A4] to-[#2d6b7a]'} hover:opacity-90 text-white px-8 py-4 text-lg font-semibold shadow-2xl border-4 border-white transition-all duration-300`}
             >
-              Join {selectedPlanData?.name} Plan Now
+              Join {selectedPlanData?.name}
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </a>
