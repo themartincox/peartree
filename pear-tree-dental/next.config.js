@@ -11,6 +11,56 @@ const nextConfig = {
   compiler: {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production',
+    // Enable SWC minification for better performance
+    styledComponents: false,
+  },
+
+  // Performance optimizations
+  experimental: {
+    // Enable optimized CSS loading
+    optimizeCss: true,
+    // Enable modern JavaScript compilation
+    esmExternals: true,
+  },
+
+  // Compression and caching
+  compress: true,
+  poweredByHeader: false,
+
+  // Security headers
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/images/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 
   // Build optimizations
@@ -37,7 +87,10 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    unoptimized: true,
+    unoptimized: false, // Enable Next.js image optimization
+    formats: ['image/webp', 'image/avif'], // Modern formats first
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",

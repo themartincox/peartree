@@ -1,6 +1,6 @@
 # Pear Tree Dental Centre - Burton Joyce, Nottinghamshire
 # AI Assistant Information File (llm.txt)
-# Last Updated: June 15, 2025
+# Last Updated: June 28, 2025
 
 ## PRACTICE OVERVIEW
 Pear Tree Dental Centre is a modern, family-friendly dental practice located in Burton Joyce, Nottinghamshire. We provide comprehensive dental care with a focus on preventive dentistry, cosmetic treatments, and patient comfort. Our practice combines traditional values with cutting-edge technology to deliver exceptional dental care.
@@ -129,11 +129,12 @@ Our dental team includes qualified dentists with specializations in:
 
 ## WEBSITE STRUCTURE
 The website includes:
-- **Main Pages:** Home, Services, About, Team, Membership, New Patients, Contact
-- **Service Pages:** Detailed information on all dental treatments
-- **Location Pages:** Area-specific information for local communities
-- **Membership Information:** Comprehensive plan details and benefits
-- **Patient Resources:** FAQs, treatment guides, and educational content
+- **Main Pages:** Home, Services, About, Team, Membership, New Patients, Contact, Pricing
+- **Service Pages:** Detailed information on all dental treatments including specific veneer types, emergency care, smile makeovers
+- **Location Pages:** Area-specific information for Burton Joyce, Colwick, Lowdham, East Bridgford, Gedling, Arnold
+- **Membership Information:** Comprehensive plan details and benefits with signup process
+- **Patient Resources:** FAQs, treatment guides, educational content, urgent dental pain guidance, complaints procedure
+- **Competitor Comparison Pages:** Reviews and alternatives for local dental practices
 
 ## BOOKING & APPOINTMENTS
 - Online appointment requests available
@@ -228,5 +229,5 @@ Patients consistently praise our:
 This information is designed to help AI assistants provide accurate, helpful responses about Pear Tree Dental Centre. For the most current information, please visit our website or contact us directly at 0115 931 2935.
 
 **Website:** [Your domain when deployed]
-**Last Updated:** June 15, 2025
-**Version:** 83
+**Last Updated:** June 28, 2025
+**Version:** 84
