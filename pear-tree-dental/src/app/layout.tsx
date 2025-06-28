@@ -4,9 +4,9 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
-import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
+import PerformanceOptimizations from "@/components/PerformanceOptimizations";
 
 // Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
@@ -91,22 +91,37 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* DNS Prefetch for faster font loading */}
+        {/* Critical Resource Hints */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-
-        {/* Preconnect for critical font resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
+        {/* Preload critical images */}
+        <link rel="preload" as="image" href="/images/Pear_tree_dental_smile_design.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/general-dentistry.webp" type="image/webp" />
+
+        {/* Viewport meta for responsive design */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+        {/* Performance hints */}
+        <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+
+        {/* Canonical and geo tags */}
         <link rel="canonical" href="https://peartree.dental" />
         <meta name="geo.region" content="GB-NTT" />
         <meta name="geo.placename" content="Burton Joyce" />
         <meta name="geo.position" content="52.9769;-1.0085" />
         <meta name="ICBM" content="52.9769, -1.0085" />
 
+        {/* Structured data */}
         <LocalBusinessSchema includeDentistSpecific={true} />
         <VoiceSearchSchema />
+
+        {/* Performance optimizations */}
+        <PerformanceOptimizations />
       </head>
       <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
         {/* Skip Links for Screen Readers */}
@@ -126,11 +141,6 @@ export default function RootLayout({
         </a>
 
         <Navigation />
-
-        {/* Global Google Reviews Widget */}
-        <div className="relative">
-          <GoogleReviewsWidget />
-        </div>
 
         <main id="main-content" className="min-h-screen" role="main">
           <PageTransition>

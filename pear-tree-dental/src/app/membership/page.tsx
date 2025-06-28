@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import {
   Check,
   Star,
@@ -77,6 +78,9 @@ export default function MembershipPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Google Reviews Widget - Non-homepage */}
+      <GoogleReviewsWidget />
+
       {/* SEO Schema */}
       <MedicalOrganizationSchema page="membership" />
 
@@ -131,15 +135,14 @@ export default function MembershipPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                  <span className="xl:text-left">Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Orthodontics, implants</span>
                 </li>
               </ul>
-              <div className="mt-4 text-sm text-gray-600">
-                All other routine treatments receive 20% discount with membership plans
+              <div className="mt-4 text-sm text-gray-600">All other routine treatments receive 10% discount with membership planss
               </div>
             </div>
           </div>

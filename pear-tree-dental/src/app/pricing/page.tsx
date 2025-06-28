@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import Link from "next/link";
 import {
   Star,
@@ -88,6 +89,9 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Google Reviews Widget - Non-homepage */}
+      <GoogleReviewsWidget />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-pear-background via-white to-pear-background py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

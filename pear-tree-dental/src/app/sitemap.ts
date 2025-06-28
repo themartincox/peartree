@@ -1,5 +1,9 @@
 import type { MetadataRoute } from 'next'
 
+// Required for static export
+export const dynamic = 'force-static'
+export const revalidate = false
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://peartreedental.co.uk'
   const now = new Date()
@@ -146,6 +150,118 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/smile-design`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+
+    // Additional important pages
+    {
+      url: `${baseUrl}/new-patients`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/pricing`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/urgent-dental-pain`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/complaints`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gedling`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/arnold`,
+      lastModified: lastMonth,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+
+    // Specific treatment pages
+    {
+      url: `${baseUrl}/services/cosmetic/veneers`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/cosmetic/veneers/porcelain`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/cosmetic/veneers/composite`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/cosmetic/veneers/ultra-thin`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/cosmetic/composite-bonding`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/general/check-ups`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/general/extractions`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/emergency/trauma`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/emergency/abscess`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/restorative/fillings`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/restorative/root-canal`,
+      lastModified: lastWeek,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/services/smile-makeover`,
       lastModified: lastWeek,
       changeFrequency: 'weekly',
       priority: 0.6,
