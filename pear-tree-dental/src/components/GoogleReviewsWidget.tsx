@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface Review {
   id: string;
@@ -17,7 +16,7 @@ interface Review {
 }
 
 const GoogleReviewsWidget = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentReview, setCurrentReview] = useState(0);
   const [isSticky, setIsSticky] = useState(false);
   const [showWidget, setShowWidget] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
@@ -82,7 +81,7 @@ const GoogleReviewsWidget = () => {
   // Auto-rotate reviews
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+      setCurrentReview((prev) => (prev + 1) % reviews.length);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -126,11 +125,11 @@ const GoogleReviewsWidget = () => {
   }, [isHomepage]);
 
   const nextReview = () => {
-    setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    setCurrentReview((prev) => (prev + 1) % reviews.length);
   };
 
   const prevReview = () => {
-    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
   const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
@@ -163,7 +162,7 @@ const GoogleReviewsWidget = () => {
         <div className={`${isSticky ? 'container mx-auto px-4' : ''}`}>
           <div className={`${isSticky ? 'py-3' : 'p-6'} transition-all duration-500`}>
             {/* Header */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
@@ -190,51 +189,45 @@ const GoogleReviewsWidget = () => {
                 </div>
               </div>
 
-              {/* Navigation controls - Improved touch targets */}
-              <div className="flex items-center space-x-1">
+              {/* Navigation controls */}
+              <div className="flex items-center space-x-2">
                 <button
                   onClick={prevReview}
-                  className={`p-3 rounded-full transition-all duration-500 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                  className={`p-1 rounded-full transition-all duration-500 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
                         ? 'hover:bg-white/20 text-white/70'
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
-                  aria-label="Previous review"
-                  title="Previous review"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={nextReview}
-                  className={`p-3 rounded-full transition-all duration-500 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                  className={`p-1 rounded-full transition-all duration-500 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
                         ? 'hover:bg-white/20 text-white/70'
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
-                  aria-label="Next review"
-                  title="Next review"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </button>
                 <a
                   href="https://www.google.com/search?q=Pear+Tree+Dental+Burton+Joyce+reviews"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 rounded-full transition-all duration-500 min-w-[44px] min-h-[44px] flex items-center justify-center ${
+                  className={`p-1 rounded-full transition-all duration-500 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
                         ? 'hover:bg-white/20 text-white/70'
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
-                  aria-label="View all Google reviews for Pear Tree Dental"
-                  title="View all Google reviews"
                 >
-                  <ExternalLink className="w-5 h-5" />
+                  <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -244,21 +237,21 @@ const GoogleReviewsWidget = () => {
               <div className="flex items-start space-x-3">
                 <div className={`w-8 h-8 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSticky ? 'w-6 h-6' : ''}`}>
                   <span className={`text-white font-semibold transition-all duration-500 ${isSticky ? 'text-xs' : 'text-sm'}`}>
-                    {reviews[currentIndex].author.charAt(0)}
+                    {reviews[currentReview].author.charAt(0)}
                   </span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-2 mb-1">
                     <h5 className={`font-medium transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
-                      {reviews[currentIndex].author}
+                      {reviews[currentReview].author}
                     </h5>
                     <div className="flex">
-                      {[...Array(reviews[currentIndex].rating)].map((_, i) => (
+                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
                         <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
                       ))}
                     </div>
                     <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-500' : isHomepage ? 'text-white/60' : 'text-gray-500'}`}>
-                      {reviews[currentIndex].date}
+                      {reviews[currentReview].date}
                     </span>
                   </div>
                   <p
@@ -275,33 +268,25 @@ const GoogleReviewsWidget = () => {
                       WebkitBoxOrient: 'vertical'
                     } : {}}
                   >
-                    "{reviews[currentIndex].text}"
+                    "{reviews[currentReview].text}"
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Review indicators - Improved touch targets */}
+            {/* Review indicators */}
             {!isSticky && (
-              <div className="flex justify-center space-x-1 mt-6">
+              <div className="flex justify-center space-x-1 mt-4">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`min-w-[44px] min-h-[44px] p-3 rounded-full transition-all duration-500 flex items-center justify-center ${
-                      index === currentIndex
-                        ? isHomepage ? 'bg-white/20' : 'bg-pear-primary/20'
-                        : isHomepage ? 'bg-white/10' : 'bg-gray-200'
-                    }`}
-                    aria-label={`Go to review ${index + 1}`}
-                    title={`Review ${index + 1}`}
-                  >
-                    <div className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                      index === currentIndex
+                    onClick={() => setCurrentReview(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                      index === currentReview
                         ? isHomepage ? 'bg-white' : 'bg-pear-primary'
-                        : isHomepage ? 'bg-white/60' : 'bg-gray-400'
-                    }`} />
-                  </button>
+                        : isHomepage ? 'bg-white/40' : 'bg-gray-300'
+                    }`}
+                  />
                 ))}
               </div>
             )}

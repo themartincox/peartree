@@ -20,7 +20,7 @@ const PracticeShowcase = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {/* Main Practice Showcase */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white h-[520px]">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white h-[440px]">
               <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-gray-700 mb-2">PRACTICE IMAGE</h3>

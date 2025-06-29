@@ -24,14 +24,14 @@ import {
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   adult: {
-    name: "Adult Plan A",
-    price: "£10.95",
+    name: "Adult Plan",
+    price: "£14.99",
     period: "/month",
-    description: "Our most affordable adult plan with essential dental care and comprehensive coverage.",
+    description: "Complete dental care for adults with comprehensive coverage and preventive focus.",
     keyFeatures: [
       "2 check-ups per year included",
       "2 hygiene appointments included",
-      "10% discount on all treatments",
+      "20% discount on all treatments",
       "Worldwide dental trauma cover"
     ],
     icon: User,
@@ -39,28 +39,28 @@ const membershipPlans = {
   },
   child: {
     name: "Child Plan",
-    price: "£5.20",
+    price: "£10.95",
     period: "/month",
-    description: "Specialised dental care for children. FREE when joining with an adult plan.",
+    description: "Specialised dental care for children with focus on prevention and education.",
     keyFeatures: [
       "2 check-ups per year included",
       "Fluoride treatments included",
       "Fissure sealants when required",
-      "FREE when parent has adult plan"
+      "No charge for most treatments"
     ],
     icon: Baby,
     color: "soft-pink"
   },
   family: {
     name: "Family Plan",
-    price: "£49.50",
+    price: "£39.99",
     period: "/month",
-    description: "Complete coverage for 2 adults and 3 children with significant family savings.",
+    description: "Comprehensive coverage for the whole family with significant savings.",
     keyFeatures: [
-      "2 adults + 3 children covered",
+      "2 adults + 2 children covered",
       "All individual plan benefits",
       "Priority family appointments",
-      "Best value for larger families"
+      "25% discount on treatments"
     ],
     icon: UserPlus,
     color: "pear-gold"
@@ -267,7 +267,8 @@ const MembershipHighlight = () => {
 
         {/* Bottom CTA - Simplified */}
         <div className="text-center">
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care..
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate, premium dental care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-gold text-white px-8 py-4">

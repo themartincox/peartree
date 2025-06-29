@@ -20,39 +20,39 @@ const Hero = () => {
       {/* Background Pattern - Pure CSS for better performance */}
       <div className="absolute inset-0 opacity-5 hero-bg-pattern" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 lg:pb-10 relative xl:py-[60px]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 lg:pb-10 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-end">
           {/* Left Column - Main Content */}
           <div className="space-y-4 sm:space-y-6">
             {/* Main Headline - SEO Optimized */}
-            <h1 className="heading-serif sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary text-[60px]">
+            <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary leading-tight">
               Expert dental care with a <span className="text-pear-gold">personal touch</span>
             </h1>
 
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS waiting lists with our great value membership plans from just £10.95/month.
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 leading-relaxed">
+              Modern dental care in Burton Joyce, Nottinghamshire.
+              Skip the NHS waiting lists with our membership plans from just £10.95/month.
             </p>
 
-            {/* CTA Buttons - Aligned with membership box width */}
-            <div className="flex flex-col gap-3" role="group" aria-label="Primary actions">
+            {/* CTA Buttons - Optimized for performance */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6" role="group" aria-label="Primary actions">
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold group px-6 py-3 text-base h-12 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
+                className="btn-gold text-white font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2"
+                aria-label="Join our dental membership plan starting at £8.99 per month"
+              >
+                Join Membership Plan
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
                 aria-label="Schedule a free dental consultation with our team"
               >
-                <CalendarDays className="w-5 h-5 mr-2" aria-hidden="true" />
+                <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
                 Book Free Consultation
               </Button>
-              <Link href="/membership#plans">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-pear-gold border-pear-gold hover:bg-pear-gold hover:text-white px-6 py-3 text-base h-12 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2 group"
-                  aria-label="Join our dental membership plan starting at £8.99 per month"
-                >
-                  Join Membership Plan
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                </Button>
-              </Link>
             </div>
 
             {/* Value Proposition - Simplified structure */}
@@ -78,12 +78,12 @@ const Hero = () => {
           <div className="relative mt-8 lg:mt-0 hero-image-container" role="img" aria-label="Dental care showcase">
             {/* Main Hero Image */}
             <div
-              className="relative h-56 sm:h-72 lg:h-80 xl:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-56 sm:h-72 lg:h-80 xl:h-[400px] rounded-3xl overflow-hidden shadow-2xl"
               role="img"
               aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
             >
               <Image
-                src="https://ugc.same-assets.com/GF63vuccKk71TOjC1WwlpI9IJ5ollfb4.jpeg"
+                src="/images/Pear_tree_dental_smile_design.jpg"
                 alt="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care and smile transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
                 fill
                 className="object-cover"
@@ -112,7 +112,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Secondary Service Images - Hover reveal effect */}
+            {/* Secondary Service Images - Clickable service links */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6" role="group" aria-label="Featured dental services">
               {/* Orthodontics Service Image */}
               <Link
@@ -122,14 +122,12 @@ const Hero = () => {
               >
                 <div className="relative h-full">
                   <Image
-                    src="/images/invisalign_clearcorrect_combined.png"
+                    src="/images/pear_tree_dental_aligners_logos.png"
                     alt="Invisalign and ClearCorrect orthodontic treatment options - clear aligners for teeth straightening"
                     fill
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Placeholder overlay */}
-                  <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0 rounded-xl sm:rounded-2xl"></div>
                 </div>
               </Link>
 
@@ -141,14 +139,12 @@ const Hero = () => {
               >
                 <div className="relative h-full">
                   <Image
-                    src="/images/boutique_enlighten_combined.png"
+                    src="/images/pear_tree_dental_whitening_logos.png"
                     alt="Boutique Whitening and Enlighten teeth whitening treatment options - professional smile brightening"
                     fill
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Placeholder overlay */}
-                  <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0 rounded-xl sm:rounded-2xl"></div>
                 </div>
               </Link>
             </div>

@@ -13,16 +13,14 @@ export default function CtaSection() {
           </h2>
 
           <p className="mb-8 text-lg text-gray-600">
-            Take control of your dental health today. Choose your preferred payment method and sign up in under 2 minutes.
+            Take control of your dental health today. Sign up in under 2 minutes and enjoy all the benefits of membership.
           </p>
 
-          <div className="flex justify-center mb-8">
-            <a href="/membership/signup/direct-debit">
-              <Button size="lg" className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green/90 text-white">
-                Join Today
-              </Button>
-            </a>
-          </div>
+          <a href="/membership/signup">
+            <Button size="lg" className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green/90 text-white">
+              Join Today
+            </Button>
+          </a>
 
           <div className="mt-10 grid md:grid-cols-3 gap-6 text-center">
             <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
