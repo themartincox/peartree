@@ -135,14 +135,15 @@ export default function MembershipPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="xl:text-left">Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                  <span>Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Orthodontics, implants</span>
                 </li>
               </ul>
-              <div className="mt-4 text-sm text-gray-600">All other routine treatments receive 10% discount with membership planss
+              <div className="mt-4 text-sm text-gray-600">
+                All other routine treatments receive 20% discount with membership plans
               </div>
             </div>
           </div>
