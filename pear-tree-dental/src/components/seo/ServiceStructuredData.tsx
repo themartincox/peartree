@@ -5,23 +5,44 @@ import Script from 'next/script';
 interface ServiceStructuredDataProps {
   serviceName: string;
   description: string;
-  price: string;
-  category: string;
+  price?: string;
+  category?: string;
+  provider?: {
+    "@type": string;
+    name: string;
+    address?: {
+      "@type": string;
+      streetAddress: string;
+      addressLocality: string;
+      addressRegion: string;
+      postalCode: string;
+      addressCountry: string;
+    };
+  };
+  areaServed?: string[];
+  availableChannel?: {
+    "@type": string;
+    serviceUrl: string;
+    servicePhone: string;
+  };
 }
 
 export default function ServiceStructuredData({
   serviceName,
   description,
   price,
-  category
+  category,
+  provider,
+  areaServed,
+  availableChannel
 }: ServiceStructuredDataProps) {
   const serviceData = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": serviceName,
     "description": description,
-    "category": category,
-    "provider": {
+    ...(category && { "category": category }),
+    "provider": provider || {
       "@type": "DentalClinic",
       "name": "Pear Tree Dental",
       "url": "https://peartreedental.co.uk",
@@ -29,19 +50,24 @@ export default function ServiceStructuredData({
       "email": "info@peartreedental.co.uk",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "The Old Stables, Main Street",
+        "streetAddress": "22 Nottingham Road",
         "addressLocality": "Burton Joyce",
         "addressRegion": "Nottinghamshire",
         "postalCode": "NG14 5AE",
         "addressCountry": "GB"
       }
     },
-    "offers": {
-      "@type": "Offer",
-      "description": price,
-      "priceCurrency": "GBP"
-    },
-    "areaServed": [
+    ...(price && {
+      "offers": {
+        "@type": "Offer",
+        "description": price,
+        "priceCurrency": "GBP"
+      }
+    }),
+    "areaServed": areaServed?.map(area => ({
+      "@type": "Place",
+      "name": area
+    })) || [
       {
         "@type": "Place",
         "name": "Burton Joyce"
@@ -54,7 +80,8 @@ export default function ServiceStructuredData({
         "@type": "Place",
         "name": "Nottinghamshire"
       }
-    ]
+    ],
+    ...(availableChannel && { "availableChannel": availableChannel })
   };
 
   return (
