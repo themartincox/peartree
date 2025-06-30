@@ -23,52 +23,60 @@ import {
 
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
-  adult: {
-    name: "Adult Plan",
-    price: "£14.99",
-    period: "/month",
-    description: "Complete dental care for adults with comprehensive coverage and preventive focus.",
-    keyFeatures: [
-      "2 check-ups per year included",
-      "2 hygiene appointments included",
-      "20% discount on all treatments",
-      "Worldwide dental trauma cover"
-    ],
-    icon: User,
-    color: "pear-primary"
-  },
-  child: {
-    name: "Child Plan",
+  planA: {
+    name: "PLAN A",
     price: "£10.95",
     period: "/month",
-    description: "Specialised dental care for children with focus on prevention and education.",
+    dailyCost: "Just 36p per day",
+    savings: "£116",
+    description: "Our most affordable plan with essential dental care and comprehensive coverage.",
     keyFeatures: [
-      "2 check-ups per year included",
+      "1 Dental check up a year",
+      "1 Scale & Polish a year",
+      "Worldwide dental accident & emergency cover"
+    ],
+    icon: User,
+    color: "dental-green",
+    popular: false
+  },
+  child: {
+    name: "CHILD PLAN",
+    price: "£5.20",
+    period: "/month",
+    dailyCost: "Just 17p per day",
+    savings: "£180",
+    description: "Specialized dental care for children under 18. FREE when joining with an adult plan.",
+    keyFeatures: [
+      "2 Dental check ups a year",
       "Fluoride treatments included",
       "Fissure sealants when required",
-      "No charge for most treatments"
+      "FREE when parent has adult plan"
     ],
     icon: Baby,
-    color: "soft-pink"
+    color: "soft-pink",
+    popular: false
   },
   family: {
-    name: "Family Plan",
-    price: "£39.99",
+    name: "FAMILY PLAN",
+    price: "£49.50",
     period: "/month",
-    description: "Comprehensive coverage for the whole family with significant savings.",
+    dailyCost: "Just £1.65 per day",
+    savings: "£400+",
+    description: "Complete coverage for 2 adults and up to 3 children with significant family savings.",
     keyFeatures: [
-      "2 adults + 2 children covered",
-      "All individual plan benefits",
-      "Priority family appointments",
-      "25% discount on treatments"
+      "2 Adults + up to 3 children covered",
+      "All adults get Plan C benefits",
+      "Children under 18 included free",
+      "Simplified billing for whole family"
     ],
-    icon: UserPlus,
-    color: "pear-gold"
+    icon: Users,
+    color: "pear-gold",
+    popular: true
   }
 };
 
 const MembershipHighlight = () => {
-  const [activeTab, setActiveTab] = useState("adult");
+  const [activeTab, setActiveTab] = useState("family");
 
   // Memoize current plan to prevent recalculation
   const currentPlan = useMemo(() => {
@@ -87,9 +95,9 @@ const MembershipHighlight = () => {
           onClick={() => setActiveTab(key)}
           className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 ${
             isActive
-              ? key === 'adult' ? 'bg-white text-pear-primary shadow-lg transform scale-105'
-              : key === 'child' ? 'bg-soft-pink/20 text-white shadow-lg transform scale-105 border border-soft-pink/30'
-              : 'bg-pear-gold/20 text-white shadow-lg transform scale-105 border border-pear-gold/30'
+              ? key === 'planA' ? 'bg-white text-dental-green shadow-lg transform scale-105'
+              : key === 'child' ? 'bg-white text-soft-pink shadow-lg transform scale-105'
+              : 'bg-white text-pear-gold shadow-lg transform scale-105'
               : 'text-white/80 hover:text-white hover:bg-white/10'
           }`}
         >
@@ -171,7 +179,7 @@ const MembershipHighlight = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg ${
-                      activeTab === 'adult' ? 'bg-pear-primary' :
+                      activeTab === 'planA' ? 'bg-dental-green' :
                       activeTab === 'child' ? 'bg-soft-pink' : 'bg-pear-gold'
                     }`}>
                       <currentPlan.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
@@ -181,10 +189,13 @@ const MembershipHighlight = () => {
                       <div className="flex items-baseline space-x-2">
                         <span className="text-3xl sm:text-4xl font-bold text-pear-primary">{currentPlan.price}</span>
                         <span className="text-gray-500 text-sm sm:text-base">{currentPlan.period}</span>
-                        <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">
-                          Save 25%
-                        </Badge>
+                        {currentPlan.popular && (
+                          <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">
+                            Most Popular
+                          </Badge>
+                        )}
                       </div>
+                      <div className="text-sm text-gray-500 mt-1">{currentPlan.dailyCost}</div>
                     </div>
                   </div>
                 </div>
@@ -212,12 +223,12 @@ const MembershipHighlight = () => {
                     <div>
                       <h4 className="font-semibold text-pear-primary mb-2">Annual Savings</h4>
                       <p className="text-gray-600 text-sm">
-                        Save up to £{activeTab === 'adult' ? '400' : activeTab === 'child' ? '250' : '800'} per year compared to pay-as-you-go
+                        Save up to £{currentPlan.savings} per year compared to pay-as-you-go treatments
                       </p>
                     </div>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-pear-gold">
-                        £{activeTab === 'adult' ? '400' : activeTab === 'child' ? '250' : '800'}
+                        £{currentPlan.savings}
                       </div>
                       <div className="text-sm text-gray-500">saved annually</div>
                     </div>
@@ -226,7 +237,7 @@ const MembershipHighlight = () => {
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <Link href={`/membership#${activeTab}`}>
+                  <Link href="/membership/signup">
                     <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                       View Full {currentPlan.name} Details
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -267,8 +278,7 @@ const MembershipHighlight = () => {
 
         {/* Bottom CTA - Simplified */}
         <div className="text-center">
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate, premium dental care.
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care..
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-gold text-white px-8 py-4">

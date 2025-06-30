@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +15,21 @@ import {
   CheckCircle,
   ArrowRight
 } from "lucide-react";
+
+// TypeScript interfaces
+interface JourneyStep {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<any>;
+  image: string;
+  mediaType: "image" | "video";
+  imagePath?: string;
+  videoPath?: string;
+  posterPath?: string;
+  imageDescription: string;
+  features: string[];
+}
 
 const TreatmentJourney = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -29,7 +45,9 @@ const TreatmentJourney = () => {
       description: "Following an initial phone call with our patient concierge, your treatment journey begins with a consultation at our modern, comfortable practice in Burton Joyce, Nottinghamshire.",
       icon: MessageCircle,
       image: "consultation",
-      imageDescription: "Patient consultation with dental professional",
+      mediaType: "image" as const,
+      imagePath: "/images/treatment-journey/consultation.jpg",
+      imageDescription: "Patient consultation with dental professional at Pear Tree Dental",
       features: [
         "Meet your Pear Tree dental consultant",
         "Discuss your concerns or the issues that you'd like to address",
@@ -42,7 +60,10 @@ const TreatmentJourney = () => {
       description: "You'll undergo a comprehensive oral health assessment where your dentist will:",
       icon: Stethoscope,
       image: "assessment",
-      imageDescription: "Dental examination and X-ray imaging",
+      mediaType: "video" as const,
+      videoPath: "/images/treatment-journey/assessment.mp4",
+      posterPath: "/images/treatment-journey/assessment-poster.jpg",
+      imageDescription: "Comprehensive dental examination and digital imaging technology",
       features: [
         "Look at the condition and health of your teeth and gums",
         "Take images of your mouth and teeth using the latest imaging technologies",
@@ -55,7 +76,9 @@ const TreatmentJourney = () => {
       description: "Now we understand your concerns and have a 360-degree view of your oral health, we can determine which treatments will be most effective in optimising your oral health and appearance.",
       icon: Clipboard,
       image: "planning",
-      imageDescription: "Treatment planning discussion with patient",
+      mediaType: "image" as const,
+      imagePath: "/images/treatment-journey/planning.jpg",
+      imageDescription: "Treatment planning discussion between dentist and patient",
       features: [
         "Personalised recommendations",
         "Ask any questions you may have",
@@ -68,7 +91,9 @@ const TreatmentJourney = () => {
       description: "We believe that everyone deserves to have healthy, beautiful teeth and offer a range of payment plans to help spread the cost.",
       icon: CreditCard,
       image: "payment",
-      imageDescription: "Payment options and financial planning",
+      mediaType: "image" as const,
+      imagePath: "/images/treatment-journey/payment.jpg",
+      imageDescription: "Payment options and financial planning consultation",
       features: [
         "Transparent pricing",
         "Routine dentistry plans",
@@ -81,7 +106,9 @@ const TreatmentJourney = () => {
       description: "Our experienced and compassionate team are on hand to support you at every stage of your treatment.",
       icon: Heart,
       image: "treatment",
-      imageDescription: "Dental treatment in progress",
+      mediaType: "image" as const,
+      imagePath: "/images/treatment-journey/treatment.jpg",
+      imageDescription: "Professional dental treatment in progress",
       features: [
         "Tips for treatment preparation",
         "Answer any questions you have at any stage",
@@ -267,18 +294,51 @@ const TreatmentJourney = () => {
                     )}
                   </div>
 
-                  {/* Image */}
+                  {/* Image/Video */}
                   <div className={`${isReverse ? 'lg:col-start-1' : 'lg:col-start-2'}`}>
                     <Card className="overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                      <div className="aspect-[4/3] relative bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <div className="text-center px-4">
-                          <h4 className="text-base sm:text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
-                          <p className="text-gray-600 text-xs sm:text-sm">{step.imageDescription}</p>
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent" />
+                      <div className="aspect-[4/3] relative">
+                        {step.mediaType === "video" ? (
+                          <>
+                            <video
+                              className="w-full h-full object-cover"
+                              poster={step.posterPath}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="metadata"
+                              aria-label={step.imageDescription}
+                            >
+                              <source src={step.videoPath} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent pointer-events-none" />
+                          </>
+                        ) : step.imagePath ? (
+                          <>
+                            <Image
+                              src={step.imagePath}
+                              alt={step.imageDescription}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent" />
+                          </>
+                        ) : (
+                          <div className="bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center h-full">
+                            <div className="text-center px-4">
+                              <h4 className="text-base sm:text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
+                              <p className="text-gray-600 text-xs sm:text-sm">{step.imageDescription}</p>
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent" />
+                          </div>
+                        )}
 
-                        {/* Decorative SVG Overlay */}
-                        <div className="absolute inset-0 pointer-events-none opacity-30">
+                        {/* Decorative SVG Overlay for placeholder only */}
+                        {!step.imagePath && step.mediaType !== "video" && (
+                          <div className="absolute inset-0 pointer-events-none opacity-30">
                           <svg
                             width="100%"
                             height="100%"
@@ -293,7 +353,8 @@ const TreatmentJourney = () => {
                               strokeOpacity="0.6"
                             />
                           </svg>
-                        </div>
+                          </div>
+                        )}
                       </div>
                     </Card>
                   </div>

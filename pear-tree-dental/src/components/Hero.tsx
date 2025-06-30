@@ -21,11 +21,11 @@ const Hero = () => {
       <div className="absolute inset-0 opacity-5 hero-bg-pattern" aria-hidden="true" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 lg:pb-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-end">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
           {/* Left Column - Main Content */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-4 sm:space-y-6 flex flex-col justify-start">
             {/* Main Headline - SEO Optimized */}
-            <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-pear-primary leading-tight">
+            <h1 className="heading-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight xl:text-[95px]">
               Expert dental care with a <span className="text-pear-gold">personal touch</span>
             </h1>
 
@@ -35,23 +35,23 @@ const Hero = () => {
             </p>
 
             {/* CTA Buttons - Optimized for performance */}
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6" role="group" aria-label="Primary actions">
+            <div className="flex flex-col gap-4" role="group" aria-label="Primary actions">
               <Button
                 size="lg"
-                className="btn-gold text-white font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2"
-                aria-label="Join our dental membership plan starting at £8.99 per month"
-              >
-                Join Membership Plan
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
+                className="bg-pear-primary text-white hover:bg-pear-primary/90 font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
                 aria-label="Schedule a free dental consultation with our team"
               >
                 <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
                 Book Free Consultation
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-pear-gold border-pear-gold hover:bg-pear-gold hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:ring-offset-2"
+                aria-label="Join our dental membership plan starting at £10.95 per month"
+              >
+                Join Membership Plan
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Button>
             </div>
 
@@ -78,13 +78,13 @@ const Hero = () => {
           <div className="relative mt-8 lg:mt-0 hero-image-container" role="img" aria-label="Dental care showcase">
             {/* Main Hero Image */}
             <div
-              className="relative h-56 sm:h-72 lg:h-80 xl:h-[400px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
               role="img"
               aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
             >
               <Image
-                src="/images/Pear_tree_dental_smile_design.jpg"
-                alt="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care and smile transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
+                src="/images/Image_fx_(27).jpg"
+                alt="Beautiful smile showcasing the quality dental care and transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
                 fill
                 className="object-cover"
                 priority
@@ -120,14 +120,16 @@ const Hero = () => {
                 className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 aria-label="Orthodontics service - Invisalign and ClearCorrect clear aligner treatments"
               >
-                <div className="relative h-full">
+                <div className="relative h-full bg-white">
                   <Image
-                    src="/images/pear_tree_dental_aligners_logos.png"
-                    alt="Invisalign and ClearCorrect orthodontic treatment options - clear aligners for teeth straightening"
+                    src="/images/1.jpg"
+                    alt="Orthodontic treatment options - professional teeth straightening services"
                     fill
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
+                  {/* Pink glass overlay */}
+                  <div className="absolute inset-0 bg-pink-200/30 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
 
@@ -137,14 +139,16 @@ const Hero = () => {
                 className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 aria-label="Teeth whitening service - Boutique Whitening and Enlighten professional treatments"
               >
-                <div className="relative h-full">
+                <div className="relative h-full bg-white">
                   <Image
-                    src="/images/pear_tree_dental_whitening_logos.png"
-                    alt="Boutique Whitening and Enlighten teeth whitening treatment options - professional smile brightening"
+                    src="/images/2.jpg"
+                    alt="Professional teeth whitening services - smile brightening treatments"
                     fill
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
+                  {/* Pink glass overlay */}
+                  <div className="absolute inset-0 bg-pink-200/30 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
             </div>

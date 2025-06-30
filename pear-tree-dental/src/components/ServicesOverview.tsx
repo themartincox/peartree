@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import TestimonialBanner from "@/components/TestimonialBanner";
-import { motion } from "framer-motion";
 import {
   Shield,
   Sparkles,
@@ -31,6 +31,7 @@ interface Service {
   theme: "medical" | "cosmetic";
   treatments: string[];
   href: string;
+  image?: string;
 }
 
 interface ServiceCardProps {
@@ -66,45 +67,41 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
   const isMutedGold = service.theme === "cosmetic";
 
   return (
-    <motion.div
+    <div
       key={service.id}
-      custom={index}
-      variants={cardVariants}
-      whileHover={{
-        rotateY: index === 0 ? -3 : index === 1 ? 0 : 3,
-        rotateX: -2,
-        y: -4,
-        transition: { duration: 0.3, ease: "easeOut" }
-      }}
-      className="h-full"
+      className="h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
       style={{ perspective: 1000 }}
     >
-      <Card
-        className={`group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full ${
-          isTeal ? 'bg-gradient-to-br from-white to-dental-green/5' : 'bg-gradient-to-br from-white to-pear-gold/5'
-        }`}
-      >
-        <CardHeader className="pb-4">
+      <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full relative overflow-hidden">
+        {/* Full Card Background Image */}
+        {service.image && (
+          <div className="absolute inset-0">
+            <Image
+              src={service.image}
+              alt={`${service.title} - Professional dental care at Pear Tree Dental`}
+              fill
+              className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+          </div>
+        )}
+
+        {/* Content overlay */}
+        <div className="relative z-10 h-full flex flex-col">
+          <CardHeader className="pb-4 flex-grow">
           <div className="flex items-center justify-between mb-4">
-            <motion.div
-              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg ${
-                isTeal ? 'bg-gradient-to-br from-dental-green to-soft-blue' : 'bg-gradient-to-br from-pear-gold/70 to-pear-gold'
-              }`}
-              custom={index}
-              variants={iconVariants}
-              whileHover={{
-                rotate: 5,
-                scale: 1.05,
-                transition: { duration: 0.2, ease: "easeOut" }
-              }}
-            >
-              <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-            </motion.div>
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg bg-white/90 backdrop-blur-sm hover:scale-105 hover:rotate-1 transition-all duration-200">
+              <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${
+                isTeal ? 'text-dental-green' : 'text-pear-gold'
+              }`} />
+            </div>
 
             {/* Mobile expand/collapse button */}
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="sm:hidden p-2 rounded-full hover:bg-gray-100 transition-colors"
+              className="sm:hidden p-2 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white transition-colors"
               aria-label={isExpanded ? "Collapse details" : "Expand details"}
             >
               {isExpanded ? (
@@ -116,14 +113,14 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
           </div>
 
           <Link href={service.href}>
-            <CardTitle className="text-lg sm:text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors cursor-pointer hover:underline">
+            <CardTitle className="text-lg sm:text-xl font-semibold text-white group-hover:text-pear-gold transition-colors cursor-pointer hover:underline drop-shadow-lg">
               {service.title}
             </CardTitle>
           </Link>
-          <CardDescription className="text-gray-600 text-sm sm:text-base">
+          <CardDescription className="text-white/90 text-sm sm:text-base drop-shadow-md">
             {service.description}
           </CardDescription>
-        </CardHeader>
+          </CardHeader>
 
         <CardContent>
           <div className="space-y-4 sm:space-y-6">
@@ -131,35 +128,29 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
             <div className={`space-y-2 ${isExpanded ? 'block' : 'hidden sm:block'}`}>
               {service.treatments.map((treatment: string) => (
                 <div key={treatment} className="flex items-center space-x-2">
-                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0" />
-                  <span className="text-xs sm:text-sm text-gray-700">{treatment}</span>
+                  <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
+                  <span className="text-xs sm:text-sm text-white/90 drop-shadow-md">{treatment}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA - Always visible */}
             <Link href={service.href}>
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
+              <div className="hover:scale-105 transition-transform duration-200">
                 <Button
-                  className={`w-full group/btn text-sm ${
-                    isTeal
-                      ? 'bg-gradient-to-r from-dental-green to-soft-blue hover:shadow-lg'
-                      : 'bg-gradient-to-r from-pear-gold/70 to-pear-gold hover:shadow-lg'
-                  } text-white`}
+                  className="w-full group/btn text-sm bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-xl"
                   size="sm"
                 >
                   Learn More
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-all duration-300" />
                 </Button>
-              </motion.div>
+              </div>
             </Link>
           </div>
         </CardContent>
+        </div>
       </Card>
-    </motion.div>
+    </div>
   );
 };
 
@@ -222,7 +213,8 @@ const ServicesContent = () => {
       icon: Shield,
       theme: "medical" as const,
       treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
-      href: "/services/general"
+      href: "/services/general",
+      image: "/images/general-dentistry.jpg"
     },
     {
       id: "cosmetic",
@@ -231,7 +223,8 @@ const ServicesContent = () => {
       icon: Sparkles,
       theme: "cosmetic" as const,
       treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
-      href: "/services/cosmetic"
+      href: "/services/cosmetic",
+      image: "/images/pear_tree_dental_cosmetic_dentistry.jpg"
     },
     {
       id: "restorative",
@@ -240,7 +233,8 @@ const ServicesContent = () => {
       icon: ShieldCheck,
       theme: "medical" as const,
       treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
-      href: "/services/restorative"
+      href: "/services/restorative",
+      image: "/images/restorative-dentistry.jpg"
     },
     {
       id: "implants",
@@ -249,7 +243,8 @@ const ServicesContent = () => {
       icon: Zap,
       theme: "cosmetic" as const,
       treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
-      href: "/services/implants"
+      href: "/services/implants",
+      image: "/images/implant-dentistry.jpg"
     },
     {
       id: "orthodontics",
@@ -258,7 +253,8 @@ const ServicesContent = () => {
       icon: Smile,
       theme: "cosmetic" as const,
       treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
-      href: "/services/orthodontics"
+      href: "/services/orthodontics",
+      image: "/images/pear_tree_dental_orthodontics.jpg"
     },
     {
       id: "emergency",
@@ -267,49 +263,26 @@ const ServicesContent = () => {
       icon: AlertTriangle,
       theme: "medical" as const,
       treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
-      href: "/services/emergency"
+      href: "/services/emergency",
+      image: "/images/emergency-dentistry.jpg"
     }
   ];
 
   return (
     <>
       {/* Section Header */}
-      <motion.div
-        className="text-center mb-12"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <motion.h2
-          className="heading-serif text-4xl sm:text-5xl font-bold text-pear-primary mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+      <div className="text-center mb-12">
+        <h2 className="heading-serif text-4xl sm:text-5xl font-bold text-pear-primary mb-6">
           Comprehensive Dental Care
-        </motion.h2>
-        <motion.p
-          className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
+        </h2>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           From routine check-ups to advanced cosmetic treatments, we provide complete dental care
           using the latest technology and techniques. All treatments available with our membership plans.
-        </motion.p>
-      </motion.div>
+        </p>
+      </div>
 
         {/* Services Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8">
           {/* Top Row: Cosmetic, General, Restorative */}
           {[services[1], services[0], services[2]].map((service: Service, index: number) => (
             <ServiceCard
@@ -331,31 +304,18 @@ const ServicesContent = () => {
               iconVariants={iconVariants}
             />
           ))}
-        </motion.div>
+        </div>
 
         {/* Simple CTA */}
-        <motion.div
-          className="flex justify-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
+        <div className="flex justify-center">
           <Link href="/services/general">
-            <motion.div
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 10px 30px rgba(9, 57, 77, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-            >
+            <div className="hover:scale-105 transition-transform duration-200">
               <Button size="lg" className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white font-semibold">
                 Book Now
               </Button>
-            </motion.div>
+            </div>
           </Link>
-        </motion.div>
+        </div>
 
     </>
   );

@@ -85,15 +85,15 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Main Navigation */}
+      {/* Main Navigation - Full menu when not scrolled */}
       <header
         id="navigation"
         role="banner"
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out bg-white/95 backdrop-blur-lg border-b border-gray-200",
+          "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
-            : "transform translate-y-0 opacity-100"
+            : "transform translate-y-0 opacity-100 bg-white/95 backdrop-blur-lg border-b border-gray-200"
         )}
         aria-label="Main navigation"
       >
@@ -361,84 +361,140 @@ const Navigation = () => {
         </div>
       </header>
 
-      {/* Secondary CTA Bar - Always visible, changes appearance when scrolled */}
-      <div className={cn(
-        "fixed left-0 right-0 transition-all duration-500 ease-in-out",
-        isScrolled
-          ? "top-0 bg-pear-primary shadow-lg z-[60]"
-          : "top-16 sm:top-20 bg-white/95 backdrop-blur-lg shadow-md z-40"
-      )}>
+      {/* Simplified Navigation - Shows on scroll */}
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out",
+          isScrolled
+            ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
+            : "transform -translate-y-full opacity-0 pointer-events-none"
+        )}
+        aria-label="Simplified navigation"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={cn(
-            "flex items-center transition-all duration-500 ease-in-out",
-            isScrolled
-              ? "py-2 sm:py-3 justify-center"
-              : "py-2 sm:py-3 justify-center"
-          )}>
-            {/* Logo - only shows when scrolled, positioned absolutely */}
-            {isScrolled && (
-              <Link href="/" className="absolute left-4 hidden sm:flex items-center">
-                <div className="flex flex-col">
-                  <div className="brand-logo text-lg sm:text-xl text-white">
-                    PEAR<span className="ml-20px">TREE</span>
-                  </div>
-                  <div className="brand-subtitle text-xs text-white/80 mt-4px">
-                    DENTAL
-                  </div>
+          <div className="flex h-16 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center">
+              <div className="flex flex-col">
+                <div className="brand-logo text-lg sm:text-xl text-white">
+                  PEAR<span className="ml-20px">TREE</span>
                 </div>
-              </Link>
-            )}
+                <div className="brand-subtitle text-xs text-white/80 mt-4px">
+                  DENTAL
+                </div>
+              </div>
+            </Link>
 
-            {/* CTAs - Responsive layout for mobile */}
-            <div className={cn(
-              "flex items-center justify-center w-full max-w-full",
-              isScrolled
-                ? "space-x-1 px-2 sm:space-x-2 md:space-x-4 sm:px-4"
-                : "space-x-2 sm:space-x-4"
-            )}>
-              <Link href="/services/general" className="flex-shrink-0">
-                <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all text-xs sm:text-sm",
-                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
-                  isScrolled
-                    ? "bg-white text-pear-primary hover:bg-white/90"
-                    : "bg-gradient-to-r from-dental-green to-soft-blue text-white"
-                )}>
-                  <CalendarDays className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">Book Hygienist</span>
-                  <span className="sm:hidden">Book</span>
+            {/* Centralized CTAs */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+              <Link href="/services/general">
+                <Button
+                  size="sm"
+                  className="bg-white text-pear-primary hover:bg-white/90 font-medium px-4 py-2 h-10"
+                >
+                  <CalendarDays className="w-4 h-4 mr-2" />
+                  Book Free Consultation
                 </Button>
               </Link>
-              <Link href="/membership" className="flex-shrink-0">
-                <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm",
-                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
-                  isScrolled
-                    ? "bg-pear-gold text-white hover:bg-pear-gold/90"
-                    : "btn-gold text-white"
-                )}>
-                  <Star className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">Join Membership</span>
-                  <span className="sm:hidden">Plan</span>
-                </Button>
-              </Link>
-              <Link href="/smile-design" className="flex-shrink-0">
-                <Button size="sm" className={cn(
-                  "shadow-lg hover:shadow-xl transition-all font-semibold text-xs sm:text-sm",
-                  "h-8 sm:h-9 px-1 sm:px-3 whitespace-nowrap min-w-0",
-                  isScrolled
-                    ? "bg-white text-pear-primary hover:bg-white/90"
-                    : "bg-gradient-to-r from-soft-pink to-soft-lavender text-white"
-                )}>
-                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
-                  <span className="hidden md:inline">Smile Design</span>
-                  <span className="md:hidden">Smile</span>
+              <Link href="/membership">
+                <Button
+                  size="sm"
+                  className="bg-pear-gold text-white hover:bg-pear-gold/90 font-semibold px-4 py-2 h-10"
+                >
+                  Membership
                 </Button>
               </Link>
             </div>
+
+            {/* Hamburger Menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+                  aria-label="Open mobile navigation menu"
+                >
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-80 sm:w-96">
+                <div className="flex flex-col space-y-6 mt-6">
+                  <Link href="/" className="flex items-center">
+                    <div className="flex flex-col">
+                      <div className="brand-logo text-lg text-pear-primary">
+                        PEAR<span className="ml-20px">TREE</span>
+                      </div>
+                      <div className="brand-subtitle text-xs text-pear-primary mt-4px">
+                        DENTAL
+                      </div>
+                    </div>
+                  </Link>
+
+                  <div className="flex flex-col space-y-3">
+                    <Link href="/services/general">
+                      <Button className="bg-pear-primary text-white w-full h-12">
+                        <CalendarDays className="w-4 h-4 mr-2" />
+                        Book Free Consultation
+                      </Button>
+                    </Link>
+                    <Link href="/membership">
+                      <Button className="btn-gold text-white w-full h-12 font-semibold">
+                        Membership
+                      </Button>
+                    </Link>
+
+                    {/* Add full navigation menu items */}
+                    <div className="pt-4 border-t border-gray-200">
+                      <nav className="flex flex-col space-y-4">
+                        <div className="space-y-2">
+                          <div className="text-pear-primary font-semibold">Services</div>
+                          <div className="ml-4 space-y-2">
+                            {services.map((service) => (
+                              <Link
+                                key={service.title}
+                                href={service.href}
+                                className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
+                              >
+                                {service.title}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <div className="text-pear-primary font-semibold">About</div>
+                          <div className="ml-4 space-y-2">
+                            {about.map((item) => (
+                              <Link
+                                key={item.title}
+                                href={item.href}
+                                className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
+                              >
+                                {item.title}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+
+                        <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                          New Patients
+                        </Link>
+                        <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                          Contact
+                        </Link>
+                        <Link href="/urgent-dental-pain" className="text-red-600 hover:text-red-700 transition-colors font-semibold">
+                          🚨 Dental Pain?
+                        </Link>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 };
