@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Download, Phone, Mail, Calendar, CreditCard, Building2 } from "lucide-react";
 import Link from "next/link";
 
-export default function MembershipSuccessPage() {
+function MembershipSuccessContent() {
   const searchParams = useSearchParams();
   const [membershipDetails, setMembershipDetails] = useState<any>(null);
 
@@ -224,5 +224,17 @@ export default function MembershipSuccessPage() {
         </div>
       </section>
     </div>
+  );
+}
+
+export default function MembershipSuccessPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-pear-primary"></div>
+      </div>
+    }>
+      <MembershipSuccessContent />
+    </Suspense>
   );
 }
