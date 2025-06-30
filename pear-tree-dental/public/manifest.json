@@ -1,0 +1,16 @@
+{
+  "name": "Postino - AI Marketing & Growth Agency",
+  "short_name": "Postino",
+  "description": "AI-driven marketing and growth agency helping SMEs achieve measurable success",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
