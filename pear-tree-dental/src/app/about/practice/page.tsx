@@ -31,7 +31,7 @@ const facilities = [
   {
     icon: Shield,
     title: "Advanced Sterilization",
-    description: "Hospital-grade sterilization protocols ensuring the highest levels of safety and hygiene for all patients."
+    description: "Hospital-grade sterilisation protocols ensuring the highest levels of safety and hygiene for all patients."
   },
   {
     icon: Sparkles,
@@ -311,15 +311,15 @@ export default function PracticePage() {
             </p>
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-2xl font-bold text-pear-primary mb-2">15+</div>
+                <div className="text-2xl font-bold text-pear-primary mb-2">25+</div>
                 <p className="text-gray-600">Years of Excellence</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-pear-primary mb-2">1000+</div>
+                <div className="text-2xl font-bold text-pear-primary mb-2">20,000+</div>
                 <p className="text-gray-600">Happy Patients</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-pear-primary mb-2">50+</div>
+                <div className="text-2xl font-bold text-pear-primary mb-2">400+</div>
                 <p className="text-gray-600">5-Star Reviews</p>
               </div>
             </div>

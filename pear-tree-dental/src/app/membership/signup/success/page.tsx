@@ -35,23 +35,7 @@ function MembershipSuccessContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
-      {/* Header */}
-      <section className="py-8 bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex flex-col">
-                <div className="brand-logo text-2xl text-pear-primary">
-                  PEAR<span className="ml-20px">TREE</span>
-                </div>
-                <div className="text-sm text-gray-600">DENTAL CENTRE</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white pt-20">
       {/* Success Content */}
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

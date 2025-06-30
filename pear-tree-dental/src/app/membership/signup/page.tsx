@@ -162,6 +162,23 @@ export default function MembershipSignupPage() {
         "Worldwide dental accident & emergency cover"
       ],
       popular: false
+    },
+    family: {
+      name: "FAMILY PLAN",
+      price: "£5.20",
+      period: "/month per child",
+      dailyCost: "Just 17p per day",
+      savings: "FREE with adult plan",
+      color: "purple-600",
+      gradient: "from-purple-600 to-purple-700",
+      features: [
+        "2 Dental check ups a year",
+        "1 Scale & Polish a year",
+        "Worldwide dental accident & emergency cover",
+        "FREE when joining with adult plan",
+        "Children under 18 only"
+      ],
+      popular: false
     }
   };
 
@@ -346,9 +363,9 @@ export default function MembershipSignupPage() {
             <div className="flex items-center space-x-4">
               <div className="flex flex-col">
                 <div className="brand-logo text-2xl text-pear-primary">
-                  PEAR<span className="ml-20px">TREE</span>
+                  PEAR<span className="ml-5">TREE</span>
                 </div>
-                <div className="brand-subtitle text-sm text-pear-primary mt-4px">
+                <div className="brand-subtitle text-sm text-pear-primary mt-1">
                   DENTAL
                 </div>
               </div>
@@ -409,12 +426,100 @@ export default function MembershipSignupPage() {
             {currentStep === 1 && (
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-pear-primary mb-4">Choose Your Plan</CardTitle>
-                  <p className="text-gray-600">Select the membership plan that's right for you</p>
+                  <CardTitle className="text-2xl text-pear-primary mb-4">
+                    {selectedPlan ? 'Confirm Your Plan' : 'Choose Your Plan'}
+                  </CardTitle>
+                  <p className="text-gray-600">
+                    {selectedPlan ? 'Perfect choice! You can also add family members.' : 'Select the membership plan that\'s right for you'}
+                  </p>
+
+                  {/* Security Indicators */}
+                  <div className="flex items-center justify-center space-x-6 mt-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      <Lock className="w-4 h-4 text-green-600" />
+                      <span>Secure Signup</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Shield className="w-4 h-4 text-green-600" />
+                      <span>Step 1 of 4</span>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="p-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {Object.entries(plans).map(([key, plan]) => (
+                  {/* Top Row: Selected Plan + Family Plan */}
+                  {selectedPlan && (
+                    <div className="mb-8">
+                      <h3 className="text-lg font-semibold text-pear-primary mb-4">Your Selection</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Selected Plan */}
+                        <div className={`relative p-6 rounded-xl border-2 border-${plans[selectedPlan as keyof typeof plans].color} bg-gradient-to-br ${plans[selectedPlan as keyof typeof plans].gradient} text-white shadow-xl`}>
+                          <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white">
+                            Selected
+                          </Badge>
+                          <div className="text-center mb-4 text-white">
+                            <h3 className="font-bold text-lg mb-2">{plans[selectedPlan as keyof typeof plans].name}</h3>
+                            <div className="text-3xl font-bold">{plans[selectedPlan as keyof typeof plans].price}</div>
+                            <div className="text-sm opacity-80">{plans[selectedPlan as keyof typeof plans].period}</div>
+                            <div className="text-xs opacity-70 mt-1">{plans[selectedPlan as keyof typeof plans].dailyCost}</div>
+                          </div>
+                          <div className="space-y-2">
+                            {plans[selectedPlan as keyof typeof plans].features.map((feature, index) => (
+                              <div key={index} className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-white" />
+                                <span className="text-sm text-white">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Family Plan */}
+                        <div
+                          onClick={() => setSelectedPlan('family')}
+                          className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
+                            selectedPlan === 'family'
+                              ? 'border-purple-600 bg-gradient-to-br from-purple-600 to-purple-700 text-white shadow-xl'
+                              : 'border-purple-200 hover:border-purple-300 hover:shadow-md bg-purple-50'
+                          }`}
+                        >
+                          <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
+                            Add Family
+                          </Badge>
+                          <div className={`text-center mb-4 ${selectedPlan === 'family' ? 'text-white' : 'text-purple-600'}`}>
+                            <h3 className="font-bold text-lg mb-2">{plans.family.name}</h3>
+                            <div className="text-3xl font-bold">{plans.family.price}</div>
+                            <div className="text-sm opacity-80">{plans.family.period}</div>
+                            <div className="text-xs opacity-70 mt-1">{plans.family.savings}</div>
+                          </div>
+                          <div className="space-y-2">
+                            {plans.family.features.map((feature, index) => (
+                              <div key={index} className="flex items-start space-x-2">
+                                <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
+                                  selectedPlan === 'family' ? 'text-white' : 'text-purple-600'
+                                }`} />
+                                <span className={`text-sm ${
+                                  selectedPlan === 'family' ? 'text-white' : 'text-gray-700'
+                                }`}>
+                                  {feature}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Other Plans */}
+                  <div className={selectedPlan ? 'border-t pt-8' : ''}>
+                    {selectedPlan && (
+                      <h3 className="text-lg font-semibold text-pear-primary mb-4">
+                        Or Choose a Different Plan
+                      </h3>
+                    )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {Object.entries(plans)
+                      .filter(([key]) => key !== selectedPlan && key !== 'family')
+                      .map(([key, plan]) => (
                       <div
                         key={key}
                         onClick={() => setSelectedPlan(key)}
@@ -463,6 +568,7 @@ export default function MembershipSignupPage() {
                       </div>
                     ))}
                   </div>
+                </div>
 
                   <div className="flex justify-end mt-8">
                     <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green/90 text-white">
