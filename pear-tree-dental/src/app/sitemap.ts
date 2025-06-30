@@ -5,7 +5,7 @@ export const dynamic = 'force-static'
 export const revalidate = false
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://peartreedental.co.uk'
+  const baseUrl = 'https://peartree.dental'
   const now = new Date()
   const lastWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
   const lastMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000)
