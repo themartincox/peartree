@@ -1109,7 +1109,7 @@ export default function MembershipSignupPage() {
                           </div>
                         </div>
                         <Button
-                          onClick={() => {
+                          onClick={async () => {
                             const patientInfo = {
                               firstName: formData.firstName,
                               lastName: formData.lastName,
@@ -1123,8 +1123,13 @@ export default function MembershipSignupPage() {
                               isExistingPatient: formData.isExistingPatient,
                               dentistGenderPreference: formData.dentistGenderPreference
                             };
-                            const pdf = generateDirectDebitGuaranteePDF(patientInfo);
-                            downloadPDF(pdf, `DD-Guarantee-${formData.firstName}-${formData.lastName}.pdf`);
+                            try {
+                              const pdf = await generateDirectDebitGuaranteePDF(patientInfo);
+                              downloadPDF(pdf, `DD-Guarantee-${formData.firstName}-${formData.lastName}.pdf`);
+                            } catch (error) {
+                              console.error('Failed to generate PDF:', error);
+                              alert('Failed to generate PDF. Please try again.');
+                            }
                           }}
                           variant="outline"
                           className="w-full"
@@ -1157,7 +1162,7 @@ export default function MembershipSignupPage() {
                           </div>
                         </div>
                         <Button
-                          onClick={() => {
+                          onClick={async () => {
                             const patientInfo = {
                               firstName: formData.firstName,
                               lastName: formData.lastName,
@@ -1171,8 +1176,13 @@ export default function MembershipSignupPage() {
                               isExistingPatient: formData.isExistingPatient,
                               dentistGenderPreference: formData.dentistGenderPreference
                             };
-                            const pdf = generateMembershipTermsPDF(patientInfo);
-                            downloadPDF(pdf, `Terms-Conditions-${formData.firstName}-${formData.lastName}.pdf`);
+                            try {
+                              const pdf = await generateMembershipTermsPDF(patientInfo);
+                              downloadPDF(pdf, `Terms-Conditions-${formData.firstName}-${formData.lastName}.pdf`);
+                            } catch (error) {
+                              console.error('Failed to generate PDF:', error);
+                              alert('Failed to generate PDF. Please try again.');
+                            }
                           }}
                           variant="outline"
                           className="w-full"
