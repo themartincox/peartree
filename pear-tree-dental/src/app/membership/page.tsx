@@ -135,7 +135,7 @@ export default function MembershipPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                  <span className="lg:text-left">Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
