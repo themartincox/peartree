@@ -1,0 +1,467 @@
+# POSTINO.CC - COMPLETE SITEMAP
+# Last Updated: January 2025
+# Use this list to verify all pages are live and working
+
+================================================================================
+MAIN WEBSITE PAGES
+================================================================================
+
+✓ Homepage
+  URL: https://postino.cc/
+  Status: Should show updated hero text "We're Postino. We Deliver:"
+
+✓ About Us
+  URL: https://postino.cc/about
+  Status: Company story, team, values
+
+✓ Contact
+  URL: https://postino.cc/contact
+  Status: Contact form (Netlify Forms integration)
+
+✓ Success Page
+  URL: https://postino.cc/success
+  Status: Form submission thank you page
+
+✓ Pricing
+  URL: https://postino.cc/pricing
+  Status: Revenue-sharing model (£3,500-£12,000 setup + monthly + %)
+
+✓ Resources
+  URL: https://postino.cc/resources
+  Status: NO video/podcast sections (removed)
+
+✓ Blog Index
+  URL: https://postino.cc/blog
+  Status: Lists all 9 blog posts
+
+✓ Case Studies
+  URL: https://postino.cc/case-studies
+  Status: Client success stories
+
+================================================================================
+SERVICE PAGES
+================================================================================
+
+✓ Growth Marketing (Main)
+  URL: https://postino.cc/growth-marketing
+  Status: Core marketing services overview
+
+--- GROWTH MARKETING - INBOUND SERVICES ---
+✓ Inbound Marketing Hub
+  URL: https://postino.cc/growth-marketing/inbound
+  Status: Inbound methodology overview
+
+✓ SEO Services
+  URL: https://postino.cc/growth-marketing/inbound/seo
+  Status: Search engine optimization
+
+✓ Content Strategy & Creation
+  URL: https://postino.cc/growth-marketing/inbound/content-strategy-creation
+  Status: Content marketing services
+
+✓ Email Marketing Automation
+  URL: https://postino.cc/growth-marketing/inbound/email-marketing-automation
+  Status: Email automation systems
+
+✓ Social Media Management
+  URL: https://postino.cc/growth-marketing/inbound/social-media-management
+  Status: Social media strategy & management
+
+--- GROWTH MARKETING - BRANDING SERVICES ---
+✓ Branding Hub
+  URL: https://postino.cc/growth-marketing/branding
+  Status: Brand development overview
+
+✓ Brand Identity Development
+  URL: https://postino.cc/growth-marketing/branding/brand-identity-development
+  Status: Logo, brand guidelines, identity
+
+✓ Collateral Design
+  URL: https://postino.cc/growth-marketing/branding/collateral-design
+  Status: Marketing materials design
+
+✓ Website Design & Development Hub
+  URL: https://postino.cc/growth-marketing/branding/website-design-development
+  Status: Web development overview
+
+✓ Next.js Development
+  URL: https://postino.cc/growth-marketing/branding/website-design-development/nextjs-development
+  Status: React/Next.js web development
+
+✓ Shopify Development
+  URL: https://postino.cc/growth-marketing/branding/website-design-development/shopify-development
+  Status: E-commerce Shopify solutions
+
+✓ WordPress Development
+  URL: https://postino.cc/growth-marketing/branding/website-design-development/wordpress-development
+  Status: WordPress custom development
+
+✓ Headless Commerce
+  URL: https://postino.cc/growth-marketing/branding/website-design-development/headless-commerce
+  Status: Modern headless e-commerce
+
+✓ Conversion Funnels
+  URL: https://postino.cc/growth-marketing/branding/conversion-funnels
+  Status: Sales funnel optimization
+
+--- GROWTH MARKETING - STRATEGY SERVICES ---
+✓ Strategy Hub
+  URL: https://postino.cc/growth-marketing/strategy
+  Status: Marketing strategy overview
+
+✓ Research & Market Analysis
+  URL: https://postino.cc/growth-marketing/strategy/research-market-analysis
+  Status: Market research services
+
+✓ Marketing Planning
+  URL: https://postino.cc/growth-marketing/strategy/marketing-planning
+  Status: Strategic planning services
+
+✓ Analytics & Reporting
+  URL: https://postino.cc/growth-marketing/strategy/analytics-reporting
+  Status: Data analysis & reporting
+
+✓ Conversion Rate Optimization
+  URL: https://postino.cc/growth-marketing/strategy/conversion-rate-optimization
+  Status: CRO services & testing
+
+--- GROWTH MARKETING - AI SEARCH SERVICES ---
+✓ AI Search Hub
+  URL: https://postino.cc/growth-marketing/ai-search
+  Status: AI-powered search optimization
+
+✓ AI Keyword Research
+  URL: https://postino.cc/growth-marketing/ai-search/ai-keyword-research
+  Status: AI-driven keyword analysis
+
+✓ Content Relevance Optimization
+  URL: https://postino.cc/growth-marketing/ai-search/content-relevance-optimization
+  Status: AI content optimization
+
+✓ Predictive SEO Analytics
+  URL: https://postino.cc/growth-marketing/ai-search/predictive-seo-analytics
+  Status: Predictive SEO insights
+
+✓ Organic Visibility Enhancement
+  URL: https://postino.cc/growth-marketing/ai-search/organic-visibility-enhancement
+  Status: AI visibility optimization
+
+================================================================================
+AI AUTOMATION SERVICES
+================================================================================
+
+✓ AI & Automation (Main)
+  URL: https://postino.cc/ai-automation
+  Status: AI automation services overview
+
+--- AI AUTOMATION - PROCESS SERVICES ---
+✓ Process Automation Hub
+  URL: https://postino.cc/ai-automation/process
+  Status: Business process automation overview
+
+✓ Business Process Automation
+  URL: https://postino.cc/ai-automation/process/business-process-automation
+  Status: End-to-end process automation
+
+✓ Workflow Automation
+  URL: https://postino.cc/ai-automation/process/workflow-automation
+  Status: Automated workflow systems
+
+✓ Task Management
+  URL: https://postino.cc/ai-automation/process/task-management
+  Status: Automated task management
+
+✓ System Integration
+  URL: https://postino.cc/ai-automation/process/system-integration
+  Status: System connectivity & integration
+
+✓ Quality Control Systems
+  URL: https://postino.cc/ai-automation/process/quality-control-systems
+  Status: Automated quality assurance
+
+--- AI AUTOMATION - INTELLIGENCE SERVICES ---
+✓ Intelligence Hub
+  URL: https://postino.cc/ai-automation/intelligence
+  Status: AI intelligence services overview
+
+✓ Predictive Analytics
+  URL: https://postino.cc/ai-automation/intelligence/predictive-analytics
+  Status: AI predictive modeling
+
+✓ Customer Segmentation
+  URL: https://postino.cc/ai-automation/intelligence/customer-segmentation
+  Status: AI-driven customer analysis
+
+✓ Personalised Outreach
+  URL: https://postino.cc/ai-automation/intelligence/personalised-outreach
+  Status: AI personalization systems
+
+--- AI AUTOMATION - CUSTOM AI SERVICES ---
+✓ Custom AI Hub
+  URL: https://postino.cc/ai-automation/custom-ai
+  Status: Custom AI solutions overview
+
+✓ Intelligent Chatbots
+  URL: https://postino.cc/ai-automation/custom-ai/intelligent-chatbots
+  Status: AI chatbot development
+
+✓ Automated Lead Routing
+  URL: https://postino.cc/ai-automation/custom-ai/automated-lead-routing
+  Status: AI lead management systems
+
+✓ Predictive AI Models
+  URL: https://postino.cc/ai-automation/custom-ai/predictive-ai-models
+  Status: Custom predictive AI development
+
+================================================================================
+OTHER SERVICE PAGES
+================================================================================
+
+✓ SEO Services (Standalone)
+  URL: https://postino.cc/seo-services
+  Status: Standalone SEO services page
+
+✓ Content Strategy (Standalone)
+  URL: https://postino.cc/content-strategy
+  Status: Standalone content strategy page
+
+✓ AI Automation Hub
+  URL: https://postino.cc/ai-automation-hub
+  Status: AI automation resource hub
+
+✓ Nottingham Marketing Agency
+  URL: https://postino.cc/nottingham-marketing-agency
+  Status: Local Nottingham marketing services
+
+================================================================================
+INDUSTRY PAGES
+================================================================================
+
+✓ Industries Overview
+  URL: https://postino.cc/industries
+  Status: Sticky scroll animation, WhatsApp widget
+
+✓ Dental Practices
+  URL: https://postino.cc/industries/dental-practices
+  Status: Industry-specific solutions
+
+✓ Medical Practices
+  URL: https://postino.cc/industries/medical-practices
+  Status: Healthcare solutions
+
+✓ Wellness & Beauty (STANDALONE)
+  URL: https://postino.cc/wellness-beauty
+  Status: NOT /industries/wellness-beauty
+
+✓ Ecommerce (STANDALONE)
+  URL: https://postino.cc/ecommerce
+  Status: NOT /industries/ecommerce
+
+================================================================================
+LEAD GENERATION PAGES
+================================================================================
+
+✓ Revenue Forecast
+  URL: https://postino.cc/revenue-forecast
+  Status: Revenue projection tool
+
+✓ Website Audit
+  URL: https://postino.cc/website-audit
+  Status: Free website analysis
+
+✓ Growth Consultation
+  URL: https://postino.cc/growth-consultation
+  Status: Strategy session booking
+
+✓ AI Automation Demo
+  URL: https://postino.cc/ai-automation-demo
+  Status: Demo request form
+
+✓ Bingham Local Landing Page
+  URL: https://postino.cc/bingham
+  Status: Local business special with 25% discount
+
+✓ Rushcliffe Local Landing Page
+  URL: https://postino.cc/rushcliffe
+  Status: District-wide business special with 25% discount
+
+================================================================================
+BLOG POSTS (9 TOTAL)
+================================================================================
+
+✓ Blog Post 1
+  URL: https://postino.cc/blog/creating-seamless-b2b-user-experiences-that-convert
+  Date: 20 Jun 2025
+
+✓ Blog Post 2
+  URL: https://postino.cc/blog/mastering-thought-leadership-content-on-linkedin
+  Date: 13 Jun 2025
+
+✓ Blog Post 3
+  URL: https://postino.cc/blog/complete-guide-seo-topic-clusters-content-mapping
+  Date: 6 Jun 2025
+
+✓ Blog Post 4
+  URL: https://postino.cc/blog/zero-click-search-new-seo-reality
+  Date: 30 May 2025
+
+✓ Blog Post 5
+  URL: https://postino.cc/blog/data-driven-storytelling-cutting-through-content-noise
+  Date: 23 May 2025
+
+✓ Blog Post 6
+  URL: https://postino.cc/blog/what-is-total-search-optimization-why-does-it-matter
+  Date: 16 May 2025
+
+✓ Blog Post 7
+  URL: https://postino.cc/blog/ai-marketing-automation-beyond-hype-real-business-impact
+  Date: 9 May 2025
+
+✓ Blog Post 8
+  URL: https://postino.cc/blog/which-platform-should-you-build-your-business-website-on
+  Date: 2 May 2025
+
+✓ Blog Post 9
+  URL: https://postino.cc/blog/why-we-train-you-to-own-your-website-not-depend-on-us-forever
+  Date: 25 Apr 2025
+
+================================================================================
+SEO & TECHNICAL PAGES
+================================================================================
+
+✓ Sitemap
+  URL: https://postino.cc/sitemap.xml
+  Status: Auto-generated, includes all pages and blog posts
+
+✓ Robots.txt
+  URL: https://postino.cc/robots.txt
+  Status: Fixed all PageSpeed Insights errors (209 resolved)
+
+================================================================================
+WHATSAPP WIDGET PAGES
+================================================================================
+
+Pages WITH WhatsApp widget (10-second delay):
+✓ Homepage (/)
+✓ Blog (/blog)
+✓ Pricing (/pricing)
+✓ Resources (/resources)
+✓ Industries (/industries)
+✓ Success (/success)
+
+Pages NEEDING WhatsApp widget (manual addition required):
+⚠ About (/about)
+⚠ Contact (/contact)
+⚠ Growth Marketing (/growth-marketing)
+⚠ AI Automation (/ai-automation)
+
+================================================================================
+CONTACT FORM STATUS
+================================================================================
+
+✓ Contact forms use Netlify Forms (data-netlify="true")
+✓ Forms redirect to /success page after submission
+✓ No API routes (compatible with static deployment)
+✓ Forms will appear in Netlify dashboard after first submission
+
+================================================================================
+RECENT FIXES APPLIED
+================================================================================
+
+✓ Robots.txt: Fixed all 209 PageSpeed Insights errors
+✓ Sitemap: Added force-static export for Netlify
+✓ Contact Form: Converted to Netlify Forms
+✓ Footer Links: Fixed /wellness-beauty and /ecommerce paths
+✓ Hero Text: Updated to "We're Postino. We Deliver:"
+✓ Pricing: Updated to revenue-sharing model
+✓ Resources: Removed video/podcast sections
+
+================================================================================
+DEPLOYMENT CHECKLIST
+================================================================================
+
+Before going live, verify:
+□ All URLs above return 200 status (not 404)
+□ Contact forms submit successfully
+□ WhatsApp widget appears after 10 seconds
+□ Footer links work correctly
+□ Blog posts display properly
+□ Robots.txt accessible at /robots.txt
+□ Sitemap accessible at /sitemap.xml
+
+Total Pages: 76 pages + 9 blog posts = 85 total URLs
+
+BREAKDOWN:
+- Main Website Pages: 8
+- Industry Pages: 5
+- Lead Generation Pages: 6 (includes Bingham & Rushcliffe local pages)
+- Growth Marketing Services: 25 pages (1 main + 24 sub-pages)
+- AI Automation Services: 15 pages (1 main + 14 sub-pages)
+- Other Service Pages: 4 (seo-services, content-strategy, ai-automation-hub, nottingham-marketing-agency)
+- Core Pages: 13 (about, contact, pricing, resources, case-studies, blog, success, etc.)
+- Blog Posts: 9
+
+================================================================================
+PAGE DEPENDENCIES & HIERARCHY
+================================================================================
+
+GROWTH MARKETING HIERARCHY:
+/growth-marketing (main hub)
+├── /growth-marketing/inbound (hub)
+│   ├── /growth-marketing/inbound/seo
+│   ├── /growth-marketing/inbound/content-strategy-creation
+│   ├── /growth-marketing/inbound/email-marketing-automation
+│   └── /growth-marketing/inbound/social-media-management
+├── /growth-marketing/branding (hub)
+│   ├── /growth-marketing/branding/brand-identity-development
+│   ├── /growth-marketing/branding/collateral-design
+│   ├── /growth-marketing/branding/website-design-development (hub)
+│   │   ├── /growth-marketing/branding/website-design-development/nextjs-development
+│   │   ├── /growth-marketing/branding/website-design-development/shopify-development
+│   │   ├── /growth-marketing/branding/website-design-development/wordpress-development
+│   │   └── /growth-marketing/branding/website-design-development/headless-commerce
+│   └── /growth-marketing/branding/conversion-funnels
+├── /growth-marketing/strategy (hub)
+│   ├── /growth-marketing/strategy/research-market-analysis
+│   ├── /growth-marketing/strategy/marketing-planning
+│   ├── /growth-marketing/strategy/analytics-reporting
+│   └── /growth-marketing/strategy/conversion-rate-optimization
+└── /growth-marketing/ai-search (hub)
+    ├── /growth-marketing/ai-search/ai-keyword-research
+    ├── /growth-marketing/ai-search/content-relevance-optimization
+    ├── /growth-marketing/ai-search/predictive-seo-analytics
+    └── /growth-marketing/ai-search/organic-visibility-enhancement
+
+AI AUTOMATION HIERARCHY:
+/ai-automation (main hub)
+├── /ai-automation/process (hub)
+│   ├── /ai-automation/process/business-process-automation
+│   ├── /ai-automation/process/workflow-automation
+│   ├── /ai-automation/process/task-management
+│   ├── /ai-automation/process/system-integration
+│   └── /ai-automation/process/quality-control-systems
+├── /ai-automation/intelligence (hub)
+│   ├── /ai-automation/intelligence/predictive-analytics
+│   ├── /ai-automation/intelligence/customer-segmentation
+│   └── /ai-automation/intelligence/personalised-outreach
+└── /ai-automation/custom-ai (hub)
+    ├── /ai-automation/custom-ai/intelligent-chatbots
+    ├── /ai-automation/custom-ai/automated-lead-routing
+    └── /ai-automation/custom-ai/predictive-ai-models
+
+INDUSTRY DEPENDENCIES:
+/industries (main hub with sticky scroll)
+├── /industries/dental-practices (sub-page)
+├── /industries/medical-practices (sub-page)
+├── /wellness-beauty (standalone - NOT under /industries/)
+└── /ecommerce (standalone - NOT under /industries/)
+
+BLOG DEPENDENCIES:
+/blog (main index)
+└── /blog/[slug] (individual posts - 9 total)
+
+FORM DEPENDENCIES:
+All contact forms → /success (thank you page)
+Contact forms use Netlify Forms (data-netlify="true")
+
+================================================================================
