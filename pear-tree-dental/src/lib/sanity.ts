@@ -1,3 +1,5 @@
+import type { SanityImage, PortableTextBlock } from './sanity-client'
+
 export interface BlogPost {
   _id: string;
   title: string;
@@ -5,16 +7,16 @@ export interface BlogPost {
     current: string;
   };
   excerpt?: string;
-  content: any;
+  content: PortableTextBlock[];
   publishedAt: string;
   author?: {
     name: string;
-    image?: any;
+    image?: SanityImage;
   };
   categories?: Array<{
     title: string;
   }>;
-  mainImage?: any;
+  mainImage?: SanityImage;
   seoTitle?: string;
   seoDescription?: string;
 }

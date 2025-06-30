@@ -19,22 +19,22 @@ export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob 
 
   // Header
   doc.setFontSize(20);
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('DIRECT DEBIT GUARANTEE', pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 20;
   doc.setFontSize(12);
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   doc.text('Pear Tree Dental Centre', pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 25;
 
   // Patient Information
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('Patient Information:', margin, yPosition);
   yPosition += 10;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   doc.text(`Name: ${patientInfo.firstName} ${patientInfo.lastName}`, margin, yPosition);
   yPosition += 8;
   doc.text(`Membership Plan: ${patientInfo.planName} - ${patientInfo.planPrice}/month`, margin, yPosition);
@@ -52,7 +52,7 @@ export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob 
   yPosition += 15;
 
   // Originator ID
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text("Originator's Identification Number:", margin, yPosition);
   yPosition += 8;
   doc.setFontSize(16);
@@ -61,29 +61,29 @@ export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob 
 
   // Instructions
   doc.setFontSize(12);
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('Instructions to your Bank or Building Society', margin, yPosition);
   yPosition += 10;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   const instructionsText = `Please pay Membership Plans Limited Direct Debits from account detailed in this instruction subject to the safeguards assumed by the Direct Debit Guarantee. I understand that this instruction may remain with Membership Plans Limited and, if so, details will be passed electronically to my Bank/Building Society.`;
   const instructionsLines = doc.splitTextToSize(instructionsText, maxWidth);
   doc.text(instructionsLines, margin, yPosition);
   yPosition += instructionsLines.length * 6 + 10;
 
   doc.setFontSize(10);
-  doc.setFont(undefined, 'italic');
+  doc.setFont("helvetica", "italic");
   doc.text('Banks and Building Societies may not accept Direct Debit Instructions for some types of account.', margin, yPosition);
   yPosition += 15;
 
   // DD15 Guarantee
   doc.setFontSize(14);
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('DD15 The Direct Debit Guarantee', margin, yPosition);
   yPosition += 15;
 
   doc.setFontSize(11);
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
 
   const guaranteePoints = [
     'This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.',
@@ -102,11 +102,11 @@ export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob 
 
   // Company Information
   yPosition += 10;
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('Company Information:', margin, yPosition);
   yPosition += 8;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   doc.text('Membership Plans Ltd trading as Lloyd & Whyte Flexiplan is registered in England No 06322047.', margin, yPosition);
   yPosition += 6;
   doc.text('Registered Office: Affinity House, Bindon Road, Taunton, TA2 6AA.', margin, yPosition);
@@ -128,22 +128,22 @@ export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
 
   // Header
   doc.setFontSize(20);
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('MEMBERSHIP TERMS AND CONDITIONS', pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 15;
   doc.setFontSize(12);
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   doc.text('Pear Tree Dental Centre', pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 25;
 
   // Patient Information
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('Patient Information:', margin, yPosition);
   yPosition += 10;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   doc.text(`Name: ${patientInfo.firstName} ${patientInfo.lastName}`, margin, yPosition);
   yPosition += 8;
   doc.text(`Membership Plan: ${patientInfo.planName} - ${patientInfo.planPrice}/month`, margin, yPosition);
@@ -161,11 +161,11 @@ export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
 
   // Terms content
   doc.setFontSize(12);
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('1. Fees payable by the Patient', margin, yPosition);
   yPosition += 10;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   let termsText = `1.1 The Patient will pay the Practice a Monthly Fee of ${patientInfo.planPrice} for the Services listed in 2.2 below.`;
   let lines = doc.splitTextToSize(termsText, maxWidth);
   doc.text(lines, margin, yPosition);
@@ -182,26 +182,26 @@ export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
   yPosition += lines.length * 6 + 15;
 
   // Section 2
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('2. Services provided by the Practice', margin, yPosition);
   yPosition += 10;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   termsText = '2.1 In consideration of the Fees outlined in 1.1 above, the Practice agrees to provide the Services described in 2.2 below either through the Dentist or by a suitably qualified partner, member of staff, deputy or locum.';
   lines = doc.splitTextToSize(termsText, maxWidth);
   doc.text(lines, margin, yPosition);
   yPosition += lines.length * 6 + 10;
 
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text('2.2 The services to be provided are:', margin, yPosition);
   yPosition += 10;
 
   // Plan-specific services
-  doc.setFont(undefined, 'bold');
+  doc.setFont("helvetica", "bold");
   doc.text(`${patientInfo.planName} - ${patientInfo.planPrice} per month`, margin, yPosition);
   yPosition += 8;
 
-  doc.setFont(undefined, 'normal');
+  doc.setFont("helvetica", "normal");
   const planServices: { [key: string]: string[] } = {
     'PLAN A': ['1 Exam', '1 Scale & Polish'],
     'PLAN B': ['2 Exams', '1 Scale & Polish'],
@@ -236,9 +236,9 @@ export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
     }
 
     if (term.startsWith('3.')) {
-      doc.setFont(undefined, 'bold');
+      doc.setFont("helvetica", "bold");
     } else {
-      doc.setFont(undefined, 'normal');
+      doc.setFont("helvetica", "normal");
     }
 
     lines = doc.splitTextToSize(term, maxWidth);
@@ -269,11 +269,11 @@ export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
   ];
 
   additionalSections.forEach((section, index) => {
-    doc.setFont(undefined, 'bold');
+    doc.setFont("helvetica", "bold");
     doc.text(section, margin, yPosition);
     yPosition += 10;
 
-    doc.setFont(undefined, 'normal');
+    doc.setFont("helvetica", "normal");
     doc.text(`[Full terms available at practice - Section ${index + 4} details]`, margin, yPosition);
     yPosition += 15;
   });

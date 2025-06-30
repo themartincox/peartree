@@ -9,12 +9,6 @@ interface MetricData {
   delta?: number
 }
 
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-  }
-}
-
 // Send metric data to Google Analytics via GTM
 function sendToGoogleAnalytics(metric: MetricData) {
   const { name, value, id } = metric
@@ -74,7 +68,6 @@ export async function initPerformanceMonitoring() {
     // Check if the functions exist before calling them
     if (webVitals.onFCP) webVitals.onFCP(sendToGoogleAnalytics);
     if (webVitals.onLCP) webVitals.onLCP(sendToGoogleAnalytics);
-    if (webVitals.onFID) webVitals.onFID(sendToGoogleAnalytics);
     if (webVitals.onCLS) webVitals.onCLS(sendToGoogleAnalytics);
     if (webVitals.onTTFB) webVitals.onTTFB(sendToGoogleAnalytics);
     if (webVitals.onINP) webVitals.onINP(sendToGoogleAnalytics);
@@ -113,7 +106,7 @@ export async function getPerformanceMetrics() {
         firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
 
         // Network info
-        connectionType: (navigator as any).connection?.effectiveType || 'unknown',
+        connectionType: navigator.connection?.effectiveType || 'unknown',
 
         // Resource timing summary
         totalResources: performance.getEntriesByType('resource').length,

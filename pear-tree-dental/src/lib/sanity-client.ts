@@ -1,18 +1,74 @@
-import { createClient } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
+// Define proper types for Sanity image objects
+interface SanityImageAsset {
+  _id: string
+  url: string
+  metadata?: {
+    dimensions?: {
+      width: number
+      height: number
+    }
+  }
+}
 
-export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: '2024-01-01',
-  useCdn: process.env.NODE_ENV === 'production',
-  token: process.env.SANITY_API_TOKEN, // Only needed for mutations
-})
+export interface SanityImage {
+  _type: 'image'
+  asset: SanityImageAsset | { _ref: string; _type: 'reference' }
+  alt?: string
+  caption?: string
+}
 
-const builder = imageUrlBuilder(client)
+// Define type for Portable Text content
+export interface PortableTextBlock {
+  _key: string
+  _type: string
+  children?: Array<{
+    _key: string
+    _type: string
+    text: string
+    marks?: string[]
+  }>
+  markDefs?: Array<{
+    _key: string
+    _type: string
+    [key: string]: unknown
+  }>
+  style?: string
+  level?: number
+}
 
-export function urlFor(source: any) {
-  return builder.image(source)
+// Conditional client creation - handles missing Sanity dependencies
+let client: unknown = null;
+let builder: unknown = null;
+
+try {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { createClient } = require('next-sanity');
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const imageUrlBuilder = require('@sanity/image-url');
+
+  client = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+    apiVersion: '2024-01-01',
+    useCdn: process.env.NODE_ENV === 'production',
+    token: process.env.SANITY_API_TOKEN,
+  });
+
+  builder = imageUrlBuilder(client);
+} catch (error) {
+  console.warn('Sanity not configured - using fallback functions');
+}
+
+export function urlFor(source: SanityImage | SanityImageAsset | { asset: SanityImageAsset }) {
+  if (!builder) {
+    // Return a fallback URL builder
+    return {
+      url: () => '',
+      width: () => ({ url: () => '' }),
+      height: () => ({ url: () => '' }),
+    };
+  }
+  return (builder as any).image(source);
 }
 
 // Blog post type
@@ -25,14 +81,14 @@ export interface BlogPost {
     current: string
   }
   excerpt: string
-  content: any[] // Portable Text
+  content: PortableTextBlock[]
   author: {
     name: string
-    image?: any
+    image?: SanityImage
   }
   category: string
   tags: string[]
-  featuredImage?: any
+  featuredImage?: SanityImage
   publishedAt: string
   status: 'draft' | 'published' | 'scheduled'
   featured: boolean
@@ -60,7 +116,7 @@ export interface CaseStudy {
   testimonial: string
   clientName: string
   clientRole: string
-  image?: any
+  image?: SanityImage
   featured: boolean
 }
 
@@ -82,7 +138,6 @@ export interface HomepageContent {
 
 // GROQ queries
 export const queries = {
-  // Blog posts
   allBlogPosts: `*[_type == "blogPost"] | order(publishedAt desc) {
     _id,
     _createdAt,
@@ -134,7 +189,6 @@ export const queries = {
     seo
   }`,
 
-  // Case studies
   allCaseStudies: `*[_type == "caseStudy"] | order(_createdAt desc) {
     _id,
     _createdAt,
@@ -151,7 +205,6 @@ export const queries = {
     featured
   }`,
 
-  // Homepage content
   homepageContent: `*[_type == "homepageContent"][0] {
     _id,
     heroTitle,
@@ -165,21 +218,46 @@ export const queries = {
 
 // Helper functions for data fetching
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  return client.fetch(queries.allBlogPosts)
+  if (!client) return [];
+  try {
+    return (client as any).fetch(queries.allBlogPosts);
+  } catch {
+    return [];
+  }
 }
 
 export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
-  return client.fetch(queries.publishedBlogPosts)
+  if (!client) return [];
+  try {
+    return (client as any).fetch(queries.publishedBlogPosts);
+  } catch {
+    return [];
+  }
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  return client.fetch(queries.blogPostBySlug, { slug })
+  if (!client) return null;
+  try {
+    return (client as any).fetch(queries.blogPostBySlug, { slug });
+  } catch {
+    return null;
+  }
 }
 
 export async function getCaseStudies(): Promise<CaseStudy[]> {
-  return client.fetch(queries.allCaseStudies)
+  if (!client) return [];
+  try {
+    return (client as any).fetch(queries.allCaseStudies);
+  } catch {
+    return [];
+  }
 }
 
 export async function getHomepageContent(): Promise<HomepageContent | null> {
-  return client.fetch(queries.homepageContent)
+  if (!client) return null;
+  try {
+    return (client as any).fetch(queries.homepageContent);
+  } catch {
+    return null;
+  }
 }
