@@ -98,6 +98,24 @@ const nextConfig = {
 
   // Output optimization
   output: 'standalone',
+
+  // Exclude problematic routes from build
+  async redirects() {
+    return [
+      {
+        source: '/membership/signup/direct-debit',
+        destination: '/membership/signup',
+        permanent: false,
+      },
+      {
+        source: '/staff-leaderboard',
+        destination: '/',
+        permanent: false,
+      },
+    ]
+  },
+
+
 };
 
 module.exports = nextConfig;
