@@ -138,11 +138,14 @@ const MembershipHighlight = () => {
           </p>
         </div>
 
-        {/* Main Membership Card - Optimized structure */}
-        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl border-2 border-pear-primary/10 mb-8 sm:mb-12">
+        {/* Main Membership Card - Enhanced design */}
+        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl bg-gradient-to-br from-white via-blue-50/30 to-slate-50 border-2 border-pear-primary/20 mb-8 sm:mb-12 backdrop-blur-sm">
           <div className="grid grid-cols-1 lg:grid-cols-4">
             {/* Tabs Sidebar */}
-            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6 lg:p-8">
+            <div className="lg:col-span-1 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-pear-gold/20 rounded-full translate-y-12 -translate-x-12" />
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Choose Your Plan</h3>
 
               <div className="space-y-3">

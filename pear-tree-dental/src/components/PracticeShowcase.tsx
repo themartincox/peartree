@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import Image from "next/image";
 import {
   Camera,
   Play,
@@ -18,22 +19,28 @@ const PracticeShowcase = () => {
     <section className="py-12 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Main Practice Showcase */}
-            <Card className="relative overflow-hidden bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white h-[440px]">
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                <div className="text-center">
-                  <h3 className="text-xl font-bold text-gray-700 mb-2">PRACTICE IMAGE</h3>
-                  <p className="text-gray-600 text-sm">Modern dental practice interior</p>
-                </div>
+            <Card className="relative overflow-hidden bg-white shadow-2xl h-[500px] group">
+              {/* Practice Image Background */}
+              <div className="absolute inset-0">
+                <Image
+                  src="/images/pear_tree_dental_cosmetic_dentistry.jpg"
+                  alt="Modern dental practice interior at Pear Tree Dental"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-pear-primary/90 via-pear-primary/70 to-transparent" />
               </div>
 
-              <div className="relative p-8 h-full flex flex-col justify-start bg-gradient-to-br from-pear-primary/95 to-pear-primary/90">
+              {/* Content Overlay */}
+              <div className="relative p-8 h-full flex flex-col justify-between text-white z-10">
                 <div>
-                  <h3 className="text-2xl font-semibold mb-4">
+                  <h3 className="text-3xl font-bold mb-4 leading-tight">
                     Experience Excellence in Every Detail
                   </h3>
-                  <p className="text-white/90 mb-6">
+                  <p className="text-white/95 mb-6 text-lg leading-relaxed">
                     Our practice combines cutting-edge technology with luxurious comfort.
                     From digital X-rays to relaxing treatment rooms, every aspect is designed
                     with your experience in mind.
@@ -48,21 +55,16 @@ const PracticeShowcase = () => {
                   </div>
                 </div>
 
-                <div className="flex space-x-4 mt-auto">
-                  <Button variant="secondary" className="bg-white text-pear-primary hover:bg-white/90">
+                <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                  <Button variant="secondary" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
                     <Camera className="w-4 h-4 mr-2" />
                     Practice Gallery
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary font-semibold">
                     <Play className="w-4 h-4 mr-2" />
                     Virtual Tour
                   </Button>
                 </div>
-
-                {/* Decorative elements */}
-                <div className="absolute top-6 right-6 w-20 h-20 bg-white/10 rounded-full" />
-                <div className="absolute bottom-6 right-8 w-12 h-12 bg-pear-gold/30 rounded-full" />
-                <div className="absolute top-1/2 -right-8 w-16 h-16 bg-white/5 rounded-full" />
               </div>
             </Card>
 

@@ -13,12 +13,16 @@ const Hero = () => {
 
   return (
     <section
-      className="relative min-h-screen from-pear-background via-white to-pear-background overflow-hidden bg-[#ffffff]"
+      className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
       aria-label="Welcome to Pear Tree Dental"
       role="main"
     >
       {/* Background Pattern - Pure CSS for better performance */}
       <div className="absolute inset-0 opacity-5 hero-bg-pattern" aria-hidden="true" />
+
+      {/* Decorative Background Elements */}
+      <div className="absolute top-20 right-10 w-72 h-72 bg-pear-primary/5 rounded-full blur-3xl" aria-hidden="true" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-pear-gold/5 rounded-full blur-3xl" aria-hidden="true" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-6 sm:pb-8 lg:pb-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
