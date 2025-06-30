@@ -25,6 +25,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://peartreedental.co.uk'),
   title: {
     template: "%s | Pear Tree Dental - Premium Dentistry in Burton Joyce",
     default: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire"
