@@ -106,7 +106,7 @@ export async function getPerformanceMetrics() {
         firstContentfulPaint: paint.find(p => p.name === 'first-contentful-paint')?.startTime || 0,
 
         // Network info
-        connectionType: navigator.connection?.effectiveType || 'unknown',
+        connectionType: (navigator as Navigator).connection?.effectiveType || 'unknown',
 
         // Resource timing summary
         totalResources: performance.getEntriesByType('resource').length,

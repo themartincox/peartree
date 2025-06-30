@@ -37,24 +37,35 @@ export interface PortableTextBlock {
 }
 
 // Conditional client creation - handles missing Sanity dependencies
-let client: unknown = null;
-let builder: unknown = null;
+interface SanityClient {
+  fetch: (query: string, params?: Record<string, unknown>) => Promise<unknown>;
+}
+
+interface ImageUrlBuilder {
+  image: (source: SanityImage | SanityImageAsset | { asset: SanityImageAsset }) => {
+    url: () => string;
+    width: (width: number) => { url: () => string };
+    height: (height: number) => { url: () => string };
+  };
+}
+
+let client: SanityClient | null = null;
+let builder: ImageUrlBuilder | null = null;
 
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const { createClient } = require('next-sanity');
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
-  const imageUrlBuilder = require('@sanity/image-url');
+  // Use dynamic require with proper typing
+  const nextSanity = require('next-sanity') as { createClient: (config: unknown) => SanityClient };
+  const imageUrlBuilderLib = require('@sanity/image-url') as (client: SanityClient) => ImageUrlBuilder;
 
-  client = createClient({
-    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  client = nextSanity.createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || '',
     apiVersion: '2024-01-01',
     useCdn: process.env.NODE_ENV === 'production',
     token: process.env.SANITY_API_TOKEN,
   });
 
-  builder = imageUrlBuilder(client);
+  builder = imageUrlBuilderLib(client);
 } catch (error) {
   console.warn('Sanity not configured - using fallback functions');
 }
@@ -68,7 +79,7 @@ export function urlFor(source: SanityImage | SanityImageAsset | { asset: SanityI
       height: () => ({ url: () => '' }),
     };
   }
-  return (builder as any).image(source);
+  return builder.image(source);
 }
 
 // Blog post type
@@ -220,7 +231,7 @@ export const queries = {
 export async function getBlogPosts(): Promise<BlogPost[]> {
   if (!client) return [];
   try {
-    return (client as any).fetch(queries.allBlogPosts);
+    return client.fetch(queries.allBlogPosts) as Promise<BlogPost[]>;
   } catch {
     return [];
   }
@@ -229,7 +240,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
   if (!client) return [];
   try {
-    return (client as any).fetch(queries.publishedBlogPosts);
+    return client.fetch(queries.publishedBlogPosts) as Promise<BlogPost[]>;
   } catch {
     return [];
   }
@@ -238,7 +249,7 @@ export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   if (!client) return null;
   try {
-    return (client as any).fetch(queries.blogPostBySlug, { slug });
+    return client.fetch(queries.blogPostBySlug, { slug }) as Promise<BlogPost | null>;
   } catch {
     return null;
   }
@@ -247,7 +258,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 export async function getCaseStudies(): Promise<CaseStudy[]> {
   if (!client) return [];
   try {
-    return (client as any).fetch(queries.allCaseStudies);
+    return client.fetch(queries.allCaseStudies) as Promise<CaseStudy[]>;
   } catch {
     return [];
   }
@@ -256,7 +267,7 @@ export async function getCaseStudies(): Promise<CaseStudy[]> {
 export async function getHomepageContent(): Promise<HomepageContent | null> {
   if (!client) return null;
   try {
-    return (client as any).fetch(queries.homepageContent);
+    return client.fetch(queries.homepageContent) as Promise<HomepageContent | null>;
   } catch {
     return null;
   }

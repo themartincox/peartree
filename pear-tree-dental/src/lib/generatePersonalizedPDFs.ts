@@ -1,5 +1,3 @@
-import jsPDF from 'jspdf';
-
 interface PatientInfo {
   firstName: string;
   lastName: string;
@@ -10,7 +8,12 @@ interface PatientInfo {
   dentistGenderPreference?: string;
 }
 
-export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob => {
+export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo): Promise<Blob> => {
+  if (typeof window === 'undefined') {
+    throw new Error('PDF generation only available on client side');
+  }
+
+  const { default: jsPDF } = await import('jspdf');
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.width;
   const margin = 20;
@@ -119,7 +122,12 @@ export const generateDirectDebitGuaranteePDF = (patientInfo: PatientInfo): Blob 
   return doc.output('blob');
 };
 
-export const generateMembershipTermsPDF = (patientInfo: PatientInfo): Blob => {
+export const generateMembershipTermsPDF = async (patientInfo: PatientInfo): Promise<Blob> => {
+  if (typeof window === 'undefined') {
+    throw new Error('PDF generation only available on client side');
+  }
+
+  const { default: jsPDF } = await import('jspdf');
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.width;
   const margin = 20;
