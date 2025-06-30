@@ -99,19 +99,20 @@ const nextConfig = {
   // Output optimization
   output: 'standalone',
 
-  // Exclude problematic routes from build
+  // Exclude problematic routes from build - TEMPORARILY DISABLED for redirect loop debugging
   async redirects() {
     return [
-      {
-        source: '/membership/signup/direct-debit',
-        destination: '/membership/signup',
-        permanent: false,
-      },
-      {
-        source: '/staff-leaderboard',
-        destination: '/',
-        permanent: false,
-      },
+      // Temporarily commented out to fix redirect loop
+      // {
+      //   source: '/membership/signup/direct-debit',
+      //   destination: '/membership/signup',
+      //   permanent: false,
+      // },
+      // {
+      //   source: '/staff-leaderboard',
+      //   destination: '/',
+      //   permanent: false,
+      // },
     ]
   },
 
