@@ -41,6 +41,33 @@ export async function generateMetadata(): Promise<Metadata> {
       'x-ab-variant': variant,
     },
   };
+import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
+
+// Generate metadata based on A/B test variant
+export async function generateMetadata(): Promise<Metadata> {
+  const variant = await getVariant();
+  const variantMetadata = getVariantMetadata(variant);
+
+  return {
+    title: variantMetadata.title,
+    description: variantMetadata.description,
+    // Include variant info for debugging (invisible in production)
+    other: {
+      'x-ab-variant': variant,
+    },
+  };
+export async function generateMetadata(): Promise<Metadata> {
+  const variant = await getVariant();
+  const variantMetadata = getVariantMetadata(variant);
+
+  return {
+    metadataBase: new URL("https://peartree.dental"),
+    title: variantMetadata.title,
+    description: variantMetadata.description,
+    other: {
+      'x-ab-variant': variant,
+    },
+  };
 }
 
 export default async function HomePage() {
