@@ -390,7 +390,7 @@ const Navigation = () => {
               <Link href="/services/general">
                 <Button
                   size="sm"
-                  className="bg-white text-pear-primary hover:bg-white/90 font-medium px-4 py-2 h-10"
+                  className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
                 >
                   <CalendarDays className="w-4 h-4 mr-2" />
                   Book Free Consultation
@@ -399,7 +399,7 @@ const Navigation = () => {
               <Link href="/membership">
                 <Button
                   size="sm"
-                  className="bg-pear-gold text-white hover:bg-pear-gold/90 font-semibold px-4 py-2 h-10"
+                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-4 py-2 h-10"
                 >
                   Membership
                 </Button>
@@ -433,13 +433,13 @@ const Navigation = () => {
 
                   <div className="flex flex-col space-y-3">
                     <Link href="/services/general">
-                      <Button className="bg-pear-primary text-white w-full h-12">
+                      <Button className="bg-soft-pink text-pear-primary w-full h-12">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         Book Free Consultation
                       </Button>
                     </Link>
                     <Link href="/membership">
-                      <Button className="btn-gold text-white w-full h-12 font-semibold">
+                      <Button className="bg-white text-pear-gold w-full h-12 font-semibold">
                         Membership
                       </Button>
                     </Link>

@@ -15,18 +15,18 @@ export default function MedicalOrganizationSchema({
     "@type": ["DentistOffice", "MedicalOrganization", "LocalBusiness"],
     "name": "Pear Tree Dental Centre",
     "alternateName": "Pear Tree Dental",
-    "url": "https://peartreedental.co.uk",
-    "logo": "https://peartreedental.co.uk/logo.png",
+    "url": "https://peartree.dental",
+    "logo": "https://peartree.dental/logo.png",
     "image": [
-      "https://peartreedental.co.uk/images/practice-exterior.jpg",
-      "https://peartreedental.co.uk/images/practice-interior.jpg",
-      "https://peartreedental.co.uk/images/dental-team.jpg"
+      "https://peartree.dental/images/practice-exterior.jpg",
+      "https://peartree.dental/images/practice-interior.jpg",
+      "https://peartree.dental/images/dental-team.jpg"
     ],
     "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £10.95/month.",
 
     // Contact Information
     "telephone": "+441159312520",
-    "email": "peartreedentalcentre@outlook.com",
+    "email": "hello@peartree.dental",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+441159312520",
@@ -160,7 +160,7 @@ export default function MedicalOrganizationSchema({
     // Payment Options
     "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
     "currenciesAccepted": "GBP",
-    "priceRange": "££",
+    "priceRange": "£",
 
     // Areas Served
     "areaServed": [

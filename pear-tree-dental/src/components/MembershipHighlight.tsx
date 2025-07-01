@@ -28,7 +28,7 @@ const membershipPlans = {
     price: "£10.95",
     period: "/month",
     dailyCost: "Just 36p per day",
-    savings: "£116",
+    savings: "116",
     description: "Our most affordable plan with essential dental care and comprehensive coverage.",
     keyFeatures: [
       "1 Dental check up a year",
@@ -44,13 +44,13 @@ const membershipPlans = {
     price: "£5.20",
     period: "/month",
     dailyCost: "Just 17p per day",
-    savings: "£180",
+    savings: "180",
     description: "Specialized dental care for children under 18. FREE when joining with an adult plan.",
     keyFeatures: [
       "2 Dental check ups a year",
       "Fluoride treatments included",
       "Fissure sealants when required",
-      "FREE when parent has adult plan"
+      "Worldwide Emergency Dental Cover"
     ],
     icon: Baby,
     color: "soft-pink",
@@ -61,11 +61,11 @@ const membershipPlans = {
     price: "£49.50",
     period: "/month",
     dailyCost: "Just £1.65 per day",
-    savings: "£400+",
+    savings: "400+",
     description: "Complete coverage for 2 adults and up to 3 children with significant family savings.",
     keyFeatures: [
       "2 Adults + up to 3 children covered",
-      "All adults get Plan C benefits",
+      "All adults get Plan D benefits",
       "Children under 18 included free",
       "Simplified billing for whole family"
     ],
@@ -193,8 +193,7 @@ const MembershipHighlight = () => {
                         <span className="text-3xl sm:text-4xl font-bold text-pear-primary">{currentPlan.price}</span>
                         <span className="text-gray-500 text-sm sm:text-base">{currentPlan.period}</span>
                         {currentPlan.popular && (
-                          <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">
-                            Most Popular
+                          <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">Perfect for busy families
                           </Badge>
                         )}
                       </div>
@@ -222,11 +221,11 @@ const MembershipHighlight = () => {
 
                 {/* Savings Highlight */}
                 <div className="bg-gradient-to-r from-pear-background to-pear-background/50 rounded-2xl p-6 border border-pear-primary/10">
-                  <div className="flex items-center justify-between">
-                    <div>
+                  <div className="flex items-center justify-between border">
+                    <div className="items-center">
                       <h4 className="font-semibold text-pear-primary mb-2">Annual Savings</h4>
                       <p className="text-gray-600 text-sm">
-                        Save up to £{currentPlan.savings} per year compared to pay-as-you-go treatments
+                        Save up to £400+ per year compared to pay-as-you-go treatments
                       </p>
                     </div>
                     <div className="text-right">

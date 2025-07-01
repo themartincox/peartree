@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Camera,
   Play,
@@ -132,13 +133,15 @@ const PracticeShowcase = () => {
 
               {/* Practice Features */}
               <div className="grid grid-cols-2 gap-4">
-                <Card className="p-4 text-center border-soft-blue/20">
-                  <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
-                    <Users className="w-6 h-6 text-soft-blue" />
-                  </div>
-                  <h5 className="font-semibold text-pear-primary text-sm">Expert Team</h5>
-                  <p className="text-xs text-gray-600 mt-1">Highly qualified dentists</p>
-                </Card>
+                <Link href="/about/team">
+                  <Card className="p-4 text-center border-soft-blue/20 hover:border-soft-blue/40 transition-colors cursor-pointer">
+                    <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <Users className="w-6 h-6 text-soft-blue" />
+                    </div>
+                    <h5 className="font-semibold text-pear-primary text-sm">Expert Team</h5>
+                    <p className="text-xs text-gray-600 mt-1">Highly qualified dentists</p>
+                  </Card>
+                </Link>
 
                 <Card className="p-4 text-center border-soft-pink/20">
                   <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center mx-auto mb-3">

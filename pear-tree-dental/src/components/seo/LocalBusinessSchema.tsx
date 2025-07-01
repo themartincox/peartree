@@ -11,9 +11,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "name": "Pear Tree Dental Centre",
     "alternateName": "Pear Tree Dental",
     "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general, cosmetic, and restorative dentistry. Membership plans available.",
-    "url": "https://peartreedental.co.uk",
+    "url": "https://peartree.dental",
     "telephone": "+441159312520",
-    "email": "peartreedentalcentre@outlook.com",
+    "email": "hello@peartree.dental",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "22 Nottingham Road",
@@ -33,9 +33,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     ],
     "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
     "currenciesAccepted": "GBP",
-    "priceRange": "££",
-    "image": "https://peartreedental.co.uk/images/practice-exterior.jpg",
-    "logo": "https://peartreedental.co.uk/logo.png",
+    "priceRange": "£",
+    "image": "https://peartree.dental/images/practice-exterior.jpg",
+    "logo": "https://peartree.dental/logo.png",
     "sameAs": [
       "https://www.facebook.com/peartreedentalcentre",
       "https://www.instagram.com/peartreedentalcentre"
@@ -171,7 +171,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
         "@type": "Offer",
         "name": "Dental Membership Plan",
         "description": "Affordable monthly payment plan for dental care",
-        "url": "https://peartreedental.co.uk/membership"
+        "url": "https://peartree.dental/membership"
       }
     ],
     "areaServed": [
