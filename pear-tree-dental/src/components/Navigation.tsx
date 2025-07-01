@@ -185,7 +185,7 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/membership" className="text-pear-gold hover:text-pear-primary transition-colors font-semibold">
+                  <Link href="/membership" className="text-pear-gold-dark hover:text-pear-primary transition-colors font-semibold">
                     Membership Plan
                   </Link>
                 </NavigationMenuItem>

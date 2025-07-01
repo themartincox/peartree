@@ -194,9 +194,9 @@ export default function PlanSelector() {
                         <span className="text-3xl font-bold">£49.50</span>
                         <span className="text-sm font-medium"> / MONTH</span>
                       </div>
-                      <p className="text-sm text-white/90 mt-2">2 Adults + up to 3 Children</p>
+                      <p className="text-sm text-white mt-2 font-medium">2 Adults + up to 3 Children</p>
                       <div className="mt-4">
-                        <span className="inline-flex bg-white/20 rounded-full px-3 py-1 text-xs font-medium">
+                        <span className="inline-flex bg-white/40 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-pear-primary">
                           £1.65 per day for the whole family
                         </span>
                       </div>

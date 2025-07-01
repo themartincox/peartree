@@ -38,9 +38,9 @@ const PracticeShowcase = () => {
               {/* Content Overlay */}
               <div className="relative p-8 h-full flex flex-col justify-between text-white z-10">
                 <div>
-                  <h3 className="text-3xl font-bold mb-4 leading-tight">
+                  <h2 className="text-3xl font-bold mb-4 leading-tight">
                     Experience Excellence in Every Detail
-                  </h3>
+                  </h2>
                   <p className="text-white/95 mb-6 text-lg leading-relaxed">
                     Our practice combines cutting-edge technology with luxurious comfort.
                     From digital X-rays to relaxing treatment rooms, every aspect is designed
@@ -61,7 +61,7 @@ const PracticeShowcase = () => {
                     <Camera className="w-4 h-4 mr-2" />
                     Practice Gallery
                   </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary font-semibold">
+                  <Button variant="outline" className="border-white bg-pear-primary/20 text-white hover:bg-white hover:text-pear-primary font-semibold backdrop-blur-sm">
                     <Play className="w-4 h-4 mr-2" />
                     Virtual Tour
                   </Button>
