@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://peartreedental.co.uk/sitemap.xml
+Sitemap: https://peartree.dental/sitemap.xml
 
 # Allow all search engines to crawl all content
 Allow: /about/
