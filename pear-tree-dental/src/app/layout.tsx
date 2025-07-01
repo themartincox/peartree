@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
@@ -123,6 +124,11 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Pear Tree Dental" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="application-name" content="Pear Tree Dental" />
+        <meta name="msapplication-TileColor" content="#1e3a8a" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="GB-NTT" />
         <meta name="geo.placename" content="Burton Joyce" />
         <meta name="geo.position" content="52.9769;-1.0085" />
@@ -160,6 +166,7 @@ export default function RootLayout({
           Skip to navigation
         </a>
 
+        <ServiceWorkerRegistration />
         <Navigation />
 
         <main id="main-content" className="min-h-screen" role="main">
