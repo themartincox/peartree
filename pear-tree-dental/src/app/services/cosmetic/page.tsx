@@ -382,7 +382,7 @@ export default function CosmeticDentistryPage() {
                   {treatment.link ? (
                     <Link href={treatment.link}>
                       <Button className="w-full bg-soft-pink hover:bg-soft-pink/90 text-white">
-                        Learn More
+                        Explore {treatment.name}
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>
                     </Link>

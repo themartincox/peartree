@@ -264,7 +264,7 @@ export default function ImplantsPage() {
                     </ul>
 
                     <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                      Learn More
+                      Explore {implant.title} Options
                     </Button>
                   </div>
                 </CardContent>

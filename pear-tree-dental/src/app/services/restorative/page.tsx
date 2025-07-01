@@ -390,7 +390,7 @@ export default function RestorativeDentistryPage() {
                   </div>
 
                   <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
-                    Learn More
+                    Explore {treatment.name}
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>

@@ -117,6 +117,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
+        {/* Preload critical images for LCP optimization */}
+        <link rel="preload" as="image" href="/images/dental-practice-hero-burton-joyce.webp" />
+        <link rel="preload" as="image" href="/images/general-dental-checkup.webp" />
+        <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
+
         <link rel="canonical" href="https://peartree.dental" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

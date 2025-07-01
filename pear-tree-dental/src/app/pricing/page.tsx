@@ -245,7 +245,7 @@ export default function PricingPage() {
                   </p>
                   <Link href="/services/cosmetic">
                     <Button variant="outline" className="w-full text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
-                      Learn More
+                      View Cosmetic Services
                     </Button>
                   </Link>
                 </CardContent>
@@ -283,7 +283,7 @@ export default function PricingPage() {
                   </p>
                   <Link href="/services/restorative">
                     <Button variant="outline" className="w-full text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
-                      Learn More
+                      View Restorative Services
                     </Button>
                   </Link>
                 </CardContent>
