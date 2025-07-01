@@ -141,7 +141,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
                   className="w-full group/btn text-sm bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-xl"
                   size="sm"
                 >
-                  Learn More
+                  Explore {service.title}
                   <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover/btn:translate-x-1 transition-all duration-300" />
                 </Button>
               </div>
@@ -214,7 +214,7 @@ const ServicesContent = () => {
       theme: "medical" as const,
       treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
       href: "/services/general",
-      image: "/images/general-dentistry.jpg"
+      image: "/images/general-dental-checkup.webp"
     },
     {
       id: "cosmetic",
@@ -224,7 +224,7 @@ const ServicesContent = () => {
       theme: "cosmetic" as const,
       treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
       href: "/services/cosmetic",
-      image: "/images/pear_tree_dental_cosmetic_dentistry.jpg"
+      image: "/images/cosmetic-dentistry-services.webp"
     },
     {
       id: "restorative",
@@ -234,7 +234,7 @@ const ServicesContent = () => {
       theme: "medical" as const,
       treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
       href: "/services/restorative",
-      image: "/images/restorative-dentistry.jpg"
+      image: "/images/restorative-dental-treatment.webp"
     },
     {
       id: "implants",
@@ -244,7 +244,7 @@ const ServicesContent = () => {
       theme: "cosmetic" as const,
       treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
       href: "/services/implants",
-      image: "/images/implant-dentistry.jpg"
+      image: "/images/dental-implants-procedure.webp"
     },
     {
       id: "orthodontics",
@@ -254,7 +254,7 @@ const ServicesContent = () => {
       theme: "cosmetic" as const,
       treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
       href: "/services/orthodontics",
-      image: "/images/pear_tree_dental_orthodontics.jpg"
+      image: "/images/orthodontics-invisalign-treatment.webp"
     },
     {
       id: "emergency",
@@ -264,7 +264,7 @@ const ServicesContent = () => {
       theme: "medical" as const,
       treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
       href: "/services/emergency",
-      image: "/images/emergency-dentistry.jpg"
+      image: "/images/emergency-dental-care.webp"
     }
   ];
 

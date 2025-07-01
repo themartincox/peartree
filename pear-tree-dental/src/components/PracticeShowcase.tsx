@@ -26,7 +26,7 @@ const PracticeShowcase = () => {
               {/* Practice Image Background */}
               <div className="absolute inset-0">
                 <Image
-                  src="/images/pear_tree_dental_cosmetic_dentistry.jpg"
+                  src="/images/cosmetic-dentistry-services.webp"
                   alt="Modern dental practice interior at Pear Tree Dental"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"

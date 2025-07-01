@@ -46,7 +46,7 @@ const TreatmentJourney = () => {
       icon: MessageCircle,
       image: "consultation",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/consultation.jpg",
+      imagePath: "/images/treatment-journey/consultation.webp",
       imageDescription: "Patient consultation with dental professional at Pear Tree Dental",
       features: [
         "Meet your Pear Tree dental consultant",
@@ -62,7 +62,7 @@ const TreatmentJourney = () => {
       image: "assessment",
       mediaType: "video" as const,
       videoPath: "/images/treatment-journey/assessment.mp4",
-      posterPath: "/images/treatment-journey/assessment-poster.jpg",
+      posterPath: "/images/treatment-journey/assessment-poster.webp",
       imageDescription: "Comprehensive dental examination and digital imaging technology",
       features: [
         "Look at the condition and health of your teeth and gums",
@@ -77,7 +77,7 @@ const TreatmentJourney = () => {
       icon: Clipboard,
       image: "planning",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/planning.jpg",
+      imagePath: "/images/treatment-journey/planning.webp",
       imageDescription: "Treatment planning discussion between dentist and patient",
       features: [
         "Personalised recommendations",
@@ -92,7 +92,7 @@ const TreatmentJourney = () => {
       icon: CreditCard,
       image: "payment",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/payment.jpg",
+      imagePath: "/images/treatment-journey/payment.webp",
       imageDescription: "Payment options and financial planning consultation",
       features: [
         "Transparent pricing",
@@ -107,7 +107,7 @@ const TreatmentJourney = () => {
       icon: Heart,
       image: "treatment",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/treatment.jpg",
+      imagePath: "/images/treatment-journey/treatment.webp",
       imageDescription: "Professional dental treatment in progress",
       features: [
         "Tips for treatment preparation",

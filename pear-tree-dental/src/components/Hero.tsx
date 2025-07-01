@@ -99,7 +99,7 @@ const Hero = () => {
               aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
             >
               <Image
-                src="/images/Image_fx_(27).jpg"
+                src="/images/dental-practice-hero-burton-joyce.webp"
                 alt="Beautiful smile showcasing the quality dental care and transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
                 fill
                 className="object-cover"
