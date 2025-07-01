@@ -14,23 +14,25 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Text compression configuration for performance optimization
+# Security and caching headers - compression handled automatically by Netlify
 [[headers]]
   for = "/*"
   [headers.values]
-    # Enable Brotli and Gzip compression
-    Content-Encoding = "br, gzip"
-    # Cache static assets
-    Cache-Control = "public, max-age=31536000, immutable"
-    # Security headers
+    # Security headers only - NO manual Content-Encoding
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    X-XSS-Protection = "1; mode=block"
 
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/*.js"
@@ -43,27 +45,39 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
   for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.png"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/api/*"
   [headers.values]
-    Cache-Control = "no-cache"
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
-# Force compression for service worker and API routes
 [[headers]]
   for = "/sw.js"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+    Service-Worker-Allowed = "/"
 
-# Compress specific file types
-[build.processing]
-  skip_processing = false
-[build.processing.css]
-  bundle = true
-  minify = true
-[build.processing.js]
-  bundle = true
-  minify = true
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Let Netlify handle compression automatically - no manual compression config

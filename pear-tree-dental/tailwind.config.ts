@@ -7,6 +7,18 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Safelist for dynamic classes that might be purged
+  safelist: [
+    'bg-dental-green',
+    'bg-pear-primary',
+    'bg-pear-gold',
+    'text-dental-green',
+    'text-pear-primary',
+    'text-pear-gold',
+    'border-dental-green',
+    'border-pear-primary',
+    'border-pear-gold',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -17,6 +29,7 @@ export default {
         'pear-primary': '#09394d',
         'pear-background': '#FAF9F6',
         'pear-gold': '#D4AF37',
+        'pear-gold-dark': '#B8941F', // WCAG AA compliant darker gold
         'accent-gold': '#D4AF37',
         'dental-green': '#4a7c59',
         'dental-navy': '#09394d', // Same as pear-primary for consistency

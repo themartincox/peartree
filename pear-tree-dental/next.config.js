@@ -28,23 +28,36 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Build optimizations
+  // Build optimizations - ENHANCED FOR PERFORMANCE
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     if (!dev && !isServer) {
       // Modern browser targeting - reduces polyfills
       config.target = 'web';
 
-      // Optimize for modern ES2020+ browsers
-      config.resolve.alias = {
-        ...config.resolve.alias,
-      };
-
-      // Tree shaking optimizations
+      // Aggressive tree shaking optimizations
       config.optimization = {
         ...config.optimization,
         usedExports: true,
         sideEffects: false,
+        // Remove unused CSS
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          cacheGroups: {
+            ...config.optimization.splitChunks.cacheGroups,
+            styles: {
+              name: 'styles',
+              test: /\.(css|scss)$/,
+              chunks: 'all',
+              enforce: true,
+            },
+          },
+        },
       };
+
+      // Remove unused code at build time
+      config.plugins.push(
+        new webpack.optimize.ModuleConcatenationPlugin(),
+      );
     }
 
     // Completely disable ESLint during webpack build
