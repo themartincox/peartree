@@ -3,11 +3,8 @@ http://peartree.dental/* https://peartree.dental/:splat 301!
 http://www.peartree.dental/* https://peartree.dental/:splat 301!
 https://www.peartree.dental/* https://peartree.dental/:splat 301!
 
-# Redirect legacy domains
+# Legacy domain redirects
 http://peartreedental.co.uk/* https://peartree.dental/:splat 301!
 http://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
 https://peartreedental.co.uk/* https://peartree.dental/:splat 301!
 https://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
-
-# DO NOT include SPA fallback for Next.js — this causes redirect loops
-# /* /index.html 200

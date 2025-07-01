@@ -25,46 +25,69 @@ function getVariantHeaders(variant: Variant) {
 }
 
 export function middleware(request: NextRequest) {
-  // Loop protection - if we've already processed this request, skip
-  if (request.headers.get('x-ab-processed')) {
+  // Enhanced loop protection - multiple checks to prevent redirect loops
+  const alreadyProcessed = request.headers.get('x-ab-processed');
+  const isInternalRequest = request.headers.get('x-middleware-rewrite');
+  const userAgent = request.headers.get('user-agent');
+
+  // Skip processing if already processed, internal request, or bot
+  if (alreadyProcessed || isInternalRequest || !userAgent || userAgent.includes('bot')) {
     return NextResponse.next();
   }
 
-  // Only apply A/B testing to the homepage
-  if (request.nextUrl.pathname !== '/') {
+  // Only apply A/B testing to the exact homepage path
+  if (request.nextUrl.pathname !== '/' || request.nextUrl.search) {
     return NextResponse.next();
   }
 
-  const response = NextResponse.next();
+  // Skip for specific request types that might cause loops
+  const contentType = request.headers.get('content-type');
+  const accept = request.headers.get('accept');
 
-  // Check for existing variant cookie
-  let variant = request.cookies.get(COOKIE_NAME)?.value as Variant;
+  if (contentType?.includes('application/json') ||
+      accept?.includes('application/json') ||
+      accept?.includes('text/event-stream')) {
+    return NextResponse.next();
+  }
 
-  // Validate existing variant or assign new one
-  if (!variant || !['A', 'B', 'C'].includes(variant)) {
-    variant = assignVariant();
+  try {
+    const response = NextResponse.next();
 
-    // Set cookie with variant assignment
-    response.cookies.set(COOKIE_NAME, variant, {
-      maxAge: COOKIE_MAX_AGE,
-      httpOnly: false, // Allow client-side access for analytics
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      path: '/',
+    // Check for existing variant cookie with fallback
+    let variant = request.cookies.get(COOKIE_NAME)?.value as Variant;
+
+    // Only assign new variant if none exists or invalid
+    if (!variant || !['A', 'B', 'C'].includes(variant)) {
+      variant = assignVariant();
+
+      // Set cookie with variant assignment - more restrictive settings
+      response.cookies.set(COOKIE_NAME, variant, {
+        maxAge: COOKIE_MAX_AGE,
+        httpOnly: false,
+        secure: true, // Always secure in production
+        sameSite: 'strict', // More restrictive for security
+        path: '/',
+      });
+    }
+
+    // Add variant headers for server-side rendering with safe defaults
+    const headers = getVariantHeaders(variant);
+    Object.entries(headers).forEach(([key, value]) => {
+      if (key && value && typeof value === 'string') {
+        response.headers.set(key, value);
+      }
     });
+
+    // Mark as processed to prevent loops
+    response.headers.set('x-ab-processed', '1');
+    response.headers.set('x-ab-variant', variant);
+
+    return response;
+  } catch (error) {
+    // Fallback: if anything goes wrong, just pass through
+    console.error('Middleware error:', error);
+    return NextResponse.next();
   }
-
-  // Add variant headers for server-side rendering
-  const headers = getVariantHeaders(variant);
-  Object.entries(headers).forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-
-  // Add variant to request headers for server components
-  response.headers.set('x-ab-variant', variant);
-  response.headers.set('x-ab-processed', '1');
-
-  return response;
 }
 
 export const config = {
