@@ -20,10 +20,10 @@ export const metadata: Metadata = {
     title: "Our Practice | Pear Tree Dental",
     description: "State-of-the-art dental facilities with a patient-centered approach in Burton Joyce, Nottingham.",
     type: "website",
-    url: "https://peartreedental.co.uk/about/practice"
+    url: "https://peartree.dental/about/practice"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/about/practice"
+    canonical: "https://peartree.dental/about/practice"
   }
 };
 
@@ -152,8 +152,8 @@ export default function PracticePage() {
                         📞 <a href="tel:01159312520" className="text-pear-primary hover:underline">0115 931 2520</a>
                       </p>
                       <p className="text-gray-600">
-                        ✉️ <a href="mailto:peartreedentalcentre@outlook.com" className="text-pear-primary hover:underline">
-                          peartreedentalcentre@outlook.com
+                        ✉️ <a href="mailto:hello@peartree.dental" className="text-pear-primary hover:underline">
+                          hello@peartree.dental
                         </a>
                       </p>
                     </div>

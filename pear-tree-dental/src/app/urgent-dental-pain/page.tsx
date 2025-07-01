@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     title: "Emergency Dental Pain Relief Burton Joyce | Same Day Appointments",
     description: "Don't suffer in pain. Get immediate dental relief today in Burton Joyce. Emergency appointments available - call 0115 931 2935",
     type: "website",
-    url: "https://peartreedental.co.uk/urgent-dental-pain"
+    url: "https://peartree.dental/urgent-dental-pain"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/urgent-dental-pain"
+    canonical: "https://peartree.dental/urgent-dental-pain"
   },
   robots: {
     index: true,
@@ -98,7 +98,7 @@ export default function UrgentDentalPainPage() {
             "@context": "https://schema.org",
             "@type": ["DentalClinic", "EmergencyService"],
             "name": "Pear Tree Dental Emergency Care",
-            "url": "https://peartreedental.co.uk/urgent-dental-pain",
+            "url": "https://peartree.dental/urgent-dental-pain",
             "telephone": "+441159312935",
             "address": {
               "@type": "PostalAddress",

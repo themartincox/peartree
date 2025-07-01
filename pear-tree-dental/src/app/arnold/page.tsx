@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dentist in Arnold - Pear Tree Dental | Modern Dental Care Near You',
     description: 'Modern dental care for Arnold residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
-    url: 'https://peartreedental.co.uk/arnold'
+    url: 'https://peartree.dental/arnold'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/arnold'
+    canonical: 'https://peartree.dental/arnold'
   }
 };
 
@@ -45,9 +45,9 @@ export default function ArnoldPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://peartreedental.co.uk/arnold",
+            "@id": "https://peartree.dental/arnold",
             "name": "Pear Tree Dental - Serving Arnold",
-            "image": "https://peartreedental.co.uk/images/pear-tree-dental-practice.jpg",
+            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
             "description": "Modern dental practice serving Arnold residents with comprehensive dental care and membership plans.",
             "address": {
               "@type": "PostalAddress",
@@ -63,7 +63,7 @@ export default function ArnoldPage() {
               "longitude": "-1.0147"
             },
             "telephone": "0115 931 2520",
-            "url": "https://peartreedental.co.uk",
+            "url": "https://peartree.dental",
             "areaServed": {
               "@type": "Place",
               "name": "Arnold, Nottinghamshire"

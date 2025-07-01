@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     title: "Contact Us | Pear Tree Dental",
     description: "Get in touch with our friendly dental team in Burton Joyce. Book appointments or ask questions about our services.",
     type: "website",
-    url: "https://peartreedental.co.uk/contact"
+    url: "https://peartree.dental/contact"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/contact"
+    canonical: "https://peartree.dental/contact"
   }
 };
 
@@ -54,9 +54,9 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    primary: "peartreedentalcentre@outlook.com",
+    primary: "hello@peartree.dental",
     secondary: "General enquiries and information",
-    action: "mailto:peartreedentalcentre@outlook.com",
+    action: "mailto:hello@peartree.dental",
     urgent: false
   },
   {

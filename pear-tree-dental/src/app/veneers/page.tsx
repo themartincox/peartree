@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Dental Veneers | Transform Your Smile | Pear Tree Dental",
     description: "Transform your smile with dental veneers. Ultra-thin, porcelain, or composite options available. Expert cosmetic dentistry in Burton Joyce.",
     type: "website",
-    url: "https://peartreedental.co.uk/veneers"
+    url: "https://peartree.dental/veneers"
   }
 };
 
