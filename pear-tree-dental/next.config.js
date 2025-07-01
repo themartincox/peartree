@@ -63,9 +63,10 @@ const nextConfig = {
     return config;
   },
 
-  // Image optimization
+  // Image optimization - OPTIMIZED FOR PERFORMANCE
   images: {
-    unoptimized: true,
+    unoptimized: false, // Enable Next.js image optimization
+    formats: ['image/webp', 'image/avif'], // Modern formats first
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",
