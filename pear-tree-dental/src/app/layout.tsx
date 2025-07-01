@@ -30,17 +30,24 @@ export const metadata: Metadata = {
     template: "%s | Pear Tree Dental - Premium Dentistry in Burton Joyce",
     default: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire"
   },
-  description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, membership plans from £10.95/month. Book your consultation today.",
+  description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, cosmetic dentistry, dental implants, Invisalign, emergency care, and membership plans from £10.95/month. Book your consultation today.",
   keywords: [
     "dentist Burton Joyce",
     "dental practice Nottinghamshire",
-    "cosmetic dentistry",
-    "dental implants",
-    "Invisalign",
-    "emergency dentist",
+    "cosmetic dentistry Burton Joyce",
+    "dental implants Nottingham",
+    "Invisalign Burton Joyce",
+    "emergency dentist Nottinghamshire",
     "dental membership plans",
-    "NHS dentist",
-    "private dentistry"
+    "NHS dentist Burton Joyce",
+    "private dentistry Nottingham",
+    "teeth whitening Burton Joyce",
+    "root canal treatment",
+    "dental hygienist Nottinghamshire",
+    "family dentist Burton Joyce",
+    "preventive dentistry",
+    "oral health Burton Joyce",
+    "dental check-up Nottingham"
   ],
   authors: [{ name: "Pear Tree Dental" }],
   creator: "Pear Tree Dental",
@@ -61,22 +68,32 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://peartree.dental",
     siteName: "Pear Tree Dental",
-    title: "Pear Tree Dental - Premium Dentistry in Burton Joyce",
-    description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch.",
+    title: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire",
+    description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, cosmetic dentistry, dental implants, Invisalign, and emergency care.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Pear Tree Dental - Premium Dentistry in Burton Joyce",
+        alt: "Modern dental clinic interior - Pear Tree Dental, Burton Joyce",
+        type: "image/jpeg",
+      },
+      {
+        url: "/social-image.jpg",
+        width: 800,
+        height: 600,
+        alt: "Professional dental care at Pear Tree Dental",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: "@PearTreeDental",
+    creator: "@PearTreeDental",
     title: "Pear Tree Dental - Premium Dentistry in Burton Joyce",
-    description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch.",
-    images: ["/og-image.jpg"],
+    description: "Modern dental care with a personal touch. NHS & private treatments, cosmetic dentistry, implants, Invisalign & emergency care in Burton Joyce, Nottinghamshire.",
+    images: ["/twitter-image.jpg"],
   },
   verification: {
     google: "your-google-verification-code",
@@ -100,10 +117,28 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
         <link rel="canonical" href="https://peartree.dental" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#1e3a8a" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Pear Tree Dental" />
         <meta name="geo.region" content="GB-NTT" />
         <meta name="geo.placename" content="Burton Joyce" />
         <meta name="geo.position" content="52.9769;-1.0085" />
         <meta name="ICBM" content="52.9769, -1.0085" />
+
+        {/* Additional SEO Meta Tags */}
+        <meta name="business-hours" content="Monday-Friday: 8:00AM-6:00PM, Saturday: 8:00AM-2:00PM" />
+        <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
+        <meta name="rating" content="5.0" />
+        <meta name="review-count" content="200+" />
+        <meta name="service-area" content="Burton Joyce, Nottingham, Gedling, Arnold, Carlton, Mapperley" />
+
+        {/* Medical Practice Meta Tags */}
+        <meta name="medical-specialty" content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery" />
+        <meta name="healthcare-provider" content="NHS and Private Dental Practice" />
+        <meta name="emergency-services" content="Available" />
 
         <LocalBusinessSchema includeDentistSpecific={true} />
         <VoiceSearchSchema />
