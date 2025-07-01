@@ -1,32 +1,13 @@
-# Postino.cc URL Canonicalization and Redirects
-# Force HTTPS and handle www redirects
-http://postino.cc/* https://postino.cc/:splat 301!
-http://www.postino.cc/* https://postino.cc/:splat 301!
-https://www.postino.cc/* https://postino.cc/:splat 301!
+# Force HTTPS and remove www
+http://peartree.dental/* https://peartree.dental/:splat 301!
+http://www.peartree.dental/* https://peartree.dental/:splat 301!
+https://www.peartree.dental/* https://peartree.dental/:splat 301!
 
-# Remove trailing slashes for consistency (except root)
-/*/ /:splat 301!
+# Redirect legacy domains
+http://peartreedental.co.uk/* https://peartree.dental/:splat 301!
+http://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
+https://peartreedental.co.uk/* https://peartree.dental/:splat 301!
+https://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
 
-# Handle common SEO patterns
-/home https://postino.cc/ 301
-/index https://postino.cc/ 301
-/index.html https://postino.cc/ 301
-
-# Service page redirects for consistent URLs
-/growth-marketing/ /growth-marketing 301
-/ai-automation/ /ai-automation 301
-/industries/ /industries 301
-/case-studies/ /case-studies 301
-/blog/ /blog 301
-/about/ /about 301
-/contact/ /contact 301
-
-# Legacy redirects if any old URLs exist
-/services/* /growth-marketing/:splat 301
-
-# Ensure robots.txt and sitemap.xml are served correctly
-/robots.txt /robots.txt 200
-/sitemap.xml /sitemap.xml 200
-
-# 404 fallback for missing pages
-/* /404.html 404
+# DO NOT include SPA fallback for Next.js — this causes redirect loops
+# /* /index.html 200
