@@ -1,15 +1,89 @@
 {
-  "name": "Postino - AI Marketing & Growth Agency",
-  "short_name": "Postino",
-  "description": "AI-driven marketing and growth agency helping SMEs achieve measurable success",
+  "name": "Pear Tree Dental - Nottingham Dental Practice",
+  "short_name": "Pear Tree Dental",
+  "description": "Professional dental care in Nottingham - NHS and Private treatments, Invisalign, dental implants, cosmetic dentistry and emergency dental care",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1e3a8a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-GB",
+  "categories": ["medical", "health", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Book an appointment online",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Emergency Care",
+      "short_name": "Emergency",
+      "description": "Emergency dental care",
+      "url": "/urgent-dental-pain",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Membership Plans",
+      "short_name": "Membership",
+      "description": "View dental membership plans",
+      "url": "/membership",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "View all dental services",
+      "url": "/services/general",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
       "type": "image/svg+xml"
     }
   ]
