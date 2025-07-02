@@ -531,7 +531,7 @@ export default function RestorativeDentistryPage() {
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
-                      <span className="text-white/90">20% discount on crowns and bridges</span>
+                      <span className="text-white/90">10% discount on crowns and bridges</span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
@@ -553,7 +553,7 @@ export default function RestorativeDentistryPage() {
                     <div className="text-sm text-white/70 mb-2">Member savings example:</div>
                     <div className="text-2xl font-bold text-pear-gold mb-1">Save £90</div>
                     <div className="text-white/80 mb-2">on a £450 crown</div>
-                    <div className="text-xs text-white/60">With 20% membership discount</div>
+                    <div className="text-xs text-white/60">With 10% membership discount</div>
                   </div>
 
                   <Button size="lg" className="btn-gold text-white w-full font-semibold shadow-lg">

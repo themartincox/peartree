@@ -294,7 +294,7 @@ export default function ColwickPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">Membership plans available - save up to 20% on all treatments</p>
+            <p className="text-gray-600 mb-6">Membership plans available - save up to 10% on all treatments</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white">
                 View All Services

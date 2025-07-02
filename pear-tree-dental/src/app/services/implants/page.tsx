@@ -51,7 +51,7 @@ export default function ImplantsPage() {
   const implantFAQs = [
     {
       question: "How much do dental implants cost?",
-      answer: "Dental implants start from £2,500 per implant including the crown. The total cost depends on your specific needs, the number of implants required, and any additional procedures. We offer 0% finance options and membership discounts of 20%."
+      answer: "Dental implants start from £2,500 per implant including the crown. The total cost depends on your specific needs, the number of implants required, and any additional procedures. We offer 0% finance options and membership discounts of 10%."
     },
     {
       question: "How long do dental implants last?",
@@ -476,12 +476,12 @@ export default function ImplantsPage() {
                 <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
                 <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
                 <div className="text-4xl font-bold text-pear-gold mt-4">£2,000</div>
-                <p className="text-gray-600">Complete treatment (20% off)</p>
+                <p className="text-gray-600">Complete treatment (10% off)</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {[
-                    "20% discount on all treatments",
+                    "10% discount on all treatments",
                     "Free initial consultation",
                     "Flexible payment plans",
                     "Priority appointment booking",

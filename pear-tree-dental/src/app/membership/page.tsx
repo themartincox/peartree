@@ -142,7 +142,7 @@ export default function MembershipPage() {
                   <span>Orthodontics, implants</span>
                 </li>
               </ul>
-              <div className="mt-4 text-sm text-gray-600">All other routine treatments receive 10% discount with membership planss
+              <div className="mt-4 text-sm text-gray-600">All other routine treatments receive 10% discount with membership plans
               </div>
             </div>
           </div>

@@ -48,7 +48,7 @@ export default function CosmeticDentistryPage() {
   const cosmeticFAQs = [
     {
       question: "How much does cosmetic dentistry cost?",
-      answer: "Cosmetic treatments start from £180 for composite bonding and range up to £4,500 for complete smile makeovers. We offer free consultations, 0% finance options, and 20% membership discounts to make treatments affordable."
+      answer: "Cosmetic treatments start from £180 for composite bonding and range up to £4,500 for complete smile makeovers. We offer free consultations, 0% finance options, and 10% membership discounts to make treatments affordable."
     },
     {
       question: "Will cosmetic dental treatments look natural?",

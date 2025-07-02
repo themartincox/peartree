@@ -305,7 +305,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-gray-600 mb-4">All treatments include 20% discount with membership plans</p>
+            <p className="text-gray-600 mb-4">All treatments include 10% discount with membership plans</p>
             <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white">
               Explore Treatment Options
             </Button>

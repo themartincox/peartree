@@ -689,13 +689,13 @@ export default function CompleteSmileMakeoverPage() {
               <CardHeader className="text-center">
                 <Badge className="bg-pear-gold text-white mb-4">Membership Advantage</Badge>
                 <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
-                <div className="text-4xl font-bold text-pear-gold mt-4">20% Off</div>
+                <div className="text-4xl font-bold text-pear-gold mt-4">10% Off</div>
                 <p className="text-gray-600">Significant savings on makeover</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {[
-                    "20% discount on all treatments",
+                    "10% discount on all treatments",
                     "Priority appointment scheduling",
                     "Extended warranty options",
                     "Flexible payment plans",
@@ -762,7 +762,7 @@ export default function CompleteSmileMakeoverPage() {
               </div>
 
               <div className="text-sm text-white/80">
-                From £2,500 • Flexible payment plans • 20% membership discount available
+                From £2,500 • Flexible payment plans • 10% membership discount available
               </div>
 
               {/* Trust Indicators */}

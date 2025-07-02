@@ -136,7 +136,7 @@ export default function SimplifiedMembershipPage() {
                 </li>
               </ul>
               <div className="mt-4 text-sm text-gray-600">
-                All other routine treatments receive 20% discount with membership plans (25% with Premium, 20% with All-in for Waterpik products)
+                All other routine treatments receive 10% discount with membership plans
               </div>
             </div>
           </div>
