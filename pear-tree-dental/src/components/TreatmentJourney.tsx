@@ -49,7 +49,7 @@ const TreatmentJourney = () => {
       imagePath: "/images/treatment-journey/consultation.webp",
       imageDescription: "Patient consultation with dental professional at Pear Tree Dental",
       features: [
-        "Meet your Pear Tree dental consultant",
+        "Meet your Pear Tree Dental consultant",
         "Discuss your concerns or the issues that you'd like to address",
         "Discover treatment options"
       ]

@@ -182,7 +182,7 @@ const GoogleReviewsWidget = () => {
                         ))}
                       </div>
                       <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-600' : isHomepage ? 'text-white/80' : 'text-gray-600'}`}>
-                        {averageRating.toFixed(1)} (416 reviews)
+                        Over 400 reviews
                       </span>
                     </div>
                   </div>

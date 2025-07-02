@@ -45,7 +45,7 @@ const membershipPlans = {
     period: "/month",
     dailyCost: "Just 17p per day",
     savings: "180",
-    description: "Specialized dental care for children under 18. FREE when joining with an adult plan.",
+    description: "Specialised dental care for children under 18. FREE when joining with an adult plan.",
     keyFeatures: [
       "2 Dental check ups a year",
       "Fluoride treatments included",
@@ -196,6 +196,10 @@ const MembershipHighlight = () => {
                           <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">Perfect for busy families
                           </Badge>
                         )}
+                        {activeTab === 'planA' && (
+                          <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs sm:text-sm">Your Essentials Covered
+                          </Badge>
+                        )}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">{currentPlan.dailyCost}</div>
                     </div>
@@ -221,7 +225,7 @@ const MembershipHighlight = () => {
 
                 {/* Savings Highlight */}
                 <div className="bg-gradient-to-r from-pear-background to-pear-background/50 rounded-2xl p-6 border border-pear-primary/10">
-                  <div className="flex items-center justify-between border">
+                  <div className="flex items-center justify-between">
                     <div className="items-center">
                       <h4 className="font-semibold text-pear-primary mb-2">Annual Savings</h4>
                       <p className="text-gray-600 text-sm">
@@ -263,10 +267,7 @@ const MembershipHighlight = () => {
               <ShieldCheck className="w-5 h-5 text-dental-green" />
               <span>No hidden fees</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Heart className="w-5 h-5 text-soft-pink" />
-              <span>Cancel anytime</span>
-            </div>
+
             <div className="flex items-center space-x-2">
               <Users className="w-5 h-5 text-pear-primary" />
               <span>2,000+ members</span>
@@ -290,7 +291,7 @@ const MembershipHighlight = () => {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-8 py-4">
-              <Link href="/contact">Book Free Consultation</Link>
+              <Link href="/contact">Book Your Consultation</Link>
             </Button>
           </div>
         </div>

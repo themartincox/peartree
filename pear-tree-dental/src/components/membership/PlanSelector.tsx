@@ -215,7 +215,7 @@ export default function PlanSelector() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                          <span>All adults get Plan C benefits</span>
+                          <span>All adults get Plan D benefits</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
@@ -230,7 +230,7 @@ export default function PlanSelector() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                          <span>20% discount on all treatments</span>
+                          <span>10% discount on all treatments</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />

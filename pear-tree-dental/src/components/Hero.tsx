@@ -53,8 +53,7 @@ const Hero = () => {
                   className="bg-pear-primary text-white hover:bg-pear-primary/90 font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
                   aria-label="Schedule a free dental consultation with our team"
                 >
-                  <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />
-                  Book Free Consultation
+                  <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />Book Your Consultationn
                 </Button>
               </div>
             </div>
@@ -135,8 +134,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Pink glass overlay */}
-                  <div className="absolute inset-0 bg-pink-200/30 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Pink overlay - sharp and clean */}
+                  <div className="absolute inset-0 bg-pink-200/40 transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
 
@@ -154,8 +153,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Pink glass overlay */}
-                  <div className="absolute inset-0 bg-pink-200/30 backdrop-blur-[1px] transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Pink overlay - sharp and clean */}
+                  <div className="absolute inset-0 bg-pink-200/40 transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
             </div>

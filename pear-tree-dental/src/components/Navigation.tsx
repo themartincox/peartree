@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,9 +14,52 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
+import NavigationErrorBoundary from "@/components/navigation/NavigationErrorBoundary";
+
+// Lazy load non-critical navigation components
+const LazyNavigationItems = lazy(() =>
+  import("@/components/navigation/LazyNavigationItems").then(module => {
+    // Performance tracking for lazy loading
+    if (typeof window !== 'undefined' && window.performance) {
+      const loadTime = performance.now();
+      console.log(`[Nav Performance] Lazy navigation loaded in ${loadTime.toFixed(2)}ms`);
+    }
+    return module;
+  })
+);
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
+  const { startTiming, endTiming } = usePerformanceMonitor();
+
+  // Function to close mobile menu when navigation links are clicked
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  // Handle mobile menu opening with lazy loading
+  const handleMobileMenuChange = (open: boolean) => {
+    setIsMobileMenuOpen(open);
+    // Load secondary navigation items only when menu is opened for the first time
+    if (open && !shouldLoadSecondaryNav) {
+      startTiming('lazy-nav-load');
+      setShouldLoadSecondaryNav(true);
+    }
+  };
+
+  // Track when lazy navigation has loaded
+  useEffect(() => {
+    if (shouldLoadSecondaryNav) {
+      const timer = setTimeout(() => {
+        endTiming('lazy-nav-load');
+      }, 100); // Small delay to ensure component is fully rendered
+
+      return () => clearTimeout(timer);
+    }
+  }, [shouldLoadSecondaryNav, endTiming]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -392,8 +435,7 @@ const Navigation = () => {
                   size="sm"
                   className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
                 >
-                  <CalendarDays className="w-4 h-4 mr-2" />
-                  Book Free Consultation
+                  <CalendarDays className="w-4 h-4 mr-2" />Book Now
                 </Button>
               </Link>
               <Link href="/membership">
@@ -407,7 +449,7 @@ const Navigation = () => {
             </div>
 
             {/* Hamburger Menu */}
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={handleMobileMenuChange}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
@@ -418,9 +460,14 @@ const Navigation = () => {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-80 sm:w-96">
+              <SheetContent
+                side="right"
+                className="w-80 sm:w-96 bg-white/95 backdrop-blur-md border-l border-gray-200/50 shadow-2xl"
+                onInteractOutside={() => setIsMobileMenuOpen(false)}
+                aria-label="Mobile navigation menu"
+              >
                 <div className="flex flex-col space-y-6 mt-6">
-                  <Link href="/" className="flex items-center">
+                  <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
                     <div className="flex flex-col">
                       <div className="brand-logo text-lg text-pear-primary">
                         PEAR<span className="ml-20px">TREE</span>
@@ -432,62 +479,51 @@ const Navigation = () => {
                   </Link>
 
                   <div className="flex flex-col space-y-3">
-                    <Link href="/services/general">
+                    <Link href="/services/general" onClick={closeMobileMenu}>
                       <Button className="bg-soft-pink text-pear-primary w-full h-12">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         Book Free Consultation
                       </Button>
                     </Link>
-                    <Link href="/membership">
+                    <Link href="/membership" onClick={closeMobileMenu}>
                       <Button className="bg-white text-pear-gold w-full h-12 font-semibold">
                         Membership
                       </Button>
                     </Link>
 
-                    {/* Add full navigation menu items */}
-                    <div className="pt-4 border-t border-gray-200">
-                      <nav className="flex flex-col space-y-4">
-                        <div className="space-y-2">
-                          <div className="text-pear-primary font-semibold">Services</div>
-                          <div className="ml-4 space-y-2">
-                            {services.map((service) => (
-                              <Link
-                                key={service.title}
-                                href={service.href}
-                                className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
-                              >
-                                {service.title}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
+                    {/* Critical navigation item - always loaded */}
+                    <Link href="/urgent-dental-pain" className="text-red-600 hover:text-red-700 transition-colors font-semibold text-center p-3 bg-red-50 rounded-lg border border-red-200" onClick={closeMobileMenu}>
+                      🚨 Dental Pain?
+                    </Link>
 
-                        <div className="space-y-2">
-                          <div className="text-pear-primary font-semibold">About</div>
-                          <div className="ml-4 space-y-2">
-                            {about.map((item) => (
-                              <Link
-                                key={item.title}
-                                href={item.href}
-                                className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
-                              >
-                                {item.title}
-                              </Link>
-                            ))}
-                          </div>
+                    {/* Lazy load non-critical navigation items */}
+                    {shouldLoadSecondaryNav ? (
+                      <NavigationErrorBoundary>
+                        <Suspense
+                          fallback={
+                            <div className="pt-4 border-t border-gray-200">
+                              <div className="flex items-center justify-center p-4 text-gray-500">
+                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-pear-primary mr-2"></div>
+                                <span className="text-sm">Loading navigation...</span>
+                              </div>
+                            </div>
+                          }
+                        >
+                          <LazyNavigationItems
+                            services={services}
+                            about={about}
+                            onItemClick={closeMobileMenu}
+                          />
+                        </Suspense>
+                      </NavigationErrorBoundary>
+                    ) : (
+                      <div className="pt-4 border-t border-gray-200">
+                        <div className="text-center p-4 text-gray-500">
+                          <div className="text-sm">More navigation options loading...</div>
+                          <div className="text-xs mt-1 opacity-75">Services • About • Contact</div>
                         </div>
-
-                        <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
-                          New Patients
-                        </Link>
-                        <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
-                          Contact
-                        </Link>
-                        <Link href="/urgent-dental-pain" className="text-red-600 hover:text-red-700 transition-colors font-semibold">
-                          🚨 Dental Pain?
-                        </Link>
-                      </nav>
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </SheetContent>

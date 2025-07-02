@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4 sm:space-y-6 sm:col-span-2 lg:col-span-1">
             <div>
               <div className="brand-logo text-xl sm:text-2xl text-white">
-                PEAR<span className="ml-25px">TREE</span>
+                PEAR TREE
               </div>
               <div className="brand-subtitle text-xs sm:text-sm text-white/80 mt-4px">
                 DENTAL
@@ -60,8 +60,8 @@ const Footer = () => {
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
-                <a href="mailto:Peartreedentalcentre@outlook.com" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all">
-                  Peartreedentalcentre@outlook.com
+                <a href="mailto:hello@peartree.dental" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all">
+                  hello@peartree.dental
                 </a>
               </div>
             </div>

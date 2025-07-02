@@ -186,7 +186,7 @@ export default function PlanComparisonSlider() {
                       ))}
                       <li className="flex items-start gap-3">
                         <Check className="h-5 w-5 text-pear-primary mt-0.5 flex-shrink-0" />
-                        <span>Worldwide dental accident & emergency cover</span>
+                        <span className="xl:text-left">Worldwide dental accident & emergency cover</span>
                       </li>
                     </ul>
                   </CardContent>

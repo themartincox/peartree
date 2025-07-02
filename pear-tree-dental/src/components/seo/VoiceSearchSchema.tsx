@@ -11,7 +11,7 @@ const VoiceSearchSchema = () => {
         "alternateName": ["Pear Tree Dental", "Burton Joyce Dentist"],
         "description": "Modern dental practice in Burton Joyce offering comprehensive dental care, emergency appointments, and flexible membership plans from £10.95/month.",
         "telephone": "+44 115 931 2935",
-        "email": "peartreedentalcentre@outlook.com",
+        "email": "hello@peartree.dental",
         "url": "https://peartreedentalcentre.co.uk",
         "image": "https://peartreedentalcentre.co.uk/images/practice-exterior.jpg",
         "priceRange": "£10.95-£29.95 per month",

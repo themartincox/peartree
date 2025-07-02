@@ -11,7 +11,7 @@ const faqs = [
   {
     id: "nhs-care",
     question: "Do I still get NHS care with a membership plan?",
-    answer: "Your Pear Tree Dental Centre care plan does not cover NHS care. It's a private membership that provides specific benefits and discounts. However, you can discuss with our team if you need NHS services that aren't covered by your plan."
+    answer: "Your Pear Tree Dental care plan does not cover NHS care. It's a private membership that provides specific benefits and discounts. However, you can discuss with our team if you need NHS services that aren't covered by your plan."
   },
   {
     id: "emergency-cover",
@@ -31,7 +31,7 @@ const faqs = [
   {
     id: "cancellation",
     question: "Can I cancel my membership plan?",
-    answer: "Yes, you can cancel your membership at any time with one month's notice. Simply contact our reception team or email us, and we'll process your cancellation. There are no cancellation fees or long-term commitments."
+    answer: "Yes, you can cancel your membership at any time with one month's notice. Simply contact our reception team or email us, and we'll process your cancellation. There are no cancellation fees or long-term commitments. Within the first year, any treatment savings already received will need to be paid back."
   },
   {
     id: "child-plans",
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     id: "not-covered",
-    question: "What isn't covered by the Pear Tree Dental Centre Care Plan?",
+    question: "What isn't covered by the Pear Tree Dental Care Plan?",
     answer: "The plan does not cover laboratory fees and prescriptions, referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan, or orthodontics and implants. These would incur additional costs."
   }
 ];
