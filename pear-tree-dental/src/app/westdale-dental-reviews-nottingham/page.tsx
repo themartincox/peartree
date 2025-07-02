@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Westdale Dental Reviews: What Nottingham Patients Really Think',
     description: 'Honest analysis of Westdale Dental patient reviews and experiences. Compare traditional practice with modern membership alternatives.',
-    url: 'https://peartreedental.co.uk/westdale-dental-reviews-nottingham'
+    url: 'https://peartree.dental/westdale-dental-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/westdale-dental-reviews-nottingham'
+    canonical: 'https://peartree.dental/westdale-dental-reviews-nottingham'
   }
 };
 

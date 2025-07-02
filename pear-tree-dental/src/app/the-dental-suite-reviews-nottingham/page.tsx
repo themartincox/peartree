@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Dental Suite Reviews: What Nottingham Patients Really Think',
     description: 'Honest analysis of The Dental Suite patient reviews and experiences. Compare costs and services with Burton Joyce alternatives.',
-    url: 'https://peartreedental.co.uk/the-dental-suite-reviews-nottingham'
+    url: 'https://peartree.dental/the-dental-suite-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/the-dental-suite-reviews-nottingham'
+    canonical: 'https://peartree.dental/the-dental-suite-reviews-nottingham'
   }
 };
 

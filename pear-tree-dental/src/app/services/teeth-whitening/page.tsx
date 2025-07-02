@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     title: "Professional Teeth Whitening | Pear Tree Dental",
     description: "Professional teeth whitening treatments - up to 8 shades brighter in 90 minutes",
     type: "website",
-    url: "https://peartreedental.co.uk/services/teeth-whitening"
+    url: "https://peartree.dental/services/teeth-whitening"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/teeth-whitening"
+    canonical: "https://peartree.dental/services/teeth-whitening"
   }
 };
 

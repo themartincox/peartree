@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     title: "Restorative Dentistry | Repair & Restore | Pear Tree Dental",
     description: "Expert restorative dentistry to repair and restore your teeth with high-quality materials",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative"
+    url: "https://peartree.dental/services/restorative"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative"
+    canonical: "https://peartree.dental/services/restorative"
   }
 };
 

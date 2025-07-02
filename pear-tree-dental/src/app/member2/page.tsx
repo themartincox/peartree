@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title: "Simplified Dental Membership Plans | Pear Tree Dental",
     description: "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49.",
     type: "website",
-    url: "https://peartreedental.co.uk/member2"
+    url: "https://peartree.dental/member2"
   }
 };
 

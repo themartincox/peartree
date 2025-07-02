@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     title: "Traditional Porcelain Veneers | Pear Tree Dental",
     description: "Premium traditional porcelain veneers lasting 10-20 years. Gold standard cosmetic dentistry with superior durability.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/veneers/porcelain"
+    url: "https://peartree.dental/services/cosmetic/veneers/porcelain"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/veneers/porcelain"
+    canonical: "https://peartree.dental/services/cosmetic/veneers/porcelain"
   }
 };
 

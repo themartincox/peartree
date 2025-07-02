@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     title: "Ultra-Thin Contact Lens Veneers | Pear Tree Dental",
     description: "Revolutionary ultra-thin contact lens veneers at 0.2mm thickness. Minimal prep, often reversible, natural results.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/veneers/ultra-thin"
+    url: "https://peartree.dental/services/cosmetic/veneers/ultra-thin"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/veneers/ultra-thin"
+    canonical: "https://peartree.dental/services/cosmetic/veneers/ultra-thin"
   }
 };
 

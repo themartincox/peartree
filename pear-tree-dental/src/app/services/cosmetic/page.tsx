@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Cosmetic Dentistry | Transform Your Smile | Pear Tree Dental",
     description: "Transform your smile with our expert cosmetic dental treatments in Burton Joyce",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic"
+    url: "https://peartree.dental/services/cosmetic"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic"
+    canonical: "https://peartree.dental/services/cosmetic"
   }
 };
 
@@ -211,7 +211,7 @@ export default function CosmeticDentistryPage() {
         ]}
         rating={4.9}
         reviewCount={312}
-        url="https://peartreedental.co.uk/services/cosmetic"
+        url="https://peartree.dental/services/cosmetic"
         procedureType="Service"
       />
 

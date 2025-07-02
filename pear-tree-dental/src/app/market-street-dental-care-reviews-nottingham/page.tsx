@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Market Street Dental Care Reviews: What Nottingham Patients Really Think',
     description: 'Honest analysis of Market Street Dental Care patient reviews and experiences. Compare city center practice with suburban alternatives.',
-    url: 'https://peartreedental.co.uk/market-street-dental-care-reviews-nottingham'
+    url: 'https://peartree.dental/market-street-dental-care-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/market-street-dental-care-reviews-nottingham'
+    canonical: 'https://peartree.dental/market-street-dental-care-reviews-nottingham'
   }
 };
 

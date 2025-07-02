@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'City Dental Nottingham Reviews: What Patients Really Think',
     description: 'Honest analysis of City Dental Nottingham patient reviews and experiences. Compare city center practice with suburban alternatives.',
-    url: 'https://peartreedental.co.uk/city-dental-nottingham-reviews-nottingham'
+    url: 'https://peartree.dental/city-dental-nottingham-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/city-dental-nottingham-reviews-nottingham'
+    canonical: 'https://peartree.dental/city-dental-nottingham-reviews-nottingham'
   }
 };
 

@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Mapperley Dental Practice? Consider Pear Tree Dental',
     description: 'Upgrade to modern dental care with state-of-the-art technology and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/mapperley-dental-practice-alternative-nottingham'
+    url: 'https://peartree.dental/mapperley-dental-practice-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/mapperley-dental-practice-alternative-nottingham'
+    canonical: 'https://peartree.dental/mapperley-dental-practice-alternative-nottingham'
   }
 };
 

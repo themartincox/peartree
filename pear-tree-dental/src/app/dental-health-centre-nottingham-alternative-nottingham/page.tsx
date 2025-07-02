@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Dental Health Centre Nottingham? Consider Pear Tree Dental',
     description: 'Escape NHS restrictions with comprehensive membership care and immediate access to all treatments.',
-    url: 'https://peartreedental.co.uk/dental-health-centre-nottingham-alternative-nottingham'
+    url: 'https://peartree.dental/dental-health-centre-nottingham-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/dental-health-centre-nottingham-alternative-nottingham'
+    canonical: 'https://peartree.dental/dental-health-centre-nottingham-alternative-nottingham'
   }
 };
 

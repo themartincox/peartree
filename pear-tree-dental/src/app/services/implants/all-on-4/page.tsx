@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     title: "All-on-4 Dental Implants - Full Arch Restoration | Pear Tree Dental",
     description: "Replace entire arch of teeth with All-on-4 implants. Revolutionary same-day teeth solution.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/implants/all-on-4"
+    url: "https://peartree.dental/services/implants/all-on-4"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/implants/all-on-4"
+    canonical: "https://peartree.dental/services/implants/all-on-4"
   }
 };
 
@@ -271,7 +271,7 @@ export default function AllOn4Page() {
         ]}
         rating={4.9}
         reviewCount={75}
-        url="https://peartreedental.co.uk/services/implants/all-on-4"
+        url="https://peartree.dental/services/implants/all-on-4"
         procedureType="MedicalProcedure"
       />
 

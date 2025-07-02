@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Hybrid Dentures - Advanced Denture Technology | Pear Tree Dental",
     description: "Experience the future of dentures with hybrid technology combining the best materials and techniques.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures/hybrid-dentures"
+    url: "https://peartree.dental/services/restorative/dentures/hybrid-dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures/hybrid-dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures/hybrid-dentures"
   }
 };
 
@@ -198,7 +198,7 @@ export default function HybridDenturesPage() {
         ]}
         rating={4.9}
         reviewCount={45}
-        url="https://peartreedental.co.uk/services/restorative/dentures/hybrid-dentures"
+        url="https://peartree.dental/services/restorative/dentures/hybrid-dentures"
         procedureType="Service"
       />
 

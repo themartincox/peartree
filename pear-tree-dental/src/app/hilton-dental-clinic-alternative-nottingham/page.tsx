@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Hilton Dental Clinic? Consider Pear Tree Dental',
     description: 'Modern dental care alternative with state-of-the-art facilities and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/hilton-dental-clinic-alternative-nottingham'
+    url: 'https://peartree.dental/hilton-dental-clinic-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/hilton-dental-clinic-alternative-nottingham'
+    canonical: 'https://peartree.dental/hilton-dental-clinic-alternative-nottingham'
   }
 };
 

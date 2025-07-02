@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Boutique Whitening - Professional At-Home Results | Pear Tree Dental",
     description: "Achieve 6-8 shades whiter teeth with Boutique whitening system. Professional results from the comfort of home.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening/boutique"
+    url: "https://peartree.dental/services/cosmetic/teeth-whitening/boutique"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening/boutique"
+    canonical: "https://peartree.dental/services/cosmetic/teeth-whitening/boutique"
   }
 };
 
@@ -214,7 +214,7 @@ export default function BoutiqueWhiteningPage() {
         ]}
         rating={4.8}
         reviewCount={320}
-        url="https://peartreedental.co.uk/services/cosmetic/teeth-whitening/boutique"
+        url="https://peartree.dental/services/cosmetic/teeth-whitening/boutique"
         procedureType="Service"
       />
 

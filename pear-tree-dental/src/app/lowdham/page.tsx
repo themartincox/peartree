@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dentist in Lowdham - Pear Tree Dental | Modern Dental Care Near You',
     description: 'Modern dental care for Lowdham residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
-    url: 'https://peartreedental.co.uk/lowdham'
+    url: 'https://peartree.dental/lowdham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/lowdham'
+    canonical: 'https://peartree.dental/lowdham'
   }
 };
 
@@ -45,9 +45,9 @@ export default function LowdhamPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://peartreedental.co.uk/lowdham",
+            "@id": "https://peartree.dental/lowdham",
             "name": "Pear Tree Dental - Serving Lowdham",
-            "image": "https://peartreedental.co.uk/images/pear-tree-dental-practice.jpg",
+            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
             "description": "Modern dental practice serving Lowdham residents with comprehensive dental care and membership plans.",
             "address": {
               "@type": "PostalAddress",
@@ -63,7 +63,7 @@ export default function LowdhamPage() {
               "longitude": "-1.0147"
             },
             "telephone": "0115 931 2520",
-            "url": "https://peartreedental.co.uk",
+            "url": "https://peartree.dental",
             "areaServed": {
               "@type": "Place",
               "name": "Lowdham, Nottinghamshire"

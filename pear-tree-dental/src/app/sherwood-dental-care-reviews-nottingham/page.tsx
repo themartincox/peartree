@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sherwood Dental Care Reviews: What Nottingham Patients Really Think',
     description: 'Honest analysis of Sherwood Dental Care patient reviews and experiences. Compare NHS and private options with Burton Joyce alternatives.',
-    url: 'https://peartreedental.co.uk/sherwood-dental-care-reviews-nottingham'
+    url: 'https://peartree.dental/sherwood-dental-care-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/sherwood-dental-care-reviews-nottingham'
+    canonical: 'https://peartree.dental/sherwood-dental-care-reviews-nottingham'
   }
 };
 

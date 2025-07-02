@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dental Health Centre Nottingham Reviews: What Patients Really Think',
     description: 'Honest analysis of Dental Health Centre Nottingham patient reviews and experiences. Compare NHS practice with modern membership alternatives.',
-    url: 'https://peartreedental.co.uk/dental-health-centre-nottingham-reviews-nottingham'
+    url: 'https://peartree.dental/dental-health-centre-nottingham-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/dental-health-centre-nottingham-reviews-nottingham'
+    canonical: 'https://peartree.dental/dental-health-centre-nottingham-reviews-nottingham'
   }
 };
 

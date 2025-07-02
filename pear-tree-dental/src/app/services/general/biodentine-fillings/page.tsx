@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Biodentine Fillings - Advanced Bioactive Restorations | Pear Tree Dental",
     description: "Experience the future of dental fillings with Biodentine - bioactive material that helps teeth heal naturally.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/general/biodentine-fillings"
+    url: "https://peartree.dental/services/general/biodentine-fillings"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/general/biodentine-fillings"
+    canonical: "https://peartree.dental/services/general/biodentine-fillings"
   }
 };
 
@@ -198,7 +198,7 @@ export default function BiodentineFillingPage() {
         ]}
         rating={4.9}
         reviewCount={75}
-        url="https://peartreedental.co.uk/services/general/biodentine-fillings"
+        url="https://peartree.dental/services/general/biodentine-fillings"
         procedureType="Service"
       />
 

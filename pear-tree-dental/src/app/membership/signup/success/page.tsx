@@ -171,7 +171,7 @@ function MembershipSuccessContent() {
                   <div className="flex flex-col items-center space-y-2">
                     <Calendar className="w-8 h-8 text-pear-primary" />
                     <h4 className="font-semibold">Book Online</h4>
-                    <p className="text-gray-600">peartreedental.co.uk</p>
+                    <p className="text-gray-600">peartree.dental</p>
                     <p className="text-sm text-gray-500">24/7 online booking</p>
                   </div>
                 </div>

@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Market Street Dental Care? Consider Pear Tree Dental',
     description: 'Escape city center dental stress with suburban tranquility and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/market-street-dental-care-alternative-nottingham'
+    url: 'https://peartree.dental/market-street-dental-care-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/market-street-dental-care-alternative-nottingham'
+    canonical: 'https://peartree.dental/market-street-dental-care-alternative-nottingham'
   }
 };
 

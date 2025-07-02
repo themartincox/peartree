@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dentist in East Bridgford - Pear Tree Dental | Modern Dental Care Near You',
     description: 'Modern dental care for East Bridgford residents. Membership plans from £10.95/month. Same-day emergency appointments available.',
-    url: 'https://peartreedental.co.uk/east-bridgford'
+    url: 'https://peartree.dental/east-bridgford'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/east-bridgford'
+    canonical: 'https://peartree.dental/east-bridgford'
   }
 };
 
@@ -45,9 +45,9 @@ export default function EastBridgfordPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "@id": "https://peartreedental.co.uk/east-bridgford",
+            "@id": "https://peartree.dental/east-bridgford",
             "name": "Pear Tree Dental - Serving East Bridgford",
-            "image": "https://peartreedental.co.uk/images/pear-tree-dental-practice.jpg",
+            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
             "description": "Modern dental practice serving East Bridgford residents with comprehensive dental care and membership plans.",
             "address": {
               "@type": "PostalAddress",
@@ -63,7 +63,7 @@ export default function EastBridgfordPage() {
               "longitude": "-1.0147"
             },
             "telephone": "0115 931 2520",
-            "url": "https://peartreedental.co.uk",
+            "url": "https://peartree.dental",
             "areaServed": {
               "@type": "Place",
               "name": "East Bridgford, Nottinghamshire"

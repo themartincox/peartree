@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Carlton Dental Surgery Reviews: What Local Patients Really Think',
     description: 'Honest analysis of Carlton Dental Surgery patient reviews and experiences. Compare local practice with modern alternatives.',
-    url: 'https://peartreedental.co.uk/carlton-dental-surgery-reviews-nottingham'
+    url: 'https://peartree.dental/carlton-dental-surgery-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/carlton-dental-surgery-reviews-nottingham'
+    canonical: 'https://peartree.dental/carlton-dental-surgery-reviews-nottingham'
   }
 };
 

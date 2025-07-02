@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Arnold Dental Care Reviews: What Local Patients Really Think',
     description: 'Honest analysis of Arnold Dental Care patient reviews and experiences. Compare local practice with modern alternatives.',
-    url: 'https://peartreedental.co.uk/arnold-dental-care-reviews-nottingham'
+    url: 'https://peartree.dental/arnold-dental-care-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/arnold-dental-care-reviews-nottingham'
+    canonical: 'https://peartree.dental/arnold-dental-care-reviews-nottingham'
   }
 };
 

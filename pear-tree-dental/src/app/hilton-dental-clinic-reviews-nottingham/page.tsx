@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hilton Dental Clinic Reviews: What West Bridgford Patients Really Think',
     description: 'Honest analysis of Hilton Dental Clinic patient reviews and experiences. Compare established practice with modern alternatives in Burton Joyce.',
-    url: 'https://peartreedental.co.uk/hilton-dental-clinic-reviews-nottingham'
+    url: 'https://peartree.dental/hilton-dental-clinic-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/hilton-dental-clinic-reviews-nottingham'
+    canonical: 'https://peartree.dental/hilton-dental-clinic-reviews-nottingham'
   }
 };
 

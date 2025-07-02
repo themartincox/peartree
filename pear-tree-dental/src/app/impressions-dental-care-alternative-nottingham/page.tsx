@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Impressions Dental Care? Consider Pear Tree Dental',
     description: 'Upgrade to modern dental care with state-of-the-art technology and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/impressions-dental-care-alternative-nottingham'
+    url: 'https://peartree.dental/impressions-dental-care-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/impressions-dental-care-alternative-nottingham'
+    canonical: 'https://peartree.dental/impressions-dental-care-alternative-nottingham'
   }
 };
 

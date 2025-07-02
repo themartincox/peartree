@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Partial Dentures - Affordable Missing Teeth Solution | Pear Tree Dental",
     description: "Replace missing teeth while keeping your natural teeth with comfortable partial dentures.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures/partial-dentures"
+    url: "https://peartree.dental/services/restorative/dentures/partial-dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures/partial-dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures/partial-dentures"
   }
 };
 
@@ -193,7 +193,7 @@ export default function PartialDenturesPage() {
         ]}
         rating={4.5}
         reviewCount={125}
-        url="https://peartreedental.co.uk/services/restorative/dentures/partial-dentures"
+        url="https://peartree.dental/services/restorative/dentures/partial-dentures"
         procedureType="Service"
       />
 

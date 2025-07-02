@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Park Dental Care? Consider Pear Tree Dental',
     description: 'Modern dental care alternative in Burton Joyce with state-of-the-art facilities and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/park-dental-care-alternative-nottingham'
+    url: 'https://peartree.dental/park-dental-care-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/park-dental-care-alternative-nottingham'
+    canonical: 'https://peartree.dental/park-dental-care-alternative-nottingham'
   }
 };
 

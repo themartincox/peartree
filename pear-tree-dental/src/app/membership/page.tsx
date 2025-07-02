@@ -64,10 +64,10 @@ export const metadata: Metadata = {
     title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
     description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
     type: "website",
-    url: "https://peartreedental.co.uk/membership"
+    url: "https://peartree.dental/membership"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/membership"
+    canonical: "https://peartree.dental/membership"
   }
 };
 

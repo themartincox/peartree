@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Valplast Dentures - Flexible Comfort & Natural Look | Pear Tree Dental",
     description: "Experience the comfort of Valplast flexible partial dentures. Metal-free, natural-looking solution for missing teeth.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures/valplast-dentures"
+    url: "https://peartree.dental/services/restorative/dentures/valplast-dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures/valplast-dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures/valplast-dentures"
   }
 };
 
@@ -209,7 +209,7 @@ export default function ValplastDenturesPage() {
         ]}
         rating={4.7}
         reviewCount={85}
-        url="https://peartreedental.co.uk/services/restorative/dentures/valplast-dentures"
+        url="https://peartree.dental/services/restorative/dentures/valplast-dentures"
         procedureType="Service"
       />
 

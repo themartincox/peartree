@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Cobalt Chrome Dentures - Superior Strength & Precision | Pear Tree Dental",
     description: "Experience premium dentures with cobalt chrome framework for unmatched strength and precision fit.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures/cobalt-chrome-dentures"
+    url: "https://peartree.dental/services/restorative/dentures/cobalt-chrome-dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures/cobalt-chrome-dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures/cobalt-chrome-dentures"
   }
 };
 
@@ -209,7 +209,7 @@ export default function CobaltChromeDenturesPage() {
         ]}
         rating={4.8}
         reviewCount={65}
-        url="https://peartreedental.co.uk/services/restorative/dentures/cobalt-chrome-dentures"
+        url="https://peartree.dental/services/restorative/dentures/cobalt-chrome-dentures"
         procedureType="Service"
       />
 

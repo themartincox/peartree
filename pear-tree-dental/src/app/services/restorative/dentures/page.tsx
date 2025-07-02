@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Dentures - Complete & Partial Denture Solutions | Pear Tree Dental",
     description: "Restore your smile with our comprehensive range of denture options. Expert fitting and premium materials.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures"
+    url: "https://peartree.dental/services/restorative/dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures"
   }
 };
 
@@ -69,7 +69,7 @@ export default function DenturesPage() {
       question: "Will I be able to eat normally with dentures?",
       answer: "With proper fitting and an adjustment period, most patients can eat comfortably with dentures. Start with soft foods and gradually progress. Premium dentures often provide better chewing efficiency and stability."
     },
-    commonDentalFAQs.membership
+    commonDentalFAQs.insurance
   ];
 
   const dentureTypes = [
@@ -197,7 +197,7 @@ export default function DenturesPage() {
         ]}
         rating={4.7}
         reviewCount={180}
-        url="https://peartreedental.co.uk/services/restorative/dentures"
+        url="https://peartree.dental/services/restorative/dentures"
         procedureType="Service"
       />
 

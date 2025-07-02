@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Dental Implants | Pear Tree Dental",
     description: "Permanent tooth replacement solutions with 98% success rate",
     type: "website",
-    url: "https://peartreedental.co.uk/services/implants"
+    url: "https://peartree.dental/services/implants"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/implants"
+    canonical: "https://peartree.dental/services/implants"
   }
 };
 
@@ -98,7 +98,7 @@ export default function ImplantsPage() {
         ]}
         rating={4.9}
         reviewCount={243}
-        url="https://peartreedental.co.uk/services/implants"
+        url="https://peartree.dental/services/implants"
         procedureType="MedicalProcedure"
       />
 

@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Single Dental Implant - Permanent Single Tooth Replacement | Pear Tree Dental",
     description: "Replace one missing tooth permanently with a single dental implant. Natural appearance and function.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/implants/single-implant"
+    url: "https://peartree.dental/services/implants/single-implant"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/implants/single-implant"
+    canonical: "https://peartree.dental/services/implants/single-implant"
   }
 };
 
@@ -214,7 +214,7 @@ export default function SingleImplantPage() {
         ]}
         rating={4.9}
         reviewCount={180}
-        url="https://peartreedental.co.uk/services/implants/single-implant"
+        url="https://peartree.dental/services/implants/single-implant"
         procedureType="MedicalProcedure"
       />
 

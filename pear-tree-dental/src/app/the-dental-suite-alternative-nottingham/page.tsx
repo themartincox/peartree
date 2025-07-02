@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to The Dental Suite? Consider Pear Tree Dental',
     description: 'Modern dental care alternative in Burton Joyce with transparent membership pricing and same-day emergency appointments.',
-    url: 'https://peartreedental.co.uk/the-dental-suite-alternative-nottingham'
+    url: 'https://peartree.dental/the-dental-suite-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/the-dental-suite-alternative-nottingham'
+    canonical: 'https://peartree.dental/the-dental-suite-alternative-nottingham'
   }
 };
 

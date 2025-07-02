@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     title: "ClearCorrect Clear Aligners | Pear Tree Dental",
     description: "Affordable ClearCorrect clear aligners - excellent alternative to Invisalign from £2,500",
     type: "website",
-    url: "https://peartreedental.co.uk/services/clearcorrect"
+    url: "https://peartree.dental/services/clearcorrect"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/clearcorrect"
+    canonical: "https://peartree.dental/services/clearcorrect"
   }
 };
 

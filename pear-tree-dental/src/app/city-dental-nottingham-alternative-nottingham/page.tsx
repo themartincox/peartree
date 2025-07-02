@@ -31,10 +31,10 @@ export const metadata: Metadata = {
     title: 'Looking for an Alternative to City Dental Nottingham? Consider Pear Tree Dental',
     description: 'Escape city center dental stress with suburban tranquility and transparent membership pricing.',
     type: 'website',
-    url: 'https://peartreedental.co.uk/city-dental-nottingham-alternative-nottingham'
+    url: 'https://peartree.dental/city-dental-nottingham-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/city-dental-nottingham-alternative-nottingham'
+    canonical: 'https://peartree.dental/city-dental-nottingham-alternative-nottingham'
   }
 };
 

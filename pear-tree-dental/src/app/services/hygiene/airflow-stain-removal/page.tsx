@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Air Flow Stain Removal - Advanced Hygiene Treatment | Pear Tree Dental",
     description: "Remove stubborn stains with professional Air Flow treatment. Advanced hygiene system for cleaner, brighter teeth.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/hygiene/airflow-stain-removal"
+    url: "https://peartree.dental/services/hygiene/airflow-stain-removal"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/hygiene/airflow-stain-removal"
+    canonical: "https://peartree.dental/services/hygiene/airflow-stain-removal"
   }
 };
 
@@ -169,7 +169,7 @@ export default function AirFlowStainRemovalPage() {
         ]}
         rating={4.8}
         reviewCount={95}
-        url="https://peartreedental.co.uk/services/hygiene/airflow-stain-removal"
+        url="https://peartree.dental/services/hygiene/airflow-stain-removal"
         procedureType="Service"
       />
 

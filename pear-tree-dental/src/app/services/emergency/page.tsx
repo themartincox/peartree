@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     title: "Emergency Dentist | Same-Day Care | Pear Tree Dental",
     description: "24/7 emergency dentist in Burton Joyce. Same-day appointments for dental emergencies. Call now 0115 931 2525",
     type: "website",
-    url: "https://peartreedental.co.uk/services/emergency"
+    url: "https://peartree.dental/services/emergency"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/emergency"
+    canonical: "https://peartree.dental/services/emergency"
   }
 };
 

@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     title: "Composite Veneers | Same-Day Smile Transformation | Pear Tree Dental",
     description: "Affordable composite veneers with same-day results. Budget-friendly smile transformation with minimal preparation.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/veneers/composite"
+    url: "https://peartree.dental/services/cosmetic/veneers/composite"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/veneers/composite"
+    canonical: "https://peartree.dental/services/cosmetic/veneers/composite"
   }
 };
 

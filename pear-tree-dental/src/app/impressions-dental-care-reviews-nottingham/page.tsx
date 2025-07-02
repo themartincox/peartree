@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Impressions Dental Care Reviews: What Local Patients Really Think',
     description: 'Honest analysis of Impressions Dental Care patient reviews and experiences. Compare local practice with modern alternatives.',
-    url: 'https://peartreedental.co.uk/impressions-dental-care-reviews-nottingham'
+    url: 'https://peartree.dental/impressions-dental-care-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/impressions-dental-care-reviews-nottingham'
+    canonical: 'https://peartree.dental/impressions-dental-care-reviews-nottingham'
   }
 };
 

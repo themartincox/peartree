@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "General Dentistry | Pear Tree Dental",
     description: "Comprehensive dental care for the whole family in Burton Joyce",
     type: "website",
-    url: "https://peartreedental.co.uk/services/general"
+    url: "https://peartree.dental/services/general"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/general"
+    canonical: "https://peartree.dental/services/general"
   }
 };
 
@@ -96,7 +96,7 @@ export default function GeneralDentistryPage() {
         ]}
         rating={4.8}
         reviewCount={425}
-        url="https://peartreedental.co.uk/services/general"
+        url="https://peartree.dental/services/general"
         procedureType="Service"
       />
 

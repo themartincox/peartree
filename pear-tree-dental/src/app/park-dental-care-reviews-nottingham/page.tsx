@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Park Dental Care Reviews: What Nottingham Patients Really Think',
     description: 'Honest analysis of Park Dental Care patient reviews and experiences. Compare costs and services with Burton Joyce alternatives.',
-    url: 'https://peartreedental.co.uk/park-dental-care-reviews-nottingham'
+    url: 'https://peartree.dental/park-dental-care-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/park-dental-care-reviews-nottingham'
+    canonical: 'https://peartree.dental/park-dental-care-reviews-nottingham'
   }
 };
 

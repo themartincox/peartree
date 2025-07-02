@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     title: "Join Our Dental Membership Plan | Pear Tree Dental",
     description: "Sign up for affordable dental membership plans and get immediate access to premium dental care",
     type: "website",
-    url: "https://peartreedental.co.uk/membership/signup"
+    url: "https://peartree.dental/membership/signup"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/membership/signup"
+    canonical: "https://peartree.dental/membership/signup"
   }
 };
 

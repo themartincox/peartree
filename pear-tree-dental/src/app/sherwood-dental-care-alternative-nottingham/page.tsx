@@ -29,10 +29,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Sherwood Dental Care? Consider Pear Tree Dental',
     description: 'Escape NHS waiting lists with transparent membership pricing and immediate access to all dental treatments.',
-    url: 'https://peartreedental.co.uk/sherwood-dental-care-alternative-nottingham'
+    url: 'https://peartree.dental/sherwood-dental-care-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/sherwood-dental-care-alternative-nottingham'
+    canonical: 'https://peartree.dental/sherwood-dental-care-alternative-nottingham'
   }
 };
 

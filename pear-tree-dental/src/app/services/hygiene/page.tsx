@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Professional Dental Hygiene Services | Pear Tree Dental Burton Joyce",
     description: "Expert dental hygiene treatments including scale & polish and Air Flow stain removal for optimal oral health.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/hygiene"
+    url: "https://peartree.dental/services/hygiene"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/hygiene"
+    canonical: "https://peartree.dental/services/hygiene"
   }
 };
 
@@ -66,7 +66,7 @@ export default function HygieneServicesPage() {
       question: "What should I expect during a hygiene appointment?",
       answer: "Your appointment includes examination of teeth and gums, removal of plaque and tartar, polishing, and personalized advice on home care. We may also apply fluoride treatment for additional protection."
     },
-    commonDentalFAQs.membership
+    commonDentalFAQs.insurance
   ];
 
   const services = [
@@ -175,7 +175,7 @@ export default function HygieneServicesPage() {
         ]}
         rating={4.8}
         reviewCount={250}
-        url="https://peartreedental.co.uk/services/hygiene"
+        url="https://peartree.dental/services/hygiene"
         procedureType="Service"
       />
 

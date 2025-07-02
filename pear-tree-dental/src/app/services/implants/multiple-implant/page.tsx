@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Multiple Dental Implants - Replace Several Missing Teeth | Pear Tree Dental",
     description: "Replace several missing teeth with individual implant solutions. Natural function and appearance.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/implants/multiple-implant"
+    url: "https://peartree.dental/services/implants/multiple-implant"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/implants/multiple-implant"
+    canonical: "https://peartree.dental/services/implants/multiple-implant"
   }
 };
 
@@ -241,7 +241,7 @@ export default function MultipleImplantPage() {
         ]}
         rating={4.9}
         reviewCount={125}
-        url="https://peartreedental.co.uk/services/implants/multiple-implant"
+        url="https://peartree.dental/services/implants/multiple-implant"
         procedureType="MedicalProcedure"
       />
 

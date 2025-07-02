@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     title: "Enlighten Whitening - Premium Results Guaranteed | Pear Tree Dental",
     description: "Experience the gold standard in teeth whitening with Enlighten. Guaranteed B1 shade results in Burton Joyce.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening/enlighten"
+    url: "https://peartree.dental/services/cosmetic/teeth-whitening/enlighten"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening/enlighten"
+    canonical: "https://peartree.dental/services/cosmetic/teeth-whitening/enlighten"
   }
 };
 
@@ -172,7 +172,7 @@ export default function EnlightenWhiteningPage() {
         ]}
         rating={4.9}
         reviewCount={180}
-        url="https://peartreedental.co.uk/services/cosmetic/teeth-whitening/enlighten"
+        url="https://peartree.dental/services/cosmetic/teeth-whitening/enlighten"
         procedureType="Service"
       />
 

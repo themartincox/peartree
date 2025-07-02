@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     title: "Invisalign Clear Aligners | Pear Tree Dental",
     description: "Invisalign clear aligners for invisible teeth straightening from £2,800",
     type: "website",
-    url: "https://peartreedental.co.uk/services/invisalign"
+    url: "https://peartree.dental/services/invisalign"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/invisalign"
+    canonical: "https://peartree.dental/services/invisalign"
   }
 };
 

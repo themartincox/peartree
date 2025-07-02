@@ -37,10 +37,10 @@ export const metadata: Metadata = {
     title: "Professional Teeth Whitening | Pear Tree Dental Burton Joyce",
     description: "Transform your smile with professional teeth whitening. Enlighten & Boutique systems available from £400.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening"
+    url: "https://peartree.dental/services/cosmetic/teeth-whitening"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/teeth-whitening"
+    canonical: "https://peartree.dental/services/cosmetic/teeth-whitening"
   }
 };
 
@@ -176,7 +176,7 @@ export default function TeethWhiteningPage() {
         ]}
         rating={4.9}
         reviewCount={450}
-        url="https://peartreedental.co.uk/services/cosmetic/teeth-whitening"
+        url="https://peartree.dental/services/cosmetic/teeth-whitening"
         procedureType="Service"
       />
 

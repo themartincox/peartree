@@ -30,10 +30,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Westdale Dental? Consider Pear Tree Dental',
     description: 'Modern dental care alternative with state-of-the-art facilities and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/westdale-dental-alternative-nottingham'
+    url: 'https://peartree.dental/westdale-dental-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/westdale-dental-alternative-nottingham'
+    canonical: 'https://peartree.dental/westdale-dental-alternative-nottingham'
   }
 };
 

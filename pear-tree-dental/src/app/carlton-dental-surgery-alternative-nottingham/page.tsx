@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Looking for an Alternative to Carlton Dental Surgery? Consider Pear Tree Dental',
     description: 'Upgrade to modern dental care with state-of-the-art technology and transparent membership pricing.',
-    url: 'https://peartreedental.co.uk/carlton-dental-surgery-alternative-nottingham'
+    url: 'https://peartree.dental/carlton-dental-surgery-alternative-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/carlton-dental-surgery-alternative-nottingham'
+    canonical: 'https://peartree.dental/carlton-dental-surgery-alternative-nottingham'
   }
 };
 

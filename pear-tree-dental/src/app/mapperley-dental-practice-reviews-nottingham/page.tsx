@@ -19,10 +19,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Mapperley Dental Practice Reviews: What Local Patients Really Think',
     description: 'Honest analysis of Mapperley Dental Practice patient reviews and experiences. Compare local community practice with modern alternatives.',
-    url: 'https://peartreedental.co.uk/mapperley-dental-practice-reviews-nottingham'
+    url: 'https://peartree.dental/mapperley-dental-practice-reviews-nottingham'
   },
   alternates: {
-    canonical: 'https://peartreedental.co.uk/mapperley-dental-practice-reviews-nottingham'
+    canonical: 'https://peartree.dental/mapperley-dental-practice-reviews-nottingham'
   }
 };
 

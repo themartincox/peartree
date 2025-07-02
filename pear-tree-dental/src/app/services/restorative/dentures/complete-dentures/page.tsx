@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Complete Dentures - Full Tooth Replacement | Pear Tree Dental",
     description: "Restore complete oral function with full upper and lower dentures. Natural appearance and comfortable fit.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/restorative/dentures/complete-dentures"
+    url: "https://peartree.dental/services/restorative/dentures/complete-dentures"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/restorative/dentures/complete-dentures"
+    canonical: "https://peartree.dental/services/restorative/dentures/complete-dentures"
   }
 };
 
@@ -204,7 +204,7 @@ export default function CompleteDenturesPage() {
         ]}
         rating={4.6}
         reviewCount={200}
-        url="https://peartreedental.co.uk/services/restorative/dentures/complete-dentures"
+        url="https://peartree.dental/services/restorative/dentures/complete-dentures"
         procedureType="Service"
       />
 

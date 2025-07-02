@@ -39,10 +39,10 @@ export const metadata: Metadata = {
     title: "Composite Edge Bonding - Fix Chipped & Worn Teeth | Pear Tree Dental",
     description: "Repair chipped, worn, or uneven tooth edges with composite bonding. Same-day treatment from £150 per tooth.",
     type: "website",
-    url: "https://peartreedental.co.uk/services/cosmetic/edge-bonding"
+    url: "https://peartree.dental/services/cosmetic/edge-bonding"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/cosmetic/edge-bonding"
+    canonical: "https://peartree.dental/services/cosmetic/edge-bonding"
   }
 };
 
@@ -183,7 +183,7 @@ export default function CompositeEdgeBondingPage() {
         ]}
         rating={4.8}
         reviewCount={120}
-        url="https://peartreedental.co.uk/services/cosmetic/edge-bonding"
+        url="https://peartree.dental/services/cosmetic/edge-bonding"
         procedureType="Service"
       />
 
