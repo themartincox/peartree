@@ -42,7 +42,7 @@ export default function NewPatientsPage() {
     },
     {
       icon: Heart,
-      title: "Personalized Treatment Plan",
+      title: "Personalised Treatment Plan",
       description: "We'll discuss findings and create a tailored treatment plan that fits your needs and budget."
     }
   ];

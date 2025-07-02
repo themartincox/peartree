@@ -164,7 +164,7 @@ function MembershipSuccessContent() {
                   <div className="flex flex-col items-center space-y-2">
                     <Mail className="w-8 h-8 text-pear-primary" />
                     <h4 className="font-semibold">Email Us</h4>
-                    <p className="text-gray-600">peartreedentalcentre@outlook.com</p>
+                    <p className="text-gray-600">hello@peartree.dental</p>
                     <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                   </div>
 

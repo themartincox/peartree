@@ -145,10 +145,10 @@ export default function ComplaintsPage() {
                   <div>
                     <p className="font-semibold text-pear-primary">Email</p>
                     <a
-                      href="mailto:Peartreedentalcentre@outlook.com"
+                      href="mailto:hello@peartree.dental"
                       className="text-sm text-gray-600 hover:text-pear-primary transition-colors"
                     >
-                      Peartreedentalcentre@outlook.com
+                      hello@peartree.dental
                     </a>
                   </div>
                 </div>
