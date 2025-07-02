@@ -158,6 +158,26 @@ export async function GET() {
     <priority>0.8</priority>
   </url>
 
+  <!-- Patient Experience Pages -->
+  <url>
+    <loc>${baseUrl}/testimonials</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/smile-gallery</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/patient-education</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Smile Design -->
   <url>
     <loc>${baseUrl}/smile-design</loc>
