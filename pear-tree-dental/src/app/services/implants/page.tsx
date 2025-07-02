@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -179,18 +180,7 @@ export default function ImplantsPage() {
                 </div>
               </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border border-pear-primary/20">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-pear-primary">FDA Approved</p>
-                    <p className="text-sm text-gray-600">Premium Materials</p>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -215,28 +205,32 @@ export default function ImplantsPage() {
                 description: "Replace one missing tooth with a natural-looking implant crown",
                 price: "From £2,500",
                 features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
-                image: "single-implant"
+                image: "single-implant",
+                url: "/services/implants/single-implant"
               },
               {
                 title: "Multiple Implants",
                 description: "Replace several missing teeth with individual implant solutions",
                 price: "From £6,000",
                 features: ["Multiple implants", "Individual crowns", "Stable foundation", "Independent function"],
-                image: "multiple-implants"
+                image: "multiple-implants",
+                url: "/services/implants/multiple-implant"
               },
               {
                 title: "Implant Bridge",
                 description: "Replace multiple adjacent teeth with implant-supported bridge",
                 price: "From £8,500",
                 features: ["2-4 implants", "Connected crowns", "Cost effective", "Strong support"],
-                image: "implant-bridge"
+                image: "implant-bridge",
+                url: "/services/implants/implant-bridge"
               },
               {
                 title: "All-on-4",
                 description: "Replace entire arch of teeth with just 4 strategically placed implants",
                 price: "From £15,000",
                 features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
-                image: "all-on-4"
+                image: "all-on-4",
+                url: "/services/implants/all-on-4"
               }
             ].map((implant, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
@@ -263,9 +257,11 @@ export default function ImplantsPage() {
                       ))}
                     </ul>
 
-                    <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                      Explore {implant.title} Options
-                    </Button>
+                    <Link href={implant.url}>
+                      <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
+                        Explore {implant.title} Options
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
@@ -542,6 +538,11 @@ export default function ImplantsPage() {
                 <CalendarDays className="w-5 h-5 mr-2" />
                 Book Consultation
               </Button>
+              <Link href="/services/treatment-comparison">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                  Compare All Options
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
                 <Phone className="w-5 h-5 mr-2" />
                 Call 0115 931 2525
