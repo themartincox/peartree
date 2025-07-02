@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -40,10 +41,10 @@ export const metadata: Metadata = {
     title: "Orthodontics & Clear Aligners | Pear Tree Dental",
     description: "Invisible teeth straightening with Invisalign and ClearCorrect",
     type: "website",
-    url: "https://peartreedental.co.uk/services/orthodontics"
+    url: "https://peartree.dental/services/orthodontics"
   },
   alternates: {
-    canonical: "https://peartreedental.co.uk/services/orthodontics"
+    canonical: "https://peartree.dental/services/orthodontics"
   }
 };
 
@@ -101,7 +102,7 @@ export default function OrthodonticsPage() {
         ]}
         rating={4.8}
         reviewCount={186}
-        url="https://peartreedental.co.uk/services/orthodontics"
+        url="https://peartree.dental/services/orthodontics"
         procedureType="MedicalProcedure"
       />
 
@@ -249,9 +250,11 @@ export default function OrthodonticsPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
-                  Learn About Invisalign
-                </Button>
+                <Link href="/services/orthodontics/invisalign">
+                  <Button className="w-full bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
+                    Learn About Invisalign
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -291,9 +294,11 @@ export default function OrthodonticsPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender/80 text-white">
-                  Learn About ClearCorrect
-                </Button>
+                <Link href="/services/orthodontics/clearcorrect">
+                  <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender/80 text-white">
+                    Learn About ClearCorrect
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -335,6 +340,224 @@ export default function OrthodonticsPage() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Features & Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Clear Aligner Benefits
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Discover the advantages that make clear aligners the preferred choice for modern orthodontic treatment
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="heading-serif text-2xl font-bold text-pear-primary mb-8">
+                Why Choose Clear Aligners?
+              </h3>
+              <div className="space-y-6">
+                {[
+                  {
+                    icon: Eye,
+                    title: "Nearly Invisible Treatment",
+                    description: "95% transparent aligners that are virtually undetectable, allowing you to straighten your teeth discreetly without anyone noticing."
+                  },
+                  {
+                    icon: Heart,
+                    title: "Superior Comfort",
+                    description: "Smooth plastic aligners with no metal brackets or wires. No cuts, scrapes, or emergency visits for broken appliances."
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Removable Convenience",
+                    description: "Remove aligners for eating, drinking, brushing, and special occasions. Maintain perfect oral hygiene throughout treatment."
+                  },
+                  {
+                    icon: Clock,
+                    title: "Faster Treatment Time",
+                    description: "Average treatment time of 6-18 months compared to 18-36 months with traditional braces, getting you results sooner."
+                  }
+                ].map((benefit, index) => {
+                  const Icon = benefit.icon;
+                  return (
+                    <div key={index} className="flex space-x-4">
+                      <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-6 h-6 text-soft-pink" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-pear-primary mb-2">{benefit.title}</h4>
+                        <p className="text-gray-600">{benefit.description}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="relative">
+              <Card className="overflow-hidden shadow-xl">
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="text-center">
+                    <h3 className="text-lg font-bold text-gray-700 mb-2">CLEAR ALIGNER BENEFITS</h3>
+                    <p className="text-gray-600">Lifestyle comparison: aligners vs braces</p>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Floating Stats */}
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-soft-pink/20">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-soft-pink">6-18</div>
+                  <div className="text-sm text-gray-600">months average</div>
+                  <div className="text-sm text-gray-600">treatment time</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lifestyle Advantages */}
+      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Lifestyle Advantages
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Clear aligners fit seamlessly into your lifestyle without the restrictions and inconveniences of traditional braces
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Smile,
+                title: "Eat Anything",
+                description: "No food restrictions - remove aligners to enjoy all your favorite foods including popcorn, nuts, and sticky treats.",
+                benefit: "Complete dietary freedom"
+              },
+              {
+                icon: Sparkles,
+                title: "Easy Cleaning",
+                description: "Brush and floss normally with removable aligners. Maintain excellent oral hygiene throughout treatment.",
+                benefit: "Better oral health"
+              },
+              {
+                icon: Users,
+                title: "Social Confidence",
+                description: "Smile confidently in photos and social situations. No one will know you're undergoing orthodontic treatment.",
+                benefit: "Unaffected social life"
+              },
+              {
+                icon: Award,
+                title: "Professional Appearance",
+                description: "Perfect for business meetings, presentations, and professional photos without visible orthodontic appliances.",
+                benefit: "Career-friendly treatment"
+              },
+              {
+                icon: Heart,
+                title: "Comfortable Speaking",
+                description: "Minimal impact on speech. Practice presentations and important conversations without lisp or difficulty.",
+                benefit: "Clear communication"
+              },
+              {
+                icon: Shield,
+                title: "Sports & Activities",
+                description: "Continue playing sports and musical instruments without worry. No risk of cuts from broken brackets.",
+                benefit: "Active lifestyle maintained"
+              }
+            ].map((advantage, index) => {
+              const Icon = advantage.icon;
+              return (
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink/20">
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-soft-pink to-soft-lavender rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="font-semibold text-pear-primary mb-3">{advantage.title}</h3>
+                    <p className="text-gray-600 text-sm mb-3">{advantage.description}</p>
+                    <div className="bg-soft-pink/10 rounded-lg p-2">
+                      <span className="text-xs font-medium text-soft-pink">{advantage.benefit}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Clinical Features */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Advanced Clinical Features
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Modern clear aligner technology incorporates sophisticated features for optimal treatment outcomes
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "3D Digital Planning",
+                description: "Advanced computer modeling creates a precise treatment plan showing exactly how your teeth will move at each stage.",
+                features: ["Virtual treatment preview", "Precise force calculations", "Optimized tooth movements", "Predictable timeline"],
+                icon: TrendingUp
+              },
+              {
+                title: "Custom Fabrication",
+                description: "Each aligner is individually crafted using advanced 3D printing technology for perfect fit and optimal force delivery.",
+                features: ["Individual tooth control", "Precise force application", "Optimal material thickness", "Perfect fit guarantee"],
+                icon: Award
+              },
+              {
+                title: "Progressive Treatment",
+                description: "Gradual, controlled tooth movement in small increments ensures comfort while achieving comprehensive results.",
+                features: ["Gentle force application", "Reduced discomfort", "Controlled movement", "Stable results"],
+                icon: Clock
+              },
+              {
+                title: "Quality Materials",
+                description: "Medical-grade thermoplastic materials engineered specifically for orthodontic movement and patient comfort.",
+                features: ["Biocompatible materials", "Stain-resistant plastic", "Optimal flexibility", "Durable construction"],
+                icon: Shield
+              }
+            ].map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-soft-pink to-soft-lavender rounded-xl flex items-center justify-center">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-xl text-pear-primary">{feature.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-600 mb-4">{feature.description}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {feature.features.map((item, idx) => (
+                        <div key={idx} className="flex items-center space-x-2">
+                          <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
+                          <span className="text-sm text-gray-700">{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -103,10 +103,21 @@ export default function CosmeticDentistryPage() {
       name: "Complete Smile Makeover",
       description: "Comprehensive transformation combining multiple treatments for your perfect smile",
       price: getTreatmentPrice("Smile Makeover"),
-      duration: "4-6 weeks",
+      duration: "2-12 months",
       results: "Life-changing",
-      popular: false,
-      link: "/services/cosmetic/smile-makeover"
+      popular: true,
+      link: "/services/complete-smile-makeover",
+      socialProof: "180+ smile transformations"
+    },
+    {
+      name: "Wedding Day Smile",
+      description: "Perfect smile for your special day with timeline-based treatments for brides and grooms",
+      price: "From £400",
+      duration: "2 weeks to 6 months",
+      results: "Picture-perfect",
+      popular: true,
+      link: "/wedding-day-smile",
+      socialProof: "500+ happy couples"
     }
   ];
 

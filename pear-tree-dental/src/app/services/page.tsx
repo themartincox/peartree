@@ -68,6 +68,30 @@ const services = [
     isCore: false
   },
   {
+    id: "complete-smile-makeover",
+    title: "Complete Smile Makeover",
+    description: "Total smile transformation combining multiple treatments for comprehensive aesthetic and functional improvement.",
+    href: "/services/complete-smile-makeover",
+    icon: Zap,
+    color: "rose-500",
+    features: ["Digital Smile Design", "Multiple Treatments", "Coordinated Care", "Life-Changing Results"],
+    image: "/images/complete-smile-makeover.webp",
+    isCore: false,
+    featured: true
+  },
+  {
+    id: "wedding-day-smile",
+    title: "Wedding Day Smile",
+    description: "Perfect smile for your special day with timeline-based treatments designed specifically for brides and grooms.",
+    href: "/wedding-day-smile",
+    icon: Heart,
+    color: "rose-500",
+    features: ["Timeline Planning", "Bridal Packages", "Perfect Day Guarantee", "Quick Enhancements"],
+    image: "/images/wedding-day-smile.webp",
+    isCore: false,
+    featured: true
+  },
+  {
     id: "implants",
     title: "Implant Dentistry",
     description: "Permanent tooth replacement solutions that look, feel, and function like natural teeth.",
