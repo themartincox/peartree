@@ -59,6 +59,20 @@ const allServices: ServiceNavItem[] = [
     description: "Urgent dental care when you need it most"
   },
   {
+    id: "complete-smile-makeover",
+    title: "Complete Smile Makeover",
+    href: "/services/complete-smile-makeover",
+    category: "cosmetic",
+    description: "Total smile transformation with comprehensive treatments"
+  },
+  {
+    id: "wedding-day-smile",
+    title: "Wedding Day Smile",
+    href: "/wedding-day-smile",
+    category: "cosmetic",
+    description: "Perfect smile for your special day with timeline-based treatments"
+  },
+  {
     id: "treatment-comparison",
     title: "Treatment Comparison",
     href: "/services/treatment-comparison",

@@ -120,6 +120,21 @@ const Navigation = () => {
       description: "State-of-the-art facilities in Burton Joyce"
     },
     {
+      title: "Patient Reviews",
+      href: "/testimonials",
+      description: "Real testimonials from our satisfied patients"
+    },
+    {
+      title: "Smile Gallery",
+      href: "/smile-gallery",
+      description: "Before & after smile transformations"
+    },
+    {
+      title: "Dental Education",
+      href: "/patient-education",
+      description: "Helpful guides and oral health resources"
+    },
+    {
       title: "Pricing",
       href: "/pricing",
       description: "Transparent dental treatment pricing"
