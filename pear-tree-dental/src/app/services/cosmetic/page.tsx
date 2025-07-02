@@ -18,6 +18,7 @@ import {
   Camera,
   Shield
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Cosmetic Dentistry - Transform Your Smile in Burton Joyce",
@@ -72,25 +73,27 @@ export default function CosmeticDentistryPage() {
     {
       name: "Professional Teeth Whitening",
       description: "Brighten your smile by up to 8 shades with our professional whitening treatments",
-      price: "From £350",
+      price: getTreatmentPrice("Teeth Whitening"),
       duration: "1 hour",
       results: "Immediate",
       popular: true,
-      link: "/services/cosmetic/whitening"
+      link: "/services/cosmetic/teeth-whitening",
+      socialProof: "Over 1,000 happy patients"
     },
     {
       name: "Dental Veneers",
       description: "Transform your smile with ultra-thin, porcelain, or composite veneers - choose your perfect option",
-      price: "From £180 per tooth",
+      price: getTreatmentPrice("Composite Veneers"),
       duration: "Same day to 2-3 visits",
       results: "Immediate to Permanent",
       popular: false,
-      link: "/veneers"
+      link: "/veneers",
+      socialProof: "Over 500 happy patients"
     },
     {
       name: "Composite Bonding",
       description: "Quick and affordable solution for minor imperfections and gaps",
-      price: "From £180 per tooth",
+      price: getTreatmentPrice("Composite Edge Bonding"),
       duration: "30-60 minutes",
       results: "Immediate",
       popular: false,
@@ -99,7 +102,7 @@ export default function CosmeticDentistryPage() {
     {
       name: "Complete Smile Makeover",
       description: "Comprehensive transformation combining multiple treatments for your perfect smile",
-      price: "From £2,500",
+      price: getTreatmentPrice("Smile Makeover"),
       duration: "4-6 weeks",
       results: "Life-changing",
       popular: false,
@@ -152,7 +155,7 @@ export default function CosmeticDentistryPage() {
     {
       step: "1",
       title: "Free Consultation",
-      description: "We'll discuss your goals, examine your teeth, and create a personalized treatment plan"
+      description: "We'll discuss your goals, examine your teeth, and create a personalised treatment plan"
     },
     {
       step: "2",
@@ -247,8 +250,7 @@ export default function CosmeticDentistryPage() {
 
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold group">
-                  Book Free Smile Consultation
+                <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold group">Book Smile Consultation
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white">
@@ -368,6 +370,16 @@ export default function CosmeticDentistryPage() {
                 </CardHeader>
 
                 <CardContent>
+                  {/* Social Proof Badge */}
+                  {treatment.socialProof && (
+                    <div className="mb-6">
+                      <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-4 py-2">
+                        <Star className="w-4 h-4 text-pear-gold mr-2 fill-current" />
+                        <span className="text-sm font-semibold text-pear-gold">{treatment.socialProof}</span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                     <div>
                       <span className="text-gray-500">Duration:</span>

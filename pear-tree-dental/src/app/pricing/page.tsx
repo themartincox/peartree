@@ -16,6 +16,15 @@ import {
   Sparkles,
   ArrowRight
 } from "lucide-react";
+import {
+  membershipPlans,
+  generalTreatments,
+  cosmeticTreatments,
+  restorativeTreatments,
+  orthodonticTreatments,
+  implantTreatments,
+  examinationPrices
+} from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Dental Treatment Prices | Pear Tree Dental Burton Joyce",
@@ -24,68 +33,32 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-  const membershipPlans = [
-    {
-      name: "Adult Plan",
-      price: "£10.95",
-      period: "/month",
-      description: "Complete dental care for adults",
-      includes: ["2 check-ups per year", "2 hygienist visits", "All X-rays included", "20% discount on treatments", "Emergency care priority"]
-    },
-    {
-      name: "Child Plan",
-      price: "£15.95",
-      period: "/month",
-      description: "Comprehensive care for children",
-      includes: ["2 check-ups per year", "Fluoride treatments", "All X-rays included", "20% discount on treatments", "Emergency care priority"]
-    },
-    {
-      name: "Family Plan",
-      price: "£29.95",
-      period: "/month",
-      description: "Complete care for the whole family",
-      includes: ["Up to 4 family members", "All check-ups included", "All hygienist visits", "20% discount on treatments", "Emergency care priority"]
-    }
-  ];
+  // Convert imported prices to match the expected format
+  const formattedGeneralTreatments = generalTreatments.map(treatment => ({
+    name: treatment.name,
+    nhsPrice: "N/A", // We don't offer NHS services, so mark as N/A
+    privatePrice: treatment.price
+  }));
 
-  const generalTreatments = [
-    { name: "Dental Check-up", nhsPrice: "From £25", privatePrice: "From £65" },
-    { name: "Scale & Polish", nhsPrice: "From £45", privatePrice: "From £65" },
-    { name: "White Fillings", nhsPrice: "From £65", privatePrice: "From £120" },
-    { name: "Tooth Extraction", nhsPrice: "From £65", privatePrice: "From £150" },
-    { name: "Root Canal Treatment", nhsPrice: "From £65", privatePrice: "From £350" },
-    { name: "Emergency Consultation", nhsPrice: "From £25", privatePrice: "From £65" }
-  ];
+  const formattedCosmeticTreatments = cosmeticTreatments.map(treatment => ({
+    name: treatment.name,
+    price: treatment.price
+  }));
 
-  const cosmeticTreatments = [
-    { name: "Teeth Whitening", price: "From £350" },
-    { name: "Composite Veneers", price: "From £180 per tooth" },
-    { name: "Porcelain Veneers", price: "From £650 per tooth" },
-    { name: "Ultra-thin Veneers", price: "From £450 per tooth" },
-    { name: "Smile Makeover", price: "From £2,500" }
-  ];
+  const formattedRestorativeTreatments = restorativeTreatments.map(treatment => ({
+    name: treatment.name,
+    price: treatment.price
+  }));
 
-  const restorativeTreatments = [
-    { name: "Dental Crowns", price: "From £450" },
-    { name: "Dental Bridges", price: "From £850" },
-    { name: "Dentures (Partial)", price: "From £650" },
-    { name: "Dentures (Full)", price: "From £1,200" },
-    { name: "Inlays & Onlays", price: "From £350" }
-  ];
+  const formattedOrthodonticTreatments = orthodonticTreatments.map(treatment => ({
+    name: treatment.name,
+    price: treatment.price
+  }));
 
-  const orthodonticTreatments = [
-    { name: "Invisalign (Simple)", price: "From £2,800" },
-    { name: "Invisalign (Moderate)", price: "From £3,500" },
-    { name: "Invisalign (Complex)", price: "From £4,500" },
-    { name: "ClearCorrect", price: "From £2,400" }
-  ];
-
-  const implantTreatments = [
-    { name: "Single Dental Implant", price: "From £2,500" },
-    { name: "Multiple Implants", price: "From £6,000" },
-    { name: "All-on-4 Implants", price: "From £8,500" },
-    { name: "Full Mouth Reconstruction", price: "From £15,000" }
-  ];
+  const formattedImplantTreatments = implantTreatments.map(treatment => ({
+    name: treatment.name,
+    price: treatment.price
+  }));
 
   return (
     <div className="min-h-screen bg-white">
@@ -201,7 +174,7 @@ export default function PricingPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {generalTreatments.map((treatment, index) => (
+                      {formattedGeneralTreatments.map((treatment, index) => (
                         <tr key={index} className="border-b hover:bg-gray-50">
                           <td className="py-3 px-4 font-medium">{treatment.name}</td>
                           <td className="py-3 px-4 text-center text-dental-green">{treatment.nhsPrice}</td>
@@ -230,7 +203,7 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cosmeticTreatments.map((treatment, index) => (
+            {formattedCosmeticTreatments.map((treatment, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="w-12 h-12 bg-gradient-to-br from-soft-pink to-soft-lavender rounded-xl flex items-center justify-center mb-4">
@@ -268,7 +241,7 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {restorativeTreatments.map((treatment, index) => (
+            {formattedRestorativeTreatments.map((treatment, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-soft-blue rounded-xl flex items-center justify-center mb-4">
@@ -306,7 +279,7 @@ export default function PricingPage() {
                 Straighten your teeth with modern clear aligner technology.
               </p>
               <div className="space-y-4">
-                {orthodonticTreatments.map((treatment, index) => (
+                {formattedOrthodonticTreatments.map((treatment, index) => (
                   <Card key={index}>
                     <CardContent className="p-6 flex justify-between items-center">
                       <div>
@@ -329,7 +302,7 @@ export default function PricingPage() {
                 Permanent tooth replacement solutions that look and feel natural.
               </p>
               <div className="space-y-4">
-                {implantTreatments.map((treatment, index) => (
+                {formattedImplantTreatments.map((treatment, index) => (
                   <Card key={index}>
                     <CardContent className="p-6 flex justify-between items-center">
                       <div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -41,6 +42,7 @@ const services = [
     icon: Heart,
     color: "dental-green",
     features: ["Regular Check-ups", "Professional Cleaning", "Fluoride Treatments", "Oral Health Advice"],
+    image: "/images/general-dental-checkup.webp",
     isCore: true
   },
   {
@@ -51,6 +53,7 @@ const services = [
     icon: Shield,
     color: "dental-green",
     features: ["Fillings", "Crowns & Bridges", "Root Canal Treatment", "Dentures"],
+    image: "/images/restorative-dental-treatment.webp",
     isCore: true
   },
   {
@@ -61,6 +64,7 @@ const services = [
     icon: Sparkles,
     color: "soft-pink",
     features: ["Teeth Whitening", "Porcelain Veneers", "Composite Bonding", "Smile Makeovers"],
+    image: "/images/cosmetic-dentistry-services.webp",
     isCore: false
   },
   {
@@ -71,6 +75,7 @@ const services = [
     icon: Crown,
     color: "soft-pink",
     features: ["Single Implants", "Multiple Implants", "Full Mouth Restoration", "Implant-Supported Dentures"],
+    image: "/images/dental-implants-procedure.webp",
     isCore: false
   },
   {
@@ -81,6 +86,7 @@ const services = [
     icon: Smile,
     color: "soft-pink",
     features: ["Invisalign", "ClearCorrect", "Traditional Braces", "Retainers"],
+    image: "/images/orthodontics-invisalign-treatment.webp",
     isCore: false
   },
   {
@@ -91,6 +97,7 @@ const services = [
     icon: AlertCircle,
     color: "red-500",
     features: ["Pain Relief", "Urgent Repairs", "Same-Day Appointments", "Out-of-Hours Care"],
+    image: "/images/emergency-dental-care.webp",
     isCore: true
   }
 ];
@@ -130,7 +137,7 @@ const ServicesPage = () => {
                   Book Your Consultation
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4">
+              <Button asChild size="lg" variant="outline" className="border-white bg-[#f20202] text-white hover:bg-white hover:text-pear-primary px-8 py-4">
                 <Link href="/urgent-dental-pain">
                   <Phone className="w-5 h-5 mr-2" />
                   Emergency Care
@@ -161,45 +168,63 @@ const ServicesPage = () => {
             {coreServices.map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                        service.color === 'red-500' ? 'bg-red-500' : `bg-${service.color}`
-                      }`}>
-                        <ServiceIcon className="w-6 h-6 text-white" />
-                      </div>
-                      {service.isCore && (
-                        <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs">
-                          Essential
-                        </Badge>
-                      )}
+                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">
+                  {/* Background Image */}
+                  {service.image && (
+                    <div className="absolute inset-0">
+                      <Image
+                        src={service.image}
+                        alt={`${service.title} - Professional dental care at Pear Tree Dental`}
+                        fill
+                        className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      {/* Dark overlay for text readability */}
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
                     </div>
-                    <h3 className="text-xl font-bold text-pear-primary group-hover:text-dental-green transition-colors">
-                      {service.title}
-                    </h3>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
+                  )}
 
-                    <div className="space-y-2 mb-6">
-                      {service.features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-dental-green flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
+                  {/* Content overlay */}
+                  <div className="relative z-10 h-full flex flex-col">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
+                          <ServiceIcon className={`w-6 h-6 ${
+                            service.color === 'red-500' ? 'text-red-500' : service.color === 'dental-green' ? 'text-dental-green' : 'text-soft-pink'
+                          }`} />
                         </div>
-                      ))}
-                    </div>
+                        {service.isCore && (
+                          <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs backdrop-blur-sm">
+                            Essential
+                          </Badge>
+                        )}
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-pear-gold transition-colors drop-shadow-lg">
+                        {service.title}
+                      </h3>
+                    </CardHeader>
+                    <CardContent className="pt-0 flex-grow">
+                      <p className="text-white/90 mb-6 leading-relaxed drop-shadow-md">
+                        {service.description}
+                      </p>
 
-                    <Button asChild className="w-full group-hover:bg-dental-green group-hover:text-white transition-colors">
-                      <Link href={service.href}>
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                  </CardContent>
+                      <div className="space-y-2 mb-6">
+                        {service.features.map((feature, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
+                            <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Button asChild className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg">
+                        <Link href={service.href}>
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </div>
                 </Card>
               );
             })}
@@ -227,41 +252,59 @@ const ServicesPage = () => {
             {cosmeticServices.map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`w-12 h-12 rounded-xl bg-${service.color} flex items-center justify-center`}>
-                        <ServiceIcon className="w-6 h-6 text-white" />
-                      </div>
-                      <Badge variant="secondary" className="bg-soft-pink/10 text-soft-pink text-xs">
-                        Cosmetic
-                      </Badge>
+                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">
+                  {/* Background Image */}
+                  {service.image && (
+                    <div className="absolute inset-0">
+                      <Image
+                        src={service.image}
+                        alt={`${service.title} - Professional dental care at Pear Tree Dental`}
+                        fill
+                        className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      {/* Dark overlay for text readability */}
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
                     </div>
-                    <h3 className="text-xl font-bold text-pear-primary group-hover:text-soft-pink transition-colors">
-                      {service.title}
-                    </h3>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-gray-600 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
+                  )}
 
-                    <div className="space-y-2 mb-6">
-                      {service.features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
+                  {/* Content overlay */}
+                  <div className="relative z-10 h-full flex flex-col">
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
+                          <ServiceIcon className="w-6 h-6 text-soft-pink" />
                         </div>
-                      ))}
-                    </div>
+                        <Badge variant="secondary" className="bg-soft-pink/10 text-soft-pink text-xs backdrop-blur-sm">
+                          Cosmetic
+                        </Badge>
+                      </div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-pear-gold transition-colors drop-shadow-lg">
+                        {service.title}
+                      </h3>
+                    </CardHeader>
+                    <CardContent className="pt-0 flex-grow">
+                      <p className="text-white/90 mb-6 leading-relaxed drop-shadow-md">
+                        {service.description}
+                      </p>
 
-                    <Button asChild className="w-full group-hover:bg-soft-pink group-hover:text-white transition-colors">
-                      <Link href={service.href}>
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    </Button>
-                  </CardContent>
+                      <div className="space-y-2 mb-6">
+                        {service.features.map((feature, index) => (
+                          <div key={index} className="flex items-center space-x-2">
+                            <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
+                            <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      <Button asChild className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg">
+                        <Link href={service.href}>
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </div>
                 </Card>
               );
             })}
@@ -283,37 +326,42 @@ const ServicesPage = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Link href="/about/team" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-gold/90 transition-all duration-300">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2">Expert Team</h3>
-                <p className="text-sm text-gray-600">Experienced dental professionals committed to excellence</p>
-              </div>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-gold transition-colors">Expert Team</h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Experienced dental professionals committed to excellence</p>
+              </Link>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Link href="/about/practice" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-dental-green/90 transition-all duration-300">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2">Modern Technology</h3>
-                <p className="text-sm text-gray-600">State-of-the-art equipment for optimal treatment outcomes</p>
-              </div>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-dental-green transition-colors">Modern Technology</h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">State-of-the-art equipment for optimal treatment outcomes</p>
+              </Link>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Link href="/contact" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-soft-pink/90 transition-all duration-300">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2">Flexible Scheduling</h3>
-                <p className="text-sm text-gray-600">Convenient appointment times to fit your busy lifestyle</p>
-              </div>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-soft-pink transition-colors">Flexible Scheduling</h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Convenient appointment times to fit your busy lifestyle</p>
+              </Link>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <a
+                href="https://www.google.com/search?q=Pear+Tree+Dental+Burton+Joyce+reviews"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
+                <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-primary/90 transition-all duration-300">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2">5-Star Care</h3>
-                <p className="text-sm text-gray-600">Consistently rated excellent by our satisfied patients</p>
-              </div>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-primary/80 transition-colors">5-Star Care</h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Consistently rated excellent by our satisfied patients</p>
+              </a>
             </div>
           </div>
         </div>
@@ -334,14 +382,12 @@ const ServicesPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4">
                 <Link href="/contact">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Your Free Consultation
+                  <CalendarDays className="w-5 h-5 mr-2" />Book Your Consultationn
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4">
+              <Button asChild size="lg" variant="outline" className="border-white bg-[#e5b03e] text-white hover:bg-white hover:text-pear-primary px-8 py-4">
                 <Link href="/membership">
-                  <Crown className="w-5 h-5 mr-2" />
-                  Explore Membership Plans
+                  <Crown className="w-5 h-5 mr-2" />Explore Memberships
                 </Link>
               </Button>
             </div>
