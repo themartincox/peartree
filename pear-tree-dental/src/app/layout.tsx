@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
@@ -180,6 +181,12 @@ export default function RootLayout({
           </PageTransition>
         </main>
         <Footer />
+
+        {/* WhatsApp Contact Widget */}
+        <WhatsAppWidget
+          phoneNumber="447525114953"
+          position="bottom-right"
+        />
       </body>
     </html>
   );

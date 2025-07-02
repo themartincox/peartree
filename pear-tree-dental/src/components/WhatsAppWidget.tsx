@@ -1,117 +1,227 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { MessageCircle, X, Phone, Calendar, MapPin, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
-export default function WhatsAppWidget() {
+interface WhatsAppWidgetProps {
+  phoneNumber?: string;
+  position?: "bottom-right" | "bottom-left";
+  className?: string;
+}
+
+export default function WhatsAppWidget({
+  phoneNumber = "447123456789", // Replace with actual practice WhatsApp number
+  position = "bottom-right",
+  className = ""
+}: WhatsAppWidgetProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
-    // Check if user has previously dismissed the widget
-    const dismissed = localStorage.getItem('whatsapp-widget-dismissed');
-    if (dismissed) {
-      setIsDismissed(true);
-      return;
-    }
+    // Get current page path for context-aware messaging
+    setCurrentPage(window.location.pathname);
 
-    // Show widget after 10 seconds
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 10000);
-
+    // Show widget after page loads
+    const timer = setTimeout(() => setIsVisible(true), 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  const handleWhatsAppClick = () => {
-    const message = encodeURIComponent(
-      "Hi! I'm interested in learning more about your industry-specific websites and revenue-sharing partnerships. Can we chat?"
-    );
-    const whatsappUrl = `https://wa.me/447432039801?text=${message}`;
-    window.open(whatsappUrl, '_blank');
+  const getContextualMessage = () => {
+    const baseMessage = "Hello! I'm interested in dental services at Pear Tree Dental.";
+
+    if (currentPage.includes("/services/emergency") || currentPage.includes("/urgent")) {
+      return `🚨 URGENT: I need emergency dental care at Pear Tree Dental. Can you help me?`;
+    }
+
+    if (currentPage.includes("/services/implants")) {
+      return `${baseMessage} I'd like to know more about dental implants and pricing.`;
+    }
+
+    if (currentPage.includes("/services/cosmetic")) {
+      return `${baseMessage} I'm interested in cosmetic dentistry options like veneers or teeth whitening.`;
+    }
+
+    if (currentPage.includes("/services/orthodontics") || currentPage.includes("/invisalign")) {
+      return `${baseMessage} I'd like information about teeth straightening with Invisalign or clear aligners.`;
+    }
+
+    if (currentPage.includes("/services/")) {
+      const service = currentPage.split("/services/")[1]?.replace(/\//g, " ").replace(/-/g, " ");
+      return `${baseMessage} I'd like to know more about ${service}.`;
+    }
+
+    if (currentPage.includes("/membership")) {
+      return `${baseMessage} I'd like to learn about your dental membership plans starting from £10.95/month.`;
+    }
+
+    if (currentPage.includes("/testimonials")) {
+      return `${baseMessage} I saw your excellent patient reviews and would like to book a consultation.`;
+    }
+
+    if (currentPage.includes("/new-patients")) {
+      return `${baseMessage} I'm a new patient and would like to register and book my first appointment.`;
+    }
+
+    if (currentPage.includes("/contact") || currentPage.includes("/booking")) {
+      return `${baseMessage} I'd like to book an appointment at your Burton Joyce practice.`;
+    }
+
+    if (currentPage.includes("/pricing")) {
+      return `${baseMessage} I'd like to discuss treatment costs and payment options.`;
+    }
+
+    return baseMessage;
   };
 
-  const handleDismiss = () => {
-    setIsDismissed(true);
-    localStorage.setItem('whatsapp-widget-dismissed', 'true');
+  const openWhatsApp = (message: string) => {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+    setIsOpen(false);
   };
 
-  if (isDismissed || !isVisible) return null;
+  const quickMessages = [
+    {
+      icon: Calendar,
+      title: "Book Appointment",
+      message: "Hi! I'd like to book a dental appointment at Pear Tree Dental. What's your next available slot?"
+    },
+    {
+      icon: Phone,
+      title: "Emergency Care",
+      message: "🚨 EMERGENCY: I need urgent dental care. I'm experiencing severe dental pain and need immediate assistance."
+    },
+    {
+      icon: MapPin,
+      title: "New Patient",
+      message: "Hello! I'm a new patient interested in registering with Pear Tree Dental. Can you help me get started?"
+    },
+    {
+      icon: Clock,
+      title: "Membership Plans",
+      message: "Hi! I'd like to learn about your dental membership plans starting from £10.95/month and what's included."
+    }
+  ];
+
+  const positionClasses = {
+    "bottom-right": "bottom-6 right-6",
+    "bottom-left": "bottom-6 left-6"
+  };
+
+  if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50">
-      {/* Expanded chat bubble */}
-      {isExpanded && (
-        <div className="mb-4 bg-white rounded-2xl shadow-2xl border border-gray-200 p-4 max-w-xs animate-in slide-in-from-bottom-5 duration-300">
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                <MessageCircle className="h-5 w-5 text-white" />
+    <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
+      {/* Chat Widget */}
+      {isOpen && (
+        <Card className="mb-4 w-80 shadow-2xl border-2 border-green-200 animate-in slide-in-from-bottom-4 duration-300">
+          <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-lg pb-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5" />
+                </div>
+                <div>
+                  <CardTitle className="text-lg">Pear Tree Dental</CardTitle>
+                  <p className="text-sm text-green-100">Usually replies instantly</p>
+                </div>
               </div>
-              <div>
-                <h4 className="font-heading font-semibold text-midnight-blue text-sm">
-                  Postino Team
-                </h4>
-                <p className="text-xs text-gray-500">Typically replies instantly</p>
-              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:bg-white/20 h-8 w-8 p-0"
+              >
+                <X className="w-4 h-4" />
+              </Button>
             </div>
-            <button
-              onClick={() => setIsExpanded(false)}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+          </CardHeader>
+
+          <CardContent className="p-4 space-y-3">
+            <div className="text-sm text-gray-600 mb-4">
+              👋 Hi! How can we help you today? Choose a quick option or send a custom message:
+            </div>
+
+            {/* Quick Message Options */}
+            <div className="space-y-2">
+              {quickMessages.map((msg, index) => {
+                const Icon = msg.icon;
+                return (
+                  <button
+                    key={index}
+                    onClick={() => openWhatsApp(msg.message)}
+                    className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors group"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                        <Icon className="w-4 h-4 text-green-600" />
+                      </div>
+                      <div>
+                        <div className="font-medium text-sm text-gray-900">{msg.title}</div>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Custom Message Button */}
+            <Button
+              onClick={() => openWhatsApp(getContextualMessage())}
+              className="w-full bg-green-500 hover:bg-green-600 text-white mt-4"
             >
-              <X className="h-4 w-4" />
-            </button>
-          </div>
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Send Custom Message
+            </Button>
 
-          <div className="bg-gray-50 rounded-lg p-3 mb-4">
-            <p className="text-sm text-gray-700 font-body">
-              👋 Hi there! Ready to transform your business with a revenue-focused website?
-              Let's chat about your industry-specific needs!
-            </p>
-          </div>
-
-          <button
-            onClick={handleWhatsAppClick}
-            className="w-full bg-green-500 hover:bg-green-600 text-white font-heading font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
-          >
-            <MessageCircle className="h-4 w-4" />
-            <span>Start WhatsApp Chat</span>
-          </button>
-
-          <button
-            onClick={handleDismiss}
-            className="w-full text-xs text-gray-500 hover:text-gray-700 mt-2 transition-colors"
-          >
-            Don't show this again
-          </button>
-        </div>
+            {/* Practice Info */}
+            <div className="text-xs text-gray-500 text-center mt-3 pt-3 border-t">
+              📍 Burton Joyce, Nottinghamshire<br />
+              📞 0115 931 2525<br />
+              🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
+            </div>
+          </CardContent>
+        </Card>
       )}
 
-      {/* Main WhatsApp button */}
+      {/* Floating WhatsApp Button */}
       <div className="relative">
-        {/* Pulse animation ring */}
-        <div className="absolute inset-0 bg-green-500 rounded-full animate-ping opacity-75"></div>
-
-        {/* Main button */}
-        <button
-          onClick={isExpanded ? handleWhatsAppClick : () => setIsExpanded(true)}
-          className="relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 group"
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          className="h-14 w-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-2xl border-4 border-white transition-all duration-300 hover:scale-110"
+          size="lg"
         >
-          <MessageCircle className="h-6 w-6" />
-
-          {/* Tooltip */}
-          {!isExpanded && (
-            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-1 bg-midnight-blue text-white text-sm font-heading rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              Let's chat!
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-midnight-blue"></div>
-            </div>
+          {isOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <MessageCircle className="w-6 h-6" />
           )}
-        </button>
+        </Button>
 
-        {/* Online indicator */}
-        <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 border-2 border-white rounded-full"></div>
+        {/* Notification Badge */}
+        {!isOpen && (
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+            <span className="text-xs font-bold text-white">!</span>
+          </div>
+        )}
+
+        {/* WhatsApp Tooltip */}
+        {!isOpen && (
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 hover:opacity-100 transition-opacity">
+            <div className="bg-gray-900 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap">
+              Chat with us on WhatsApp
+              <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
+            </div>
+          </div>
+        )}
       </div>
+
+      {/* Pulsing Animation */}
+      <div className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-20 pointer-events-none"></div>
     </div>
   );
 }
