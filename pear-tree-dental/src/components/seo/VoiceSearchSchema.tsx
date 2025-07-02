@@ -88,7 +88,7 @@ const VoiceSearchSchema = () => {
               },
               "price": "10.95",
               "priceCurrency": "GBP",
-              "description": "Monthly membership including checkups, cleaning, and 20% treatment discount"
+              "description": "Monthly membership including checkups, cleaning, and 10% treatment discount"
             }
           ]
         },
@@ -133,7 +133,7 @@ const VoiceSearchSchema = () => {
             "name": "How much does a dental checkup cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "NHS dental checkups cost £25.80, but our membership plans start at £10.95 per month and include free checkups, cleaning, and 20% off treatments."
+              "text": "NHS dental checkups cost £25.80, but our membership plans start at £10.95 per month and include free checkups, cleaning, and 10% off treatments."
             }
           },
           {

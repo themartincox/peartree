@@ -41,7 +41,7 @@ const VoiceSearchOptimization = () => {
           <p>
             A dental checkup costs £25.80 on NHS Band 1 or is included free with our
             membership plans starting at £10.95 per month. Private checkups start from
-            £65. Our membership plans include checkups, cleaning, and 20% off all treatments.
+            £65. Our membership plans include checkups, cleaning, and 10% off all treatments.
           </p>
         </section>
 

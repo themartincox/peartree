@@ -191,7 +191,7 @@ export default function MedicalOrganizationSchema({
       {
         "@type": "Offer",
         "name": "Adult Dental Membership Plan",
-        "description": "Comprehensive dental care for adults with 2 check-ups per year, 2 hygiene appointments, and 20% discount on treatments",
+        "description": "Comprehensive dental care for adults with 2 check-ups per year, 2 hygiene appointments, and 10% discount on treatments",
         "price": "14.99",
         "priceCurrency": "GBP",
         "priceSpecification": {

@@ -18,7 +18,7 @@ const plans = [
     features: [
       "2 Dental check ups a year",
       "1 Hygienist appointment a year",
-      "20% discount on all treatments",
+      "10% discount on all treatments",
       "Worldwide dental trauma cover"
     ],
     perDay: "48p per day",
@@ -37,7 +37,7 @@ const plans = [
       "2 Hygienist appointments a year",
       "1 Emergency appointment included",
       "25% off Waterpik products",
-      "20% discount on all treatments",
+      "10% discount on all treatments",
       "Worldwide dental trauma cover"
     ],
     perDay: "83p per day",
@@ -56,7 +56,7 @@ const plans = [
       "4 Hygienist appointments a year",
       "50% off Waterpik products",
       "Free replacement heads for Waterpik",
-      "20% discount on all treatments",
+      "10% discount on all treatments",
       "Worldwide dental trauma cover"
     ],
     perDay: "99p per day",
@@ -74,7 +74,7 @@ const plans = [
       "2 Adults - Full coverage each",
       "Up to 3 Children included",
       "One simple payment monthly",
-      "20% discount on all treatments",
+      "10% discount on all treatments",
       "Worldwide dental trauma cover",
       "Same address requirement"
     ],

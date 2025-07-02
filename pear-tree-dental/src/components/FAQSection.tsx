@@ -126,7 +126,7 @@ const FAQSection = () => {
         {
           id: "orth4",
           question: "How much do Invisalign aligners cost?",
-          answer: "Invisalign treatment typically ranges from £2,800-£4,500 depending on the complexity of your case. We offer flexible payment plans to spread the cost, and our membership plans provide 20% discounts on all treatments."
+          answer: "Invisalign treatment typically ranges from £2,800-£4,500 depending on the complexity of your case. We offer flexible payment plans to spread the cost, and our membership plans provide 10% discounts on all treatments."
         },
         {
           id: "orth5",
@@ -324,7 +324,7 @@ const FAQSection = () => {
         {
           id: "about2",
           question: "How much does it cost to see a private dentist?",
-          answer: "Our membership plans start at just £10.95 per month (36p per day) and include checkups, cleaning, and 20% off all treatments. This is often more affordable than NHS charges with no waiting lists. NHS checkups cost £25.80, while our Plan A includes checkups plus 20% off treatments and same-day emergency access."
+          answer: "Our membership plans start at just £10.95 per month (36p per day) and include checkups, cleaning, and 10% off all treatments. This is often more affordable than NHS charges with no waiting lists. NHS checkups cost £25.80, while our Plan A includes checkups plus 10% off treatments and same-day emergency access."
         },
         {
           id: "about3",
