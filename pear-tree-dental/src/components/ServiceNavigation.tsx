@@ -57,6 +57,13 @@ const allServices: ServiceNavItem[] = [
     href: "/services/emergency",
     category: "emergency",
     description: "Urgent dental care when you need it most"
+  },
+  {
+    id: "treatment-comparison",
+    title: "Treatment Comparison",
+    href: "/services/treatment-comparison",
+    category: "general",
+    description: "Compare dental treatments to find your best option"
   }
 ];
 

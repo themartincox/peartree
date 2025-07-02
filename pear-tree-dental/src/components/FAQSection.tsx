@@ -250,7 +250,7 @@ const FAQSection = () => {
         {
           id: "whit8",
           question: "How much does professional teeth whitening cost?",
-          answer: "Our professional whitening treatments start from £350 for take-home kits and £450 for in-practice treatments. This includes consultation, custom trays (for take-home), and follow-up care. Much more effective than drugstore alternatives."
+          answer: "Our professional whitening treatments start from £400 for take-home kits and £650 for in-practice treatments. This includes consultation, custom trays (for take-home), and follow-up care. These prescription-only solutions are much more effective than over-the-counter or online alternatives."
         },
         {
           id: "whit9",
