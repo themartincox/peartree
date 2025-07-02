@@ -110,8 +110,8 @@ const nextConfig = {
     ],
   },
 
-  // Output optimization
-  output: 'standalone',
+  // Output optimization - COMMENTED OUT FOR STANDARD HOSTING
+  // output: 'standalone', // Only use for Docker deployments
 
   // PWA and Service Worker Headers
   async headers() {
