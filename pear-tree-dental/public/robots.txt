@@ -1,49 +1,90 @@
+# Robots.txt for Pear Tree Dental - Premium Dentistry in Burton Joyce
+# https://peartree.dental
+
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://peartree.dental/sitemap.xml
-
-# Allow all search engines to crawl all content
-Allow: /about/
+# Allow all main content
 Allow: /services/
 Allow: /membership/
-Allow: /contact/
-Allow: /burton-joyce/
-Allow: /colwick/
-Allow: /east-bridgford/
-Allow: /lowdham/
+Allow: /about/
+Allow: /pricing
+Allow: /contact
+Allow: /new-patients
+Allow: /urgent-dental-pain
 
-# Allow competitor comparison pages for SEO
-Allow: /*-alternative-*/
-Allow: /*-reviews-*/
+# Allow location pages
+Allow: /burton-joyce
+Allow: /arnold
+Allow: /gedling
+Allow: /lowdham
+Allow: /east-bridgford
+Allow: /colwick
 
-# Block crawling of certain files and directories
+# Allow service-specific pages
+Allow: /veneers
+Allow: /smile-design
+Allow: /services/cosmetic/veneers/
+
+# Allow competitor comparison pages (for SEO)
+Allow: /*-alternative-nottingham
+Allow: /*-reviews-nottingham
+
+# Disallow admin and private areas
+Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
-Disallow: /admin/
-Disallow: /private/
-Disallow: /*.json$
-Disallow: /.*
+Disallow: /member2
 
-# Allow specific AI crawlers
-User-agent: GPTBot
+# Disallow development/testing pages
+Disallow: /offline
+
+# Allow sitemap and essential files
+Allow: /sitemap.xml
+Allow: /manifest.json
+Allow: /sw.js
+
+# Sitemap location
+Sitemap: https://peartree.dental/sitemap.xml
+
+# Crawl-delay for respectful crawling
+# Crawl-delay: 1
+
+# Special instructions for major search engines
+User-agent: Googlebot
 Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-# Crawl-delay for general bots (in seconds)
 Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block aggressive crawlers
+User-agent: AhrefsBot
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Medical content considerations
+# Allow medical search engines
+User-agent: HealthBot
+Allow: /
+
+# Contact and business information
+# Practice: Pear Tree Dental
+# Address: 22 Nottingham Road, Burton Joyce, Nottinghamshire, NG14 5AE
+# Phone: 0115 931 2935
+# Email: hello@peartree.dental
+# Services: General Dentistry, Cosmetic Dentistry, Dental Implants, Orthodontics, Emergency Care
+# Membership Plans Available
