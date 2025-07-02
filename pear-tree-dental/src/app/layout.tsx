@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import LiveChatWidget from "@/components/LiveChatWidget";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
@@ -181,6 +182,11 @@ export default function RootLayout({
           </PageTransition>
         </main>
         <Footer />
+
+        {/* Live Chat Support Widget */}
+        <LiveChatWidget
+          position="bottom-left"
+        />
 
         {/* WhatsApp Contact Widget */}
         <WhatsAppWidget
