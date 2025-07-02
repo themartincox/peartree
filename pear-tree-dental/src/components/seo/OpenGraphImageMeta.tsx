@@ -19,7 +19,7 @@ export default function OpenGraphImageMeta({
 }: OpenGraphImageMetaProps) {
   // Generate dynamic image URL based on page type
   const getImageUrl = () => {
-    const baseUrl = 'https://peartreedental.co.uk/api/og';
+    const baseUrl = 'https://peartree.dental/api/og';
     const params = new URLSearchParams({
       title: title,
       type: pageType,
@@ -34,13 +34,13 @@ export default function OpenGraphImageMeta({
   const getFallbackImage = () => {
     switch (pageType) {
       case 'service':
-        return 'https://peartreedental.co.uk/images/og/service-default.jpg';
+        return 'https://peartree.dental/images/og/service-default.jpg';
       case 'location':
-        return 'https://peartreedental.co.uk/images/og/location-default.jpg';
+        return 'https://peartree.dental/images/og/location-default.jpg';
       case 'about':
-        return 'https://peartreedental.co.uk/images/og/team-default.jpg';
+        return 'https://peartree.dental/images/og/team-default.jpg';
       default:
-        return 'https://peartreedental.co.uk/images/og/practice-default.jpg';
+        return 'https://peartree.dental/images/og/practice-default.jpg';
     }
   };
 

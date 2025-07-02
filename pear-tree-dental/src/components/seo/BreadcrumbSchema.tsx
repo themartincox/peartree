@@ -21,7 +21,7 @@ export default function BreadcrumbSchema({ items, className = "" }: BreadcrumbSc
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      ...(item.url && { "item": `https://peartreedental.co.uk${item.url}` })
+      ...(item.url && { "item": `https://peartree.dental${item.url}` })
     }))
   };
 

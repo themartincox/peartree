@@ -369,7 +369,7 @@ const FAQSection = () => {
         {
           id: "about11",
           question: "How can I contact the practice?",
-          answer: "You can call us at 0115 931 2935, email info@peartreedental.co.uk, or visit us at 22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE. We also offer online booking for your convenience."
+          answer: "You can call us at 0115 931 2935, email info@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE. We also offer online booking for your convenience."
         }
       ]
     }
