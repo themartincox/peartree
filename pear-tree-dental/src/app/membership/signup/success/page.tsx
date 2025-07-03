@@ -49,7 +49,7 @@ function MembershipSuccessContent() {
                 </div>
               </div>
               <h1 className="text-3xl font-bold text-pear-primary mb-2">
-                Welcome to Pear Tree Dental!
+                Welcome to the Pear Tree Dental Membership Plan!
               </h1>
               <p className="text-xl text-gray-600">
                 Your membership application has been successfully submitted
@@ -128,7 +128,7 @@ function MembershipSuccessContent() {
                       <div className="w-6 h-6 bg-pear-primary text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
                       <div>
                         <h4 className="font-semibold">Book Your Appointment</h4>
-                        <p className="text-sm text-gray-600">Call us or book online to schedule your first check-up</p>
+                        <p className="text-sm text-gray-600">Call us to schedule your first check-up</p>
                       </div>
                     </div>
 
@@ -168,12 +168,7 @@ function MembershipSuccessContent() {
                     <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                   </div>
 
-                  <div className="flex flex-col items-center space-y-2">
-                    <Calendar className="w-8 h-8 text-pear-primary" />
-                    <h4 className="font-semibold">Book Online</h4>
-                    <p className="text-gray-600">peartree.dental</p>
-                    <p className="text-sm text-gray-500">24/7 online booking</p>
-                  </div>
+
                 </div>
               </CardContent>
             </Card>

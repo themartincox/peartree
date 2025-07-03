@@ -51,6 +51,17 @@ export default function MembershipSignupPage() {
     emergencyContact: "",
     emergencyPhone: "",
 
+    // Partner Details (for family plans)
+    partnerTitle: "",
+    partnerFirstName: "",
+    partnerLastName: "",
+    partnerEmail: "",
+    partnerPhone: "",
+    partnerDateOfBirth: "",
+    partnerIsExistingPatient: "",
+    partnerPreferredDentist: "",
+    partnerDentistGenderPreference: "",
+
     // Direct Debit Details
     accountHolderName: "",
     sortCode: "",
@@ -165,18 +176,19 @@ export default function MembershipSignupPage() {
     },
     family: {
       name: "FAMILY PLAN",
-      price: "£5.20",
-      period: "/month per child",
-      dailyCost: "Just 17p per day",
-      savings: "FREE with adult plan",
-      color: "purple-600",
-      gradient: "from-purple-600 to-purple-700",
+      price: "£49.50",
+      period: "/month",
+      dailyCost: "Just £1.65 per day",
+      savings: "Family savings",
+      color: "pear-primary",
+      gradient: "from-pear-primary to-dental-green",
       features: [
-        "2 Dental check ups a year",
-        "1 Scale & Polish a year",
-        "Worldwide dental accident & emergency cover",
-        "FREE when joining with adult plan",
-        "Children under 18 only"
+        "All adults get Plan D benefits",
+        "Children under 18 included free",
+        "Same address requirement",
+        "10% discount on all treatments",
+        "Simplified billing for whole family",
+        "Priority family appointments"
       ],
       popular: false
     }
@@ -203,10 +215,16 @@ export default function MembershipSignupPage() {
     // Validate step 2 (Personal Details) before proceeding
     if (currentStep === 2) {
       const step2RequiredFields = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'postcode', 'address', 'isExistingPatient'];
+
+      // Add partner validation for family plans
+      if (selectedPlan === 'family') {
+        step2RequiredFields.push('partnerFirstName', 'partnerLastName', 'partnerEmail', 'partnerPhone', 'partnerDateOfBirth', 'partnerIsExistingPatient');
+      }
+
       const missingStep2Fields = step2RequiredFields.filter(field => !formData[field as keyof typeof formData]);
 
       if (missingStep2Fields.length > 0) {
-        alert(`Please fill in all required fields: ${missingStep2Fields.join(', ').replace('isExistingPatient', 'existing patient status')}`);
+        alert(`Please fill in all required fields: ${missingStep2Fields.join(', ').replace('isExistingPatient', 'existing patient status').replace('partnerIsExistingPatient', 'partner existing patient status')}`);
         return;
       }
 
@@ -219,6 +237,19 @@ export default function MembershipSignupPage() {
       if (formData.isExistingPatient === 'yes' && !formData.preferredDentist) {
         alert('Please select your preferred dentist.');
         return;
+      }
+
+      // Validate partner dentist preference for family plans
+      if (selectedPlan === 'family') {
+        if (formData.partnerIsExistingPatient === 'no' && !formData.partnerDentistGenderPreference) {
+          alert('Please select your partner\'s dentist gender preference.');
+          return;
+        }
+
+        if (formData.partnerIsExistingPatient === 'yes' && !formData.partnerPreferredDentist) {
+          alert('Please select your partner\'s preferred dentist.');
+          return;
+        }
       }
     }
 
@@ -257,14 +288,14 @@ export default function MembershipSignupPage() {
         return;
       }
 
-      // Validate document acknowledgments
+      // Validate document acknowledgments - These are required
       if (!formData.ddGuaranteeRead) {
-        alert('Please read and acknowledge the Direct Debit Guarantee to proceed.');
+        alert('You must download and confirm you have read the Direct Debit Guarantee before completing your membership signup.');
         return;
       }
 
       if (!formData.membershipTermsRead) {
-        alert('Please read and agree to the Membership Terms and Conditions to proceed.');
+        alert('You must download and confirm you have read and agree to the Membership Terms and Conditions before completing your membership signup.');
         return;
       }
 
@@ -332,6 +363,30 @@ export default function MembershipSignupPage() {
       }]
     }));
   };
+
+  // Handle plan selection from URL parameters
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const planParam = urlParams.get("plan");
+
+    if (planParam) {
+      // Map plan IDs from membership page to signup page plan keys
+      const planMapping = {
+        "plan-a": "planA",
+        "plan-b": "planB",
+        "plan-c": "planC",
+        "plan-d": "planD",
+        "plan-e": "planE",
+        "family": "family"
+      };
+
+      const mappedPlan = planMapping[planParam as keyof typeof planMapping];
+      if (mappedPlan && plans[mappedPlan as keyof typeof plans]) {
+        setSelectedPlan(mappedPlan);
+        console.log('Auto-selected plan from URL:', mappedPlan);
+      }
+    }
+  }, []);
 
   // Check if user is accessing from clinic IP
   useEffect(() => {
@@ -446,7 +501,7 @@ export default function MembershipSignupPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="p-8">
-                  {/* Top Row: Selected Plan + Family Plan */}
+                  {/* Top Row: Selected Plan + Conditional Upsell */}
                   {selectedPlan && (
                     <div className="mb-8">
                       <h3 className="text-lg font-semibold text-pear-primary mb-4">Your Selection</h3>
@@ -472,39 +527,113 @@ export default function MembershipSignupPage() {
                           </div>
                         </div>
 
-                        {/* Family Plan */}
-                        <div
-                          onClick={() => setSelectedPlan('family')}
-                          className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
-                            selectedPlan === 'family'
-                              ? 'border-purple-600 bg-gradient-to-br from-purple-600 to-purple-700 text-white shadow-xl'
-                              : 'border-purple-200 hover:border-purple-300 hover:shadow-md bg-purple-50'
-                          }`}
-                        >
-                          <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
-                            Add Family
-                          </Badge>
-                          <div className={`text-center mb-4 ${selectedPlan === 'family' ? 'text-white' : 'text-purple-600'}`}>
-                            <h3 className="font-bold text-lg mb-2">{plans.family.name}</h3>
-                            <div className="text-3xl font-bold">{plans.family.price}</div>
-                            <div className="text-sm opacity-80">{plans.family.period}</div>
-                            <div className="text-xs opacity-70 mt-1">{plans.family.savings}</div>
-                          </div>
-                          <div className="space-y-2">
-                            {plans.family.features.map((feature, index) => (
-                              <div key={index} className="flex items-start space-x-2">
-                                <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
-                                  selectedPlan === 'family' ? 'text-white' : 'text-purple-600'
-                                }`} />
-                                <span className={`text-sm ${
-                                  selectedPlan === 'family' ? 'text-white' : 'text-gray-700'
-                                }`}>
-                                  {feature}
-                                </span>
+                        {/* Conditional Upsell Box */}
+                        {/* For Plans A, B, C - Show Child Plan */}
+                        {(selectedPlan === 'planA' || selectedPlan === 'planB' || selectedPlan === 'planC') && (
+                          <div className="relative p-6 rounded-xl border-2 border-green-200 bg-green-50">
+                            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white">
+                              Add A Child
+                            </Badge>
+                            <div className="text-center mb-4 text-green-700">
+                              <Baby className="w-8 h-8 mx-auto mb-2" />
+                              <h3 className="font-bold text-lg mb-2">CHILD PLAN</h3>
+                              <div className="text-3xl font-bold">£5.20</div>
+                              <div className="text-sm opacity-80">/month</div>
+                              <div className="text-xs opacity-70 mt-1">Just 17p per day</div>
+                            </div>
+                            <div className="text-center mb-4">
+                              <p className="text-sm text-green-800 font-medium mb-2">
+                                Great news! You get 1 child included automatically in your plan.
+                              </p>
+                              <p className="text-sm text-green-700">
+                                Do you want to add another child for just £5.20/month?
+                              </p>
+                            </div>
+                            <div className="space-y-2">
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-green-600" />
+                                <span className="text-sm text-green-700">2 Dental check ups a year</span>
                               </div>
-                            ))}
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-green-600" />
+                                <span className="text-sm text-green-700">1 Scale & Polish a year</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-green-600" />
+                                <span className="text-sm text-green-700">Worldwide emergency cover</span>
+                              </div>
+                            </div>
                           </div>
-                        </div>
+                        )}
+
+                        {/* For Plans D, E - Show Family Plan Upsell */}
+                        {(selectedPlan === 'planD' || selectedPlan === 'planE') && (
+                          <div
+                            onClick={() => setSelectedPlan('family')}
+                            className="relative p-6 rounded-xl border-2 border-purple-200 bg-purple-50 cursor-pointer hover:border-purple-300 hover:shadow-md transition-all duration-300"
+                          >
+                            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
+                              Better Value!
+                            </Badge>
+                            <div className="text-center mb-4 text-purple-700">
+                              <Users className="w-8 h-8 mx-auto mb-2" />
+                              <h3 className="font-bold text-lg mb-2">FAMILY PLAN</h3>
+                              <div className="text-3xl font-bold">£49.50</div>
+                              <div className="text-sm opacity-80">/month</div>
+                              <div className="text-xs opacity-70 mt-1">£1.65 per day for whole family</div>
+                            </div>
+                            <div className="text-center mb-4">
+                              <p className="text-sm text-purple-800 font-medium mb-2">
+                                Add another adult + up to 3 children with great savings!
+                              </p>
+                              <p className="text-sm text-purple-700">
+                                Includes premium Waterpik benefits worth £200+
+                              </p>
+                            </div>
+                            <div className="space-y-2">
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-600" />
+                                <span className="text-sm text-purple-700">All adults get Plan D benefits</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-600" />
+                                <span className="text-sm text-purple-700">Children under 18 included FREE</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-600" />
+                                <span className="text-sm text-purple-700">10% discount on all treatments</span>
+                              </div>
+                              <div className="flex items-start space-x-2">
+                                <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-purple-600" />
+                                <span className="text-sm text-purple-700">Premium Waterpik benefits</span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* For Family Plan - Show confirmation */}
+                        {selectedPlan === 'family' && (
+                          <div className="relative p-6 rounded-xl border-2 border-purple-600 bg-gradient-to-br from-purple-600 to-purple-700 text-white shadow-xl">
+                            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white">
+                              Excellent Choice!
+                            </Badge>
+                            <div className="text-center mb-4 text-white">
+                              <Users className="w-8 h-8 mx-auto mb-2" />
+                              <h3 className="font-bold text-lg mb-2">FAMILY PLAN</h3>
+                              <div className="text-3xl font-bold">£49.50</div>
+                              <div className="text-sm opacity-80">/month</div>
+                              <div className="text-xs opacity-70 mt-1">Best value for families</div>
+                            </div>
+                            <div className="space-y-2">
+                              {plans.family.features.map((feature, index) => (
+                                <div key={index} className="flex items-start space-x-2">
+                                  <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-white" />
+                                  <span className="text-sm text-white">{feature}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
@@ -709,10 +838,202 @@ export default function MembershipSignupPage() {
                       />
                     </div>
 
-                    {/* Existing Patient Section */}
+                    {/* Partner Details Section - Only for Family Plans */}
+                    {selectedPlan === 'family' && (
+                      <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
+                        <div className="bg-purple-50/50 p-6 rounded-lg border border-purple-200">
+                          <div className="flex items-center mb-4">
+                            <Users className="w-5 h-5 text-purple-600 mr-2" />
+                            <h3 className="text-lg font-semibold text-purple-700">Partner Details</h3>
+                            <Badge variant="secondary" className="ml-2 bg-purple-100 text-purple-700">
+                              Family Plan
+                            </Badge>
+                          </div>
+                          <p className="text-sm text-purple-600 mb-6">
+                            Please provide details for the second adult on your family plan.
+                          </p>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                              <Label htmlFor="partnerTitle">Partner's Title</Label>
+                              <select
+                                className="w-full mt-1 p-2 border border-gray-300 rounded-md"
+                                value={formData.partnerTitle}
+                                onChange={(e) => handleInputChange("partnerTitle", e.target.value)}
+                              >
+                                <option value="">Select Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Dr">Dr</option>
+                              </select>
+                            </div>
+
+                            <div></div>
+
+                            <div>
+                              <Label htmlFor="partnerFirstName">Partner's First Name *</Label>
+                              <Input
+                                id="partnerFirstName"
+                                value={formData.partnerFirstName}
+                                onChange={(e) => handleInputChange("partnerFirstName", e.target.value)}
+                                placeholder="Enter partner's first name"
+                                className="mt-1"
+                              />
+                            </div>
+
+                            <div>
+                              <Label htmlFor="partnerLastName">Partner's Last Name *</Label>
+                              <Input
+                                id="partnerLastName"
+                                value={formData.partnerLastName}
+                                onChange={(e) => handleInputChange("partnerLastName", e.target.value)}
+                                placeholder="Enter partner's last name"
+                                className="mt-1"
+                              />
+                            </div>
+
+                            <div>
+                              <Label htmlFor="partnerEmail">Partner's Email Address *</Label>
+                              <Input
+                                id="partnerEmail"
+                                type="email"
+                                value={formData.partnerEmail}
+                                onChange={(e) => handleInputChange("partnerEmail", e.target.value)}
+                                placeholder="partner.email@example.com"
+                                className="mt-1"
+                              />
+                            </div>
+
+                            <div>
+                              <Label htmlFor="partnerPhone">Partner's Phone Number *</Label>
+                              <Input
+                                id="partnerPhone"
+                                type="tel"
+                                value={formData.partnerPhone}
+                                onChange={(e) => handleInputChange("partnerPhone", e.target.value)}
+                                placeholder="07xxx xxx xxx"
+                                className="mt-1"
+                              />
+                            </div>
+
+                            <div>
+                              <Label htmlFor="partnerDateOfBirth">Partner's Date of Birth *</Label>
+                              <Input
+                                id="partnerDateOfBirth"
+                                type="date"
+                                value={formData.partnerDateOfBirth}
+                                onChange={(e) => handleInputChange("partnerDateOfBirth", e.target.value)}
+                                className="mt-1"
+                              />
+                            </div>
+
+                            <div></div>
+
+                            {/* Partner Patient Status */}
+                            <div className="md:col-span-2 mt-4">
+                              <h4 className="font-medium text-purple-700 mb-3">Partner's Patient Status</h4>
+
+                              <div className="mb-4">
+                                <Label className="text-base font-medium">Is your partner an existing patient at Pear Tree Dental? *</Label>
+                                <div className="flex gap-4 mt-3">
+                                  <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input
+                                      type="radio"
+                                      name="partnerExistingPatient"
+                                      value="yes"
+                                      checked={formData.partnerIsExistingPatient === 'yes'}
+                                      onChange={(e) => handleInputChange("partnerIsExistingPatient", e.target.value)}
+                                      className="text-purple-600"
+                                    />
+                                    <span>Yes, existing patient</span>
+                                  </label>
+                                  <label className="flex items-center space-x-2 cursor-pointer">
+                                    <input
+                                      type="radio"
+                                      name="partnerExistingPatient"
+                                      value="no"
+                                      checked={formData.partnerIsExistingPatient === 'no'}
+                                      onChange={(e) => handleInputChange("partnerIsExistingPatient", e.target.value)}
+                                      className="text-purple-600"
+                                    />
+                                    <span>No, new to the practice</span>
+                                  </label>
+                                </div>
+                              </div>
+
+                              {/* Partner Existing Patient - Dentist Confirmation */}
+                              {formData.partnerIsExistingPatient === 'yes' && (
+                                <div>
+                                  <Label htmlFor="partnerPreferredDentist">Please confirm your partner's current dentist *</Label>
+                                  <select
+                                    id="partnerPreferredDentist"
+                                    className="w-full mt-2 p-3 border border-gray-300 rounded-md"
+                                    value={formData.partnerPreferredDentist}
+                                    onChange={(e) => handleInputChange("partnerPreferredDentist", e.target.value)}
+                                  >
+                                    <option value="">Confirm your partner's current dentist</option>
+                                    <option value="Javaad Mirza">Javaad Mirza (MD, BDS)</option>
+                                    <option value="Imrana Ishaque">Imrana Ishaque (BDS, MFDS)</option>
+                                    <option value="Janet Kerr">Janet Kerr (BDS LDS RCS)</option>
+                                  </select>
+                                </div>
+                              )}
+
+                              {/* Partner New Patient - Gender Preference */}
+                              {formData.partnerIsExistingPatient === 'no' && (
+                                <div>
+                                  <Label className="text-base font-medium">Does your partner have a preference for their dentist? *</Label>
+                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
+                                    <label className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                      <input
+                                        type="radio"
+                                        name="partnerDentistGenderPreference"
+                                        value="male"
+                                        checked={formData.partnerDentistGenderPreference === 'male'}
+                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        className="text-purple-600"
+                                      />
+                                      <span>Male dentist</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                      <input
+                                        type="radio"
+                                        name="partnerDentistGenderPreference"
+                                        value="female"
+                                        checked={formData.partnerDentistGenderPreference === 'female'}
+                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        className="text-purple-600"
+                                      />
+                                      <span>Female dentist</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 p-3 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50">
+                                      <input
+                                        type="radio"
+                                        name="partnerDentistGenderPreference"
+                                        value="no-preference"
+                                        checked={formData.partnerDentistGenderPreference === 'no-preference'}
+                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        className="text-purple-600"
+                                      />
+                                      <span>No preference</span>
+                                    </label>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Main Patient Status Section */}
                     <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
                       <div className="bg-pear-background/30 p-6 rounded-lg">
-                        <h3 className="text-lg font-semibold text-pear-primary mb-4">Patient Status</h3>
+                        <h3 className="text-lg font-semibold text-pear-primary mb-4">
+                          {selectedPlan === 'family' ? 'Main Account Holder Status' : 'Patient Status'}
+                        </h3>
 
                         <div className="mb-6">
                           <Label className="text-base font-medium">Are you an existing patient at Pear Tree Dental? *</Label>
@@ -745,7 +1066,7 @@ export default function MembershipSignupPage() {
                         {/* Existing Patient - Dentist Selection */}
                         {formData.isExistingPatient === 'yes' && (
                           <div>
-                            <Label htmlFor="preferredDentist">Which dentist would you prefer? *</Label>
+                            <Label htmlFor="preferredDentist">Who is your dentist? *</Label>
                             <select
                               id="preferredDentist"
                               className="w-full mt-2 p-3 border border-gray-300 rounded-md"
@@ -753,11 +1074,9 @@ export default function MembershipSignupPage() {
                               onChange={(e) => handleInputChange("preferredDentist", e.target.value)}
                             >
                               <option value="">Select your preferred dentist</option>
-                              <option value="Dr. Smith">Dr. Smith</option>
-                              <option value="Dr. Johnson">Dr. Johnson</option>
-                              <option value="Dr. Brown">Dr. Brown</option>
-                              <option value="Dr. Wilson">Dr. Wilson</option>
-                              <option value="Dr. Davis">Dr. Davis</option>
+                              <option value="Javaad Mirza">Javaad Mirza (MD, BDS)</option>
+                              <option value="Imrana Ishaque">Imrana Ishaque (BDS, MFDS)</option>
+                              <option value="Janet Kerr">Janet Kerr (BDS LDS RCS)</option>
                             </select>
                           </div>
                         )}
@@ -766,7 +1085,7 @@ export default function MembershipSignupPage() {
                         {formData.isExistingPatient === 'no' && (
                           <div className="space-y-4">
                             <div className="bg-pear-primary/10 p-4 rounded-lg border border-pear-primary/20">
-                              <h4 className="font-semibold text-pear-primary mb-2">Welcome to Pear Tree Dental!</h4>
+                              <h4 className="font-semibold text-pear-primary mb-2">Welcome to the Pear Tree Dental Membership Plan!</h4>
                               <p className="text-sm text-gray-700">
                                 We're delighted to have you join our practice. Our experienced team is here to provide
                                 you with exceptional dental care in a comfortable, friendly environment.
@@ -1032,38 +1351,68 @@ export default function MembershipSignupPage() {
                     </div>
                   </div>
 
-                  {/* Originator ID */}
-                  <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <div className="flex items-center space-x-2 text-blue-700 mb-2">
-                      <Building2 className="w-5 h-5" />
-                      <span className="font-semibold">Originator's Identification Number</span>
+                  {/* Direct Debit Logo & Originator ID */}
+                  <div className="mt-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">DD</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-blue-800 text-lg">Direct Debit</h4>
+                          <p className="text-sm text-blue-600">Secure Monthly Payment</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm text-blue-700 font-medium mb-1">Originator's ID Number</div>
+                        <div className="text-2xl font-mono font-bold text-blue-900 tracking-widest bg-white px-4 py-2 rounded border">
+                          575171
+                        </div>
+                      </div>
                     </div>
-                    <div className="text-2xl font-mono font-bold text-blue-900 tracking-wider">
-                      5 7 5 1 7 1
+
+                    <div className="bg-white p-4 rounded border border-blue-200">
+                      <p className="text-sm text-blue-800 leading-relaxed">
+                        <strong>Service User:</strong> Membership Plans Limited (part of Lloyd & Whyte Group Ltd)<br/>
+                        <strong>Collection Date:</strong> Same date each month<br/>
+                        <strong>Amount:</strong> {currentPlan.price} per month<br/>
+                        <strong>Protected by:</strong> The Direct Debit Guarantee
+                      </p>
                     </div>
-                    <p className="text-sm text-blue-600 mt-2">
-                      This number identifies Membership Plans Limited as the authorized Direct Debit collector.
-                    </p>
                   </div>
 
 
 
 
 
-                  {/* Confirmation Checkbox */}
-                  <div className="mt-6">
-                    <label className="flex items-start space-x-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={formData.directDebitConfirmed}
-                        onChange={(e) => handleInputChange("directDebitConfirmed", e.target.checked)}
-                        className="mt-1"
-                      />
-                      <span className="text-sm text-gray-700">
-                        I confirm that I am the account holder and am solely able to authorise debits from this account.
-                        I understand that Pear Tree Dental will collect {currentPlan.price} monthly via Direct Debit.
-                      </span>
-                    </label>
+                  {/* Direct Debit Confirmation */}
+                  <div className="mt-6 p-4 bg-white border-2 border-blue-200 rounded-lg">
+                    <h4 className="font-semibold text-blue-800 mb-3 flex items-center">
+                      <CreditCard className="w-5 h-5 mr-2" />
+                      Direct Debit Authorisation
+                    </h4>
+                    <div className="space-y-3">
+                      <label className="flex items-start space-x-3 cursor-pointer p-3 border border-gray-200 rounded hover:bg-gray-50">
+                        <input
+                          type="checkbox"
+                          checked={formData.directDebitConfirmed}
+                          onChange={(e) => handleInputChange("directDebitConfirmed", e.target.checked)}
+                          className="mt-1 accent-blue-600"
+                          required
+                        />
+                        <span className="text-sm text-gray-800 leading-relaxed">
+                          <strong>I confirm that I am the account holder</strong> and am solely able to authorise debits from this account.
+                          I understand that Pear Tree Dental will collect <strong>{currentPlan.price} monthly</strong> via Direct Debit
+                          starting from today's date. *
+                        </span>
+                      </label>
+
+                      <div className="text-xs text-blue-600 pl-6">
+                        <p>• Payments will be collected on the same date each month</p>
+                        <p>• You can cancel at any time with 1 month's notice</p>
+                        <p>• All collections are protected by the Direct Debit Guarantee</p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex justify-between mt-8">
@@ -1126,8 +1475,15 @@ export default function MembershipSignupPage() {
 
                     {/* Personal Details Summary */}
                     <div>
-                      <h3 className="font-bold text-lg text-pear-primary mb-4">Your Details</h3>
-                      <div className="space-y-3 text-sm">
+                      <h3 className="font-bold text-lg text-pear-primary mb-4">
+                        {selectedPlan === 'family' ? 'Account Holders' : 'Your Details'}
+                      </h3>
+
+                      {/* Main Account Holder */}
+                      <div className="space-y-3 text-sm mb-6">
+                        <h4 className="font-semibold text-pear-primary">
+                          {selectedPlan === 'family' ? 'Main Account Holder' : 'Personal Details'}
+                        </h4>
                         <div><strong>Name:</strong> {formData.title} {formData.firstName} {formData.lastName}</div>
                         <div><strong>Email:</strong> {formData.email}</div>
                         <div><strong>Phone:</strong> {formData.phone}</div>
@@ -1135,6 +1491,17 @@ export default function MembershipSignupPage() {
                         <div><strong>Address:</strong> {formData.address}</div>
                         <div><strong>Postcode:</strong> {formData.postcode}</div>
                       </div>
+
+                      {/* Partner Details for Family Plans */}
+                      {selectedPlan === 'family' && formData.partnerFirstName && (
+                        <div className="space-y-3 text-sm mb-6 pt-4 border-t border-gray-200">
+                          <h4 className="font-semibold text-purple-700">Partner Details</h4>
+                          <div><strong>Name:</strong> {formData.partnerTitle} {formData.partnerFirstName} {formData.partnerLastName}</div>
+                          <div><strong>Email:</strong> {formData.partnerEmail}</div>
+                          <div><strong>Phone:</strong> {formData.partnerPhone}</div>
+                          <div><strong>Date of Birth:</strong> {formData.partnerDateOfBirth}</div>
+                        </div>
+                      )}
 
                       {/* Direct Debit Summary */}
                       <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -1196,24 +1563,42 @@ export default function MembershipSignupPage() {
                     </div>
                   </div>
 
-                  {/* Required Documents - Personalized PDFs */}
+                  {/* Required Documents - Personalised PDFs */}
                   <div className="mt-8">
-                    <h3 className="font-bold text-lg text-pear-primary mb-4">Required Documents</h3>
-                    <p className="text-gray-600 mb-6">
-                      Please download and read both documents before completing your membership signup.
-                      These documents contain your personalized plan details and dentist information.
-                    </p>
+                    <h3 className="font-bold text-lg text-pear-primary mb-4">Important Documents</h3>
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-6">
+                      <div className="flex items-start space-x-3">
+                        <Mail className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold text-blue-800 mb-1">Download Now & We'll Email You Copies</h4>
+                          <p className="text-sm text-blue-700">
+                            Please download and read both documents below. We'll also email you copies for your records
+                            once your membership is confirmed. Both documents are personalised with your plan and dentist details.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {/* Direct Debit Guarantee PDF */}
-                      <div className="border border-gray-200 rounded-lg p-6">
+                      <div className="border-2 border-blue-200 rounded-lg p-6 bg-blue-50/30">
                         <div className="flex items-center mb-4">
-                          <Building2 className="w-6 h-6 text-blue-600 mr-3" />
+                          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <Building2 className="w-6 h-6 text-white" />
+                          </div>
                           <div>
-                            <h4 className="font-semibold text-blue-800">Direct Debit Guarantee</h4>
-                            <p className="text-sm text-gray-600">Personalized with your plan details</p>
+                            <h4 className="font-semibold text-blue-800 text-lg">Direct Debit Guarantee</h4>
+                            <p className="text-sm text-blue-600">Personalised with your payment details</p>
                           </div>
                         </div>
+
+                        <div className="mb-4 p-3 bg-white rounded border border-blue-200">
+                          <p className="text-xs text-blue-700">
+                            <strong>Contains:</strong> Your personalised Direct Debit information, payment protection details,
+                            and your rights under the Direct Debit Guarantee scheme.
+                          </p>
+                        </div>
+
                         <Button
                           onClick={async () => {
                             const patientInfo = {
@@ -1221,13 +1606,12 @@ export default function MembershipSignupPage() {
                               lastName: formData.lastName,
                               planName: currentPlan.name,
                               planPrice: currentPlan.price,
-                              dentistName: formData.isExistingPatient === 'yes'
-                                ? formData.preferredDentist
-                                : (formData.dentistGenderPreference === 'no-preference'
-                                  ? 'No preference'
-                                  : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist`),
-                              isExistingPatient: formData.isExistingPatient,
-                              dentistGenderPreference: formData.dentistGenderPreference
+                              accountHolderName: formData.accountHolderName,
+                              sortCode: formData.sortCode,
+                              accountNumber: formData.accountNumber,
+                              partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                              partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                              isFamily: selectedPlan === 'family'
                             };
                             try {
                               const pdf = await generateDirectDebitGuaranteePDF(patientInfo);
@@ -1238,35 +1622,48 @@ export default function MembershipSignupPage() {
                             }
                           }}
                           variant="outline"
-                          className="w-full"
+                          className="w-full border-blue-600 text-blue-700 hover:bg-blue-100"
                         >
                           <Download className="w-4 h-4 mr-2" />
                           Download DD Guarantee
                         </Button>
 
-                        <div className="mt-4 flex items-start space-x-3">
-                          <input
-                            type="checkbox"
-                            id="ddGuaranteeConfirmed"
-                            checked={formData.ddGuaranteeRead}
-                            onChange={(e) => handleInputChange("ddGuaranteeRead", e.target.checked)}
-                            className="mt-1"
-                          />
-                          <label htmlFor="ddGuaranteeConfirmed" className="text-sm text-gray-700 cursor-pointer">
-                            I have downloaded and read the Direct Debit Guarantee *
-                          </label>
+                        <div className="mt-4 p-3 bg-white rounded border border-blue-200">
+                          <div className="flex items-start space-x-3">
+                            <input
+                              type="checkbox"
+                              id="ddGuaranteeConfirmed"
+                              checked={formData.ddGuaranteeRead}
+                              onChange={(e) => handleInputChange("ddGuaranteeRead", e.target.checked)}
+                              className="mt-1 accent-blue-600"
+                              required
+                            />
+                            <label htmlFor="ddGuaranteeConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
+                              I have downloaded and read the Direct Debit Guarantee *
+                            </label>
+                          </div>
                         </div>
                       </div>
 
                       {/* Membership Terms PDF */}
-                      <div className="border border-gray-200 rounded-lg p-6">
+                      <div className="border-2 border-pear-primary/30 rounded-lg p-6 bg-pear-background/20">
                         <div className="flex items-center mb-4">
-                          <FileText className="w-6 h-6 text-pear-primary mr-3" />
+                          <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center mr-3">
+                            <FileText className="w-6 h-6 text-white" />
+                          </div>
                           <div>
-                            <h4 className="font-semibold text-pear-primary">Terms & Conditions</h4>
-                            <p className="text-sm text-gray-600">Personalized membership agreement</p>
+                            <h4 className="font-semibold text-pear-primary text-lg">Terms & Conditions</h4>
+                            <p className="text-sm text-pear-primary/70">Personalised membership agreement</p>
                           </div>
                         </div>
+
+                        <div className="mb-4 p-3 bg-white rounded border border-pear-primary/30">
+                          <p className="text-xs text-pear-primary">
+                            <strong>Contains:</strong> Your complete membership terms, treatment inclusions,
+                            payment obligations, and cancellation policies specific to your {currentPlan.name}.
+                          </p>
+                        </div>
+
                         <Button
                           onClick={async () => {
                             const patientInfo = {
@@ -1277,8 +1674,18 @@ export default function MembershipSignupPage() {
                               dentistName: formData.isExistingPatient === 'yes'
                                 ? formData.preferredDentist
                                 : (formData.dentistGenderPreference === 'no-preference'
-                                  ? 'No preference'
-                                  : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist`),
+                                  ? 'To be assigned based on availability'
+                                  : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist (to be assigned)`),
+                              partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                              partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                              partnerDentistName: selectedPlan === 'family'
+                                ? (formData.partnerIsExistingPatient === 'yes'
+                                  ? formData.partnerPreferredDentist
+                                  : (formData.partnerDentistGenderPreference === 'no-preference'
+                                    ? 'To be assigned based on availability'
+                                    : `${formData.partnerDentistGenderPreference?.charAt(0).toUpperCase()}${formData.partnerDentistGenderPreference?.slice(1)} dentist (to be assigned)`))
+                                : '',
+                              isFamily: selectedPlan === 'family',
                               isExistingPatient: formData.isExistingPatient,
                               dentistGenderPreference: formData.dentistGenderPreference
                             };
@@ -1291,24 +1698,39 @@ export default function MembershipSignupPage() {
                             }
                           }}
                           variant="outline"
-                          className="w-full"
+                          className="w-full border-pear-primary text-pear-primary hover:bg-pear-background/30"
                         >
                           <Download className="w-4 h-4 mr-2" />
                           Download Terms & Conditions
                         </Button>
 
-                        <div className="mt-4 flex items-start space-x-3">
-                          <input
-                            type="checkbox"
-                            id="termsConfirmed"
-                            checked={formData.membershipTermsRead}
-                            onChange={(e) => handleInputChange("membershipTermsRead", e.target.checked)}
-                            className="mt-1"
-                          />
-                          <label htmlFor="termsConfirmed" className="text-sm text-gray-700 cursor-pointer">
-                            I have downloaded and agree to the Terms & Conditions *
-                          </label>
+                        <div className="mt-4 p-3 bg-white rounded border border-pear-primary/30">
+                          <div className="flex items-start space-x-3">
+                            <input
+                              type="checkbox"
+                              id="termsConfirmed"
+                              checked={formData.membershipTermsRead}
+                              onChange={(e) => handleInputChange("membershipTermsRead", e.target.checked)}
+                              className="mt-1 accent-pear-primary"
+                              required
+                            />
+                            <label htmlFor="termsConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
+                              I have downloaded and agree to the Terms & Conditions *
+                            </label>
+                          </div>
                         </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-xs font-bold">!</span>
+                        </div>
+                        <p className="text-sm text-amber-800">
+                          <strong>Required:</strong> You must download and confirm you have read both documents before completing your membership signup.
+                          These confirmations are required for your membership to be activated.
+                        </p>
                       </div>
                     </div>
                   </div>

@@ -139,12 +139,20 @@ export default function PlanSelector() {
                 </CardContent>
 
                 <CardFooter>
-                  <Button
-                    className="w-full"
-                    variant={selectedPlan === plan.id ? "default" : "outline"}
-                  >
-                    {selectedPlan === plan.id ? "Selected" : "Select Plan"}
-                  </Button>
+                  {selectedPlan === plan.id ? (
+                    <a href={`/membership/signup?plan=${plan.id}`} className="w-full">
+                      <Button className="w-full" variant="default">
+                        Join Plan
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button
+                      className="w-full"
+                      variant="outline"
+                    >
+                      Select Plan
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
 
@@ -183,7 +191,14 @@ export default function PlanSelector() {
               <Badge className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-10 bg-pear-gold text-white font-semibold text-xs px-3 py-1">
                 Perfect for Families
               </Badge>
-              <Card className="border-2 border-pear-primary">
+              <Card
+                className={`border-2 cursor-pointer transition-all duration-200 ${
+                  selectedPlan === "family"
+                    ? 'border-pear-primary ring-2 ring-pear-primary ring-offset-2'
+                    : 'border-pear-primary hover:border-pear-primary/70'
+                }`}
+                onClick={() => setSelectedPlan("family")}
+              >
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0">
                   {/* Header Section */}
                   <CardHeader className="bg-gradient-to-r from-pear-primary to-dental-green text-white md:rounded-tl-xl lg:rounded-tl-xl md:rounded-tr-none lg:rounded-tr-none pb-4 pt-8">
@@ -244,12 +259,31 @@ export default function PlanSelector() {
                     </div>
 
                     <div className="mt-6 text-center">
-                      <Button className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90" size="lg">
-                        Choose Family Plan
-                      </Button>
+                      {selectedPlan === "family" ? (
+                        <a href="/membership/signup?plan=family" className="inline-block">
+                          <Button className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90" size="lg">
+                            Join Plan
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90" size="lg">
+                          Select Plan
+                        </Button>
+                      )}
                     </div>
                   </CardContent>
                 </div>
+
+                {selectedPlan === "family" && (
+                  <motion.div
+                    className="absolute -top-2 -right-2 h-6 w-6 bg-pear-primary rounded-full flex items-center justify-center border-2 border-white"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  >
+                    <Check className="h-3 w-3 text-white" />
+                  </motion.div>
+                )}
               </Card>
             </div>
           </div>
@@ -260,9 +294,9 @@ export default function PlanSelector() {
             <strong>Under 18s join free</strong> when a parent joins the plan. Or £5.20/month for under 18s joining alone.
           </p>
 
-          <a href="/membership/signup">
+          <a href={`/membership/signup?plan=${selectedPlan}`}>
             <Button size="lg" className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white">
-              Join {plans.find(p => p.id === selectedPlan)?.name} Now
+              Join {selectedPlan === "family" ? "Family Plan" : plans.find(p => p.id === selectedPlan)?.name} Now
             </Button>
           </a>
         </div>

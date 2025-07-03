@@ -113,36 +113,30 @@ const Footer = () => {
             <h3 className="text-base sm:text-lg font-semibold text-white">Quick Links</h3>
 
             <div className="space-y-2 sm:space-y-3">
-              <Link href="/membership" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
-                Membership Plans
-              </Link>
-              <Link href="/services/emergency" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
-                Emergency Dentistry
-              </Link>
-              <Link href="/urgent-dental-pain" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 mt-2 text-center transition-colors">
+              <Link href="/urgent-dental-pain" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
                 🚨 Dental Pain?
               </Link>
+              <Button className="btn-gold text-white w-full font-semibold h-10 sm:h-auto text-sm">
+                Join Membership Plan
+              </Button>
+              <Button variant="outline" className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm">
+                Book Consultation
+              </Button>
+            </div>
+
+            <div className="space-y-2 sm:space-y-3">
               <Link href="/new-patients" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
                 New Patient Information
-              </Link>
-              <Link href="/pricing" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
-                Pricing
-              </Link>
-              <Link href="/testimonials" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
-                Patient Reviews
               </Link>
               <Link href="/about/practice" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
                 Our Practice
               </Link>
-            </div>
-
-            <div className="space-y-2 sm:space-y-3">
-              <Button className="btn-gold text-white w-full font-semibold h-10 sm:h-auto text-sm">
-                Join Membership Plan
-              </Button>
-              <Button variant="outline" className="w-full border-white text-white hover:bg-white hover:text-pear-primary h-10 sm:h-auto text-sm">
-                Book Consultation
-              </Button>
+              <Link href="/testimonials" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+                Patient Reviews
+              </Link>
+              <Link href="/pricing" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+                Pricing
+              </Link>
             </div>
 
             {/* Social Media */}

@@ -52,7 +52,7 @@ export default function OrthodonticsPage() {
   const orthodonticsFAQs = [
     {
       question: "How much do clear aligners cost?",
-      answer: "Clear aligner treatment starts from £2,400 for ClearCorrect and £2,800 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer 0% finance and 10% membership discounts."
+      answer: "Clear aligner treatment starts from £2,400 for ClearCorrect and £2,800 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer flexible payment plans and 10% membership discounts."
     },
     {
       question: "How long does clear aligner treatment take?",
@@ -765,8 +765,8 @@ export default function OrthodonticsPage() {
             <p className="text-gray-600 mb-6">Make treatment affordable with flexible payment options</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <Card className="p-6 border border-soft-pink/20">
-                <h4 className="font-semibold text-soft-pink mb-2">0% Finance</h4>
-                <p className="text-sm text-gray-600">Interest-free payment plans up to 24 months</p>
+                <h4 className="font-semibold text-soft-pink mb-2">Payment Plans</h4>
+                <p className="text-sm text-gray-600">Flexible payment options available</p>
               </Card>
               <Card className="p-6 border border-soft-pink/20">
                 <h4 className="font-semibold text-soft-pink mb-2">Monthly Payments</h4>

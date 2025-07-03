@@ -720,8 +720,8 @@ export default function CompleteSmileMakeoverPage() {
             <p className="text-gray-600 mb-6">Flexible payment options to make your dream smile affordable</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <Card className="p-6 border border-rose-200">
-                <h4 className="font-semibold text-rose-600 mb-2">0% Finance Available</h4>
-                <p className="text-sm text-gray-600">Interest-free payment plans up to 24 months for qualifying treatments</p>
+                <h4 className="font-semibold text-rose-600 mb-2">Flexible Payment Plans</h4>
+                <p className="text-sm text-gray-600">Multiple payment options available to suit your budget</p>
               </Card>
               <Card className="p-6 border border-rose-200">
                 <h4 className="font-semibold text-rose-600 mb-2">Monthly Payment Plans</h4>
