@@ -183,16 +183,17 @@ export default function RootLayout({
         </main>
         <Footer />
 
-        {/* Live Chat Support Widget */}
+        {/* Communication Widgets - Currently Deactivated */}
+        {/*
         <LiveChatWidget
           position="bottom-left"
         />
 
-        {/* WhatsApp Contact Widget */}
         <WhatsAppWidget
           phoneNumber="447525114953"
           position="bottom-right"
         />
+        */}
       </body>
     </html>
   );
