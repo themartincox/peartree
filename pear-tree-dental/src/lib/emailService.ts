@@ -54,14 +54,19 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
           filename: 'pear-tree-logo.png',
           path: 'https://ext.same-assets.com/pear-tree-logo.png',
           cid: 'logo'
+        },
+        {
+          filename: 'direct-debit-logo.png',
+          path: 'https://ext.same-assets.com/direct-debit-logo.png',
+          cid: 'ddlogo'
         }
       ]
     };
 
-    // Send copy to practice email
+    // Send copy to practice emails (multiple recipients)
     const practiceMailOptions = {
       ...mailOptions,
-      to: 'hello@peartree.dental',
+      to: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'],
       subject: `New Membership Signup: ${data.firstName} ${data.lastName} - ${data.planName} (${data.applicationId})`,
       html: generateInternalNotificationHTML(data)
     };
@@ -71,12 +76,13 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     const practiceResult = await transporter.sendMail(practiceMailOptions);
 
     console.log('Confirmation email sent successfully:', patientResult.messageId);
-    console.log('Internal notification sent successfully:', practiceResult.messageId);
+    console.log('Internal notification sent to practice team:', practiceResult.messageId);
 
     return {
       success: true,
       patientMessageId: patientResult.messageId,
-      practiceMessageId: practiceResult.messageId
+      practiceMessageId: practiceResult.messageId,
+      practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
 
   } catch (error) {
@@ -175,8 +181,12 @@ const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string
         <h3>💳 Payment Details</h3>
         <p><strong>Account Holder:</strong> ${data.accountHolderName}<br>
         <strong>Monthly Payment:</strong> ${data.planPrice}<br>
-        <strong>Payment Method:</strong> Direct Debit<br>
+        <strong>Payment Method:</strong> <img src="cid:ddlogo" alt="Direct Debit" style="height: 20px; vertical-align: middle; margin-left: 5px;"> Direct Debit<br>
         <strong>First Collection:</strong> Your first payment will be collected within the next few days</p>
+        <p style="font-size: 12px; color: #666; margin-top: 10px;">
+          <img src="cid:ddlogo" alt="Direct Debit Logo" style="height: 16px; vertical-align: middle; margin-right: 5px;">
+          Protected by the Direct Debit Guarantee
+        </p>
       </div>
 
       <!-- Next Steps -->
