@@ -96,7 +96,7 @@ export default function MembershipSignupPage() {
 
   const plans = {
     planA: {
-      name: "PLAN A",
+      name: "ESSENTIAL MAINTENANCE",
       price: "£10.95",
       period: "/month",
       dailyCost: "Just 36p per day",
@@ -111,7 +111,7 @@ export default function MembershipSignupPage() {
       popular: false
     },
     planB: {
-      name: "PLAN B",
+      name: "ROUTINE CARE",
       price: "£15.95",
       period: "/month",
       dailyCost: "Just 53p per day",
@@ -126,7 +126,7 @@ export default function MembershipSignupPage() {
       popular: true
     },
     planC: {
-      name: "PLAN C",
+      name: "COMPLETE CARE",
       price: "£19.95",
       period: "/month",
       dailyCost: "Just 66p per day",
@@ -141,7 +141,7 @@ export default function MembershipSignupPage() {
       popular: false
     },
     planD: {
-      name: "PLAN D",
+      name: "COMPLETE CARE PLUS",
       price: "£25.95",
       period: "/month",
       dailyCost: "Just 86p per day",
@@ -158,7 +158,7 @@ export default function MembershipSignupPage() {
       popular: false
     },
     planE: {
-      name: "PLAN E",
+      name: "PERIODONTAL HEALTH",
       price: "£29.95",
       period: "/month",
       dailyCost: "Just 99p per day",
@@ -183,7 +183,7 @@ export default function MembershipSignupPage() {
       color: "pear-primary",
       gradient: "from-pear-primary to-dental-green",
       features: [
-        "All adults get Plan D benefits",
+        "All adults get Complete Care Plus benefits",
         "Children under 18 included free",
         "Same address requirement",
         "10% discount on all treatments",
@@ -290,12 +290,12 @@ export default function MembershipSignupPage() {
 
       // Validate document acknowledgments - These are required
       if (!formData.ddGuaranteeRead) {
-        alert('You must download and confirm you have read the Direct Debit Guarantee before completing your membership signup.');
+        alert('You must view and confirm you have read the Direct Debit Guarantee before completing your membership signup.');
         return;
       }
 
       if (!formData.membershipTermsRead) {
-        alert('You must download and confirm you have read and agree to the Membership Terms and Conditions before completing your membership signup.');
+        alert('You must view and confirm you have read and agree to the Membership Terms and Conditions before completing your membership signup.');
         return;
       }
 
@@ -411,33 +411,7 @@ export default function MembershipSignupPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
 
-      {/* Header */}
-      <section className="py-8 bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex flex-col">
-                <div className="brand-logo text-2xl text-pear-primary">
-                  PEAR<span className="ml-5">TREE</span>
-                </div>
-                <div className="brand-subtitle text-sm text-pear-primary mt-1">
-                  DENTAL
-                </div>
-              </div>
-            </div>
 
-            <div className="flex items-center space-x-4">
-              <Badge variant="secondary" className="bg-dental-green text-white">
-                <Lock className="w-4 h-4 mr-2" />
-                Secure Signup
-              </Badge>
-              <div className="text-sm text-gray-500">
-                Step {currentStep} of 4
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Progress Bar */}
       <div className="bg-white border-b">
@@ -484,12 +458,9 @@ export default function MembershipSignupPage() {
                   <CardTitle className="text-2xl text-pear-primary mb-4">
                     {selectedPlan ? 'Confirm Your Plan' : 'Choose Your Plan'}
                   </CardTitle>
-                  <p className="text-gray-600">
-                    {selectedPlan ? 'Perfect choice! You can also add family members.' : 'Select the membership plan that\'s right for you'}
-                  </p>
 
                   {/* Security Indicators */}
-                  <div className="flex items-center justify-center space-x-6 mt-4 text-sm text-gray-500">
+                  <div className="flex items-center justify-center space-x-6 mb-4 text-sm text-gray-500">
                     <div className="flex items-center space-x-1">
                       <Lock className="w-4 h-4 text-green-600" />
                       <span>Secure Signup</span>
@@ -499,6 +470,10 @@ export default function MembershipSignupPage() {
                       <span>Step 1 of 4</span>
                     </div>
                   </div>
+
+                  <p className="text-gray-600">
+                    {selectedPlan ? 'Perfect choice! You can also add family members.' : 'Select the membership plan that\'s right for you'}
+                  </p>
                 </CardHeader>
                 <CardContent className="p-8">
                   {/* Top Row: Selected Plan + Conditional Upsell */}
@@ -530,7 +505,22 @@ export default function MembershipSignupPage() {
                         {/* Conditional Upsell Box */}
                         {/* For Plans A, B, C - Show Child Plan */}
                         {(selectedPlan === 'planA' || selectedPlan === 'planB' || selectedPlan === 'planC') && (
-                          <div className="relative p-6 rounded-xl border-2 border-green-200 bg-green-50">
+                          <div
+                            onClick={() => {
+                              // Add a child to the family members list
+                              setFormData(prev => ({
+                                ...prev,
+                                familyMembers: [...prev.familyMembers, {
+                                  firstName: "",
+                                  lastName: "",
+                                  dateOfBirth: "",
+                                  relationship: "child",
+                                  plan: "child"
+                                }]
+                              }));
+                            }}
+                            className="relative p-6 rounded-xl border-2 border-green-200 bg-green-50 cursor-pointer hover:border-green-300 hover:shadow-md transition-all duration-300"
+                          >
                             <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-green-600 text-white">
                               Add A Child
                             </Badge>
@@ -546,7 +536,7 @@ export default function MembershipSignupPage() {
                                 Great news! You get 1 child included automatically in your plan.
                               </p>
                               <p className="text-sm text-green-700">
-                                Do you want to add another child for just £5.20/month?
+                                Click here to add another child for just £5.20/month
                               </p>
                             </div>
                             <div className="space-y-2">
@@ -572,8 +562,7 @@ export default function MembershipSignupPage() {
                             onClick={() => setSelectedPlan('family')}
                             className="relative p-6 rounded-xl border-2 border-purple-200 bg-purple-50 cursor-pointer hover:border-purple-300 hover:shadow-md transition-all duration-300"
                           >
-                            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">
-                              Better Value!
+                            <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white">Even Better Value!!
                             </Badge>
                             <div className="text-center mb-4 text-purple-700">
                               <Users className="w-8 h-8 mx-auto mb-2" />
@@ -647,7 +636,7 @@ export default function MembershipSignupPage() {
                     )}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {Object.entries(plans)
-                      .filter(([key]) => key !== selectedPlan && key !== 'family')
+                      .filter(([key]) => key !== selectedPlan)
                       .map(([key, plan]) => (
                       <div
                         key={key}
@@ -714,6 +703,19 @@ export default function MembershipSignupPage() {
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-pear-primary mb-4">Personal Details</CardTitle>
+
+                  {/* Security Indicators */}
+                  <div className="flex items-center justify-center space-x-6 mb-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      <Lock className="w-4 h-4 text-green-600" />
+                      <span>Secure Signup</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Shield className="w-4 h-4 text-green-600" />
+                      <span>Step 2 of 4</span>
+                    </div>
+                  </div>
+
                   <p className="text-gray-600">Tell us a bit about yourself</p>
                 </CardHeader>
                 <CardContent className="p-8">
@@ -1195,7 +1197,7 @@ export default function MembershipSignupPage() {
                       <div className="text-center py-8 text-gray-500">
                         <Baby className="w-12 h-12 mx-auto mb-2 text-gray-400" />
                         <p>No family members added yet</p>
-                        <p className="text-sm">Click "Add Family Member" to include them in your plan</p>
+                        <p className="text-sm">Click "Add Family Member" to include them in your plan (Can be added in later)</p>
                       </div>
                     ) : (
                       <div className="space-y-4">
@@ -1270,6 +1272,19 @@ export default function MembershipSignupPage() {
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-pear-primary mb-4">Direct Debit Setup</CardTitle>
+
+                  {/* Security Indicators */}
+                  <div className="flex items-center justify-center space-x-6 mb-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      <Lock className="w-4 h-4 text-green-600" />
+                      <span>Secure Signup</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Shield className="w-4 h-4 text-green-600" />
+                      <span>Step 3 of 4</span>
+                    </div>
+                  </div>
+
                   <p className="text-gray-600">Set up your monthly membership payments</p>
                 </CardHeader>
                 <CardContent className="p-8">
@@ -1280,7 +1295,7 @@ export default function MembershipSignupPage() {
                       <div>
                         <h3 className="font-bold text-lg">{currentPlan.name}</h3>
                         <p className="opacity-90">{currentPlan.dailyCost}</p>
-                        <p className="text-sm opacity-80">Saves you £{currentPlan.savings} per year</p>
+                        <p className="text-sm opacity-80">Saves over £400 per year!</p>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold">{currentPlan.price}</div>
@@ -1355,8 +1370,12 @@ export default function MembershipSignupPage() {
                   <div className="mt-8 p-6 bg-blue-50 border-2 border-blue-200 rounded-lg">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center space-x-3">
-                        <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">DD</span>
+                        <div className="w-16 h-16 flex items-center justify-center">
+                          <img
+                            src="https://ext.same-assets.com/direct-debit-logo.png"
+                            alt="Direct Debit Logo"
+                            className="w-full h-auto max-w-16"
+                          />
                         </div>
                         <div>
                           <h4 className="font-bold text-blue-800 text-lg">Direct Debit</h4>
@@ -1434,6 +1453,19 @@ export default function MembershipSignupPage() {
               <Card className="shadow-xl">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-pear-primary mb-4">Confirm Your Membership</CardTitle>
+
+                  {/* Security Indicators */}
+                  <div className="flex items-center justify-center space-x-6 mb-4 text-sm text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      <Lock className="w-4 h-4 text-green-600" />
+                      <span>Secure Signup</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <Shield className="w-4 h-4 text-green-600" />
+                      <span>Step 4 of 4</span>
+                    </div>
+                  </div>
+
                   <p className="text-gray-600">Review your details and complete signup</p>
                 </CardHeader>
                 <CardContent className="p-8">
@@ -1570,10 +1602,10 @@ export default function MembershipSignupPage() {
                       <div className="flex items-start space-x-3">
                         <Mail className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                         <div>
-                          <h4 className="font-semibold text-blue-800 mb-1">Download Now & We'll Email You Copies</h4>
+                          <h4 className="font-semibold text-blue-800 mb-1">View Documents & We'll Email You Copies</h4>
                           <p className="text-sm text-blue-700">
-                            Please download and read both documents below. We'll also email you copies for your records
-                            once your membership is confirmed. Both documents are personalised with your plan and dentist details.
+                            Please view and read both documents below. You can download them for your records if needed.
+                            We'll also email you copies once your membership is confirmed. Both documents are personalised with your plan and dentist details.
                           </p>
                         </div>
                       </div>
@@ -1614,8 +1646,12 @@ export default function MembershipSignupPage() {
                               isFamily: selectedPlan === 'family'
                             };
                             try {
-                              const pdf = await generateDirectDebitGuaranteePDF(patientInfo);
-                              downloadPDF(pdf, `DD-Guarantee-${formData.firstName}-${formData.lastName}.pdf`);
+                              const pdfBlob = await generateDirectDebitGuaranteePDF(patientInfo);
+                              const url = window.URL.createObjectURL(pdfBlob);
+                              const newWindow = window.open(url, '_blank');
+                              if (newWindow) {
+                                newWindow.document.title = `Direct Debit Guarantee - ${formData.firstName} ${formData.lastName}`;
+                              }
                             } catch (error) {
                               console.error('Failed to generate PDF:', error);
                               alert('Failed to generate PDF. Please try again.');
@@ -1625,7 +1661,7 @@ export default function MembershipSignupPage() {
                           className="w-full border-blue-600 text-blue-700 hover:bg-blue-100"
                         >
                           <Download className="w-4 h-4 mr-2" />
-                          Download DD Guarantee
+                          View & Download DD Guarantee
                         </Button>
 
                         <div className="mt-4 p-3 bg-white rounded border border-blue-200">
@@ -1639,7 +1675,7 @@ export default function MembershipSignupPage() {
                               required
                             />
                             <label htmlFor="ddGuaranteeConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
-                              I have downloaded and read the Direct Debit Guarantee *
+                              I have read and downloaded the Direct Debit Guarantee *
                             </label>
                           </div>
                         </div>
@@ -1690,8 +1726,12 @@ export default function MembershipSignupPage() {
                               dentistGenderPreference: formData.dentistGenderPreference
                             };
                             try {
-                              const pdf = await generateMembershipTermsPDF(patientInfo);
-                              downloadPDF(pdf, `Terms-Conditions-${formData.firstName}-${formData.lastName}.pdf`);
+                              const pdfBlob = await generateMembershipTermsPDF(patientInfo);
+                              const url = window.URL.createObjectURL(pdfBlob);
+                              const newWindow = window.open(url, '_blank');
+                              if (newWindow) {
+                                newWindow.document.title = `Terms & Conditions - ${formData.firstName} ${formData.lastName}`;
+                              }
                             } catch (error) {
                               console.error('Failed to generate PDF:', error);
                               alert('Failed to generate PDF. Please try again.');
@@ -1701,7 +1741,7 @@ export default function MembershipSignupPage() {
                           className="w-full border-pear-primary text-pear-primary hover:bg-pear-background/30"
                         >
                           <Download className="w-4 h-4 mr-2" />
-                          Download Terms & Conditions
+                          View & Download Terms & Conditions
                         </Button>
 
                         <div className="mt-4 p-3 bg-white rounded border border-pear-primary/30">
@@ -1715,24 +1755,26 @@ export default function MembershipSignupPage() {
                               required
                             />
                             <label htmlFor="termsConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
-                              I have downloaded and agree to the Terms & Conditions *
+                              I have read and downloaded the Terms & Conditions and agree to them *
                             </label>
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-white text-xs font-bold">!</span>
+                    {(!formData.ddGuaranteeRead || !formData.membershipTermsRead) && (
+                      <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                        <div className="flex items-start space-x-3">
+                          <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span className="text-white text-xs font-bold">!</span>
+                          </div>
+                          <p className="text-sm text-amber-800">
+                            <strong>Required:</strong> You must view and confirm you have read both documents before completing your membership signup.
+                            These confirmations are required for your membership to be activated.
+                          </p>
                         </div>
-                        <p className="text-sm text-amber-800">
-                          <strong>Required:</strong> You must download and confirm you have read both documents before completing your membership signup.
-                          These confirmations are required for your membership to be activated.
-                        </p>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Website Terms and Conditions */}

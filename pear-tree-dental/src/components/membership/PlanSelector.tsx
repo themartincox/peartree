@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 const plans = [
   {
     id: "plan-a",
-    name: "PLAN A",
+    name: "ESSENTIAL MAINTENANCE",
     price: "£10.95",
     color: "plan-a",
     features: [
@@ -23,7 +23,7 @@ const plans = [
   },
   {
     id: "plan-b",
-    name: "PLAN B",
+    name: "ROUTINE CARE",
     price: "£15.95",
     color: "plan-b",
     features: [
@@ -35,7 +35,7 @@ const plans = [
   },
   {
     id: "plan-c",
-    name: "PLAN C",
+    name: "COMPLETE CARE",
     price: "£19.95",
     color: "plan-c",
     features: [
@@ -47,7 +47,7 @@ const plans = [
   },
   {
     id: "plan-d",
-    name: "PLAN D",
+    name: "COMPLETE CARE PLUS",
     price: "£25.95",
     color: "plan-d",
     features: [
@@ -61,7 +61,7 @@ const plans = [
   },
   {
     id: "plan-e",
-    name: "PLAN E",
+    name: "PERIODONTAL HEALTH",
     price: "£29.95",
     color: "plan-d",
     features: [
@@ -77,7 +77,7 @@ const plans = [
 ];
 
 export default function PlanSelector() {
-  const [selectedPlan, setSelectedPlan] = useState(plans[2].id); // Default to Plan C (Most Popular)
+  const [selectedPlan, setSelectedPlan] = useState(plans[2].id); // Default to Complete Care (Most Popular)
 
   return (
     <section id="plans" className="py-12 md:py-24">

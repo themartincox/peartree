@@ -60,14 +60,16 @@ const Hero = () => {
 
             {/* Bottom-aligned elements */}
             <div className="space-y-4 sm:space-y-6">
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-pear-gold-dark border-pear-gold-dark hover:bg-pear-gold-dark hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold-dark focus:ring-offset-2 w-full lg:w-auto"
-                aria-label="Join our dental membership plan starting at £10.95 per month"
-              >View Membership Plans
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Button>
+              <Link href="/membership">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-pear-gold-dark border-pear-gold-dark hover:bg-pear-gold-dark hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold-dark focus:ring-offset-2 w-full lg:w-auto"
+                  aria-label="Join our dental membership plan starting at £10.95 per month"
+                >View Membership Plans
+                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                </Button>
+              </Link>
 
               {/* Value Proposition - Simplified structure */}
               <div

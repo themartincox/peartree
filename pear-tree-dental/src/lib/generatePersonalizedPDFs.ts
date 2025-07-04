@@ -233,12 +233,12 @@ export const generateMembershipTermsPDF = async (patientInfo: PatientInfo): Prom
 
   // Plan-specific services
   const planServices: { [key: string]: string[] } = {
-    'PLAN A': ['1 Exam', '1 Scale & Polish', '£10.95 per month'],
-    'PLAN B': ['2 Exams', '1 Scale & Polish', '£15.95 per month'],
-    'PLAN C': ['2 Exams', '2 Scale & Polish', '£19.95 per month'],
-    'PLAN D': ['2 Dental check ups a year', '2 Scale & Polishes a year', '1 Free emergency appt a year', '50% off stain removal', '£25.95 per month'],
-    'PLAN E': ['2 Dental check ups a year', '4 Scale & Polishes a year', '1 Free emergency appt a year', '50% off stain removal', '£29.95 per month'],
-    'FAMILY PLAN': ['All adults get Plan D benefits', 'Children under 18 included free', 'Same address requirement', '10% discount on all treatments', 'Simplified billing for whole family', 'Priority family appointments', '£49.50 per month']
+    'ESSENTIAL MAINTENANCE': ['1 Exam', '1 Scale & Polish', '£10.95 per month'],
+    'ROUTINE CARE': ['2 Exams', '1 Scale & Polish', '£15.95 per month'],
+    'COMPLETE CARE': ['2 Exams', '2 Scale & Polish', '£19.95 per month'],
+    'COMPLETE CARE PLUS': ['2 Dental check ups a year', '2 Scale & Polishes a year', '1 Free emergency appt a year', '50% off stain removal', '£25.95 per month'],
+    'PERIODONTAL HEALTH': ['2 Dental check ups a year', '4 Scale & Polishes a year', '1 Free emergency appt a year', '50% off stain removal', '£29.95 per month'],
+    'FAMILY PLAN': ['All adults get Complete Care Plus benefits', 'Children under 18 included free', 'Same address requirement', '10% discount on all treatments', 'Simplified billing for whole family', 'Priority family appointments', '£49.50 per month']
   };
 
   addTextWithPageBreaks('Adult Plans:', true, 10);
