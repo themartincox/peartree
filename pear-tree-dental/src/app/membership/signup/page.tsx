@@ -408,6 +408,20 @@ export default function MembershipSignupPage() {
     checkClinicAccess();
   }, []);
 
+  // Scroll to top when step changes for better UX
+  useEffect(() => {
+    // Small delay to ensure DOM has updated before scrolling
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    };
+
+    // Use requestAnimationFrame to ensure smooth scrolling after render
+    requestAnimationFrame(scrollToTop);
+  }, [currentStep]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
 
