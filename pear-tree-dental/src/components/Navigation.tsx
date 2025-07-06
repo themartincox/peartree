@@ -450,7 +450,7 @@ const Navigation = () => {
                   size="sm"
                   className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
                 >
-                  <CalendarDays className="w-4 h-4 mr-2" />Book Now
+                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
                 </Button>
               </Link>
               <Link href="/membership">
