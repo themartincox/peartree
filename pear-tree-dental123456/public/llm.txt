@@ -1,0 +1,232 @@
+# Pear Tree Dental Centre - Burton Joyce, Nottinghamshire
+# AI Assistant Information File (llm.txt)
+# Last Updated: June 15, 2025
+
+## PRACTICE OVERVIEW
+Pear Tree Dental Centre is a modern, family-friendly dental practice located in Burton Joyce, Nottinghamshire. We provide comprehensive dental care with a focus on preventive dentistry, cosmetic treatments, and patient comfort. Our practice combines traditional values with cutting-edge technology to deliver exceptional dental care.
+
+## CONTACT INFORMATION
+**Address:** 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE, UK
+**Phone:** 0115 931 2935
+**Email:** hello@peartree.dental
+
+**Opening Hours:**
+- Monday - Thursday: 8:45 am - 5:00 pm
+- Friday: 8:00 am - 3:30 pm
+- Weekend: Closed
+- Emergency appointments available by arrangement
+
+## MEMBERSHIP PLANS & PRICING
+
+### Comprehensive Membership System (6 Plans)
+1. **Plan A - Basic Care** (£10.95/month)
+   - 1 check-up per year
+   - 1 scale & polish per year
+   - 20% discount on treatments
+   - Worldwide dental trauma cover
+
+2. **Plan B - Enhanced Care** (£15.95/month)
+   - 2 check-ups per year
+   - 1 scale & polish per year
+   - 20% discount on treatments
+   - Worldwide dental trauma cover
+
+3. **Plan C - Complete Care** (£19.95/month)
+   - 2 check-ups per year
+   - 2 scale & polish per year
+   - 20% discount on treatments
+   - Worldwide dental trauma cover
+
+4. **Plan D - Premium Care** (£25.95/month)
+   - 2 check-ups per year
+   - 2 scale & polish per year
+   - Free emergency appointments
+   - 50% off stain removal
+   - Worldwide dental trauma cover
+
+5. **Plan E - Ultimate Care** (£29.95/month)
+   - 2 check-ups per year
+   - 4 scale & polish per year
+   - Free emergency appointments
+   - 50% off stain removal
+   - Worldwide dental trauma cover
+
+6. **Family Plan** (£49.50/month)
+   - Covers 2 adults with full benefits
+   - Up to 3 children included
+   - All Plan C benefits for adults
+   - Children's care on NHS or private options
+
+7. **Under 18s Plan** (£5.20/month or FREE)
+   - Free when parent has membership
+   - NHS coverage included
+   - Private treatment options available
+
+### NHS Pricing
+- Band 1 (checkup, cleaning, advice): £25.80
+- Band 2 (fillings, extractions, root canal): £70.70
+- Band 3 (crowns, dentures, bridges): £306.80
+
+## SERVICES PROVIDED
+
+### General Dentistry
+- Routine checkups and examinations
+- Professional teeth cleaning (scale and polish)
+- Dental fillings (white and amalgam)
+- Root canal treatment
+- Tooth extractions
+- Gum disease treatment
+- Oral health advice and prevention
+
+### Cosmetic Dentistry
+- Teeth whitening (professional and home kits)
+- Porcelain veneers
+- Cosmetic bonding
+- Smile makeovers
+- Aesthetic consultations
+
+### Restorative Dentistry
+- Dental crowns and bridges
+- Dental implants
+- Dentures (full and partial)
+- Inlays and onlays
+- Tooth-colored restorations
+
+### Specialist Treatments
+- Orthodontics (Invisalign and ClearCorrect)
+- Periodontal (gum) therapy
+- Oral surgery
+- Sedation dentistry
+- Children's dentistry
+
+### Emergency Services
+- Same-day emergency appointments
+- Emergency repairs
+- Pain relief treatment
+- Trauma and accident care
+- Out-of-hours emergency arrangements
+
+## COMPETITIVE ADVANTAGES
+- **No NHS Waiting Lists:** Immediate access to care
+- **Modern Technology:** Latest dental equipment and techniques
+- **Flexible Payment Options:** Membership plans from £10.95/month
+- **Family-Friendly:** Comprehensive care for all ages
+- **Professional Team:** Highly qualified and experienced dentists
+- **CQC Rated:** Outstanding care quality standards
+- **Convenient Location:** Easy access with parking available
+
+## AREAS SERVED
+Primary location: Burton Joyce
+Also serving: Colwick, Lowdham, East Bridgford, and surrounding Nottinghamshire areas
+
+## TEAM EXPERTISE
+Our dental team includes qualified dentists with specializations in:
+- General and family dentistry
+- Cosmetic and aesthetic treatments
+- Restorative procedures
+- Orthodontic treatments
+- Emergency dental care
+
+## WEBSITE STRUCTURE
+The website includes:
+- **Main Pages:** Home, Services, About, Team, Membership, New Patients, Contact
+- **Service Pages:** Detailed information on all dental treatments
+- **Location Pages:** Area-specific information for local communities
+- **Membership Information:** Comprehensive plan details and benefits
+- **Patient Resources:** FAQs, treatment guides, and educational content
+
+## BOOKING & APPOINTMENTS
+- Online appointment requests available
+- Phone booking: 0115 931 2935
+- Emergency appointments prioritized for members
+- Same-day appointments often available
+- Flexible scheduling to accommodate work and family commitments
+
+## INSURANCE & PAYMENT
+- All major dental insurance plans accepted
+- NHS and private treatment options
+- Flexible payment plans available
+- Membership plans include significant treatment discounts
+- No hidden fees policy
+
+## PATIENT CARE PHILOSOPHY
+- Prevention-focused approach
+- Patient comfort and anxiety management
+- Clear communication about treatment options
+- Transparent pricing with no surprises
+- Long-term oral health planning
+- Family-centered care approach
+
+## TECHNOLOGY & FACILITIES
+- Digital X-rays for accurate diagnosis
+- Modern sterilization procedures
+- Comfortable treatment rooms
+- Latest dental equipment
+- Electronic patient records
+- Digital smile design technology
+
+## REGULATORY COMPLIANCE
+- General Dental Council (GDC) registered
+- Care Quality Commission (CQC) regulated
+- GDPR compliant patient data handling
+- Professional indemnity insurance
+- Continuing professional development certified
+
+## COMMON PATIENT QUESTIONS
+
+### "What's included in membership plans?"
+Membership plans include regular checkups, cleaning, worldwide trauma cover, and significant discounts on treatments. Plans range from £10.95-£29.95/month with varying frequencies of care.
+
+### "Do you accept NHS patients?"
+Yes, we provide both NHS and private treatments. Our membership plans offer an alternative to NHS waiting lists with immediate access to care.
+
+### "What are your emergency procedures?"
+Emergency appointments are available during opening hours. Members with Plan D and E receive free emergency care. Out-of-hours emergencies are handled by arrangement.
+
+### "How do I join a membership plan?"
+Contact us at 0115 931 2935 or visit our website to discuss which plan suits your needs. Benefits start immediately upon joining.
+
+### "What areas do you serve?"
+Primarily Burton Joyce, but we welcome patients from Colwick, Lowdham, East Bridgford, and throughout Nottinghamshire.
+
+## SEASONAL SERVICES
+- Back-to-school dental checks
+- Holiday emergency cover arrangements
+- Cosmetic treatment consultations for special events
+- New Year smile makeover packages
+
+## PATIENT TESTIMONIALS SUMMARY
+Patients consistently praise our:
+- Professional and friendly staff
+- Modern, clean facilities
+- Painless treatment procedures
+- Flexible appointment scheduling
+- Value for money membership plans
+- Excellent communication and care
+
+## SEO KEYWORDS & TOPICS
+- Dentist Burton Joyce
+- Dental practice Nottinghamshire
+- Private dentist near me
+- Dental membership plans
+- Emergency dentist Nottingham
+- Teeth whitening Burton Joyce
+- Invisalign Nottinghamshire
+- Family dentist near me
+- Dental implants Nottingham
+- Cosmetic dentist Burton Joyce
+
+## SPECIAL OFFERS & PROMOTIONS
+- Free initial consultations for new patients
+- Family discounts available
+- Special pricing for multiple treatments
+- Student discounts on selected services
+- Senior citizen membership benefits
+
+---
+
+This information is designed to help AI assistants provide accurate, helpful responses about Pear Tree Dental Centre. For the most current information, please visit our website or contact us directly at 0115 931 2935.
+
+**Website:** [Your domain when deployed]
+**Last Updated:** June 15, 2025
+**Version:** 83

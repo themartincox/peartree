@@ -7,7 +7,10 @@ import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import LiveChatWidget from "@/components/LiveChatWidget";
+import LocationDetection from "@/components/LocationDetection";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
+import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
+import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
 // Optimize Google Fonts loading with font-display: swap
@@ -30,27 +33,27 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL('https://peartree.dental'),
   title: {
-    template: "%s | Pear Tree Dental - Premium Dentistry in Burton Joyce",
-    default: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire"
+    template: "%s | Pear Tree Dental - Private Dentist Nottingham",
+    default: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care"
   },
-  description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, cosmetic dentistry, dental implants, Invisalign, emergency care, and membership plans from £10.95/month. Book your consultation today.",
+  description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care. NHS and private options with membership plans from £10.95/month. Book today.",
   keywords: [
+    "private dentist Nottingham",
+    "family dentist Nottingham",
+    "cosmetic dentistry Nottingham",
+    "dental implants Nottingham",
+    "Invisalign Nottingham",
+    "emergency dentist Nottingham",
+    "private dental practice Nottingham",
+    "NHS dentist Nottingham",
+    "teeth whitening Nottingham",
+    "dental membership plans",
     "dentist Burton Joyce",
     "dental practice Nottinghamshire",
-    "cosmetic dentistry Burton Joyce",
-    "dental implants Nottingham",
-    "Invisalign Burton Joyce",
-    "emergency dentist Nottinghamshire",
-    "dental membership plans",
-    "NHS dentist Burton Joyce",
-    "private dentistry Nottingham",
-    "teeth whitening Burton Joyce",
     "root canal treatment",
-    "dental hygienist Nottinghamshire",
-    "family dentist Burton Joyce",
+    "dental hygienist Nottingham",
     "preventive dentistry",
-    "oral health Burton Joyce",
-    "dental check-up Nottingham"
+    "oral health Nottingham"
   ],
   authors: [{ name: "Pear Tree Dental" }],
   creator: "Pear Tree Dental",
@@ -71,8 +74,8 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://peartree.dental",
     siteName: "Pear Tree Dental",
-    title: "Pear Tree Dental - Premium Dentistry in Burton Joyce, Nottinghamshire",
-    description: "Premium dental care in Burton Joyce, Nottinghamshire. Modern dentistry with a personal touch. NHS and private treatments, cosmetic dentistry, dental implants, Invisalign, and emergency care.",
+    title: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
+    description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care.",
     images: [
       {
         url: "/og-image.jpg",
@@ -94,8 +97,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@PearTreeDental",
     creator: "@PearTreeDental",
-    title: "Pear Tree Dental - Premium Dentistry in Burton Joyce",
-    description: "Modern dental care with a personal touch. NHS & private treatments, cosmetic dentistry, implants, Invisalign & emergency care in Burton Joyce, Nottinghamshire.",
+    title: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
+    description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. NHS & private treatments, implants, Invisalign & emergency care.",
     images: ["/twitter-image.jpg"],
   },
   verification: {
@@ -154,6 +157,8 @@ export default function RootLayout({
         <meta name="emergency-services" content="Available" />
 
         <LocalBusinessSchema includeDentistSpecific={true} />
+        <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
+        <ServiceAreaSchema primaryLocation="Burton Joyce" specialization="Dental Care" />
         <VoiceSearchSchema />
       </head>
       <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
@@ -194,6 +199,9 @@ export default function RootLayout({
           position="bottom-right"
         />
         */}
+
+        {/* Location Detection Widget */}
+        <LocationDetection />
       </body>
     </html>
   );
