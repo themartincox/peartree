@@ -43,5 +43,39 @@
     "familyMembers": [],
     "selectedPlan": "planA",
     "isClinicSignup": true
+  },
+  {
+    "id": "test-1751928760179",
+    "timestamp": "2025-07-07T22:52:40.179Z",
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "test@example.com",
+    "planName": "COMPLETE CARE",
+    "planPrice": "£19.95",
+    "isExistingPatient": "no",
+    "dentistGenderPreference": "no-preference"
+  },
+  {
+    "id": "1751928802217",
+    "timestamp": "2025-07-07T22:53:22.217Z",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jane.doe@example.com",
+    "planName": "COMPLETE CARE",
+    "planPrice": "£19.95",
+    "dentistName": "To be assigned based on availability",
+    "isExistingPatient": "no",
+    "dentistGenderPreference": "no-preference",
+    "phone": "0115123456",
+    "selectedPlan": "planC",
+    "accountHolderName": "Jane Doe",
+    "sortCode": "12-34-56",
+    "accountNumber": "12345678",
+    "directDebitConfirmed": true,
+    "ddGuaranteeRead": true,
+    "membershipTermsRead": true,
+    "termsAccepted": true,
+    "communicationPreference": "email",
+    "marketingConsent": false
   }
 ]

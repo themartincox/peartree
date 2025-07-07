@@ -17,14 +17,42 @@ interface MembershipSubmission {
 
 const APPLICATIONS_FILE = path.join(process.cwd(), '.applications', 'membership-applications.json');
 
-// Load applications from file
+// Ensure applications directory exists
+const ensureApplicationsDir = () => {
+  try {
+    const dir = path.dirname(APPLICATIONS_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    return true;
+  } catch (error) {
+    console.error('Failed to create applications directory:', error);
+    return false;
+  }
+};
+
+// Load applications from file with better error handling
 const loadApplicationsFromFile = (): MembershipSubmission[] => {
   try {
-    if (fs.existsSync(APPLICATIONS_FILE)) {
-      const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
-      return JSON.parse(fileContent);
+    console.log('Loading applications from:', APPLICATIONS_FILE);
+
+    if (!fs.existsSync(APPLICATIONS_FILE)) {
+      console.log('Applications file does not exist, returning empty array');
+      return [];
     }
-    return [];
+
+    const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
+    console.log('File content length:', fileContent.length);
+
+    if (!fileContent.trim()) {
+      console.log('File is empty, returning empty array');
+      return [];
+    }
+
+    const applications = JSON.parse(fileContent);
+    console.log('Loaded applications count:', Array.isArray(applications) ? applications.length : 'not an array');
+
+    return Array.isArray(applications) ? applications : [];
   } catch (error) {
     console.error('Failed to load applications from file:', error);
     return [];
@@ -33,7 +61,7 @@ const loadApplicationsFromFile = (): MembershipSubmission[] => {
 
 // Convert applications to CSV format
 const convertToCSV = (applications: MembershipSubmission[]): string => {
-  if (applications.length === 0) return '';
+  if (applications.length === 0) return 'No applications found';
 
   // Define CSV headers
   const headers = [
@@ -97,12 +125,23 @@ const convertToCSV = (applications: MembershipSubmission[]): string => {
 
 export async function GET(request: NextRequest) {
   try {
+    console.log('Admin API called - starting...');
+
     const { searchParams } = new URL(request.url);
     const format = searchParams.get('format');
     const download = searchParams.get('download') === 'true';
 
+    console.log('Request parameters:', { format, download });
+
+    // Ensure directory exists
+    const dirCreated = ensureApplicationsDir();
+    if (!dirCreated) {
+      throw new Error('Failed to create applications directory');
+    }
+
     // Load applications
     const applications = loadApplicationsFromFile();
+    console.log('Final applications count:', applications.length);
 
     if (format === 'csv') {
       const csvContent = convertToCSV(applications);
@@ -123,29 +162,42 @@ export async function GET(request: NextRequest) {
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
       ),
       count: applications.length,
-      lastUpdated: applications.length > 0 ? applications[0].timestamp : null
+      lastUpdated: applications.length > 0 ? applications[0].timestamp : null,
+      filePath: APPLICATIONS_FILE,
+      fileExists: fs.existsSync(APPLICATIONS_FILE)
     };
 
+    console.log('Returning response with count:', response.count);
     return NextResponse.json(response);
 
   } catch (error) {
     console.error('Error in admin applications API:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to retrieve applications',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
-      { status: 500 }
-    );
+
+    // Return a detailed error response
+    const errorResponse = {
+      success: false,
+      error: 'Failed to retrieve applications',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      filePath: APPLICATIONS_FILE,
+      fileExists: fs.existsSync(APPLICATIONS_FILE),
+      timestamp: new Date().toISOString()
+    };
+
+    return NextResponse.json(errorResponse, { status: 500 });
   }
 }
 
 // DELETE endpoint to clear applications (admin only)
 export async function DELETE() {
   try {
+    console.log('DELETE called - clearing applications');
+
     if (fs.existsSync(APPLICATIONS_FILE)) {
       fs.unlinkSync(APPLICATIONS_FILE);
+      console.log('Applications file deleted');
+    } else {
+      console.log('Applications file did not exist');
     }
 
     return NextResponse.json({
@@ -159,7 +211,8 @@ export async function DELETE() {
     return NextResponse.json(
       {
         success: false,
-        error: 'Failed to clear applications'
+        error: 'Failed to clear applications',
+        details: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     );
