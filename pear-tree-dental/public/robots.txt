@@ -41,6 +41,8 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
+Disallow: /dentalhub/
+Disallow: /jobstobedone
 
 # Disallow utility pages
 Disallow: /offline

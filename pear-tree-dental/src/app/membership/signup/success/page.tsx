@@ -116,6 +116,8 @@ function MembershipSuccessContent() {
                       </div>
                     </div>
 
+
+
                     <div className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-pear-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
                       <div>

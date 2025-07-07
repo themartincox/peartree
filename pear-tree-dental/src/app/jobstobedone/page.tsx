@@ -1,6 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Internal Jobs Management',
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true,
+  },
+};
 import { Plus, Edit2, Trash2, Save, X, Calendar, User, Target, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

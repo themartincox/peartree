@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { sendMembershipConfirmationEmail } from '@/lib/emailService';
+import fs from 'fs';
+import path from 'path';
 
 // Define proper interface for membership submissions
 interface MembershipSubmission {
@@ -17,6 +19,58 @@ interface MembershipSubmission {
 }
 
 const membershipSubmissions: MembershipSubmission[] = [];
+
+// File path for storing applications (in production, use a proper database)
+const APPLICATIONS_FILE = path.join(process.cwd(), '.applications', 'membership-applications.json');
+
+// Ensure applications directory exists
+const ensureApplicationsDir = () => {
+  const dir = path.dirname(APPLICATIONS_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+};
+
+// Save application to file as backup
+const saveApplicationToFile = async (submission: MembershipSubmission) => {
+  try {
+    ensureApplicationsDir();
+
+    let applications: MembershipSubmission[] = [];
+
+    // Read existing applications if file exists
+    if (fs.existsSync(APPLICATIONS_FILE)) {
+      const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
+      applications = JSON.parse(fileContent);
+    }
+
+    // Add new application
+    applications.push(submission);
+
+    // Write back to file
+    fs.writeFileSync(APPLICATIONS_FILE, JSON.stringify(applications, null, 2));
+    console.log(`✅ Application saved to backup file: ${submission.id}`);
+
+    return true;
+  } catch (error) {
+    console.error('❌ Failed to save application to file:', error);
+    return false;
+  }
+};
+
+// Load applications from file
+const loadApplicationsFromFile = (): MembershipSubmission[] => {
+  try {
+    if (fs.existsSync(APPLICATIONS_FILE)) {
+      const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
+      return JSON.parse(fileContent);
+    }
+    return [];
+  } catch (error) {
+    console.error('Failed to load applications from file:', error);
+    return [];
+  }
+};
 
 // Helper function to get plan price from plan name
 const getPlanPrice = (planName: string): string => {
@@ -105,6 +159,9 @@ export async function POST(request: NextRequest) {
     // Store submission (in production, save to database)
     membershipSubmissions.push(submission);
 
+    // BACKUP: Save to file in case email fails
+    const fileSaved = await saveApplicationToFile(submission);
+
     // Generate application ID
     const applicationId = `PTDC-${Date.now()}`;
 
@@ -141,7 +198,8 @@ export async function POST(request: NextRequest) {
       success: true,
       applicationId,
       message: 'Membership application submitted successfully',
-      emailSent: true // Indicate email was attempted
+      emailSent: true, // Indicate email was attempted
+      backupSaved: fileSaved // Indicate if backup was saved
     });
 
   } catch (error) {
@@ -157,9 +215,25 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET() {
-  // Return list of submissions (for admin purposes)
+  // Return list of submissions (for admin purposes) - combine memory and file
+  const fileApplications = loadApplicationsFromFile();
+  const allApplications = [...membershipSubmissions, ...fileApplications];
+
+  // Remove duplicates based on ID
+  const uniqueApplications = allApplications.filter((app, index, self) =>
+    index === self.findIndex(a => a.id === app.id)
+  );
+
+  // Sort by timestamp (newest first)
+  uniqueApplications.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+
   return NextResponse.json({
-    submissions: membershipSubmissions,
-    count: membershipSubmissions.length
+    submissions: uniqueApplications,
+    count: uniqueApplications.length,
+    sources: {
+      memory: membershipSubmissions.length,
+      file: fileApplications.length,
+      total: uniqueApplications.length
+    }
   });
 }
