@@ -54,7 +54,7 @@ export default function EnhancedServiceSchema({
         "streetAddress": "The Old Stables, Main Street",
         "addressLocality": "Burton Joyce",
         "addressRegion": "Nottinghamshire",
-        "postalCode": "NG14 5AE",
+        "postalCode": "NG14 5AL",
         "addressCountry": "GB"
       },
       "geo": {

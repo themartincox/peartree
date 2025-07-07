@@ -161,7 +161,7 @@ export default function ComplaintsPage() {
                       href="tel:01159312935"
                       className="text-sm text-gray-600 hover:text-pear-primary transition-colors"
                     >
-                      0115 931 2935
+                      0115 931 2520
                     </a>
                   </div>
                 </div>
@@ -173,7 +173,7 @@ export default function ComplaintsPage() {
                     <p className="text-sm text-gray-600">
                       22 Nottingham Road<br />
                       Burton Joyce<br />
-                      NG14 5AE
+                      NG14 5AL
                     </p>
                   </div>
                 </div>

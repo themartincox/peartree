@@ -19,7 +19,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Emergency Dental Pain Relief Burton Joyce | Same Day Appointments Available",
-  description: "Urgent dental pain? Get immediate relief today in Burton Joyce. Emergency dental appointments available. Call 0115 931 2935 for same-day emergency care.",
+  description: "Urgent dental pain? Get immediate relief today in Burton Joyce. Emergency dental appointments available. Call 0115 931 2520 for same-day emergency care.",
   keywords: [
     "emergency dental pain Burton Joyce",
     "urgent dental care Nottinghamshire",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Emergency Dental Pain Relief Burton Joyce | Same Day Appointments",
-    description: "Don't suffer in pain. Get immediate dental relief today in Burton Joyce. Emergency appointments available - call 0115 931 2935",
+    description: "Don't suffer in pain. Get immediate dental relief today in Burton Joyce. Emergency appointments available - call 0115 931 2520",
     type: "website",
     url: "https://peartree.dental/urgent-dental-pain"
   },
@@ -105,7 +105,7 @@ export default function UrgentDentalPainPage() {
               "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
+              "postalCode": "NG14 5AL",
               "addressCountry": "GB"
             },
             "geo": {
@@ -167,7 +167,7 @@ export default function UrgentDentalPainPage() {
                     className="bg-white text-red-600 hover:bg-gray-100 font-bold text-2xl sm:text-3xl py-4 sm:py-6 px-8 sm:px-12 rounded-full shadow-lg hover:shadow-xl transition-all"
                   >
                     <Phone className="w-6 h-6 sm:w-8 sm:h-8 mr-3" />
-                    0115 931 2935
+                    0115 931 2520
                   </Button>
                 </a>
                 <p className="text-white/90 text-sm mt-3">
@@ -295,14 +295,14 @@ export default function UrgentDentalPainPage() {
                         <p className="text-gray-600">
                           22 Nottingham Road<br />
                           Burton Joyce, Nottingham<br />
-                          UK, NG14 5AE
+                          UK, NG14 5AL
                         </p>
                       </div>
 
                       <div>
                         <h4 className="font-semibold text-gray-800 mb-1">Emergency Phone</h4>
                         <a href="tel:+441159312935" className="text-red-600 font-bold text-lg hover:underline">
-                          0115 931 2935
+                          0115 931 2520
                         </a>
                       </div>
 
@@ -373,7 +373,7 @@ export default function UrgentDentalPainPage() {
                     className="bg-red-600 hover:bg-red-700 text-white font-bold text-xl py-4 px-8 rounded-full w-full sm:w-auto"
                   >
                     <Phone className="w-6 h-6 mr-3" />
-                    Call Now: 0115 931 2935
+                    Call Now: 0115 931 2520
                   </Button>
                 </a>
 

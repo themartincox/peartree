@@ -66,7 +66,7 @@ export default function NottinghamSmileDesignPage() {
               "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
+              "postalCode": "NG14 5AL",
               "addressCountry": "GB"
             },
             "geo": {
@@ -592,7 +592,7 @@ export default function NottinghamSmileDesignPage() {
             <div className="mt-8 text-sm opacity-90">
               <p>
                 <MapPin className="h-4 w-4 inline mr-1" />
-                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE
+                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AL
               </p>
               <p className="mt-2">Professional smile design serving Nottingham and surrounding areas</p>
             </div>

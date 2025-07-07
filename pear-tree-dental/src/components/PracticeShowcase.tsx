@@ -92,7 +92,7 @@ const PracticeShowcase = () => {
                       <div className="text-gray-700">
                         <div className="font-medium">22 Nottingham Rd</div>
                         <div>Burton Joyce, Nottingham</div>
-                        <div>UK, NG14 5AE</div>
+                        <div>UK NG14 5AL</div>
                       </div>
                     </div>
 
