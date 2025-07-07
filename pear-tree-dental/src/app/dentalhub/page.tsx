@@ -1,19 +1,6 @@
 "use client";
 
 import { useState } from 'react';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Access - Dental Hub',
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    noarchive: true,
-    nosnippet: true,
-    noimageindex: true,
-  },
-};
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

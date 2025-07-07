@@ -1,19 +1,6 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Admin Access - Membership Applications',
-  robots: {
-    index: false,
-    follow: false,
-    nocache: true,
-    noarchive: true,
-    nosnippet: true,
-    noimageindex: true,
-  },
-};
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
