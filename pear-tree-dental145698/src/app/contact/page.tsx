@@ -21,7 +21,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
-  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2935 or use our contact form.",
+  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2520 or use our contact form.",
   keywords: [
     "contact Pear Tree Dental",
     "book appointment Burton Joyce",
@@ -46,9 +46,9 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    primary: "0115 931 2935",
+    primary: "0115 931 2520",
     secondary: "For appointments and enquiries",
-    action: "tel:01159312935",
+    action: "tel:01159312520",
     urgent: true
   },
   {
@@ -63,8 +63,8 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     primary: "22 Nottingham Road",
-    secondary: "Burton Joyce, Nottingham, NG14 5AE",
-    action: "https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE",
+    secondary: "Burton Joyce, Nottingham, NG14 5AL",
+    action: "https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL",
     urgent: false
   }
 ];
@@ -95,7 +95,7 @@ const transportInfo = [
 const emergencyInfo = {
   title: "Dental Emergency?",
   description: "If you're experiencing a dental emergency outside our normal hours, please call our main number. For severe emergencies, contact NHS 111 or visit your nearest A&E department.",
-  phone: "0115 931 2935"
+  phone: "0115 931 2520"
 };
 
 export default function ContactPage() {
@@ -445,7 +445,7 @@ export default function ContactPage() {
                   <CardContent>
                     <div className="space-y-4">
                       <a
-                        href="tel:01159312935"
+                        href="tel:01159312520"
                         className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
                       >
                         <Phone className="h-5 w-5" />
@@ -498,10 +498,10 @@ export default function ContactPage() {
                         Interactive Map
                       </h3>
                       <p className="text-gray-600 mb-4">
-                        22 Nottingham Road, Burton Joyce, Nottingham, NG14 5AE
+                        22 Nottingham Road, Burton Joyce, Nottingham, NG14 5AL
                       </p>
                       <a
-                        href="https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
+                        href="https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-pear-primary text-white px-6 py-2 rounded-full font-semibold hover:bg-pear-primary/90 transition-colors"

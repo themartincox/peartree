@@ -117,16 +117,14 @@ export async function GET(request: NextRequest) {
     }
 
     // Return JSON by default
-    const response = {
+    return NextResponse.json({
       success: true,
       applications: applications.sort((a, b) =>
         new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
       ),
       count: applications.length,
       lastUpdated: applications.length > 0 ? applications[0].timestamp : null
-    };
-
-    return NextResponse.json(response);
+    });
 
   } catch (error) {
     console.error('Error in admin applications API:', error);
