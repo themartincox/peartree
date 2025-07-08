@@ -37,9 +37,20 @@ export interface MembershipConfirmationData {
 
 export const sendMembershipConfirmationEmail = async (data: MembershipConfirmationData) => {
   try {
-    const transporter = createTransporter();
+    console.log('📧 Email service called with data:', {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      planName: data.planName,
+      applicationId: data.applicationId
+    });
 
+    const transporter = createTransporter();
+    console.log('📧 Transporter created successfully');
+
+    console.log('📧 Generating email HTML content...');
     const htmlContent = generateConfirmationEmailHTML(data);
+    console.log('📧 HTML content generated, length:', htmlContent.length);
 
     const mailOptions = {
       from: {

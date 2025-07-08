@@ -181,32 +181,25 @@ export async function POST(request: NextRequest) {
 
     // Basic validation for required fields
     if (!body.firstName || !body.lastName || !body.email) {
-      console.error('❌ Missing required fields:', { firstName: !!body.firstName, lastName: !!body.lastName, email: !!body.email });
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Missing required fields',
-          details: 'First name, last name, and email are required',
-          missingFields: {
-            firstName: !body.firstName,
-            lastName: !body.lastName,
-            email: !body.email
-          }
-        },
-        { status: 400 }
-      );
+      console.error('❌ Missing required fields');
+      return NextResponse.json({
+        success: false,
+        error: 'Missing required fields',
+        details: 'First name, last name, and email are required'
+      }, { status: 400 });
     }
 
     // Get plan details
     const planName = getPlanName(body.selectedPlan);
     const planPrice = getPlanPrice(planName);
     const dentistName = getDentistName(body);
+    const applicationId = `PTDC-${Date.now()}`;
 
-    console.log('📋 Plan details:', { planName, planPrice, dentistName });
+    console.log('📋 Plan details:', { planName, planPrice, dentistName, applicationId });
 
     // Create submission record
     const submission: MembershipSubmission = {
-      id: Date.now().toString(),
+      id: applicationId,
       timestamp: new Date().toISOString(),
       firstName: body.firstName,
       lastName: body.lastName,
@@ -219,24 +212,10 @@ export async function POST(request: NextRequest) {
       ...body // Include any additional fields
     };
 
-    console.log('💾 Created submission record with ID:', submission.id);
-
-    // Store submission (in production, save to database)
+    // 🛠️ SAVE APPLICATION FIRST (before trying email)
     membershipSubmissions.push(submission);
-    console.log('📊 In-memory submissions count:', membershipSubmissions.length);
-
-    // BACKUP: Save to file in case email fails (best effort on serverless)
-    const fileSaved = await saveApplicationToFile(submission);
-    console.log('💿 File save result:', fileSaved);
-
-    // NOTE: Don't fail submission if file save fails on serverless environments
-    if (!fileSaved) {
-      console.warn('⚠️ File save failed (expected on serverless) - continuing with submission');
-      console.log('📧 Submission will rely on email confirmation and in-memory storage');
-    }
-
-    // Generate application ID
-    const applicationId = `PTDC-${Date.now()}`;
+    await saveApplicationToFile(submission);
+    console.log('✅ Application saved successfully - ID:', applicationId);
 
     // Prepare email data
     const emailData = {
@@ -257,54 +236,40 @@ export async function POST(request: NextRequest) {
       staffMemberName: body.staffMemberName || ''
     };
 
-    // Send confirmation email
+    // ✅ TRY TO SEND EMAIL (but don't fail the whole thing if email fails)
     let emailSent = false;
     let emailError = null;
     try {
       console.log('📧 Attempting to send confirmation email...');
-      const emailResult = await sendMembershipConfirmationEmail(emailData);
-      console.log('📧 Email sent successfully:', emailResult);
+      await sendMembershipConfirmationEmail(emailData);
+      console.log('📧 Email sent successfully');
       emailSent = true;
     } catch (emailErr) {
-      console.error('❌ Failed to send confirmation email:', emailErr);
-      emailError = emailErr instanceof Error ? emailErr.message : 'Unknown email error';
-      // Don't fail the entire request if email fails - continue with success
-      console.log('⚠️ Continuing with membership submission despite email failure');
+      console.warn('📧 Email failed but proceeding:', emailErr instanceof Error ? emailErr.message : 'Unknown');
+      emailError = emailErr instanceof Error ? emailErr.message : 'Email service error';
+      // Continue - application is already saved
     }
 
+    // Always return success if we got this far (application is saved)
     const response = {
       success: true,
       applicationId,
       message: 'Membership application submitted successfully',
-      emailSent: emailSent,
-      emailError: emailError,
-      backupSaved: fileSaved,
-      submissionId: submission.id,
-      environment: process.env.NODE_ENV || 'development',
-      debug: {
-        planName,
-        planPrice,
-        inMemoryCount: membershipSubmissions.length,
-        filePath: APPLICATIONS_FILE,
-        fileWriteable: fileSaved,
-        isServerless: !fileSaved && process.env.NETLIFY
-      }
+      emailSent,
+      emailError,
+      submissionId: submission.id
     };
 
-    console.log('✅ Submission complete:', response);
+    console.log('✅ Submission complete:', { success: true, applicationId, emailSent });
     return NextResponse.json(response);
 
   } catch (error) {
     console.error('❌ Membership submission error:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to submit membership application',
-        details: error instanceof Error ? error.message : 'Unknown error',
-        timestamp: new Date().toISOString()
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to submit membership application',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }
 

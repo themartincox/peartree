@@ -29,7 +29,9 @@ import {
   Zap,
   Heart,
   FileText,
-  Download
+  Download,
+  ChevronDown,
+  Eye
 } from "lucide-react";
 
 export default function MembershipSignupPage() {
@@ -37,6 +39,8 @@ export default function MembershipSignupPage() {
   const [selectedPlan, setSelectedPlan] = useState("");
   const [isClinicAccess, setIsClinicAccess] = useState(false);
   const [isCheckingIp, setIsCheckingIp] = useState(true);
+  const [isKeyThingsExpanded, setIsKeyThingsExpanded] = useState(false);
+  const [showRequiredNotification, setShowRequiredNotification] = useState(false);
 
   const [formData, setFormData] = useState({
     // Personal Details
@@ -262,11 +266,6 @@ export default function MembershipSignupPage() {
         alert(`Please fill in all Direct Debit fields: ${missingDDFields.join(', ')}`);
         return;
       }
-
-      if (!formData.directDebitConfirmed) {
-        alert('Please confirm your Direct Debit authorization to proceed.');
-        return;
-      }
     }
 
     if (currentStep < 4) setCurrentStep(currentStep + 1);
@@ -344,7 +343,15 @@ export default function MembershipSignupPage() {
       console.log('Response status:', response.status, response.statusText);
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        // Try to get the actual error details from the server
+        try {
+          const errorData = await response.json();
+          console.error('Server error response:', errorData);
+          const errorMessage = errorData.details || errorData.error || `HTTP ${response.status}: ${response.statusText}`;
+          throw new Error(errorMessage);
+        } catch (parseError) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
       }
 
       let result;
@@ -883,28 +890,7 @@ export default function MembershipSignupPage() {
                       />
                     </div>
 
-                    <div>
-                      <Label htmlFor="emergencyContact">Emergency Contact Name</Label>
-                      <Input
-                        id="emergencyContact"
-                        value={formData.emergencyContact}
-                        onChange={(e) => handleInputChange("emergencyContact", e.target.value)}
-                        placeholder="Full name"
-                        className="mt-1"
-                      />
-                    </div>
 
-                    <div>
-                      <Label htmlFor="emergencyPhone">Emergency Contact Phone</Label>
-                      <Input
-                        id="emergencyPhone"
-                        type="tel"
-                        value={formData.emergencyPhone}
-                        onChange={(e) => handleInputChange("emergencyPhone", e.target.value)}
-                        placeholder="Phone number"
-                        className="mt-1"
-                      />
-                    </div>
 
                     {/* Partner Details Section - Only for Family Plans */}
                     {selectedPlan === 'family' && (
@@ -1099,9 +1085,7 @@ export default function MembershipSignupPage() {
                     {/* Main Patient Status Section */}
                     <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
                       <div className="bg-pear-background/30 p-6 rounded-lg">
-                        <h3 className="text-lg font-semibold text-pear-primary mb-4">
-                          {selectedPlan === 'family' ? 'Main Account Holder Status' : 'Patient Status'}
-                        </h3>
+                        <h3 className="text-lg font-semibold text-pear-primary mb-4"></h3>
 
                         <div className="mb-6">
                           <Label className="text-base font-medium">Are you an existing patient at Pear Tree Dental? *</Label>
@@ -1134,14 +1118,14 @@ export default function MembershipSignupPage() {
                         {/* Existing Patient - Dentist Selection */}
                         {formData.isExistingPatient === 'yes' && (
                           <div>
-                            <Label htmlFor="preferredDentist">Who is your dentist? *</Label>
+                            <Label htmlFor="preferredDentist">Who is your current dentist? *</Label>
                             <select
                               id="preferredDentist"
                               className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                               value={formData.preferredDentist}
                               onChange={(e) => handleInputChange("preferredDentist", e.target.value)}
                             >
-                              <option value="">Select your preferred dentist</option>
+                              <option value="">Choose your current dentist</option>
                               <option value="Javaad Mirza">Javaad Mirza (MD, BDS)</option>
                               <option value="Imrana Ishaque">Imrana Ishaque (BDS, MFDS)</option>
                               <option value="Janet Kerr">Janet Kerr (BDS LDS RCS)</option>
@@ -1362,6 +1346,7 @@ export default function MembershipSignupPage() {
                         <h3 className="font-bold text-lg">{currentPlan.name}</h3>
                         <p className="opacity-90">{currentPlan.dailyCost}</p>
                         <p className="text-sm opacity-80">Saves over £400 per year!</p>
+                        <p className="text-sm opacity-80 mt-1">All via 1 simple monthly payment</p>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold">{currentPlan.price}</div>
@@ -1370,19 +1355,7 @@ export default function MembershipSignupPage() {
                     </div>
                   </div>
 
-                  {/* Direct Debit Benefits */}
-                  <div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                    <div className="flex items-center space-x-2 text-blue-700 mb-2">
-                      <Building2 className="w-5 h-5" />
-                      <span className="font-semibold">Why Direct Debit?</span>
-                    </div>
-                    <ul className="text-sm text-blue-600 space-y-1">
-                      <li>• Automatic monthly payments - never miss a payment</li>
-                      <li>• Protected by the Direct Debit Guarantee</li>
-                      <li>• Lower processing fees mean better value for you</li>
-                      <li>• Cancel or change at any time with advance notice</li>
-                    </ul>
-                  </div>
+
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
@@ -1420,16 +1393,7 @@ export default function MembershipSignupPage() {
                       />
                     </div>
 
-                    <div className="md:col-span-2">
-                      <Label htmlFor="bankName">Bank Name (Optional)</Label>
-                      <Input
-                        id="bankName"
-                        value={formData.bankName}
-                        onChange={(e) => handleInputChange("bankName", e.target.value)}
-                        placeholder="e.g. Lloyds, Barclays, NatWest"
-                        className="mt-1"
-                      />
-                    </div>
+
                   </div>
 
                   {/* Direct Debit Logo & Originator ID */}
@@ -1458,10 +1422,7 @@ export default function MembershipSignupPage() {
 
                     <div className="bg-white p-4 rounded border border-blue-200">
                       <p className="text-sm text-blue-800 leading-relaxed">
-                        <strong>Service User:</strong> Membership Plans Limited (part of Lloyd & Whyte Group Ltd)<br/>
-                        <strong>Collection Date:</strong> Same date each month<br/>
-                        <strong>Amount:</strong> {currentPlan.price} per month<br/>
-                        <strong>Protected by:</strong> The Direct Debit Guarantee
+                        {/* Text content cleared as per edit instructions */}
                       </p>
                     </div>
                   </div>
@@ -1470,35 +1431,7 @@ export default function MembershipSignupPage() {
 
 
 
-                  {/* Direct Debit Confirmation */}
-                  <div className="mt-6 p-4 bg-white border-2 border-blue-200 rounded-lg">
-                    <h4 className="font-semibold text-blue-800 mb-3 flex items-center">
-                      <CreditCard className="w-5 h-5 mr-2" />
-                      Direct Debit Authorisation
-                    </h4>
-                    <div className="space-y-3">
-                      <label className="flex items-start space-x-3 cursor-pointer p-3 border border-gray-200 rounded hover:bg-gray-50">
-                        <input
-                          type="checkbox"
-                          checked={formData.directDebitConfirmed}
-                          onChange={(e) => handleInputChange("directDebitConfirmed", e.target.checked)}
-                          className="mt-1 accent-blue-600"
-                          required
-                        />
-                        <span className="text-sm text-gray-800 leading-relaxed">
-                          <strong>I confirm that I am the account holder</strong> and am solely able to authorise debits from this account.
-                          I understand that Pear Tree Dental will collect <strong>{currentPlan.price} monthly</strong> via Direct Debit
-                          starting from today's date. *
-                        </span>
-                      </label>
 
-                      <div className="text-xs text-blue-600 pl-6">
-                        <p>• Payments will be collected on the same date each month</p>
-                        <p>• You can cancel at any time with 1 month's notice</p>
-                        <p>• All collections are protected by the Direct Debit Guarantee</p>
-                      </div>
-                    </div>
-                  </div>
 
                   <div className="flex justify-between mt-8">
                     <Button onClick={prevStep} variant="outline">
@@ -1541,7 +1474,6 @@ export default function MembershipSignupPage() {
 
                     {/* Plan Summary */}
                     <div>
-                      <h3 className="font-bold text-lg text-pear-primary mb-4">Your Plan</h3>
                       <div className={`bg-gradient-to-r ${currentPlan.gradient} text-white p-6 rounded-xl`}>
                         <h4 className="font-bold text-xl">{currentPlan.name}</h4>
                         <div className="text-2xl font-bold mt-2">{currentPlan.price}{currentPlan.period}</div>
@@ -1569,37 +1501,6 @@ export default function MembershipSignupPage() {
                           </div>
                         </div>
                       )}
-                    </div>
-
-                    {/* Personal Details Summary */}
-                    <div>
-                      <h3 className="font-bold text-lg text-pear-primary mb-4">
-                        {selectedPlan === 'family' ? 'Account Holders' : 'Your Details'}
-                      </h3>
-
-                      {/* Main Account Holder */}
-                      <div className="space-y-3 text-sm mb-6">
-                        <h4 className="font-semibold text-pear-primary">
-                          {selectedPlan === 'family' ? 'Main Account Holder' : 'Personal Details'}
-                        </h4>
-                        <div><strong>Name:</strong> {formData.title} {formData.firstName} {formData.lastName}</div>
-                        <div><strong>Email:</strong> {formData.email}</div>
-                        <div><strong>Phone:</strong> {formData.phone}</div>
-                        <div><strong>Date of Birth:</strong> {formData.dateOfBirth}</div>
-                        <div><strong>Address:</strong> {formData.address}</div>
-                        <div><strong>Postcode:</strong> {formData.postcode}</div>
-                      </div>
-
-                      {/* Partner Details for Family Plans */}
-                      {selectedPlan === 'family' && formData.partnerFirstName && (
-                        <div className="space-y-3 text-sm mb-6 pt-4 border-t border-gray-200">
-                          <h4 className="font-semibold text-purple-700">Partner Details</h4>
-                          <div><strong>Name:</strong> {formData.partnerTitle} {formData.partnerFirstName} {formData.partnerLastName}</div>
-                          <div><strong>Email:</strong> {formData.partnerEmail}</div>
-                          <div><strong>Phone:</strong> {formData.partnerPhone}</div>
-                          <div><strong>Date of Birth:</strong> {formData.partnerDateOfBirth}</div>
-                        </div>
-                      )}
 
                       {/* Direct Debit Summary */}
                       <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
@@ -1617,15 +1518,76 @@ export default function MembershipSignupPage() {
                           </div>
                         </div>
                       </div>
+                    </div>
 
-                      <div className="mt-4 p-4 bg-pear-background/50 rounded-lg">
-                        <h4 className="font-semibold text-pear-primary">What happens next?</h4>
-                        <ul className="text-sm text-gray-600 mt-2 space-y-1">
-                          <li>• Your membership starts immediately</li>
-                          <li>• We'll email your membership details</li>
-                          <li>• Book your first appointment online or call us</li>
-                          <li>• Your first Direct Debit collection starts today</li>
-                          <li>• Emergency cover is active immediately</li>
+                    {/* Personal Details Summary */}
+                    <div>
+                      {/* Personal Details Box */}
+                      <div className="bg-gradient-to-br from-slate-50 to-slate-100 border-2 border-slate-200 rounded-xl p-6 mb-6">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-slate-600 rounded-lg flex items-center justify-center mr-3">
+                            <User className="w-6 h-6 text-white" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-slate-800 text-lg">
+                              {selectedPlan === 'family' ? 'Account Holders' : 'Your Details'}
+                            </h4>
+                            <p className="text-sm text-slate-600">Membership information</p>
+                          </div>
+                        </div>
+
+                        {/* Main Account Holder */}
+                        <div className="space-y-3 text-sm mb-6">
+                          <h5 className="font-semibold text-slate-700">
+                            {selectedPlan === 'family' ? 'Main Account Holder' : 'Personal Information'}
+                          </h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600">
+                            <div><strong>Name:</strong> {formData.title} {formData.firstName} {formData.lastName}</div>
+                            <div><strong>Email:</strong> {formData.email}</div>
+                            <div><strong>Phone:</strong> {formData.phone}</div>
+                            <div><strong>Date of Birth:</strong> {formData.dateOfBirth}</div>
+                            <div className="md:col-span-2"><strong>Address:</strong> {formData.address}, {formData.postcode}</div>
+                          </div>
+                        </div>
+
+                        {/* Partner Details for Family Plans */}
+                        {selectedPlan === 'family' && formData.partnerFirstName && (
+                          <div className="space-y-3 text-sm pt-4 border-t border-slate-300">
+                            <h5 className="font-semibold text-purple-700">Partner Details</h5>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600">
+                              <div><strong>Name:</strong> {formData.partnerTitle} {formData.partnerFirstName} {formData.partnerLastName}</div>
+                              <div><strong>Email:</strong> {formData.partnerEmail}</div>
+                              <div><strong>Phone:</strong> {formData.partnerPhone}</div>
+                              <div><strong>Date of Birth:</strong> {formData.partnerDateOfBirth}</div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* What Happens Next Box */}
+                      <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-2 border-emerald-200 rounded-xl p-6">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center mr-3">
+                            <CalendarDays className="w-6 h-6 text-white" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold text-emerald-800 text-lg">What happens next?</h4>
+                            <p className="text-sm text-emerald-600">Your membership journey</p>
+                          </div>
+                        </div>
+                        <ul className="text-sm text-emerald-700 space-y-2">
+                          <li className="flex items-center space-x-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-600" />
+                            <span>We'll process your details and email you within 2 working days</span>
+                          </li>
+                          <li className="flex items-center space-x-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-600" />
+                            <span>We'll confirm your Direct Debit start date</span>
+                          </li>
+                          <li className="flex items-center space-x-2">
+                            <CheckCircle className="w-4 h-4 text-emerald-600" />
+                            <span>Emergency cover activates upon confirmation</span>
+                          </li>
                         </ul>
                       </div>
                     </div>
@@ -1633,225 +1595,287 @@ export default function MembershipSignupPage() {
 
                   {/* Key Terms Summary */}
                   <div className="mt-8">
-                    <h3 className="font-bold text-lg text-pear-primary mb-4">Key Things You Need to Know</h3>
                     <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mb-8">
-                      <p className="text-blue-800 font-medium mb-4">Before you join, here are the 5 most important things about your membership:</p>
-                      <ul className="space-y-3 text-blue-700">
-                        <li className="flex items-start space-x-3">
-                          <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
-                          <span><strong>Monthly payments:</strong> You'll pay {currentPlan.price} every month by Direct Debit. Payments continue until you cancel with 1 month's notice.</span>
-                        </li>
-                        <li className="flex items-start space-x-3">
-                          <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
-                          <span><strong>Book your own appointments:</strong> Your plan includes treatments, but you need to book and attend appointments yourself. We don't automatically schedule them for you.</span>
-                        </li>
-                        <li className="flex items-start space-x-3">
-                          <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
-                          <span><strong>Use it or lose it:</strong> Unused treatments don't carry over to the next year, and there are no refunds for treatments you don't use.</span>
-                        </li>
-                        <li className="flex items-start space-x-3">
-                          <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</div>
-                          <span><strong>Early cancellation:</strong> If you cancel within your first 12 months, you'll need to pay back any savings you received on treatments at our standard prices (the difference between what you paid and our normal fees).</span>
-                        </li>
-                        <li className="flex items-start space-x-3">
-                          <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">5</div>
-                          <span><strong>Payment problems:</strong> If your Direct Debit payment fails, all membership benefits stop immediately until payment is sorted out.</span>
-                        </li>
-                      </ul>
+                      <div
+                        className="flex items-center justify-between cursor-pointer"
+                        onClick={() => setIsKeyThingsExpanded(!isKeyThingsExpanded)}
+                      >
+                        <p className="text-blue-800 font-medium">Before you join, here are 5 key things to know about your membership:</p>
+                        <ChevronDown
+                          className={`w-5 h-5 text-blue-800 transition-transform duration-200 ${
+                            isKeyThingsExpanded ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </div>
+
+                      {isKeyThingsExpanded && (
+                        <ul className="space-y-3 text-blue-700 mt-4">
+                          <li className="flex items-start space-x-3">
+                            <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
+                            <span><strong>Monthly payments:</strong> You'll pay {currentPlan.price} every month by Direct Debit. Payments continue until you cancel with 1 month's notice.</span>
+                          </li>
+                          <li className="flex items-start space-x-3">
+                            <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
+                            <span><strong>Book your own appointments:</strong> Your plan includes treatments, but you need to book and attend appointments yourself. We don't automatically schedule them for you.</span>
+                          </li>
+                          <li className="flex items-start space-x-3">
+                            <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">3</div>
+                            <span><strong>Use it or lose it:</strong> Unused treatments don't carry over to the next year, and there are no refunds for treatments you don't use.</span>
+                          </li>
+                          <li className="flex items-start space-x-3">
+                            <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">4</div>
+                            <span><strong>Early cancellation:</strong> If you cancel within your first 12 months, you'll need to pay back any savings you received on treatments at our standard prices (the difference between what you paid and our normal fees).</span>
+                          </li>
+                          <li className="flex items-start space-x-3">
+                            <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">5</div>
+                            <span><strong>Payment problems:</strong> If your Direct Debit payment fails, all membership benefits stop immediately until payment is sorted out.</span>
+                          </li>
+                        </ul>
+                      )}
                     </div>
                   </div>
 
-                  {/* Required Documents - Personalised PDFs */}
+                  {/* Required Documents - Clean Interface */}
                   <div className="mt-8">
-                    <h3 className="font-bold text-lg text-pear-primary mb-4">Important Documents</h3>
                     <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-6">
                       <div className="flex items-start space-x-3">
                         <Mail className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
                         <div>
-                          <h4 className="font-semibold text-blue-800 mb-1">View Documents & We'll Email You Copies</h4>
                           <p className="text-sm text-blue-700">
-                            Please view and read both documents below. You can download them for your records if needed.
-                            We'll also email you copies once your membership is confirmed. Both documents are personalised with your plan and dentist details.
+                            Please read both documents below. We'll email you copies once your membership is confirmed. You can download them for your records.
                           </p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {/* Direct Debit Guarantee PDF */}
-                      <div className="border-2 border-blue-200 rounded-lg p-6 bg-blue-50/30">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                            <Building2 className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-blue-800 text-lg">Direct Debit Guarantee</h4>
-                            <p className="text-sm text-blue-600">Personalised with your payment details</p>
-                          </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      {/* Terms & Conditions */}
+                      <div className="border border-gray-300 rounded-lg p-6 bg-white">
+                        <div className="flex items-center mb-3">
+                          <FileText className="w-5 h-5 text-gray-600 mr-2" />
+                          <h4 className="font-semibold text-gray-800">Terms & Conditions</h4>
                         </div>
+                        <p className="text-sm text-gray-600 mb-4">Membership terms and practice policies</p>
 
-                        <div className="mb-4 p-3 bg-white rounded border border-blue-200">
-                          <p className="text-xs text-blue-700">
-                            <strong>Contains:</strong> Your personalised Direct Debit information, payment protection details,
-                            and your rights under the Direct Debit Guarantee scheme.
-                          </p>
-                        </div>
-
-                        <Button
-                          onClick={async () => {
-                            const patientInfo = {
-                              firstName: formData.firstName,
-                              lastName: formData.lastName,
-                              planName: currentPlan.name,
-                              planPrice: currentPlan.price,
-                              accountHolderName: formData.accountHolderName,
-                              sortCode: formData.sortCode,
-                              accountNumber: formData.accountNumber,
-                              partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
-                              partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
-                              isFamily: selectedPlan === 'family'
-                            };
-                            try {
-                              const pdfBlob = await generateDirectDebitGuaranteePDF(patientInfo);
-                              const url = window.URL.createObjectURL(pdfBlob);
-                              const newWindow = window.open(url, '_blank');
-                              if (newWindow) {
-                                newWindow.document.title = `Direct Debit Guarantee - ${formData.firstName} ${formData.lastName}`;
-                              }
-                            } catch (error) {
-                              console.error('Failed to generate PDF:', error);
-                              alert('Failed to generate PDF. Please try again.');
-                            }
-                          }}
-                          variant="outline"
-                          className="w-full border-blue-600 text-blue-700 hover:bg-blue-100"
-                        >
-                          <Download className="w-4 h-4 mr-2" />
-                          View & Download DD Guarantee
-                        </Button>
-
-                        <div className="mt-4 p-3 bg-white rounded border border-blue-200">
-                          <div className="flex items-start space-x-3">
-                            <input
-                              type="checkbox"
-                              id="ddGuaranteeConfirmed"
-                              checked={formData.ddGuaranteeRead}
-                              onChange={(e) => handleInputChange("ddGuaranteeRead", e.target.checked)}
-                              className="mt-1 accent-blue-600"
-                              required
-                            />
-                            <label htmlFor="ddGuaranteeConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
-                              I have read and downloaded the Direct Debit Guarantee *
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Membership Terms PDF */}
-                      <div className="border-2 border-pear-primary/30 rounded-lg p-6 bg-pear-background/20">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center mr-3">
-                            <FileText className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="font-semibold text-pear-primary text-lg">Terms & Conditions</h4>
-                            <p className="text-sm text-pear-primary/70">Personalised membership agreement</p>
-                          </div>
-                        </div>
-
-                        <div className="mb-4 p-3 bg-white rounded border border-pear-primary/30">
-                          <p className="text-xs text-pear-primary">
-                            <strong>Contains:</strong> Your complete membership terms, treatment inclusions,
-                            payment obligations, and cancellation policies specific to your {currentPlan.name}.
-                          </p>
-                        </div>
-
-                        <Button
-                          onClick={async () => {
-                            const patientInfo = {
-                              firstName: formData.firstName,
-                              lastName: formData.lastName,
-                              planName: currentPlan.name,
-                              planPrice: currentPlan.price,
-                              dentistName: formData.isExistingPatient === 'yes'
-                                ? formData.preferredDentist
-                                : (formData.dentistGenderPreference === 'no-preference'
-                                  ? 'To be assigned based on availability'
-                                  : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist (to be assigned)`),
-                              partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
-                              partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
-                              partnerDentistName: selectedPlan === 'family'
-                                ? (formData.partnerIsExistingPatient === 'yes'
-                                  ? formData.partnerPreferredDentist
-                                  : (formData.partnerDentistGenderPreference === 'no-preference'
+                        <div className="flex space-x-3">
+                          <Button
+                            onClick={async () => {
+                              const patientInfo = {
+                                firstName: formData.firstName,
+                                lastName: formData.lastName,
+                                planName: currentPlan.name,
+                                planPrice: currentPlan.price,
+                                dentistName: formData.isExistingPatient === 'yes'
+                                  ? formData.preferredDentist
+                                  : (formData.dentistGenderPreference === 'no-preference'
                                     ? 'To be assigned based on availability'
-                                    : `${formData.partnerDentistGenderPreference?.charAt(0).toUpperCase()}${formData.partnerDentistGenderPreference?.slice(1)} dentist (to be assigned)`))
-                                : '',
-                              isFamily: selectedPlan === 'family',
-                              isExistingPatient: formData.isExistingPatient,
-                              dentistGenderPreference: formData.dentistGenderPreference
-                            };
-                            try {
-                              const pdfBlob = await generateMembershipTermsPDF(patientInfo);
-                              const url = window.URL.createObjectURL(pdfBlob);
-                              const newWindow = window.open(url, '_blank');
-                              if (newWindow) {
-                                newWindow.document.title = `Terms & Conditions - ${formData.firstName} ${formData.lastName}`;
+                                    : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist (to be assigned)`),
+                                partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                                partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                                partnerDentistName: selectedPlan === 'family'
+                                  ? (formData.partnerIsExistingPatient === 'yes'
+                                    ? formData.partnerPreferredDentist
+                                    : (formData.partnerDentistGenderPreference === 'no-preference'
+                                      ? 'To be assigned based on availability'
+                                      : `${formData.partnerDentistGenderPreference?.charAt(0).toUpperCase()}${formData.partnerDentistGenderPreference?.slice(1)} dentist (to be assigned)`))
+                                  : '',
+                                isFamily: selectedPlan === 'family',
+                                isExistingPatient: formData.isExistingPatient,
+                                dentistGenderPreference: formData.dentistGenderPreference
+                              };
+                              try {
+                                const pdfBlob = await generateMembershipTermsPDF(patientInfo);
+                                const url = window.URL.createObjectURL(pdfBlob);
+                                const newWindow = window.open(url, '_blank');
+                                if (newWindow) {
+                                  newWindow.document.title = `Terms & Conditions - ${formData.firstName} ${formData.lastName}`;
+                                }
+                              } catch (error) {
+                                console.error('Failed to generate PDF:', error);
+                                alert('Failed to generate PDF. Please try again.');
                               }
-                            } catch (error) {
-                              console.error('Failed to generate PDF:', error);
-                              alert('Failed to generate PDF. Please try again.');
-                            }
-                          }}
-                          variant="outline"
-                          className="w-full border-pear-primary text-pear-primary hover:bg-pear-background/30"
-                        >
-                          <Download className="w-4 h-4 mr-2" />
-                          View & Download Terms & Conditions
-                        </Button>
+                            }}
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                          >
+                            <Eye className="w-4 h-4 mr-1" />
+                            View
+                          </Button>
 
-                        <div className="mt-4 p-3 bg-white rounded border border-pear-primary/30">
-                          <div className="flex items-start space-x-3">
-                            <input
-                              type="checkbox"
-                              id="termsConfirmed"
-                              checked={formData.membershipTermsRead}
-                              onChange={(e) => handleInputChange("membershipTermsRead", e.target.checked)}
-                              className="mt-1 accent-pear-primary"
-                              required
-                            />
-                            <label htmlFor="termsConfirmed" className="text-sm text-gray-700 cursor-pointer font-medium">
-                              I have read and downloaded the Terms & Conditions and agree to them *
-                            </label>
-                          </div>
+                          <Button
+                            onClick={async () => {
+                              const patientInfo = {
+                                firstName: formData.firstName,
+                                lastName: formData.lastName,
+                                planName: currentPlan.name,
+                                planPrice: currentPlan.price,
+                                dentistName: formData.isExistingPatient === 'yes'
+                                  ? formData.preferredDentist
+                                  : (formData.dentistGenderPreference === 'no-preference'
+                                    ? 'To be assigned based on availability'
+                                    : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist (to be assigned)`),
+                                partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                                partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                                partnerDentistName: selectedPlan === 'family'
+                                  ? (formData.partnerIsExistingPatient === 'yes'
+                                    ? formData.partnerPreferredDentist
+                                    : (formData.partnerDentistGenderPreference === 'no-preference'
+                                      ? 'To be assigned based on availability'
+                                      : `${formData.partnerDentistGenderPreference?.charAt(0).toUpperCase()}${formData.partnerDentistGenderPreference?.slice(1)} dentist (to be assigned)`))
+                                  : '',
+                                isFamily: selectedPlan === 'family',
+                                isExistingPatient: formData.isExistingPatient,
+                                dentistGenderPreference: formData.dentistGenderPreference
+                              };
+                              try {
+                                const pdfBlob = await generateMembershipTermsPDF(patientInfo);
+                                downloadPDF(pdfBlob, `Terms-Conditions-${formData.firstName}-${formData.lastName}.pdf`);
+                              } catch (error) {
+                                console.error('Failed to generate PDF:', error);
+                                alert('Failed to generate PDF. Please try again.');
+                              }
+                            }}
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                          >
+                            <Download className="w-4 h-4 mr-1" />
+                            Download
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Direct Debit Guarantee */}
+                      <div className="border border-gray-300 rounded-lg p-6 bg-white">
+                        <div className="flex items-center mb-3">
+                          <Building2 className="w-5 h-5 text-gray-600 mr-2" />
+                          <h4 className="font-semibold text-gray-800">Direct Debit Guarantee</h4>
+                        </div>
+                        <p className="text-sm text-gray-600 mb-4">Your rights under the Direct Debit Guarantee</p>
+
+                        <div className="flex space-x-3">
+                          <Button
+                            onClick={async () => {
+                              const patientInfo = {
+                                firstName: formData.firstName,
+                                lastName: formData.lastName,
+                                planName: currentPlan.name,
+                                planPrice: currentPlan.price,
+                                accountHolderName: formData.accountHolderName,
+                                sortCode: formData.sortCode,
+                                accountNumber: formData.accountNumber,
+                                partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                                partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                                isFamily: selectedPlan === 'family'
+                              };
+                              try {
+                                const pdfBlob = await generateDirectDebitGuaranteePDF(patientInfo);
+                                const url = window.URL.createObjectURL(pdfBlob);
+                                const newWindow = window.open(url, '_blank');
+                                if (newWindow) {
+                                  newWindow.document.title = `Direct Debit Guarantee - ${formData.firstName} ${formData.lastName}`;
+                                }
+                              } catch (error) {
+                                console.error('Failed to generate PDF:', error);
+                                alert('Failed to generate PDF. Please try again.');
+                              }
+                            }}
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                          >
+                            <Eye className="w-4 h-4 mr-1" />
+                            View
+                          </Button>
+
+                          <Button
+                            onClick={async () => {
+                              const patientInfo = {
+                                firstName: formData.firstName,
+                                lastName: formData.lastName,
+                                planName: currentPlan.name,
+                                planPrice: currentPlan.price,
+                                accountHolderName: formData.accountHolderName,
+                                sortCode: formData.sortCode,
+                                accountNumber: formData.accountNumber,
+                                partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+                                partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+                                isFamily: selectedPlan === 'family'
+                              };
+                              try {
+                                const pdfBlob = await generateDirectDebitGuaranteePDF(patientInfo);
+                                downloadPDF(pdfBlob, `Direct-Debit-Guarantee-${formData.firstName}-${formData.lastName}.pdf`);
+                              } catch (error) {
+                                console.error('Failed to generate PDF:', error);
+                                alert('Failed to generate PDF. Please try again.');
+                              }
+                            }}
+                            variant="outline"
+                            size="sm"
+                            className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                          >
+                            <Download className="w-4 h-4 mr-1" />
+                            Download
+                          </Button>
                         </div>
                       </div>
                     </div>
 
-                    {(!formData.ddGuaranteeRead || !formData.membershipTermsRead) && (
-                      <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                        <div className="flex items-start space-x-3">
-                          <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                            <span className="text-white text-xs font-bold">!</span>
-                          </div>
-                          <p className="text-sm text-amber-800">
-                            <strong>Required:</strong> You must view and confirm you have read both documents before completing your membership signup.
-                            These confirmations are required for your membership to be activated.
-                          </p>
-                        </div>
+                    {/* Single Acceptance Checkboxes */}
+                    <div className="space-y-4">
+                      <div className="flex items-start space-x-3">
+                        <input
+                          type="checkbox"
+                          id="termsAcceptance"
+                          checked={formData.membershipTermsRead}
+                          onChange={(e) => handleInputChange("membershipTermsRead", e.target.checked)}
+                          className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          required
+                        />
+                        <label htmlFor="termsAcceptance" className="text-sm text-gray-700 cursor-pointer">
+                          I have read and accept the Terms & Conditions *
+                        </label>
                       </div>
-                    )}
+
+                      <div className="flex items-start space-x-3">
+                        <input
+                          type="checkbox"
+                          id="ddAcceptance"
+                          checked={formData.ddGuaranteeRead}
+                          onChange={(e) => handleInputChange("ddGuaranteeRead", e.target.checked)}
+                          className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                          required
+                        />
+                        <label htmlFor="ddAcceptance" className="text-sm text-gray-700 cursor-pointer">
+                          I understand my rights under the Direct Debit Guarantee *
+                        </label>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Website Terms and Conditions */}
+                  {/* Final Confirmations */}
                   <div className="mt-8 space-y-4">
+                    <div className="flex items-start space-x-3">
+                      <input
+                        type="checkbox"
+                        id="directDebitAuth"
+                        checked={formData.directDebitConfirmed}
+                        onChange={(e) => handleInputChange("directDebitConfirmed", e.target.checked)}
+                        className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="directDebitAuth" className="text-sm text-gray-700">
+                        <strong>I confirm that I am the account holder</strong> and am solely able to authorise debits from this account. I understand that Pear Tree Dental will collect <strong>{currentPlan.price} monthly</strong> via Direct Debit. *
+                      </label>
+                    </div>
+
                     <div className="flex items-start space-x-3">
                       <input
                         type="checkbox"
                         id="terms"
                         checked={formData.termsAccepted}
                         onChange={(e) => handleInputChange("termsAccepted", e.target.checked)}
-                        className="mt-1"
+                        className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="terms" className="text-sm text-gray-700">
                         I accept the <a href="/terms" className="text-dental-green hover:underline">Website Terms and Conditions</a> and
@@ -1865,7 +1889,7 @@ export default function MembershipSignupPage() {
                         id="marketing"
                         checked={formData.marketingConsent}
                         onChange={(e) => handleInputChange("marketingConsent", e.target.checked)}
-                        className="mt-1"
+                        className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="marketing" className="text-sm text-gray-700">
                         I'd like to receive updates about dental health tips and special offers
@@ -1878,7 +1902,7 @@ export default function MembershipSignupPage() {
                         id="communication"
                         checked={formData.communicationPreference === "email"}
                         onChange={(e) => handleInputChange("communicationPreference", e.target.checked ? "email" : "post")}
-                        className="mt-1"
+                        className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="communication" className="text-sm text-gray-700">
                         I prefer to receive communications by email rather than post
@@ -1892,7 +1916,13 @@ export default function MembershipSignupPage() {
                       Back
                     </Button>
                     <Button
-                      onClick={handleSubmit}
+                      onClick={() => {
+                        if (!formData.termsAccepted || !formData.ddGuaranteeRead || !formData.membershipTermsRead) {
+                          setShowRequiredNotification(true);
+                          return;
+                        }
+                        handleSubmit();
+                      }}
                       disabled={!formData.termsAccepted || !formData.ddGuaranteeRead || !formData.membershipTermsRead}
                       className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8"
                     >
@@ -1900,6 +1930,21 @@ export default function MembershipSignupPage() {
                       Complete Membership Signup
                     </Button>
                   </div>
+
+                  {/* Required Notification - Only show when user tries to click disabled button */}
+                  {showRequiredNotification && (
+                    <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="flex items-start space-x-3">
+                        <div className="w-5 h-5 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-white text-xs font-bold">!</span>
+                        </div>
+                        <p className="text-sm text-amber-800">
+                          <strong>Required:</strong> You must view and confirm you have read both documents before completing your membership signup.
+                          These confirmations are required for your membership to be activated.
+                        </p>
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             )}
@@ -1923,10 +1968,7 @@ export default function MembershipSignupPage() {
               <Zap className="w-5 h-5 text-dental-green" />
               <span>Instant Activation</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="w-5 h-5 text-dental-green" />
-              <span>24/7 Support: 0115 931 2935</span>
-            </div>
+
           </div>
         </div>
       </section>
