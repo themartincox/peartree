@@ -80,6 +80,10 @@ const saveApplicationToFile = async (submission: MembershipSubmission) => {
     return true;
   } catch (error) {
     console.error('❌ Failed to save application to file:', error);
+    console.error('❌ File path:', APPLICATIONS_FILE);
+    console.error('❌ Directory exists:', fs.existsSync(path.dirname(APPLICATIONS_FILE)));
+    console.error('❌ File exists:', fs.existsSync(APPLICATIONS_FILE));
+    console.error('❌ Error details:', error instanceof Error ? error.message : 'Unknown error');
     return false;
   }
 };
@@ -196,6 +200,20 @@ export async function POST(request: NextRequest) {
     // BACKUP: Save to file in case email fails
     const fileSaved = await saveApplicationToFile(submission);
     console.log('💿 File save result:', fileSaved);
+
+    // CRITICAL: Fail if file save unsuccessful
+    if (!fileSaved) {
+      console.error('❌ CRITICAL: File save failed - aborting submission');
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Failed to save application - please try again',
+          details: 'Application could not be saved to backup storage',
+          submissionId: submission.id
+        },
+        { status: 500 }
+      );
+    }
 
     // Generate application ID
     const applicationId = `PTDC-${Date.now()}`;
