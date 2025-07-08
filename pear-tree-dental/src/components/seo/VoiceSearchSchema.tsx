@@ -141,7 +141,7 @@ const VoiceSearchSchema = () => {
             "name": "Do you take emergency appointments?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2520 immediately for urgent dental problems including severe pain, swelling, or trauma."
+              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2935 immediately for urgent dental problems including severe pain, swelling, or trauma."
             }
           },
           {

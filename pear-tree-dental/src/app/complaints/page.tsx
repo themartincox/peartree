@@ -161,7 +161,7 @@ export default function ComplaintsPage() {
                       href="tel:01159312935"
                       className="text-sm text-gray-600 hover:text-pear-primary transition-colors"
                     >
-                      0115 931 2520
+                      0115 931 2935
                     </a>
                   </div>
                 </div>

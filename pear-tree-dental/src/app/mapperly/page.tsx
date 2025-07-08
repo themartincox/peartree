@@ -66,7 +66,7 @@ export default function MapperlyPage() {
               "latitude": "52.9847",
               "longitude": "-1.0147"
             },
-            "telephone": "0115 931 2520",
+            "telephone": "0115 931 2935",
             "url": "https://peartree.dental",
             "areaServed": {
               "@type": "Place",
@@ -110,9 +110,9 @@ export default function MapperlyPage() {
                 size="lg"
                 className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -425,7 +425,7 @@ export default function MapperlyPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Contact Us</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2520<br />
+                        Phone: 0115 931 2935<br />
                         Emergency: Same number
                       </p>
                     </div>
@@ -495,9 +495,9 @@ export default function MapperlyPage() {
                 size="lg"
                 className="bg-dental-navy hover:bg-dental-navy/90 text-white font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button

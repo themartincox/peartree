@@ -159,7 +159,7 @@ function MembershipSuccessContent() {
                   <div className="flex flex-col items-center space-y-2">
                     <Phone className="w-8 h-8 text-pear-primary" />
                     <h4 className="font-semibold">Call Us</h4>
-                    <p className="text-gray-600">0115 931 2520</p>
+                    <p className="text-gray-600">0115 931 2935</p>
                     <p className="text-sm text-gray-500">Mon-Thu: 8:45am-5pm<br />Fri: 8am-3:30pm</p>
                   </div>
 

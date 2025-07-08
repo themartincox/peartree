@@ -354,10 +354,10 @@ export default function TeamPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:01159312520"
+                href="tel:01159312935"
                 className="bg-white text-pear-primary px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                📞 Call 0115 931 2520
+                📞 Call 0115 931 2935
               </a>
               <a
                 href="/membership"

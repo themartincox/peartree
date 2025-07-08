@@ -77,7 +77,7 @@ export default function NG4DentalPage() {
               "latitude": "52.9847",
               "longitude": "-1.0147"
             },
-            "telephone": "0115 931 2520",
+            "telephone": "0115 931 2935",
             "url": "https://peartree.dental",
             "areaServed": [
               {
@@ -129,9 +129,9 @@ export default function NG4DentalPage() {
                 size="lg"
                 className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -447,7 +447,7 @@ export default function NG4DentalPage() {
                   </Button>
                   <Button size="lg" variant="outline" className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white">
                     <Phone className="w-5 h-5 mr-2" />
-                    Call: 0115 931 2520
+                    Call: 0115 931 2935
                   </Button>
                 </div>
               </div>
@@ -545,9 +545,9 @@ export default function NG4DentalPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button

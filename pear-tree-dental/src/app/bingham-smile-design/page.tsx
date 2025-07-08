@@ -71,7 +71,7 @@ export default function BinghamSmileDesignPage() {
                 "postalCode": "NG14 5DP",
                 "addressCountry": "GB"
               },
-              "telephone": "0115 931 2520"
+              "telephone": "0115 931 2935"
             },
             "areaServed": {
               "@type": "Place",
@@ -106,9 +106,9 @@ export default function BinghamSmileDesignPage() {
                 size="lg"
                 className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Book Design Consultation: 0115 931 2520
+                  Book Design Consultation: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -520,9 +520,9 @@ export default function BinghamSmileDesignPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button

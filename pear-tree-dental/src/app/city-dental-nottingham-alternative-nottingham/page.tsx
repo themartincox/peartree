@@ -188,9 +188,9 @@ export default function CityDentalNottinghamAlternativePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-accent-gold hover:bg-accent-gold/90 text-primary">
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -394,9 +394,9 @@ export default function CityDentalNottinghamAlternativePage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button asChild size="lg" className="bg-accent-gold hover:bg-accent-gold/90 text-primary">
-                    <Link href="tel:01159312520">
+                    <Link href="tel:01159312935">
                       <Phone className="h-5 w-5 mr-2" />
-                      Call: 0115 931 2520
+                      Call: 0115 931 2935
                     </Link>
                   </Button>
                   <Button asChild variant="outline" size="lg">
@@ -474,7 +474,7 @@ export default function CityDentalNottinghamAlternativePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary">
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
                   Escape to Suburban Care
                 </Link>
@@ -492,7 +492,7 @@ export default function CityDentalNottinghamAlternativePage() {
               </div>
               <div className="flex items-center space-x-1">
                 <Phone className="h-4 w-4" />
-                <span>0115 931 2520</span>
+                <span>0115 931 2935</span>
               </div>
               <div className="flex items-center space-x-1">
                 <TreePine className="h-4 w-4" />

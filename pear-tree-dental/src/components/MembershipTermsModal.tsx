@@ -122,7 +122,7 @@ Plan E
 
 Pear Tree Dental Centre
 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AL
-Phone: 0115 931 2520
+Phone: 0115 931 2935
 Email: hello@peartree.dental
     `;
 
@@ -300,7 +300,7 @@ Email: hello@peartree.dental
               <h4 className="font-semibold text-pear-primary mb-2">Pear Tree Dental Centre</h4>
               <p className="text-sm text-gray-600">
                 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AL<br />
-                Phone: 0115 931 2520<br />
+                Phone: 0115 931 2935<br />
                 Email: hello@peartree.dental
               </p>
             </div>

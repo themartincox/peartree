@@ -87,7 +87,13 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
 
   } catch (error) {
     console.error('Error sending confirmation email:', error);
-    throw new Error('Failed to send confirmation email');
+    // Don't throw error - let the membership submission continue even if email fails
+    console.log('⚠️ Email service unavailable - membership submission will continue');
+    return {
+      success: false,
+      error: 'Email service unavailable - confirmation will be sent later',
+      practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
+    };
   }
 };
 

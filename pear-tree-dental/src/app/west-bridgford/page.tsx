@@ -72,7 +72,7 @@ export default function WestBridgfordPage() {
               "latitude": "52.9847",
               "longitude": "-1.0147"
             },
-            "telephone": "0115 931 2520",
+            "telephone": "0115 931 2935",
             "url": "https://peartree.dental",
             "priceRange": "£££",
             "areaServed": {
@@ -137,9 +137,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -445,7 +445,7 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Contact Details</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2520<br />
+                        Phone: 0115 931 2935<br />
                         Email: hello@peartree.dental<br />
                         Emergency: 24/7 availability
                       </p>
@@ -518,9 +518,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-pear-gold font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button

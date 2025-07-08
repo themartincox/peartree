@@ -30,7 +30,7 @@ const VoiceSearchOptimization = () => {
           <h2>Emergency Dentist Burton Joyce</h2>
           <p>
             For dental emergencies in Burton Joyce, call Pear Tree Dental Centre at
-            0115 931 2520. We provide same-day emergency appointments Monday to Friday
+            0115 931 2935. We provide same-day emergency appointments Monday to Friday
             and emergency arrangements on weekends. Our practice is located at 22
             Nottingham Road, Burton Joyce.
           </p>
@@ -57,7 +57,7 @@ const VoiceSearchOptimization = () => {
         <section>
           <h2>How to Book a Dental Appointment</h2>
           <p>
-            Book a dental appointment by calling 0115 931 2520 or visiting our website.
+            Book a dental appointment by calling 0115 931 2935 or visiting our website.
             We offer same-day appointments for emergencies and routine bookings within
             48 hours for members. Online booking is available 24/7.
           </p>
@@ -94,7 +94,7 @@ const VoiceSearchOptimization = () => {
         <section>
           <h2>What to Do in Dental Emergency</h2>
           <p>
-            In a dental emergency, call 0115 931 2520 immediately. For severe pain,
+            In a dental emergency, call 0115 931 2935 immediately. For severe pain,
             rinse with warm salt water and take over-the-counter pain relief. For
             knocked-out teeth, keep the tooth moist and seek treatment within one hour
             for best results.

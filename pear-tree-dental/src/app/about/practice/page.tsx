@@ -149,7 +149,7 @@ export default function PracticePage() {
                     <h3 className="heading-serif text-xl font-semibold mb-2 text-gray-800">Contact Information</h3>
                     <div className="space-y-2">
                       <p className="text-gray-600">
-                        📞 <a href="tel:01159312520" className="text-pear-primary hover:underline">0115 931 2520</a>
+                        📞 <a href="tel:01159312935" className="text-pear-primary hover:underline">0115 931 2935</a>
                       </p>
                       <p className="text-gray-600">
                         ✉️ <a href="mailto:hello@peartree.dental" className="text-pear-primary hover:underline">
@@ -340,10 +340,10 @@ export default function PracticePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:01159312520"
+                href="tel:01159312935"
                 className="bg-white text-pear-primary px-8 py-4 rounded-full font-semibold hover:bg-cream transition-colors duration-300 flex items-center justify-center gap-2"
               >
-                📞 Call 0115 931 2520
+                📞 Call 0115 931 2935
               </a>
               <a
                 href="/about/team"

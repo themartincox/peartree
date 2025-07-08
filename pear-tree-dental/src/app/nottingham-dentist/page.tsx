@@ -156,7 +156,7 @@ export default function NottinghamDentistPage() {
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Book Appointment: 0115 931 2520
+                  Book Appointment: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -740,9 +740,9 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="bg-white text-dental-green hover:bg-gray-100 font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button

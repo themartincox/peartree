@@ -11,7 +11,9 @@
     "start": "next start",
     "lint": "bunx biome lint --write && bunx tsc --noEmit",
     "format": "bunx biome format --write",
-    "type-check": "bunx tsc --noEmit"
+    "type-check": "bunx tsc --noEmit",
+    "validate-contacts": "node .same/contact-validation-script.js",
+    "pre-deploy-check": "bun run validate-contacts && bun run lint"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

@@ -21,7 +21,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
-  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2520 or use our contact form.",
+  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2935 or use our contact form.",
   keywords: [
     "contact Pear Tree Dental",
     "book appointment Burton Joyce",
@@ -46,7 +46,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    primary: "0115 931 2520",
+    primary: "0115 931 2935",
     secondary: "For appointments and enquiries",
     action: "tel:01159312935",
     urgent: true
@@ -95,7 +95,7 @@ const transportInfo = [
 const emergencyInfo = {
   title: "Dental Emergency?",
   description: "If you're experiencing a dental emergency outside our normal hours, please call our main number. For severe emergencies, contact NHS 111 or visit your nearest A&E department.",
-  phone: "0115 931 2520"
+  phone: "0115 931 2935"
 };
 
 export default function ContactPage() {

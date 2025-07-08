@@ -70,7 +70,7 @@ export default function EastBridgfordPage() {
               "latitude": "52.9847",
               "longitude": "-1.0147"
             },
-            "telephone": "0115 931 2520",
+            "telephone": "0115 931 2935",
             "url": "https://peartree.dental",
             "priceRange": "£££",
             "areaServed": {
@@ -120,9 +120,9 @@ export default function EastBridgfordPage() {
                 size="lg"
                 className="bg-pear-primary hover:bg-pear-primary/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button
@@ -426,7 +426,7 @@ export default function EastBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Village Contact</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2520<br />
+                        Phone: 0115 931 2935<br />
                         Email: hello@peartree.dental<br />
                         Village priority booking
                       </p>
@@ -499,9 +499,9 @@ export default function EastBridgfordPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-pear-primary font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312520">
+                <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2520
+                  Call: 0115 931 2935
                 </Link>
               </Button>
               <Button
