@@ -133,13 +133,61 @@ export async function GET(request: NextRequest) {
 
     console.log('Request parameters:', { format, download });
 
-    // Ensure directory exists
+    // Check if we're in a serverless environment where file storage isn't available
+    const isServerless = !!(process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+
+    if (isServerless) {
+      console.log('🌐 Serverless environment detected - file storage not available');
+
+      const serverlessNotice = {
+        success: true,
+        isServerless: true,
+        applications: [],
+        count: 0,
+        timestamp: new Date().toISOString(),
+        environment: 'Serverless (Netlify/Vercel)',
+        notice: 'Applications are sent via email instead of file storage',
+        emailRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'],
+        instructions: [
+          'Check your email inbox for membership applications',
+          'Search for subject line containing: "NEW MEMBERSHIP APPLICATION"',
+          'Each email contains complete application details including Application ID',
+          'Recent submission: Application ID PTDC-1751982576071 for "fitz malloy"'
+        ],
+        troubleshooting: [
+          'If emails are not arriving, check spam/junk folders',
+          'Verify Gmail app password is configured in environment variables',
+          'Contact technical support if email delivery issues persist'
+        ]
+      };
+
+      if (format === 'csv') {
+        const csvNotice = [
+          'Notice,Serverless Environment - Applications Sent Via Email',
+          'Email Recipients,"hello@peartree.dental, membership@peartree.dental, Javaad.mirza@gmail.com"',
+          'Instructions,Check email inbox for applications with subject "NEW MEMBERSHIP APPLICATION"',
+          'Recent Application,ID: PTDC-1751982576071 - fitz malloy',
+          'Contact,0115 931 2935 for support'
+        ].join('\n');
+
+        return new NextResponse(csvNotice, {
+          headers: {
+            'Content-Type': 'text/csv',
+            'Content-Disposition': download ? `attachment; filename="serverless-notice-${new Date().toISOString().split('T')[0]}.csv"` : 'inline',
+          },
+        });
+      }
+
+      return NextResponse.json(serverlessNotice);
+    }
+
+    // Ensure directory exists (for non-serverless environments)
     const dirCreated = ensureApplicationsDir();
     if (!dirCreated) {
       throw new Error('Failed to create applications directory');
     }
 
-    // Load applications
+    // Load applications from file
     const applications = loadApplicationsFromFile();
     console.log('Final applications count:', applications.length);
 
