@@ -202,7 +202,7 @@ export default function InvisalignPage() {
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 
@@ -416,7 +416,7 @@ export default function InvisalignPage() {
               Book Invisalign Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-              Call 0115 931 2525
+              Call 0115 931 2935
             </Button>
           </div>
 

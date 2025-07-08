@@ -18,7 +18,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Emergency Dental Repairs Burton Joyce | Same-Day Fixes | Pear Tree Dental",
-  description: "Urgent dental repairs in Burton Joyce. Broken crowns, lost fillings, damaged dentures. Same-day emergency repairs available. Call 0115 931 2525 for immediate help.",
+  description: "Urgent dental repairs in Burton Joyce. Broken crowns, lost fillings, damaged dentures. Same-day emergency repairs available. Call 0115 931 2935 for immediate help.",
   keywords: [
     "emergency dental repairs Burton Joyce",
     "broken crown repair Nottingham",
@@ -94,7 +94,7 @@ export default function EmergencyRepairsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
               <Phone className="w-5 h-5 mr-2" />
-              Call Emergency Line: 0115 931 2525
+              Call Emergency Line: 0115 931 2935
             </Button>
             <Button size="lg" variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
               <CalendarDays className="w-5 h-5 mr-2" />
@@ -199,7 +199,7 @@ export default function EmergencyRepairsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
                 <Phone className="w-5 h-5 mr-2" />
-                Emergency: 0115 931 2525
+                Emergency: 0115 931 2935
               </Button>
               <Link href="/contact">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600">

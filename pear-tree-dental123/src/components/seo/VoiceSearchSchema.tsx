@@ -22,7 +22,7 @@ const VoiceSearchSchema = () => {
           "streetAddress": "22 Nottingham Road",
           "addressLocality": "Burton Joyce",
           "addressRegion": "Nottinghamshire",
-          "postalCode": "NG14 5AE",
+          "postalCode": "NG14 5AL",
           "addressCountry": "GB"
         },
         "geo": {
@@ -117,7 +117,7 @@ const VoiceSearchSchema = () => {
             "name": "Where is the nearest dentist in Burton Joyce?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Pear Tree Dental Centre is located at 22 Nottingham Road, Burton Joyce, NG14 5AE. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
+              "text": "Pear Tree Dental Centre is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
             }
           },
           {
@@ -141,7 +141,7 @@ const VoiceSearchSchema = () => {
             "name": "Do you take emergency appointments?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2935 immediately for urgent dental problems including severe pain, swelling, or trauma."
+              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2520 immediately for urgent dental problems including severe pain, swelling, or trauma."
             }
           },
           {

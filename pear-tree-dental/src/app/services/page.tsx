@@ -420,7 +420,7 @@ const ServicesPage = () => {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-white/80">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
-                  <span>0115 931 2525</span>
+                  <span>0115 931 2935</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4" />

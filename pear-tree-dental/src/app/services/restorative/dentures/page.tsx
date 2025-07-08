@@ -275,7 +275,7 @@ export default function DenturesPage() {
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-amber-500 text-amber-600 hover:bg-amber-500 hover:text-white">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
             </div>
@@ -477,7 +477,7 @@ export default function DenturesPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-amber-600">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 

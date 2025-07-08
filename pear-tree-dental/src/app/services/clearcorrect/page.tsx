@@ -226,7 +226,7 @@ export default function ClearCorrectPage() {
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-green-600 text-green-600 hover:bg-green-600 hover:text-white">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 
@@ -484,7 +484,7 @@ export default function ClearCorrectPage() {
               Book ClearCorrect Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
-              Call 0115 931 2525
+              Call 0115 931 2935
             </Button>
           </div>
 

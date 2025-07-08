@@ -37,12 +37,12 @@ const FAQSection = () => {
         {
           id: "loc1",
           question: "Where is the nearest dentist to me?",
-          answer: "Pear Tree Dental Centre is conveniently located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We're in the heart of Burton Joyce village, just 2 minutes from the main shops and easily accessible from Colwick, Lowdham, and East Bridgford. Free parking available, 5 minutes from A612, with bus routes 100 and 200 nearby."
+          answer: "Pear Tree Dental Centre is conveniently located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We're in the heart of Burton Joyce village, just 2 minutes from the main shops and easily accessible from Colwick, Lowdham, and East Bridgford. Free parking available, 5 minutes from A612, with bus routes 100 and 200 nearby."
         },
         {
           id: "loc2",
           question: "What time is the dentist open today?",
-          answer: "We're open Monday to Thursday 8:45 AM to 5:00 PM, and Friday 8:00 AM to 3:30 PM. Weekend appointments are available for emergencies only. Call us at 0115 931 2935 to book your appointment or check our current availability."
+          answer: "We're open Monday to Thursday 8:45 AM to 5:00 PM, and Friday 8:00 AM to 3:30 PM. Weekend appointments are available for emergencies only. Call us at 0115 931 2520 to book your appointment or check our current availability."
         },
         {
           id: "loc3",
@@ -84,7 +84,7 @@ const FAQSection = () => {
         {
           id: "gen5",
           question: "How do I book an emergency dental appointment?",
-          answer: "Call us immediately at 0115 931 2935 for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible."
+          answer: "Call us immediately at 0115 931 2520 for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible."
         },
         {
           id: "gen6",
@@ -359,7 +359,7 @@ const FAQSection = () => {
         {
           id: "about9",
           question: "How do I register as a new patient?",
-          answer: "Simply call us at 0115 931 2935 or book online. We'll arrange a consultation to discuss your needs and medical history. New patient appointments include a comprehensive examination and treatment planning discussion."
+          answer: "Simply call us at 0115 931 2520 or book online. We'll arrange a consultation to discuss your needs and medical history. New patient appointments include a comprehensive examination and treatment planning discussion."
         },
         {
           id: "about10",
@@ -369,7 +369,7 @@ const FAQSection = () => {
         {
           id: "about11",
           question: "How can I contact the practice?",
-          answer: "You can call us at 0115 931 2935, email info@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE. We also offer online booking for your convenience."
+          answer: "You can call us at 0115 931 2520, email info@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We also offer online booking for your convenience."
         }
       ]
     }
@@ -446,7 +446,7 @@ const FAQSection = () => {
               <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
                 <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Still have questions?</h4>
                 <div className="text-xs sm:text-sm text-white/90 space-y-1 sm:space-y-2">
-                  <p>Call us: <span className="font-semibold">0115 931 2935</span></p>
+                  <p>Call us: <span className="font-semibold">0115 931 2520</span></p>
                   <p>Email: <span className="font-semibold">info@peartree.dental</span></p>
                 </div>
               </div>

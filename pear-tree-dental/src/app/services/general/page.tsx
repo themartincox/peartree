@@ -137,7 +137,7 @@ export default function GeneralDentistryPage() {
                 </Button>
                 <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 
@@ -357,7 +357,7 @@ export default function GeneralDentistryPage() {
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
                 <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2525
+                Call 0115 931 2935
               </Button>
             </div>
 

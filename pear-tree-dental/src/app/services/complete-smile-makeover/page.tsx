@@ -366,7 +366,7 @@ export default function CompleteSmileMakeoverPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-rose-500 text-rose-600 hover:bg-rose-500 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>
@@ -757,7 +757,7 @@ export default function CompleteSmileMakeoverPage() {
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 

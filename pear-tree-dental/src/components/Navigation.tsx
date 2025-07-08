@@ -365,7 +365,7 @@ const Navigation = () => {
                     </Link>
                     <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
                       <Phone className="w-4 h-4 mr-2" />
-                      0115 931 2525
+                      0115 931 2935
                     </Button>
                   </div>
 

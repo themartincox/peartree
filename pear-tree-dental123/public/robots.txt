@@ -1,4 +1,4 @@
-# Robots.txt for Pear Tree Dental - Premium Dentistry in Burton Joyce
+# Robots.txt for Pear Tree Dental - Private Dentist Nottingham
 # https://peartree.dental
 
 User-agent: *
@@ -19,18 +19,46 @@ Allow: /contact
 Allow: /new-patients
 Allow: /urgent-dental-pain
 
-# Allow location pages
+# Allow location pages - Comprehensive Nottinghamshire coverage
 Allow: /burton-joyce
 Allow: /arnold
 Allow: /gedling
 Allow: /lowdham
 Allow: /east-bridgford
 Allow: /colwick
+Allow: /west-bridgford
+Allow: /bingham
+Allow: /mapperly
+Allow: /rivendell
+
+# Allow postal code area pages
+Allow: /ng14-dental
+Allow: /ng4-dental
+
+# Allow premium service pages for locations
+Allow: /west-bridgford-teeth-whitening
+Allow: /west-bridgford-teeth-straightening
+Allow: /west-bridgford-smile-design
+Allow: /bingham-teeth-whitening
+Allow: /bingham-teeth-straightening
+Allow: /bingham-smile-design
+Allow: /east-bridgford-teeth-whitening
+Allow: /east-bridgford-teeth-straightening
+Allow: /east-bridgford-smile-design
+
+# Allow Nottingham city-wide services
+Allow: /nottingham-dentist
+Allow: /nottingham-teeth-whitening
+Allow: /nottingham-teeth-straightening
+Allow: /nottingham-smile-design
 
 # Allow service-specific pages
 Allow: /veneers
 Allow: /smile-design
 Allow: /services/cosmetic/veneers/
+Allow: /services/cosmetic/teeth-whitening/
+Allow: /services/orthodontics/
+Allow: /services/implants/
 
 # Allow competitor comparison pages (for SEO)
 Allow: /*-alternative-nottingham
@@ -41,6 +69,8 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
+Disallow: /dentalhub/
+Disallow: /jobstobedone
 
 # Disallow utility pages
 Disallow: /offline

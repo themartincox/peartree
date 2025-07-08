@@ -181,7 +181,7 @@ export default function WhatsAppWidget({
             {/* Practice Info */}
             <div className="text-xs text-gray-500 text-center mt-3 pt-3 border-t">
               📍 Burton Joyce, Nottinghamshire<br />
-              📞 0115 931 2525<br />
+              📞 0115 931 2935<br />
               🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
             </div>
           </CardContent>

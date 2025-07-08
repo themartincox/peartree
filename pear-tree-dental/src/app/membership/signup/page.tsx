@@ -353,14 +353,14 @@ export default function MembershipSignupPage() {
         console.log('API Response:', result);
       } catch (parseError) {
         console.error('Failed to parse response JSON:', parseError);
-        alert('Server error: Received invalid response. Your application may have been submitted successfully. Please contact our office at 0115 931 2525 to verify.');
+        alert('Server error: Received invalid response. Your application may have been submitted successfully. Please contact our office at 0115 931 2935 to verify.');
         return;
       }
 
       // Validate response structure
       if (typeof result !== 'object' || result === null) {
         console.error('Invalid response structure:', result);
-        alert('Server error: Invalid response format. Please try again or contact our office at 0115 931 2525.');
+        alert('Server error: Invalid response format. Please try again or contact our office at 0115 931 2935.');
         return;
       }
 
@@ -368,7 +368,7 @@ export default function MembershipSignupPage() {
         // Validate success response has required fields
         if (!result.applicationId) {
           console.error('Success response missing applicationId:', result);
-          alert('Application submitted successfully, but no reference number received. Please contact our office at 0115 931 2525 for your application status.');
+          alert('Application submitted successfully, but no reference number received. Please contact our office at 0115 931 2935 for your application status.');
           return;
         }
 
@@ -398,7 +398,7 @@ export default function MembershipSignupPage() {
       } else if (error instanceof SyntaxError) {
         alert('Server error: Invalid response received. Please try again or contact support.');
       } else {
-        alert('There was an unexpected error submitting your application. Please try again or contact our office at 0115 931 2525.');
+        alert('There was an unexpected error submitting your application. Please try again or contact our office at 0115 931 2935.');
       }
     }
   };
@@ -1925,7 +1925,7 @@ export default function MembershipSignupPage() {
             </div>
             <div className="flex items-center space-x-2">
               <Phone className="w-5 h-5 text-dental-green" />
-              <span>24/7 Support: 0115 931 2525</span>
+              <span>24/7 Support: 0115 931 2935</span>
             </div>
           </div>
         </div>

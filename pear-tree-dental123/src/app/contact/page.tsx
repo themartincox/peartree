@@ -48,7 +48,7 @@ const contactInfo = [
     title: "Phone",
     primary: "0115 931 2520",
     secondary: "For appointments and enquiries",
-    action: "tel:01159312520",
+    action: "tel:01159312935",
     urgent: true
   },
   {
@@ -63,7 +63,7 @@ const contactInfo = [
     icon: MapPin,
     title: "Address",
     primary: "22 Nottingham Road",
-    secondary: "Burton Joyce, Nottingham, NG14 5AL",
+    secondary: "Burton Joyce, Nottingham NG14 5AL",
     action: "https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL",
     urgent: false
   }
@@ -445,7 +445,7 @@ export default function ContactPage() {
                   <CardContent>
                     <div className="space-y-4">
                       <a
-                        href="tel:01159312520"
+                        href="tel:01159312935"
                         className="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors flex items-center justify-center gap-2"
                       >
                         <Phone className="h-5 w-5" />
@@ -498,7 +498,7 @@ export default function ContactPage() {
                         Interactive Map
                       </h3>
                       <p className="text-gray-600 mb-4">
-                        22 Nottingham Road, Burton Joyce, Nottingham, NG14 5AL
+                        22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL
                       </p>
                       <a
                         href="https://maps.google.com/?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"

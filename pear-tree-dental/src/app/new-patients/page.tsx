@@ -95,7 +95,7 @@ export default function NewPatientsPage() {
               </Button>
               <Button size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
                 <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2525
+                Call 0115 931 2935
               </Button>
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function NewPatientsPage() {
 
                   <div>
                     <h4 className="font-semibold text-pear-primary mb-2">Phone</h4>
-                    <p className="text-gray-600">0115 931 2525</p>
+                    <p className="text-gray-600">0115 931 2935</p>
                   </div>
 
                   <div>

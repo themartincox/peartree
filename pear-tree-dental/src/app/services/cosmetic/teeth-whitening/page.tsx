@@ -446,7 +446,7 @@ export default function TeethWhiteningPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 

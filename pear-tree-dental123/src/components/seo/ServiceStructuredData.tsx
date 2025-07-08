@@ -53,7 +53,7 @@ export default function ServiceStructuredData({
         "streetAddress": "22 Nottingham Road",
         "addressLocality": "Burton Joyce",
         "addressRegion": "Nottinghamshire",
-        "postalCode": "NG14 5AE",
+        "postalCode": "NG14 5AL",
         "addressCountry": "GB"
       }
     },

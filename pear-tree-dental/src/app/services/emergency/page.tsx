@@ -18,7 +18,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Emergency Dentist Burton Joyce | Same-Day Dental Emergency Care | Pear Tree Dental",
-  description: "24/7 emergency dentist in Burton Joyce, Nottinghamshire. Dental pain relief, broken teeth, lost fillings. Same-day emergency appointments. Call 0115 931 2525 now.",
+  description: "24/7 emergency dentist in Burton Joyce, Nottinghamshire. Dental pain relief, broken teeth, lost fillings. Same-day emergency appointments. Call 0115 931 2935 now.",
   keywords: [
     "emergency dentist Burton Joyce",
     "dental emergency Nottingham",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Emergency Dentist | Same-Day Care | Pear Tree Dental",
-    description: "24/7 emergency dentist in Burton Joyce. Same-day appointments for dental emergencies. Call now 0115 931 2525",
+    description: "24/7 emergency dentist in Burton Joyce. Same-day appointments for dental emergencies. Call now 0115 931 2935",
     type: "website",
     url: "https://peartree.dental/services/emergency"
   },
@@ -103,7 +103,7 @@ export default function EmergencyPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
               <Phone className="w-5 h-5 mr-2" />
-              Emergency: 0115 931 2525
+              Emergency: 0115 931 2935
             </Button>
             <Button size="lg" variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
               <CalendarDays className="w-5 h-5 mr-2" />
@@ -216,7 +216,7 @@ export default function EmergencyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
                 <Phone className="w-5 h-5 mr-2" />
-                Call Now: 0115 931 2525
+                Call Now: 0115 931 2935
               </Button>
               <Link href="/services/emergency-repairs">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600">

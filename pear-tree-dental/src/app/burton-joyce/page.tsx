@@ -54,7 +54,7 @@ export default function BurtonJoycePage() {
                 </Button>
                 <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  0115 931 2525
+                  0115 931 2935
                 </Button>
               </div>
 
@@ -392,7 +392,7 @@ export default function BurtonJoycePage() {
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
                 <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2525
+                Call 0115 931 2935
               </Button>
             </div>
 

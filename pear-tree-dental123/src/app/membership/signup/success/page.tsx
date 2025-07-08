@@ -109,12 +109,14 @@ function MembershipSuccessContent() {
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-pear-primary text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                      <div className="w-6 h-6 bg-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">📧</div>
                       <div>
-                        <h4 className="font-semibold">Confirmation Email</h4>
-                        <p className="text-sm text-gray-600">You'll receive a confirmation email with your membership details and agreement</p>
+                        <h4 className="font-semibold">Confirmation Email Sent!</h4>
+                        <p className="text-sm text-gray-600">Check your email for your membership welcome pack with personalised documents, payment details, and next steps</p>
                       </div>
                     </div>
+
+
 
                     <div className="flex items-start gap-3">
                       <div className="w-6 h-6 bg-pear-primary text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
@@ -157,7 +159,7 @@ function MembershipSuccessContent() {
                   <div className="flex flex-col items-center space-y-2">
                     <Phone className="w-8 h-8 text-pear-primary" />
                     <h4 className="font-semibold">Call Us</h4>
-                    <p className="text-gray-600">0115 931 2935</p>
+                    <p className="text-gray-600">0115 931 2520</p>
                     <p className="text-sm text-gray-500">Mon-Thu: 8:45am-5pm<br />Fri: 8am-3:30pm</p>
                   </div>
 

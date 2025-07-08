@@ -284,7 +284,7 @@ export default function PartialDenturesPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

@@ -194,7 +194,7 @@ const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string
         <h3>📋 What Happens Next?</h3>
         <ul>
           <li><strong>Your membership is active immediately</strong> - Emergency cover starts now!</li>
-          <li><strong>Book your first appointment:</strong> Call us on 0115 931 2525 or visit our website</li>
+          <li><strong>Book your first appointment:</strong> Call us on 0115 931 2935 or visit our website</li>
           <li><strong>Bring identification:</strong> Please bring photo ID to your first appointment</li>
           <li><strong>Direct Debit setup:</strong> Your first payment will be collected automatically</li>
           <li><strong>Membership documents:</strong> Your personalised terms and Direct Debit guarantee are attached</li>
@@ -208,7 +208,7 @@ const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string
         22 Nottingham Road, Burton Joyce<br>
         Nottingham NG14 5AE</p>
 
-        <p><strong>Phone:</strong> 0115 931 2525<br>
+        <p><strong>Phone:</strong> 0115 931 2935<br>
         <strong>Email:</strong> hello@peartree.dental<br>
         <strong>Website:</strong> www.peartree.dental</p>
 
@@ -218,7 +218,7 @@ const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string
         Sunday: Closed</p>
       </div>
 
-      <a href="tel:01159312525" class="button">Call to Book Your First Appointment</a>
+      <a href="tel:01159312935" class="button">Call to Book Your First Appointment</a>
 
       <p>Thank you for choosing Pear Tree Dental Centre. We look forward to taking excellent care of your dental health!</p>
 
@@ -235,7 +235,7 @@ const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string
     <!-- Footer -->
     <div class="footer">
       <p>Pear Tree Dental Centre | 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE</p>
-      <p>Phone: 0115 931 2525 | Email: hello@peartree.dental</p>
+      <p>Phone: 0115 931 2935 | Email: hello@peartree.dental</p>
       <p style="font-size: 12px; margin-top: 20px;">
         This email was sent to ${data.email} regarding your dental membership signup.
         If you have any questions, please contact us directly.

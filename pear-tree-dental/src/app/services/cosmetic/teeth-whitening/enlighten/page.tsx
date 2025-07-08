@@ -257,7 +257,7 @@ export default function EnlightenWhiteningPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

@@ -9,8 +9,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "DentistOffice", "MedicalOrganization"],
     "name": "Pear Tree Dental Centre",
-    "alternateName": "Pear Tree Dental",
-    "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general, cosmetic, and restorative dentistry. Membership plans available.",
+    "alternateName": ["Pear Tree Dental", "Private Dentist Nottingham"],
+    "description": "Private dental practice serving Nottinghamshire offering comprehensive family and cosmetic dental care including general dentistry, cosmetic treatments, dental implants, Invisalign, and emergency care. Trusted by families across Nottingham, Burton Joyce, West Bridgford, Bingham, and East Bridgford.",
     "url": "https://peartree.dental",
     "telephone": "+441159312520",
     "email": "hello@peartree.dental",
@@ -31,9 +31,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "Mo-Fr 08:00-18:00",
       "Sa 08:00-14:00"
     ],
-    "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
+    "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer", "NHS", "Private Insurance"],
     "currenciesAccepted": "GBP",
-    "priceRange": "£",
+    "priceRange": "££",
     "image": "https://peartree.dental/images/practice-exterior.jpg",
     "logo": "https://peartree.dental/logo.png",
     "sameAs": [
@@ -114,14 +114,18 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Dental Services",
+      "name": "Comprehensive Dental Services",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": "General Dentistry",
-            "description": "Comprehensive dental examinations, cleanings, and preventive care"
+            "description": "Comprehensive dental examinations, cleanings, fillings, and preventive care for all ages",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         },
         {
@@ -129,7 +133,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "itemOffered": {
             "@type": "Service",
             "name": "Cosmetic Dentistry",
-            "description": "Teeth whitening, veneers, and aesthetic dental treatments"
+            "description": "Teeth whitening, veneers, composite bonding, and smile design treatments",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         },
         {
@@ -137,7 +145,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "itemOffered": {
             "@type": "Service",
             "name": "Restorative Dentistry",
-            "description": "Crowns, bridges, and dental restoration services"
+            "description": "Crowns, bridges, dentures, and comprehensive dental restoration services",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         },
         {
@@ -145,7 +157,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "itemOffered": {
             "@type": "Service",
             "name": "Emergency Dentistry",
-            "description": "Same-day emergency dental care and urgent treatments"
+            "description": "Same-day emergency dental care, urgent treatments, and pain relief",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         },
         {
@@ -153,7 +169,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "itemOffered": {
             "@type": "Service",
             "name": "Orthodontics",
-            "description": "Invisalign and ClearCorrect teeth straightening treatments"
+            "description": "Invisalign, ClearCorrect, and modern teeth straightening treatments for all ages",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         },
         {
@@ -161,7 +181,35 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "itemOffered": {
             "@type": "Service",
             "name": "Dental Implants",
-            "description": "Permanent tooth replacement with dental implant technology"
+            "description": "Single implants, multiple implants, and All-on-4 permanent tooth replacement solutions",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Dental Hygiene",
+            "description": "Professional teeth cleaning, gum disease treatment, and preventive oral health care",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Family Dentistry",
+            "description": "Comprehensive dental care for patients of all ages from children to seniors",
+            "provider": {
+              "@type": "DentistOffice",
+              "name": "Pear Tree Dental"
+            }
           }
         }
       ]
@@ -170,32 +218,169 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       {
         "@type": "Offer",
         "name": "Dental Membership Plan",
-        "description": "Affordable monthly payment plan for dental care",
-        "url": "https://peartree.dental/membership"
+        "description": "Affordable monthly payment plan for dental care starting from £10.95/month",
+        "url": "https://peartree.dental/membership",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "10.95",
+          "priceCurrency": "GBP",
+          "unitText": "MONTH"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "New Patient Consultation",
+        "description": "Comprehensive dental examination and treatment planning for new patients",
+        "url": "https://peartree.dental/new-patients"
       }
     ],
     "areaServed": [
+      // Main practice location
       {
         "@type": "City",
-        "name": "Burton Joyce"
+        "name": "Burton Joyce",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      // Major cities and towns served
+      {
+        "@type": "City",
+        "name": "Nottingham",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        "name": "Nottingham"
+        "name": "West Bridgford",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        "name": "Colwick"
+        "name": "Bingham",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        "name": "East Bridgford"
+        "name": "East Bridgford",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        "name": "Lowdham"
+        "name": "Arnold",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Colwick",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Gedling",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Mapperly",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Lowdham",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Rivendell",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      // Postal code areas served
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG14",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG4",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG13",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG2",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG1",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
       }
     ],
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "52.967",
+        "longitude": "-1.061"
+      },
+      "geoRadius": "25000"
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
@@ -221,15 +406,24 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
   };
 
   if (includeDentistSpecific) {
-    // Add additional dental-specific schema
+    // Add comprehensive dental-specific schema
     // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
+      "Preventive Dentistry",
       "Cosmetic Dentistry",
       "Restorative Dentistry",
       "Emergency Dentistry",
-      "Orthodontics"
+      "Orthodontics",
+      "Oral Surgery",
+      "Periodontics",
+      "Endodontics",
+      "Prosthodontics",
+      "Pediatric Dentistry",
+      "Implant Dentistry",
+      "Aesthetic Dentistry",
+      "Family Dentistry"
     ];
 
     // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
@@ -238,19 +432,97 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       {
         "@type": "MedicalProcedure",
         "name": "Dental Examination",
-        "procedureType": "Diagnostic"
+        "procedureType": "Diagnostic",
+        "bodyLocation": "Mouth",
+        "preparation": "No special preparation required"
       },
       {
         "@type": "MedicalProcedure",
-        "name": "Dental Cleaning",
-        "procedureType": "Preventive"
+        "name": "Professional Dental Cleaning",
+        "procedureType": "Preventive",
+        "bodyLocation": "Teeth and Gums",
+        "preparation": "Regular dental hygiene recommended"
       },
       {
         "@type": "MedicalProcedure",
         "name": "Teeth Whitening",
-        "procedureType": "Cosmetic"
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Teeth",
+        "preparation": "Dental examination recommended prior to treatment"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Fillings",
+        "procedureType": "Restorative",
+        "bodyLocation": "Teeth",
+        "preparation": "Local anesthesia may be required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Crown",
+        "procedureType": "Restorative",
+        "bodyLocation": "Teeth",
+        "preparation": "Multiple appointments typically required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Implant",
+        "procedureType": "Oral Surgery",
+        "bodyLocation": "Jawbone and Teeth",
+        "preparation": "Comprehensive consultation and planning required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Invisalign Treatment",
+        "procedureType": "Orthodontic",
+        "bodyLocation": "Teeth",
+        "preparation": "3D scanning and treatment planning required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Root Canal Treatment",
+        "procedureType": "Endodontic",
+        "bodyLocation": "Tooth Root",
+        "preparation": "Local anesthesia and multiple appointments may be required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Dental Veneers",
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Front Teeth",
+        "preparation": "Consultation and color matching required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Emergency Dental Care",
+        "procedureType": "Emergency",
+        "bodyLocation": "Mouth",
+        "preparation": "Same-day appointments available"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Gum Disease Treatment",
+        "procedureType": "Periodontic",
+        "bodyLocation": "Gums",
+        "preparation": "Professional assessment and ongoing care required"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "name": "Complete Smile Makeover",
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Full Mouth",
+        "preparation": "Comprehensive consultation and digital smile design"
       }
     ];
+
+    // Add medical organization specific properties
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (localBusinessSchema as any).isAcceptingNewPatients = true;
+
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (localBusinessSchema as any).healthPlanNetworkTier = ["NHS", "Private", "Insurance Accepted"];
   }
 
   return (

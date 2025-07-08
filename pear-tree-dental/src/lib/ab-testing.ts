@@ -111,7 +111,7 @@ export function getVariantMetadata(variant: Variant) {
       return {
         ...baseMetadata,
         title: "Pear Tree Dental Practice | Burton Joyce Dentist | Family Dental Care",
-        description: "Your local Burton Joyce dental practice providing family-friendly dental care. Modern treatments, experienced dentists, flexible appointment times. Call 0115 931 2525.",
+        description: "Your local Burton Joyce dental practice providing family-friendly dental care. Modern treatments, experienced dentists, flexible appointment times. Call 0115 931 2935.",
       };
 
     default:

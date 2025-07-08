@@ -289,7 +289,7 @@ export default function HybridDenturesPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

@@ -164,10 +164,10 @@ const Navigation = () => {
               aria-label="Pear Tree Dental - Return to homepage"
             >
               <div className="flex flex-col">
-                <div className="brand-logo text-xl sm:text-2xl lg:text-3xl text-pear-primary">
-                  PEAR<span className="ml-20px">TREE</span>
+                <div className="brand-logo text-lg sm:text-xl md:text-2xl lg:text-3xl text-pear-primary">
+                  PEAR TREE
                 </div>
-                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-4px">
+                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-1">
                   DENTAL
                 </div>
               </div>
@@ -330,7 +330,7 @@ const Navigation = () => {
                   >
                     <div className="flex flex-col">
                       <div className="brand-logo text-lg text-pear-primary">
-                        PEAR<span className="ml-20px">TREE</span>
+                        PEAR TREE
                       </div>
                       <div className="brand-subtitle text-xs text-pear-primary mt-4px">
                         DENTAL
@@ -434,29 +434,49 @@ const Navigation = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <div className="flex flex-col">
-                <div className="brand-logo text-lg sm:text-xl text-white">
-                  PEAR<span className="ml-20px">TREE</span>
+                <div className="brand-logo text-sm sm:text-lg md:text-xl text-white">
+                  PEAR TREE
                 </div>
-                <div className="brand-subtitle text-xs text-white/80 mt-4px">
+                <div className="brand-subtitle text-xs text-white/80 mt-1">
                   DENTAL
                 </div>
               </div>
             </Link>
 
             {/* Centralized CTAs */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+            <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:flex items-center space-x-4">
               <Link href="/services/general">
                 <Button
                   size="sm"
                   className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
                 >
-                  <CalendarDays className="w-4 h-4 mr-2" />Book Now
+                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
                 </Button>
               </Link>
               <Link href="/membership">
                 <Button
                   size="sm"
                   className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-4 py-2 h-10"
+                >
+                  Membership
+                </Button>
+              </Link>
+            </div>
+
+            {/* Mobile CTAs - Right aligned */}
+            <div className="flex sm:hidden items-center space-x-2">
+              <Link href="/services/general">
+                <Button
+                  size="sm"
+                  className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-3 py-2 h-9 text-xs"
+                >
+                  Book
+                </Button>
+              </Link>
+              <Link href="/membership">
+                <Button
+                  size="sm"
+                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs"
                 >
                   Membership
                 </Button>
@@ -485,7 +505,7 @@ const Navigation = () => {
                   <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
                     <div className="flex flex-col">
                       <div className="brand-logo text-lg text-pear-primary">
-                        PEAR<span className="ml-20px">TREE</span>
+                        PEAR TREE
                       </div>
                       <div className="brand-subtitle text-xs text-pear-primary mt-4px">
                         DENTAL

@@ -300,7 +300,7 @@ export default function CobaltChromeDenturesPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-slate-600 text-slate-600 hover:bg-slate-600 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

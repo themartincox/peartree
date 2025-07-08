@@ -154,38 +154,5 @@
     "planPrice": "£0.00",
     "dentistName": "To be assigned",
     "selectedPlan": "invalidPlan"
-  },
-  {
-    "id": "1751975933372",
-    "timestamp": "2025-07-08T11:58:53.372Z",
-    "firstName": "Test",
-    "lastName": "User",
-    "email": "test@example.com",
-    "planPrice": "£0.00",
-    "dentistName": "To be assigned",
-    "phone": "01234567890",
-    "dateOfBirth": "1990-01-01",
-    "address": {
-      "street": "123 Test St",
-      "city": "Test City",
-      "postcode": "TS1 2TE"
-    },
-    "emergency": {
-      "name": "Emergency Contact",
-      "phone": "09876543210",
-      "relationship": "Friend"
-    },
-    "medical": {
-      "conditions": "None",
-      "medications": "None",
-      "allergies": "None"
-    },
-    "consent": {
-      "treatment": true,
-      "privacy": true,
-      "marketing": false
-    },
-    "plan": "basic",
-    "staffMember": "test"
   }
 ]

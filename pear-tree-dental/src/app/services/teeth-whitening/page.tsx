@@ -185,7 +185,7 @@ export default function TeethWhiteningPage() {
                   Book Consultation
                 </Button>
                 <Button variant="outline" className="border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white">
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 
@@ -399,7 +399,7 @@ export default function TeethWhiteningPage() {
               Book Whitening Consultation
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600">
-              Call 0115 931 2525
+              Call 0115 931 2935
             </Button>
           </div>
 

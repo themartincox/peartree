@@ -272,7 +272,7 @@ export default function CompositeEdgeBondingPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

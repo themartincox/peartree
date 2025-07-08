@@ -300,7 +300,7 @@ export default function ValplastDenturesPage() {
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button size="lg" variant="outline" className="border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white">
-                    Call 0115 931 2525
+                    Call 0115 931 2935
                   </Button>
                 </div>
               </div>

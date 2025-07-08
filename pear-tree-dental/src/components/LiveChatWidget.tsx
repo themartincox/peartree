@@ -154,9 +154,9 @@ export default function LiveChatWidget({
     const lowerMessage = userMessage.toLowerCase();
 
     if (lowerMessage.includes('emergency') || lowerMessage.includes('pain') || lowerMessage.includes('urgent')) {
-      addMessage("I understand you need urgent care. Please call our emergency line immediately at 0115 931 2525. If it's outside hours, we have an emergency dentist on call. Would you like me to help you with anything else while you're here?", 'agent');
+      addMessage("I understand you need urgent care. Please call our emergency line immediately at 0115 931 2935. If it's outside hours, we have an emergency dentist on call. Would you like me to help you with anything else while you're here?", 'agent');
     } else if (lowerMessage.includes('appointment') || lowerMessage.includes('book')) {
-      addMessage("I'd be happy to help you book an appointment! We have availability this week. You can call us at 0115 931 2525 or would you prefer to share your preferred day/time and I'll check our availability?", 'agent');
+      addMessage("I'd be happy to help you book an appointment! We have availability this week. You can call us at 0115 931 2935 or would you prefer to share your preferred day/time and I'll check our availability?", 'agent');
     } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('how much')) {
       addMessage("Our treatment costs vary depending on your specific needs. We offer free consultations to assess your requirements and provide accurate pricing. We also have membership plans starting from £10.95/month. Would you like to book a consultation?", 'agent');
     } else if (lowerMessage.includes('membership') || lowerMessage.includes('plan')) {

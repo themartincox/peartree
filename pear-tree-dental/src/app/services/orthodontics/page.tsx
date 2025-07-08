@@ -143,7 +143,7 @@ export default function OrthodonticsPage() {
                 </Button>
                 <Button size="lg" variant="outline" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2525
+                  Call 0115 931 2935
                 </Button>
               </div>
 
@@ -799,7 +799,7 @@ export default function OrthodonticsPage() {
               </Button>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-soft-pink">
                 <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2525
+                Call 0115 931 2935
               </Button>
             </div>
 

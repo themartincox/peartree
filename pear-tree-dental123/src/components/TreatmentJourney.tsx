@@ -92,7 +92,7 @@ const TreatmentJourney = () => {
       icon: CreditCard,
       image: "payment",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/payment.webp",
+      imagePath: "/images/treatment-journey/payment.webp?v=310",
       imageDescription: "Payment options and financial planning consultation",
       features: [
         "Transparent pricing",
