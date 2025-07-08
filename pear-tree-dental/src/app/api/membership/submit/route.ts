@@ -38,9 +38,14 @@ const ensureApplicationsDir = () => {
   }
 };
 
-// Save application to file as backup
+// Save application to file as backup (best effort - may fail on serverless)
 const saveApplicationToFile = async (submission: MembershipSubmission) => {
   try {
+    // Check if we're in a serverless environment where file writing may not work
+    if (process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+      console.log('🌐 Serverless environment detected - file saving may not be available');
+    }
+
     console.log('Saving application to file for:', submission.firstName, submission.lastName);
 
     ensureApplicationsDir();
@@ -79,11 +84,16 @@ const saveApplicationToFile = async (submission: MembershipSubmission) => {
 
     return true;
   } catch (error) {
-    console.error('❌ Failed to save application to file:', error);
-    console.error('❌ File path:', APPLICATIONS_FILE);
-    console.error('❌ Directory exists:', fs.existsSync(path.dirname(APPLICATIONS_FILE)));
-    console.error('❌ File exists:', fs.existsSync(APPLICATIONS_FILE));
-    console.error('❌ Error details:', error instanceof Error ? error.message : 'Unknown error');
+    console.warn('⚠️ Failed to save application to file (expected on serverless):', error instanceof Error ? error.message : 'Unknown error');
+
+    // Log for debugging but don't treat as critical error
+    if (process.env.NODE_ENV === 'development') {
+      console.error('❌ Development mode - file save details:');
+      console.error('❌ File path:', APPLICATIONS_FILE);
+      console.error('❌ Directory exists:', fs.existsSync(path.dirname(APPLICATIONS_FILE)));
+      console.error('❌ File exists:', fs.existsSync(APPLICATIONS_FILE));
+    }
+
     return false;
   }
 };
@@ -215,22 +225,14 @@ export async function POST(request: NextRequest) {
     membershipSubmissions.push(submission);
     console.log('📊 In-memory submissions count:', membershipSubmissions.length);
 
-    // BACKUP: Save to file in case email fails
+    // BACKUP: Save to file in case email fails (best effort on serverless)
     const fileSaved = await saveApplicationToFile(submission);
     console.log('💿 File save result:', fileSaved);
 
-    // CRITICAL: Fail if file save unsuccessful
+    // NOTE: Don't fail submission if file save fails on serverless environments
     if (!fileSaved) {
-      console.error('❌ CRITICAL: File save failed - aborting submission');
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Failed to save application - please try again',
-          details: 'Application could not be saved to backup storage',
-          submissionId: submission.id
-        },
-        { status: 500 }
-      );
+      console.warn('⚠️ File save failed (expected on serverless) - continuing with submission');
+      console.log('📧 Submission will rely on email confirmation and in-memory storage');
     }
 
     // Generate application ID
@@ -278,12 +280,14 @@ export async function POST(request: NextRequest) {
       emailError: emailError,
       backupSaved: fileSaved,
       submissionId: submission.id,
+      environment: process.env.NODE_ENV || 'development',
       debug: {
         planName,
         planPrice,
         inMemoryCount: membershipSubmissions.length,
         filePath: APPLICATIONS_FILE,
-        fileExists: fs.existsSync(APPLICATIONS_FILE)
+        fileWriteable: fileSaved,
+        isServerless: !fileSaved && process.env.NETLIFY
       }
     };
 
