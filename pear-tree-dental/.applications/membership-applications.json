@@ -119,5 +119,40 @@
     "termsAccepted": true,
     "communicationPreference": "email",
     "marketingConsent": false
+  },
+  {
+    "id": "1751962219461",
+    "timestamp": "2025-07-08T08:10:19.461Z",
+    "firstName": "Mrs Janeet",
+    "lastName": "Dow",
+    "email": "janeet.dow@example.com",
+    "planName": "COMPLETE CARE",
+    "planPrice": "£19.95",
+    "dentistName": "To be assigned based on availability",
+    "isExistingPatient": "no",
+    "dentistGenderPreference": "no-preference",
+    "selectedPlan": "planC",
+    "phone": "0115123456",
+    "accountHolderName": "Mrs Janeet Dow",
+    "sortCode": "12-34-56",
+    "accountNumber": "11111111",
+    "directDebitConfirmed": true,
+    "ddGuaranteeRead": true,
+    "membershipTermsRead": true,
+    "termsAccepted": true,
+    "communicationPreference": "email",
+    "marketingConsent": false,
+    "isClinicSignup": false
+  },
+  {
+    "id": "1751962232922",
+    "timestamp": "2025-07-08T08:10:32.922Z",
+    "firstName": "",
+    "lastName": "",
+    "email": "invalid-email",
+    "planName": "invalidPlan",
+    "planPrice": "£0.00",
+    "dentistName": "To be assigned",
+    "selectedPlan": "invalidPlan"
   }
 ]

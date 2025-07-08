@@ -318,6 +318,17 @@ export default function MembershipSignupPage() {
 
       console.log("Submitting membership signup:", formData);
 
+      // Additional frontend validation
+      if (!formData.firstName || !formData.lastName || !formData.email) {
+        alert('Please ensure your name and email are provided.');
+        return;
+      }
+
+      if (!formData.email.includes('@')) {
+        alert('Please provide a valid email address.');
+        return;
+      }
+
       const response = await fetch('/api/membership/submit', {
         method: 'POST',
         headers: {
@@ -330,9 +341,37 @@ export default function MembershipSignupPage() {
         }),
       });
 
-      const result = await response.json();
+      console.log('Response status:', response.status, response.statusText);
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+
+      let result;
+      try {
+        result = await response.json();
+        console.log('API Response:', result);
+      } catch (parseError) {
+        console.error('Failed to parse response JSON:', parseError);
+        alert('Server error: Received invalid response. Your application may have been submitted successfully. Please contact our office at 0115 931 2525 to verify.');
+        return;
+      }
+
+      // Validate response structure
+      if (typeof result !== 'object' || result === null) {
+        console.error('Invalid response structure:', result);
+        alert('Server error: Invalid response format. Please try again or contact our office at 0115 931 2525.');
+        return;
+      }
 
       if (result.success) {
+        // Validate success response has required fields
+        if (!result.applicationId) {
+          console.error('Success response missing applicationId:', result);
+          alert('Application submitted successfully, but no reference number received. Please contact our office at 0115 931 2525 for your application status.');
+          return;
+        }
+
         // Redirect to success page with details
         const params = new URLSearchParams({
           applicationId: result.applicationId,
@@ -341,13 +380,26 @@ export default function MembershipSignupPage() {
           ...(formData.staffMemberName && { staff: formData.staffMemberName })
         });
 
+        console.log('Redirecting to success page with params:', params.toString());
         window.location.href = `/membership/signup/success?${params.toString()}`;
       } else {
-        alert(`Signup failed: ${result.message}`);
+        // Handle different error response formats
+        const errorMessage = result.error || result.message || result.details || 'Application submission failed';
+        const errorDetails = result.details ? ` (${result.details})` : '';
+        alert(`Signup failed: ${errorMessage}${errorDetails}`);
+        console.error('Submission failed:', result);
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('There was an error submitting your application. Please try again.');
+
+      // Check if it's a network error
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        alert('Network error: Unable to connect to the server. Please check your internet connection and try again.');
+      } else if (error instanceof SyntaxError) {
+        alert('Server error: Invalid response received. Please try again or contact support.');
+      } else {
+        alert('There was an unexpected error submitting your application. Please try again or contact our office at 0115 931 2525.');
+      }
     }
   };
 

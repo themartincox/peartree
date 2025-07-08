@@ -169,6 +169,24 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     console.log('📝 Received submission for:', body.firstName, body.lastName, body.email);
 
+    // Basic validation for required fields
+    if (!body.firstName || !body.lastName || !body.email) {
+      console.error('❌ Missing required fields:', { firstName: !!body.firstName, lastName: !!body.lastName, email: !!body.email });
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Missing required fields',
+          details: 'First name, last name, and email are required',
+          missingFields: {
+            firstName: !body.firstName,
+            lastName: !body.lastName,
+            email: !body.email
+          }
+        },
+        { status: 400 }
+      );
+    }
+
     // Get plan details
     const planName = getPlanName(body.selectedPlan);
     const planPrice = getPlanPrice(planName);

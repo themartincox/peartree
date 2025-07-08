@@ -85,9 +85,16 @@ export default function LocationDetection() {
   const [userLocation, setUserLocation] = useState<LocationData | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isDetecting, setIsDetecting] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
-    detectUserLocation();
+    // Check if user has dismissed the modal this session
+    const dismissed = sessionStorage.getItem('locationModalDismissed') === 'true';
+    setIsDismissed(dismissed);
+
+    if (!dismissed) {
+      detectUserLocation();
+    }
   }, []);
 
   const detectUserLocation = async () => {
@@ -122,7 +129,7 @@ export default function LocationDetection() {
       // Mock reverse geocoding - in production you'd use a real service
       // For demo purposes, we'll use location boundaries
       const location = getLocationFromCoordinates(lat, lon);
-      if (location) {
+      if (location && !isDismissed) {
         setUserLocation(location);
         setIsVisible(true);
       }
@@ -140,7 +147,9 @@ export default function LocationDetection() {
       const areas = Object.keys(LOCATION_DATA);
       const randomArea = areas[Math.floor(Math.random() * areas.length)];
       setUserLocation(LOCATION_DATA[randomArea]);
-      setIsVisible(true);
+      if (!isDismissed) {
+        setIsVisible(true);
+      }
       setIsDetecting(false);
     } catch (error) {
       console.log('IP detection failed:', error);
@@ -169,6 +178,18 @@ export default function LocationDetection() {
     setIsVisible(true);
   };
 
+  const handleDismiss = () => {
+    setIsVisible(false);
+    setIsDismissed(true);
+    // Remember dismissal for this session
+    sessionStorage.setItem('locationModalDismissed', 'true');
+  };
+
+  // Don't show anything if user has dismissed the modal
+  if (isDismissed) {
+    return null;
+  }
+
   if (isDetecting) {
     return (
       <div className="fixed bottom-4 right-4 z-50">
@@ -187,7 +208,7 @@ export default function LocationDetection() {
     );
   }
 
-  if (!isVisible || !userLocation) {
+  if ((!isVisible || !userLocation) && !isDismissed) {
     return (
       <div className="fixed bottom-4 right-4 z-50">
         <Card className="w-80 shadow-lg border border-dental-green/20">
@@ -195,7 +216,7 @@ export default function LocationDetection() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <p className="font-semibold text-dental-navy">Show local information?</p>
-                <Button variant="ghost" size="sm" onClick={() => setIsVisible(false)}>
+                <Button variant="ghost" size="sm" onClick={handleDismiss}>
                   <X className="w-4 h-4" />
                 </Button>
               </div>
