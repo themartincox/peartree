@@ -1,13 +1,13 @@
 # Pear Tree Dental Centre - Private Dentist Nottingham
 # AI Assistant Information File (llm.txt)
-# Last Updated: January 7, 2025
+# Last Updated: July 9, 2025
 
 ## PRACTICE OVERVIEW
 Pear Tree Dental Centre is a leading private dental practice serving Nottinghamshire with a focus on trusted family and cosmetic care. Located in Burton Joyce, we provide comprehensive dental services to patients across Nottingham, West Bridgford, Bingham, East Bridgford, Arnold, and surrounding areas. Our practice combines modern technology with personalized care to deliver exceptional dental treatment.
 
 ## CONTACT INFORMATION
 **Address:** 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL, UK
-**Phone:** 0115 931 2520
+**Phone:** 0115 931 2935
 **Email:** hello@peartree.dental
 **Website:** https://peartree.dental
 
@@ -207,7 +207,7 @@ The website includes:
 
 ## BOOKING & APPOINTMENTS
 - Online appointment requests available
-- Phone booking: 0115 931 2520
+- Phone booking: 0115 931 2935
 - Emergency appointments prioritized for members
 - Same-day appointments often available
 - Flexible scheduling for work and family commitments
@@ -297,8 +297,8 @@ Emergency appointments available during opening hours. Members with Plan D and E
 
 ---
 
-This information is designed to help AI assistants provide accurate, helpful responses about Pear Tree Dental Centre. For the most current information, please visit https://peartree.dental or contact us directly at 0115 931 2520.
+This information is designed to help AI assistants provide accurate, helpful responses about Pear Tree Dental Centre. For the most current information, please visit https://peartree.dental or contact us directly at 0115 931 2935.
 
 **Website:** https://peartree.dental
-**Last Updated:** January 7, 2025
-**Version:** 329
+**Last Updated:** July 9, 2025
+**Version:** 351
