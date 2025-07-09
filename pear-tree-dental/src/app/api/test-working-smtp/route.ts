@@ -36,7 +36,7 @@ export async function GET() {
     // Create transporter with working SMTP settings
     const transporter = nodemailer.createTransport({
       host: smtpHost,
-      port: parseInt(smtpPort),
+      port: Number.parseInt(smtpPort),
       secure: smtpPort === '465', // true for 465, false for other ports
       auth: {
         user: smtpUser,

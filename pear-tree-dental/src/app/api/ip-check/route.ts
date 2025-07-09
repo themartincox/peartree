@@ -1,37 +1,30 @@
-import { type NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-// Define clinic IP addresses (you can configure these)
-const CLINIC_IPS = [
-  '127.0.0.1', // localhost for development
-  '::1', // localhost IPv6
-  '172.31.47.230', // Add current dev IP for testing
-  // Add actual clinic IP addresses here
-  // '203.0.113.1', // Example clinic IP
-  // '198.51.100.1', // Example clinic IP 2
-];
-
-export async function GET(request: NextRequest) {
+// IP checking for clinic access detection
+export async function GET(request: Request) {
   try {
-    // Get client IP from various headers
+    // Get client IP from request headers
     const forwarded = request.headers.get('x-forwarded-for');
     const realIp = request.headers.get('x-real-ip');
-    const remoteAddress = request.headers.get('x-vercel-forwarded-for');
+    const clientIp = forwarded?.split(',')[0] || realIp || 'unknown';
 
-    // Determine the client IP
-    let clientIp = forwarded?.split(',')[0] || realIp || remoteAddress || 'unknown';
+    // Define clinic IP ranges (adjust these to match your actual clinic IPs)
+    const clinicIpRanges = [
+      '192.168.1.',    // Local network range
+      '10.0.0.',       // Another common local range
+      '172.16.',       // Private network range
+      // Add your clinic's actual IP addresses or ranges here
+    ];
 
-    // Clean up the IP (remove port if present)
-    clientIp = clientIp.split(':')[0];
+    // Check if the client IP matches any clinic IP range
+    const isClinicIp = clinicIpRanges.some(range => clientIp.startsWith(range));
 
-    // Check if IP is from clinic
-    const isClinicIp = CLINIC_IPS.includes(clientIp);
-
-    console.log(`IP Check - Client IP: ${clientIp}, Is Clinic: ${isClinicIp}`);
+    console.log('IP Check:', { clientIp, isClinicIp });
 
     return NextResponse.json({
       clientIp,
       isClinicIp,
-      message: isClinicIp ? 'Access from clinic detected' : 'External access detected'
+      timestamp: new Date().toISOString()
     });
 
   } catch (error) {
@@ -39,7 +32,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       clientIp: 'unknown',
       isClinicIp: false,
-      message: 'Could not determine IP address'
-    }, { status: 200 }); // Still return 200 to avoid breaking the form
+      error: 'Failed to check IP'
+    });
   }
 }

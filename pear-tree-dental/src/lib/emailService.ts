@@ -6,7 +6,7 @@ const createTransporter = () => {
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER, // hello@peartree.dental
-      pass: process.env.EMAIL_PASS, // App password
+      pass: process.env.GMAIL_APP_PASSWORD, // App password
     },
   });
 
@@ -47,7 +47,7 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
 
     // Check environment variables first
     const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASS;
+    const emailPass = process.env.GMAIL_APP_PASSWORD;
 
     console.log('📧 Environment check:', {
       emailUserConfigured: !!emailUser,
@@ -57,7 +57,7 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     });
 
     if (!emailUser || !emailPass) {
-      throw new Error('Email configuration missing: EMAIL_USER or EMAIL_PASS not configured');
+      throw new Error('Email configuration missing: EMAIL_USER or GMAIL_APP_PASSWORD not configured');
     }
 
     const transporter = createTransporter();
@@ -159,7 +159,7 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     // Check for common email errors
     if (error instanceof Error) {
       if (error.message.includes('Invalid login')) {
-        console.error('❌ Email authentication failed - check EMAIL_USER and EMAIL_PASS');
+        console.error('❌ Email authentication failed - check EMAIL_USER and GMAIL_APP_PASSWORD');
       } else if (error.message.includes('getaddrinfo ENOTFOUND')) {
         console.error('❌ Network error - cannot reach email server');
       } else if (error.message.includes('configuration missing')) {
