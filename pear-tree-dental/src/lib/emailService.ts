@@ -99,28 +99,11 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
       },
       to: data.email,
       subject: `Welcome to Pear Tree Dental! Your ${data.planName} membership is confirmed`,
-      html: htmlContent,
-      attachments: [
-        {
-          filename: 'pear-tree-logo.png',
-          path: 'https://ext.same-assets.com/pear-tree-logo.png',
-          cid: 'logo'
-        },
-        {
-          filename: 'direct-debit-logo.png',
-          path: 'https://ext.same-assets.com/direct-debit-logo.png',
-          cid: 'ddlogo'
-        }
-      ]
+      html: htmlContent
+      // Temporarily removed attachments due to broken URLs - will be restored once proper logos are uploaded
     };
 
-    // Send copy to practice emails (multiple recipients)
-    const practiceMailOptions = {
-      ...mailOptions,
-      to: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'],
-      subject: `New Membership Signup: ${data.firstName} ${data.lastName} - ${data.planName} (${data.applicationId})`,
-      html: generateInternalNotificationHTML(data)
-    };
+    // Practice emails will be sent individually (see loop below)
 
     // Try sending simple email first to test basic functionality
     console.log('📧 Attempting to send simplified patient email...');
@@ -137,16 +120,59 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     }
 
     console.log('📧 About to send practice notification...');
-    const practiceResult = await transporter.sendMail(practiceMailOptions);
-    console.log('📧 Practice email sent:', practiceResult.messageId);
+
+    // Send practice notifications individually with detailed logging
+    const practiceEmails = ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'];
+    const practiceResults = [];
+
+    for (const practiceEmail of practiceEmails) {
+      try {
+        console.log(`📧 Sending practice notification to: ${practiceEmail}`);
+
+        const practiceMailOptions = {
+          from: {
+            name: 'Pear Tree Dental Centre',
+            address: process.env.EMAIL_USER || 'hello@peartree.dental'
+          },
+          to: practiceEmail, // Single recipient
+          subject: `New Membership Signup: ${data.firstName} ${data.lastName} - ${data.planName} (${data.applicationId})`,
+          html: generateInternalNotificationHTML(data)
+          // Removed attachments temporarily due to broken URLs
+        };
+
+        const result = await transporter.sendMail(practiceMailOptions);
+        console.log(`✅ Practice email sent successfully to ${practiceEmail}:`, result.messageId);
+
+        practiceResults.push({
+          email: practiceEmail,
+          success: true,
+          messageId: result.messageId
+        });
+
+      } catch (practiceError) {
+        console.error(`❌ Practice email failed for ${practiceEmail}:`, practiceError);
+        practiceResults.push({
+          email: practiceEmail,
+          success: false,
+          error: practiceError instanceof Error ? practiceError.message : 'Unknown error'
+        });
+      }
+    }
+
+    console.log('📧 Practice email results:', practiceResults);
 
     console.log('Confirmation email sent successfully:', patientResult.messageId);
-    console.log('Internal notification sent to practice team:', practiceResult.messageId);
+    console.log('Practice notification results:', practiceResults);
+
+    const successfulPracticeEmails = practiceResults.filter(r => r.success);
+    const failedPracticeEmails = practiceResults.filter(r => !r.success);
 
     return {
       success: true,
       patientMessageId: patientResult.messageId,
-      practiceMessageId: practiceResult.messageId,
+      practiceResults: practiceResults,
+      practiceEmailsSent: successfulPracticeEmails.length,
+      practiceEmailsFailed: failedPracticeEmails.length,
       practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
 
@@ -172,6 +198,9 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Email service unavailable - confirmation will be sent later',
+      practiceResults: [],
+      practiceEmailsSent: 0,
+      practiceEmailsFailed: 0,
       practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
   }
