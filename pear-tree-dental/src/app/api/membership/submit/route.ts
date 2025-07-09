@@ -174,9 +174,11 @@ const getPartnerDentistName = (formData: Record<string, unknown>): string => {
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('🟢 POST /api/membership/submit called');
     console.log('🔄 Membership submission started...');
 
     const body = await request.json();
+    console.log('📩 Incoming form data:', JSON.stringify(body, null, 2));
     console.log('📝 Received submission for:', body.firstName, body.lastName, body.email);
 
     // Basic validation for required fields
@@ -213,9 +215,11 @@ export async function POST(request: NextRequest) {
     };
 
     // 🛠️ SAVE APPLICATION FIRST (before trying email)
+    console.log('📁 About to save submission to memory and file...');
     membershipSubmissions.push(submission);
+    console.log('✅ Added to memory array, now saving to file...');
     await saveApplicationToFile(submission);
-    console.log('✅ Application saved successfully - ID:', applicationId);
+    console.log('✅ Saved submission to file - ID:', applicationId);
 
     // Prepare email data
     const emailData = {
@@ -240,13 +244,34 @@ export async function POST(request: NextRequest) {
     let emailSent = false;
     let emailError = null;
     try {
-      console.log('📧 Attempting to send confirmation email...');
-      await sendMembershipConfirmationEmail(emailData);
-      console.log('📧 Email sent successfully');
-      emailSent = true;
+      console.log('📧 About to send confirmation email...');
+      console.log('📧 Email recipient:', emailData.email);
+      console.log('📧 Email data being sent:', JSON.stringify({
+        firstName: emailData.firstName,
+        lastName: emailData.lastName,
+        planName: emailData.planName,
+        applicationId: emailData.applicationId
+      }, null, 2));
+
+      const emailResult = await sendMembershipConfirmationEmail(emailData);
+      console.log('📧 Email service result:', emailResult);
+
+      if (emailResult && emailResult.success) {
+        emailSent = true;
+        console.log('✅ Email sent successfully to:', emailData.email);
+        console.log('📧 Patient email ID:', emailResult.patientMessageId);
+        console.log('📧 Practice email ID:', emailResult.practiceMessageId);
+      } else {
+        emailSent = false;
+        emailError = emailResult?.error || 'Email service returned failure';
+        console.log('❌ Email sending failed:', emailError);
+      }
     } catch (emailErr) {
-      console.warn('📧 Email failed but proceeding:', emailErr instanceof Error ? emailErr.message : 'Unknown');
+      console.error('❌ Email failed with exception:', emailErr);
+      console.error('❌ Email error details:', emailErr instanceof Error ? emailErr.message : 'Unknown');
+      console.error('❌ Email error stack:', emailErr instanceof Error ? emailErr.stack : 'No stack trace');
       emailError = emailErr instanceof Error ? emailErr.message : 'Email service error';
+      emailSent = false;
       // Continue - application is already saved
     }
 

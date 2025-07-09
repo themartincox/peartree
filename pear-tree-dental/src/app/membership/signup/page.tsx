@@ -288,13 +288,8 @@ export default function MembershipSignupPage() {
       }
 
       // Validate document acknowledgments - These are required
-      if (!formData.ddGuaranteeRead) {
-        alert('You must view and confirm you have read the Direct Debit Guarantee before completing your membership signup.');
-        return;
-      }
-
       if (!formData.membershipTermsRead) {
-        alert('You must view and confirm you have read and agree to the Membership Terms and Conditions before completing your membership signup.');
+        alert('You must read and accept all Terms & Conditions before completing your membership signup.');
         return;
       }
 
@@ -309,11 +304,7 @@ export default function MembershipSignupPage() {
         return;
       }
 
-      // Validate terms acceptance
-      if (!formData.termsAccepted) {
-        alert('Please accept the Website Terms and Conditions and Privacy Policy to proceed.');
-        return;
-      }
+
 
       console.log("Submitting membership signup:", formData);
 
@@ -344,12 +335,14 @@ export default function MembershipSignupPage() {
 
       if (!response.ok) {
         // Try to get the actual error details from the server
+        console.error('❌ Response not OK:', response.status, response.statusText);
         try {
           const errorData = await response.json();
-          console.error('Server error response:', errorData);
+          console.error('🔍 Server error response:', errorData);
           const errorMessage = errorData.details || errorData.error || `HTTP ${response.status}: ${response.statusText}`;
           throw new Error(errorMessage);
         } catch (parseError) {
+          console.error('❌ Failed to parse error response:', parseError);
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
       }
@@ -1834,23 +1827,11 @@ export default function MembershipSignupPage() {
                           required
                         />
                         <label htmlFor="termsAcceptance" className="text-sm text-gray-700 cursor-pointer">
-                          I have read and accept the Terms & Conditions *
+                          I have read and accept all Terms & Conditions (membership plan and website terms) *
                         </label>
                       </div>
 
-                      <div className="flex items-start space-x-3">
-                        <input
-                          type="checkbox"
-                          id="ddAcceptance"
-                          checked={formData.ddGuaranteeRead}
-                          onChange={(e) => handleInputChange("ddGuaranteeRead", e.target.checked)}
-                          className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                          required
-                        />
-                        <label htmlFor="ddAcceptance" className="text-sm text-gray-700 cursor-pointer">
-                          I understand my rights under the Direct Debit Guarantee *
-                        </label>
-                      </div>
+
                     </div>
                   </div>
 
@@ -1869,19 +1850,7 @@ export default function MembershipSignupPage() {
                       </label>
                     </div>
 
-                    <div className="flex items-start space-x-3">
-                      <input
-                        type="checkbox"
-                        id="terms"
-                        checked={formData.termsAccepted}
-                        onChange={(e) => handleInputChange("termsAccepted", e.target.checked)}
-                        className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="terms" className="text-sm text-gray-700">
-                        I accept the <a href="/terms" className="text-dental-green hover:underline">Website Terms and Conditions</a> and
-                        <a href="/privacy" className="text-dental-green hover:underline ml-1">Privacy Policy</a> *
-                      </label>
-                    </div>
+
 
                     <div className="flex items-start space-x-3">
                       <input
@@ -1917,13 +1886,13 @@ export default function MembershipSignupPage() {
                     </Button>
                     <Button
                       onClick={() => {
-                        if (!formData.termsAccepted || !formData.ddGuaranteeRead || !formData.membershipTermsRead) {
+                        if (!formData.membershipTermsRead || !formData.directDebitConfirmed) {
                           setShowRequiredNotification(true);
                           return;
                         }
                         handleSubmit();
                       }}
-                      disabled={!formData.termsAccepted || !formData.ddGuaranteeRead || !formData.membershipTermsRead}
+                      disabled={!formData.membershipTermsRead || !formData.directDebitConfirmed}
                       className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8"
                     >
                       <Crown className="w-4 h-4 mr-2" />
@@ -1939,8 +1908,7 @@ export default function MembershipSignupPage() {
                           <span className="text-white text-xs font-bold">!</span>
                         </div>
                         <p className="text-sm text-amber-800">
-                          <strong>Required:</strong> You must view and confirm you have read both documents before completing your membership signup.
-                          These confirmations are required for your membership to be activated.
+                          <strong>Required:</strong> You must read and accept the Terms & Conditions and authorize Direct Debit before completing your membership signup.
                         </p>
                       </div>
                     </div>

@@ -2,11 +2,11 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "NODE_OPTIONS='--max-old-space-size=4096' bun run build:production"
+  command = "npm install && NODE_OPTIONS='--max-old-space-size=4096' npm run build:production"
   publish = ".next"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+
   DISABLE_ESLINT_PLUGIN = "true"
   SKIP_ENV_VALIDATION = "true"
   NEXT_TELEMETRY_DISABLED = "1"

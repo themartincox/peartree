@@ -3,13 +3,13 @@ import nodemailer from 'nodemailer';
 
 export async function GET() {
   try {
-    // Check environment variables
+    // Use the new, unified environment variable
     const emailUser = process.env.EMAIL_USER;
-    const emailPass = process.env.EMAIL_PASS;
+    const emailPass = process.env.GMAIL_APP_PASSWORD;
 
     console.log('Email configuration check:');
     console.log('EMAIL_USER:', emailUser ? 'Set' : 'Missing');
-    console.log('EMAIL_PASS:', emailPass ? (emailPass === 'your-app-password-here' ? 'Placeholder - needs real password' : 'Set') : 'Missing');
+    console.log('GMAIL_APP_PASSWORD:', emailPass ? 'Set' : 'Missing');
 
     if (!emailUser || !emailPass) {
       return NextResponse.json({
@@ -17,7 +17,7 @@ export async function GET() {
         error: 'Email environment variables not configured',
         details: {
           EMAIL_USER: emailUser ? 'Set' : 'Missing',
-          EMAIL_PASS: emailPass ? 'Set' : 'Missing'
+          GMAIL_APP_PASSWORD: emailPass ? 'Set' : 'Missing'
         }
       });
     }

@@ -45,12 +45,52 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
       applicationId: data.applicationId
     });
 
+    // Check environment variables first
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS;
+
+    console.log('📧 Environment check:', {
+      emailUserConfigured: !!emailUser,
+      emailPassConfigured: !!emailPass,
+      emailUserLength: emailUser ? emailUser.length : 0,
+      emailPassLength: emailPass ? emailPass.length : 0
+    });
+
+    if (!emailUser || !emailPass) {
+      throw new Error('Email configuration missing: EMAIL_USER or EMAIL_PASS not configured');
+    }
+
     const transporter = createTransporter();
     console.log('📧 Transporter created successfully');
 
     console.log('📧 Generating email HTML content...');
     const htmlContent = generateConfirmationEmailHTML(data);
     console.log('📧 HTML content generated, length:', htmlContent.length);
+
+    // Try with simplified email first (no attachments)
+    const simpleMailOptions = {
+      from: {
+        name: 'Pear Tree Dental Centre',
+        address: process.env.EMAIL_USER || 'hello@peartree.dental'
+      },
+      to: data.email,
+      subject: `Welcome to Pear Tree Dental! Your ${data.planName} membership is confirmed`,
+      html: `
+        <h1>Welcome to Pear Tree Dental Centre!</h1>
+        <p>Dear ${data.firstName} ${data.lastName},</p>
+        <p>Your membership application has been successfully submitted!</p>
+        <h3>Membership Details:</h3>
+        <ul>
+          <li><strong>Application ID:</strong> ${data.applicationId}</li>
+          <li><strong>Plan:</strong> ${data.planName}</li>
+          <li><strong>Monthly Payment:</strong> ${data.planPrice}</li>
+          <li><strong>Account Holder:</strong> ${data.accountHolderName}</li>
+        </ul>
+        <p>We'll contact you within 2 working days to confirm your membership setup.</p>
+        <p>Contact us: 0115 931 2935 | hello@peartree.dental</p>
+        <p>Best regards,<br>Pear Tree Dental Centre Team</p>
+      `
+    };
 
     const mailOptions = {
       from: {
@@ -82,9 +122,23 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
       html: generateInternalNotificationHTML(data)
     };
 
-    // Send both emails
-    const patientResult = await transporter.sendMail(mailOptions);
+    // Try sending simple email first to test basic functionality
+    console.log('📧 Attempting to send simplified patient email...');
+    let patientResult;
+
+    try {
+      patientResult = await transporter.sendMail(simpleMailOptions);
+      console.log('✅ Simple patient email sent successfully:', patientResult.messageId);
+    } catch (simpleError) {
+      console.error('❌ Simple email failed, trying complex version:', simpleError);
+      console.log('📧 Attempting complex email with attachments...');
+      patientResult = await transporter.sendMail(mailOptions);
+      console.log('✅ Complex patient email sent:', patientResult.messageId);
+    }
+
+    console.log('📧 About to send practice notification...');
     const practiceResult = await transporter.sendMail(practiceMailOptions);
+    console.log('📧 Practice email sent:', practiceResult.messageId);
 
     console.log('Confirmation email sent successfully:', patientResult.messageId);
     console.log('Internal notification sent to practice team:', practiceResult.messageId);
@@ -97,12 +151,27 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     };
 
   } catch (error) {
-    console.error('Error sending confirmation email:', error);
+    console.error('❌ Error sending confirmation email:', error);
+    console.error('❌ Error type:', typeof error);
+    console.error('❌ Error message:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('❌ Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+
+    // Check for common email errors
+    if (error instanceof Error) {
+      if (error.message.includes('Invalid login')) {
+        console.error('❌ Email authentication failed - check EMAIL_USER and EMAIL_PASS');
+      } else if (error.message.includes('getaddrinfo ENOTFOUND')) {
+        console.error('❌ Network error - cannot reach email server');
+      } else if (error.message.includes('configuration missing')) {
+        console.error('❌ Email environment variables not configured');
+      }
+    }
+
     // Don't throw error - let the membership submission continue even if email fails
     console.log('⚠️ Email service unavailable - membership submission will continue');
     return {
       success: false,
-      error: 'Email service unavailable - confirmation will be sent later',
+      error: error instanceof Error ? error.message : 'Email service unavailable - confirmation will be sent later',
       practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
   }

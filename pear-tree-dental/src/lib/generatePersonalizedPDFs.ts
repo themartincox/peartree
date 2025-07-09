@@ -25,9 +25,18 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   const { default: jsPDF } = await import('jspdf');
   const doc = new jsPDF();
   const pageWidth = doc.internal.pageSize.width;
+  const pageHeight = doc.internal.pageSize.height;
   const margin = 20;
   const maxWidth = pageWidth - (margin * 2);
   let yPosition = 30;
+
+  // Helper function to check if we need a new page
+  const checkPageBreak = (additionalHeight: number) => {
+    if (yPosition + additionalHeight > pageHeight - 40) {
+      doc.addPage();
+      yPosition = 30;
+    }
+  };
 
   // Header
   doc.setFontSize(20);
@@ -42,6 +51,7 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   yPosition += 25;
 
   // Patient Information
+  checkPageBreak(50);
   doc.setFont("helvetica", "bold");
   doc.text('Account Holder Information:', margin, yPosition);
   yPosition += 10;
@@ -68,17 +78,19 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
     yPosition += 8;
   }
 
-  yPosition += 10;
+  yPosition += 15;
 
   // Originator ID
+  checkPageBreak(30);
   doc.setFont("helvetica", "bold");
   doc.text("Originator's Identification Number:", margin, yPosition);
   yPosition += 8;
   doc.setFontSize(16);
   doc.text('5 7 5 1 7 1', margin, yPosition);
-  yPosition += 15;
+  yPosition += 20;
 
   // Instructions
+  checkPageBreak(40);
   doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.text('Instructions to your Bank or Building Society', margin, yPosition);
@@ -87,15 +99,18 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   doc.setFont("helvetica", "normal");
   const instructionsText = `Please pay Membership Plans Limited Direct Debits from account detailed in this instruction subject to the safeguards assumed by the Direct Debit Guarantee. I understand that this instruction may remain with Membership Plans Limited and, if so, details will be passed electronically to my Bank/Building Society.`;
   const instructionsLines = doc.splitTextToSize(instructionsText, maxWidth);
+
+  checkPageBreak(instructionsLines.length * 6 + 20);
   doc.text(instructionsLines, margin, yPosition);
-  yPosition += instructionsLines.length * 6 + 10;
+  yPosition += instructionsLines.length * 6 + 15;
 
   doc.setFontSize(10);
   doc.setFont("helvetica", "italic");
   doc.text('Banks and Building Societies may not accept Direct Debit Instructions for some types of account.', margin, yPosition);
-  yPosition += 15;
+  yPosition += 20;
 
   // DD15 Guarantee
+  checkPageBreak(100);
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.text('DD15 The Direct Debit Guarantee', margin, yPosition);
@@ -115,25 +130,37 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   guaranteePoints.forEach((point, index) => {
     const bulletPoint = `• ${point}`;
     const lines = doc.splitTextToSize(bulletPoint, maxWidth);
+
+    // Check if we need a page break for this point
+    checkPageBreak(lines.length * 6 + 12);
+
     doc.text(lines, margin, yPosition);
-    yPosition += lines.length * 5 + 8;
+    yPosition += lines.length * 6 + 12; // Increased spacing to prevent overlap
   });
 
   // Company Information
-  yPosition += 10;
+  yPosition += 15;
+  checkPageBreak(30);
   doc.setFont("helvetica", "bold");
   doc.text('Company Information:', margin, yPosition);
-  yPosition += 8;
+  yPosition += 10;
 
   doc.setFont("helvetica", "normal");
   doc.text('Membership Plans Ltd trading as Lloyd & Whyte Flexiplan is registered in England No 06322047.', margin, yPosition);
-  yPosition += 6;
+  yPosition += 8;
   doc.text('Registered Office: Affinity House, Bindon Road, Taunton, TA2 6AA.', margin, yPosition);
+  yPosition += 15;
 
-  // Footer
-  const footerY = doc.internal.pageSize.height - 20;
+  // Footer - only add if there's space, otherwise put on next page
+  if (yPosition > pageHeight - 40) {
+    doc.addPage();
+    yPosition = pageHeight - 30;
+  } else {
+    yPosition = pageHeight - 30;
+  }
+
   doc.setFontSize(10);
-  doc.text('Pear Tree Dental Centre | 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE | 0115 931 2935', pageWidth / 2, footerY, { align: 'center' });
+  doc.text('Pear Tree Dental Centre | 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE | 0115 931 2935', pageWidth / 2, yPosition, { align: 'center' });
 
   return doc.output('blob');
 };
