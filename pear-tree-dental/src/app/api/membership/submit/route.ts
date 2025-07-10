@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { sendMembershipConfirmationEmail } from '@/lib/emailService';
+import { validateMembershipForm } from '@/lib/inputSecurity';
+import { validateMembershipRequest, getSecurityHeaders } from '@/lib/rateLimiting';
 import fs from 'fs';
 import path from 'path';
 
@@ -173,45 +175,88 @@ const getPartnerDentistName = (formData: Record<string, unknown>): string => {
 };
 
 export async function POST(request: NextRequest) {
+  const securityHeaders = getSecurityHeaders();
+
   try {
     console.log('🟢 POST /api/membership/submit called');
+
+    // 🛡️ SECURITY VALIDATION & RATE LIMITING
+    console.log('🛡️ Running security validation...');
+    const securityValidation = validateMembershipRequest(request);
+
+    if (!securityValidation.valid) {
+      console.error('❌ Security validation failed:', securityValidation.error);
+      console.error('🚫 Client IP:', securityValidation.clientIP);
+
+      const errorResponse = NextResponse.json({
+        success: false,
+        error: 'Request validation failed',
+        details: securityValidation.error
+      }, { status: securityValidation.error?.includes('Rate limit') ? 429 : 400 });
+
+      // Add security headers and rate limit info
+      Object.entries(securityHeaders).forEach(([key, value]) => {
+        errorResponse.headers.set(key, value);
+      });
+
+      if (securityValidation.rateLimitResult.limited) {
+        errorResponse.headers.set('Retry-After', '900'); // 15 minutes
+        errorResponse.headers.set('X-RateLimit-Limit', '3');
+        errorResponse.headers.set('X-RateLimit-Remaining', '0');
+        errorResponse.headers.set('X-RateLimit-Reset', securityValidation.rateLimitResult.resetTime?.toString() || '');
+      }
+
+      return errorResponse;
+    }
+
+    console.log('✅ Security validation passed');
+    console.log('📊 Rate limit remaining:', securityValidation.rateLimitResult.remaining);
     console.log('🔄 Membership submission started...');
 
     const body = await request.json();
-    console.log('📩 Incoming form data:', JSON.stringify(body, null, 2));
-    console.log('📝 Received submission for:', body.firstName, body.lastName, body.email);
+    console.log('📩 Incoming form data (sanitized)');
+    console.log('📝 Received submission for validation');
 
-    // Basic validation for required fields
-    if (!body.firstName || !body.lastName || !body.email) {
-      console.error('❌ Missing required fields');
+    // 🔒 COMPREHENSIVE SECURITY VALIDATION
+    console.log('🔒 Running comprehensive security validation...');
+    const validationResult = validateMembershipForm(body);
+
+    if (!validationResult.isValid) {
+      console.error('❌ Validation failed:', validationResult.errors);
       return NextResponse.json({
         success: false,
-        error: 'Missing required fields',
-        details: 'First name, last name, and email are required'
+        error: 'Invalid form data',
+        details: 'Please check your input and try again',
+        validationErrors: validationResult.errors
       }, { status: 400 });
     }
 
-    // Get plan details
-    const planName = getPlanName(body.selectedPlan);
+    // Use sanitized data for all subsequent operations
+    const sanitizedData = validationResult.sanitizedData;
+    console.log('✅ Input validation passed');
+    console.log('📝 Processing submission for:', sanitizedData.firstName, sanitizedData.lastName, sanitizedData.email);
+
+    // Get plan details using sanitized data
+    const planName = getPlanName(sanitizedData.selectedPlan);
     const planPrice = getPlanPrice(planName);
-    const dentistName = getDentistName(body);
+    const dentistName = getDentistName(sanitizedData);
     const applicationId = `PTDC-${Date.now()}`;
 
     console.log('📋 Plan details:', { planName, planPrice, dentistName, applicationId });
 
-    // Create submission record
+    // Create submission record with sanitized data
     const submission: MembershipSubmission = {
       id: applicationId,
       timestamp: new Date().toISOString(),
-      firstName: body.firstName,
-      lastName: body.lastName,
-      email: body.email,
+      firstName: sanitizedData.firstName,
+      lastName: sanitizedData.lastName,
+      email: sanitizedData.email,
       planName: planName,
       planPrice: planPrice,
       dentistName: dentistName,
-      isExistingPatient: body.isExistingPatient,
-      dentistGenderPreference: body.dentistGenderPreference,
-      ...body // Include any additional fields
+      isExistingPatient: sanitizedData.isExistingPatient,
+      dentistGenderPreference: sanitizedData.dentistGenderPreference,
+      ...sanitizedData // Include all sanitized fields
     };
 
     // 🛠️ SAVE APPLICATION FIRST (before trying email)
@@ -221,23 +266,23 @@ export async function POST(request: NextRequest) {
     await saveApplicationToFile(submission);
     console.log('✅ Saved submission to file - ID:', applicationId);
 
-    // Prepare email data
+    // Prepare email data using sanitized inputs
     const emailData = {
-      firstName: body.firstName,
-      lastName: body.lastName,
-      email: body.email,
+      firstName: sanitizedData.firstName,
+      lastName: sanitizedData.lastName,
+      email: sanitizedData.email,
       planName: planName,
       planPrice: planPrice,
       applicationId: applicationId,
-      isFamily: body.selectedPlan === 'family',
-      partnerFirstName: body.partnerFirstName || '',
-      partnerLastName: body.partnerLastName || '',
+      isFamily: sanitizedData.selectedPlan === 'family',
+      partnerFirstName: sanitizedData.partnerFirstName || '',
+      partnerLastName: sanitizedData.partnerLastName || '',
       dentistName: dentistName,
-      partnerDentistName: body.selectedPlan === 'family' ? getPartnerDentistName(body) : '',
-      accountHolderName: body.accountHolderName,
-      familyMembers: body.familyMembers || [],
-      isClinicSignup: body.isClinicSignup || false,
-      staffMemberName: body.staffMemberName || ''
+      partnerDentistName: sanitizedData.selectedPlan === 'family' ? getPartnerDentistName(sanitizedData) : '',
+      accountHolderName: sanitizedData.accountHolderName,
+      familyMembers: sanitizedData.familyMembers || [],
+      isClinicSignup: sanitizedData.isClinicSignup || false,
+      staffMemberName: sanitizedData.staffMemberName || ''
     };
 
     // ✅ TRY TO SEND EMAIL (but don't fail the whole thing if email fails)
@@ -286,15 +331,35 @@ export async function POST(request: NextRequest) {
     };
 
     console.log('✅ Submission complete:', { success: true, applicationId, emailSent });
-    return NextResponse.json(response);
+
+    // Create response with security headers
+    const successResponse = NextResponse.json(response);
+    Object.entries(securityHeaders).forEach(([key, value]) => {
+      successResponse.headers.set(key, value);
+    });
+
+    // Add rate limit headers
+    successResponse.headers.set('X-RateLimit-Limit', '3');
+    successResponse.headers.set('X-RateLimit-Remaining', securityValidation.rateLimitResult.remaining?.toString() || '0');
+    successResponse.headers.set('X-RateLimit-Reset', securityValidation.rateLimitResult.resetTime?.toString() || '');
+
+    return successResponse;
 
   } catch (error) {
     console.error('❌ Membership submission error:', error);
-    return NextResponse.json({
+
+    const errorResponse = NextResponse.json({
       success: false,
       error: 'Failed to submit membership application',
       details: error instanceof Error ? error.message : 'Unknown error'
     }, { status: 500 });
+
+    // Add security headers to error response
+    Object.entries(securityHeaders).forEach(([key, value]) => {
+      errorResponse.headers.set(key, value);
+    });
+
+    return errorResponse;
   }
 }
 

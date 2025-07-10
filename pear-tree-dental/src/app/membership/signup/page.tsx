@@ -200,11 +200,75 @@ export default function MembershipSignupPage() {
 
   const currentPlan = selectedPlan ? plans[selectedPlan as keyof typeof plans] : plans.planB;
 
+  // Secure input handlers for financial data
+  const handleSortCodeChange = (value: string) => {
+    // Remove all non-numeric characters except hyphens
+    let cleaned = value.replace(/[^0-9-]/g, '');
+
+    // Format as XX-XX-XX
+    if (cleaned.length <= 6) {
+      cleaned = cleaned.replace(/[^0-9]/g, ''); // Remove hyphens for processing
+      if (cleaned.length >= 2) {
+        cleaned = cleaned.substring(0, 2) + '-' + cleaned.substring(2);
+      }
+      if (cleaned.length >= 5) {
+        cleaned = cleaned.substring(0, 5) + '-' + cleaned.substring(5, 7);
+      }
+    }
+
+    // Limit to 8 characters (XX-XX-XX format)
+    cleaned = cleaned.substring(0, 8);
+    handleInputChange("sortCode", cleaned);
+  };
+
+  const handleAccountNumberChange = (value: string) => {
+    // Remove all non-numeric characters
+    const cleaned = value.replace(/[^0-9]/g, '');
+    // Limit to 8 digits
+    const limited = cleaned.substring(0, 8);
+    handleInputChange("accountNumber", limited);
+  };
+
+  // Secure input sanitizer for text fields
+  const sanitizeTextInput = (value: string, fieldName: string): string => {
+    // Remove potentially dangerous characters and limit length
+    const sanitized = value
+      .replace(/[<>"/\\&']/g, '') // Remove HTML/script injection chars
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim();
+
+    // Field-specific length limits
+    const maxLengths: { [key: string]: number } = {
+      firstName: 50,
+      lastName: 50,
+      email: 100,
+      phone: 20,
+      address: 200,
+      postcode: 10,
+      accountHolderName: 100
+    };
+
+    const maxLength = maxLengths[fieldName] || 100;
+    return sanitized.substring(0, maxLength);
+  };
+
+  // Base handleInputChange function
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+  };
+
+  // Enhanced handleInputChange with security
+  const secureHandleInputChange = (field: string, value: string | boolean) => {
+    if (typeof value === 'string') {
+      // Apply sanitization to text inputs
+      const sanitizedValue = sanitizeTextInput(value, field);
+      handleInputChange(field, sanitizedValue);
+    } else {
+      handleInputChange(field, value);
+    }
   };
 
   const nextStep = () => {
@@ -303,8 +367,6 @@ export default function MembershipSignupPage() {
         alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
         return;
       }
-
-
 
       console.log("Submitting membership signup:", formData);
 
@@ -791,7 +853,7 @@ export default function MembershipSignupPage() {
                       <select
                         className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                         value={formData.title}
-                        onChange={(e) => handleInputChange("title", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("title", e.target.value)}
                       >
                         <option value="">Select Title</option>
                         <option value="Mr">Mr</option>
@@ -808,10 +870,15 @@ export default function MembershipSignupPage() {
                       <Label htmlFor="firstName">First Name *</Label>
                       <Input
                         id="firstName"
+                        type="text"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.firstName}
-                        onChange={(e) => handleInputChange("firstName", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("firstName", e.target.value)}
                         placeholder="Enter your first name"
                         className="mt-1"
+                        maxLength={50}
+                        autoComplete="given-name"
+                        spellCheck={false}
                       />
                     </div>
 
@@ -819,10 +886,15 @@ export default function MembershipSignupPage() {
                       <Label htmlFor="lastName">Last Name *</Label>
                       <Input
                         id="lastName"
+                        type="text"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.lastName}
-                        onChange={(e) => handleInputChange("lastName", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("lastName", e.target.value)}
                         placeholder="Enter your last name"
                         className="mt-1"
+                        maxLength={50}
+                        autoComplete="family-name"
+                        spellCheck={false}
                       />
                     </div>
 
@@ -831,10 +903,14 @@ export default function MembershipSignupPage() {
                       <Input
                         id="email"
                         type="email"
+                        inputMode="email"
                         value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("email", e.target.value.toLowerCase())}
                         placeholder="your.email@example.com"
                         className="mt-1"
+                        maxLength={100}
+                        autoComplete="email"
+                        spellCheck={false}
                       />
                     </div>
 
@@ -843,10 +919,14 @@ export default function MembershipSignupPage() {
                       <Input
                         id="phone"
                         type="tel"
+                        inputMode="tel"
+                        pattern="[0-9\s\+\-\(\)]*"
                         value={formData.phone}
-                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("phone", e.target.value)}
                         placeholder="07xxx xxx xxx"
                         className="mt-1"
+                        maxLength={20}
+                        autoComplete="tel"
                       />
                     </div>
 
@@ -856,8 +936,10 @@ export default function MembershipSignupPage() {
                         id="dateOfBirth"
                         type="date"
                         value={formData.dateOfBirth}
-                        onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("dateOfBirth", e.target.value)}
                         className="mt-1"
+                        max={new Date(new Date().setFullYear(new Date().getFullYear() - 16)).toISOString().split('T')[0]}
+                        min={new Date(new Date().setFullYear(new Date().getFullYear() - 120)).toISOString().split('T')[0]}
                       />
                     </div>
 
@@ -865,10 +947,15 @@ export default function MembershipSignupPage() {
                       <Label htmlFor="postcode">Postcode *</Label>
                       <Input
                         id="postcode"
+                        type="text"
+                        pattern="[A-Za-z0-9\s]*"
                         value={formData.postcode}
-                        onChange={(e) => handleInputChange("postcode", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("postcode", e.target.value.toUpperCase())}
                         placeholder="NG14 5DP"
-                        className="mt-1"
+                        className="mt-1 uppercase"
+                        maxLength={10}
+                        autoComplete="postal-code"
+                        spellCheck={false}
                       />
                     </div>
 
@@ -876,14 +963,15 @@ export default function MembershipSignupPage() {
                       <Label htmlFor="address">Address *</Label>
                       <Input
                         id="address"
+                        type="text"
                         value={formData.address}
-                        onChange={(e) => handleInputChange("address", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("address", e.target.value)}
                         placeholder="Enter your full address"
                         className="mt-1"
+                        maxLength={200}
+                        autoComplete="street-address"
                       />
                     </div>
-
-
 
                     {/* Partner Details Section - Only for Family Plans */}
                     {selectedPlan === 'family' && (
@@ -906,7 +994,7 @@ export default function MembershipSignupPage() {
                               <select
                                 className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                                 value={formData.partnerTitle}
-                                onChange={(e) => handleInputChange("partnerTitle", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerTitle", e.target.value)}
                               >
                                 <option value="">Select Title</option>
                                 <option value="Mr">Mr</option>
@@ -924,7 +1012,7 @@ export default function MembershipSignupPage() {
                               <Input
                                 id="partnerFirstName"
                                 value={formData.partnerFirstName}
-                                onChange={(e) => handleInputChange("partnerFirstName", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerFirstName", e.target.value)}
                                 placeholder="Enter partner's first name"
                                 className="mt-1"
                               />
@@ -935,7 +1023,7 @@ export default function MembershipSignupPage() {
                               <Input
                                 id="partnerLastName"
                                 value={formData.partnerLastName}
-                                onChange={(e) => handleInputChange("partnerLastName", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerLastName", e.target.value)}
                                 placeholder="Enter partner's last name"
                                 className="mt-1"
                               />
@@ -947,7 +1035,7 @@ export default function MembershipSignupPage() {
                                 id="partnerEmail"
                                 type="email"
                                 value={formData.partnerEmail}
-                                onChange={(e) => handleInputChange("partnerEmail", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerEmail", e.target.value)}
                                 placeholder="partner.email@example.com"
                                 className="mt-1"
                               />
@@ -959,7 +1047,7 @@ export default function MembershipSignupPage() {
                                 id="partnerPhone"
                                 type="tel"
                                 value={formData.partnerPhone}
-                                onChange={(e) => handleInputChange("partnerPhone", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerPhone", e.target.value)}
                                 placeholder="07xxx xxx xxx"
                                 className="mt-1"
                               />
@@ -971,7 +1059,7 @@ export default function MembershipSignupPage() {
                                 id="partnerDateOfBirth"
                                 type="date"
                                 value={formData.partnerDateOfBirth}
-                                onChange={(e) => handleInputChange("partnerDateOfBirth", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("partnerDateOfBirth", e.target.value)}
                                 className="mt-1"
                               />
                             </div>
@@ -991,7 +1079,7 @@ export default function MembershipSignupPage() {
                                       name="partnerExistingPatient"
                                       value="yes"
                                       checked={formData.partnerIsExistingPatient === 'yes'}
-                                      onChange={(e) => handleInputChange("partnerIsExistingPatient", e.target.value)}
+                                      onChange={(e) => secureHandleInputChange("partnerIsExistingPatient", e.target.value)}
                                       className="text-purple-600"
                                     />
                                     <span>Yes, existing patient</span>
@@ -1002,7 +1090,7 @@ export default function MembershipSignupPage() {
                                       name="partnerExistingPatient"
                                       value="no"
                                       checked={formData.partnerIsExistingPatient === 'no'}
-                                      onChange={(e) => handleInputChange("partnerIsExistingPatient", e.target.value)}
+                                      onChange={(e) => secureHandleInputChange("partnerIsExistingPatient", e.target.value)}
                                       className="text-purple-600"
                                     />
                                     <span>No, new to the practice</span>
@@ -1018,7 +1106,7 @@ export default function MembershipSignupPage() {
                                     id="partnerPreferredDentist"
                                     className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                                     value={formData.partnerPreferredDentist}
-                                    onChange={(e) => handleInputChange("partnerPreferredDentist", e.target.value)}
+                                    onChange={(e) => secureHandleInputChange("partnerPreferredDentist", e.target.value)}
                                   >
                                     <option value="">Confirm your partner's current dentist</option>
                                     <option value="Javaad Mirza">Javaad Mirza (MD, BDS)</option>
@@ -1039,7 +1127,7 @@ export default function MembershipSignupPage() {
                                         name="partnerDentistGenderPreference"
                                         value="male"
                                         checked={formData.partnerDentistGenderPreference === 'male'}
-                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        onChange={(e) => secureHandleInputChange("partnerDentistGenderPreference", e.target.value)}
                                         className="text-purple-600"
                                       />
                                       <span>Male dentist</span>
@@ -1050,7 +1138,7 @@ export default function MembershipSignupPage() {
                                         name="partnerDentistGenderPreference"
                                         value="female"
                                         checked={formData.partnerDentistGenderPreference === 'female'}
-                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        onChange={(e) => secureHandleInputChange("partnerDentistGenderPreference", e.target.value)}
                                         className="text-purple-600"
                                       />
                                       <span>Female dentist</span>
@@ -1061,7 +1149,7 @@ export default function MembershipSignupPage() {
                                         name="partnerDentistGenderPreference"
                                         value="no-preference"
                                         checked={formData.partnerDentistGenderPreference === 'no-preference'}
-                                        onChange={(e) => handleInputChange("partnerDentistGenderPreference", e.target.value)}
+                                        onChange={(e) => secureHandleInputChange("partnerDentistGenderPreference", e.target.value)}
                                         className="text-purple-600"
                                       />
                                       <span>No preference</span>
@@ -1089,7 +1177,7 @@ export default function MembershipSignupPage() {
                                 name="existingPatient"
                                 value="yes"
                                 checked={formData.isExistingPatient === 'yes'}
-                                onChange={(e) => handleInputChange("isExistingPatient", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("isExistingPatient", e.target.value)}
                                 className="text-pear-primary"
                               />
                               <span>Yes, I'm an existing patient</span>
@@ -1100,7 +1188,7 @@ export default function MembershipSignupPage() {
                                 name="existingPatient"
                                 value="no"
                                 checked={formData.isExistingPatient === 'no'}
-                                onChange={(e) => handleInputChange("isExistingPatient", e.target.value)}
+                                onChange={(e) => secureHandleInputChange("isExistingPatient", e.target.value)}
                                 className="text-pear-primary"
                               />
                               <span>No, I'm new to the practice</span>
@@ -1116,7 +1204,7 @@ export default function MembershipSignupPage() {
                               id="preferredDentist"
                               className="w-full mt-2 p-3 border border-gray-300 rounded-md"
                               value={formData.preferredDentist}
-                              onChange={(e) => handleInputChange("preferredDentist", e.target.value)}
+                              onChange={(e) => secureHandleInputChange("preferredDentist", e.target.value)}
                             >
                               <option value="">Choose your current dentist</option>
                               <option value="Javaad Mirza">Javaad Mirza (MD, BDS)</option>
@@ -1146,7 +1234,7 @@ export default function MembershipSignupPage() {
                                     name="dentistGenderPreference"
                                     value="male"
                                     checked={formData.dentistGenderPreference === 'male'}
-                                    onChange={(e) => handleInputChange("dentistGenderPreference", e.target.value)}
+                                    onChange={(e) => secureHandleInputChange("dentistGenderPreference", e.target.value)}
                                     className="text-pear-primary"
                                   />
                                   <span>Male dentist</span>
@@ -1157,7 +1245,7 @@ export default function MembershipSignupPage() {
                                     name="dentistGenderPreference"
                                     value="female"
                                     checked={formData.dentistGenderPreference === 'female'}
-                                    onChange={(e) => handleInputChange("dentistGenderPreference", e.target.value)}
+                                    onChange={(e) => secureHandleInputChange("dentistGenderPreference", e.target.value)}
                                     className="text-pear-primary"
                                   />
                                   <span>Female dentist</span>
@@ -1168,7 +1256,7 @@ export default function MembershipSignupPage() {
                                     name="dentistGenderPreference"
                                     value="no-preference"
                                     checked={formData.dentistGenderPreference === 'no-preference'}
-                                    onChange={(e) => handleInputChange("dentistGenderPreference", e.target.value)}
+                                    onChange={(e) => secureHandleInputChange("dentistGenderPreference", e.target.value)}
                                     className="text-pear-primary"
                                   />
                                   <span>No preference</span>
@@ -1201,7 +1289,7 @@ export default function MembershipSignupPage() {
                                 <Input
                                   id="staffMemberName"
                                   value={formData.staffMemberName}
-                                  onChange={(e) => handleInputChange("staffMemberName", e.target.value)}
+                                  onChange={(e) => secureHandleInputChange("staffMemberName", e.target.value)}
                                   placeholder="Enter staff member's full name"
                                   className="mt-1"
                                 />
@@ -1211,7 +1299,7 @@ export default function MembershipSignupPage() {
                                 <Input
                                   id="staffMemberId"
                                   value={formData.staffMemberId}
-                                  onChange={(e) => handleInputChange("staffMemberId", e.target.value)}
+                                  onChange={(e) => secureHandleInputChange("staffMemberId", e.target.value)}
                                   placeholder="Employee ID or initials"
                                   className="mt-1"
                                 />
@@ -1348,17 +1436,20 @@ export default function MembershipSignupPage() {
                     </div>
                   </div>
 
-
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="md:col-span-2">
                       <Label htmlFor="accountHolderName">Account Holder Name *</Label>
                       <Input
                         id="accountHolderName"
+                        type="text"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.accountHolderName}
-                        onChange={(e) => handleInputChange("accountHolderName", e.target.value)}
+                        onChange={(e) => secureHandleInputChange("accountHolderName", e.target.value)}
                         placeholder="Name as it appears on your bank account"
                         className="mt-1"
+                        maxLength={100}
+                        autoComplete="name"
+                        spellCheck={false}
                       />
                     </div>
 
@@ -1366,26 +1457,37 @@ export default function MembershipSignupPage() {
                       <Label htmlFor="sortCode">Sort Code *</Label>
                       <Input
                         id="sortCode"
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9-]*"
                         value={formData.sortCode}
-                        onChange={(e) => handleInputChange("sortCode", e.target.value)}
+                        onChange={(e) => handleSortCodeChange(e.target.value)}
                         placeholder="12-34-56"
                         maxLength={8}
-                        className="mt-1"
+                        className="mt-1 font-mono"
+                        autoComplete="off"
+                        spellCheck={false}
                       />
+                      <p className="text-xs text-gray-500 mt-1">Format: XX-XX-XX</p>
                     </div>
 
                     <div>
                       <Label htmlFor="accountNumber">Account Number *</Label>
                       <Input
                         id="accountNumber"
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
                         value={formData.accountNumber}
-                        onChange={(e) => handleInputChange("accountNumber", e.target.value)}
+                        onChange={(e) => handleAccountNumberChange(e.target.value)}
                         placeholder="12345678"
                         maxLength={8}
-                        className="mt-1"
+                        className="mt-1 font-mono"
+                        autoComplete="off"
+                        spellCheck={false}
                       />
+                      <p className="text-xs text-gray-500 mt-1">6-8 digits only</p>
                     </div>
-
 
                   </div>
 
@@ -1419,12 +1521,6 @@ export default function MembershipSignupPage() {
                       </p>
                     </div>
                   </div>
-
-
-
-
-
-
 
                   <div className="flex justify-between mt-8">
                     <Button onClick={prevStep} variant="outline">
@@ -1822,7 +1918,7 @@ export default function MembershipSignupPage() {
                           type="checkbox"
                           id="termsAcceptance"
                           checked={formData.membershipTermsRead}
-                          onChange={(e) => handleInputChange("membershipTermsRead", e.target.checked)}
+                          onChange={(e) => secureHandleInputChange("membershipTermsRead", e.target.checked)}
                           className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                           required
                         />
@@ -1830,8 +1926,6 @@ export default function MembershipSignupPage() {
                           I have read and accept all Terms & Conditions (membership plan and website terms) *
                         </label>
                       </div>
-
-
                     </div>
                   </div>
 
@@ -1842,7 +1936,7 @@ export default function MembershipSignupPage() {
                         type="checkbox"
                         id="directDebitAuth"
                         checked={formData.directDebitConfirmed}
-                        onChange={(e) => handleInputChange("directDebitConfirmed", e.target.checked)}
+                        onChange={(e) => secureHandleInputChange("directDebitConfirmed", e.target.checked)}
                         className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="directDebitAuth" className="text-sm text-gray-700">
@@ -1850,14 +1944,12 @@ export default function MembershipSignupPage() {
                       </label>
                     </div>
 
-
-
                     <div className="flex items-start space-x-3">
                       <input
                         type="checkbox"
                         id="marketing"
                         checked={formData.marketingConsent}
-                        onChange={(e) => handleInputChange("marketingConsent", e.target.checked)}
+                        onChange={(e) => secureHandleInputChange("marketingConsent", e.target.checked)}
                         className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="marketing" className="text-sm text-gray-700">
@@ -1870,7 +1962,7 @@ export default function MembershipSignupPage() {
                         type="checkbox"
                         id="communication"
                         checked={formData.communicationPreference === "email"}
-                        onChange={(e) => handleInputChange("communicationPreference", e.target.checked ? "email" : "post")}
+                        onChange={(e) => secureHandleInputChange("communicationPreference", e.target.checked ? "email" : "post")}
                         className="mt-1 h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                       />
                       <label htmlFor="communication" className="text-sm text-gray-700">
