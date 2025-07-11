@@ -92,7 +92,7 @@ const TreatmentJourney = () => {
       icon: CreditCard,
       image: "payment",
       mediaType: "image" as const,
-      imagePath: "/images/treatment-journey/payment.webp?v=310",
+      imagePath: "", // Removed - will show pink placeholder
       imageDescription: "Payment options and financial planning consultation",
       features: [
         "Transparent pricing",
@@ -327,12 +327,12 @@ const TreatmentJourney = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent" />
                           </>
                         ) : (
-                          <div className="bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center h-full">
+                          <div className="bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center h-full">
                             <div className="text-center px-4">
-                              <h4 className="text-base sm:text-lg font-bold text-gray-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
-                              <p className="text-gray-600 text-xs sm:text-sm">{step.imageDescription}</p>
+                              <h4 className="text-base sm:text-lg font-bold text-pink-700 mb-2">{step.image.toUpperCase()} IMAGE</h4>
+                              <p className="text-pink-600 text-xs sm:text-sm">{step.imageDescription}</p>
                             </div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-pink-400/30 to-transparent" />
                           </div>
                         )}
 

@@ -167,7 +167,7 @@ const Navigation = () => {
                 <div className="brand-logo text-lg sm:text-xl md:text-2xl lg:text-3xl text-pear-primary">
                   PEAR TREE
                 </div>
-                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-1">
+                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-1 xl:text-center">
                   DENTAL
                 </div>
               </div>
@@ -437,7 +437,7 @@ const Navigation = () => {
                 <div className="brand-logo text-sm sm:text-lg md:text-xl text-white">
                   PEAR TREE
                 </div>
-                <div className="brand-subtitle text-xs text-white/80 mt-1">
+                <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center">
                   DENTAL
                 </div>
               </div>

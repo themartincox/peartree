@@ -122,7 +122,10 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     console.log('📧 About to send practice notification...');
 
     // Send practice notifications individually with detailed logging
-    const practiceEmails = ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'];
+    // Note: membership@peartree.dental is an alias of hello@peartree.dental
+    // Google blocks emails sent from hello@ to membership@ (alias loop protection)
+    // Since both go to the same inbox, we only send to hello@ to avoid delivery issues
+    const practiceEmails = ['hello@peartree.dental', 'Javaad.mirza@gmail.com'];
     const practiceResults = [];
 
     for (const practiceEmail of practiceEmails) {
@@ -134,6 +137,7 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
             name: 'Pear Tree Dental Centre',
             address: process.env.EMAIL_USER || 'hello@peartree.dental'
           },
+          replyTo: 'hello@peartree.dental', // Still reply to hello@
           to: practiceEmail, // Single recipient
           subject: `New Membership Signup: ${data.firstName} ${data.lastName} - ${data.planName} (${data.applicationId})`,
           html: generateInternalNotificationHTML(data)

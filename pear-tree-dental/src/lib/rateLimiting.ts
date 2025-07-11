@@ -113,13 +113,13 @@ export function validateRequest(request: Request): { valid: boolean; error?: str
     return { valid: false, error: 'Invalid user agent' };
   }
 
-  // Check for common bot patterns
+  // Check for common bot patterns - but allow legitimate browsers
   const suspiciousPatterns = [
     /bot|crawler|spider|scraper/i,
-    /python|curl|wget|postman/i,
     /automated|script/i
   ];
 
+  // Only block obvious bots, not development tools
   if (suspiciousPatterns.some(pattern => pattern.test(userAgent))) {
     return { valid: false, error: 'Automated requests not allowed' };
   }
