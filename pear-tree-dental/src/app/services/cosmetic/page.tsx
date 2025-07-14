@@ -6,6 +6,8 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import ServiceHero from "@/components/ServiceHero";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
 import Link from "next/link";
 import {
   Sparkles,
@@ -219,95 +221,8 @@ export default function CosmeticDentistryPage() {
         serviceName="Cosmetic Dentistry"
         faqs={cosmeticFAQs}
       />
-      {/* Hero Section - Cosmetic Theme */}
-      <section className="pt-32 pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <Badge variant="secondary" className="bg-soft-pink text-white">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Cosmetic Dentistry
-              </Badge>
-
-              <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary leading-tight">
-                Transform Your
-                <span className="text-soft-pink block">Smile Today</span>
-              </h1>
-
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Discover the confidence that comes with a perfect smile. Our expert cosmetic treatments
-                use the latest techniques to give you the smile you've always dreamed of.
-              </p>
-
-              {/* Key Benefits */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-soft-pink" />
-                  <span className="text-sm font-medium">Immediate results</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-soft-pink" />
-                  <span className="text-sm font-medium">Natural-looking</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-soft-pink" />
-                  <span className="text-sm font-medium">Long-lasting</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-soft-pink" />
-                  <span className="text-sm font-medium">Payment plans</span>
-                </div>
-              </div>
-
-              {/* Primary CTA */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold group">Book Smile Consultation
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white">
-                  <Camera className="w-5 h-5 mr-2" />
-                  View Before & After
-                </Button>
-              </div>
-
-              {/* Trust indicators */}
-              <div className="flex items-center space-x-6 text-sm text-gray-600">
-                <div className="flex items-center space-x-2">
-                  <Star className="w-4 h-4 text-pear-gold fill-current" />
-                  <span>5-star rated</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Shield className="w-4 h-4 text-dental-green" />
-                  <span>GDC registered</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-pear-primary" />
-                  <span>20+ years experience</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image Placeholder */}
-            <div className="relative">
-              <Card className="bg-gradient-to-br from-soft-pink to-soft-lavender text-white p-8 h-96">
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-semibold">See Your New Smile</h3>
-                  <p className="text-white/90">
-                    We use advanced digital technology to show you exactly how your
-                    new smile will look before treatment begins.
-                  </p>
-                  <Button variant="secondary" className="bg-white text-soft-pink hover:bg-white/90">
-                    Virtual Smile Preview
-                  </Button>
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-16 h-16 bg-white/20 rounded-full" />
-                <div className="absolute bottom-4 right-8 w-8 h-8 bg-white/30 rounded-full" />
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Section */}
+      <ServiceHero {...getServiceHeroConfig("/services/cosmetic")} />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white">
@@ -384,9 +299,9 @@ export default function CosmeticDentistryPage() {
                   {/* Social Proof Badge */}
                   {treatment.socialProof && (
                     <div className="mb-6">
-                      <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-4 py-2">
-                        <Star className="w-4 h-4 text-pear-gold mr-2 fill-current" />
-                        <span className="text-sm font-semibold text-pear-gold">{treatment.socialProof}</span>
+                      <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-4 py-2">
+                        <Star className="w-4 h-4 text-white mr-2 fill-current" />
+                        <span className="text-sm font-semibold text-white">{treatment.socialProof}</span>
                       </div>
                     </div>
                   )}

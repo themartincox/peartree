@@ -34,6 +34,18 @@ import {
   ChevronRight
 } from "lucide-react";
 
+// Icon mapping for benefits
+const iconMap = {
+  Star,
+  Heart,
+  Award,
+  Clock,
+  Shield,
+  Smile,
+  CheckCircle,
+  ArrowRight
+};
+
 export const metadata: Metadata = {
   title: "Complete Smile Makeover Burton Joyce | Total Smile Transformation | Pear Tree Dental",
   description: "Complete smile makeover in Burton Joyce. Transform your smile with veneers, whitening, crowns, and orthodontics. Comprehensive smile transformation from £2,500.",
@@ -225,32 +237,32 @@ export default function CompleteSmileMakeoverPage() {
 
   const benefits = [
     {
-      icon: Star,
+      icon: "Star",
       title: "Dramatic Transformation",
       description: "Complete smile redesign addressing all aesthetic and functional concerns"
     },
     {
-      icon: Heart,
+      icon: "Heart",
       title: "Boosted Confidence",
       description: "Renewed self-confidence and improved quality of life"
     },
     {
-      icon: Award,
+      icon: "Award",
       title: "Expert Planning",
       description: "Comprehensive treatment planning by experienced cosmetic dentists"
     },
     {
-      icon: Clock,
+      icon: "Clock",
       title: "Efficient Timeline",
       description: "Coordinated treatments for optimal results in minimal time"
     },
     {
-      icon: Shield,
+      icon: "Shield",
       title: "Long-term Investment",
       description: "Durable results that enhance your appearance for years to come"
     },
     {
-      icon: Smile,
+      icon: "Smile",
       title: "Natural Appearance",
       description: "Beautiful, natural-looking results that complement your facial features"
     }
@@ -429,7 +441,7 @@ export default function CompleteSmileMakeoverPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit) => {
-              const Icon = benefit.icon;
+              const Icon = iconMap[benefit.icon as keyof typeof iconMap] || Star;
               return (
                 <div key={benefit.title} className="text-center">
                   <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -649,7 +661,7 @@ export default function CompleteSmileMakeoverPage() {
                   </div>
                 )}
               </Card>
-            )})
+            )})}
           </div>
         </div>
       </section>

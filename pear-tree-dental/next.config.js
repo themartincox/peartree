@@ -166,7 +166,7 @@ const nextConfig = {
     ];
   },
 
-  // Exclude problematic routes from build - TEMPORARILY DISABLED for redirect loop debugging
+  // SEO redirects for moved pages
   async redirects() {
     return [
       // Temporarily commented out to fix redirect loop
@@ -180,6 +180,45 @@ const nextConfig = {
       //   destination: '/',
       //   permanent: false,
       // },
+
+      // 301 redirects for moved pages to preserve SEO value
+      {
+        source: '/smile-design',
+        destination: '/services/smile-design',
+        permanent: true,
+      },
+      {
+        source: '/urgent-dental-pain',
+        destination: '/services/emergency/urgent-dental-pain',
+        permanent: true,
+      },
+      {
+        source: '/wedding-day-smile',
+        destination: '/services/cosmetic/wedding-day-smile',
+        permanent: true,
+      },
+      {
+        source: '/veneers',
+        destination: '/services/cosmetic/veneers',
+        permanent: true,
+      },
+
+      // Redirect duplicate service directories to proper locations
+      {
+        source: '/services/clearcorrect',
+        destination: '/services/orthodontics/clearcorrect',
+        permanent: true,
+      },
+      {
+        source: '/services/invisalign',
+        destination: '/services/orthodontics/invisalign',
+        permanent: true,
+      },
+      {
+        source: '/services/teeth-whitening',
+        destination: '/services/cosmetic/teeth-whitening',
+        permanent: true,
+      },
     ]
   },
 

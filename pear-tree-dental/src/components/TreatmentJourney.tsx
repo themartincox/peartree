@@ -92,7 +92,7 @@ const TreatmentJourney = () => {
       icon: CreditCard,
       image: "payment",
       mediaType: "image" as const,
-      imagePath: "", // Removed - will show pink placeholder
+      imagePath: "/images/treatment-journey/payment-consultation.webp",
       imageDescription: "Payment options and financial planning consultation",
       features: [
         "Transparent pricing",

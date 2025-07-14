@@ -231,9 +231,9 @@ export default function CompositeEdgeBondingPage() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
-                <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
-                <span className="text-sm font-semibold text-pear-gold">Over 500 successful edge bonding treatments</span>
+              <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-6 py-3">
+                <Star className="w-5 h-5 text-white mr-2 fill-current" />
+                <span className="text-sm font-semibold text-white">Over 500 successful edge bonding treatments</span>
               </div>
 
               {/* Key Features */}
