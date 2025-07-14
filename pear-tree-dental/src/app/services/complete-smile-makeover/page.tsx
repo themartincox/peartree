@@ -384,7 +384,7 @@ export default function CompleteSmileMakeoverPage() {
                       ))}
                     </div>
                   </div>
-                  <h3 className="text-2xl font-semibold text-pear-primary">Life-Changing Results</h3>
+                  <h3 className="text-2xl font-semibold text-pear-primary">Life Changing Results.</h3>
                   <p className="text-gray-600">
                     Our complete smile makeovers combine multiple advanced treatments
                     for comprehensive transformations that enhance both appearance and confidence.
@@ -612,17 +612,30 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <Card key={step.step} className="text-center relative">
+            {process.map((step, index) => {
+              const colorClasses = [
+                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
+                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
+                "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
+                "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90"
+              ];
+              const accentColors = [
+                "text-pear-primary",
+                "text-pear-gold",
+                "text-pear-primary",
+                "text-pear-gold"
+              ];
+              return (
+              <Card key={step.step} className="text-center relative hover:shadow-xl hover:shadow-pear-gold/20 hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group cursor-pointer">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                  <div className={`w-14 h-14 ${colorClasses[index]} rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
                     {step.step}
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
                   <p className="text-sm text-gray-600 mb-3">{step.description}</p>
                   <div className="flex items-center justify-center space-x-2 mb-3">
-                    <Clock className="w-4 h-4 text-rose-600" />
-                    <span className="text-xs text-rose-600 font-medium">{step.duration}</span>
+                    <Clock className={`w-4 h-4 ${accentColors[index]}`} />
+                    <span className={`text-xs ${accentColors[index]} font-medium`}>{step.duration}</span>
                   </div>
                   <ul className="text-xs text-gray-500 space-y-1">
                     {step.includes.map((item, idx) => (
@@ -632,11 +645,11 @@ export default function CompleteSmileMakeoverPage() {
                 </CardContent>
                 {index < process.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="w-8 h-8 text-rose-300" />
+                    <ArrowRight className="w-8 h-8 text-pear-gold/60" />
                   </div>
                 )}
               </Card>
-            ))}
+            )})
           </div>
         </div>
       </section>

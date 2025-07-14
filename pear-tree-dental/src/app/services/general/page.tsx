@@ -152,7 +152,7 @@ export default function GeneralDentistryPage() {
                   <div className="text-sm text-gray-600">Family friendly</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-dental-green">Same Day</div>
+                  <div className="text-2xl font-bold text-dental-green">Priority</div>
                   <div className="text-sm text-gray-600">Appointments</div>
                 </div>
               </div>
@@ -204,7 +204,7 @@ export default function GeneralDentistryPage() {
                 title: "Dental Check-ups",
                 description: "Comprehensive examinations to detect issues early",
                 features: ["Full oral examination", "Digital X-rays", "Oral cancer screening", "Treatment planning"],
-                price: "From £45",
+                price: "From £60",
                 icon: Stethoscope
               },
               {
@@ -218,7 +218,7 @@ export default function GeneralDentistryPage() {
                 title: "Fillings",
                 description: "White composite and amalgam fillings for cavities",
                 features: ["Tooth-colored fillings", "Pain-free treatment", "Same-day completion", "Natural appearance"],
-                price: "From £120",
+                price: "From £150",
                 icon: Heart
               },
               {
@@ -245,27 +245,27 @@ export default function GeneralDentistryPage() {
             ].map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
+                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green/10 border-2 border-dental-green/20 hover:border-dental-green hover:shadow-xl hover:shadow-dental-green/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-dental-green" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
+                        <Icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg text-pear-primary">{service.title}</h3>
+                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-dental-green transition-colors duration-300">{service.title}</h3>
                       </div>
                     </div>
-                    <p className="text-gray-600">{service.description}</p>
+                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{service.description}</p>
                     <ul className="space-y-1">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
-                          <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
+                          <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-3 border-t">
-                      <div className="text-dental-green font-semibold">{service.price}</div>
+                    <div className="pt-3 border-t border-dental-green/20 group-hover:border-dental-green/40 transition-colors duration-300">
+                      <div className="text-dental-green font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
                 </Card>
@@ -355,7 +355,7 @@ export default function GeneralDentistryPage() {
                 <CalendarDays className="w-5 h-5 mr-2" />
                 Book NHS Appointment
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
+              <Button size="lg" variant="outline" className="border-white text-dental-green hover:bg-white hover:text-dental-green">
                 <Phone className="w-5 h-5 mr-2" />
                 Call 0115 931 2935
               </Button>

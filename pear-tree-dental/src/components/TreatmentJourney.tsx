@@ -242,13 +242,21 @@ const TreatmentJourney = () => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
 
+          const colorClasses = [
+            "bg-gradient-to-br from-pear-primary to-pear-primary/80",
+            "bg-gradient-to-br from-pear-gold to-pear-gold/80",
+            "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
+            "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90",
+            "bg-gradient-to-br from-pear-primary to-pear-gold"
+          ];
+
           return (
             <div
               key={`step-${index}`}
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center bg-white transition-all duration-500 ease-out"
+              className="step-item-wrapper h-screen flex items-center justify-center bg-white transition-all duration-500 ease-out group"
               style={{
                 zIndex: 10 + index,
               }}
@@ -261,11 +269,13 @@ const TreatmentJourney = () => {
                   {/* Content */}
                   <div className={`space-y-4 sm:space-y-6 ${isReverse ? 'lg:col-start-2' : ''}`}>
                     <div className="flex items-center space-x-3 sm:space-x-4">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 ${colorClasses[index]} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
-                        <h3 className="heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-pear-primary">
+                        <h3 className={`heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${
+                          index % 2 === 0 ? 'text-pear-primary group-hover:text-pear-gold' : 'text-pear-primary group-hover:text-pear-primary/80'
+                        }`}>
                           {step.title}
                         </h3>
                       </div>
@@ -296,7 +306,7 @@ const TreatmentJourney = () => {
 
                   {/* Image/Video */}
                   <div className={`${isReverse ? 'lg:col-start-1' : 'lg:col-start-2'}`}>
-                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold/20 group-hover:shadow-3xl transition-all duration-300 group-hover:rotate-1">
                       <div className="aspect-[4/3] relative">
                         {step.mediaType === "video" ? (
                           <>

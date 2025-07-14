@@ -83,9 +83,9 @@ export default function CosmeticDentistryPage() {
     {
       name: "Dental Veneers",
       description: "Transform your smile with ultra-thin, porcelain, or composite veneers - choose your perfect option",
-      price: getTreatmentPrice("Composite Veneers"),
+      price: "From £700",
       duration: "Same day to 2-3 visits",
-      results: "Immediate to Permanent",
+      results: "Immediate to 10 years +",
       popular: false,
       link: "/veneers",
       socialProof: "Over 500 happy patients"
@@ -94,15 +94,15 @@ export default function CosmeticDentistryPage() {
       name: "Composite Bonding",
       description: "Quick and affordable solution for minor imperfections and gaps",
       price: getTreatmentPrice("Composite Edge Bonding"),
-      duration: "30-60 minutes",
-      results: "Immediate",
+      duration: "1 hour - 3 hours",
+      results: "Immediate - up to 7 years",
       popular: false,
       link: "/services/cosmetic/bonding"
     },
     {
       name: "Complete Smile Makeover",
       description: "Comprehensive transformation combining multiple treatments for your perfect smile",
-      price: getTreatmentPrice("Smile Makeover"),
+      price: "From £1,000",
       duration: "2-12 months",
       results: "Life-changing",
       popular: true,
@@ -114,7 +114,7 @@ export default function CosmeticDentistryPage() {
       description: "Perfect smile for your special day with timeline-based treatments for brides and grooms",
       price: "From £400",
       duration: "2 weeks to 6 months",
-      results: "Picture-perfect",
+      results: "Picture-perfect - whole life memories",
       popular: true,
       link: "/wedding-day-smile",
       socialProof: "500+ happy couples"
@@ -362,7 +362,7 @@ export default function CosmeticDentistryPage() {
               >
                 {treatment.popular && (
                   <div className="absolute top-0 left-0 right-0 bg-soft-pink text-white text-center py-2 text-sm font-semibold">
-                    Most Popular
+                    Transformational
                   </div>
                 )}
 
@@ -393,7 +393,7 @@ export default function CosmeticDentistryPage() {
 
                   <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                     <div>
-                      <span className="text-gray-500">Duration:</span>
+                      <span className="text-gray-500">Appointment Duration:</span>
                       <div className="font-medium text-pear-primary">{treatment.duration}</div>
                     </div>
                     <div>
@@ -436,22 +436,37 @@ export default function CosmeticDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <Card key={step.step} className="text-center relative">
+            {process.map((step, index) => {
+              const colorClasses = [
+                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
+                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
+                "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
+                "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90"
+              ];
+              const accentColors = [
+                "text-pear-primary",
+                "text-pear-gold",
+                "text-pear-primary",
+                "text-pear-gold"
+              ];
+              return (
+              <Card key={step.step} className="text-center relative hover:shadow-xl hover:shadow-soft-pink/20 hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group cursor-pointer">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+                  <div className={`w-14 h-14 ${colorClasses[index]} rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
                     {step.step}
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+                  <h3 className={`font-semibold mb-2 group-hover:${accentColors[index]} transition-colors duration-300`}>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{step.description}</p>
                 </CardContent>
                 {index < process.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="w-8 h-8 text-soft-pink/30" />
+                    <ArrowRight className="w-8 h-8 text-pear-gold/60 group-hover:text-pear-gold transition-colors duration-300" />
                   </div>
                 )}
               </Card>
-            ))}
+            )})}
           </div>
         </div>
       </section>
@@ -508,7 +523,7 @@ export default function CosmeticDentistryPage() {
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-soft-pink">
+                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 border-2 border-white">
                   Call 0115 931 2935
                 </Button>
               </div>

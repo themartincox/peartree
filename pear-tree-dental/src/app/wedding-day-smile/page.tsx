@@ -336,7 +336,7 @@ export default function WeddingDaySmilePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Why Plan Your Wedding Smile?
+              A Perfect Smile for a Magical Day
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Your smile will be captured in countless photos and memories that last a lifetime.
@@ -345,15 +345,27 @@ export default function WeddingDaySmilePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {timelineBenefits.map((benefit) => {
+            {timelineBenefits.map((benefit, index) => {
               const Icon = benefit.icon;
+              const colorClasses = [
+                "bg-gradient-to-br from-pear-primary/20 to-pear-primary/10",
+                "bg-gradient-to-br from-pear-gold/20 to-pear-gold/10",
+                "bg-gradient-to-br from-rose-100 to-pink-100",
+                "bg-gradient-to-br from-pear-gold/15 to-rose-100"
+              ];
+              const iconColors = [
+                "text-pear-primary",
+                "text-pear-gold",
+                "text-rose-600",
+                "text-rose-500"
+              ];
               return (
-                <div key={benefit.title} className="text-center">
-                  <div className="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-8 h-8 text-rose-600" />
+                <div key={benefit.title} className="text-center group cursor-pointer hover:scale-105 transition-all duration-300">
+                  <div className={`w-16 h-16 ${colorClasses[index]} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <Icon className={`w-8 h-8 ${iconColors[index]} group-hover:scale-110 transition-transform duration-300`} />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600">{benefit.description}</p>
+                  <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-rose-600 transition-colors duration-300">{benefit.title}</h3>
+                  <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{benefit.description}</p>
                 </div>
               );
             })}
@@ -377,15 +389,25 @@ export default function WeddingDaySmilePage() {
           <div className="space-y-12">
             {treatmentTimeline.map((treatment, index) => {
               const Icon = treatment.icon;
+              const colorClasses = [
+                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
+                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
+                "bg-gradient-to-br from-rose-500 to-pink-500"
+              ];
+              const borderColors = [
+                "border-2 border-pear-primary/30 hover:border-pear-primary",
+                "border-2 border-pear-gold/30 hover:border-pear-gold",
+                "border-2 border-rose-300 hover:border-rose-500"
+              ];
               return (
-                <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow border-2 border-rose-200">
+                <Card key={index} className={`overflow-hidden shadow-lg hover:shadow-xl hover:shadow-rose-200/30 hover:scale-[1.02] transition-all duration-300 group ${borderColors[index % borderColors.length]}`}>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Treatment Info */}
                     <div className="lg:col-span-2">
                       <CardHeader>
                         <div className="flex items-start space-x-4">
-                          <div className="w-12 h-12 bg-rose-500 rounded-xl flex items-center justify-center">
-                            <Icon className="w-6 h-6 text-white" />
+                          <div className={`w-14 h-14 ${colorClasses[index % colorClasses.length]} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                            <Icon className="w-7 h-7 text-white group-hover:scale-110 transition-transform duration-300" />
                           </div>
                           <div className="flex-1">
                             <div className="text-sm text-rose-600 font-medium mb-1">For {treatment.concern}</div>
