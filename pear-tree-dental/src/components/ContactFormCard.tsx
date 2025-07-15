@@ -126,7 +126,8 @@ export default function ContactFormCard({
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
-        <form className="space-y-6" action={formAction} method="POST" onSubmit={handleSubmit}>
+        <form className="space-y-6" action={formAction} method="POST" onSubmit={handleSubmit} data-netlify="true" name="contact-form">
+          <input type="hidden" name="form-name" value="contact-form" />
           {/* Core Name Fields */}
           <div className="grid sm:grid-cols-2 gap-4">
             <div>

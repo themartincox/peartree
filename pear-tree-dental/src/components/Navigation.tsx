@@ -371,10 +371,12 @@ const Navigation = () => {
                         Join Membership
                       </Button>
                     </Link>
-                    <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
-                      <Phone className="w-4 h-4 mr-2" />
-                      0115 931 2935
-                    </Button>
+                    <a href="tel:01159312935">
+                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
+                        <Phone className="w-4 h-4 mr-2" />
+                        0115 931 2935
+                      </Button>
+                    </a>
                   </div>
 
                   {/* Mobile Navigation Links */}

@@ -47,7 +47,7 @@ export default function ServiceStructuredData({
       "name": "Pear Tree Dental",
       "url": "https://peartree.dental",
       "telephone": "+44-115-931-2935",
-      "email": "info@peartree.dental",
+      "email": "hello@peartree.dental",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "22 Nottingham Road",

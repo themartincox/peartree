@@ -370,7 +370,7 @@ const FAQSection = () => {
         {
           id: "about11",
           question: "How can I contact the practice?",
-          answer: "You can call us at 0115 931 2935, email info@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We also offer online booking for your convenience."
+          answer: "You can call us at 0115 931 2935, email hello@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We also offer online booking for your convenience."
         }
       ]
     }
@@ -448,7 +448,7 @@ const FAQSection = () => {
                 <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">Still have questions?</h4>
                 <div className="text-xs sm:text-sm text-white/90 space-y-1 sm:space-y-2">
                   <p>Call us: <span className="font-semibold">0115 931 2935</span></p>
-                  <p>Email: <span className="font-semibold">info@peartree.dental</span></p>
+                  <p>Email: <span className="font-semibold">hello@peartree.dental</span></p>
                 </div>
               </div>
             </div>

@@ -82,6 +82,7 @@ export default function BookPage() {
             <ContactFormCard
               title="Book Your Appointment"
               description="Fill out the form below and we'll contact you to confirm your appointment time. For urgent dental emergencies, please call us directly at 0115 931 2935."
+              formAction="/success"
               submitText="Submit Booking Request"
               customField1={{
                 id: "bookingType",

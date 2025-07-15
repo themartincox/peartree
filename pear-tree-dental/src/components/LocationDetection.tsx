@@ -289,19 +289,30 @@ export default function LocationDetection() {
             </div>
 
             <div className="flex space-x-2">
-              <Button size="sm" className="flex-1 bg-dental-green hover:bg-dental-green/90 text-white">
-                <Phone className="w-4 h-4 mr-1" />
-                Call Now
+              <Button asChild size="sm" className="flex-1 bg-dental-green hover:bg-dental-green/90 text-white">
+                <a href="tel:01159312935">
+                  <Phone className="w-4 h-4 mr-1" />
+                  Call Now
+                </a>
               </Button>
-              {userLocation.pageUrl && (
-                <Button asChild variant="outline" size="sm" className="flex-1">
+              <Button asChild variant="outline" size="sm" className="flex-1">
+                <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noopener noreferrer">
+                  <Navigation className="w-4 h-4 mr-1" />
+                  Directions
+                </a>
+              </Button>
+            </div>
+
+            {userLocation.pageUrl && (
+              <div className="flex justify-center">
+                <Button asChild variant="link" size="sm" className="text-dental-green text-xs">
                   <Link href={userLocation.pageUrl}>
-                    <Navigation className="w-4 h-4 mr-1" />
-                    Local Info
+                    <MapPin className="w-3 h-3 mr-1" />
+                    View {userLocation.area} dental info
                   </Link>
                 </Button>
-              )}
-            </div>
+              </div>
+            )}
 
             <div className="text-center">
               <Button

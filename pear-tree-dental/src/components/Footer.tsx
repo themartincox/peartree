@@ -116,12 +116,16 @@ const Footer = () => {
               <Link href="/urgent-dental-pain" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
                 🚨 Dental Pain?
               </Link>
-              <Button className="btn-gold text-white w-full font-semibold h-10 sm:h-auto text-sm">
-                Join Membership Plan
-              </Button>
-              <Button variant="outline" className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm">
-                Book Consultation
-              </Button>
+              <Link href="/membership">
+                <Button className="btn-gold text-white w-full font-semibold h-10 sm:h-auto text-sm">
+                  Join Membership Plan
+                </Button>
+              </Link>
+              <Link href="/book">
+                <Button variant="outline" className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm">
+                  Book Consultation
+                </Button>
+              </Link>
             </div>
 
             <div className="space-y-2 sm:space-y-3">
@@ -141,13 +145,13 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a href="https://www.facebook.com/peartreeDental" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Facebook">
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a href="https://www.instagram.com/peartree_dental/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Instagram">
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="#" className="text-white/60 hover:text-pear-gold transition-colors">
+              <a href="https://twitter.com/peartreeDental" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Twitter">
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>

@@ -204,6 +204,7 @@ export default function ContactPage() {
                 <ContactFormCard
                   title="Send us a Message"
                   description="Fill out the form below and we'll get back to you within 24 hours during business days."
+                  formAction="/success"
                   customField1={{
                     id: "enquiryType",
                     name: "enquiryType",
