@@ -48,7 +48,6 @@ export default function NewPatientsPage() {
   ];
 
   const whatToBring = [
-    "Photo ID (driving licence or passport)",
     "Previous dental records or X-rays if available",
     "List of current medications",
     "Insurance details or membership information",

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense, lazy } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -151,7 +152,7 @@ const Navigation = () => {
           "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
-            : "transform translate-y-0 opacity-100 bg-white/95 backdrop-blur-lg border-b border-gray-200"
+            : "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
         )}
         aria-label="Main navigation"
       >
@@ -160,15 +161,22 @@ const Navigation = () => {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+              className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
               aria-label="Pear Tree Dental - Return to homepage"
             >
+              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white">
+                <Image
+                  src="/images/dental-motif-logo.png"
+                  alt="Pear Tree Dental Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain filter brightness-0 invert"
+                />
+              </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-lg sm:text-xl md:text-2xl lg:text-3xl text-pear-primary">
-                  PEAR TREE
+                <div className="brand-logo text-lg sm:text-xl md:text-2xl lg:text-3xl text-white xl:text-left xl:text-[33px] lg:text-center">PEAR TREE DENTAL
                 </div>
-                <div className="brand-subtitle text-xs sm:text-sm text-pear-primary mt-1 xl:text-center">
-                  DENTAL
+                <div className="brand-subtitle text-xs sm:text-sm text-white/90 mt-1 xl:text-center">
                 </div>
               </div>
             </Link>
@@ -179,7 +187,7 @@ const Navigation = () => {
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="text-pear-primary hover:text-pear-gold focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                    className="hover:text-pear-gold focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md bg-[#09394D] text-[#FFFFFFff]"
                     aria-label="Services menu"
                   >
                     Services
@@ -250,7 +258,7 @@ const Navigation = () => {
 
                 {/* About Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-pear-primary hover:text-pear-gold">
+                  <NavigationMenuTrigger className="hover:text-pear-gold text-[#FFFFFF] bg-[#09394D]">
                     About
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -277,13 +285,13 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                  <Link href="/new-patients" className="text-white hover:text-pear-gold transition-colors font-medium">
                     New Patients
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                  <Link href="/contact" className="text-white hover:text-pear-gold transition-colors font-medium">
                     Contact
                   </Link>
                 </NavigationMenuItem>
@@ -307,7 +315,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                  className="text-white focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md hover:bg-white/10"
                   aria-label="Open mobile navigation menu"
                   aria-expanded="false"
                 >
@@ -345,10 +353,10 @@ const Navigation = () => {
                         🚨 Dental Pain? Call Now
                       </Button>
                     </Link>
-                    <Link href="/services/general">
+                    <Link href="/book">
                       <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-12 text-sm">
                         <CalendarDays className="w-4 h-4 mr-2" />
-                        Book Hygienist
+                        Book Appointment
                       </Button>
                     </Link>
                     <Link href="/smile-design">
@@ -432,20 +440,27 @@ const Navigation = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center space-x-2">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 text-white">
+                <Image
+                  src="/images/dental-motif-logo.png"
+                  alt="Pear Tree Dental Logo"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-contain filter brightness-0 invert"
+                />
+              </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-sm sm:text-lg md:text-xl text-white">
-                  PEAR TREE
+                <div className="brand-logo text-sm sm:text-lg md:text-xl text-white xl:text-center xl:text-[25px]">PEAR TREE DENTAL
                 </div>
                 <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center">
-                  DENTAL
                 </div>
               </div>
             </Link>
 
             {/* Centralized CTAs */}
             <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:flex items-center space-x-4">
-              <Link href="/services/general">
+              <Link href="/book">
                 <Button
                   size="sm"
                   className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
@@ -465,7 +480,7 @@ const Navigation = () => {
 
             {/* Mobile CTAs - Right aligned */}
             <div className="flex sm:hidden items-center space-x-2">
-              <Link href="/services/general">
+              <Link href="/book">
                 <Button
                   size="sm"
                   className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-3 py-2 h-9 text-xs"
@@ -502,7 +517,16 @@ const Navigation = () => {
                 aria-label="Mobile navigation menu"
               >
                 <div className="flex flex-col space-y-6 mt-6">
-                  <Link href="/" className="flex items-center" onClick={closeMobileMenu}>
+                  <Link href="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
+                    <div className="w-8 h-8 text-pear-primary">
+                      <Image
+                        src="/images/dental-motif-logo.png"
+                        alt="Pear Tree Dental Logo"
+                        width={32}
+                        height={32}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
                     <div className="flex flex-col">
                       <div className="brand-logo text-lg text-pear-primary">
                         PEAR TREE
@@ -514,51 +538,47 @@ const Navigation = () => {
                   </Link>
 
                   <div className="flex flex-col space-y-3">
-                    <Link href="/services/general" onClick={closeMobileMenu}>
+                    <Link href="/book" onClick={closeMobileMenu}>
                       <Button className="bg-soft-pink text-pear-primary w-full h-12">
                         <CalendarDays className="w-4 h-4 mr-2" />
-                        Book Free Consultation
+                        Book Appointment
                       </Button>
                     </Link>
                     <Link href="/membership" onClick={closeMobileMenu}>
-                      <Button className="bg-white text-pear-gold w-full h-12 font-semibold">
-                        Membership
+                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
+                        <Star className="w-4 h-4 mr-2" />
+                        Membership Plans
                       </Button>
                     </Link>
+                  </div>
 
-                    {/* Critical navigation item - always loaded */}
-                    <Link href="/urgent-dental-pain" className="text-red-600 hover:text-red-700 transition-colors font-semibold text-center p-3 bg-red-50 rounded-lg border border-red-200" onClick={closeMobileMenu}>
-                      🚨 Dental Pain?
-                    </Link>
-
-                    {/* Lazy load non-critical navigation items */}
-                    {shouldLoadSecondaryNav ? (
-                      <NavigationErrorBoundary>
-                        <Suspense
-                          fallback={
-                            <div className="pt-4 border-t border-gray-200">
-                              <div className="flex items-center justify-center p-4 text-gray-500">
-                                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-pear-primary mr-2"></div>
-                                <span className="text-sm">Loading navigation...</span>
-                              </div>
-                            </div>
-                          }
-                        >
-                          <LazyNavigationItems
-                            services={services}
-                            about={about}
-                            onItemClick={closeMobileMenu}
-                          />
-                        </Suspense>
-                      </NavigationErrorBoundary>
-                    ) : (
-                      <div className="pt-4 border-t border-gray-200">
-                        <div className="text-center p-4 text-gray-500">
-                          <div className="text-sm">More navigation options loading...</div>
-                          <div className="text-xs mt-1 opacity-75">Services • About • Contact</div>
+                  {/* Enhanced Navigation using Lazy Loading */}
+                  {shouldLoadSecondaryNav && (
+                    <Suspense fallback={
+                      <div className="space-y-4">
+                        <div className="text-pear-primary font-semibold">Services</div>
+                        <div className="animate-pulse space-y-2">
+                          {[1,2,3].map(i => (
+                            <div key={i} className="h-4 bg-gray-200 rounded w-3/4"></div>
+                          ))}
                         </div>
                       </div>
-                    )}
+                    }>
+                      <LazyNavigationItems
+                        services={services}
+                        about={about}
+                        onLinkClick={closeMobileMenu}
+                      />
+                    </Suspense>
+                  )}
+
+                  <div className="space-y-2">
+                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                      New Patients
+                    </Link>
+                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                      Contact
+                    </Link>
                   </div>
                 </div>
               </SheetContent>

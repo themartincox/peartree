@@ -271,18 +271,19 @@ export default function ServiceHero({
 
               {/* Optional floating badge/testimonial */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Star className="w-5 h-5 text-pear-gold fill-current" />
-                    <Star className="w-5 h-5 text-pear-gold fill-current" />
-                    <Star className="w-5 h-5 text-pear-gold fill-current" />
-                    <Star className="w-5 h-5 text-pear-gold fill-current" />
-                    <Star className="w-5 h-5 text-pear-gold fill-current" />
+                <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+                  <div className="flex items-center space-x-3">
+                    <div className="flex space-x-1">
+                      <Star className="w-4 h-4 text-pear-gold fill-current" />
+                      <Star className="w-4 h-4 text-pear-gold fill-current" />
+                      <Star className="w-4 h-4 text-pear-gold fill-current" />
+                      <Star className="w-4 h-4 text-pear-gold fill-current" />
+                      <Star className="w-4 h-4 text-pear-gold fill-current" />
+                    </div>
+                    <p className="text-sm text-gray-700 font-medium">
+                      "Outstanding results and professional care"
+                    </p>
                   </div>
-                  <p className="text-sm text-gray-700 font-medium">
-                    "Outstanding results and professional care"
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">Recent patient review</p>
                 </div>
               </div>
             </div>

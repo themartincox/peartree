@@ -48,13 +48,15 @@ const Hero = () => {
 
               {/* CTA Buttons - Optimized for performance */}
               <div className="flex flex-col gap-4" role="group" aria-label="Primary actions">
-                <Button
-                  size="lg"
-                  className="bg-pear-primary text-white hover:bg-pear-primary/90 font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
-                  aria-label="Schedule a free dental consultation with our team"
-                >
-                  <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />Book Your Consultationn
-                </Button>
+                <Link href="/book">
+                  <Button
+                    size="lg"
+                    className="bg-pear-primary text-white hover:bg-pear-primary/90 font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
+                    aria-label="Schedule a free dental consultation with our team"
+                  >
+                    <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />Book Your Consultation
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -136,8 +138,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Pink overlay - sharp and clean */}
-                  <div className="absolute inset-0 bg-pink-200/40 transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Neutral overlay - sharp and clean */}
+                  <div className="absolute inset-0 bg-teal-100/40 transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
 
@@ -155,8 +157,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Pink overlay - sharp and clean */}
-                  <div className="absolute inset-0 bg-pink-200/40 transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Neutral overlay - sharp and clean */}
+                  <div className="absolute inset-0 bg-teal-100/40 transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
             </div>

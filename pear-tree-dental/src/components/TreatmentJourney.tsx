@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -296,17 +297,19 @@ const TreatmentJourney = () => {
 
                     {index === journeySteps.length - 1 && (
                       <div className="pt-4 sm:pt-6">
-                        <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
-                          Start Your Journey
-                          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                        </Button>
+                        <Link href="/book">
+                          <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                            Start Your Journey
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                          </Button>
+                        </Link>
                       </div>
                     )}
                   </div>
 
                   {/* Image/Video */}
                   <div className={`${isReverse ? 'lg:col-start-1' : 'lg:col-start-2'}`}>
-                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold/20 group-hover:shadow-3xl transition-all duration-300 group-hover:rotate-1">
+                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold/20 group-hover:shadow-3xl transition-all duration-300">
                       <div className="aspect-[4/3] relative">
                         {step.mediaType === "video" ? (
                           <>

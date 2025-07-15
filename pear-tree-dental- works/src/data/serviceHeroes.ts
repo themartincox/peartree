@@ -31,7 +31,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   "/services/cosmetic": {
     heroVideo: "/videos/heroes/cosmetic-dentistry-hero.mp4",
     heroVideoType: "mp4",
-    heroImage: "/images/dental-practice-hero-burton-joyce.webp", // Poster frame while video loads
+    heroImage: "/images/heroes/cosmetic-dentistry-hero.webp", // Fallback poster image
     heroImageAlt: "Professional cosmetic dentistry treatment showing beautiful smile transformation",
     badgeText: "Cosmetic Dentistry",
     badgeIcon: "Sparkles",
@@ -109,9 +109,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   },
 
   "/services/implants": {
-    heroVideo: "/videos/heroes/implant-hero-video.mp4",
-    heroVideoType: "mp4",
-    heroImage: "/images/dental-practice-hero-burton-joyce.webp", // Poster frame while video loads
+    heroImage: "/images/heroes/dental-implants-hero.webp",
     heroImageAlt: "Dental implant procedure showing before and after results",
     badgeText: "Dental Implants",
     badgeIcon: "Circle",
@@ -121,7 +119,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     keyBenefits: [
       { text: "Permanent solution", icon: "Shield" },
       { text: "Natural feel", icon: "Star" },
-      { text: "Preserve jawbone", icon: "Circle" },
+      { text: "Preserve jawbone", icon: "Tooth" },
       { text: "98% success rate", icon: "Heart" }
     ],
     primaryCTA: {
@@ -278,62 +276,6 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
       { text: "Expert team", icon: "Shield" },
       { text: "Life-changing", icon: "Sparkles" }
     ]
-  },
-
-  "/services/cosmetic/wedding-day-smile": {
-    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
-    heroImageAlt: "Perfect wedding day smile showing radiant bride with beautiful teeth",
-    badgeText: "Wedding Day Smile",
-    badgeIcon: "Heart",
-    title: "Perfect Smile",
-    subtitle: "For Your Big Day",
-    description: "Ensure your smile is picture-perfect for your wedding day. From whitening to complete makeovers, we'll create your dream smile in time for your special moment.",
-    keyBenefits: [
-      { text: "Timeline-based planning", icon: "Calendar" },
-      { text: "Express treatments", icon: "Zap" },
-      { text: "Wedding-ready results", icon: "Star" },
-      { text: "Picture-perfect smile", icon: "Camera" }
-    ],
-    primaryCTA: {
-      text: "Book Wedding Consultation",
-      href: "/book-appointment"
-    },
-    secondaryCTA: {
-      text: "View Wedding Packages",
-      href: "/services/cosmetic/wedding-day-smile#packages",
-      icon: "ArrowRight"
-    },
-    gradientFrom: "rose-50",
-    gradientTo: "pink-50",
-    textColor: "rose-600"
-  },
-
-  "/wedding-day-smile": {
-    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
-    heroImageAlt: "Perfect wedding day smile showing radiant bride with beautiful teeth",
-    badgeText: "Wedding Day Smile",
-    badgeIcon: "Heart",
-    title: "Perfect Smile",
-    subtitle: "For Your Big Day",
-    description: "Ensure your smile is picture-perfect for your wedding day. From whitening to complete makeovers, we'll create your dream smile in time for your special moment.",
-    keyBenefits: [
-      { text: "Timeline-based planning", icon: "Calendar" },
-      { text: "Express treatments", icon: "Zap" },
-      { text: "Wedding-ready results", icon: "Star" },
-      { text: "Picture-perfect smile", icon: "Camera" }
-    ],
-    primaryCTA: {
-      text: "Book Wedding Consultation",
-      href: "/book-appointment"
-    },
-    secondaryCTA: {
-      text: "View Wedding Packages",
-      href: "/services/cosmetic/wedding-day-smile#packages",
-      icon: "ArrowRight"
-    },
-    gradientFrom: "rose-50",
-    gradientTo: "pink-50",
-    textColor: "rose-600"
   }
 
   // Additional specific treatments can be added here as needed

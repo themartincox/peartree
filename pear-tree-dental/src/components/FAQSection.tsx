@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import FAQStructuredData from "@/components/seo/FAQStructuredData";
+import { practiceInfo } from "@/data/practiceInfo";
 import {
   Shield,
   Sparkles,
@@ -42,7 +43,7 @@ const FAQSection = () => {
         {
           id: "loc2",
           question: "What time is the dentist open today?",
-          answer: "We're open Monday to Thursday 8:45 AM to 5:00 PM, and Friday 8:00 AM to 3:30 PM. Weekend appointments are available for emergencies only. Call us at 0115 931 2935 to book your appointment or check our current availability."
+          answer: `We're open ${practiceInfo.openingHoursDisplay.weekdays} and ${practiceInfo.openingHoursDisplay.friday}. ${practiceInfo.openingHoursDisplay.weekend}. ${practiceInfo.openingHoursDisplay.emergency} to book your appointment or check our current availability.`
         },
         {
           id: "loc3",

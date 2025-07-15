@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, MapPin, Clock, Wifi, Car, Shield, Sparkles, Heart, Award, Users } from "lucide-react";
 import Image from "next/image";
+import { practiceInfo } from "@/data/practiceInfo";
 
 export const metadata: Metadata = {
   title: "Our Practice | Pear Tree Dental - State-of-the-Art Dental Facilities in Burton Joyce",
@@ -161,9 +162,10 @@ export default function PracticePage() {
                   <div>
                     <h3 className="heading-serif text-xl font-semibold mb-2 text-gray-800">Opening Hours</h3>
                     <div className="space-y-1 text-gray-600">
-                      <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                      <p>Saturday: 8:00 AM - 2:00 PM</p>
-                      <p>Sunday: Emergency appointments only</p>
+                      <p>{practiceInfo.openingHoursDisplay.weekdays}</p>
+                      <p>{practiceInfo.openingHoursDisplay.friday}</p>
+                      <p>{practiceInfo.openingHoursDisplay.weekend}</p>
+                      <p className="text-sm text-pear-primary mt-2">{practiceInfo.openingHoursDisplay.emergency}</p>
                     </div>
                   </div>
                 </div>

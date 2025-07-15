@@ -89,24 +89,21 @@ const GoogleReviewsWidget = () => {
 
   // Scroll behavior
   useEffect(() => {
+    let handleScroll: () => void;
+
     if (isHomepage) {
       // Homepage: Always show widget (it's positioned in PracticeShowcase)
       // Handle sticky behavior based on scroll position
-      const handleScroll = () => {
+      handleScroll = () => {
         const triggerElement = document.getElementById('reviews-sticky-trigger');
         if (triggerElement) {
           const rect = triggerElement.getBoundingClientRect();
           setIsSticky(rect.top <= 0);
         }
       };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial call
-
-      return () => window.removeEventListener('scroll', handleScroll);
     } else {
       // Other pages: Show widget after scrolling, then make it sticky
-      const handleScroll = () => {
+      handleScroll = () => {
         const scrollY = window.scrollY;
         if (scrollY > 300) {
           setShowWidget(true);
@@ -116,12 +113,12 @@ const GoogleReviewsWidget = () => {
           setIsSticky(false);
         }
       };
-
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Initial call
-
-      return () => window.removeEventListener('scroll', handleScroll);
     }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomepage]);
 
   const nextReview = () => {

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Heart,
   ArrowRight,
@@ -207,7 +209,7 @@ export default function WeddingDaySmilePage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
               <Badge variant="secondary" className="bg-gradient-to-r from-rose-100 to-pink-100 text-rose-800 border-rose-200">
                 <Heart className="w-4 h-4 mr-2" />
@@ -236,25 +238,7 @@ export default function WeddingDaySmilePage() {
                 </p>
               </div>
 
-              {/* Key Benefits */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-rose-600" />
-                  <span className="text-sm font-medium">Picture-perfect results</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-rose-600" />
-                  <span className="text-sm font-medium">Timeline-based planning</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-rose-600" />
-                  <span className="text-sm font-medium">Quick enhancement options</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-rose-600" />
-                  <span className="text-sm font-medium">Stress-free process</span>
-                </div>
-              </div>
+
 
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
@@ -287,44 +271,61 @@ export default function WeddingDaySmilePage() {
 
             {/* Hero Visual */}
             <div className="relative">
-              <Card className="bg-gradient-to-br from-rose-100 via-pink-50 to-white p-8 h-96 border-2 border-rose-200">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-rose-500 text-white">Perfect Wedding Smile</Badge>
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Heart key={i} className="w-4 h-4 text-rose-500 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-pear-primary">Ready for Your Close-Up?</h3>
-                  <p className="text-gray-600">
-                    Whether you're looking for a quick enhancement or a more comprehensive smile makeover,
-                    our skilled and caring dental team offers a range of cosmetic treatments to ensure you
-                    look and feel your absolute best.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg border border-rose-200">
-                      <div className="font-semibold text-rose-600">2-4 Weeks</div>
-                      <div className="text-gray-600">Quick whitening</div>
-                    </div>
-                    <div className="bg-white p-3 rounded-lg border border-rose-200">
-                      <div className="font-semibold text-rose-600">3-6 Months</div>
-                      <div className="text-gray-600">Complete makeover</div>
+              <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/heroes/cosmetic/wedding-smile-hero.jpg"
+                  alt="Perfect wedding day smile showing radiant bride with beautiful teeth"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+                {/* Floating testimonial */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex space-x-1">
+                        <Star className="w-4 h-4 text-pear-gold fill-current" />
+                        <Star className="w-4 h-4 text-pear-gold fill-current" />
+                        <Star className="w-4 h-4 text-pear-gold fill-current" />
+                        <Star className="w-4 h-4 text-pear-gold fill-current" />
+                        <Star className="w-4 h-4 text-pear-gold fill-current" />
+                      </div>
+                      <p className="text-sm text-gray-700 font-medium">
+                        "Perfect smile for our perfect day"
+                      </p>
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
+
+              {/* Key Benefits - Below Image */}
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-rose-600" />
+                  <span className="text-sm font-medium">Picture-perfect results</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-rose-600" />
+                  <span className="text-sm font-medium">Timeline-based planning</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-rose-600" />
+                  <span className="text-sm font-medium">Quick enhancement options</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-rose-600" />
+                  <span className="text-sm font-medium">Stress-free process</span>
+                </div>
+              </div>
 
               {/* Floating elements */}
               <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg border border-rose-200">
                 <Diamond className="w-6 h-6 text-rose-500" />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-rose-500 rounded-full p-6 shadow-lg">
-                <div className="text-center text-white">
-                  <div className="text-lg font-bold">500+</div>
-                  <div className="text-xs">Happy Couples</div>
-                </div>
               </div>
             </div>
           </div>
@@ -515,6 +516,65 @@ export default function WeddingDaySmilePage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Real Results Section */}
+      <section className="py-16 bg-gradient-to-r from-rose-50 to-pink-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Real Brides, Real Transformations
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the stunning smile transformations our brides have achieved for their special day.
+              Drag the slider to compare before and after results.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Wedding Whitening Example */}
+            <BeforeAfterSlider
+              beforeImage="/images/general-dental-checkup.webp"
+              afterImage="/images/cosmetic-dentistry-services.webp"
+              beforeAlt="Bride's teeth before professional whitening treatment"
+              afterAlt="Bride's teeth after professional whitening treatment - dramatically whiter"
+              title="Wedding Day Whitening"
+              description="Professional whitening gave Sarah the perfect bright smile for her wedding photos"
+              treatmentType="Teeth Whitening"
+              className="bg-white rounded-2xl p-6 shadow-lg"
+            />
+
+            {/* Complete Smile Makeover Example */}
+            <BeforeAfterSlider
+              beforeImage="/images/dental-consultation-room.jpg"
+              afterImage="/images/heroes/cosmetic/wedding-smile-hero.jpg"
+              beforeAlt="Bride's smile before complete makeover with veneers"
+              afterAlt="Bride's smile after complete makeover with porcelain veneers"
+              title="Complete Bridal Makeover"
+              description="Emily's complete smile transformation with veneers created her dream wedding smile"
+              treatmentType="Smile Makeover"
+              className="bg-white rounded-2xl p-6 shadow-lg"
+            />
+          </div>
+
+          {/* Trust indicators for results */}
+          <div className="mt-16 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-rose-600 mb-2">500+</div>
+                <div className="text-gray-600">Happy Brides</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-rose-600 mb-2">98%</div>
+                <div className="text-gray-600">Satisfaction Rate</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-rose-600 mb-2">2-6</div>
+                <div className="text-gray-600">Week Treatment Time</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

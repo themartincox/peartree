@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import ContactFormCard from "@/components/ContactFormCard";
+import { practiceInfo } from "@/data/practiceInfo";
 import {
   Phone,
   Mail,
@@ -13,7 +11,6 @@ import {
   Bus,
   CalendarDays,
   MessageSquare,
-  Send,
   Shield,
   Heart,
   AlertCircle
@@ -69,15 +66,7 @@ const contactInfo = [
   }
 ];
 
-const openingHours = [
-  { day: "Monday", hours: "8:00 AM - 6:00 PM", emergency: false },
-  { day: "Tuesday", hours: "8:00 AM - 6:00 PM", emergency: false },
-  { day: "Wednesday", hours: "8:00 AM - 6:00 PM", emergency: false },
-  { day: "Thursday", hours: "8:00 AM - 6:00 PM", emergency: false },
-  { day: "Friday", hours: "8:00 AM - 6:00 PM", emergency: false },
-  { day: "Saturday", hours: "8:00 AM - 2:00 PM", emergency: false },
-  { day: "Sunday", hours: "Emergency appointments only", emergency: true }
-];
+const openingHours = practiceInfo.openingHours;
 
 const transportInfo = [
   {
@@ -212,159 +201,37 @@ export default function ContactPage() {
 
               {/* Contact Form */}
               <div>
-                <Card className="shadow-xl">
-                  <CardHeader>
-                    <CardTitle className="text-2xl text-pear-primary flex items-center gap-3">
-                      <Send className="h-6 w-6" />
-                      Send us a Message
-                    </CardTitle>
-                    <p className="text-gray-600">
-                      Fill out the form below and we'll get back to you within 24 hours during business days.
-                    </p>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <form className="space-y-6" action="#" method="POST">
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div>
-                          <Label htmlFor="firstName" className="text-gray-700 font-medium">
-                            First Name *
-                          </Label>
-                          <Input
-                            id="firstName"
-                            name="firstName"
-                            type="text"
-                            required
-                            className="mt-1"
-                            placeholder="Enter your first name"
-                          />
-                        </div>
-                        <div>
-                          <Label htmlFor="lastName" className="text-gray-700 font-medium">
-                            Last Name *
-                          </Label>
-                          <Input
-                            id="lastName"
-                            name="lastName"
-                            type="text"
-                            required
-                            className="mt-1"
-                            placeholder="Enter your last name"
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email" className="text-gray-700 font-medium">
-                          Email Address *
-                        </Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          className="mt-1"
-                          placeholder="your.email@example.com"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone" className="text-gray-700 font-medium">
-                          Phone Number
-                        </Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          className="mt-1"
-                          placeholder="0115 XXX XXXX"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="enquiryType" className="text-gray-700 font-medium">
-                          Enquiry Type *
-                        </Label>
-                        <select
-                          id="enquiryType"
-                          name="enquiryType"
-                          required
-                          className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pear-primary focus:border-transparent"
-                        >
-                          <option value="">Please select...</option>
-                          <option value="appointment">Book an Appointment</option>
-                          <option value="emergency">Dental Emergency</option>
-                          <option value="membership">Membership Enquiry</option>
-                          <option value="treatment">Treatment Information</option>
-                          <option value="complaint">Complaint or Feedback</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="preferredTime" className="text-gray-700 font-medium">
-                          Preferred Appointment Time
-                        </Label>
-                        <select
-                          id="preferredTime"
-                          name="preferredTime"
-                          className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-pear-primary focus:border-transparent"
-                        >
-                          <option value="">No preference</option>
-                          <option value="morning">Morning (8AM - 12PM)</option>
-                          <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                          <option value="evening">Evening (5PM - 6PM)</option>
-                          <option value="saturday">Saturday</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="message" className="text-gray-700 font-medium">
-                          Message *
-                        </Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          required
-                          rows={4}
-                          className="mt-1"
-                          placeholder="Please tell us about your enquiry, any specific concerns, or how we can help you..."
-                        />
-                      </div>
-
-                      <div className="flex items-start space-x-2">
-                        <input
-                          id="privacy"
-                          name="privacy"
-                          type="checkbox"
-                          required
-                          className="mt-1 h-4 w-4 text-pear-primary focus:ring-pear-primary border-gray-300 rounded"
-                        />
-                        <Label htmlFor="privacy" className="text-sm text-gray-600">
-                          I agree to the practice privacy policy and consent to my data being used to contact me regarding my enquiry. *
-                        </Label>
-                      </div>
-
-                      <div className="flex items-start space-x-2">
-                        <input
-                          id="marketing"
-                          name="marketing"
-                          type="checkbox"
-                          className="mt-1 h-4 w-4 text-pear-primary focus:ring-pear-primary border-gray-300 rounded"
-                        />
-                        <Label htmlFor="marketing" className="text-sm text-gray-600">
-                          I would like to receive updates about dental health tips and practice news.
-                        </Label>
-                      </div>
-
-                      <Button
-                        type="submit"
-                        className="w-full bg-pear-primary hover:bg-pear-primary/90 text-white py-3 text-lg font-semibold"
-                      >
-                        Send Message
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
+                <ContactFormCard
+                  title="Send us a Message"
+                  description="Fill out the form below and we'll get back to you within 24 hours during business days."
+                  customField1={{
+                    id: "enquiryType",
+                    name: "enquiryType",
+                    label: "Enquiry Type",
+                    type: "select",
+                    required: true,
+                    options: [
+                      { value: "appointment", label: "Book an Appointment" },
+                      { value: "emergency", label: "Dental Emergency" },
+                      { value: "membership", label: "Membership Enquiry" },
+                      { value: "treatment", label: "Treatment Information" },
+                      { value: "complaint", label: "Complaint or Feedback" },
+                      { value: "other", label: "Other" }
+                    ]
+                  }}
+                  customField2={{
+                    id: "preferredTime",
+                    name: "preferredTime",
+                    label: "Preferred Appointment Time",
+                    type: "select",
+                    options: [
+                      { value: "morning", label: "Morning (8AM - 12PM)" },
+                      { value: "afternoon", label: "Afternoon (12PM - 5PM)" },
+                      { value: "evening", label: "Evening (5PM - 6PM)" },
+                      { value: "saturday", label: "Saturday" }
+                    ]
+                  }}
+                />
               </div>
 
               {/* Opening Hours & Additional Info */}
@@ -383,12 +250,12 @@ export default function ContactPage() {
                         <div
                           key={schedule.day}
                           className={`flex justify-between items-center py-2 px-3 rounded ${
-                            schedule.emergency ? 'bg-red-50 border border-red-200' : 'bg-gray-50'
+                            !schedule.isOpen ? 'bg-gray-100 border border-gray-200' : 'bg-gray-50'
                           }`}
                         >
                           <span className="font-medium text-gray-800">{schedule.day}</span>
                           <span className={`text-sm ${
-                            schedule.emergency ? 'text-red-600 font-medium' : 'text-gray-600'
+                            !schedule.isOpen ? 'text-gray-500 font-medium' : 'text-pear-primary font-semibold'
                           }`}>
                             {schedule.hours}
                           </span>

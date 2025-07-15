@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Link from "next/link";
 import {
   Sparkles,
@@ -244,35 +245,30 @@ export default function TeethWhiteningPage() {
               </div>
             </div>
 
-            {/* Hero Visual */}
+            {/* Hero Visual - Interactive Before/After Slider */}
             <div className="relative">
-              <Card className="bg-gradient-to-br from-yellow-100 to-orange-100 p-8 h-96">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-yellow-500 text-white">Before & After</Badge>
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-pear-primary">See the Difference</h3>
-                  <p className="text-gray-600">
-                    Professional whitening delivers dramatic results that over-the-counter
-                    products simply cannot match.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-yellow-600">Up to 8 Shades</div>
-                      <div className="text-gray-600">Whiter in weeks</div>
-                    </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-yellow-600">1-3 Years</div>
-                      <div className="text-gray-600">Long-lasting</div>
-                    </div>
-                  </div>
+              <BeforeAfterSlider
+                beforeImage="/images/general-dental-checkup.webp"
+                afterImage="/images/cosmetic-dentistry-services.webp"
+                beforeAlt="Teeth before professional whitening treatment"
+                afterAlt="Teeth after professional whitening - dramatically whiter and brighter"
+                title="See the Difference"
+                description="Professional whitening delivers dramatic results that over-the-counter products simply cannot match"
+                treatmentType="Professional Whitening"
+                className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6"
+              />
+
+              {/* Results Summary */}
+              <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                  <div className="font-semibold text-yellow-600 text-lg">Up to 8 Shades</div>
+                  <div className="text-gray-600">Whiter in weeks</div>
                 </div>
-              </Card>
+                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                  <div className="font-semibold text-yellow-600 text-lg">1-3 Years</div>
+                  <div className="text-gray-600">Long-lasting</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

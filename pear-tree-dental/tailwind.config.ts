@@ -33,7 +33,7 @@ export default {
         'accent-gold': '#D4AF37',
         'dental-green': '#4a7c59',
         'dental-navy': '#09394d', // Same as pear-primary for consistency
-        'dental-teal': '#2d6b7a', // Medium teal
+        'dental-teal': '#09394d', // Same as pear-primary for navigation
         'soft-blue': '#7fb3d3',
         'soft-pink': '#e8c5c5',
         'soft-lavender': '#d1c4e9',

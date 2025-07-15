@@ -305,7 +305,7 @@ export async function POST(request: NextRequest) {
         emailSent = true;
         console.log('✅ Email sent successfully to:', emailData.email);
         console.log('📧 Patient email ID:', emailResult.patientMessageId);
-        console.log('📧 Practice email ID:', emailResult.practiceMessageId);
+        console.log('📧 Practice emails sent:', emailResult.practiceEmailsSent, 'out of', emailResult.practiceResults.length);
       } else {
         emailSent = false;
         emailError = emailResult?.error || 'Email service returned failure';
