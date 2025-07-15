@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceHero from "@/components/ServiceHero";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import {
@@ -317,114 +319,7 @@ export default function CompleteSmileMakeoverPage() {
       </section>
 
       {/* Hero Section */}
-      <section className="pb-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <Badge variant="secondary" className="bg-gradient-to-r from-rose-100 to-amber-100 text-rose-800 border-rose-200">
-                <Wand2 className="w-4 h-4 mr-2" />
-                Complete Transformation
-              </Badge>
-
-              <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary leading-tight">
-                Complete Smile
-                <span className="text-rose-600 block">Makeover</span>
-              </h1>
-
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Transform your entire smile with our comprehensive makeover treatments. Combining the latest
-                cosmetic dentistry techniques for a complete smile transformation that enhances your confidence and changes your life.
-              </p>
-
-              {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
-                <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
-                <span className="text-sm font-semibold text-pear-gold">180+ smile transformations completed</span>
-              </div>
-
-              {/* Key Benefits */}
-              <div className="bg-rose-50 border border-rose-200 rounded-lg p-6">
-                <h3 className="font-semibold text-pear-primary mb-4">Complete Smile Transformation Includes:</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-rose-600" />
-                    <span className="text-sm">Digital smile design</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-rose-600" />
-                    <span className="text-sm">Multiple treatments</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-rose-600" />
-                    <span className="text-sm">Coordinated care</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-rose-600" />
-                    <span className="text-sm">Long-lasting results</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pricing & CTA */}
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                <div className="bg-white border-2 border-rose-200 rounded-lg p-4">
-                  <div className="text-sm text-gray-600">Starting from</div>
-                  <div className="text-3xl font-bold text-rose-600">£2,500</div>
-                  <div className="text-sm text-gray-600">Complete makeover</div>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-rose-500 to-amber-500 text-white font-semibold">
-                    Book Smile Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-rose-500 text-rose-600 hover:bg-rose-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Visual */}
-            <div className="relative">
-              <Card className="bg-gradient-to-br from-rose-100 to-amber-100 p-8 h-96">
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <Badge className="bg-rose-500 text-white">Complete Transformation</Badge>
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-rose-500 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-semibold text-pear-primary">Life Changing Results.</h3>
-                  <p className="text-gray-600">
-                    Our complete smile makeovers combine multiple advanced treatments
-                    for comprehensive transformations that enhance both appearance and confidence.
-                  </p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-rose-600">180+</div>
-                      <div className="text-gray-600">Transformations</div>
-                    </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-rose-600">2-12</div>
-                      <div className="text-gray-600">Months timeline</div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Floating elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-rose-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-rose-600">95%</div>
-                  <div className="text-sm text-gray-600">Patient satisfaction</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceHero {...getServiceHeroConfig("/services/complete-smile-makeover")} />
 
       {/* Benefits Section */}
       <section className="py-16 bg-white">

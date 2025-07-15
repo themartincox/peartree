@@ -261,7 +261,9 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   },
 
   "/services/complete-smile-makeover": {
-    heroImage: "/images/heroes/cosmetic/smile-makeover-hero.webp",
+    heroVideo: "/videos/heroes/smile-makeover-hero.mp4",
+    heroVideoType: "mp4",
+    heroImage: "/images/heroes/cosmetic/smile-makeover-hero.webp", // Fallback poster image
     heroImageAlt: "Complete smile makeover showing dramatic before and after transformation",
     badgeText: "Complete Smile Makeover",
     badgeIcon: "Sparkles",
