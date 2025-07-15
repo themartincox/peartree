@@ -93,7 +93,10 @@ export default function LocationDetection() {
     setIsDismissed(dismissed);
 
     if (!dismissed) {
-      detectUserLocation();
+      // Wait 5 seconds before starting detection to be less intrusive
+      setTimeout(() => {
+        detectUserLocation();
+      }, 5000);
     }
   }, []);
 
@@ -101,7 +104,7 @@ export default function LocationDetection() {
     setIsDetecting(true);
 
     try {
-      // Try geolocation first
+      // Only try GPS - no fallbacks for less intrusive experience
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
@@ -109,14 +112,15 @@ export default function LocationDetection() {
             await reverseGeocode(latitude, longitude);
           },
           () => {
-            // Fallback to IP-based detection
-            detectByIP();
+            // If GPS fails, just quietly stop - don't show popup
+            console.log('GPS detection failed - no popup shown');
+            setIsDetecting(false);
           },
           { timeout: 5000 }
         );
       } else {
-        // Fallback to IP-based detection
-        detectByIP();
+        // No geolocation available - quietly stop
+        setIsDetecting(false);
       }
     } catch (error) {
       console.log('Location detection failed:', error);
@@ -126,56 +130,57 @@ export default function LocationDetection() {
 
   const reverseGeocode = async (lat: number, lon: number) => {
     try {
-      // Mock reverse geocoding - in production you'd use a real service
-      // For demo purposes, we'll use location boundaries
+      // Check if user is within our service area
       const location = getLocationFromCoordinates(lat, lon);
-      if (location && !isDismissed) {
-        setUserLocation(location);
+
+      // Only show popup if user is OUTSIDE service area and needs directions
+      if (!location && !isDismissed) {
+        // User is outside service area - show directions popup
+        setUserLocation({
+          area: 'Outside Service Area',
+          postcode: 'Unknown',
+          travelTime: 'Variable',
+          route: 'via major roads',
+          specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+        });
         setIsVisible(true);
       }
+      // If user IS in service area, don't show popup - they probably know where we are
+
       setIsDetecting(false);
     } catch (error) {
       console.log('Reverse geocoding failed:', error);
-      detectByIP();
+      setIsDetecting(false);
     }
   };
 
-  const detectByIP = async () => {
-    try {
-      // Mock IP-based detection - in production use a service like ipapi.co
-      // For demo, we'll randomly assign one of our areas
-      const areas = Object.keys(LOCATION_DATA);
-      const randomArea = areas[Math.floor(Math.random() * areas.length)];
-      setUserLocation(LOCATION_DATA[randomArea]);
-      if (!isDismissed) {
-        setIsVisible(true);
-      }
-      setIsDetecting(false);
-    } catch (error) {
-      console.log('IP detection failed:', error);
-      setIsDetecting(false);
-    }
-  };
+
 
   const getLocationFromCoordinates = (lat: number, lon: number): LocationData | null => {
-    // Mock coordinate-based detection - in production you'd have proper boundaries
     // Burton Joyce coordinates: approximately 52.9847, -1.0147
-
-    // Simple distance-based detection for demo
     const burtonJoyceDistance = Math.sqrt(Math.pow(lat - 52.9847, 2) + Math.pow(lon - (-1.0147), 2));
 
-    if (burtonJoyceDistance < 0.05) { // Very close - likely NG14
-      return LOCATION_DATA['NG14'];
-    } else if (burtonJoyceDistance < 0.1) { // Close - could be various areas
-      return LOCATION_DATA['arnold']; // Default to Arnold for demo
+    // Define service area boundary (roughly 15-20 mile radius)
+    if (burtonJoyceDistance < 0.3) { // Within service area
+      // User is close enough - they probably know where we are
+      if (burtonJoyceDistance < 0.05) {
+        return LOCATION_DATA['NG14']; // Very close
+      } else if (burtonJoyceDistance < 0.1) {
+        return LOCATION_DATA['arnold']; // Moderate distance
+      } else {
+        return LOCATION_DATA['west bridgford']; // Further but still in service area
+      }
     }
 
+    // Outside service area - return null to trigger directions popup
     return null;
   };
 
-  const handleManualLocation = (locationKey: string) => {
-    setUserLocation(LOCATION_DATA[locationKey]);
-    setIsVisible(true);
+  // Auto-dismiss when user navigates (except for phone calls)
+  const handleNavigation = () => {
+    setIsVisible(false);
+    setIsDismissed(true);
+    sessionStorage.setItem('locationModalDismissed', 'true');
   };
 
   const handleDismiss = () => {
@@ -208,39 +213,9 @@ export default function LocationDetection() {
     );
   }
 
-  if ((!isVisible || !userLocation) && !isDismissed) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <Card className="w-80 shadow-lg border border-dental-green/20">
-          <CardContent className="p-4">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="font-semibold text-dental-navy">Show local information?</p>
-                <Button variant="ghost" size="sm" onClick={handleDismiss}>
-                  <X className="w-4 h-4" />
-                </Button>
-              </div>
-              <p className="text-sm text-gray-600">
-                Tell us your area for personalized directions and offers
-              </p>
-              <div className="grid grid-cols-2 gap-2">
-                {Object.entries(LOCATION_DATA).slice(0, 6).map(([key, data]) => (
-                  <Button
-                    key={key}
-                    variant="outline"
-                    size="sm"
-                    className="text-xs"
-                    onClick={() => handleManualLocation(key)}
-                  >
-                    {data.area}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
+  // Don't show manual selection - only show if GPS detected user outside service area
+  if (!isVisible || !userLocation) {
+    return null;
   }
 
   return (
@@ -252,25 +227,30 @@ export default function LocationDetection() {
               <div className="flex items-center space-x-2">
                 <MapPin className="w-5 h-5 text-dental-green" />
                 <span className="font-semibold text-dental-navy">
-                  Hi, {userLocation.area} resident!
+                  Need directions to our practice?
                 </span>
               </div>
-              <Button variant="ghost" size="sm" onClick={() => setIsVisible(false)}>
+              <Button variant="ghost" size="sm" onClick={handleDismiss}>
                 <X className="w-4 h-4" />
               </Button>
             </div>
 
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm">
-                <Car className="w-4 h-4 text-dental-green" />
+                <MapPin className="w-4 h-4 text-dental-green" />
                 <span className="text-gray-700">
-                  <strong>{userLocation.travelTime}</strong> journey {userLocation.route}
+                  <strong>22 Nottingham Road, Burton Joyce, NG14 5AL</strong>
                 </span>
               </div>
 
               <div className="flex items-center space-x-3 text-sm">
+                <Car className="w-4 h-4 text-dental-green" />
+                <span className="text-gray-700">Easy access with free on-site parking</span>
+              </div>
+
+              <div className="flex items-center space-x-3 text-sm">
                 <Clock className="w-4 h-4 text-dental-green" />
-                <span className="text-gray-700">Easy access with free parking</span>
+                <span className="text-gray-700">Mon-Thu: 8:45am-5pm | Fri: 8am-3:30pm</span>
               </div>
 
               {userLocation.specialOffer && (
@@ -278,7 +258,7 @@ export default function LocationDetection() {
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-pear-gold" />
                     <span className="text-sm font-medium text-pear-gold">
-                      Special Offer
+                      Worth the Journey
                     </span>
                   </div>
                   <p className="text-sm text-gray-700 mt-1">
@@ -295,24 +275,13 @@ export default function LocationDetection() {
                   Call Now
                 </a>
               </Button>
-              <Button asChild variant="outline" size="sm" className="flex-1">
+              <Button asChild variant="outline" size="sm" className="flex-1" onClick={handleNavigation}>
                 <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noopener noreferrer">
                   <Navigation className="w-4 h-4 mr-1" />
-                  Directions
+                  Get Directions
                 </a>
               </Button>
             </div>
-
-            {userLocation.pageUrl && (
-              <div className="flex justify-center">
-                <Button asChild variant="link" size="sm" className="text-dental-green text-xs">
-                  <Link href={userLocation.pageUrl}>
-                    <MapPin className="w-3 h-3 mr-1" />
-                    View {userLocation.area} dental info
-                  </Link>
-                </Button>
-              </div>
-            )}
 
             <div className="text-center">
               <Button
@@ -320,10 +289,11 @@ export default function LocationDetection() {
                 variant="link"
                 size="sm"
                 className="text-dental-green text-xs"
+                onClick={handleNavigation}
               >
-                <Link href="/membership">
+                <Link href="/book">
                   <UserPlus className="w-3 h-3 mr-1" />
-                  Register as {userLocation.area} patient
+                  Book Appointment
                 </Link>
               </Button>
             </div>
