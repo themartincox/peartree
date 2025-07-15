@@ -5,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#1e3a8a",
+  "theme_color": "#09394d",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-GB",
@@ -15,7 +15,7 @@
       "name": "Book Appointment",
       "short_name": "Book",
       "description": "Book an appointment online",
-      "url": "/contact",
+      "url": "/book",
       "icons": [
         {
           "src": "/favicon.svg",

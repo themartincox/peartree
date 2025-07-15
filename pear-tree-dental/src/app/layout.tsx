@@ -128,15 +128,20 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
 
         <link rel="canonical" href="https://peartree.dental" />
+
+        {/* Favicon Links */}
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#1e3a8a" />
+        <meta name="theme-color" content="#09394d" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Pear Tree Dental" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="application-name" content="Pear Tree Dental" />
-        <meta name="msapplication-TileColor" content="#1e3a8a" />
+        <meta name="msapplication-TileColor" content="#09394d" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="GB-NTT" />
@@ -145,7 +150,7 @@ export default function RootLayout({
         <meta name="ICBM" content="52.9769, -1.0085" />
 
         {/* Additional SEO Meta Tags */}
-        <meta name="business-hours" content="Monday-Friday: 8:00AM-6:00PM, Saturday: 8:00AM-2:00PM" />
+        <meta name="business-hours" content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed" />
         <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
         <meta name="rating" content="5.0" />
         <meta name="review-count" content="200+" />
