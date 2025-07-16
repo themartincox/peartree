@@ -58,6 +58,65 @@ export const metadata: Metadata = {
 };
 
 export default function TreatmentComparisonPage() {
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'teal':
+        return {
+          badge: 'bg-teal-500 text-white',
+          border: 'border-teal-200 hover:border-teal-300',
+          text: 'text-teal-600',
+          bg: 'bg-teal-50',
+          button: 'bg-gradient-to-r from-teal-500 to-teal-600 text-white hover:from-teal-600 hover:to-teal-700',
+          outline: 'border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white'
+        };
+      case 'blue':
+        return {
+          badge: 'bg-blue-500 text-white',
+          border: 'border-blue-200 hover:border-blue-300',
+          text: 'text-blue-600',
+          bg: 'bg-blue-50',
+          button: 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700',
+          outline: 'border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white'
+        };
+      case 'purple':
+        return {
+          badge: 'bg-purple-500 text-white',
+          border: 'border-purple-200 hover:border-purple-300',
+          text: 'text-purple-600',
+          bg: 'bg-purple-50',
+          button: 'bg-gradient-to-r from-purple-500 to-purple-600 text-white hover:from-purple-600 hover:to-purple-700',
+          outline: 'border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white'
+        };
+      case 'orange':
+        return {
+          badge: 'bg-orange-500 text-white',
+          border: 'border-orange-200 hover:border-orange-300',
+          text: 'text-orange-600',
+          bg: 'bg-orange-50',
+          button: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700',
+          outline: 'border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white'
+        };
+      case 'emerald':
+        return {
+          badge: 'bg-emerald-500 text-white',
+          border: 'border-emerald-200 hover:border-emerald-300',
+          text: 'text-emerald-600',
+          bg: 'bg-emerald-50',
+          button: 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700',
+          outline: 'border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white'
+        };
+      default: // gray and slate
+        return {
+          badge: 'bg-gray-500 text-white',
+          border: 'border-gray-200 hover:border-gray-300',
+          text: 'text-gray-600',
+          bg: 'bg-gray-50',
+          button: 'bg-gradient-to-r from-gray-500 to-gray-600 text-white hover:from-gray-600 hover:to-gray-700',
+          outline: 'border-gray-500 text-gray-600 hover:bg-gray-500 hover:text-white'
+        };
+    }
+  };
+
   const treatments = [
     {
       id: "single-implant",
@@ -163,7 +222,7 @@ export default function TreatmentComparisonPage() {
       name: "All-on-4",
       category: "implant",
       shortDesc: "Full arch on 4 implants",
-      price: "£15,000+",
+      price: "£POA",
       priceValue: 15000,
       duration: "Same day teeth",
       durationValue: 0.1,
@@ -393,10 +452,12 @@ export default function TreatmentComparisonPage() {
               </div>
             </div>
 
-            <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold">
-              Book Expert Consultation
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link href="/book">
+              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold">
+                Book Expert Consultation
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -416,73 +477,79 @@ export default function TreatmentComparisonPage() {
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {categories.map((category) => (
-              <Badge
-                key={category.id}
-                variant="outline"
-                className={`px-4 py-2 text-${category.color}-600 border-${category.color}-600 hover:bg-${category.color}-50 cursor-pointer`}
-              >
-                {category.label}
-              </Badge>
-            ))}
+            {categories.map((category) => {
+              const categoryColors = getColorClasses(category.color);
+              return (
+                <Badge
+                  key={category.id}
+                  variant="outline"
+                  className={`px-4 py-2 ${categoryColors.outline} cursor-pointer`}
+                >
+                  {category.label}
+                </Badge>
+              );
+            })}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {treatments.map((treatment) => (
-              <Card key={treatment.id} className={`hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-${treatment.color}-200`}>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge className={`bg-${treatment.color}-500 text-white`}>
-                      {treatment.category}
-                    </Badge>
-                    <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className={`w-3 h-3 text-${treatment.color}-500 fill-current`} />
-                      ))}
+            {treatments.map((treatment) => {
+              const colors = getColorClasses(treatment.color);
+              return (
+                <Card key={treatment.id} className={`hover:shadow-lg transition-all duration-300 border-2 ${colors.border}`}>
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge className={colors.badge}>
+                        {treatment.category}
+                      </Badge>
+                      <div className="flex space-x-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className={`w-3 h-3 ${colors.text} fill-current`} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                  <CardTitle className="text-lg text-pear-primary">{treatment.name}</CardTitle>
-                  <CardDescription className="text-sm">{treatment.shortDesc}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {/* Price */}
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="text-sm text-gray-600">Cost</span>
-                    <span className={`text-sm font-semibold text-${treatment.color}-600`}>{treatment.price}</span>
-                  </div>
+                    <CardTitle className="text-lg text-pear-primary">{treatment.name}</CardTitle>
+                    <CardDescription className="text-sm">{treatment.shortDesc}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {/* Price */}
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <span className="text-sm text-gray-600">Cost</span>
+                      <span className={`text-sm font-semibold ${colors.text}`}>{treatment.price}</span>
+                    </div>
 
-                  {/* Duration */}
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="text-sm text-gray-600">Treatment Time</span>
-                    <span className="text-sm font-semibold">{treatment.duration}</span>
-                  </div>
+                    {/* Duration */}
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <span className="text-sm text-gray-600">Treatment Time</span>
+                      <span className="text-sm font-semibold">{treatment.duration}</span>
+                    </div>
 
-                  {/* Longevity */}
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="text-sm text-gray-600">Lifespan</span>
-                    <span className="text-sm font-semibold">{treatment.longevity}</span>
-                  </div>
+                    {/* Longevity */}
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <span className="text-sm text-gray-600">Lifespan</span>
+                      <span className="text-sm font-semibold">{treatment.longevity}</span>
+                    </div>
 
-                  {/* Function */}
-                  <div className="flex items-center justify-between py-2 border-b border-gray-100">
-                    <span className="text-sm text-gray-600">Function</span>
-                    <span className="text-sm font-semibold">{treatment.function}</span>
-                  </div>
+                    {/* Function */}
+                    <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                      <span className="text-sm text-gray-600">Function</span>
+                      <span className="text-sm font-semibold">{treatment.function}</span>
+                    </div>
 
-                  {/* Best For */}
-                  <div className={`bg-${treatment.color}-50 p-3 rounded-lg`}>
-                    <span className="text-xs font-medium text-gray-700">Best for: </span>
-                    <span className="text-xs text-gray-600">{treatment.bestFor}</span>
-                  </div>
+                    {/* Best For */}
+                    <div className={`${colors.bg} p-3 rounded-lg`}>
+                      <span className="text-xs font-medium text-gray-700">Best for: </span>
+                      <span className="text-xs text-gray-600">{treatment.bestFor}</span>
+                    </div>
 
-                  <Link href={treatment.url}>
-                    <Button className={`w-full bg-gradient-to-r from-${treatment.color}-500 to-${treatment.color}-600 text-white hover:from-${treatment.color}-600 hover:to-${treatment.color}-700`}>
-                      Learn More
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+                    <Link href={treatment.url}>
+                      <Button className={`w-full ${colors.button}`}>
+                        Learn More
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -521,7 +588,7 @@ export default function TreatmentComparisonPage() {
                       <tr key={treatment.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                         <td className="py-4 px-6">
                           <div className="flex items-center space-x-3">
-                            <Badge className={`bg-${treatment.color}-500 text-white text-xs`}>
+                            <Badge className={`${getColorClasses(treatment.color).badge} text-xs`}>
                               {treatment.category.charAt(0).toUpperCase()}
                             </Badge>
                             <div>
@@ -531,7 +598,7 @@ export default function TreatmentComparisonPage() {
                           </div>
                         </td>
                         <td className="py-4 px-4 text-center">
-                          <div className={`text-${treatment.color}-600 font-semibold`}>{treatment.price}</div>
+                          <div className={`${getColorClasses(treatment.color).text} font-semibold`}>{treatment.price}</div>
                         </td>
                         <td className="py-4 px-4 text-center text-gray-700">{treatment.duration}</td>
                         <td className="py-4 px-4 text-center text-gray-700">{treatment.longevity}</td>
@@ -586,64 +653,70 @@ export default function TreatmentComparisonPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {treatments.map((treatment) => (
-              <Card key={treatment.id} className="h-full">
-                <CardHeader>
-                  <div className="flex items-center space-x-2 mb-2">
-                    <Badge className={`bg-${treatment.color}-500 text-white`}>
-                      {treatment.category}
-                    </Badge>
-                    <div className={`text-lg font-bold text-${treatment.color}-600`}>{treatment.price}</div>
-                  </div>
-                  <CardTitle className="text-lg text-pear-primary">{treatment.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  {/* Pros */}
-                  <div>
-                    <h4 className="font-semibold text-green-700 mb-3 flex items-center">
-                      <CheckCircle className="w-4 h-4 mr-2" />
-                      Advantages
-                    </h4>
-                    <ul className="space-y-2">
-                      {treatment.pros.map((pro, index) => (
-                        <li key={index} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{pro}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            {treatments.map((treatment) => {
+              const colors = getColorClasses(treatment.color);
+              return (
+                <Card key={treatment.id} className="h-full flex flex-col">
+                  <CardHeader>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <Badge className={colors.badge}>
+                        {treatment.category}
+                      </Badge>
+                      <div className={`text-lg font-bold ${colors.text}`}>{treatment.price}</div>
+                    </div>
+                    <CardTitle className="text-lg text-pear-primary">{treatment.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col space-y-6">
+                    {/* Pros */}
+                    <div>
+                      <h4 className="font-semibold text-green-700 mb-3 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Advantages
+                      </h4>
+                      <ul className="space-y-2">
+                        {treatment.pros.map((pro, index) => (
+                          <li key={index} className="flex items-start space-x-2">
+                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm text-gray-700">{pro}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  {/* Cons */}
-                  <div>
-                    <h4 className="font-semibold text-red-700 mb-3 flex items-center">
-                      <XCircle className="w-4 h-4 mr-2" />
-                      Considerations
-                    </h4>
-                    <ul className="space-y-2">
-                      {treatment.cons.map((con, index) => (
-                        <li key={index} className="flex items-start space-x-2">
-                          <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{con}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    {/* Cons */}
+                    <div>
+                      <h4 className="font-semibold text-red-700 mb-3 flex items-center">
+                        <XCircle className="w-4 h-4 mr-2" />
+                        Considerations
+                      </h4>
+                      <ul className="space-y-2 mb-4">
+                        {treatment.cons.map((con, index) => (
+                          <li key={index} className="flex items-start space-x-2">
+                            <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
+                            <span className="text-sm text-gray-700">{con}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                  {/* Suitability */}
-                  <div className={`bg-${treatment.color}-50 p-3 rounded-lg`}>
-                    <h4 className="font-medium text-gray-800 mb-1">Ideal For:</h4>
-                    <p className="text-sm text-gray-600">{treatment.suitability}</p>
-                  </div>
+                    {/* Spacer to push everything below to bottom */}
+                    <div className="flex-1"></div>
 
-                  <Link href={treatment.url}>
-                    <Button variant="outline" className={`w-full border-${treatment.color}-500 text-${treatment.color}-600 hover:bg-${treatment.color}-50`}>
-                      Explore {treatment.name}
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+                    {/* Suitability */}
+                    <div className={`${colors.bg} p-3 rounded-lg`}>
+                      <h4 className="font-medium text-gray-800 mb-1">Ideal For:</h4>
+                      <p className="text-sm text-gray-600">{treatment.suitability}</p>
+                    </div>
+
+                    <Link href={treatment.url}>
+                      <Button variant="outline" className={`w-full ${colors.outline}`}>
+                        Explore {treatment.name}
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -787,13 +860,17 @@ export default function TreatmentComparisonPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">

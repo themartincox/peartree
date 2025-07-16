@@ -132,15 +132,19 @@ export default function ImplantsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-gold text-white font-semibold group">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Consultation
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="btn-gold text-white font-semibold group">
+                    <CalendarDays className="w-5 h-5 mr-2" />
+                    Book Consultation
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               {/* Success Stats */}
@@ -203,7 +207,7 @@ export default function ImplantsPage() {
               {
                 title: "Single Implant",
                 description: "Replace one missing tooth with a natural-looking implant crown",
-                price: "From £2,500",
+                price: "From £3,500",
                 features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
                 image: "single-implant",
                 url: "/services/implants/single-implant"
@@ -226,8 +230,8 @@ export default function ImplantsPage() {
               },
               {
                 title: "All-on-4",
-                description: "Replace entire arch of teeth with just 4 strategically placed implants",
-                price: "From £15,000",
+                description: "Replace entire arch of teeth with 4 strategically placed implants",
+                price: "POA",
                 features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
                 image: "all-on-4",
                 url: "/services/implants/all-on-4"
@@ -259,7 +263,10 @@ export default function ImplantsPage() {
 
                     <Link href={implant.url}>
                       <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                        Explore {implant.title} Options
+                        <span className="hidden sm:inline">
+                          View Multiple Implant Options
+                        </span>
+                        <span className="sm:hidden">View Options</span>
                       </Button>
                     </Link>
                   </div>
@@ -440,7 +447,7 @@ export default function ImplantsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 max-w-2xl mx-auto">
             {/* Standard Pricing */}
             <Card className="border-2 border-gray-200 hover:border-pear-primary/30 transition-colors">
               <CardHeader className="text-center">
@@ -464,46 +471,18 @@ export default function ImplantsPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                  Get Quote
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* Membership Pricing */}
-            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold/5 to-white">
-              <CardHeader className="text-center">
-                <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
-                <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
-                <div className="text-4xl font-bold text-pear-gold mt-4">£2,000</div>
-                <p className="text-gray-600">Complete treatment (10% off)</p>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {[
-                    "10% discount on all treatments",
-                    "Free initial consultation",
-                    "Flexible payment plans",
-                    "Priority appointment booking",
-                    "Extended warranty options",
-                    "Ongoing maintenance included"
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full mt-6 btn-gold text-white">
-                  Join Membership
-                </Button>
+                <Link href="/book">
+                  <Button className="w-full mt-6 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
+                    Get Quote
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
 
           {/* Financing Options */}
           <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-6">Make implants affordable with our financing options</p>
+            <p className="text-gray-600 mb-6">Make implants affordable with our payment options</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Payment Plans</h4>
@@ -511,7 +490,7 @@ export default function ImplantsPage() {
               </Card>
               <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Monthly Payments</h4>
-                <p className="text-sm text-gray-600">From £83/month over 3 years</p>
+                <p className="text-sm text-gray-600">0% Payment plans over the treatment length</p>
               </Card>
               <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Insurance</h4>
@@ -541,7 +520,7 @@ export default function ImplantsPage() {
                 </Button>
               </Link>
               <Link href="/services/treatment-comparison">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary bg-transparent">
                   Compare All Options
                 </Button>
               </Link>

@@ -17,7 +17,8 @@ import {
   Users,
   Camera,
   Activity,
-  Settings
+  Settings,
+  Phone
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -166,7 +167,7 @@ export default function RestorativeDentistryPage() {
     },
     {
       name: "Composite Resin",
-      description: "Tooth-colored material perfect for conservative restorations",
+      description: "Tooth-coloured material perfect for conservative restorations",
       benefits: ["Conservative", "Same-day treatment", "Color-matched"]
     }
   ];
@@ -239,10 +240,12 @@ export default function RestorativeDentistryPage() {
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
-                  <Camera className="w-5 h-5 mr-2" />
-                  View Before & After
-                </Button>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white bg-white">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               {/* Trust indicators */}
@@ -420,7 +423,7 @@ export default function RestorativeDentistryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {materials.map((material, index) => (
-              <Card key={index} className="bg-white">
+              <Card key={index} className="bg-gradient-to-br from-green-50/50 to-teal-50/50 border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-lg font-semibold text-pear-primary">
                     {material.name}
@@ -433,7 +436,7 @@ export default function RestorativeDentistryPage() {
                   <ul className="space-y-2">
                     {material.benefits.map((benefit, benefitIndex) => (
                       <li key={benefitIndex} className="flex items-center space-x-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-dental-green flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                         <span className="text-gray-700">{benefit}</span>
                       </li>
                     ))}
@@ -556,7 +559,7 @@ export default function RestorativeDentistryPage() {
                 <div className="space-y-4">
                   <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                     <div className="text-sm text-white/70 mb-2">Member savings example:</div>
-                    <div className="text-2xl font-bold text-pear-gold mb-1">Save £90</div>
+                    <div className="text-2xl font-bold text-pear-gold mb-1">Save £45</div>
                     <div className="text-white/80 mb-2">on a £450 crown</div>
                     <div className="text-xs text-white/60">With 10% membership discount</div>
                   </div>
@@ -568,7 +571,7 @@ export default function RestorativeDentistryPage() {
                     </Button>
                   </Link>
                   <Link href="/book">
-                    <Button size="lg" variant="outline" className="w-full border-white text-white hover:bg-white hover:text-pear-primary">
+                    <Button size="lg" variant="outline" className="w-full border-white hover:bg-white hover:text-pear-primary text-[#ffffff] bg-[#FFFFFF1A]">
                       Book Consultation
                     </Button>
                   </Link>
@@ -601,13 +604,13 @@ export default function RestorativeDentistryPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
+                  <Button size="lg" className="bg-white text-dental-green hover:bg-gray-100 font-semibold shadow-lg">
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green bg-transparent">
                     Call 0115 931 2935
                   </Button>
                 </a>

@@ -17,14 +17,14 @@ import {
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Emergency Dental Repairs Burton Joyce | Same-Day Fixes | Pear Tree Dental",
-  description: "Urgent dental repairs in Burton Joyce. Broken crowns, lost fillings, damaged dentures. Same-day emergency repairs available. Call 0115 931 2935 for immediate help.",
+  title: "Emergency Dental Repairs Burton Joyce | Rapid Fixes | Pear Tree Dental",
+  description: "Urgent dental repairs in Burton Joyce. Broken crowns, lost fillings, damaged dentures. Rapid emergency repairs, aiming for same day. Call 0115 931 2935 for immediate help.",
   keywords: [
     "emergency dental repairs Burton Joyce",
     "broken crown repair Nottingham",
     "lost filling emergency",
     "damaged denture repair",
-    "same day dental repairs",
+    "rapid dental repairs",
     "urgent dental fixes",
     "dental emergency Nottinghamshire"
   ]
@@ -41,19 +41,19 @@ export default function EmergencyRepairsPage() {
       title: "Broken Crowns & Bridges",
       description: "Immediate repair or replacement of damaged crowns and bridges",
       icon: Shield,
-      urgency: "Same Day"
+      urgency: "Aim for same day"
     },
     {
       title: "Lost Fillings",
       description: "Quick replacement of lost or damaged fillings to prevent pain",
       icon: Wrench,
-      urgency: "Within Hours"
+      urgency: "Rapid"
     },
     {
       title: "Damaged Dentures",
       description: "Repair cracked or broken dentures to restore function",
       icon: CheckCircle,
-      urgency: "Same Day"
+      urgency: "Aim for same day"
     },
     {
       title: "Loose Restorations",
@@ -82,7 +82,7 @@ export default function EmergencyRepairsPage() {
           </Badge>
 
           <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Same-Day Emergency
+            Emergency
             <span className="block text-red-600">Dental Repairs</span>
           </h1>
 
@@ -116,7 +116,7 @@ export default function EmergencyRepairsPage() {
               Common Emergency Repairs We Handle
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our experienced team can handle most dental emergencies on the same day
+              Our experienced team can handle most dental emergencies rapidly
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export default function EmergencyRepairsPage() {
               <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 2
               </div>
-              <h3 className="text-xl font-semibold mb-2">Same-Day Assessment</h3>
+              <h3 className="text-xl font-semibold mb-2">Rapid Assessment</h3>
               <p className="text-gray-600">Quick examination to determine the best repair approach for your situation</p>
             </div>
 
@@ -208,7 +208,7 @@ export default function EmergencyRepairsPage() {
                 </Button>
               </a>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600">
+                <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 hover:text-red-700">
                   <ArrowRight className="w-5 h-5 mr-2" />
                   Contact Information
                 </Button>
