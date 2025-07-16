@@ -298,13 +298,17 @@ export default function SingleImplantPage() {
                   <div className="text-sm text-gray-600">Implant + crown</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold">
-                    Book Single Implant Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold">
+                      Book Single Implant Consultation
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>

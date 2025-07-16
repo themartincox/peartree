@@ -456,13 +456,17 @@ export default function HygieneServicesPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-cyan-600 hover:bg-white/90 font-semibold">
-                  Book Hygiene Appointment
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-600">
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-cyan-600 hover:bg-white/90 font-semibold">
+                    Book Hygiene Appointment
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-600">
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">

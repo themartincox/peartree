@@ -299,9 +299,9 @@ export default function CosmeticDentistryPage() {
                   {/* Social Proof Badge */}
                   {treatment.socialProof && (
                     <div className="mb-6">
-                      <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-4 py-2">
-                        <Star className="w-4 h-4 text-white mr-2 fill-current" />
-                        <span className="text-sm font-semibold text-white">{treatment.socialProof}</span>
+                      <div className="inline-flex items-center bg-white border-2 border-pear-primary rounded-full px-4 py-2 shadow-sm">
+                        <Star className="w-4 h-4 text-pear-primary mr-2 fill-current" />
+                        <span className="text-sm font-semibold text-pear-primary">{treatment.socialProof}</span>
                       </div>
                     </div>
                   )}
@@ -434,13 +434,17 @@ export default function CosmeticDentistryPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 border-2 border-white">
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 border-2 border-white">
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">

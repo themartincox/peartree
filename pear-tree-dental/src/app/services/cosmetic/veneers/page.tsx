@@ -257,14 +257,18 @@ export default function VeneersPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white">
-                <Phone className="w-5 h-5 mr-2" />
-                Book Consultation
-              </Button>
-              <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                <Mail className="w-5 h-5 mr-2" />
-                Compare Options
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Book Consultation
+                </Button>
+              </Link>
+              <Link href="/services/treatment-comparison">
+                <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                  <Mail className="w-5 h-5 mr-2" />
+                  Compare Options
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -527,14 +531,18 @@ export default function VeneersPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-pear-primary hover:bg-gray-100">
-              <Phone className="w-5 h-5 mr-2" />
-              Call 0115 931 2935
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
-              <Mail className="w-5 h-5 mr-2" />
-              Book Online Consultation
-            </Button>
+            <a href="tel:01159312935">
+              <Button size="lg" className="bg-white text-pear-primary hover:bg-gray-100">
+                <Phone className="w-5 h-5 mr-2" />
+                Call 0115 931 2935
+              </Button>
+            </a>
+            <Link href="/book">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                <Mail className="w-5 h-5 mr-2" />
+                Book Online Consultation
+              </Button>
+            </Link>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">

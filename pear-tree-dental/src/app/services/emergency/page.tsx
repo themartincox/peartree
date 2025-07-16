@@ -214,10 +214,12 @@ export default function EmergencyPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now: 0115 931 2935
-              </Button>
+              <a href="tel:01159312935">
+                <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call Now: 0115 931 2935
+                </Button>
+              </a>
               <Link href="/services/emergency-repairs">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600">
                   <ArrowRight className="w-5 h-5 mr-2" />

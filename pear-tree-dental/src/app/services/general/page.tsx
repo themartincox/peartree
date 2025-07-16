@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -130,15 +131,19 @@ export default function GeneralDentistryPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Check-up
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
+                    <CalendarDays className="w-5 h-5 mr-2" />
+                    Book Check-up
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               {/* Quick Stats */}
@@ -252,7 +257,7 @@ export default function GeneralDentistryPage() {
                         <Icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-dental-green transition-colors duration-300">{service.title}</h3>
+                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-pear-primary/80 transition-colors duration-300">{service.title}</h3>
                       </div>
                     </div>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{service.description}</p>
@@ -265,7 +270,7 @@ export default function GeneralDentistryPage() {
                       ))}
                     </ul>
                     <div className="pt-3 border-t border-dental-green/20 group-hover:border-dental-green/40 transition-colors duration-300">
-                      <div className="text-dental-green font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
+                      <div className="text-pear-primary font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
                 </Card>
@@ -339,7 +344,7 @@ export default function GeneralDentistryPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-dental-green to-dental-green/90 text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
@@ -351,14 +356,23 @@ export default function GeneralDentistryPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
-                <CalendarDays className="w-5 h-5 mr-2" />
-                Book NHS Appointment
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-dental-green hover:bg-white hover:text-dental-green">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2935
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />Book Appointment
+                </Button>
+              </Link>
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Consultation
+                </Button>
+              </Link>
+              <a href="tel:01159312935">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 0115 931 2935
+                </Button>
+              </a>
             </div>
 
             {/* Trust Indicators */}
@@ -373,7 +387,7 @@ export default function GeneralDentistryPage() {
               </div>
               <div className="flex items-center justify-center space-x-2">
                 <Clock className="w-4 h-4" />
-                <span>Same-day appointments</span>
+                <span>Convenient appointments</span>
               </div>
             </div>
           </div>

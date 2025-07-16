@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -232,10 +233,12 @@ export default function RestorativeDentistryPage() {
 
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-dental-green to-soft-blue text-white font-semibold group shadow-lg">
-                  Book Consultation
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-gradient-to-r from-dental-green to-soft-blue text-white font-semibold group shadow-lg">
+                    Book Consultation
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
                   <Camera className="w-5 h-5 mr-2" />
                   View Before & After
@@ -389,10 +392,12 @@ export default function RestorativeDentistryPage() {
                     </div>
                   </div>
 
-                  <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
-                    Explore {treatment.name}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Link href="/book">
+                    <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
+                      Book {treatment.name}
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -556,13 +561,17 @@ export default function RestorativeDentistryPage() {
                     <div className="text-xs text-white/60">With 10% membership discount</div>
                   </div>
 
-                  <Button size="lg" className="btn-gold text-white w-full font-semibold shadow-lg">
-                    Join Membership Plan
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="w-full border-white text-white hover:bg-white hover:text-pear-primary">
-                    Book Consultation
-                  </Button>
+                  <Link href="/membership">
+                    <Button size="lg" className="btn-gold text-white w-full font-semibold shadow-lg">
+                      Join Membership Plan
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link href="/book">
+                    <Button size="lg" variant="outline" className="w-full border-white text-white hover:bg-white hover:text-pear-primary">
+                      Book Consultation
+                    </Button>
+                  </Link>
                   <p className="text-xs text-white/60 text-center">
                     Free consultation • Treatment planning included
                   </p>
@@ -591,13 +600,17 @@ export default function RestorativeDentistryPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">

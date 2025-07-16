@@ -364,15 +364,16 @@ export default function PricingPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <Link href="/book">
                 <Button size="lg" className="btn-gold text-white font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2935
+              <a href="tel:01159312935">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 0115 931 2935
               </Button>
             </div>
           </div>

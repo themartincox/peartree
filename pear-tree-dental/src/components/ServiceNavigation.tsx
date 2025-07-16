@@ -256,7 +256,7 @@ const ServiceNavigation = () => {
             </motion.div>
           </Link>
 
-          <Link href="/contact">
+          <Link href="/book">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

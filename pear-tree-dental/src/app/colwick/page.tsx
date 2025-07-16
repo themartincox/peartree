@@ -48,15 +48,19 @@ export default function ColwickPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Appointment
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
+                    <CalendarDays className="w-5 h-5 mr-2" />
+                    Book Appointment
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                    <Phone className="w-5 h-5 mr-2" />
+                    0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               {/* Local Stats */}
@@ -392,13 +396,16 @@ export default function ColwickPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
-                <CalendarDays className="w-5 h-5 mr-2" />
-                Book Online
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2935
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-dental-green hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Online
+                </Button>
+              </Link>
+              <a href="tel:01159312935">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 0115 931 2935
               </Button>
             </div>
 

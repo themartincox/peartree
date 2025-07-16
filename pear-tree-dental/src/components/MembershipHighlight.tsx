@@ -291,7 +291,7 @@ const MembershipHighlight = () => {
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-8 py-4">
-              <Link href="/contact">Book Your Consultation</Link>
+              <Link href="/book">Book Your Consultation</Link>
             </Button>
           </div>
         </div>

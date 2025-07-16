@@ -534,19 +534,23 @@ export default function ImplantsPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
-                <CalendarDays className="w-5 h-5 mr-2" />
-                Book Consultation
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Consultation
+                </Button>
+              </Link>
               <Link href="/services/treatment-comparison">
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
                   Compare All Options
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2935
-              </Button>
+              <a href="tel:01159312935">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 0115 931 2935
+                </Button>
+              </a>
             </div>
 
             {/* Trust Indicators */}

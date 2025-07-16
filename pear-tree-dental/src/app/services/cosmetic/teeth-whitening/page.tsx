@@ -234,14 +234,18 @@ export default function TeethWhiteningPage() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold group">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white">
-                  <Clock className="w-5 h-5 mr-2" />
-                  Compare Systems
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold group">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link href="/services/treatment-comparison">
+                  <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white">
+                    <Clock className="w-5 h-5 mr-2" />
+                    Compare Systems
+                  </Button>
+                </Link>
               </div>
             </div>
 

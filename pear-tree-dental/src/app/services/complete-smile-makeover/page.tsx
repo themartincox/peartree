@@ -598,9 +598,11 @@ export default function CompleteSmileMakeoverPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-rose-500 to-amber-500 text-white">
-                  Get Personalized Quote
-                </Button>
+                <Link href="/book">
+                  <Button className="w-full mt-6 bg-gradient-to-r from-rose-500 to-amber-500 text-white">
+                    Get Personalized Quote
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -628,9 +630,11 @@ export default function CompleteSmileMakeoverPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 btn-gold text-white">
-                  Join Membership
-                </Button>
+                <Link href="/membership">
+                  <Button className="w-full mt-6 btn-gold text-white">
+                    Join Membership
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -670,15 +674,19 @@ export default function CompleteSmileMakeoverPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-rose-600 hover:bg-white/90 font-semibold">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Smile Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-rose-600 hover:bg-white/90 font-semibold">
+                    <CalendarDays className="w-5 h-5 mr-2" />
+                    Book Smile Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="text-sm text-white/80">

@@ -99,7 +99,7 @@ export default function ServiceHero({
   keyBenefits = [],
   primaryCTA = {
     text: "Book Consultation",
-    href: "/book-appointment"
+    href: "/book"
   },
   secondaryCTA = {
     text: "Learn More",
