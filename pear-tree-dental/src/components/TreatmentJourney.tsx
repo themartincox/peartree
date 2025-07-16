@@ -140,21 +140,20 @@ const TreatmentJourney = () => {
       const currentStep = Math.min(Math.floor(stepProgress), journeySteps.length - 1);
       setActiveStep(currentStep);
 
-      // Apply transforms to each step
+      // Apply transforms to each step with proper sticky behavior
       stepsRef.current.forEach((step, index) => {
         if (!step) return;
 
         const stepElement = step;
-        const stepProgress = Math.max(0, Math.min(1, (totalProgress * journeySteps.length) - index));
 
         if (index <= currentStep) {
-          // Current and previous steps - all pin in place, no upward movement
+          // Current and previous steps - stick in place
           stepElement.style.transform = "translateY(0px)";
           stepElement.style.zIndex = `${10 + index}`;
           stepElement.style.position = 'sticky';
           stepElement.style.top = '0px';
         } else {
-          // Future steps - wait below
+          // Future steps - positioned normally below
           stepElement.style.transform = "translateY(0px)";
           stepElement.style.zIndex = `${10 + index}`;
           stepElement.style.position = 'relative';
@@ -188,7 +187,7 @@ const TreatmentJourney = () => {
   };
 
   return (
-    <section className="py-0">
+    <section className="py-0 bg-white">
       {/* Fixed Navigation Tabs - Only visible when in journey section */}
       {isInJourneySection && (
         <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block animate-in fade-in duration-300">
@@ -223,7 +222,7 @@ const TreatmentJourney = () => {
         style={{ height: `${journeySteps.length * 100}vh` }}
       >
         {/* Header Section */}
-        <div className="absolute top-0 left-0 right-0 z-40 bg-white py-6 sm:py-8">
+        <div className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm py-6 sm:py-8 border-b border-gray-100">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
@@ -257,7 +256,7 @@ const TreatmentJourney = () => {
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center bg-white transition-all duration-500 ease-out group"
+              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-white"
               style={{
                 zIndex: 10 + index,
               }}

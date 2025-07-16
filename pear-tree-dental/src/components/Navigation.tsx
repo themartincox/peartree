@@ -152,7 +152,7 @@ const Navigation = () => {
           "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
-            : "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
+            : "transform translate-y-0 opacity-100 bg-white shadow-lg"
         )}
         aria-label="Main navigation"
       >
@@ -164,19 +164,20 @@ const Navigation = () => {
               className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
               aria-label="Pear Tree Dental - Return to homepage"
             >
-              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white">
+              <div className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14">
                 <Image
                   src="/images/dental-motif-logo.png"
                   alt="Pear Tree Dental Logo"
-                  width={48}
-                  height={48}
-                  className="w-full h-full object-contain filter brightness-0 invert"
+                  width={56}
+                  height={56}
+                  className="w-full h-full object-contain"
+                  style={{ filter: 'brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1200%) hue-rotate(165deg) brightness(90%) contrast(95%)' }}
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-lg sm:text-xl md:text-2xl lg:text-3xl text-white xl:text-left xl:text-[33px] lg:text-center">PEAR TREE DENTAL
+                <div className="brand-logo text-3xl text-pear-primary xl:text-left lg:text-center">PEAR TREE DENTAL
                 </div>
-                <div className="brand-subtitle text-xs sm:text-sm text-white/90 mt-1 xl:text-center">
+                <div className="brand-subtitle text-xs text-pear-primary/90 mt-1 xl:text-center">
                 </div>
               </div>
             </Link>
@@ -187,7 +188,7 @@ const Navigation = () => {
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
-                    className="hover:text-pear-gold focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md bg-[#09394D] text-[#FFFFFFff]"
+                    className="hover:text-pear-gold focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md text-pear-primary text-sm"
                     aria-label="Services menu"
                   >
                     Services
@@ -251,14 +252,14 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/membership" className="text-pear-gold-dark hover:text-pear-primary transition-colors font-semibold">
+                  <Link href="/membership" className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm">
                     Membership Plan
                   </Link>
                 </NavigationMenuItem>
 
                 {/* About Dropdown */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="hover:text-pear-gold text-[#FFFFFF] bg-[#09394D]">
+                  <NavigationMenuTrigger className="hover:text-pear-gold text-pear-primary text-sm">
                     About
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -285,19 +286,19 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/new-patients" className="text-white hover:text-pear-gold transition-colors font-medium">
+                  <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                     New Patients
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/contact" className="text-white hover:text-pear-gold transition-colors font-medium">
+                  <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                     Contact
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/urgent-dental-pain">
+                  <Link href="/services/emergency">
                     <Button
                       size="sm"
                       className="bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-4 py-2 ml-4"
@@ -315,7 +316,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md hover:bg-white/10"
+                  className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary/10"
                   aria-label="Open mobile navigation menu"
                   aria-expanded="false"
                 >
@@ -348,7 +349,7 @@ const Navigation = () => {
 
                   {/* Mobile CTAs */}
                   <div className="flex flex-col space-y-3">
-                    <Link href="/urgent-dental-pain">
+                    <Link href="/services/emergency">
                       <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-12 text-sm font-bold rounded-full">
                         🚨 Dental Pain? Call Now
                       </Button>
@@ -396,7 +397,7 @@ const Navigation = () => {
                       </div>
                     </div>
 
-                    <Link href="/membership" className="text-pear-gold hover:text-pear-primary transition-colors font-semibold">
+                    <Link href="/membership" className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm">
                       Membership Plan
                     </Link>
 
@@ -415,10 +416,10 @@ const Navigation = () => {
                       </div>
                     </div>
 
-                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                       New Patients
                     </Link>
-                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                       Contact
                     </Link>
                   </nav>
@@ -443,17 +444,17 @@ const Navigation = () => {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 text-white">
+              <div className="w-7 h-7 sm:w-9 sm:h-9 text-white">
                 <Image
                   src="/images/dental-motif-logo.png"
                   alt="Pear Tree Dental Logo"
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
                   className="w-full h-full object-contain filter brightness-0 invert"
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-sm sm:text-lg md:text-xl text-white xl:text-center xl:text-[25px]">PEAR TREE DENTAL
+                <div className="brand-logo text-2xl" style={{ fontSize: 25, color: "#fff" }}>PEAR TREE DENTAL
                 </div>
                 <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center">
                 </div>
@@ -465,9 +466,12 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-4 py-2 h-10"
+                  className="relative bg-white text-pear-primary font-medium px-4 py-2 h-10 border border-pink-200/40 overflow-hidden"
                 >
-                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
+                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent"></div>
+                  <div className="relative z-10 flex items-center">
+                    <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
+                  </div>
                 </Button>
               </Link>
               <Link href="/membership">
@@ -485,9 +489,10 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-soft-pink text-pear-primary hover:bg-soft-pink/90 font-medium px-3 py-2 h-9 text-xs"
+                  className="relative bg-white text-pear-primary font-medium px-3 py-2 h-9 text-xs border border-pink-200/40 overflow-hidden"
                 >
-                  Book
+                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent"></div>
+                  <div className="relative z-10">Book</div>
                 </Button>
               </Link>
               <Link href="/membership">

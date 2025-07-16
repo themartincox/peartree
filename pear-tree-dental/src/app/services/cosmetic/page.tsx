@@ -423,7 +423,7 @@ export default function CosmeticDentistryPage() {
       {/* Final CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white overflow-hidden">
+          <Card className="bg-pinky-fade text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for Your Dream Smile?
@@ -435,13 +435,13 @@ export default function CosmeticDentistryPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                  <Button size="lg" className="bg-white text-pinky hover:bg-white/90 font-semibold">
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 border-2 border-white">
+                  <Button size="lg" className="bg-white text-pinky hover:bg-white/90 border-2 border-white">
                     Call 0115 931 2935
                   </Button>
                 </a>

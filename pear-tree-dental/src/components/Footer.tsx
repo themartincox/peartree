@@ -113,7 +113,7 @@ const Footer = () => {
             <h3 className="text-base sm:text-lg font-semibold text-white">Quick Links</h3>
 
             <div className="space-y-2 sm:space-y-3">
-              <Link href="/urgent-dental-pain" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
+              <Link href="/services/emergency" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
                 🚨 Dental Pain?
               </Link>
               <Link href="/membership">

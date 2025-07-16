@@ -308,7 +308,7 @@ const ServicesContent = () => {
 
         {/* Simple CTA */}
         <div className="flex justify-center">
-          <Link href="/services/general">
+          <Link href="/book">
             <div className="hover:scale-105 transition-transform duration-200">
               <Button size="lg" className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white font-semibold">
                 Book Now

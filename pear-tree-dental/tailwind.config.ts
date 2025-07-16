@@ -12,12 +12,17 @@ export default {
     'bg-dental-green',
     'bg-pear-primary',
     'bg-pear-gold',
+    'bg-pinky',
+    'bg-pinky-fade',
+    'bg-pinky-fade-soft',
     'text-dental-green',
     'text-pear-primary',
     'text-pear-gold',
+    'text-pinky',
     'border-dental-green',
     'border-pear-primary',
     'border-pear-gold',
+    'border-pinky',
   ],
   theme: {
     extend: {
@@ -37,6 +42,9 @@ export default {
         'soft-blue': '#7fb3d3',
         'soft-pink': '#e8c5c5',
         'soft-lavender': '#d1c4e9',
+        'pinky': '#e8c5c5', // Base pinky color (same as soft-pink)
+        'pinky-light': '#f0d5d5', // Lighter pinky for gradients
+        'pinky-lavender': '#d1c4e9', // Pinky fade end color (same as soft-lavender)
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         card: {
@@ -82,6 +90,10 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
+      },
+      backgroundImage: {
+        'pinky-fade': 'linear-gradient(to right, #e8c5c5, #d1c4e9)',
+        'pinky-fade-soft': 'linear-gradient(to right, #f0d5d5, #e8d5e8)',
       },
       spacing: {
         '25px': '25px', // For the 25px gap between PEAR and TREE

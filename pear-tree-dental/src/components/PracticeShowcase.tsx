@@ -134,7 +134,7 @@ const PracticeShowcase = () => {
               {/* Practice Features */}
               <div className="grid grid-cols-2 gap-4">
                 <Link href="/about/team">
-                  <Card className="p-4 text-center border-soft-blue/20 hover:border-soft-blue/40 transition-colors cursor-pointer">
+                  <Card className="p-4 text-center border-soft-blue/20 hover:border-gray-300 transition-colors cursor-pointer">
                     <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                       <Users className="w-6 h-6 text-soft-blue" />
                     </div>
@@ -143,7 +143,7 @@ const PracticeShowcase = () => {
                   </Card>
                 </Link>
 
-                <Card className="p-4 text-center border-soft-pink/20">
+                <Card className="p-4 text-center border-soft-pink/20 hover:border-gray-300 transition-colors">
                   <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Heart className="w-6 h-6 text-soft-pink" />
                   </div>

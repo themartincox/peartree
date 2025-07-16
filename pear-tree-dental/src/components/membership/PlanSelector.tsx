@@ -76,6 +76,15 @@ const plans = [
   },
 ];
 
+// Plan color gradient classes - Using brand colors with complementary bridging
+const planGradientClasses = {
+  "plan-a": "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white", // Essential: Green (matches live)
+  "plan-b": "bg-gradient-to-r from-teal-400 to-teal-500 text-white", // Routine: Teal bridge (less bold, connects green to dark teal)
+  "plan-c": "bg-gradient-to-r from-slate-600 to-slate-700 text-white", // Complete: Dark teal (was Routine Care's color)
+  "plan-d": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Complete Plus: Brand gold gradient
+  "plan-e": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Periodontal: Brand gold gradient
+};
+
 export default function PlanSelector() {
   const [selectedPlan, setSelectedPlan] = useState(plans[2].id); // Default to Complete Care (Most Popular)
 
@@ -100,29 +109,35 @@ export default function PlanSelector() {
                 </Badge>
               )}
               <Card
-                className={`h-full ${
+                className={`h-full flex flex-col ${
                   selectedPlan === plan.id
                     ? 'ring-2 ring-pear-primary ring-offset-2'
                     : 'hover:border-pear-primary/50'
                 } cursor-pointer transition-all duration-200`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
-                <CardHeader className={`${plan.id} text-white rounded-t-xl pb-3 pt-6`}>
-                  <CardTitle className="text-center text-base">{plan.name}</CardTitle>
+                {/* Fixed Height Header with Color Bar */}
+                <CardHeader className={`${planGradientClasses[plan.color]} rounded-t-xl pb-3 pt-6 min-h-[120px] flex flex-col justify-center`}>
+                  <CardTitle className="text-center text-base leading-tight mb-2">{plan.name}</CardTitle>
                   <div className="text-center">
                     <span className="text-2xl font-bold">{plan.price}</span>
                     <span className="text-sm font-medium"> / MONTH</span>
                   </div>
                 </CardHeader>
 
-                <CardContent className="pt-5 pb-6">
-                  {plan.description && (
-                    <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-xs text-blue-800 font-medium">{plan.description}</p>
-                    </div>
-                  )}
+                {/* Flexible Content Area */}
+                <CardContent className="pt-5 pb-4 flex-grow flex flex-col">
+                  {/* Description Area - Fixed Height */}
+                  <div className="min-h-[60px] mb-4">
+                    {plan.description && (
+                      <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <p className="text-xs text-blue-800 font-medium">{plan.description}</p>
+                      </div>
+                    )}
+                  </div>
 
-                  <ul className="space-y-2 text-sm">
+                  {/* Features List - Flexible Height */}
+                  <ul className="space-y-2 text-sm flex-grow">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-2">
                         <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
@@ -131,6 +146,7 @@ export default function PlanSelector() {
                     ))}
                   </ul>
 
+                  {/* Per Day Cost - Fixed Position */}
                   <div className="mt-4 text-center">
                     <span className="inline-flex bg-gray-100 rounded-full px-3 py-1 text-xs font-medium">
                       {plan.perDay}
@@ -138,7 +154,8 @@ export default function PlanSelector() {
                   </div>
                 </CardContent>
 
-                <CardFooter>
+                {/* Fixed Height Footer */}
+                <CardFooter className="pt-2 pb-4">
                   {selectedPlan === plan.id ? (
                     <a href={`/membership/signup?plan=${plan.id}`} className="w-full">
                       <Button className="w-full" variant="default">
@@ -180,7 +197,7 @@ export default function PlanSelector() {
         </div>
 
         {/* Family Plan Section - Full Width */}
-        <div className="mt-8 mb-10">
+        <div id="family-plan" className="mt-8 mb-10">
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-pear-primary mb-2">Family Plan</h3>
             <p className="text-gray-600">Perfect solution for families at one address</p>

@@ -243,15 +243,17 @@ const MembershipHighlight = () => {
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <Link href="/membership/signup">
+                  <Link href={activeTab === "family" ? "/membership#family-plan" : "/membership/signup"}>
                     <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                       View Full {currentPlan.name} Details
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </Link>
-                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
-                    Compare All Plans
-                  </Button>
+                  <Link href="/membership#plans">
+                    <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                      Compare All Plans
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -285,7 +287,7 @@ const MembershipHighlight = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="btn-gold text-white px-8 py-4">
-              <Link href="/membership">
+              <Link href="/membership#plans">
                 Explore All Plans
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

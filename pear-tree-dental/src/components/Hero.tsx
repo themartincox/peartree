@@ -97,7 +97,7 @@ const Hero = () => {
           <div className="relative mt-8 lg:-mt-[100px] hero-image-container order-1 lg:order-2" role="img" aria-label="Dental care showcase">
             {/* Main Hero Image */}
             <div
-              className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl opacity-80"
               role="img"
               aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
             >
@@ -138,8 +138,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Neutral overlay - sharp and clean */}
-                  <div className="absolute inset-0 bg-teal-100/40 transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Pink tint overlay with fade */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
 
@@ -157,8 +157,8 @@ const Hero = () => {
                     className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
                   />
-                  {/* Neutral overlay - sharp and clean */}
-                  <div className="absolute inset-0 bg-teal-100/40 transition-opacity duration-300 group-hover:opacity-0"></div>
+                  {/* Pink tint overlay with fade */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
                 </div>
               </Link>
             </div>
