@@ -119,22 +119,61 @@ export default function OrthodonticsPage() {
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div>
-                <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
-                  <Smile className="w-4 h-4 mr-2" />
-                  Clear Aligner Technology
-                </Badge>
-                <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
-                  Straighten Your Teeth
-                  <span className="block text-soft-pink">Invisibly</span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                  Transform your smile discreetly with Invisalign and ClearCorrect clear aligners.
-                  Achieve straight teeth without the visibility and discomfort of traditional braces.
-                </p>
+            {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
+            <div className="space-y-8 order-1 lg:order-1">
+              {/* H1 Title - First on mobile for immediate page identification */}
+              <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
+                Straighten Your Teeth
+                <span className="block text-soft-pink">Invisibly</span>
+              </h1>
+
+              {/* Hero Image - Second on mobile, appears above other content */}
+              <div className="relative lg:hidden">
+                <Card className="overflow-hidden shadow-2xl">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold text-gray-700 mb-2">ORTHODONTICS HERO IMAGE</h3>
+                      <p className="text-gray-600">Beautiful woman holding clear aligners, showing perfect smile</p>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Social Proof Sticker */}
+                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white rounded-full px-4 py-2 shadow-lg transform rotate-12">
+                  <div className="text-center">
+                    <div className="text-sm font-bold">STRAIGHTENED BY</div>
+                    <div className="text-lg font-extrabold">453+</div>
+                    <div className="text-xs">ALIGNED SMILES</div>
+                  </div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-soft-pink/20">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-soft-pink to-soft-lavender rounded-xl flex items-center justify-center">
+                      <Eye className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-pear-primary">Nearly Invisible</p>
+                      <p className="text-sm text-gray-600">Discreet Treatment</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* Badge - Third on mobile, provides context */}
+              <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
+                <Smile className="w-4 h-4 mr-2" />
+                Clear Aligner Technology
+              </Badge>
+
+              {/* Description - Fourth on mobile */}
+              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                Transform your smile discreetly with Invisalign and ClearCorrect clear aligners.
+                Achieve straight teeth without the visibility and discomfort of traditional braces.
+              </p>
+
+              {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold group">
                   <CalendarDays className="w-5 h-5 mr-2" />
@@ -147,7 +186,7 @@ export default function OrthodonticsPage() {
                 </Button>
               </div>
 
-              {/* Treatment Stats */}
+              {/* Treatment Stats - Last on mobile */}
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-soft-pink">6-18</div>
@@ -164,8 +203,8 @@ export default function OrthodonticsPage() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative">
+            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
+            <div className="relative order-2 lg:order-2 hidden lg:block">
               <Card className="overflow-hidden shadow-2xl">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-center">

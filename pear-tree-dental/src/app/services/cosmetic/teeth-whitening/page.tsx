@@ -190,29 +190,55 @@ export default function TeethWhiteningPage() {
       <section className="pt-20 sm:pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-6 sm:space-y-8">
+            {/* Mobile-first content order: Title → Video → Badge → Text → Benefits → CTAs */}
+            <div className="space-y-6 sm:space-y-8 order-1 lg:order-1">
+              {/* H1 Title - First on mobile for immediate page identification */}
+              <h1 className="heading-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-pear-primary leading-tight">
+                Transform Your
+                <span className="text-yellow-600 block">Smile Today</span>
+              </h1>
+
+              {/* Hero Video - Second on mobile, appears above other content */}
+              <div className="relative lg:hidden">
+                <VideoHero
+                  videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
+                  posterImage="/images/teeth-whitening-before.webp"
+                  fallbackImage="/images/teeth-whitening-before.webp"
+                  altText="Professional teeth whitening transformation"
+                />
+
+                {/* Results Summary */}
+                <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                    <div className="font-semibold text-yellow-600 text-lg">Up to 8 Shades</div>
+                    <div className="text-gray-600">Whiter in weeks</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                    <div className="font-semibold text-yellow-600 text-lg">1-3 Years</div>
+                    <div className="text-gray-600">Long-lasting</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Badge - Third on mobile, provides context */}
               <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Professional Teeth Whitening
               </Badge>
 
-              <h1 className="heading-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-pear-primary leading-tight">
-                Brighten Your
-                <span className="text-yellow-600 block">Smile Today</span>
-              </h1>
-
+              {/* Description - Fourth on mobile */}
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 Transform your smile with professional teeth whitening treatments. Choose from our
                 advanced Boutique or premium Enlighten whitening systems for stunning, long-lasting results.
               </p>
 
-              {/* Social Proof */}
+              {/* Social Proof - Fifth on mobile */}
               <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-white mr-2 fill-current" />
                 <span className="text-sm font-semibold text-white">Over 1,000 satisfied patients</span>
               </div>
 
-              {/* Key Benefits */}
+              {/* Key Benefits - Sixth on mobile */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-yellow-600" />
@@ -232,7 +258,7 @@ export default function TeethWhiteningPage() {
                 </div>
               </div>
 
-              {/* CTAs */}
+              {/* CTAs - Seventh on mobile */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/book">
                   <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold group">
@@ -243,8 +269,8 @@ export default function TeethWhiteningPage() {
               </div>
             </div>
 
-            {/* Hero Visual - Video */}
-            <div className="relative">
+            {/* Hero Visual - Desktop only (hidden on mobile since it appears inline above) */}
+            <div className="relative order-2 lg:order-2 hidden lg:block">
               <VideoHero
                 videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
                 posterImage="/images/teeth-whitening-before.webp"

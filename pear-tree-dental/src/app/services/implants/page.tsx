@@ -115,22 +115,48 @@ export default function ImplantsPage() {
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div>
-                <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
-                  <Zap className="w-4 h-4 mr-2" />
-                  Advanced Tooth Replacement
-                </Badge>
-                <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
-                  Permanent Solutions with
-                  <span className="block text-pear-gold">Dental Implants</span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                  Replace missing teeth with titanium implants that look, feel, and function like natural teeth.
-                  Restore your confidence with our proven implant solutions.
-                </p>
+            {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
+            <div className="space-y-8 order-1 lg:order-1">
+              {/* H1 Title - First on mobile for immediate page identification */}
+              <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
+                Permanent Solutions with
+                <span className="block text-pear-gold">Dental Implants</span>
+              </h1>
+
+              {/* Hero Image - Second on mobile, appears above other content */}
+              <div className="relative lg:hidden">
+                <Card className="overflow-hidden shadow-2xl">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <div className="text-center">
+                      <h3 className="text-xl font-bold text-gray-700 mb-2">IMPLANT HERO IMAGE</h3>
+                      <p className="text-gray-600">Cross-section showing implant integration with jawbone</p>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Social Proof Sticker */}
+                <div className="absolute -top-4 -left-4 bg-gradient-to-r from-pear-primary to-teal-600 text-white rounded-full px-4 py-2 shadow-lg transform -rotate-12">
+                  <div className="text-center">
+                    <div className="text-sm font-bold">RESTORED BY</div>
+                    <div className="text-lg font-extrabold">627+</div>
+                    <div className="text-xs">PERFECT TEETH</div>
+                  </div>
+                </div>
               </div>
 
+              {/* Badge - Third on mobile, provides context */}
+              <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
+                <Zap className="w-4 h-4 mr-2" />
+                Advanced Tooth Replacement
+              </Badge>
+
+              {/* Description - Fourth on mobile */}
+              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                Replace missing teeth with titanium implants that look, feel, and function like natural teeth.
+                Restore your confidence with our proven implant solutions.
+              </p>
+
+              {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/book">
                   <Button size="lg" className="btn-gold text-white font-semibold group">
@@ -147,7 +173,7 @@ export default function ImplantsPage() {
                 </a>
               </div>
 
-              {/* Success Stats */}
+              {/* Success Stats - Last on mobile */}
               <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-pear-gold">98%</div>
@@ -164,8 +190,8 @@ export default function ImplantsPage() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative">
+            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
+            <div className="relative order-2 lg:order-2 hidden lg:block">
               <Card className="overflow-hidden shadow-2xl">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-center">
@@ -183,8 +209,6 @@ export default function ImplantsPage() {
                   <div className="text-xs">PERFECT TEETH</div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>

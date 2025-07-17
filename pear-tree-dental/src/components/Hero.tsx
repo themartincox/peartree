@@ -25,16 +25,85 @@ const Hero = () => {
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-pear-gold/5 rounded-full blur-3xl" aria-hidden="true" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-10 relative">
-        {/* Mobile-only headline above image */}
-        <div className="block lg:hidden mb-4">
-          <h1 className="heading-serif text-3xl sm:text-[4.2rem] font-bold text-pear-primary text-center">
-            Expert dental care with a <span className="text-pear-gold">personal touch</span>
-          </h1>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
-          {/* Left Column - Main Content */}
-          <div className="space-y-4 sm:space-y-6 flex flex-col lg:h-[600px] justify-between lg:mt-[-100px] order-2 lg:order-1">
+          {/* Mobile-first content order: Title → Images → Content → CTAs */}
+          <div className="space-y-4 sm:space-y-6 flex flex-col lg:h-[600px] justify-between lg:mt-[-100px] order-1 lg:order-1">
+            {/* H1 Title - First on mobile for immediate page identification */}
+            <div className="block lg:hidden mb-4">
+              <h1 className="heading-serif text-3xl sm:text-[4.2rem] font-bold text-pear-primary text-center">
+                Expert dental care with a <span className="text-pear-gold">personal touch</span>
+              </h1>
+            </div>
+
+            {/* Hero Images - Second on mobile, appears above other content */}
+            <div className="relative mt-8 lg:-mt-[100px] hero-image-container lg:hidden" role="img" aria-label="Dental care showcase">
+              {/* Main Hero Image */}
+              <div
+                className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl opacity-80"
+                role="img"
+                aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
+              >
+                <Image
+                  src="/images/dental-practice-hero-burton-joyce.webp"
+                  alt="Beautiful smile showcasing the quality dental care and transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                />
+
+                {/* Floating Elements - Optimized positioning */}
+                <div
+                  className="absolute top-3 left-3 sm:top-6 sm:left-6 opacity-75 hover:opacity-100 transition-opacity duration-300"
+                  role="region"
+                  aria-label="Patient rating information"
+                >
+                  <LiveGoogleRatingWidget onClick={() => setIsReviewsModalOpen(true)} />
+                </div>
+              </div>
+
+              {/* Secondary Service Images - Clickable service links */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6" role="group" aria-label="Featured dental services">
+                {/* Orthodontics Service Image */}
+                <Link
+                  href="/services/orthodontics"
+                  className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  aria-label="Orthodontics service - Invisalign and ClearCorrect clear aligner treatments"
+                >
+                  <div className="relative h-full bg-white">
+                    <Image
+                      src="/images/1.jpg"
+                      alt="Orthodontic treatment options - professional teeth straightening services"
+                      fill
+                      className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                    />
+                    {/* Pink tint overlay with fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
+                  </div>
+                </Link>
+
+                {/* Whitening Service Image */}
+                <Link
+                  href="/services/cosmetic"
+                  className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
+                  aria-label="Teeth whitening service - Boutique Whitening and Enlighten professional treatments"
+                >
+                  <div className="relative h-full bg-white">
+                    <Image
+                      src="/images/2.jpg"
+                      alt="Professional teeth whitening services - smile brightening treatments"
+                      fill
+                      className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+                    />
+                    {/* Pink tint overlay with fade */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+
             <div className="space-y-4 sm:space-y-6">
               {/* Main Headline - SEO Optimized - Hidden on mobile, shown on desktop */}
               <h1 className="heading-serif text-[3.15rem] sm:text-[4.2rem] md:text-[5.25rem] lg:text-[6.3rem] font-bold text-pear-primary leading-tight xl:text-[85px] hidden lg:block">
@@ -93,8 +162,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Premium Hero Imagery */}
-          <div className="relative mt-8 lg:-mt-[100px] hero-image-container order-1 lg:order-2" role="img" aria-label="Dental care showcase">
+          {/* Hero Images - Desktop only (hidden on mobile since it appears inline above) */}
+          <div className="relative mt-8 lg:-mt-[100px] hero-image-container order-2 lg:order-2 hidden lg:block" role="img" aria-label="Dental care showcase">
             {/* Main Hero Image */}
             <div
               className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl opacity-80"

@@ -128,16 +128,10 @@ export default function ServiceHero({
     <section className={`pt-32 pb-16 bg-gradient-to-br from-${gradientFrom} via-white to-${gradientTo}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content Column */}
-          <div className="space-y-8">
-            {/* Badge */}
-            <Badge variant="secondary" className={`bg-${textColor} text-white`}>
-              <BadgeIcon className="w-4 h-4 mr-2" />
-              {badgeText}
-            </Badge>
-
-            {/* Title */}
-            <div className="space-y-4">
+          {/* Mobile-first content order: Title → Video → Badge → Text → Benefits */}
+          <div className="space-y-8 order-1 lg:order-1">
+            {/* H1 Title - First on mobile for immediate page identification */}
+            <div className="space-y-4 lg:order-2">
               <h1 className={`heading-serif text-4xl sm:text-6xl font-bold text-${textColor} leading-tight`}>
                 {title}
                 {subtitle && (
@@ -146,14 +140,58 @@ export default function ServiceHero({
               </h1>
             </div>
 
-            {/* Description */}
-            <p className="text-xl text-gray-600 leading-relaxed">
-              {description}
-            </p>
+            {/* Hero Media - Second on mobile, appears above other content */}
+            <div className="relative lg:hidden">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                {heroVideo ? (
+                  // Video Hero
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={heroImage || fallbackImage}
+                  >
+                    <source src={heroVideo} type={`video/${heroVideoType}`} />
+                    <img
+                      src={fallbackImage}
+                      alt={heroImageAlt}
+                      className="w-full h-full object-cover"
+                    />
+                  </video>
+                ) : (
+                  // Image Hero
+                  <Image
+                    src={heroImage || fallbackImage}
+                    alt={heroImageAlt}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                  />
+                )}
+              </div>
+            </div>
 
-            {/* Key Benefits */}
+            {/* Badge - Third on mobile, provides context */}
+            <div className="lg:order-1">
+              <Badge variant="secondary" className={`bg-${textColor} text-white`}>
+                <BadgeIcon className="w-4 h-4 mr-2" />
+                {badgeText}
+              </Badge>
+            </div>
+
+            {/* Description - Fourth on mobile */}
+            <div className="lg:order-3">
+              <p className="text-xl text-gray-600 leading-relaxed">
+                {description}
+              </p>
+            </div>
+
+            {/* Key Benefits - Fifth on mobile */}
             {keyBenefits.length > 0 && (
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 lg:order-4">
                 {keyBenefits.slice(0, 4).map((benefit, index) => {
                   const BenefitIcon = getIcon(benefit.icon || "CheckCircle");
                   return (
@@ -166,8 +204,8 @@ export default function ServiceHero({
               </div>
             )}
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* CTA Buttons - Sixth on mobile */}
+            <div className="flex flex-col sm:flex-row gap-4 lg:order-5">
               <Button
                 size="lg"
                 className={`bg-gradient-to-r from-${textColor} to-${textColor}/80 text-white font-semibold group`}
@@ -210,9 +248,9 @@ export default function ServiceHero({
               )}
             </div>
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators - Last on mobile */}
             {trustIndicators.length > 0 && (
-              <div className="flex items-center space-x-6 text-sm text-gray-600">
+              <div className="flex items-center space-x-6 text-sm text-gray-600 lg:order-6">
                 {trustIndicators.map((indicator, index) => {
                   const IndicatorIcon = getIcon(indicator.icon);
                   return (
@@ -226,8 +264,8 @@ export default function ServiceHero({
             )}
           </div>
 
-          {/* Hero Media Column */}
-          <div className="relative">
+          {/* Hero Media Column - Desktop only (hidden on mobile since it appears inline above) */}
+          <div className="relative order-2 lg:order-2 hidden lg:block">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               {heroVideo ? (
                 // Video Hero
@@ -238,54 +276,25 @@ export default function ServiceHero({
                   loop
                   playsInline
                   poster={heroImage || fallbackImage}
-                  preload="metadata"
-                  onError={(e) => {
-                    // Hide video on error and show poster image
-                    const target = e.target as HTMLVideoElement;
-                    target.style.display = 'none';
-                  }}
                 >
                   <source src={heroVideo} type={`video/${heroVideoType}`} />
-                  {/* Fallback for browsers that don't support video */}
-                  Your browser does not support the video tag.
+                  <img
+                    src={fallbackImage}
+                    alt={heroImageAlt}
+                    className="w-full h-full object-cover"
+                  />
                 </video>
               ) : (
-                // Image Hero (fallback)
+                // Image Hero
                 <Image
                   src={heroImage || fallbackImage}
                   alt={heroImageAlt}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
-                  onError={(e) => {
-                    // Fallback to default image if hero image fails to load
-                    const target = e.target as HTMLImageElement;
-                    target.src = fallbackImage;
-                  }}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                 />
               )}
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-
-              {/* Optional floating badge/testimonial */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 shadow-lg">
-                  <div className="flex items-center space-x-3">
-                    <div className="flex space-x-1">
-                      <Star className="w-4 h-4 text-pear-gold fill-current" />
-                      <Star className="w-4 h-4 text-pear-gold fill-current" />
-                      <Star className="w-4 h-4 text-pear-gold fill-current" />
-                      <Star className="w-4 h-4 text-pear-gold fill-current" />
-                      <Star className="w-4 h-4 text-pear-gold fill-current" />
-                    </div>
-                    <p className="text-sm text-gray-700 font-medium">
-                      "Outstanding results and professional care"
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

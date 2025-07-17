@@ -114,22 +114,52 @@ export default function GeneralDentistryPage() {
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div>
-                <Badge variant="secondary" className="mb-4 bg-dental-green text-white">
-                  <Heart className="w-4 h-4 mr-2" />
-                  Comprehensive Dental Care
-                </Badge>
-                <h1 className="heading-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
-                  Complete
-                  <span className="block text-dental-green">General Dentistry</span>
-                </h1>
-                <p className="text-base sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
-                  Comprehensive dental care for all ages. From routine check-ups to preventive treatments,
-                  we provide the foundation for lifelong oral health in a comfortable, caring environment.
-                </p>
+            {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
+            <div className="space-y-8 order-1 lg:order-1">
+              {/* H1 Title - First on mobile for immediate page identification */}
+              <h1 className="heading-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
+                Complete
+                <span className="block text-dental-green">General Dentistry</span>
+              </h1>
+
+              {/* Hero Image - Second on mobile, appears above other content */}
+              <div className="relative mt-8 lg:mt-0 lg:hidden">
+                <Card className="overflow-hidden shadow-2xl">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <div className="text-center">
+                      <h3 className="text-base sm:text-xl font-bold text-gray-700 mb-2">GENERAL DENTISTRY IMAGE</h3>
+                      <p className="text-gray-600 text-xs sm:text-base">Family receiving dental check-ups</p>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Floating Elements */}
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+                      <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* Badge - Third on mobile, provides context */}
+              <Badge variant="secondary" className="mb-4 bg-dental-green text-white">
+                <Heart className="w-4 h-4 mr-2" />
+                Comprehensive Dental Care
+              </Badge>
+
+              {/* Description - Fourth on mobile */}
+              <p className="text-base sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
+                Comprehensive dental care for all ages. From routine check-ups to preventive treatments,
+                we provide the foundation for lifelong oral health in a comfortable, caring environment.
+              </p>
+
+              {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
                   <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto">
@@ -146,7 +176,7 @@ export default function GeneralDentistryPage() {
                 </a>
               </div>
 
-              {/* Quick Stats */}
+              {/* Quick Stats - Last on mobile */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-lg sm:text-2xl font-bold text-dental-green">NHS</div>
@@ -163,8 +193,8 @@ export default function GeneralDentistryPage() {
               </div>
             </div>
 
-            {/* Hero Image */}
-            <div className="relative mt-8 lg:mt-0">
+            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
+            <div className="relative mt-8 lg:mt-0 order-2 lg:order-2 hidden lg:block">
               <Card className="overflow-hidden shadow-2xl">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-center">
