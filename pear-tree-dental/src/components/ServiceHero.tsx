@@ -125,14 +125,14 @@ export default function ServiceHero({
   const SecondaryCTAIcon = getIcon(secondaryCTA?.icon || "ArrowRight");
 
   return (
-    <section className={`pt-32 pb-16 bg-gradient-to-br from-${gradientFrom} via-white to-${gradientTo}`}>
+    <section className={`pt-12 sm:pt-32 pb-16 bg-gradient-to-br from-${gradientFrom} via-white to-${gradientTo}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Mobile-first content order: Title → Video → Badge → Text → Benefits */}
           <div className="space-y-8 order-1 lg:order-1">
             {/* H1 Title - First on mobile for immediate page identification */}
             <div className="space-y-4 lg:order-2">
-              <h1 className={`heading-serif text-4xl sm:text-6xl font-bold text-${textColor} leading-tight`}>
+              <h1 className={`heading-serif text-[40px] sm:text-6xl font-bold text-${textColor} leading-tight`}>
                 {title}
                 {subtitle && (
                   <span className="text-soft-pink block">{subtitle}</span>

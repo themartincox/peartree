@@ -106,7 +106,7 @@ export default function GeneralDentistryPage() {
         faqs={generalDentistryFAQs}
       />
       {/* Hero Section */}
-      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
@@ -117,7 +117,7 @@ export default function GeneralDentistryPage() {
             {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
             <div className="space-y-8 order-1 lg:order-1">
               {/* H1 Title - First on mobile for immediate page identification */}
-              <h1 className="heading-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
+              <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
                 Complete
                 <span className="block text-dental-green">General Dentistry</span>
               </h1>

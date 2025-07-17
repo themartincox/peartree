@@ -443,7 +443,7 @@ const Navigation = () => {
         aria-label="Simplified navigation"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-24 items-center justify-between py-2 my-2">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-7 h-7 sm:w-9 sm:h-9 text-white">

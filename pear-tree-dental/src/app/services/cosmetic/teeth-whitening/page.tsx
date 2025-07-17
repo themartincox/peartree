@@ -187,13 +187,13 @@ export default function TeethWhiteningPage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-20 sm:pt-32 pb-16">
+      <section className="pt-12 sm:pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Mobile-first content order: Title → Video → Badge → Text → Benefits → CTAs */}
             <div className="space-y-6 sm:space-y-8 order-1 lg:order-1">
               {/* H1 Title - First on mobile for immediate page identification */}
-              <h1 className="heading-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-pear-primary leading-tight">
+              <h1 className="heading-serif text-[40px] sm:text-4xl lg:text-6xl font-bold text-pear-primary leading-tight">
                 Transform Your
                 <span className="text-yellow-600 block">Smile Today</span>
               </h1>

@@ -111,7 +111,7 @@ export default function OrthodonticsPage() {
         faqs={orthodonticsFAQs}
       />
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10 overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-soft-pink rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-lavender rounded-full blur-3xl" />
@@ -122,7 +122,7 @@ export default function OrthodonticsPage() {
             {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
             <div className="space-y-8 order-1 lg:order-1">
               {/* H1 Title - First on mobile for immediate page identification */}
-              <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
+              <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
                 Straighten Your Teeth
                 <span className="block text-soft-pink">Invisibly</span>
               </h1>

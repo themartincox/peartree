@@ -24,13 +24,13 @@ const Hero = () => {
       <div className="absolute top-20 right-10 w-72 h-72 bg-pear-primary/5 rounded-full blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-pear-gold/5 rounded-full blur-3xl" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-10 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
           {/* Mobile-first content order: Title → Images → Content → CTAs */}
           <div className="space-y-4 sm:space-y-6 flex flex-col lg:h-[600px] justify-between lg:mt-[-100px] order-1 lg:order-1">
             {/* H1 Title - First on mobile for immediate page identification */}
             <div className="block lg:hidden mb-4">
-              <h1 className="heading-serif text-3xl sm:text-[4.2rem] font-bold text-pear-primary text-center">
+              <h1 className="heading-serif text-[40px] sm:text-[4.2rem] font-bold text-pear-primary text-center">
                 Expert dental care with a <span className="text-pear-gold">personal touch</span>
               </h1>
             </div>
