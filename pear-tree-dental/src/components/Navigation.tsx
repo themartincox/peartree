@@ -175,7 +175,9 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-3xl text-pear-primary xl:text-left lg:text-center">PEAR TREE DENTAL
+                <div className="brand-logo text-3xl text-pear-primary xl:text-left lg:text-center">
+                  <span className="block sm:inline">PEAR TREE</span>
+                  <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
                 <div className="brand-subtitle text-xs text-pear-primary/90 mt-1 xl:text-center">
                 </div>
@@ -454,7 +456,9 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-2xl" style={{ fontSize: 25, color: "#fff" }}>PEAR TREE DENTAL
+                <div className="brand-logo text-2xl" style={{ fontSize: 25, color: "#fff" }}>
+                  <span className="block sm:inline">PEAR TREE</span>
+                  <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
                 <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center">
                 </div>

@@ -106,7 +106,7 @@ export default function GeneralDentistryPage() {
         faqs={generalDentistryFAQs}
       />
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
+      <section className="relative py-16 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
@@ -120,26 +120,26 @@ export default function GeneralDentistryPage() {
                   <Heart className="w-4 h-4 mr-2" />
                   Comprehensive Dental Care
                 </Badge>
-                <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
+                <h1 className="heading-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
                   Complete
                   <span className="block text-dental-green">General Dentistry</span>
                 </h1>
-                <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                <p className="text-base sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
                   Comprehensive dental care for all ages. From routine check-ups to preventive treatments,
                   we provide the foundation for lifelong oral health in a comfortable, caring environment.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group">
+                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto">
                     <CalendarDays className="w-5 h-5 mr-2" />
                     Book Check-up
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
+                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white w-full sm:w-auto">
                     <Phone className="w-5 h-5 mr-2" />
                     Call 0115 931 2935
                   </Button>
@@ -147,42 +147,42 @@ export default function GeneralDentistryPage() {
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-gray-200">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-dental-green">NHS</div>
-                  <div className="text-sm text-gray-600">& Private care</div>
+                  <div className="text-lg sm:text-2xl font-bold text-dental-green">NHS</div>
+                  <div className="text-xs sm:text-sm text-gray-600">& Private care</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-dental-green">All Ages</div>
-                  <div className="text-sm text-gray-600">Family friendly</div>
+                  <div className="text-lg sm:text-2xl font-bold text-dental-green">All Ages</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Family friendly</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-dental-green">Priority</div>
-                  <div className="text-sm text-gray-600">Appointments</div>
+                  <div className="text-lg sm:text-2xl font-bold text-dental-green">Priority</div>
+                  <div className="text-xs sm:text-sm text-gray-600">Appointments</div>
                 </div>
               </div>
             </div>
 
             {/* Hero Image */}
-            <div className="relative">
+            <div className="relative mt-8 lg:mt-0">
               <Card className="overflow-hidden shadow-2xl">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-center">
-                    <h3 className="text-xl font-bold text-gray-700 mb-2">GENERAL DENTISTRY IMAGE</h3>
-                    <p className="text-gray-600">Family receiving dental check-ups</p>
+                    <h3 className="text-base sm:text-xl font-bold text-gray-700 mb-2">GENERAL DENTISTRY IMAGE</h3>
+                    <p className="text-gray-600 text-xs sm:text-base">Family receiving dental check-ups</p>
                   </div>
                 </div>
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border border-dental-green/20">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-pear-primary">Family Care</p>
-                    <p className="text-sm text-gray-600">All Ages Welcome</p>
+                    <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+                    <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
                   </div>
                 </div>
               </div>
@@ -279,8 +279,6 @@ export default function GeneralDentistryPage() {
           </div>
         </div>
       </section>
-
-
 
       {/* Preventive Care Focus */}
       <section className="py-16 bg-white">

@@ -187,21 +187,21 @@ export default function TeethWhiteningPage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16">
+      <section className="pt-20 sm:pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div className="space-y-6 sm:space-y-8">
               <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Professional Teeth Whitening
               </Badge>
 
-              <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary leading-tight">
+              <h1 className="heading-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-pear-primary leading-tight">
                 Brighten Your
                 <span className="text-yellow-600 block">Smile Today</span>
               </h1>
 
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
                 Transform your smile with professional teeth whitening treatments. Choose from our
                 advanced Boutique or premium Enlighten whitening systems for stunning, long-lasting results.
               </p>

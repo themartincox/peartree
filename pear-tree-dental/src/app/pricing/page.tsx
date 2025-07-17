@@ -83,11 +83,11 @@ export default function PricingPage() {
       <section className="bg-gradient-to-br from-pear-background via-white to-pear-background py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-pear-gold text-white">Transparent Pricing</Badge>
-            <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary mb-6">
+            <Badge className="mb-4 sm:mb-6 bg-pear-gold text-white">Transparent Pricing</Badge>
+            <h1 className="heading-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-pear-primary mb-4 sm:mb-6">
               Clear, Fair <span className="text-pear-gold">Dental Pricing</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-6 sm:mb-8">
               No hidden fees, no surprises. Our transparent pricing helps you make informed decisions about your dental care with confidence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

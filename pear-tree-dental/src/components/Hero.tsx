@@ -24,15 +24,15 @@ const Hero = () => {
       <div className="absolute top-20 right-10 w-72 h-72 bg-pear-primary/5 rounded-full blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-pear-gold/5 rounded-full blur-3xl" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 sm:pt-24 lg:pt-28 sm:pb-8 lg:pb-10 relative py-[25px]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-10 relative">
         {/* Mobile-only headline above image */}
-        <div className="block lg:hidden mb-6">
-          <h1 className="heading-serif sm:text-[4.2rem] font-bold text-pear-primary text-center text-[55px]">
+        <div className="block lg:hidden mb-4">
+          <h1 className="heading-serif text-3xl sm:text-[4.2rem] font-bold text-pear-primary text-center">
             Expert dental care with a <span className="text-pear-gold">personal touch</span>
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
           {/* Left Column - Main Content */}
           <div className="space-y-4 sm:space-y-6 flex flex-col lg:h-[600px] justify-between lg:mt-[-100px] order-2 lg:order-1">
             <div className="space-y-4 sm:space-y-6">
@@ -41,7 +41,7 @@ const Hero = () => {
                 Expert dental care with a <span className="text-pear-gold">personal touch</span>
               </h1>
 
-              <p className="text-[1.26rem] sm:text-[1.32rem] lg:text-[1.68rem] text-gray-600 leading-relaxed xl:text-[20px]">
+              <p className="text-base sm:text-[1.32rem] lg:text-[1.68rem] text-gray-600 leading-relaxed xl:text-[20px]">
                 Modern dental care in Burton Joyce, Nottinghamshire.
                 Skip the NHS waiting lists with our membership plans from just £10.95/month.
               </p>
@@ -86,8 +86,8 @@ const Hero = () => {
                   <span className="text-white font-bold text-xl sm:text-2xl">£</span>
                 </div>
                 <div>
-                  <p className="text-pear-primary font-semibold text-lg sm:text-xl">Membership from just 36p per day</p>
-                  <p className="text-gray-600 text-sm sm:text-base">No hidden fees • Cancel anytime • Immediate access</p>
+                  <p className="text-pear-primary font-semibold text-base sm:text-xl">Membership from just 36p per day</p>
+                  <p className="text-gray-600 text-xs sm:text-base">No hidden fees • Cancel anytime • Immediate access</p>
                 </div>
               </div>
             </div>
@@ -118,8 +118,6 @@ const Hero = () => {
               >
                 <LiveGoogleRatingWidget onClick={() => setIsReviewsModalOpen(true)} />
               </div>
-
-
             </div>
 
             {/* Secondary Service Images - Clickable service links */}
