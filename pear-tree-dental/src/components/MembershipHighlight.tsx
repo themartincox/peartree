@@ -93,19 +93,23 @@ const MembershipHighlight = () => {
         <button
           key={key}
           onClick={() => setActiveTab(key)}
-          className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 ${
+          role="tab"
+          aria-selected={isActive}
+          aria-controls={`plan-${key}-content`}
+          aria-label={`Select ${plan.name} - ${plan.price}${plan.period}`}
+          className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pear-primary ${
             isActive
               ? key === 'planA' ? 'bg-white text-dental-green shadow-lg transform scale-105'
               : key === 'child' ? 'bg-white text-soft-pink shadow-lg transform scale-105'
               : 'bg-white text-pear-gold shadow-lg transform scale-105'
-              : 'text-white/80 hover:text-white hover:bg-white/10'
+              : 'text-white/90 hover:text-white hover:bg-white/10'
           }`}
         >
           <div className="flex items-center space-x-2 sm:space-x-3">
             <TabIcon className="w-4 h-4 sm:w-5 sm:h-5" />
             <div>
               <div className="font-semibold text-sm sm:text-base">{plan.name}</div>
-              <div className="text-xs sm:text-sm opacity-80">{plan.price}{plan.period}</div>
+              <div className="text-xs sm:text-sm text-white/90 font-medium">{plan.price}{plan.period}</div>
             </div>
           </div>
         </button>
@@ -148,7 +152,7 @@ const MembershipHighlight = () => {
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-pear-gold/20 rounded-full translate-y-12 -translate-x-12" />
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">Choose Your Plan</h3>
 
-              <div className="space-y-3">
+              <div className="space-y-3" role="tablist" aria-orientation="vertical" aria-label="Membership plan options">
                 {tabButtons}
               </div>
 
@@ -175,7 +179,12 @@ const MembershipHighlight = () => {
             </div>
 
             {/* Content Area */}
-            <div className="lg:col-span-3 p-4 sm:p-6 lg:p-8 xl:p-12">
+            <div
+              className="lg:col-span-3 p-4 sm:p-6 lg:p-8 xl:p-12"
+              role="tabpanel"
+              id={`plan-${activeTab}-content`}
+              aria-labelledby={`plan-${activeTab}-tab`}
+            >
               <div className="space-y-6 sm:space-y-8">
 
                 {/* Plan Header */}

@@ -456,7 +456,7 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-2xl" style={{ fontSize: 25, color: "#fff" }}>
+                <div className="brand-logo text-2xl p-0 sm:p-1" style={{ fontSize: 25, color: "#fff" }}>
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>

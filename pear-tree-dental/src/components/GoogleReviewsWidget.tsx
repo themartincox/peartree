@@ -166,9 +166,9 @@ const GoogleReviewsWidget = () => {
                     <span className="text-blue-600 font-bold text-sm">G</span>
                   </div>
                   <div>
-                    <h4 className={`font-semibold transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
+                    <h3 className={`font-semibold transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
                       Google Reviews
-                    </h4>
+                    </h3>
                     <div className="flex items-center space-x-1">
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
@@ -190,33 +190,48 @@ const GoogleReviewsWidget = () => {
               <div className="flex items-center space-x-2">
                 <button
                   onClick={prevReview}
-                  className={`p-1 rounded-full transition-all duration-500 ${
+                  aria-label="Previous review"
+                  className={`p-1 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
                         ? 'hover:bg-white/20 text-white/70'
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      prevReview();
+                    }
+                  }}
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <button
                   onClick={nextReview}
-                  className={`p-1 rounded-full transition-all duration-500 ${
+                  aria-label="Next review"
+                  className={`p-1 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
                         ? 'hover:bg-white/20 text-white/70'
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      nextReview();
+                    }
+                  }}
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <a
                   href="https://www.google.com/search?q=Pear+Tree+Dental+Burton+Joyce+reviews"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-1 rounded-full transition-all duration-500 ${
+                  aria-label="Read all Pear Tree Dental reviews on Google (opens in new tab)"
+                  className={`p-1 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                     isSticky
                       ? 'hover:bg-gray-100 text-gray-600'
                       : isHomepage
@@ -224,7 +239,7 @@ const GoogleReviewsWidget = () => {
                         : 'hover:bg-gray-100 text-gray-600'
                   }`}
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -278,11 +293,19 @@ const GoogleReviewsWidget = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentReview(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-500 ${
+                    aria-label={`Go to review ${index + 1} of ${reviews.length}`}
+                    aria-current={index === currentReview ? 'true' : 'false'}
+                    className={`w-2 h-2 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
                       index === currentReview
                         ? isHomepage ? 'bg-white' : 'bg-pear-primary'
                         : isHomepage ? 'bg-white/40' : 'bg-gray-300'
                     }`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setCurrentReview(index);
+                      }
+                    }}
                   />
                 ))}
               </div>
