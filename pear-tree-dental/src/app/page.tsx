@@ -5,25 +5,34 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
-// Below-the-fold components - loaded dynamically for better performance
+// Import our beautiful welcoming loaders
+import {
+  DentalTeamLoader,
+  HappyPatientLoader,
+  FamilyCareLoader,
+  DiverseSmilesLoader,
+  GentleCareLoader
+} from "@/components/WelcomingLoader";
+
+// Below-the-fold components - loaded dynamically for better performance with welcoming loaders
 const ServicesOverview = dynamic(() => import("@/components/ServicesOverview"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-50 rounded-lg mx-4" />
+  loading: () => <DentalTeamLoader message="Loading our amazing services..." />
 });
 
 const TreatmentJourney = dynamic(() => import("@/components/TreatmentJourney"), {
-  loading: () => <div className="h-screen animate-pulse bg-gray-50" />
+  loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />
 });
 
 const MembershipHighlight = dynamic(() => import("@/components/MembershipHighlight"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-50 rounded-lg mx-4" />
+  loading: () => <FamilyCareLoader message="Preparing membership benefits..." />
 });
 
 const FAQSection = dynamic(() => import("@/components/FAQSection"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-50 rounded-lg mx-4" />
+  loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />
 });
 
 const VoiceSearchOptimization = dynamic(() => import("@/components/VoiceSearchOptimization"), {
-  loading: () => <div className="h-64 animate-pulse bg-gray-50 rounded-lg mx-4" />
+  loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />
 });
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";

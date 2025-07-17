@@ -149,7 +149,7 @@ const Navigation = () => {
         id="navigation"
         role="banner"
         className={cn(
-          "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out",
+          "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
             : "transform translate-y-0 opacity-100 bg-white shadow-lg"
@@ -435,7 +435,7 @@ const Navigation = () => {
       {/* Simplified Navigation - Shows on scroll */}
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out",
+          "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
             : "transform -translate-y-full opacity-0 pointer-events-none"
@@ -563,15 +563,21 @@ const Navigation = () => {
                     </Link>
                   </div>
 
-                  {/* Enhanced Navigation using Lazy Loading */}
+                  {/* Enhanced Navigation using Welcoming Loading */}
                   {shouldLoadSecondaryNav && (
                     <Suspense fallback={
-                      <div className="space-y-4">
-                        <div className="text-pear-primary font-semibold">Services</div>
-                        <div className="animate-pulse space-y-2">
-                          {[1,2,3].map(i => (
-                            <div key={i} className="h-4 bg-gray-200 rounded w-3/4"></div>
-                          ))}
+                      <div className="space-y-4 p-4">
+                        <div className="text-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-pear-primary to-pear-gold rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
+                            <span className="text-white text-lg">😊</span>
+                          </div>
+                          <p className="text-pear-primary font-medium text-sm">Loading navigation...</p>
+                          <p className="text-gray-600 text-xs mt-1">Finding the perfect page for you</p>
+                        </div>
+                        <div className="animate-pulse space-y-3">
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-3/4 mx-auto"></div>
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-1/2 mx-auto"></div>
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-2/3 mx-auto"></div>
                         </div>
                       </div>
                     }>

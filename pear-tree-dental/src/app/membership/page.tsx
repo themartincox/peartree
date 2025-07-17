@@ -20,29 +20,37 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 
+// Import welcoming loaders
+import {
+  FamilyCareLoader,
+  DentalTeamLoader,
+  HappyPatientLoader,
+  DiverseSmilesLoader
+} from "@/components/WelcomingLoader";
+
 // Critical components - loaded immediately
 import PlanSelector from "@/components/membership/PlanSelector";
 import ExaminationSection from "@/components/membership/ExaminationSection";
 
 // Non-critical components - loaded dynamically with loading states
 const PlanComparisonSlider = dynamic(() => import("@/components/membership/PlanComparisonSlider"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
+  loading: () => <FamilyCareLoader message="Loading membership comparison..." />
+});
+
+const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
+  loading: () => <DentalTeamLoader height="h-64" message="Preparing your next steps..." />
+});
+
+const FaqSection = dynamic(() => import("@/components/membership/FaqSection"), {
+  loading: () => <HappyPatientLoader height="h-48" message="Loading helpful answers..." />
+});
+
+const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
+  loading: () => <DiverseSmilesLoader message="Showcasing amazing benefits..." />
 });
 
 const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavingsChart"), {
   loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />
-});
-
-const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
-  loading: () => <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
-});
-
-const FaqSection = dynamic(() => import("@/components/membership/FaqSection"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
-});
-
-const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 rounded-lg" />
 });
 
 export const metadata: Metadata = {
