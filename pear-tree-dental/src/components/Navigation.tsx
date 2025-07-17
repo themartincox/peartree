@@ -574,7 +574,7 @@ const Navigation = () => {
                       <LazyNavigationItems
                         services={services}
                         about={about}
-                        onLinkClick={closeMobileMenu}
+                        onItemClick={closeMobileMenu}
                       />
                     </Suspense>
                   )}

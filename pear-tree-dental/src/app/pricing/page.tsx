@@ -114,7 +114,7 @@ export default function PricingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-pear-primary mb-4">
-              Membership Plans - Save Money
+              Membership Plans - Helping You Save Time and Money
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Join our membership plan for significant savings and priority access to appointments
@@ -131,8 +131,8 @@ export default function PricingPage() {
                 )}
                 <CardHeader className="text-center">
                   <CardTitle className="text-xl text-pear-primary">{plan.name}</CardTitle>
-                  <div className="text-3xl font-bold text-pear-gold">{plan.monthlyPrice}</div>
-                  <p className="text-sm text-gray-600">per month</p>
+                  <div className="text-3xl font-bold text-pear-gold">{plan.price}</div>
+                  <p className="text-sm text-gray-600">{plan.period}</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
@@ -272,7 +272,7 @@ export default function PricingPage() {
               <CardContent className="p-6">
                 <Heart className="w-12 h-12 text-pear-gold mx-auto mb-4" />
                 <h3 className="font-semibold text-pear-primary mb-2">Membership Savings</h3>
-                <p className="text-sm text-gray-600">Save up to 20% on treatments with our membership plans</p>
+                <p className="text-sm text-gray-600">Save 10% on treatments with our membership plans</p>
               </CardContent>
             </Card>
           </div>
@@ -286,7 +286,7 @@ export default function PricingPage() {
             Ready to Book Your Treatment?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
-            Contact us today for a consultation and personalized treatment plan with transparent pricing.
+            Contact us today for a consultation and personalised treatment plan with transparent pricing.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book">
@@ -296,7 +296,7 @@ export default function PricingPage() {
               </Button>
             </Link>
             <a href="tel:01159312935">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary font-semibold bg-transparent">
                 <Phone className="w-5 h-5 mr-2" />
                 Call 0115 931 2935
               </Button>

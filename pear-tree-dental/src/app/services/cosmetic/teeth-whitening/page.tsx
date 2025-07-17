@@ -7,6 +7,7 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Link from "next/link";
+import VideoHero from "@/components/VideoHero";
 import {
   Sparkles,
   Star,
@@ -153,7 +154,6 @@ export default function TeethWhiteningPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50/30 via-white to-orange-50/30">
-      {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Professional Teeth Whitening"
         description="Professional teeth whitening treatments including Boutique and Enlighten whitening systems for dramatic smile transformation"
@@ -240,30 +240,17 @@ export default function TeethWhiteningPage() {
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/services/treatment-comparison">
-                  <Button size="lg" variant="outline" className="border-yellow-500 text-yellow-600 hover:bg-yellow-500 hover:text-white">
-                    <Clock className="w-5 h-5 mr-2" />
-                    Compare Systems
-                  </Button>
-                </Link>
               </div>
             </div>
 
-            {/* Hero Visual - Placeholder */}
+            {/* Hero Visual - Video */}
             <div className="relative">
-              <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-8 min-h-[400px] flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Sparkles className="w-10 h-10 text-yellow-600" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-pear-primary mb-2">
-                    Professional Teeth Whitening
-                  </h3>
-                  <p className="text-gray-600">
-                    Transform your smile with our advanced whitening systems
-                  </p>
-                </div>
-              </div>
+              <VideoHero
+                videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
+                posterImage="/images/teeth-whitening-before.webp"
+                fallbackImage="/images/teeth-whitening-before.webp"
+                altText="Professional teeth whitening transformation"
+              />
 
               {/* Results Summary */}
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
@@ -473,9 +460,11 @@ export default function TeethWhiteningPage() {
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600">
-                  Call 0115 931 2935
-                </Button>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 font-semibold bg-transparent">
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
@@ -497,7 +486,6 @@ export default function TeethWhiteningPage() {
         </div>
       </section>
 
-      {/* Service Navigation */}
       <ServiceNavigation />
     </div>
   );

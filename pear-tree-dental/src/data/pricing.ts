@@ -1,5 +1,7 @@
+//
 // Centralized pricing configuration for Pear Tree Dental
 // Update prices here and they will automatically update throughout the site
+//
 
 export interface TreatmentPrice {
   name: string;
@@ -15,30 +17,50 @@ export interface MembershipPlan {
   period: string;
   description: string;
   includes: string[];
+  popular?: boolean;
 }
 
 // Membership Plans
 export const membershipPlans: MembershipPlan[] = [
   {
     name: "Adult Plan",
-    price: "£10.95",
+    price: "from £10.50",
     period: "/month",
     description: "Complete dental care for adults",
-    includes: ["2 check-ups per year", "2 hygienist visits", "All X-rays included", "20% discount on treatments", "Emergency care priority"]
+    includes: [
+      "2 check-ups per year",
+      "2 hygienist visits",
+      "X-rays included",
+      "10% discount on treatments",
+      "Emergency care priority"
+    ],
+    popular: true
   },
   {
     name: "Child Plan",
-    price: "£15.95",
-    period: "/month",
+    price: "Free",
+    period: "with Adult plan",
     description: "Comprehensive care for children",
-    includes: ["2 check-ups per year", "Fluoride treatments", "All X-rays included", "20% discount on treatments", "Emergency care priority"]
+    includes: [
+      "2 check-ups per year",
+      "Fluoride treatments",
+      "X-rays included",
+      "10% discount on treatments",
+      "Emergency care priority"
+    ]
   },
   {
     name: "Family Plan",
-    price: "£29.95",
+    price: "£49.50",
     period: "/month",
-    description: "Complete care for the whole family",
-    includes: ["Up to 4 family members", "All check-ups included", "All hygienist visits", "20% discount on treatments", "Emergency care priority"]
+    description: "Complete care for up to 5 people",
+    includes: [
+      "Up to 5 family members",
+      "All check-ups included",
+      "All hygienist visits",
+      "10% discount on treatments",
+      "Emergency care priority"
+    ]
   }
 ];
 
