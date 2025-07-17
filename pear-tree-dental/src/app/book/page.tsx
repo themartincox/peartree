@@ -103,9 +103,9 @@ export default function BookPage() {
                 label: "Preferred Appointment Time",
                 type: "select",
                 options: [
-                  { value: "morning", label: "Morning (8AM - 12PM)" },
+                  { value: "early morning", label: "Early Morning (8AM - 9AM)" },
+                  { value: "morning", label: "Morning (9AM - 12PM)" },
                   { value: "afternoon", label: "Afternoon (12PM - 5PM)" },
-                  { value: "evening", label: "Evening (5PM - 6PM)" },
                   { value: "saturday", label: "Saturday" }
                 ]
               }}

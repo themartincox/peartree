@@ -249,18 +249,21 @@ export default function TeethWhiteningPage() {
               </div>
             </div>
 
-            {/* Hero Visual - Interactive Before/After Slider */}
+            {/* Hero Visual - Placeholder */}
             <div className="relative">
-              <BeforeAfterSlider
-                beforeImage="/images/general-dental-checkup.webp"
-                afterImage="/images/cosmetic-dentistry-services.webp"
-                beforeAlt="Teeth before professional whitening treatment"
-                afterAlt="Teeth after professional whitening - dramatically whiter and brighter"
-                title="See the Difference"
-                description="Professional whitening delivers dramatic results that over-the-counter products simply cannot match"
-                treatmentType="Professional Whitening"
-                className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6"
-              />
+              <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-8 min-h-[400px] flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-20 h-20 bg-yellow-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-10 h-10 text-yellow-600" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-pear-primary mb-2">
+                    Professional Teeth Whitening
+                  </h3>
+                  <p className="text-gray-600">
+                    Transform your smile with our advanced whitening systems
+                  </p>
+                </div>
+              </div>
 
               {/* Results Summary */}
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
@@ -389,6 +392,31 @@ export default function TeethWhiteningPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Before/After Slider Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              See the Transformation
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Professional whitening delivers dramatic results that over-the-counter products simply cannot match.
+            </p>
+          </div>
+
+          <div className="max-w-4xl lg:max-w-6xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage="/images/teeth-whitening-before.webp"
+              afterImage="/images/teeth-whitening-after.webp"
+              beforeAlt="Teeth before professional whitening treatment - showing natural discoloration"
+              afterAlt="Teeth after professional whitening - dramatically whiter and brighter smile"
+              description="Real people, real results, achieved with our professional whitening systems"
+              className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6"
+            />
           </div>
         </div>
       </section>

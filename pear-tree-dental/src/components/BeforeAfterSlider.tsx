@@ -3,8 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, Eye, Camera } from "lucide-react";
+import { Eye, ArrowLeft, ArrowRight } from "lucide-react";
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -22,9 +21,7 @@ export default function BeforeAfterSlider({
   afterImage,
   beforeAlt,
   afterAlt,
-  title,
   description,
-  treatmentType,
   className = ""
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -119,24 +116,11 @@ export default function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className={`space-y-6 ${className}`}>
-      {/* Header */}
-      {(title || treatmentType) && (
-        <div className="text-center space-y-2">
-          {treatmentType && (
-            <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
-              <Camera className="w-4 h-4 mr-2" />
-              {treatmentType} Results
-            </Badge>
-          )}
-          {title && (
-            <h3 className="heading-serif text-2xl font-bold text-pear-primary">
-              {title}
-            </h3>
-          )}
-          {description && (
-            <p className="text-gray-600">{description}</p>
-          )}
+    <div className={`space-y-4 ${className}`}>
+      {/* Only show description if provided, without title and icon */}
+      {description && (
+        <div className="text-center">
+          <p className="text-gray-600">{description}</p>
         </div>
       )}
 
@@ -144,7 +128,7 @@ export default function BeforeAfterSlider({
       <div className="relative">
         <div
           ref={containerRef}
-          className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
+          className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl"
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
@@ -182,6 +166,12 @@ export default function BeforeAfterSlider({
             <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
               After
             </div>
+          </div>
+
+          {/* Smooth Border Overlay */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 rounded-2xl border-2 border-white/20 shadow-inner"></div>
+            <div className="absolute inset-1 rounded-2xl border border-white/10"></div>
           </div>
 
           {/* Slider Line */}
