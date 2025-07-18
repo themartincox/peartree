@@ -82,24 +82,5 @@
 
 # Let Netlify handle compression automatically - no manual compression config
 
-# Form handling configuration
-[forms]
-  # Spam protection
-  honey_pot = "bot-field"
-
-# Form notifications (you'll need to configure these in Netlify UI)
-[[forms]]
-  name = "contact-form"
-  to = "hello@peartree.dental"
-
-[[forms]]
-  name = "contact-consultation"
-  to = "hello@peartree.dental"
-
-[[forms]]
-  name = "contact-membership"
-  to = "hello@peartree.dental"
-
-[[forms]]
-  name = "contact-general"
-  to = "hello@peartree.dental"
+# Form handling configuration - Netlify will detect forms automatically from HTML
+# Honeypot protection is configured in the form HTML itself with data-netlify-honeypot="bot-field"
