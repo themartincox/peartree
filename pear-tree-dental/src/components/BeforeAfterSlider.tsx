@@ -14,6 +14,7 @@ interface BeforeAfterSliderProps {
   description?: string;
   treatmentType?: string;
   className?: string;
+  imageContainerClassName?: string;
 }
 
 export default function BeforeAfterSlider({
@@ -22,7 +23,8 @@ export default function BeforeAfterSlider({
   beforeAlt,
   afterAlt,
   description,
-  className = ""
+  className = "",
+  imageContainerClassName = ""
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -248,7 +250,7 @@ export default function BeforeAfterSlider({
       <div className="relative">
         <div
           ref={containerRef}
-          className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl touch-none"
+          className={`relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl touch-none ${imageContainerClassName}`}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
           style={{ touchAction: 'none' }} // Prevent default touch behaviors

@@ -1,49 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
     <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#09394d;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#0a455a;stop-opacity:1" />
     </linearGradient>
-    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.1"/>
-    </filter>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
   </defs>
 
   <!-- Background circle with teal gradient -->
-  <circle cx="256" cy="256" r="240" fill="url(#tealGradient)" stroke="#ffffff" stroke-width="8" filter="url(#shadow)"/>
+  <circle cx="32" cy="32" r="30" fill="url(#tealGradient)" stroke="#ffffff" stroke-width="2"/>
 
-  <!-- Dental tooth motif - detailed for larger sizes -->
-  <g transform="translate(256, 256) scale(8)">
-    <!-- Main tooth shape -->
-    <path d="M-6 -8 C-8 -8 -10 -6 -10 -3 L-10 4 C-10 8 -6 12 0 12 C6 12 10 8 10 4 L10 -3 C10 -6 8 -8 6 -8 Z"
-          fill="#ffffff"
-          stroke="none"/>
-
-    <!-- Tooth crown detail -->
-    <path d="M-6 -8 C-3 -9 3 -9 6 -8 C7 -7 8 -5 8 -3 L8 1 C8 2 7 3 5 3 L-5 3 C-7 3 -8 2 -8 1 L-8 -3 C-8 -5 -7 -7 -6 -8 Z"
-          fill="#f8fafc"
-          stroke="none"/>
-
-    <!-- Tooth root lines for detail -->
-    <path d="M-2 3 L-2 8 M0 3 L0 10 M2 3 L2 8"
-          stroke="#e2e8f0"
-          stroke-width="0.5"
-          stroke-linecap="round"/>
-
-    <!-- Health sparkle -->
-    <circle cx="3" cy="-3" r="1.5" fill="#D4AF37" opacity="0.9"/>
-    <path d="M3 -4.5 L3 -1.5 M1.5 -3 L4.5 -3"
+  <!-- Dental motif recreated as SVG paths -->
+  <g transform="translate(32, 32) scale(1.4)">
+    <!-- Main leaf/dental shape -->
+    <path d="M0 -10 C-3.5 -10 -6 -7.5 -7 -4 C-7 0 -6 3.5 -3.5 6 C-1 8.5 1 8.5 3.5 6 C6 3.5 7 0 7 -4 C6 -7.5 3.5 -10 0 -10 Z"
+          fill="url(#leafGradient)"
           stroke="#ffffff"
-          stroke-width="0.3"
-          stroke-linecap="round"/>
-  </g>
+          stroke-width="0.5"
+          opacity="0.95"/>
 
-  <!-- Subtle brand text for larger icons -->
-  <text x="256" y="450"
-        font-family="Arial, sans-serif"
-        font-size="24"
-        font-weight="600"
-        fill="#ffffff"
-        text-anchor="middle"
-        opacity="0.8">PEAR TREE DENTAL</text>
+    <!-- Central vein/stem -->
+    <path d="M0 -10 L0 7"
+          stroke="#09394d"
+          stroke-width="0.8"
+          opacity="0.4"/>
+
+    <!-- Side veins -->
+    <path d="M0 -3 C-2.5 -1.5 -3.5 0 -3.5 1.5"
+          stroke="#09394d"
+          stroke-width="0.5"
+          opacity="0.3"/>
+    <path d="M0 0 C2.5 1.5 3.5 2.5 3.5 3.5"
+          stroke="#09394d"
+          stroke-width="0.5"
+          opacity="0.3"/>
+
+    <!-- Small accent dot for quality/dental care -->
+    <circle cx="1" cy="-5" r="1" fill="#D4AF37" opacity="0.9"/>
+
+    <!-- Subtle highlight on the leaf -->
+    <ellipse cx="-1.5" cy="-3" rx="1.5" ry="3" fill="#ffffff" opacity="0.15"/>
+  </g>
 </svg>

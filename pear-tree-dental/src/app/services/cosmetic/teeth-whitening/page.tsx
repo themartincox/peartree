@@ -422,14 +422,16 @@ export default function TeethWhiteningPage() {
           </div>
 
           <div className="max-w-4xl lg:max-w-6xl mx-auto">
-            <BeforeAfterSlider
-              beforeImage="/images/teeth-whitening-before.webp"
-              afterImage="/images/teeth-whitening-after.webp"
-              beforeAlt="Teeth before professional whitening treatment - showing natural discoloration"
-              afterAlt="Teeth after professional whitening - dramatically whiter and brighter smile"
-              description="Real people, real results, achieved with our professional whitening systems"
-              className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl p-6"
-            />
+            <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl" style={{ padding: '10px' }}>
+              <BeforeAfterSlider
+                beforeImage="/images/teeth-whitening-before.webp"
+                afterImage="/images/teeth-whitening-after.webp"
+                beforeAlt="Teeth before professional whitening treatment - showing natural discoloration"
+                afterAlt="Teeth after professional whitening - dramatically whiter and brighter smile"
+                description="Real people, real results, achieved with our professional whitening systems"
+                imageContainerClassName="aspect-[4/3] lg:aspect-[8/3]"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -482,10 +484,12 @@ export default function TeethWhiteningPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-yellow-600 hover:bg-white/90 font-semibold">
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-yellow-600 hover:bg-white/90 font-semibold">
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
                 <a href="tel:01159312935">
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 font-semibold bg-transparent">
                     Call 0115 931 2935
