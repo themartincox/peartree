@@ -56,6 +56,7 @@ export default function ContactFormCard({
   const customFields = [customField1, customField2, customField3, customField4, customField5].filter(Boolean);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // For Netlify forms, we need to let them submit naturally
     // Only prevent default if we have a custom onSubmit handler
     if (onSubmit) {
       e.preventDefault();
@@ -65,9 +66,9 @@ export default function ContactFormCard({
       // Reset submitting state after a delay
       setTimeout(() => setIsSubmitting(false), 2000);
     } else {
-      // For Netlify forms, let the browser handle submission naturally
+      // Let Netlify handle the form submission completely
       setIsSubmitting(true);
-      // The form will submit normally to Netlify
+      // Don't prevent default - let the browser submit naturally
     }
   };
 
@@ -126,7 +127,7 @@ export default function ContactFormCard({
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
-        <form className="space-y-6" action={formAction} method="POST" onSubmit={handleSubmit} data-netlify="true" data-netlify-honeypot="bot-field" name="contact-form">
+        <form className="space-y-6" action="/" method="POST" onSubmit={handleSubmit} data-netlify="true" data-netlify-honeypot="bot-field" name="contact-form">
           <input type="hidden" name="form-name" value="contact-form" />
           <div className="hidden">
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>

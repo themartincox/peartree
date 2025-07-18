@@ -11,9 +11,11 @@
     <input name="phone" type="tel" />
     <textarea name="message"></textarea>
     <select name="preferredTime">
+      <option value="early morning">Early Morning (8AM - 9AM)</option>
       <option value="morning">Morning (9AM-12PM)</option>
       <option value="afternoon">Afternoon (12PM-5PM)</option>
       <option value="evening">Evening (5PM-8PM)</option>
+      <option value="saturday">Saturday</option>
       <option value="flexible">Flexible</option>
     </select>
     <select name="bookingType">
@@ -22,6 +24,16 @@
       <option value="cosmetic">Cosmetic enquiry</option>
       <option value="membership">Membership enquiry</option>
     </select>
+    <select name="enquiryType">
+      <option value="appointment">Book an Appointment</option>
+      <option value="emergency">Dental Emergency</option>
+      <option value="membership">Membership Enquiry</option>
+      <option value="treatment">Treatment Information</option>
+      <option value="complaint">Complaint or Feedback</option>
+      <option value="other">Other</option>
+    </select>
+    <input name="privacy" type="checkbox" />
+    <input name="marketing" type="checkbox" />
   </form>
 
   <!-- Contact Dynamic Forms for Netlify Forms detection -->
