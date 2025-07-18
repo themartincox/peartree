@@ -202,8 +202,8 @@ export default function TeethWhiteningPage() {
               <div className="relative lg:hidden">
                 <VideoHero
                   videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
-                  posterImage="/images/teeth-whitening-before.webp"
-                  fallbackImage="/images/teeth-whitening-before.webp"
+                  posterImage="/images/heroes/whitening/Whitening-hero-image.png"
+                  fallbackImage="/images/heroes/whitening/Whitening-hero-image.png"
                   altText="Professional teeth whitening transformation"
                 />
 
@@ -273,8 +273,8 @@ export default function TeethWhiteningPage() {
             <div className="relative order-2 lg:order-2 hidden lg:block">
               <VideoHero
                 videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
-                posterImage="/images/teeth-whitening-before.webp"
-                fallbackImage="/images/teeth-whitening-before.webp"
+                posterImage="/images/heroes/whitening/Whitening-hero-image.png"
+                fallbackImage="/images/heroes/whitening/Whitening-hero-image.png"
                 altText="Professional teeth whitening transformation"
               />
 

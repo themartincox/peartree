@@ -56,19 +56,19 @@ export default function ContactFormCard({
   const customFields = [customField1, customField2, customField3, customField4, customField5].filter(Boolean);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+    // Only prevent default if we have a custom onSubmit handler
     if (onSubmit) {
+      e.preventDefault();
+      setIsSubmitting(true);
       const formData = new FormData(e.currentTarget);
       onSubmit(formData);
+      // Reset submitting state after a delay
+      setTimeout(() => setIsSubmitting(false), 2000);
     } else {
-      // Default form submission
-      e.currentTarget.submit();
+      // For Netlify forms, let the browser handle submission naturally
+      setIsSubmitting(true);
+      // The form will submit normally to Netlify
     }
-
-    // Reset submitting state after a delay
-    setTimeout(() => setIsSubmitting(false), 2000);
   };
 
   const renderCustomField = (field: CustomField) => {
