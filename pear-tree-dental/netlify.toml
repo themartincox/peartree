@@ -81,3 +81,25 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # Let Netlify handle compression automatically - no manual compression config
+
+# Form handling configuration
+[forms]
+  # Spam protection
+  honey_pot = "bot-field"
+
+# Form notifications (you'll need to configure these in Netlify UI)
+[[forms]]
+  name = "contact-form"
+  to = "hello@peartree.dental"
+
+[[forms]]
+  name = "contact-consultation"
+  to = "hello@peartree.dental"
+
+[[forms]]
+  name = "contact-membership"
+  to = "hello@peartree.dental"
+
+[[forms]]
+  name = "contact-general"
+  to = "hello@peartree.dental"

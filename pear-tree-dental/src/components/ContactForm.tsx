@@ -128,6 +128,7 @@ export default function ContactForm({
           name={`contact-${type}`}
           method="POST"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
           action="/success"
           onSubmit={handleSubmit}
           className="space-y-6"
@@ -135,6 +136,9 @@ export default function ContactForm({
           {/* Hidden field for Netlify Forms */}
           <input type="hidden" name="form-name" value={`contact-${type}`} />
           <input type="hidden" name="form-type" value={type} />
+          <div className="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </div>
           {/* Basic Information */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
