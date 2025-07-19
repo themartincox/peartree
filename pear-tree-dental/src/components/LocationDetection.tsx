@@ -84,7 +84,6 @@ const LOCATION_DATA: { [key: string]: LocationData } = {
 export default function LocationDetection() {
   const [userLocation, setUserLocation] = useState<LocationData | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [isDetecting, setIsDetecting] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
@@ -93,68 +92,52 @@ export default function LocationDetection() {
     setIsDismissed(dismissed);
 
     if (!dismissed) {
-      // Wait 5 seconds before starting detection to be less intrusive
+      // Start silent detection after a delay to be less intrusive
       setTimeout(() => {
-        detectUserLocation();
-      }, 5000);
+        detectUserLocationSilently();
+      }, 8000); // Increased delay so user doesn't notice detection happening
     }
   }, []);
 
-  const detectUserLocation = async () => {
-    setIsDetecting(true);
-
+  const detectUserLocationSilently = async () => {
     try {
-      // Only try GPS - no fallbacks for less intrusive experience
+      // Silent GPS detection only - no fallbacks to avoid any popups
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             const { latitude, longitude } = position.coords;
-            await reverseGeocode(latitude, longitude);
+            const location = getLocationFromCoordinates(latitude, longitude);
+
+            // Only show popup if user is OUTSIDE service area and needs directions
+            if (!location && !isDismissed) {
+              // User is outside service area - show helpful directions popup
+              setUserLocation({
+                area: 'Outside Service Area',
+                postcode: 'Unknown',
+                travelTime: 'Variable',
+                route: 'via major roads',
+                specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+              });
+              setIsVisible(true);
+            }
+            // If user IS in service area, don't show anything - they probably know where we are
           },
           () => {
-            // If GPS fails, just quietly stop - don't show popup
-            console.log('GPS detection failed - no popup shown');
-            setIsDetecting(false);
+            // GPS failed - do nothing, stay silent
+            // No IP fallback to avoid any detection indicators
           },
-          { timeout: 5000 }
+          {
+            timeout: 2000, // Very short timeout
+            enableHighAccuracy: false, // Faster detection
+            maximumAge: 600000 // Use cached location for 10 minutes
+          }
         );
-      } else {
-        // No geolocation available - quietly stop
-        setIsDetecting(false);
       }
+      // If no geolocation available, stay silent - no popups
     } catch (error) {
-      console.log('Location detection failed:', error);
-      setIsDetecting(false);
+      // Silent failure - no indicators to user
     }
   };
-
-  const reverseGeocode = async (lat: number, lon: number) => {
-    try {
-      // Check if user is within our service area
-      const location = getLocationFromCoordinates(lat, lon);
-
-      // Only show popup if user is OUTSIDE service area and needs directions
-      if (!location && !isDismissed) {
-        // User is outside service area - show directions popup
-        setUserLocation({
-          area: 'Outside Service Area',
-          postcode: 'Unknown',
-          travelTime: 'Variable',
-          route: 'via major roads',
-          specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
-        });
-        setIsVisible(true);
-      }
-      // If user IS in service area, don't show popup - they probably know where we are
-
-      setIsDetecting(false);
-    } catch (error) {
-      console.log('Reverse geocoding failed:', error);
-      setIsDetecting(false);
-    }
-  };
-
-
 
   const getLocationFromCoordinates = (lat: number, lon: number): LocationData | null => {
     // Burton Joyce coordinates: approximately 52.9847, -1.0147
@@ -190,31 +173,8 @@ export default function LocationDetection() {
     sessionStorage.setItem('locationModalDismissed', 'true');
   };
 
-  // Don't show anything if user has dismissed the modal
-  if (isDismissed) {
-    return null;
-  }
-
-  if (isDetecting) {
-    return (
-      <div className="fixed bottom-4 right-4 z-50">
-        <Card className="w-80 shadow-lg border border-dental-green/20">
-          <CardContent className="p-4">
-            <div className="flex items-center space-x-3">
-              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-dental-green"></div>
-              <div>
-                <p className="font-semibold text-dental-navy">Detecting your location...</p>
-                <p className="text-sm text-gray-600">Finding the best route to our practice</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  // Don't show manual selection - only show if GPS detected user outside service area
-  if (!isVisible || !userLocation) {
+  // Don't show anything if user has dismissed or detection isn't visible
+  if (isDismissed || !isVisible || !userLocation) {
     return null;
   }
 

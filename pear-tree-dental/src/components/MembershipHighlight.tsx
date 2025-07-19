@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import TestimonialBanner from "@/components/TestimonialBanner";
+import { useLocationDetection } from "@/hooks/useLocationDetection";
 import {
   Check,
   Crown,
@@ -18,7 +19,12 @@ import {
   ShieldCheck,
   Heart,
   Users,
-  ArrowRight
+  ArrowRight,
+  MapPin,
+  Car,
+  Clock,
+  Calculator,
+  PiggyBank
 } from "lucide-react";
 
 // Memoize membership data to prevent recreation on each render
@@ -73,6 +79,102 @@ const membershipPlans = {
     color: "pear-gold",
     popular: true
   }
+};
+
+// Nottingham-specific benefits component
+const NottinghamMembershipBenefits = () => {
+  const { isNottingham, isDetected } = useLocationDetection();
+
+  // Only show if we've detected the user is from Nottingham
+  // No loading states - just appear seamlessly when detected
+  if (!isNottingham) return null;
+
+  return (
+    <Card className="mt-12 bg-gradient-to-r from-dental-green/5 to-pear-primary/5 border border-dental-green/20 overflow-hidden animate-in fade-in duration-1000">
+      <CardContent className="p-8">
+        <div className="text-center mb-6">
+          <Badge className="bg-dental-green text-white mb-4 px-4 py-2">
+            <MapPin className="w-4 h-4 mr-2" />
+            Special Benefits for Nottingham Members
+          </Badge>
+          <h3 className="text-2xl font-bold text-pear-primary mb-2">Why Nottingham Patients Love Our Membership</h3>
+          <p className="text-gray-600">Exclusive advantages that make the 15-minute journey from Nottingham well worth it</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="text-center">
+            <Car className="w-8 h-8 text-dental-green mx-auto mb-3" />
+            <h4 className="font-semibold text-pear-primary mb-2">Free Parking Always</h4>
+            <p className="text-sm text-gray-600">Save £15+ per visit compared to city centre practices</p>
+          </div>
+
+          <div className="text-center">
+            <Clock className="w-8 h-8 text-dental-green mx-auto mb-3" />
+            <h4 className="font-semibold text-pear-primary mb-2">Evening Appointments</h4>
+            <p className="text-sm text-gray-600">6pm slots available for city workers</p>
+          </div>
+
+          <div className="text-center">
+            <ShieldCheck className="w-8 h-8 text-dental-green mx-auto mb-3" />
+            <h4 className="font-semibold text-pear-primary mb-2">No NHS Waiting</h4>
+            <p className="text-sm text-gray-600">Immediate appointments vs 6+ month NHS waits</p>
+          </div>
+
+          <div className="text-center">
+            <Heart className="w-8 h-8 text-dental-green mx-auto mb-3" />
+            <h4 className="font-semibold text-pear-primary mb-2">Personal Service</h4>
+            <p className="text-sm text-gray-600">Same dentist every visit, not corporate rotation</p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg border border-dental-green/20 p-6 mb-6">
+          <h4 className="font-semibold text-pear-primary mb-4 text-center">Annual Savings Calculator for Nottingham Patients</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+            <div>
+              <div className="text-2xl font-bold text-dental-green mb-1">£180</div>
+              <div className="text-sm text-gray-600">Parking savings</div>
+              <div className="text-xs text-gray-500 mt-1">12 visits × £15 city center parking</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-dental-green mb-1">£400</div>
+              <div className="text-sm text-gray-600">Treatment savings</div>
+              <div className="text-xs text-gray-500 mt-1">vs. private dental costs in city</div>
+            </div>
+            <div className="border-l border-dental-green/20 pl-6 md:pl-0 md:border-l-0">
+              <div className="text-3xl font-bold text-pear-gold mb-1">£580</div>
+              <div className="text-sm text-gray-600 font-semibold">Total saved annually</div>
+              <div className="text-xs text-gray-500 mt-1">Plus time and stress savings</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-pear-gold/10 to-dental-green/10 rounded-lg p-6 border border-pear-gold/20">
+          <div className="flex items-start space-x-4">
+            <PiggyBank className="w-8 h-8 text-pear-gold flex-shrink-0 mt-1" />
+            <div>
+              <h5 className="font-semibold text-pear-primary mb-2">Why Nottingham Patients Make the Switch</h5>
+              <ul className="text-sm text-gray-700 space-y-1">
+                <li>• Avoid city center traffic and parking stress</li>
+                <li>• 15-minute journey vs 45+ minutes to central Nottingham practices</li>
+                <li>• Personal care vs corporate dental chains</li>
+                <li>• Same-day emergency appointments vs NHS emergency queues</li>
+                <li>• Modern technology in peaceful countryside setting</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mt-6">
+          <Button asChild className="bg-dental-green text-white font-semibold px-6 py-3 hover:bg-dental-green/90">
+            <Link href="/membership#plans">
+              <Calculator className="w-4 h-4 mr-2" />
+              Calculate Your Nottingham Savings
+            </Link>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
 
 const MembershipHighlight = () => {
@@ -269,7 +371,8 @@ const MembershipHighlight = () => {
           </div>
         </Card>
 
-
+        {/* Nottingham-specific benefits */}
+        <NottinghamMembershipBenefits />
 
         {/* Trust Indicators */}
         <div className="mt-16 text-center">
