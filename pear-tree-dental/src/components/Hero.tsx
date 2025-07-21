@@ -1,253 +1,216 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Star, CalendarDays, ArrowRight } from "lucide-react";
-import LiveGoogleRatingWidget from "@/components/LiveGoogleRatingWidget";
-import GoogleReviewsModal from "@/components/GoogleReviewsModal";
+import React from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Calendar } from 'lucide-react';
+import { useConversionTracking } from '@/hooks/useConversionTracking';
 
 const Hero = () => {
-  const [isReviewsModalOpen, setIsReviewsModalOpen] = useState(false);
+  const { trackPhoneClick, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
+
+  const handleBookingClick = () => {
+    trackBookingAttempt('hero_primary', 'booking');
+  };
+
+  const handleMembershipClick = () => {
+    trackLocationConversion('membership_interest', 'burton_joyce');
+  };
 
   return (
-    <section
-      className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
-      aria-label="Welcome to Pear Tree Dental"
-      role="main"
-    >
-      {/* Background Pattern - Pure CSS for better performance */}
-      <div className="absolute inset-0 opacity-5 hero-bg-pattern" aria-hidden="true" />
+    <section className="relative pt-20 pb-16 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile/Tablet Layout: H1, Image, Text, CTAs */}
+        <div className="lg:hidden">
+          {/* H1 First on Mobile */}
+          <div className="text-center mb-8">
+            <h1 className="heading-serif text-5xl sm:text-6xl font-bold text-pear-primary leading-tight">
+              Expert dental care
+              <br />
+              with a <span className="text-pear-gold">personal touch</span>
+            </h1>
+          </div>
 
-      {/* Decorative Background Elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-pear-primary/5 rounded-full blur-3xl" aria-hidden="true" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-pear-gold/5 rounded-full blur-3xl" aria-hidden="true" />
+          {/* Hero Image Second on Mobile */}
+          <div className="relative mb-8">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-lg mx-auto">
+              <img
+                src="/images/dental-practice-hero-burton-joyce.webp"
+                alt="Happy family with healthy smiles at Pear Tree Dental Burton Joyce"
+                className="w-full h-[400px] object-cover opacity-80"
+                loading="eager"
+                width={600}
+                height={400}
+              />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-24 lg:pt-28 pb-4 sm:pb-8 lg:pb-10 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
-          {/* Mobile-first content order: Title → Images → Content → CTAs */}
-          <div className="space-y-4 sm:space-y-6 flex flex-col lg:h-[600px] justify-between lg:mt-[-100px] order-1 lg:order-1">
-            {/* H1 Title - First on mobile for immediate page identification */}
-            <div className="block lg:hidden mb-4">
-              <h1 className="heading-serif text-[40px] sm:text-[4.2rem] font-bold text-pear-primary text-center">
-                Expert dental care with a <span className="text-pear-gold">personal touch</span>
-              </h1>
-            </div>
-
-            {/* Hero Images - Second on mobile, appears above other content */}
-            <div className="relative mt-8 lg:-mt-[100px] hero-image-container lg:hidden" role="img" aria-label="Dental care showcase">
-              {/* Main Hero Image */}
-              <div
-                className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl opacity-80"
-                role="img"
-                aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
-              >
-                <Image
-                  src="/images/dental-practice-hero-burton-joyce.webp"
-                  alt="Beautiful smile showcasing the quality dental care and transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-                />
-
-                {/* Floating Elements - Optimized positioning */}
-                <div
-                  className="absolute top-3 left-3 sm:top-6 sm:left-6 opacity-75 hover:opacity-100 transition-opacity duration-300"
-                  role="region"
-                  aria-label="Patient rating information"
-                >
-                  <LiveGoogleRatingWidget onClick={() => setIsReviewsModalOpen(true)} />
-                </div>
-              </div>
-
-              {/* Secondary Service Images - Clickable service links */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6" role="group" aria-label="Featured dental services">
-                {/* Orthodontics Service Image */}
-                <Link
-                  href="/services/orthodontics"
-                  className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                  aria-label="Orthodontics service - Invisalign and ClearCorrect clear aligner treatments"
-                >
-                  <div className="relative h-full bg-white">
-                    <Image
-                      src="/images/1.jpg"
-                      alt="Orthodontic treatment options - professional teeth straightening services"
-                      fill
-                      className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                    />
-                    {/* Pink tint overlay with fade */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
+              {/* Google Rating Overlay */}
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">G</div>
+                  <span className="text-gray-800 text-sm font-medium">Google Rated</span>
+                  <span className="text-orange-500 font-bold">4.9</span>
+                  <div className="flex space-x-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-orange-400 text-xs">★</span>
+                    ))}
                   </div>
-                </Link>
-
-                {/* Whitening Service Image */}
-                <Link
-                  href="/services/cosmetic"
-                  className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                  aria-label="Teeth whitening service - Boutique Whitening and Enlighten professional treatments"
-                >
-                  <div className="relative h-full bg-white">
-                    <Image
-                      src="/images/2.jpg"
-                      alt="Professional teeth whitening services - smile brightening treatments"
-                      fill
-                      className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                    />
-                    {/* Pink tint overlay with fade */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
-                  </div>
-                </Link>
-              </div>
-            </div>
-
-            <div className="space-y-4 sm:space-y-6">
-              {/* Main Headline - SEO Optimized - Hidden on mobile, shown on desktop */}
-              <h1 className="heading-serif text-[3.15rem] sm:text-[4.2rem] md:text-[5.25rem] lg:text-[6.3rem] font-bold text-pear-primary leading-tight xl:text-[85px] hidden lg:block">
-                Expert dental care with a <span className="text-pear-gold">personal touch</span>
-              </h1>
-
-              <p className="text-base sm:text-[1.32rem] lg:text-[1.68rem] text-gray-600 leading-relaxed xl:text-[20px]">
-                Modern dental care in Burton Joyce, Nottinghamshire.
-                Skip the NHS waiting lists with our membership plans from just £10.95/month.
-              </p>
-
-              {/* CTA Buttons - Optimized for performance */}
-              <div className="flex flex-col gap-4" role="group" aria-label="Primary actions">
-                <Link href="/book">
-                  <Button
-                    size="lg"
-                    className="bg-pear-primary text-white hover:bg-pear-primary/90 font-semibold group px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-primary focus:ring-offset-2"
-                    aria-label="Schedule a free dental consultation with our team"
-                  >
-                    <CalendarDays className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" aria-hidden="true" />Book Your Consultation
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Bottom-aligned elements */}
-            <div className="space-y-4 sm:space-y-6">
-              <Link href="/membership">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-pear-gold-dark border-pear-gold-dark hover:bg-pear-gold-dark hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg h-12 sm:h-14 focus:outline-none focus:ring-2 focus:ring-pear-gold-dark focus:ring-offset-2 w-full lg:w-auto"
-                  aria-label="Join our dental membership plan starting at £10.95 per month"
-                >View Membership Plans
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                </Button>
-              </Link>
-
-              {/* Value Proposition - Simplified structure */}
-              <div
-                className="bg-white/60 backdrop-blur-sm rounded-3xl p-4 sm:p-6 lg:p-8 border border-pear-primary/10 min-h-[100px] sm:h-32 flex items-center space-x-4 sm:space-x-6"
-                role="region"
-                aria-label="Membership pricing information"
-              >
-                <div
-                  className="w-12 h-12 sm:w-16 sm:h-16 bg-pear-gold rounded-full flex items-center justify-center flex-shrink-0"
-                  aria-hidden="true"
-                >
-                  <span className="text-white font-bold text-xl sm:text-2xl">£</span>
-                </div>
-                <div>
-                  <p className="text-pear-primary font-semibold text-base sm:text-xl">Membership from just 36p per day</p>
-                  <p className="text-gray-600 text-xs sm:text-base">No hidden fees • Cancel anytime • Immediate access</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Images - Desktop only (hidden on mobile since it appears inline above) */}
-          <div className="relative mt-8 lg:-mt-[100px] hero-image-container order-2 lg:order-2 hidden lg:block" role="img" aria-label="Dental care showcase">
-            {/* Main Hero Image */}
-            <div
-              className="relative h-72 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-3xl overflow-hidden shadow-2xl opacity-80"
-              role="img"
-              aria-label="Two confident women showcasing beautiful, healthy smiles - representing the quality dental care at Pear Tree Dental"
+          {/* Follow-up Text Third on Mobile */}
+          <div className="text-center mb-8">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS
+              waiting lists with our membership plans from just £10.95/month.
+            </p>
+          </div>
+
+          {/* CTA 1 Fourth on Mobile */}
+          <div className="mb-4">
+            <Button
+              asChild
+              size="lg"
+              className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold px-8 py-4 text-lg w-full"
+              onClick={handleBookingClick}
             >
-              <Image
-                src="/images/dental-practice-hero-burton-joyce.webp"
-                alt="Beautiful smile showcasing the quality dental care and transformations at Pear Tree Dental in Burton Joyce, Nottinghamshire"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
-              />
+              <Link href="/book">
+                <Calendar className="h-5 w-5 mr-2" />
+                Book Your Consultation
+              </Link>
+            </Button>
+          </div>
 
-              {/* Floating Elements - Optimized positioning */}
-              <div
-                className="absolute top-3 left-3 sm:top-6 sm:left-6 opacity-75 hover:opacity-100 transition-opacity duration-300"
-                role="region"
-                aria-label="Patient rating information"
-              >
-                <LiveGoogleRatingWidget onClick={() => setIsReviewsModalOpen(true)} />
+          {/* CTA 2 Fifth on Mobile */}
+          <div className="mb-8">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
+              onClick={handleMembershipClick}
+            >
+              <Link href="/membership">
+                View Membership Plans →
+              </Link>
+            </Button>
+          </div>
+
+          {/* Membership Highlight */}
+          <div className="bg-gray-50 rounded-2xl p-6 max-w-md mx-auto">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">£</span>
               </div>
-            </div>
-
-            {/* Secondary Service Images - Clickable service links */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6" role="group" aria-label="Featured dental services">
-              {/* Orthodontics Service Image */}
-              <Link
-                href="/services/orthodontics"
-                className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                aria-label="Orthodontics service - Invisalign and ClearCorrect clear aligner treatments"
-              >
-                <div className="relative h-full bg-white">
-                  <Image
-                    src="/images/1.jpg"
-                    alt="Orthodontic treatment options - professional teeth straightening services"
-                    fill
-                    className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  />
-                  {/* Pink tint overlay with fade */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
-                </div>
-              </Link>
-
-              {/* Whitening Service Image */}
-              <Link
-                href="/services/cosmetic"
-                className="block h-20 sm:h-24 lg:h-32 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
-                aria-label="Teeth whitening service - Boutique Whitening and Enlighten professional treatments"
-              >
-                <div className="relative h-full bg-white">
-                  <Image
-                    src="/images/2.jpg"
-                    alt="Professional teeth whitening services - smile brightening treatments"
-                    fill
-                    className="object-contain group-hover:scale-[1.02] transition-transform duration-300"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
-                  />
-                  {/* Pink tint overlay with fade */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent transition-opacity duration-300 group-hover:opacity-0"></div>
-                </div>
-              </Link>
+              <div>
+                <h3 className="font-bold text-pear-primary text-lg">
+                  Membership from just 36p per day
+                </h3>
+                <p className="text-gray-600 text-sm">
+                  No hidden fees • Cancel anytime • Immediate access
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Wave - Optimized SVG */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1200 120" fill="none" className="w-full h-20" aria-hidden="true">
-          <path
-            d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,200L1392,200C1344,200,1248,200,1152,200C1056,200,960,200,864,200C768,200,672,200,576,200C480,200,384,200,288,200C192,200,96,200,48,200L0,200Z"
-            fill="white"
-          />
-        </svg>
-      </div>
+        {/* Desktop Layout: Side by Side */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
+          {/* Content Column */}
+          <div className="space-y-8">
+            {/* Main Heading */}
+            <div>
+              <h1 className="heading-serif text-7xl font-bold text-pear-primary leading-tight">
+                Expert dental care
+                <br />
+                with a <span className="text-pear-gold">personal touch</span>
+              </h1>
+            </div>
 
-      {/* Google Reviews Modal */}
-      <GoogleReviewsModal
-        isOpen={isReviewsModalOpen}
-        onClose={() => setIsReviewsModalOpen(false)}
-      />
+            {/* Description */}
+            <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+              Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS
+              waiting lists with our membership plans from just £10.95/month.
+            </p>
+
+            {/* CTA Buttons with Tracking */}
+            <div className="space-y-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+                onClick={handleBookingClick}
+              >
+                <Link href="/book">
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Book Your Consultation
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+                onClick={handleMembershipClick}
+              >
+                <Link href="/membership">
+                  View Membership Plans →
+                </Link>
+              </Button>
+            </div>
+
+            {/* Membership Highlight */}
+            <div className="bg-gray-50 rounded-2xl p-6 max-w-md">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center">
+                  <span className="text-white text-2xl font-bold">£</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-pear-primary text-lg">
+                    Membership from just 36p per day
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    No hidden fees • Cancel anytime • Immediate access
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Images Column */}
+          <div className="relative">
+            {/* Main Hero Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src="/images/dental-practice-hero-burton-joyce.webp"
+                alt="Happy family with healthy smiles at Pear Tree Dental Burton Joyce"
+                className="w-full h-[600px] object-cover opacity-80"
+                loading="eager"
+                width={600}
+                height={600}
+              />
+
+              {/* Google Rating Overlay */}
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center text-white text-xs font-bold">G</div>
+                  <span className="text-gray-800 text-sm font-medium">Google Rated</span>
+                  <span className="text-orange-500 font-bold">4.9</span>
+                  <div className="flex space-x-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i} className="text-orange-400 text-xs">★</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
     </section>
   );
 };

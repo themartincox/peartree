@@ -459,7 +459,44 @@ html {
   animation: contentSlideIn 0.8s ease-out 1.4s both;
 }
 
-/* CSS-only animations for better performance */
+/* Pink Haze - Reusable Color Palette from Smile Design */
+.pink-haze {
+  background: linear-gradient(to right, var(--soft-pink), var(--soft-lavender));
+}
+
+.pink-haze-subtle {
+  background: linear-gradient(135deg, rgba(232, 197, 197, 0.1), rgba(209, 196, 233, 0.1));
+}
+
+.pink-haze-border {
+  border: 1px solid rgba(232, 197, 197, 0.3);
+}
+
+/* Pinky gradient for brand logos section - subtle and classy */
+.pinky {
+  background: linear-gradient(135deg, #f8f4f6 0%, #f3e8ed 25%, #ead5df 75%, #e1c2d1 100%);
+}
+
+.pinky-fade {
+  background: linear-gradient(to right, transparent 0%, #f8f4f6 20%, #f3e8ed 40%, #ead5df 60%, #e1c2d1 80%, #d4a7be 100%);
+}
+
+/* Brand logo hover effects */
+.brand-logo-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(0.7) opacity(0.8);
+}
+
+.brand-logo-container:hover {
+  filter: grayscale(0) opacity(1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.brand-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Optimized animations for better performance */
 @keyframes welcomeFadeOut {
   0% {
     opacity: 1;
