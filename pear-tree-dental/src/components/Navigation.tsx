@@ -33,34 +33,29 @@ const LazyNavigationItems = lazy(() =>
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolledMobileMenuOpen, setIsScrolledMobileMenuOpen] = useState(false);
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const { startTiming, endTiming } = usePerformanceMonitor();
 
   // Function to close mobile menu when navigation links are clicked
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
+    setIsScrolledMobileMenuOpen(false);
+    // Simple approach: trigger escape key to close the sheet
+    const escapeEvent = new KeyboardEvent('keydown', {
+      key: 'Escape',
+      keyCode: 27,
+      bubbles: true
+    });
+    document.dispatchEvent(escapeEvent);
   };
 
-  // Handle mobile menu opening with lazy loading
-  const handleMobileMenuChange = (open: boolean) => {
-    setIsMobileMenuOpen(open);
-    // Load secondary navigation items only when menu is opened for the first time
-    if (open && !shouldLoadSecondaryNav) {
-      startTiming('lazy-nav-load');
+  // Load secondary navigation when mobile menu is opened
+  useEffect(() => {
+    if (isMobileMenuOpen || isScrolledMobileMenuOpen) {
       setShouldLoadSecondaryNav(true);
     }
-  };
-
-  // Track when lazy navigation has loaded
-  useEffect(() => {
-    if (shouldLoadSecondaryNav) {
-      const timer = setTimeout(() => {
-        endTiming('lazy-nav-load');
-      }, 100); // Small delay to ensure component is fully rendered
-
-      return () => clearTimeout(timer);
-    }
-  }, [shouldLoadSecondaryNav, endTiming]);
+  }, [isMobileMenuOpen, isScrolledMobileMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -313,14 +308,15 @@ const Navigation = () => {
             </NavigationMenu>
 
             {/* Mobile Menu */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={handleMobileMenuChange}>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild className="lg:hidden">
                 <Button
                   variant="ghost"
                   size="icon"
                   className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary/10"
                   aria-label="Open mobile navigation menu"
-                  aria-expanded="false"
+                  aria-expanded={isMobileMenuOpen}
+                  onClick={() => setIsMobileMenuOpen(true)}
                 >
                   <Menu className="h-6 w-6" aria-hidden="true" />
                   <span className="sr-only">Open menu</span>
@@ -534,13 +530,14 @@ const Navigation = () => {
             </div>
 
             {/* Hamburger Menu */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={handleMobileMenuChange}>
+            <Sheet open={isScrolledMobileMenuOpen} onOpenChange={setIsScrolledMobileMenuOpen}>
               <SheetTrigger asChild>
                 <Button
                   variant="ghost"
                   size="icon"
                   className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
                   aria-label="Open mobile navigation menu"
+                  onClick={() => setIsScrolledMobileMenuOpen(true)}
                 >
                   <Menu className="h-6 w-6" />
                 </Button>
@@ -548,7 +545,6 @@ const Navigation = () => {
               <SheetContent
                 side="right"
                 className="w-80 sm:w-96 bg-white/95 backdrop-blur-md border-l border-gray-200/50 shadow-2xl"
-                onInteractOutside={() => setIsMobileMenuOpen(false)}
                 aria-label="Mobile navigation menu"
               >
                 <div className="flex flex-col space-y-6 mt-6">
@@ -614,10 +610,10 @@ const Navigation = () => {
                   )}
 
                   <div className="space-y-2">
-                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={closeMobileMenu}>
                       New Patients
                     </Link>
-                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium">
+                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={closeMobileMenu}>
                       Contact
                     </Link>
                   </div>
