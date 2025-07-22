@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect, useRef, useCallback, Suspense, lazy } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -37,23 +37,107 @@ const Navigation = () => {
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const { startTiming, endTiming } = usePerformanceMonitor();
 
+  // Touch gesture handling for swipe-to-close
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
+
+  // Swipe gesture detection
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    setIsSwipeIndicatorVisible(true);
+  }, []);
+
+  const handleTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!touchStartX.current || !touchStartY.current) return;
+
+    const currentX = e.touches[0].clientX;
+    const currentY = e.touches[0].clientY;
+
+    const deltaX = currentX - touchStartX.current;
+    const deltaY = Math.abs(currentY - touchStartY.current);
+
+    // Only consider horizontal swipes (deltaY < 50 ensures it's more horizontal than vertical)
+    if (deltaX > 50 && deltaY < 50) {
+      // Swiping right - show visual feedback
+      setIsSwipeIndicatorVisible(true);
+    } else if (deltaX < -20) {
+      // Swiping left - hide indicator
+      setIsSwipeIndicatorVisible(false);
+    }
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (!touchStartX.current || !touchStartY.current) {
+      setIsSwipeIndicatorVisible(false);
+      return;
+    }
+
+    const currentX = e.changedTouches[0].clientX;
+    const currentY = e.changedTouches[0].clientY;
+
+    const deltaX = currentX - touchStartX.current;
+    const deltaY = Math.abs(currentY - touchStartY.current);
+
+    // Swipe right to close (minimum 100px swipe, more horizontal than vertical)
+    if (deltaX > 100 && deltaY < 80) {
+      // Close mobile menu directly
+      setIsMobileMenuOpen(false);
+      setIsScrolledMobileMenuOpen(false);
+      setIsSwipeIndicatorVisible(false);
+
+      // Trigger escape key to close the sheet
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        keyCode: 27,
+        bubbles: true
+      });
+      document.dispatchEvent(escapeEvent);
+    }
+
+    // Reset
+    touchStartX.current = null;
+    touchStartY.current = null;
+    setIsSwipeIndicatorVisible(false);
+  }, []);
+
   // Function to close mobile menu when navigation links are clicked
-  const closeMobileMenu = () => {
-    setIsMobileMenuOpen(false);
-    setIsScrolledMobileMenuOpen(false);
-    // Simple approach: trigger escape key to close the sheet
-    const escapeEvent = new KeyboardEvent('keydown', {
-      key: 'Escape',
-      keyCode: 27,
-      bubbles: true
-    });
-    document.dispatchEvent(escapeEvent);
-  };
+  const closeMobileMenu = useCallback(() => {
+    // Add smooth close animation
+    const content = document.querySelector('.mobile-nav-content');
+    if (content) {
+      content.classList.add('exiting');
+    }
+
+    // Small delay to allow animation to play
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setIsScrolledMobileMenuOpen(false);
+      setIsSwipeIndicatorVisible(false);
+
+      // Trigger escape key to close the sheet
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
+        keyCode: 27,
+        bubbles: true
+      });
+      document.dispatchEvent(escapeEvent);
+    }, 150);
+  }, []);
 
   // Load secondary navigation when mobile menu is opened
   useEffect(() => {
     if (isMobileMenuOpen || isScrolledMobileMenuOpen) {
       setShouldLoadSecondaryNav(true);
+
+      // Show swipe hint briefly when menu opens
+      setIsSwipeIndicatorVisible(true);
+      const timer = setTimeout(() => {
+        setIsSwipeIndicatorVisible(false);
+      }, 3000); // Hide after 3 seconds
+
+      return () => clearTimeout(timer);
     }
   }, [isMobileMenuOpen, isScrolledMobileMenuOpen]);
 
@@ -324,11 +408,22 @@ const Navigation = () => {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-80 sm:w-96 overflow-y-auto"
+                className="w-80 sm:w-96 overflow-y-auto mobile-nav-panel sheet-content relative"
                 role="dialog"
                 aria-label="Mobile navigation menu"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
-                <div className="flex flex-col space-y-4 mt-2" role="navigation" aria-label="Mobile site navigation">
+                {/* Swipe Indicator */}
+                <div className={cn("swipe-indicator", isSwipeIndicatorVisible && "active")}>
+                  <div className="flex items-center text-pear-primary/60 text-sm">
+                    <span className="mr-1">→</span>
+                    <span>Swipe</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-4 mt-2 mobile-nav-content" role="navigation" aria-label="Mobile site navigation">
                   {/* Mobile Logo - Raised Higher with Proper Format */}
                   <Link
                     href="/"
@@ -357,31 +452,31 @@ const Navigation = () => {
 
                   {/* Mobile CTAs - Smaller with 2px less padding */}
                   <div className="flex flex-col space-y-3">
-                    <Link href="/services/emergency" onClick={closeMobileMenu}>
-                      <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1">
+                    <Link href="/services/emergency" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1 nav-button">
                         🚨 Dental Pain? Call Now
                       </Button>
                     </Link>
-                    <Link href="/book" onClick={closeMobileMenu}>
-                      <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-10 text-sm px-4 py-1">
+                    <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-10 text-sm px-4 py-1 nav-button">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         Book Appointment
                       </Button>
                     </Link>
-                    <Link href="/smile-design" onClick={closeMobileMenu}>
-                      <Button className="pink-haze text-white w-full h-10 font-semibold text-sm px-4 py-1">
+                    <Link href="/smile-design" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button className="pink-haze text-white w-full h-10 font-semibold text-sm px-4 py-1 nav-button">
                         <Sparkles className="w-4 h-4 mr-2" />
                         Smile Design Service
                       </Button>
                     </Link>
-                    <Link href="/membership" onClick={closeMobileMenu}>
-                      <Button className="btn-gold text-white w-full h-10 font-semibold text-sm px-4 py-1">
+                    <Link href="/membership" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button className="btn-gold text-white w-full h-10 font-semibold text-sm px-4 py-1 nav-button">
                         <Star className="w-4 h-4 mr-2" />
                         Join Membership
                       </Button>
                     </Link>
-                    <a href="tel:01159312935" onClick={closeMobileMenu}>
-                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-10 text-sm px-4 py-1">
+                    <a href="tel:01159312935" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-10 text-sm px-4 py-1 nav-button">
                         <Phone className="w-4 h-4 mr-2" />
                         0115 931 2935
                       </Button>
@@ -544,10 +639,21 @@ const Navigation = () => {
               </SheetTrigger>
               <SheetContent
                 side="right"
-                className="w-80 sm:w-96 bg-white/95 backdrop-blur-md border-l border-gray-200/50 shadow-2xl"
+                className="w-80 sm:w-96 bg-white/95 backdrop-blur-md border-l border-gray-200/50 shadow-2xl mobile-nav-panel sheet-content relative"
                 aria-label="Mobile navigation menu"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
               >
-                <div className="flex flex-col space-y-6 mt-6">
+                {/* Swipe Indicator */}
+                <div className={cn("swipe-indicator", isSwipeIndicatorVisible && "active")}>
+                  <div className="flex items-center text-pear-primary/60 text-sm">
+                    <span className="mr-1">→</span>
+                    <span>Swipe</span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col space-y-6 mt-6 mobile-nav-content">
                   <Link href="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
                     <div className="w-8 h-8 text-pear-primary">
                       <Image
@@ -569,14 +675,14 @@ const Navigation = () => {
                   </Link>
 
                   <div className="flex flex-col space-y-3">
-                    <Link href="/book" onClick={closeMobileMenu}>
-                      <Button className="bg-soft-pink text-pear-primary w-full h-12">
+                    <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button className="bg-soft-pink text-pear-primary w-full h-12 nav-button">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         Book Appointment
                       </Button>
                     </Link>
-                    <Link href="/membership" onClick={closeMobileMenu}>
-                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm">
+                    <Link href="/membership" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm nav-button">
                         <Star className="w-4 h-4 mr-2" />
                         Membership Plans
                       </Button>

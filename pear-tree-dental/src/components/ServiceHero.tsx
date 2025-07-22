@@ -118,6 +118,8 @@ interface ServiceHeroProps {
   layout?: string;
   theme?: string;
   priority?: "high" | "normal";
+  videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
 }
 
 export default function ServiceHero({
@@ -136,10 +138,10 @@ export default function ServiceHero({
     href: "/book"
   },
   secondaryCTA = {
-    text: "Learn More",
-    icon: "ArrowRight"
+    text: "",
+    href: ""
   },
-  trustIndicators = [
+    trustIndicators = [
     { icon: "Star", text: "5-star rated" },
     { icon: "Shield", text: "GDC registered" },
     { icon: "Clock", text: "20+ years experience" }
@@ -154,7 +156,9 @@ export default function ServiceHero({
   className = "",
   layout = "default",
   theme = "default",
-  priority = "high"
+  priority = "high",
+  videoScale = 1.0,
+  hideMembershipLink = false
 }: ServiceHeroProps) {
   const [expandedStats, setExpandedStats] = useState(false);
   const { trackServiceInterest, trackPhoneClick, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
@@ -231,9 +235,12 @@ export default function ServiceHero({
             </div>
 
             {/* Visual Content - Second for engagement (mobile only) */}
-            <div className="lg:hidden mb-6">
+            <div className="lg:hidden mb-6 -mx-8">
               {heroVideo ? (
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div
+                  className="relative aspect-[4/3] overflow-hidden"
+                  style={{ transform: `scale(${videoScale})` }}
+                >
                   <video
                     className="w-full h-full object-cover"
                     autoPlay
@@ -252,7 +259,10 @@ export default function ServiceHero({
                   </video>
                 </div>
               ) : (
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div
+                  className="relative aspect-[4/3] overflow-hidden"
+                  style={{ transform: `scale(${videoScale})` }}
+                >
                   <Image
                     src={heroImage || fallbackImage}
                     alt={heroImageAlt || title}
@@ -275,7 +285,7 @@ export default function ServiceHero({
 
             {/* Description - Fourth */}
             <div className="lg:order-3">
-              <p className="text-xl text-gray-600 leading-relaxed mb-4">
+              <p className="text-xl text-gray-600 leading-relaxed mb-4 max-w-2xl">
                 {description}
               </p>
             </div>
@@ -311,7 +321,7 @@ export default function ServiceHero({
               <Button
                 asChild
                 size="lg"
-                className={`bg-gradient-to-r from-${textColor} to-${textColor}/80 text-white font-semibold group`}
+                className="bg-gradient-to-r from-pear-primary to-pear-primary/80 text-white font-semibold group"
                 onClick={handlePhoneClick}
               >
                 <a href="tel:01159312935">
@@ -324,7 +334,7 @@ export default function ServiceHero({
                 asChild={!!primaryCTA.href}
                 variant="outline"
                 size="lg"
-                className={`border-2 border-${textColor} text-${textColor} hover:bg-${textColor} hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold group`}
+                className="border-2 border-pear-primary text-pear-primaryte hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold group"
                 onClick={handleBookingClick}
               >
                 {primaryCTA.href ? (
@@ -343,17 +353,19 @@ export default function ServiceHero({
 
             {/* Secondary CTAs with tracking */}
             <div className="flex flex-col sm:flex-row gap-4 text-center sm:text-left">
-              <Button
-                asChild
-                variant="link"
-                className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
-                onClick={handleMembershipClick}
-              >
-                <Link href="/membership">
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  Explore Membership Plans
-                </Link>
-              </Button>
+              {!hideMembershipLink && (
+                <Button
+                  asChild
+                  variant="link"
+                  className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
+                  onClick={handleMembershipClick}
+                >
+                  <Link href="/membership">
+                    <Sparkles className="h-4 w-4 mr-2" />
+                    Explore Membership Plans
+                  </Link>
+                </Button>
+              )}
 
               {testimonials.length > 0 && (
                 <Button
@@ -411,7 +423,10 @@ export default function ServiceHero({
           <div className="lg:col-span-5 order-1 lg:order-2 hidden lg:block">
             <div className="relative">
               {heroVideo ? (
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div
+                  className="relative aspect-[4/3] overflow-hidden -m-6"
+                  style={{ transform: `scale(${videoScale})` }}
+                >
                   <video
                     className="w-full h-full object-cover"
                     autoPlay
@@ -428,23 +443,13 @@ export default function ServiceHero({
                       className="w-full h-full object-cover"
                     />
                   </video>
-                  {/* Video overlay with service type indicator */}
-                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg">
-                    <div className="flex items-center space-x-2">
-                      <div className={`w-2 h-2 rounded-full animate-pulse ${
-                        serviceType === 'emergency' ? 'bg-red-500' :
-                        serviceType === 'cosmetic' ? 'bg-pink-500' :
-                        serviceType === 'orthodontics' ? 'bg-blue-500' :
-                        'bg-dental-green'
-                      }`}></div>
-                      <span className="text-dental-navy text-sm font-semibold capitalize">
-                        {serviceType}
-                      </span>
-                    </div>
-                  </div>
+
                 </div>
               ) : (
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div
+                  className="relative aspect-[4/3] overflow-hidden -m-6"
+                  style={{ transform: `scale(${videoScale})` }}
+                >
                   <Image
                     src={heroImage || fallbackImage}
                     alt={heroImageAlt || title}
@@ -465,7 +470,7 @@ export default function ServiceHero({
                       className="flex items-center space-x-3 text-left w-full hover:bg-gray-50 rounded-lg p-2 transition-colors"
                     >
                       <div className="w-10 h-10 bg-dental-green rounded-full flex items-center justify-center">
-                        <Award className="h-5 w-5 text-white" />
+                        <Award className="h-5 w-5 text-pear-primary" />
                       </div>
                       <div>
                         <div className="text-sm font-semibold text-dental-navy">{stats.primary}</div>
@@ -488,7 +493,7 @@ export default function ServiceHero({
               )}
 
               {/* Trust indicator */}
-              <div className="absolute -top-4 -right-4 bg-pear-gold rounded-xl p-4 shadow-xl">
+              <div className="absolute -top-4 -right-4 bg-pear-gold rounded-xl p-4 shadow-xl opacity-70">
                 <div className="flex items-center space-x-2">
                   <Users className="h-5 w-5 text-white" />
                   <div className="text-white">
