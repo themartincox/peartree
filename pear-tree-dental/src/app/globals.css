@@ -942,3 +942,22 @@ input:valid {
     display: none;
   }
 }
+
+/* Mobile Navigation - Remove backdrop shade */
+[data-state="open"] > .fixed.inset-0 {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Mobile Navigation Sheet - Remove overlay */
+.mobile-nav-sheet .bg-black\/80,
+.mobile-nav-sheet .bg-background\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-black\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-background\/80 {
+  display: none !important;
+}
+
+/* Ensure mobile nav content is on top */
+[data-radix-portal] .fixed.inset-y-0.right-0 {
+  z-index: 100 !important;
+}

@@ -129,13 +129,14 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Implant Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Implant Types",
-      href: "/services/implants",
+      href: "#implant-types",
       icon: "ArrowRight"
-    }
+    },
+    videoScale: 1.0
   },
 
   "/services/orthodontics": {
