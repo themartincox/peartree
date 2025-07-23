@@ -25,6 +25,7 @@ export interface ServiceHeroConfig {
   gradientTo?: string;
   textColor?: string;
   videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  mobileVideoScale?: number; // Mobile-specific video scale factor
   hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
 }
 
@@ -58,7 +59,8 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     gradientFrom: "soft-pink/10",
     gradientTo: "soft-lavender/10",
     textColor: "pear-primary",
-    videoScale: 1.15
+    videoScale: 1.15,
+    mobileVideoScale: 0.85
   },
 
   "/services/general": {

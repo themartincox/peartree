@@ -24,11 +24,13 @@ import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Cosmetic Dentistry - Transform Your Smile in Burton Joyce",
-  description: "Transform your smile with cosmetic dentistry in Burton Joyce. Teeth whitening, veneers, composite bonding, smile makeovers. Expert treatments to boost your confidence and oral health.",
+  description: "Transform your smile with cosmetic dentistry in Burton Joyce. Teeth whitening, teeth straightening, veneers, composite bonding, buccal corridor correction, smile makeovers. Expert treatments to boost your confidence and oral health.",
   keywords: [
     "cosmetic dentistry Burton Joyce",
     "smile makeover Nottingham",
     "teeth whitening Burton Joyce",
+    "teeth straightening Burton Joyce",
+    "buccal corridor correction Burton Joyce",
     "dental veneers Nottinghamshire",
     "composite bonding Burton Joyce",
     "smile transformation Nottingham",
@@ -83,6 +85,25 @@ export default function CosmeticDentistryPage() {
       socialProof: "Over 1,000 happy patients"
     },
     {
+      name: "Teeth Straightening",
+      description: "Straighten your teeth discreetly with modern clear aligner technology for a confident smile",
+      price: "From £2,000",
+      duration: "6-18 months",
+      results: "Gradual transformation",
+      popular: false,
+      link: "/services/orthodontics",
+      socialProof: "300+ successful treatments"
+    },
+    {
+      name: "Composite Bonding",
+      description: "Quick and affordable solution for minor imperfections and gaps",
+      price: getTreatmentPrice("Composite Edge Bonding"),
+      duration: "1 hour - 3 hours",
+      results: "Immediate - up to 7 years",
+      popular: false,
+      link: "/services/cosmetic/bonding"
+    },
+    {
       name: "Dental Veneers",
       description: "Transform your smile with ultra-thin, porcelain, or composite veneers - choose your perfect option",
       price: "From £700",
@@ -93,13 +114,14 @@ export default function CosmeticDentistryPage() {
       socialProof: "Over 500 happy patients"
     },
     {
-      name: "Composite Bonding",
-      description: "Quick and affordable solution for minor imperfections and gaps",
-      price: getTreatmentPrice("Composite Edge Bonding"),
-      duration: "1 hour - 3 hours",
-      results: "Immediate - up to 7 years",
-      popular: false,
-      link: "/services/cosmetic/bonding"
+      name: "Wedding Day Smile",
+      description: "Perfect smile for your special day with timeline-based treatments for brides and grooms",
+      price: "From £400",
+      duration: "2 weeks to 6 months",
+      results: "Picture-perfect - whole life memories",
+      popular: true,
+      link: "/wedding-day-smile",
+      socialProof: "500+ happy couples"
     },
     {
       name: "Complete Smile Makeover",
@@ -112,14 +134,14 @@ export default function CosmeticDentistryPage() {
       socialProof: "180+ smile transformations"
     },
     {
-      name: "Wedding Day Smile",
-      description: "Perfect smile for your special day with timeline-based treatments for brides and grooms",
-      price: "From £400",
-      duration: "2 weeks to 6 months",
-      results: "Picture-perfect - whole life memories",
-      popular: true,
-      link: "/wedding-day-smile",
-      socialProof: "500+ happy couples"
+      name: "Buccal Corridor Correction",
+      description: "Eliminate dark spaces at the corners of your smile for a fuller, more youthful appearance",
+      price: "From £2,500",
+      duration: "3-18 months",
+      results: "Fuller, balanced smile",
+      popular: false,
+      link: "/buccal-corridor-correction",
+      socialProof: "95% patient satisfaction"
     }
   ];
 
@@ -130,9 +152,9 @@ export default function CosmeticDentistryPage() {
       treatment: "Professional Whitening"
     },
     {
-      title: "Veneer Smile Makeover",
-      description: "Complete smile transformation with dental veneers",
-      treatment: "Dental Veneers"
+      title: "Straight Smile with Clear Aligners",
+      description: "Beautifully aligned teeth achieved with discreet orthodontic treatment",
+      treatment: "Teeth Straightening"
     },
     {
       title: "Gap Closure with Bonding",
@@ -192,7 +214,7 @@ export default function CosmeticDentistryPage() {
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Cosmetic Dentistry"
-        description="Transform your smile with professional cosmetic dentistry treatments including teeth whitening, veneers, bonding, and complete smile makeovers"
+        description="Transform your smile with professional cosmetic dentistry treatments including teeth whitening, teeth straightening, veneers, bonding, buccal corridor correction, and complete smile makeovers"
         price="From £180"
         category="Cosmetic & Aesthetic Dentistry"
         duration="Single visit to 4-6 weeks"
@@ -262,7 +284,7 @@ export default function CosmeticDentistryPage() {
               Our Cosmetic Treatments
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From subtle enhancements to complete smile makeovers, we offer a full range of
+              From subtle enhancements to teeth straightening, buccal corridor correction, and complete smile makeovers, we offer a full range of
               cosmetic treatments to help you achieve your perfect smile.
             </p>
           </div>

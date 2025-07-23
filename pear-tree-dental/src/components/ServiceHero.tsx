@@ -119,6 +119,7 @@ interface ServiceHeroProps {
   theme?: string;
   priority?: "high" | "normal";
   videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  mobileVideoScale?: number; // Mobile-specific video scale factor
   hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
 }
 
@@ -158,6 +159,7 @@ export default function ServiceHero({
   theme = "default",
   priority = "high",
   videoScale = 1.0,
+  mobileVideoScale,
   hideMembershipLink = false
 }: ServiceHeroProps) {
   const [expandedStats, setExpandedStats] = useState(false);
@@ -239,7 +241,7 @@ export default function ServiceHero({
               {heroVideo ? (
                 <div
                   className="relative aspect-[4/3] overflow-hidden"
-                  style={{ transform: `scale(${videoScale})` }}
+                  style={{ transform: `scale(${mobileVideoScale || videoScale})` }}
                 >
                   <video
                     className="w-full h-full object-cover"
@@ -261,7 +263,7 @@ export default function ServiceHero({
               ) : (
                 <div
                   className="relative aspect-[4/3] overflow-hidden"
-                  style={{ transform: `scale(${videoScale})` }}
+                  style={{ transform: `scale(${mobileVideoScale || videoScale})` }}
                 >
                   <Image
                     src={heroImage || fallbackImage}

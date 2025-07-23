@@ -585,12 +585,9 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="relative bg-white text-pear-primary font-medium px-4 py-2 h-10 border border-pink-200/40 overflow-hidden"
+                  className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary/90"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent"></div>
-                  <div className="relative z-10 flex items-center">
-                    <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
-                  </div>
+                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
                 </Button>
               </Link>
               <Link href="/membership">
@@ -604,14 +601,13 @@ const Navigation = () => {
             </div>
 
             {/* Mobile CTAs - Right aligned */}
-            <div className="flex sm:hidden items-center space-x-2">
+            <div className="flex sm:hidden flex-col items-end space-y-2">
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="relative bg-white text-pear-primary font-medium px-3 py-2 h-9 text-xs border border-pink-200/40 overflow-hidden"
+                  className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary/90"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-pink-200/60 via-pink-100/30 to-transparent"></div>
-                  <div className="relative z-10">Book</div>
+                  Book Appointment
                 </Button>
               </Link>
               <Link href="/membership">
@@ -619,7 +615,7 @@ const Navigation = () => {
                   size="sm"
                   className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs"
                 >
-                  Membership
+                  Explore Membership
                 </Button>
               </Link>
             </div>
