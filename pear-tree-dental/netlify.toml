@@ -2,7 +2,7 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "rm -rf .next && rm -rf node_modules/.cache && npm install && NODE_OPTIONS='--max-old-space-size=4096' npm run build:production"
+  command = "bun install && bun run build"
   publish = ".next"
 
 [build.environment]
