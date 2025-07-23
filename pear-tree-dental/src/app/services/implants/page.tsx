@@ -7,6 +7,8 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import ServiceHero from "@/components/ServiceHero";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
 import {
   Zap,
   Shield,
@@ -106,116 +108,12 @@ export default function ImplantsPage() {
         serviceName="Dental Implants"
         faqs={implantFAQs}
       />
+
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-background via-white to-pear-background overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-pear-gold rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
-            <div className="space-y-8 order-1 lg:order-1">
-              {/* H1 Title - First on mobile for immediate page identification */}
-              <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
-                Permanent Solutions with
-                <span className="block text-pear-gold">Dental Implants</span>
-              </h1>
-
-              {/* Hero Image - Second on mobile, appears above other content */}
-              <div className="relative lg:hidden">
-                <Card className="overflow-hidden shadow-2xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">IMPLANT HERO IMAGE</h3>
-                      <p className="text-gray-600">Cross-section showing implant integration with jawbone</p>
-                    </div>
-                  </div>
-                </Card>
-
-                {/* Social Proof Sticker */}
-                <div className="absolute -top-4 -left-4 bg-gradient-to-r from-pear-primary to-teal-600 text-white rounded-full px-4 py-2 shadow-lg transform -rotate-12">
-                  <div className="text-center">
-                    <div className="text-sm font-bold">RESTORED BY</div>
-                    <div className="text-lg font-extrabold">627+</div>
-                    <div className="text-xs">PERFECT TEETH</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Badge - Third on mobile, provides context */}
-              <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
-                <Zap className="w-4 h-4 mr-2" />
-                Advanced Tooth Replacement
-              </Badge>
-
-              {/* Description - Fourth on mobile */}
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Replace missing teeth with titanium implants that look, feel, and function like natural teeth.
-                Restore your confidence with our proven implant solutions.
-              </p>
-
-              {/* CTAs - Fifth on mobile */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/book">
-                  <Button size="lg" className="btn-gold text-white font-semibold group">
-                    <CalendarDays className="w-5 h-5 mr-2" />
-                    Book Consultation
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </Link>
-                <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call 0115 931 2935
-                  </Button>
-                </a>
-              </div>
-
-              {/* Success Stats - Last on mobile */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pear-gold">98%</div>
-                  <div className="text-sm text-gray-600">Success rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pear-gold">25+</div>
-                  <div className="text-sm text-gray-600">Years lifespan</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-pear-gold">3-6</div>
-                  <div className="text-sm text-gray-600">Month healing</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
-            <div className="relative order-2 lg:order-2 hidden lg:block">
-              <Card className="overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-gray-700 mb-2">IMPLANT HERO IMAGE</h3>
-                    <p className="text-gray-600">Cross-section showing implant integration with jawbone</p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Social Proof Sticker */}
-              <div className="absolute -top-4 -left-4 bg-gradient-to-r from-pear-primary to-teal-600 text-white rounded-full px-4 py-2 shadow-lg transform -rotate-12">
-                <div className="text-center">
-                  <div className="text-sm font-bold">RESTORED BY</div>
-                  <div className="text-lg font-extrabold">627+</div>
-                  <div className="text-xs">PERFECT TEETH</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceHero {...getServiceHeroConfig("/services/implants")} />
 
       {/* Implant Types */}
-      <section className="py-16 bg-white">
+      <section id="implant-types" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -231,10 +129,11 @@ export default function ImplantsPage() {
               {
                 title: "Single Implant",
                 description: "Replace one missing tooth with a natural-looking implant crown",
-                price: "From £3,500",
+                price: "From £2,500",
                 features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
                 image: "single-implant",
-                url: "/services/implants/single-implant"
+                url: "/services/implants/single-implant",
+                buttonText: "Learn About Single Implants"
               },
               {
                 title: "Multiple Implants",
@@ -242,7 +141,8 @@ export default function ImplantsPage() {
                 price: "From £6,000",
                 features: ["Multiple implants", "Individual crowns", "Stable foundation", "Independent function"],
                 image: "multiple-implants",
-                url: "/services/implants/multiple-implant"
+                url: "/services/implants/multiple-implant",
+                buttonText: "Learn About Multiple Implants"
               },
               {
                 title: "Implant Bridge",
@@ -250,7 +150,8 @@ export default function ImplantsPage() {
                 price: "From £8,500",
                 features: ["2-4 implants", "Connected crowns", "Cost effective", "Strong support"],
                 image: "implant-bridge",
-                url: "/services/implants/implant-bridge"
+                url: "/services/implants/implant-bridge",
+                buttonText: "Learn About Implant Bridges"
               },
               {
                 title: "All-on-4",
@@ -258,7 +159,8 @@ export default function ImplantsPage() {
                 price: "POA",
                 features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
                 image: "all-on-4",
-                url: "/services/implants/all-on-4"
+                url: "/services/implants/all-on-4",
+                buttonText: "Learn About All-on-4"
               }
             ].map((implant, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
@@ -288,9 +190,9 @@ export default function ImplantsPage() {
                     <Link href={implant.url}>
                       <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
                         <span className="hidden sm:inline">
-                          View Multiple Implant Options
+                          {implant.buttonText}
                         </span>
-                        <span className="sm:hidden">View Options</span>
+                        <span className="sm:hidden">Learn More</span>
                       </Button>
                     </Link>
                   </div>
@@ -549,7 +451,7 @@ export default function ImplantsPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                <Button size="lg" variant="outline" className="border-white text-pear-gold hover:bg-white hover:text-pear-primary bg-transparent">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
                 </Button>

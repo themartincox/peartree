@@ -7,8 +7,6 @@ import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Camera,
-  Play,
   MapPin,
   Clock,
   Users,
@@ -56,16 +54,7 @@ const PracticeShowcase = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 mt-auto">
-                  <Button variant="secondary" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
-                    <Camera className="w-4 h-4 mr-2" />
-                    Practice Gallery
-                  </Button>
-                  <Button variant="outline" className="border-white bg-pear-primary/20 text-white hover:bg-white hover:text-pear-primary font-semibold backdrop-blur-sm">
-                    <Play className="w-4 h-4 mr-2" />
-                    Virtual Tour
-                  </Button>
-                </div>
+
               </div>
             </Card>
 

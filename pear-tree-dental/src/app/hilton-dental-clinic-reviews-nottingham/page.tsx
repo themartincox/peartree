@@ -71,7 +71,7 @@ const patientTestimonials = [
   {
     name: "Amanda L.",
     location: "West Bridgford",
-    text: "Hilton Dental has been around forever, but I switched to Pear Tree for the modern approach and transparent pricing. Much prefer knowing my costs upfront.",
+    text: "I switched to Pear Tree for the modern approach and transparent pricing. Much prefer knowing my costs upfront.",
     rating: 5
   },
   {

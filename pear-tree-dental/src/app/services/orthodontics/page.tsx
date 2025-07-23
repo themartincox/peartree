@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +8,9 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import ServiceHero from "@/components/ServiceHero";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Smile,
   Star,
@@ -26,7 +30,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Orthodontics Burton Joyce | Invisalign & Clear Aligners | Pear Tree Dental",
-  description: "Orthodontic treatment in Burton Joyce. Invisalign, ClearCorrect clear aligners. Straighten teeth invisibly. Free consultation. Treatment from £2,400.",
+  description: "Orthodontic treatment in Burton Joyce and Nottingham. Invisalign, ClearCorrect clear aligners. Straighten teeth invisibly. Free consultation. Treatment from £2,400.",
   keywords: [
     "orthodontics Burton Joyce",
     "Invisalign Nottingham",
@@ -111,134 +115,7 @@ export default function OrthodonticsPage() {
         faqs={orthodonticsFAQs}
       />
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-soft-pink rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-lavender rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
-            <div className="space-y-8 order-1 lg:order-1">
-              {/* H1 Title - First on mobile for immediate page identification */}
-              <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
-                Straighten Your Teeth
-                <span className="block text-soft-pink">Invisibly</span>
-              </h1>
-
-              {/* Hero Image - Second on mobile, appears above other content */}
-              <div className="relative lg:hidden">
-                <Card className="overflow-hidden shadow-2xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">ORTHODONTICS HERO IMAGE</h3>
-                      <p className="text-gray-600">Beautiful woman holding clear aligners, showing perfect smile</p>
-                    </div>
-                  </div>
-                </Card>
-
-                {/* Social Proof Sticker */}
-                <div className="absolute -top-4 -right-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white rounded-full px-4 py-2 shadow-lg transform rotate-12">
-                  <div className="text-center">
-                    <div className="text-sm font-bold">STRAIGHTENED BY</div>
-                    <div className="text-lg font-extrabold">453+</div>
-                    <div className="text-xs">ALIGNED SMILES</div>
-                  </div>
-                </div>
-
-                {/* Floating Elements */}
-                <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-soft-pink/20">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-gradient-to-r from-soft-pink to-soft-lavender rounded-xl flex items-center justify-center">
-                      <Eye className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-pear-primary">Nearly Invisible</p>
-                      <p className="text-sm text-gray-600">Discreet Treatment</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Badge - Third on mobile, provides context */}
-              <Badge variant="secondary" className="mb-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
-                <Smile className="w-4 h-4 mr-2" />
-                Clear Aligner Technology
-              </Badge>
-
-              {/* Description - Fourth on mobile */}
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
-                Transform your smile discreetly with Invisalign and ClearCorrect clear aligners.
-                Achieve straight teeth without the visibility and discomfort of traditional braces.
-              </p>
-
-              {/* CTAs - Fifth on mobile */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold group">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Smile Assessment
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
-                </Button>
-              </div>
-
-              {/* Treatment Stats - Last on mobile */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-soft-pink">6-18</div>
-                  <div className="text-sm text-gray-600">Months treatment</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-soft-pink">95%</div>
-                  <div className="text-sm text-gray-600">Nearly invisible</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-soft-pink">2-3</div>
-                  <div className="text-sm text-gray-600">Weeks per aligner</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
-            <div className="relative order-2 lg:order-2 hidden lg:block">
-              <Card className="overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-gray-700 mb-2">ORTHODONTICS HERO IMAGE</h3>
-                    <p className="text-gray-600">Beautiful woman holding clear aligners, showing perfect smile</p>
-                  </div>
-                </div>
-              </Card>
-
-              {/* Social Proof Sticker */}
-              <div className="absolute -top-4 -right-4 bg-gradient-to-r from-soft-pink to-soft-lavender text-white rounded-full px-4 py-2 shadow-lg transform rotate-12">
-                <div className="text-center">
-                  <div className="text-sm font-bold">STRAIGHTENED BY</div>
-                  <div className="text-lg font-extrabold">453+</div>
-                  <div className="text-xs">ALIGNED SMILES</div>
-                </div>
-              </div>
-
-              {/* Floating Elements */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-soft-pink/20">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-soft-pink to-soft-lavender rounded-xl flex items-center justify-center">
-                    <Eye className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-pear-primary">Nearly Invisible</p>
-                    <p className="text-sm text-gray-600">Discreet Treatment</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ServiceHero {...getServiceHeroConfig("/services/orthodontics")} />
 
       {/* Treatment Options */}
       <section className="py-16 bg-white">
@@ -255,11 +132,15 @@ export default function OrthodonticsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Invisalign */}
             <Card className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:border-soft-pink/40 transition-colors">
-              <div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <h4 className="font-bold text-gray-700">INVISALIGN LOGO & IMAGE</h4>
-                  <p className="text-sm text-gray-600">Clear aligners progression</p>
-                </div>
+              <div className="aspect-[16/10] bg-gradient-to-br from-soft-pink/20 to-soft-pink/10 p-6 flex items-center justify-center">
+                <Image
+                  src="/images/Invisalign-logo.png"
+                  alt="Invisalign logo and clear aligners treatment system"
+                  width={400}
+                  height={250}
+                  className="object-contain w-full h-full"
+                  priority
+                />
               </div>
               <CardHeader>
                 <CardTitle className="text-2xl text-pear-primary flex items-center">
@@ -299,11 +180,15 @@ export default function OrthodonticsPage() {
 
             {/* ClearCorrect */}
             <Card className="overflow-hidden shadow-xl border-2 border-soft-lavender/20 hover:border-soft-lavender/40 transition-colors">
-              <div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <h4 className="font-bold text-gray-700">CLEARCORRECT LOGO & IMAGE</h4>
-                  <p className="text-sm text-gray-600">Clear aligners close-up</p>
-                </div>
+              <div className="aspect-[16/10] bg-gradient-to-br from-soft-lavender/20 to-soft-lavender/10 p-6 flex items-center justify-center">
+                <Image
+                  src="/images/clearcorrect-logo.png"
+                  alt="ClearCorrect logo and clear aligner treatment system"
+                  width={400}
+                  height={250}
+                  className="object-contain w-full h-full"
+                  priority
+                />
               </div>
               <CardHeader>
                 <CardTitle className="text-2xl text-pear-primary flex items-center">
@@ -441,16 +326,20 @@ export default function OrthodonticsPage() {
 
             <div className="relative">
               <Card className="overflow-hidden shadow-xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-lg font-bold text-gray-700 mb-2">CLEAR ALIGNER BENEFITS</h3>
-                    <p className="text-gray-600">Lifestyle comparison: aligners vs braces</p>
-                  </div>
+                <div className="aspect-[4/3] bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10 p-6 flex items-center justify-center">
+                  <Image
+                    src="/images/Aligner-smile.png"
+                    alt="Happy patient showing clear aligner benefits with beautiful smile"
+                    width={400}
+                    height={300}
+                    className="object-contain w-full h-full"
+                    priority
+                  />
                 </div>
               </Card>
 
               {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-soft-pink/20">
+              <div className="absolute -bottom-6 -right-6 bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-pink/20">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-soft-pink">6-18</div>
                   <div className="text-sm text-gray-600">months average</div>
@@ -463,7 +352,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Lifestyle Advantages */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
+      <section className="py-16 pink-haze">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -515,7 +404,7 @@ export default function OrthodonticsPage() {
             ].map((advantage, index) => {
               const Icon = advantage.icon;
               return (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink/20">
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink/20 bg-white">
                   <CardContent className="p-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-soft-pink to-soft-lavender rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
@@ -534,7 +423,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Clinical Features */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -703,23 +592,27 @@ export default function OrthodonticsPage() {
               </div>
             </div>
 
-            <div className="relative">
-              <Card className="overflow-hidden shadow-xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-lg font-bold text-gray-700 mb-2">CONDITIONS IMAGE</h3>
-                    <p className="text-gray-600">Before/after showing various orthodontic conditions</p>
-                  </div>
-                </div>
-              </Card>
+            <div>
+              <BeforeAfterSlider
+                beforeImage="/images/orthodontics-before.png"
+                afterImage="/images/orthodontics-after.png"
+                beforeAlt="Crooked and misaligned teeth before orthodontic treatment"
+                afterAlt="Perfectly straight and aligned teeth after clear aligner treatment"
+                title="Clear Aligner Transformation"
+                description="See the incredible results achieved with our orthodontic treatment"
+                treatmentType="Clear Aligners"
+                className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-2xl p-6 shadow-xl"
+              />
+            </div>
+          </div>
 
-              {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-soft-lavender/20">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-soft-lavender">85%</div>
-                  <div className="text-sm text-gray-600">of cases treatable</div>
-                  <div className="text-sm text-gray-600">with clear aligners</div>
-                </div>
+          {/* Treatment Success Rate Stats */}
+          <div className="mt-12 text-center">
+            <div className="inline-block bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-lavender/20">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-soft-lavender mb-2">85%</div>
+                <div className="text-sm text-gray-600">of cases treatable</div>
+                <div className="text-sm text-gray-600">with clear aligners</div>
               </div>
             </div>
           </div>
@@ -762,9 +655,11 @@ export default function OrthodonticsPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
-                  Get Quote
-                </Button>
+                <Link href="/book">
+                  <Button className="w-full mt-6 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
+                    Get Quote
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -792,9 +687,11 @@ export default function OrthodonticsPage() {
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full mt-6 btn-gold text-white">
-                  Join Membership
-                </Button>
+                <Link href="/membership">
+                  <Button className="w-full mt-6 btn-gold text-white">
+                    Join Membership
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -839,7 +736,7 @@ export default function OrthodonticsPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-soft-pink">
+                <Button size="lg" variant="outline" className="border-white text-pear-gold hover:bg-white hover:text-pear-primary">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
                 </Button>
