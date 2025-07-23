@@ -459,7 +459,169 @@ html {
   animation: contentSlideIn 0.8s ease-out 1.4s both;
 }
 
-/* CSS-only animations for better performance */
+/* Pink Haze - Reusable Color Palette from Smile Design */
+.pink-haze {
+  background: linear-gradient(to right, var(--soft-pink), var(--soft-lavender));
+}
+
+.pink-haze-subtle {
+  background: linear-gradient(135deg, rgba(232, 197, 197, 0.1), rgba(209, 196, 233, 0.1));
+}
+
+.pink-haze-border {
+  border: 1px solid rgba(232, 197, 197, 0.3);
+}
+
+/* Mobile Navigation Smooth Animations */
+.mobile-nav-overlay {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-panel {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.mobile-nav-panel.entering {
+  transform: translateX(0);
+}
+
+.mobile-nav-panel.exiting {
+  transform: translateX(100%);
+}
+
+.mobile-nav-content {
+  transition: opacity 0.3s ease-out 0.1s;
+  will-change: opacity;
+}
+
+.mobile-nav-content.entering {
+  opacity: 1;
+}
+
+.mobile-nav-content.exiting {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+/* Navigation Item Animations */
+.nav-item {
+  transition: all 0.2s ease-out;
+  transform: translateX(0);
+}
+
+.nav-item:hover {
+  transform: translateX(4px);
+  background-color: rgba(9, 57, 77, 0.05);
+}
+
+.nav-item:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* Button Animations */
+.nav-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+}
+
+.nav-button:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.nav-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Stagger Animation for Navigation Items */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-item-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.nav-item-enter:nth-child(1) { animation-delay: 0.05s; }
+.nav-item-enter:nth-child(2) { animation-delay: 0.1s; }
+.nav-item-enter:nth-child(3) { animation-delay: 0.15s; }
+.nav-item-enter:nth-child(4) { animation-delay: 0.2s; }
+.nav-item-enter:nth-child(5) { animation-delay: 0.25s; }
+.nav-item-enter:nth-child(6) { animation-delay: 0.3s; }
+.nav-item-enter:nth-child(7) { animation-delay: 0.35s; }
+.nav-item-enter:nth-child(8) { animation-delay: 0.4s; }
+
+/* Swipe Gesture Visual Feedback */
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+}
+
+.swipe-indicator.active {
+  opacity: 0.6;
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+@keyframes swipeHint {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(8px); }
+}
+
+/* Enhanced Sheet Animations */
+.sheet-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.sheet-content {
+  animation: slideInFromRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Pinky gradient for brand logos section - subtle and classy */
+.pinky {
+  background: linear-gradient(135deg, #f8f4f6 0%, #f3e8ed 25%, #ead5df 75%, #e1c2d1 100%);
+}
+
+.pinky-fade {
+  background: linear-gradient(to right, transparent 0%, #f8f4f6 20%, #f3e8ed 40%, #ead5df 60%, #e1c2d1 80%, #d4a7be 100%);
+}
+
+/* Brand logo hover effects */
+.brand-logo-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(0.7) opacity(0.8);
+}
+
+.brand-logo-container:hover {
+  filter: grayscale(0) opacity(1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.brand-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Optimized animations for better performance */
 @keyframes welcomeFadeOut {
   0% {
     opacity: 1;
@@ -779,4 +941,23 @@ input:valid {
   .welcome-screen-c {
     display: none;
   }
+}
+
+/* Mobile Navigation - Remove backdrop shade */
+[data-state="open"] > .fixed.inset-0 {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Mobile Navigation Sheet - Remove overlay */
+.mobile-nav-sheet .bg-black\/80,
+.mobile-nav-sheet .bg-background\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-black\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-background\/80 {
+  display: none !important;
+}
+
+/* Ensure mobile nav content is on top */
+[data-radix-portal] .fixed.inset-y-0.right-0 {
+  z-index: 100 !important;
 }

@@ -24,6 +24,9 @@ export interface ServiceHeroConfig {
   gradientFrom?: string;
   gradientTo?: string;
   textColor?: string;
+  videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  mobileVideoScale?: number; // Mobile-specific video scale factor
+  hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
 }
 
 export const serviceHeroes: Record<string, ServiceHeroConfig> = {
@@ -55,7 +58,9 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     },
     gradientFrom: "soft-pink/10",
     gradientTo: "soft-lavender/10",
-    textColor: "pear-primary"
+    textColor: "pear-primary",
+    videoScale: 1.15,
+    mobileVideoScale: 0.85
   },
 
   "/services/general": {
@@ -126,17 +131,20 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Implant Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Implant Types",
-      href: "/services/implants",
+      href: "#implant-types",
       icon: "ArrowRight"
-    }
+    },
+    videoScale: 1.0
   },
 
   "/services/orthodontics": {
-    heroImage: "/images/heroes/orthodontics-hero.webp",
+    heroImage: "/images/heroes/orthodontics/Orthodontics-Aligners-hero.jpg",
+    heroVideo: "/videos/heroes/orthodontic-hero.mp4",
+    heroVideoType: "mp4",
     heroImageAlt: "Clear aligner orthodontic treatment showing straightened teeth",
     badgeText: "Orthodontics",
     badgeIcon: "Smile",
@@ -151,13 +159,10 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Orthodontic Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
-    secondaryCTA: {
-      text: "Clear Aligners",
-      href: "/services/orthodontics",
-      icon: "ArrowRight"
-    }
+    hideMembershipLink: true,
+    videoScale: 1.0
   },
 
   "/services/hygiene": {

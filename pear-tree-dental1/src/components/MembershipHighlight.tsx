@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import TestimonialBanner from "@/components/TestimonialBanner";
 import { useLocationDetection } from "@/hooks/useLocationDetection";
+import { useConversionTracking } from "@/hooks/useConversionTracking";
 import {
   Check,
   Crown,
@@ -83,11 +84,16 @@ const membershipPlans = {
 
 // Nottingham-specific benefits component
 const NottinghamMembershipBenefits = () => {
-  const { isNottingham, isDetected } = useLocationDetection();
+  const { isNottingham } = useLocationDetection();
+  const { trackLocationConversion } = useConversionTracking();
 
   // Only show if we've detected the user is from Nottingham
   // No loading states - just appear seamlessly when detected
   if (!isNottingham) return null;
+
+  const handleCalculatorClick = () => {
+    trackLocationConversion('savings_calculator_click', 'burton_joyce');
+  };
 
   return (
     <Card className="mt-12 bg-gradient-to-r from-dental-green/5 to-pear-primary/5 border border-dental-green/20 overflow-hidden animate-in fade-in duration-1000">
@@ -165,7 +171,11 @@ const NottinghamMembershipBenefits = () => {
         </div>
 
         <div className="text-center mt-6">
-          <Button asChild className="bg-dental-green text-white font-semibold px-6 py-3 hover:bg-dental-green/90">
+          <Button
+            asChild
+            className="bg-dental-green text-white font-semibold px-6 py-3 hover:bg-dental-green/90"
+            onClick={handleCalculatorClick}
+          >
             <Link href="/membership#plans">
               <Calculator className="w-4 h-4 mr-2" />
               Calculate Your Nottingham Savings
@@ -179,12 +189,37 @@ const NottinghamMembershipBenefits = () => {
 
 const MembershipHighlight = () => {
   const [activeTab, setActiveTab] = useState("family");
+  const { trackMembershipPlanSelect, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
 
   // Memoize current plan to prevent recalculation
   const currentPlan = useMemo(() => {
     const plan = membershipPlans[activeTab as keyof typeof membershipPlans];
     return { ...plan, Icon: plan.icon };
   }, [activeTab]);
+
+  // Handle plan selection with tracking
+  const handlePlanSelect = (planKey: string) => {
+    setActiveTab(planKey);
+    const plan = membershipPlans[planKey as keyof typeof membershipPlans];
+    trackMembershipPlanSelect(plan.name, Number.parseFloat(plan.price.replace('£', '')));
+  };
+
+  // Handle CTA clicks with tracking
+  const handlePlanDetailsClick = () => {
+    trackMembershipPlanSelect(`${currentPlan.name}_details_view`, Number.parseFloat(currentPlan.price.replace('£', '')));
+  };
+
+  const handleCompareClick = () => {
+    trackLocationConversion('membership_compare_all', 'burton_joyce');
+  };
+
+  const handleExploreClick = () => {
+    trackMembershipPlanSelect('explore_all_plans', 0);
+  };
+
+  const handleBookConsultationClick = () => {
+    trackBookingAttempt('membership_highlight', 'booking');
+  };
 
   // Memoize tab buttons to prevent recreation
   const tabButtons = useMemo(() => {
@@ -194,7 +229,7 @@ const MembershipHighlight = () => {
       return (
         <button
           key={key}
-          onClick={() => setActiveTab(key)}
+          onClick={() => handlePlanSelect(key)}
           role="tab"
           aria-selected={isActive}
           aria-controls={`plan-${key}-content`}
@@ -352,19 +387,30 @@ const MembershipHighlight = () => {
                   </div>
                 </div>
 
-                {/* CTA */}
+                {/* CTA with Tracking */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <Link href={activeTab === "family" ? "/membership#family-plan" : "/membership/signup"}>
-                    <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
+                    onClick={handlePlanDetailsClick}
+                  >
+                    <Link href={activeTab === "family" ? "/membership#family-plan" : "/membership/signup"}>
                       View Full {currentPlan.name} Details
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                  <Link href="/membership#plans">
-                    <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
+                    onClick={handleCompareClick}
+                  >
+                    <Link href="/membership#plans">
                       Compare All Plans
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -398,13 +444,24 @@ const MembershipHighlight = () => {
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care..
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="btn-gold text-white px-8 py-4">
+            <Button
+              asChild
+              size="lg"
+              className="btn-gold text-white px-8 py-4"
+              onClick={handleExploreClick}
+            >
               <Link href="/membership#plans">
                 Explore All Plans
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-8 py-4">
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white px-8 py-4"
+              onClick={handleBookConsultationClick}
+            >
               <Link href="/book">Book Your Consultation</Link>
             </Button>
           </div>
