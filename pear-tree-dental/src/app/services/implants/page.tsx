@@ -133,7 +133,7 @@ export default function ImplantsPage() {
                 features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
                 image: "single-implant",
                 url: "/services/implants/single-implant",
-                buttonText: "Learn About Single Implants"
+                buttonText: "Explore Single Implants"
               },
               {
                 title: "Multiple Implants",
@@ -142,7 +142,7 @@ export default function ImplantsPage() {
                 features: ["Multiple implants", "Individual crowns", "Stable foundation", "Independent function"],
                 image: "multiple-implants",
                 url: "/services/implants/multiple-implant",
-                buttonText: "Learn About Multiple Implants"
+                buttonText: "Explore Multiple Implants"
               },
               {
                 title: "Implant Bridge",
@@ -151,7 +151,7 @@ export default function ImplantsPage() {
                 features: ["2-4 implants", "Connected crowns", "Cost effective", "Strong support"],
                 image: "implant-bridge",
                 url: "/services/implants/implant-bridge",
-                buttonText: "Learn About Implant Bridges"
+                buttonText: "Explore Implant Bridges"
               },
               {
                 title: "All-on-4",
@@ -160,7 +160,7 @@ export default function ImplantsPage() {
                 features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
                 image: "all-on-4",
                 url: "/services/implants/all-on-4",
-                buttonText: "Learn About All-on-4"
+                buttonText: "Explore All-on-4"
               }
             ].map((implant, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">

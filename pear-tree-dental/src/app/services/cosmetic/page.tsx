@@ -48,7 +48,7 @@ export default function CosmeticDentistryPage() {
     {
       name: "Teeth Whitening",
       description: "Professional whitening treatments for a brighter, more confident smile",
-      price: "From £195",
+      price: "From £400",
       duration: "1-2 hours",
       results: "Up to 8 shades whiter",
       popular: true,
@@ -56,48 +56,38 @@ export default function CosmeticDentistryPage() {
       socialProof: "4.9/5 patient rating"
     },
     {
-      name: "Porcelain Veneers",
-      description: "Custom-made porcelain shells for a perfect, natural-looking smile",
-      price: "From £650",
-      duration: "2-3 appointments",
-      results: "Permanent transformation",
+      name: "Teeth Straightening",
+      description: "Modern clear aligners and braces for perfectly aligned teeth",
+      price: "From £2,500",
+      duration: "12-24 months",
+      results: "Straight, aligned smile",
       popular: true,
-      link: "/services/cosmetic/veneers/porcelain",
+      link: "/services/orthodontics",
+      socialProof: "Discreet treatment"
+    },
+    {
+      name: "Veneers",
+      description: "Transform your smile with custom-made porcelain or composite veneers",
+      price: "From £200",
+      duration: "2-3 appointments",
+      results: "Perfect smile shape",
+      popular: true,
+      link: "/services/cosmetic/veneers",
       socialProof: "98% satisfaction rate"
     },
     {
-      name: "Composite Veneers",
-      description: "Same-day composite bonding for instant smile improvements",
-      price: "From £350",
-      duration: "2-3 hours",
-      results: "Immediate improvement",
-      popular: false,
-      link: "/services/cosmetic/veneers/composite",
-      socialProof: "Quick & affordable"
-    },
-    {
-      name: "Ultra-Thin Veneers",
-      description: "Minimal preparation veneers for a conservative approach",
-      price: "From £750",
-      duration: "2-3 appointments",
-      results: "Natural enhancement",
-      popular: false,
-      link: "/services/cosmetic/veneers/ultra-thin",
-      socialProof: "Minimal tooth reduction"
-    },
-    {
-      name: "Edge Bonding",
-      description: "Repair chipped or worn teeth with natural-looking composite",
+      name: "Bonding",
+      description: "Repair chips and improve tooth shape with natural-looking composite bonding",
       price: "From £150",
       duration: "1-2 hours",
-      results: "Seamless repair",
+      results: "Seamless repairs",
       popular: false,
       link: "/services/cosmetic/edge-bonding",
       socialProof: "Same-day treatment"
     },
     {
       name: "Wedding Day Smile",
-      description: "Complete smile transformation for your special day",
+      description: "Complete smile transformation timed perfectly for your special day",
       price: "From £995",
       duration: "4-8 weeks",
       results: "Picture-perfect smile",
@@ -106,8 +96,18 @@ export default function CosmeticDentistryPage() {
       socialProof: "Perfect timing guarantee"
     },
     {
+      name: "Smile Makeover",
+      description: "Comprehensive smile transformation combining multiple treatments",
+      price: "From £2,500",
+      duration: "6-12 weeks",
+      results: "Complete transformation",
+      popular: true,
+      link: "/services/complete-smile-makeover",
+      socialProof: "Life-changing results"
+    },
+    {
       name: "Buccal Corridor Correction",
-      description: "Eliminate dark spaces at the corners of your smile for a fuller, more youthful appearance",
+      description: "Eliminate dark spaces at the corners of your smile for a fuller appearance",
       price: "From £2,500",
       duration: "3-18 months",
       results: "Fuller, balanced smile",
@@ -207,56 +207,221 @@ export default function CosmeticDentistryPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cosmeticServices.map((service) => (
-              <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
-                      {service.name}
-                    </CardTitle>
-                    {service.popular && (
-                      <Badge className="bg-pear-gold text-white">Popular</Badge>
-                    )}
-                  </div>
-                  <CardDescription className="text-gray-600">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <span className="text-gray-500">Price:</span>
-                        <div className="font-semibold text-pear-primary">{service.price}</div>
-                      </div>
-                      <div>
-                        <span className="text-gray-500">Duration:</span>
-                        <div className="font-semibold text-pear-primary">{service.duration}</div>
-                      </div>
+          {/* Custom Layout Grid */}
+          <div className="space-y-8">
+            {/* Top Row: Teeth Whitening & Teeth Straightening */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {cosmeticServices.slice(0, 2).map((service) => (
+                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
+                        {service.name}
+                      </CardTitle>
+                      {service.popular && (
+                        <Badge className="bg-pear-gold text-white">Popular</Badge>
+                      )}
                     </div>
+                    <CardDescription className="text-gray-600">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="text-gray-500">Price:</span>
+                          <div className="font-semibold text-pear-primary">{service.price}</div>
+                        </div>
+                        <div>
+                          <span className="text-gray-500">Duration:</span>
+                          <div className="font-semibold text-pear-primary">{service.duration}</div>
+                        </div>
+                      </div>
 
-                    <div className="bg-soft-pink/10 p-3 rounded-lg">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-600">Expected Results:</span>
-                        <span className="font-medium text-pear-primary">{service.results}</span>
+                      <div className="bg-soft-pink/10 p-3 rounded-lg">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-600">Expected Results:</span>
+                          <span className="font-medium text-pear-primary">{service.results}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm mt-1">
+                          <span className="text-gray-600">Patient Feedback:</span>
+                          <span className="font-medium text-pear-gold">{service.socialProof}</span>
+                        </div>
                       </div>
-                      <div className="flex items-center justify-between text-sm mt-1">
-                        <span className="text-gray-600">Patient Feedback:</span>
-                        <span className="font-medium text-pear-gold">{service.socialProof}</span>
-                      </div>
+
+                      <Link href={service.link}>
+                        <Button className="w-full group-hover:bg-pear-gold transition-colors">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
                     </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
 
-                    <Link href={service.link}>
-                      <Button className="w-full group-hover:bg-pear-gold transition-colors">
-                        Learn More
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            {/* Middle Row: Veneers & Bonding */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {cosmeticServices.slice(2, 4).map((service) => (
+                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
+                        {service.name}
+                      </CardTitle>
+                      {service.popular && (
+                        <Badge className="bg-pear-gold text-white">Popular</Badge>
+                      )}
+                    </div>
+                    <CardDescription className="text-gray-600">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="text-gray-500">Price:</span>
+                          <div className="font-semibold text-pear-primary">{service.price}</div>
+                        </div>
+                        <div>
+                          <span className="text-gray-500">Duration:</span>
+                          <div className="font-semibold text-pear-primary">{service.duration}</div>
+                        </div>
+                      </div>
+
+                      <div className="bg-soft-pink/10 p-3 rounded-lg">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-600">Expected Results:</span>
+                          <span className="font-medium text-pear-primary">{service.results}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm mt-1">
+                          <span className="text-gray-600">Patient Feedback:</span>
+                          <span className="font-medium text-pear-gold">{service.socialProof}</span>
+                        </div>
+                      </div>
+
+                      <Link href={service.link}>
+                        <Button className="w-full group-hover:bg-pear-gold transition-colors">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Bottom Row: Wedding Day & Smile Makeover */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {cosmeticServices.slice(4, 6).map((service) => (
+                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
+                        {service.name}
+                      </CardTitle>
+                      {service.popular && (
+                        <Badge className="bg-pear-gold text-white">Popular</Badge>
+                      )}
+                    </div>
+                    <CardDescription className="text-gray-600">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <span className="text-gray-500">Price:</span>
+                          <div className="font-semibold text-pear-primary">{service.price}</div>
+                        </div>
+                        <div>
+                          <span className="text-gray-500">Duration:</span>
+                          <div className="font-semibold text-pear-primary">{service.duration}</div>
+                        </div>
+                      </div>
+
+                      <div className="bg-soft-pink/10 p-3 rounded-lg">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-600">Expected Results:</span>
+                          <span className="font-medium text-pear-primary">{service.results}</span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm mt-1">
+                          <span className="text-gray-600">Patient Feedback:</span>
+                          <span className="font-medium text-pear-gold">{service.socialProof}</span>
+                        </div>
+                      </div>
+
+                      <Link href={service.link}>
+                        <Button className="w-full group-hover:bg-pear-gold transition-colors">
+                          Learn More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Bottom Single Card: Buccal Corridor Correction */}
+            <div className="flex justify-center">
+              <div className="w-full md:w-1/2">
+                {cosmeticServices.slice(6, 7).map((service) => (
+                  <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
+                          {service.name}
+                        </CardTitle>
+                        {service.popular && (
+                          <Badge className="bg-pear-gold text-white">Popular</Badge>
+                        )}
+                      </div>
+                      <CardDescription className="text-gray-600">
+                        {service.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="text-gray-500">Price:</span>
+                            <div className="font-semibold text-pear-primary">{service.price}</div>
+                          </div>
+                          <div>
+                            <span className="text-gray-500">Duration:</span>
+                            <div className="font-semibold text-pear-primary">{service.duration}</div>
+                          </div>
+                        </div>
+
+                        <div className="bg-soft-pink/10 p-3 rounded-lg">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="text-gray-600">Expected Results:</span>
+                            <span className="font-medium text-pear-primary">{service.results}</span>
+                          </div>
+                          <div className="flex items-center justify-between text-sm mt-1">
+                            <span className="text-gray-600">Patient Feedback:</span>
+                            <span className="font-medium text-pear-gold">{service.socialProof}</span>
+                          </div>
+                        </div>
+
+                        <Link href={service.link}>
+                          <Button className="w-full group-hover:bg-pear-gold transition-colors">
+                            Learn More
+                            <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -15,6 +15,17 @@ interface BeforeAfterSliderProps {
   treatmentType?: string;
   className?: string;
   imageContainerClassName?: string;
+  // Add support for optimized responsive images
+  beforeImageSizes?: {
+    small: string;
+    medium: string;
+    large: string;
+  };
+  afterImageSizes?: {
+    small: string;
+    medium: string;
+    large: string;
+  };
 }
 
 export default function BeforeAfterSlider({
@@ -24,7 +35,9 @@ export default function BeforeAfterSlider({
   afterAlt,
   description,
   className = "",
-  imageContainerClassName = ""
+  imageContainerClassName = "",
+  beforeImageSizes,
+  afterImageSizes
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -257,16 +270,43 @@ export default function BeforeAfterSlider({
         >
           {/* Before Image (Base Layer) */}
           <div className="absolute inset-0">
-            <Image
-              src={beforeImage}
-              alt={beforeAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
+            {beforeImageSizes ? (
+              <picture className="block w-full h-full">
+                <source
+                  media="(min-width: 768px)"
+                  srcSet={beforeImageSizes.large}
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 480px)"
+                  srcSet={beforeImageSizes.medium}
+                  type="image/webp"
+                />
+                <source
+                  srcSet={beforeImageSizes.small}
+                  type="image/webp"
+                />
+                <Image
+                  src={beforeImage}
+                  alt={beforeAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 800px"
+                  priority
+                />
+              </picture>
+            ) : (
+              <Image
+                src={beforeImage}
+                alt={beforeAlt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            )}
             {/* Before Label */}
-            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
               Before
             </div>
           </div>
@@ -278,15 +318,41 @@ export default function BeforeAfterSlider({
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
             }}
           >
-            <Image
-              src={afterImage}
-              alt={afterAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            {afterImageSizes ? (
+              <picture className="block w-full h-full">
+                <source
+                  media="(min-width: 768px)"
+                  srcSet={afterImageSizes.large}
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 480px)"
+                  srcSet={afterImageSizes.medium}
+                  type="image/webp"
+                />
+                <source
+                  srcSet={afterImageSizes.small}
+                  type="image/webp"
+                />
+                <Image
+                  src={afterImage}
+                  alt={afterAlt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 800px"
+                />
+              </picture>
+            ) : (
+              <Image
+                src={afterImage}
+                alt={afterAlt}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            )}
             {/* After Label */}
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
               After
             </div>
           </div>

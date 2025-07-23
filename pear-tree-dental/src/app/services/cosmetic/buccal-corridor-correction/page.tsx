@@ -6,7 +6,9 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Sparkles,
   Star,
@@ -25,8 +27,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Buccal Corridor Correction - Transform Your Smile | Pear Tree Dental",
-  description: "Eliminate dark spaces at the corners of your smile with buccal corridor correction in Burton Joyce. Fuller, more youthful smiles. From £2,500. Expert consultation available.",
+  title: "Buccal Corridor Correction - Unlock the Full Beauty of Your Smile | Pear Tree Dental",
+  description: "Transform your smile with buccal corridor correction in Nottingham. Get the Hollywood smile, boost confidence, and discover a fuller, more radiant smile. From £2,500. Life-changing results.",
   keywords: [
     "buccal corridor correction Burton Joyce",
     "smile widening Nottingham",
@@ -38,113 +40,119 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Buccal Corridor Correction | Pear Tree Dental Burton Joyce",
-    description: "Transform your smile by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
+    description: "Get the Hollywood Smile by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
     type: "website",
     url: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
   },
   alternates: {
     canonical: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
+  },
+  // Add performance optimizations
+  other: {
+    'preload-bcc-smile-thumb': '/images/buccal-corridor/BCC-smile-thumb.webp',
+    'preload-bcc-before-large': '/images/before-after/BCC-before-large.webp',
+    'preload-bcc-after-large': '/images/before-after/BCC-after-large.webp'
   }
 };
 
 export default function BuccalCorridorCorrectionPage() {
   const buccalCorridorFAQs = [
     {
-      question: "How long does buccal corridor correction take?",
-      answer: "Treatment duration varies depending on the chosen method. Orthodontic approaches typically take 12-24 months, while cosmetic solutions may be completed in just a few weeks. We'll provide a detailed timeline during your consultation."
+      question: "How long will my transformation take?",
+      answer: "Every journey is unique, but most orthodontic approaches take 12-24 months to complete, whilst cosmetic solutions can often be achieved in just a few visits. We'll give you a clear timeline during your consultation."
     },
     {
-      question: "Is the treatment painful?",
-      answer: "Most patients experience minimal discomfort. Orthodontic movement may cause temporary soreness, while cosmetic procedures are typically performed with local anaesthesia for maximum comfort. We prioritise your comfort throughout treatment."
+      question: "Will I be comfortable during treatment?",
+      answer: "Absolutely. Any mild discomfort from orthodontic movement is temporary and manageable, whilst cosmetic procedures are performed with local anaesthesia to ensure your complete comfort."
     },
     {
-      question: "Will my insurance cover buccal corridor correction?",
-      answer: "Coverage depends on whether treatment is deemed medically necessary or purely cosmetic. We'll help you understand your benefits and explore flexible payment options to make treatment affordable."
+      question: "What about the investment?",
+      answer: "We believe everyone deserves to love their smile, which is why we offer various payment options and will help you explore any insurance benefits you may have."
     },
     {
-      question: "How long do results last?",
-      answer: "With proper maintenance and retainer wear, orthodontic results can last a lifetime. Cosmetic restorations typically last 10-20 years with good care. We provide comprehensive aftercare guidance."
+      question: "How long will my beautiful results last?",
+      answer: "With proper care and the retainers we'll provide, your orthodontic results can last a lifetime. Cosmetic restorations typically maintain their beauty for 15-20 years or more with good care."
     },
     {
-      question: "What are the signs I need buccal corridor correction?",
-      answer: "Common signs include prominent dark triangular spaces when smiling, a narrow-looking smile compared to your lip line, feeling self-conscious about showing teeth, and photos where your smile appears less vibrant than expected."
+      question: "How do I know if buccal corridor correction could help me?",
+      answer: "You might benefit if you notice prominent dark spaces that make your smile appear narrow, feel self-conscious about showing your teeth, or find that your smile doesn't reflect the vibrant person you are."
     }
   ];
 
   const treatmentOptions = [
     {
-      name: "Orthodontic Expansion",
-      description: "Modern clear aligners and traditional braces to gradually widen your upper arch",
-      features: ["Clear aligner technology", "Gradual arch widening", "Lasting results", "Improved oral function"],
+      name: "Gentle Orthodontic Expansion",
+      description: "Using modern clear aligners or carefully planned traditional braces, we can gradually encourage your upper arch to widen naturally",
+      features: ["Clear aligner technology", "Natural arch widening", "Maintains tooth health", "Long-lasting results"],
       duration: "12-24 months",
-      suitability: "Natural narrow palates"
+      suitability: "Most common approach"
     },
     {
-      name: "Palatal Expansion",
-      description: "Specialized appliances to expand the upper jaw structure for comprehensive development",
-      features: ["Jaw structure expansion", "Enhanced breathing", "Comprehensive improvement", "Long-lasting results"],
+      name: "Innovative Palatal Expansion",
+      description: "For more comprehensive changes, we can work with the structure of your upper jaw itself, creating lasting improvements",
+      features: ["Structural jaw changes", "Enhanced breathing", "Improved oral function", "Comprehensive benefits"],
       duration: "6-18 months",
-      suitability: "Significant constriction"
+      suitability: "Significant improvements needed"
     },
     {
-      name: "Cosmetic Dentistry",
-      description: "Porcelain veneers and crowns strategically placed for a fuller smile appearance",
-      features: ["Immediate results", "Custom porcelain work", "Natural appearance", "Minimal tooth preparation"],
+      name: "Artful Cosmetic Enhancement",
+      description: "Through expertly crafted porcelain veneers or crowns, we can create the visual harmony you're looking for",
+      features: ["Immediate transformation", "Custom-designed restorations", "Natural appearance", "Minimal preparation"],
       duration: "2-4 weeks",
-      suitability: "Minor corrections"
+      suitability: "Quick visual improvements"
     },
     {
-      name: "Combined Approach",
-      description: "Integrated orthodontic and cosmetic treatments for optimal comprehensive results",
-      features: ["Best of both worlds", "Customized treatment", "Predictable outcomes", "Expert coordination"],
+      name: "Integrated Treatment Approaches",
+      description: "Often, the most beautiful results come from combining different techniques for your perfect smile",
+      features: ["Best of all approaches", "Personalised planning", "Comprehensive results", "Expert coordination"],
       duration: "12-30 months",
-      suitability: "Complex cases"
+      suitability: "Complex transformations"
     }
   ];
 
   const benefits = [
     {
       icon: Smile,
-      title: "Fuller Smile",
-      description: "Achieve a wider, more balanced smile that complements your facial features naturally"
+      title: "A Smile That Matches Your Spirit",
+      description: "Your new, fuller smile will reflect the confident, joyful person you are inside. You'll find yourself smiling more freely and feeling completely at ease in every photo"
     },
     {
       icon: Heart,
-      title: "Boost Confidence",
-      description: "Feel more confident in social and professional settings with your enhanced smile"
+      title: "Confidence That Radiates",
+      description: "There's something transformative about loving your smile. It affects how you present yourself to the world and how you feel about yourself every single day"
     },
     {
       icon: Gauge,
-      title: "Better Function",
-      description: "Improved tongue posture, breathing, and speech clarity with expanded oral space"
+      title: "Functional Improvements You'll Notice",
+      description: "Many patients are surprised to discover that their treatment also improves their breathing, speech clarity, and overall oral comfort"
     },
     {
       icon: Eye,
-      title: "Youthful Appearance",
-      description: "Reduce signs of ageing with a fuller smile that lights up your entire face"
+      title: "Life-Changing Transformation",
+      description: "It's wonderful when looking better also means feeling better. Your smile transformation affects every aspect of how you interact with the world"
     }
   ];
 
   const process = [
     {
       step: "1",
-      title: "Comprehensive Evaluation",
-      description: "Digital imaging, bite analysis, and detailed discussion of your smile goals and concerns"
+      title: "Getting to Know You and Your Goals",
+      description: "Your first visit is all about you. We'll listen to your concerns, understand your hopes for your smile, and conduct a thorough evaluation using the latest digital imaging technology"
     },
     {
       step: "2",
-      title: "Advanced Treatment Planning",
-      description: "3D smile design showing your projected results before treatment begins"
+      title: "Seeing Your Future Smile",
+      description: "Using sophisticated planning software, we'll create a detailed preview of your results. Watching our patients see their transformed smile for the first time is one of the most rewarding parts of what we do"
     },
     {
       step: "3",
-      title: "Personalized Treatment",
-      description: "Expert implementation of your customized correction plan with regular monitoring"
+      title: "Your Comfortable Treatment Experience",
+      description: "Whether your journey involves wearing aligners, traditional braces, or preparing for beautiful cosmetic restorations, we'll be with you every step of the way"
     },
     {
       step: "4",
-      title: "Maintenance & Aftercare",
-      description: "Retainers and ongoing support to ensure your beautiful results last for years"
+      title: "Protecting Your Investment",
+      description: "Once you've achieved your dream smile, we'll provide you with everything you need to maintain those stunning results for years to come"
     }
   ];
 
@@ -153,7 +161,7 @@ export default function BuccalCorridorCorrectionPage() {
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Buccal Corridor Correction"
-        description="Professional buccal corridor correction to eliminate dark spaces at the corners of your smile for a fuller, more youthful appearance"
+        description="Life-changing buccal corridor correction to unlock the full beauty of your smile. Eliminate dark spaces and discover the confidence that comes with a radiant, fuller smile"
         price="From £2,500"
         category="Cosmetic & Orthodontic Dentistry"
         duration="3-18 months depending on treatment approach"
@@ -185,9 +193,9 @@ export default function BuccalCorridorCorrectionPage() {
 
       {/* Hero Section */}
       <ServiceHero
-        title="Transform Your"
-        subtitle="Smile Width"
-        description="Eliminate dark spaces at the corners of your smile with expert buccal corridor correction. Our specialized treatments create fuller, more balanced smiles that light up your entire face."
+        title="Unlock your own"
+        subtitle="Hollywood Smile"
+        description="Your smile should tell the world exactly who you are - confident, radiant, and completely at ease. Those shadowy gaps at the corners of your smile don't have to hold you back anymore."
         heroVideo="/videos/heroes/buccal-corridor-hero.mp4"
         heroVideoType="mp4"
         heroImageAlt="Buccal corridor correction treatment demonstration video"
@@ -213,16 +221,30 @@ export default function BuccalCorridorCorrectionPage() {
         textColor="pear-primary"
       />
 
+      {/* Opening Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              At Pear Tree Dental, we understand how much your smile means to you, and we're here to help you discover the life-changing transformation that comes with buccal corridor correction.
+            </p>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              Perhaps you've noticed that the smile people see doesn't match the joy you feel. Maybe you find yourself covering your mouth when you laugh, or avoiding photos because your smile doesn't look quite right. These feelings are more common than you might think, and completely understandable.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* What Are Buccal Corridors Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Understanding Buccal Corridors
+                What Are Buccal Corridors?
               </h2>
               <p className="text-xl text-gray-600">
-                The dark spaces that shouldn't define your smile
+                Understanding the spaces that affect your smile's beauty
               </p>
             </div>
 
@@ -230,30 +252,32 @@ export default function BuccalCorridorCorrectionPage() {
               <div>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold text-pear-primary mb-3">What Are Buccal Corridors?</h3>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      Buccal corridors are the dark spaces that appear between your back teeth and the corners of your mouth when you smile. While some space is natural, too much can make your smile appear narrow or aged.
+                    </p>
                     <p className="text-gray-600 leading-relaxed">
-                      Buccal corridors are the dark spaces that appear between your back teeth and the corners of your mouth when you smile. While some space is natural, excessive dark areas can make your smile appear narrow or aged.
+                      These spaces often develop when your upper arch is naturally narrow, after tooth extractions, or simply as part of the ageing process. The good news? There's so much we can do to help.
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pear-primary mb-3">Common Causes:</h4>
+                    <h4 className="font-semibold text-pear-primary mb-3">You might benefit from treatment if you experience:</h4>
                     <ul className="space-y-2">
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-pear-gold mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Naturally narrow upper arch</span>
+                        <span className="text-gray-600">Prominent dark spaces that make your smile appear narrow</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-pear-gold mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Previous tooth extractions</span>
+                        <span className="text-gray-600">Feeling self-conscious about showing your teeth in social situations</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-pear-gold mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Constricted orthodontic treatment</span>
+                        <span className="text-gray-600">Photos where your smile seems smaller than your personality</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-pear-gold mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">Natural facial structure changes</span>
+                        <span className="text-gray-600">A sense that your smile doesn't reflect the person you are</span>
                       </li>
                     </ul>
                   </div>
@@ -261,10 +285,54 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl flex items-center justify-center">
-                  <div className="text-center">
-                    <Smile className="w-24 h-24 text-soft-pink mx-auto mb-4" />
-                    <p className="text-sm text-gray-600 max-w-xs">Before & After comparison showing buccal corridor reduction</p>
+                <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl overflow-hidden">
+                  {/* Top Image - BCC-smile optimized */}
+                  <div className="h-1/2 relative border-b border-white/20">
+                    <div className="h-full flex items-center justify-center p-4">
+                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
+                        <picture className="block w-full h-full">
+                          <source
+                            media="(min-width: 768px)"
+                            srcSet="/images/buccal-corridor/BCC-smile-medium.webp"
+                            type="image/webp"
+                          />
+                          <source
+                            srcSet="/images/buccal-corridor/BCC-smile-thumb.webp"
+                            type="image/webp"
+                          />
+                          <Image
+                            src="/images/buccal-corridor/BCC-smile.png"
+                            alt="Buccal corridor correction - enhanced smile result"
+                            width={200}
+                            height={200}
+                            className="w-full h-full object-cover"
+                            sizes="(max-width: 768px) 200px, 400px"
+                          />
+                        </picture>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Image - BCC-before.webp */}
+                  <div className="h-1/2 relative">
+                    <div className="h-full flex items-center justify-center p-4">
+                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
+                        <Image
+                          src="/images/before-after/BCC-before-large.webp"
+                          alt="Before buccal corridor correction treatment"
+                          width={200}
+                          height={150}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <p className="text-xs text-gray-700 text-center bg-white/80 rounded-lg py-1 px-2">
+                      Before & After comparison showing buccal corridor reduction
+                    </p>
                   </div>
                 </div>
               </div>
@@ -278,10 +346,10 @@ export default function BuccalCorridorCorrectionPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Treatment Options
+              Your Journey to a Fuller, More Radiant Smile
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Multiple approaches to achieve your ideal smile width, tailored to your unique needs and goals
+              We offer personalised treatment approaches designed to give you the beautiful, confident smile you deserve
             </p>
           </div>
 
@@ -333,10 +401,10 @@ export default function BuccalCorridorCorrectionPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Transform Your Smile & Life
+              The Life-Changing Benefits You Can Expect
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Buccal corridor correction offers both aesthetic and functional improvements for lasting benefits
+              When you love your smile, it transforms not just how you look, but how you feel about yourself every day
             </p>
           </div>
 
@@ -357,15 +425,136 @@ export default function BuccalCorridorCorrectionPage() {
         </div>
       </section>
 
+      {/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-soft-pink text-white">Real Results</Badge>
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Buccal Corridor Correction Results
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              See the remarkable transformation achieved through our buccal corridor correction treatment.
+              Slide to compare the before and after results.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage="/images/before-after/BCC-before.png"
+              afterImage="/images/before-after/BCC-after.png"
+              beforeAlt="Before buccal corridor correction - narrow smile with dark spaces"
+              afterAlt="After buccal corridor correction - wider, fuller smile"
+              description="Complete buccal corridor correction showing elimination of dark spaces and improved smile width"
+              className="mb-8"
+              beforeImageSizes={{
+                small: "/images/before-after/BCC-before-small.webp",
+                medium: "/images/before-after/BCC-before-medium.webp",
+                large: "/images/before-after/BCC-before-large.webp"
+              }}
+              afterImageSizes={{
+                small: "/images/before-after/BCC-after-small.webp",
+                medium: "/images/before-after/BCC-after-medium.webp",
+                large: "/images/before-after/BCC-after-large.webp"
+              }}
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Clock className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
+                <p className="text-gray-600 text-sm">3-18 months depending on approach</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Patient Satisfaction</h4>
+                <p className="text-gray-600 text-sm">97% would recommend treatment</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Award className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Expert Results</h4>
+                <p className="text-gray-600 text-sm">Specialist orthodontic care</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Pear Tree Dental Section */}
+      <section className="py-16 bg-gradient-to-r from-soft-pink/5 to-soft-lavender/5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Why Choose Pear Tree Dental for Your Smile Transformation?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the difference that comes with choosing experts who truly understand your vision
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="space-y-6">
+              <div className="flex space-x-4">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Eye className="w-6 h-6 text-pear-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-pear-primary mb-2">We See Your Vision Before You Do</h4>
+                  <p className="text-gray-600">Our advanced 3D imaging technology allows us to show you exactly how your transformed smile will look before we even begin. There's something magical about seeing your future smile for the first time.</p>
+                </div>
+              </div>
+
+              <div className="flex space-x-4">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Award className="w-6 h-6 text-pear-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-pear-primary mb-2">Experience That Makes the Difference</h4>
+                  <p className="text-gray-600">Our team includes orthodontists and cosmetic dentists with a special interest in creating life-changing smile transformations. We work together, sharing decades of combined experience.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex space-x-4">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Heart className="w-6 h-6 text-pear-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-pear-primary mb-2">Comfort Is Our Priority</h4>
+                  <p className="text-gray-600">Your journey should be as pleasant as your destination. From our welcoming practice environment to our gentle treatment techniques, we're committed to making every visit comfortable and positive.</p>
+                </div>
+              </div>
+
+              <div className="flex space-x-4">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Users className="w-6 h-6 text-pear-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-pear-primary mb-2">Your Smile, Your Story</h4>
+                  <p className="text-gray-600">No two smiles are alike, and neither are our treatment plans. We take time to understand not just your dental needs, but your lifestyle, your personality, and your dreams for your smile.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Process Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Your Treatment Journey
+              What Your Transformation Journey Looks Like
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Expert guidance through every step of your smile transformation
+              From your first consultation to your beautiful results, we're with you every step of the way
             </p>
           </div>
 
@@ -409,7 +598,7 @@ export default function BuccalCorridorCorrectionPage() {
                 The Pear Tree Dental Difference
               </h2>
               <p className="text-xl text-gray-600">
-                Specialised expertise in smile transformations with a personal touch
+                Expertise in smile transformations with a personal touch
               </p>
             </div>
 
@@ -464,7 +653,7 @@ export default function BuccalCorridorCorrectionPage() {
                   <div>
                     <h3 className="font-semibold text-pear-primary mb-2">Personalised Plans</h3>
                     <p className="text-gray-600 text-sm">
-                      Every smile is unique. We develop customised treatment strategies based on your specific anatomy, lifestyle, and goals.
+                      Every smile is unique. We develop customised treatment plans based on your specific anatomy, lifestyle, and goals.
                     </p>
                   </div>
                 </div>
@@ -480,16 +669,16 @@ export default function BuccalCorridorCorrectionPage() {
           <Card className="bg-pinky-fade text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
-                Ready to Transform Your Smile?
+                Ready to Fall in Love with Your Smile?
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Schedule your comprehensive buccal corridor evaluation and discover how we can create the fuller, more confident smile you deserve.
+                Your perfect smile is waiting, and we can't wait to help you discover it. At Pear Tree Dental, we don't just correct buccal corridors - we unlock the full potential of your smile and transform how you see yourself.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
                   <Button size="lg" className="bg-white text-pinky hover:bg-white/90 font-semibold">
-                    Book Smile Consultation
+                    Book Personal Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
@@ -498,6 +687,12 @@ export default function BuccalCorridorCorrectionPage() {
                     Call 0115 931 2935
                   </Button>
                 </a>
+              </div>
+
+              <div className="text-center">
+                <p className="text-white/80 italic text-lg">
+                  "At Pear Tree Dental, we believe that everyone deserves a smile that lights up their world. Let us help you discover yours."
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
