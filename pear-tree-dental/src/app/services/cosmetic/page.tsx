@@ -140,7 +140,7 @@ export default function CosmeticDentistryPage() {
       duration: "3-18 months",
       results: "Fuller, balanced smile",
       popular: false,
-      link: "/buccal-corridor-correction",
+      link: "/services/cosmetic/buccal-corridor-correction",
       socialProof: "95% patient satisfaction"
     }
   ];

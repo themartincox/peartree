@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     title: "Buccal Corridor Correction | Pear Tree Dental Burton Joyce",
     description: "Transform your smile by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
     type: "website",
-    url: "https://peartree.dental/buccal-corridor-correction"
+    url: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
   },
   alternates: {
-    canonical: "https://peartree.dental/buccal-corridor-correction"
+    canonical: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
   }
 };
 
@@ -174,7 +174,7 @@ export default function BuccalCorridorCorrectionPage() {
         ]}
         rating={4.9}
         reviewCount={156}
-        url="https://peartree.dental/buccal-corridor-correction"
+        url="https://peartree.dental/services/cosmetic/buccal-corridor-correction"
         procedureType="Service"
       />
 
