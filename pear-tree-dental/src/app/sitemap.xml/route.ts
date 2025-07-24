@@ -196,6 +196,18 @@ export async function GET() {
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>${baseUrl}/hollywood-smile-nottingham</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/perfect-smile-nottingham</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>${baseUrl}/nottingham-teeth-whitening</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>monthly</changefreq>

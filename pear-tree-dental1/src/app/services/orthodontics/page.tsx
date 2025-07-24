@@ -49,6 +49,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://peartree.dental/services/orthodontics"
+  },
+  other: {
+    'preload-before-large': '/images/before-after/BCC-before-large.webp',
+    'preload-after-large': '/images/before-after/BCC-after-large.webp'
   }
 };
 
@@ -264,6 +268,65 @@ export default function OrthodonticsPage() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Teeth Straightening Results
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Life-changing transformations with our orthodontic treatments.
+                          </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage="/images/before-after/BCC-before.png"
+              afterImage="/images/before-after/BCC-after.png"
+              beforeAlt="Before orthodontic treatment - buccal corridor correction"
+              afterAlt="After orthodontic treatment - improved buccal corridor"
+              description="Complete smile transformation showing improved buccal corridor and overall smile aesthetics"
+              className="mb-8"
+              beforeImageSizes={{
+                small: "/images/before-after/BCC-before-small.webp",
+                medium: "/images/before-after/BCC-before-medium.webp",
+                large: "/images/before-after/BCC-before-large.webp"
+              }}
+              afterImageSizes={{
+                small: "/images/before-after/BCC-after-small.webp",
+                medium: "/images/before-after/BCC-after-medium.webp",
+                large: "/images/before-after/BCC-after-large.webp"
+              }}
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Clock className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
+                <p className="text-gray-600 text-sm">12-18 months for optimal results</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Patient Satisfaction</h4>
+                <p className="text-gray-600 text-sm">98% would recommend treatment</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Award className="w-6 h-6 text-soft-pink" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Professional Results</h4>
+                <p className="text-gray-600 text-sm">Expert orthodontic care delivered</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -668,7 +731,7 @@ export default function OrthodonticsPage() {
               <CardHeader className="text-center">
                 <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
                 <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
-                <div className="text-4xl font-bold text-pear-gold mt-4">£1,920 - £3,600</div>
+                <div className="text-4xl font-bold text-pear-gold mt-4">£2,160 - £4,050</div>
                 <p className="text-gray-600">Complete treatment (10% off)</p>
               </CardHeader>
               <CardContent>
@@ -747,7 +810,7 @@ export default function OrthodonticsPage() {
             <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80">
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4" />
-                <span>500+ Smiles Transformed</span>
+                <span>1000+ Smiles Transformed</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Award className="w-4 h-4" />
