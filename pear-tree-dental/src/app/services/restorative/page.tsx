@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   ShieldCheck,
   Wrench,
@@ -15,7 +16,6 @@ import {
   Heart,
   Zap,
   Users,
-  Camera,
   Activity,
   Settings,
   Phone
@@ -172,24 +172,6 @@ export default function RestorativeDentistryPage() {
     }
   ];
 
-  const beforeAfterCases = [
-    {
-      title: "Crown Restoration",
-      description: "Severely damaged molar restored with porcelain crown",
-      treatment: "Porcelain Crown"
-    },
-    {
-      title: "Bridge Replacement",
-      description: "Three-unit bridge replacing missing premolar",
-      treatment: "Dental Bridge"
-    },
-    {
-      title: "Complete Smile Restoration",
-      description: "Full mouth rehabilitation with crowns and bridges",
-      treatment: "Full Mouth Restoration"
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-dental-green/5 via-white to-soft-blue/5">
       {/* Hero Section - Medical Theme */}
@@ -265,37 +247,45 @@ export default function RestorativeDentistryPage() {
               </div>
             </div>
 
-            {/* Hero Feature Card */}
-            <div className="relative">
-              <Card className="bg-gradient-to-br from-dental-green to-soft-blue text-white p-8 h-96 shadow-2xl">
-                <div className="space-y-6">
-                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
-                    <Settings className="w-8 h-8 text-white" />
+            {/* Hero Image */}
+            <div className="relative group">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
+                <picture>
+                  <source media="(min-width: 768px)" srcSet="/images/heroes/restorative/restorative-hero-large.webp" type="image/webp" />
+                  <source media="(min-width: 480px)" srcSet="/images/heroes/restorative/restorative-hero-medium.webp" type="image/webp" />
+                  <source srcSet="/images/heroes/restorative/restorative-hero-small.webp" type="image/webp" />
+                  <img
+                    src="/images/heroes/restorative/restorative-hero.JPG"
+                    alt="Advanced restorative dentistry at Pear Tree Dental"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </picture>
+
+                {/* Overlay with content - lighter and disappears on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-dental-green/60 to-soft-blue/60 group-hover:from-dental-green/20 group-hover:to-soft-blue/20 transition-all duration-500 flex items-center justify-center">
+                  <div className="text-center text-white p-8 max-w-md group-hover:opacity-80 transition-opacity duration-500">
+                    <h3 className="text-2xl font-semibold mb-4">Advanced Restoration Technology</h3>
+                    <p className="text-white/90 mb-6">
+                      Using the latest digital technology and premium materials for natural-looking results.
+                    </p>
+                    <ul className="space-y-2 text-sm text-left">
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>Digital impressions for perfect fit</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>CAD/CAM technology for precision</span>
+                      </li>
+                      <li className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>Expert lab partnerships</span>
+                      </li>
+                    </ul>
                   </div>
-                  <h3 className="text-2xl font-semibold">Advanced Restoration Technology</h3>
-                  <p className="text-white/90">
-                    We use the latest digital technology and premium materials to create
-                    restorations that are virtually indistinguishable from natural teeth.
-                  </p>
-                  <ul className="space-y-2 text-sm">
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Digital impressions for perfect fit</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4" />
-                      <span>CAD/CAM technology for precision</span>
-                    </li>
-                    <li className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4" />
-                      <span>Expert lab partnerships</span>
-                    </li>
-                  </ul>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full" />
-                <div className="absolute bottom-4 right-8 w-12 h-12 bg-white/20 rounded-full" />
-              </Card>
+              </div>
             </div>
           </div>
         </div>
@@ -328,6 +318,36 @@ export default function RestorativeDentistryPage() {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Before & After Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Real Patient Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the transformations we've achieved for our patients with
+              expert restorative dentistry.
+            </p>
+          </div>
+
+          <BeforeAfterSlider
+            images={[
+              {
+                beforeSrc: "/images/before-after/repair-restore-before.JPG",
+                afterSrc: "/images/before-after/repair-restore-after.JPG",
+                beforeAlt: "Damaged teeth before restorative treatment",
+                afterAlt: "Beautiful restored teeth after treatment",
+                title: "Complete Restorative Transformation",
+                description: "Comprehensive restoration using crowns and bridges to restore function and aesthetics",
+                treatment: "Crown & Bridge Work"
+              }
+            ]}
+            className="mb-16"
+          />
         </div>
       </section>
 
@@ -408,6 +428,36 @@ export default function RestorativeDentistryPage() {
         </div>
       </section>
 
+      {/* Flexible Denture Before & After */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Flexible Denture Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the comfortable, natural-looking results achieved with our
+              flexible denture solutions.
+            </p>
+          </div>
+
+          <BeforeAfterSlider
+            images={[
+              {
+                beforeSrc: "/images/before-after/flexible-denture-removable-bridge-before.png",
+                afterSrc: "/images/before-after/flexible-denture-removable-bridge-after.png",
+                beforeAlt: "Before flexible denture treatment",
+                afterAlt: "After flexible denture treatment showing improved comfort and appearance",
+                title: "Flexible Denture Transformation",
+                description: "Comfortable, natural-looking flexible denture solution providing excellent fit and function",
+                treatment: "Flexible Dentures"
+              }
+            ]}
+            className="mb-16"
+          />
+        </div>
+      </section>
+
       {/* Materials Section */}
       <section className="py-16 bg-gradient-to-r from-dental-green/5 to-soft-blue/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -476,41 +526,6 @@ export default function RestorativeDentistryPage() {
                     <ArrowRight className="w-6 h-6 text-dental-green/30" />
                   </div>
                 )}
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Before & After Gallery */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Restoration Success Stories
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the transformations we've achieved for our patients with
-              expert restorative dentistry.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {beforeAfterCases.map((case_, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gradient-to-br from-dental-green/20 to-soft-blue/20 flex items-center justify-center">
-                  <div className="text-center">
-                    <Camera className="w-12 h-12 text-dental-green mx-auto mb-4" />
-                    <p className="text-sm text-gray-600">Before & After</p>
-                  </div>
-                </div>
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-pear-primary mb-2">{case_.title}</h3>
-                  <p className="text-sm text-gray-600 mb-3">{case_.description}</p>
-                  <Badge variant="outline" className="text-dental-green border-dental-green">
-                    {case_.treatment}
-                  </Badge>
-                </CardContent>
               </Card>
             ))}
           </div>

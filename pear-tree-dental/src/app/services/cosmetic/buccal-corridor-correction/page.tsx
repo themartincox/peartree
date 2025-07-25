@@ -194,7 +194,7 @@ export default function BuccalCorridorCorrectionPage() {
       {/* Hero Section */}
       <ServiceHero
         title="Unlock your own"
-        subtitle="Hollywood Smile"
+        subtitle="True Smile"
         description="Your smile should tell the world exactly who you are - confident, radiant, and completely at ease. Those shadowy gaps at the corners of your smile don't have to hold you back anymore."
         heroVideo="/videos/heroes/buccal-corridor-hero.mp4"
         heroVideoType="mp4"

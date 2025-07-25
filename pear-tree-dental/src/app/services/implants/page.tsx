@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -166,12 +167,41 @@ export default function ImplantsPage() {
               }
             ].map((implant, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <div className="text-center">
-                    <h4 className="font-bold text-gray-700 text-sm">{implant.image.toUpperCase()}</h4>
-                    <p className="text-xs text-gray-600">Clinical diagram</p>
+                {implant.image === "all-on-4" ? (
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <picture>
+                      <source
+                        media="(min-width: 768px)"
+                        srcSet="/images/implants/all-on-4-large.webp"
+                        type="image/webp"
+                      />
+                      <source
+                        media="(min-width: 480px)"
+                        srcSet="/images/implants/all-on-4-medium.webp"
+                        type="image/webp"
+                      />
+                      <source
+                        srcSet="/images/implants/all-on-4-small.webp"
+                        type="image/webp"
+                      />
+                      <Image
+                        src="/images/implants-all-on-4.JPG"
+                        alt="All-on-4 dental implants full arch restoration"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                        loading="lazy"
+                      />
+                    </picture>
                   </div>
-                </div>
+                ) : (
+                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                    <div className="text-center">
+                      <h4 className="font-bold text-gray-700 text-sm">{implant.image.toUpperCase()}</h4>
+                      <p className="text-xs text-gray-600">Clinical diagram</p>
+                    </div>
+                  </div>
+                )}
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     <div>

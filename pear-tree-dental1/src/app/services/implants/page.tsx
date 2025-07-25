@@ -9,6 +9,7 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Zap,
   Shield,
@@ -107,6 +108,7 @@ export default function ImplantsPage() {
       <ServiceFAQSchema
         serviceName="Dental Implants"
         faqs={implantFAQs}
+        pageUrl="/services/implants"
       />
 
       {/* Hero Section */}
@@ -268,6 +270,67 @@ export default function ImplantsPage() {
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge className="mb-4 bg-pear-primary text-white">Real Results</Badge>
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Dental Implant Results
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              See the remarkable transformation achieved through our dental implant treatment.
+              Slide to compare the before and after results.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <BeforeAfterSlider
+              beforeImage="/images/before-after/implants-before.png"
+              afterImage="/images/before-after/implants-after.png"
+              beforeAlt="Before dental implant - missing tooth gap"
+              afterAlt="After dental implant - natural-looking replacement tooth"
+              description="Complete dental implant transformation showing natural-looking tooth replacement"
+              className="mb-8"
+              beforeImageSizes={{
+                small: "/images/before-after/implants-before-small.webp",
+                medium: "/images/before-after/implants-before-medium.webp",
+                large: "/images/before-after/implants-before-large.webp"
+              }}
+              afterImageSizes={{
+                small: "/images/before-after/implants-after-small.webp",
+                medium: "/images/before-after/implants-after-medium.webp",
+                large: "/images/before-after/implants-after-large.webp"
+              }}
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+              <div className="text-center">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Clock className="w-6 h-6 text-pear-primary" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
+                <p className="text-gray-600 text-sm">3-6 months total process</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 text-pear-primary" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Success Rate</h4>
+                <p className="text-gray-600 text-sm">98% long-term success</p>
+              </div>
+              <div className="text-center">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Award className="w-6 h-6 text-pear-primary" />
+                </div>
+                <h4 className="font-semibold text-pear-primary mb-2">Expert Care</h4>
+                <p className="text-gray-600 text-sm">Specialist implant dentistry</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

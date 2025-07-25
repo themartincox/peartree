@@ -360,11 +360,13 @@ export default function GeneralDentistryPage() {
 
             <div className="relative">
               <Card className="overflow-hidden shadow-xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-lg font-bold text-gray-700 mb-2">PREVENTIVE CARE IMAGE</h3>
-                    <p className="text-gray-600">Dental hygienist providing preventive treatment</p>
-                  </div>
+                <div className="aspect-[4/3]">
+                  <img
+                    src="/images/treatment-journey/treatment.webp"
+                    alt="Dental hygienist providing preventive treatment"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
               </Card>
             </div>

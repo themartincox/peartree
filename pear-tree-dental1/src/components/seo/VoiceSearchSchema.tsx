@@ -6,14 +6,14 @@ const VoiceSearchSchema = () => {
     "@graph": [
       {
         "@type": "DentalClinic",
-        "@id": "https://peartreedentalcentre.co.uk/#dentist",
+        "@id": "https://peartree.dental/#dentist",
         "name": "Pear Tree Dental Centre",
         "alternateName": ["Pear Tree Dental", "Burton Joyce Dentist"],
         "description": "Modern dental practice in Burton Joyce offering comprehensive dental care, emergency appointments, and flexible membership plans from £10.95/month.",
         "telephone": "+44 115 931 2935",
         "email": "hello@peartree.dental",
-        "url": "https://peartreedentalcentre.co.uk",
-        "image": "https://peartreedentalcentre.co.uk/images/practice-exterior.jpg",
+        "url": "https://peartree.dental",
+        "image": "https://peartree.dental/images/practice-exterior.jpg",
         "priceRange": "£10.95-£29.95 per month",
         "paymentAccepted": ["Cash", "Credit Card", "NHS", "Private Insurance"],
         "currenciesAccepted": "GBP",
@@ -100,7 +100,7 @@ const VoiceSearchSchema = () => {
           "worstRating": "1"
         },
         "sameAs": [
-          "https://www.facebook.com/peartreedentalcentre",
+          "https://www.facebook.com/peartreeDental",
           "https://www.google.com/maps/place/Pear+Tree+Dental+Centre"
         ],
         "speakable": {
@@ -109,55 +109,9 @@ const VoiceSearchSchema = () => {
         }
       },
       {
-        "@type": "FAQPage",
-        "@id": "https://peartreedentalcentre.co.uk/#voice-faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Where is the nearest dentist in Burton Joyce?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Pear Tree Dental Centre is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What time does the dentist open?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We open at 8:45 AM Monday through Thursday, and 8:00 AM on Friday. We're open until 5:00 PM Monday-Thursday and 3:30 PM Friday."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does a dental checkup cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "NHS dental checkups cost £25.80, but our membership plans start at £10.95 per month and include free checkups, cleaning, and 10% off treatments."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you take emergency appointments?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2935 immediately for urgent dental problems including severe pain, swelling, or trauma."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are you accepting new patients?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we're accepting new NHS and private patients. Our membership plans offer immediate access with no waiting lists, starting from £10.95 per month."
-            }
-          }
-        ]
-      },
-      {
         "@type": "WebSite",
-        "@id": "https://peartreedentalcentre.co.uk/#website",
-        "url": "https://peartreedentalcentre.co.uk",
+        "@id": "https://peartree.dental/#website",
+        "url": "https://peartree.dental",
         "name": "Pear Tree Dental Centre",
         "description": "Burton Joyce's premier dental practice offering modern dental care with membership plans from £10.95/month",
         "potentialAction": [
@@ -165,7 +119,7 @@ const VoiceSearchSchema = () => {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://peartreedentalcentre.co.uk/search?q={search_term_string}"
+              "urlTemplate": "https://peartree.dental/search?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           },
@@ -173,7 +127,7 @@ const VoiceSearchSchema = () => {
             "@type": "ReserveAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://peartreedentalcentre.co.uk/contact"
+              "urlTemplate": "https://peartree.dental/contact"
             },
             "name": "Book Dental Appointment"
           }

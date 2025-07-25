@@ -40,9 +40,27 @@ export default function ContactForm({
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent the default form submission
     setIsSubmitting(true);
-    // Form will be handled by Netlify automatically
-    // The page will redirect to /success after submission
+
+    const myForm = e.target as HTMLFormElement;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString(),
+    })
+      .then(() => {
+        setIsSubmitted(true); // Show the "Thank You" message on success
+      })
+      .catch((error) => {
+        console.error("Form submission error:", error);
+        alert("There was an error submitting the form. Please try again.");
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const handleInputChange = (
@@ -129,7 +147,6 @@ export default function ContactForm({
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/success"
           onSubmit={handleSubmit}
           className="space-y-6"
         >

@@ -1,437 +1,167 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Eye, ArrowLeft, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface BeforeAfterSliderProps {
-  beforeImage: string;
-  afterImage: string;
+interface BeforeAfterImage {
+  beforeSrc: string;
+  afterSrc: string;
   beforeAlt: string;
   afterAlt: string;
-  title?: string;
-  description?: string;
-  treatmentType?: string;
-  className?: string;
-  imageContainerClassName?: string;
-  // Add support for optimized responsive images
-  beforeImageSizes?: {
-    small: string;
-    medium: string;
-    large: string;
-  };
-  afterImageSizes?: {
-    small: string;
-    medium: string;
-    large: string;
-  };
+  title: string;
+  description: string;
+  treatment: string;
 }
 
-export default function BeforeAfterSlider({
-  beforeImage,
-  afterImage,
-  beforeAlt,
-  afterAlt,
-  description,
-  className = "",
-  imageContainerClassName = "",
-  beforeImageSizes,
-  afterImageSizes
-}: BeforeAfterSliderProps) {
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startPosition, setStartPosition] = useState(0);
-  const [momentum, setMomentum] = useState(0);
-  const [lastTouchTime, setLastTouchTime] = useState(0);
-  const [velocityTracker, setVelocityTracker] = useState<Array<{ pos: number; time: number }>>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mountedRef = useRef(true);
-  const animationFrameRef = useRef<number>();
+interface BeforeAfterSliderProps {
+  images: BeforeAfterImage[];
+  className?: string;
+}
 
-  // Handle position updates with mounted check and momentum
-  const updatePosition = useCallback((clientX: number, applyMomentum = false) => {
-    if (!mountedRef.current || !containerRef.current) return;
+export default function BeforeAfterSlider({ images, className = "" }: BeforeAfterSliderProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [showAfter, setShowAfter] = useState(false);
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    let percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+    setShowAfter(false);
+  };
 
-    // Apply momentum effect for smooth movement
-    if (applyMomentum && momentum !== 0) {
-      percentage = Math.max(0, Math.min(100, percentage + momentum));
-      setMomentum(momentum * 0.95); // Gradually reduce momentum
-    }
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setShowAfter(false);
+  };
 
-    setSliderPosition(percentage);
-
-    // Track velocity for touch momentum
-    const now = Date.now();
-    setVelocityTracker(prev => {
-      const newTracker = [...prev, { pos: percentage, time: now }];
-      // Keep only last 5 positions for velocity calculation
-      return newTracker.slice(-5);
-    });
-  }, [momentum]);
-
-  // Calculate velocity from touch tracking
-  const calculateVelocity = useCallback(() => {
-    if (velocityTracker.length < 2) return 0;
-
-    const recent = velocityTracker[velocityTracker.length - 1];
-    const previous = velocityTracker[velocityTracker.length - 2];
-
-    const timeDiff = recent.time - previous.time;
-    const posDiff = recent.pos - previous.pos;
-
-    return timeDiff > 0 ? (posDiff / timeDiff) * 16 : 0; // Convert to pixels per frame (60fps)
-  }, [velocityTracker]);
-
-  // Enhanced touch start handling
-  const handleStart = useCallback((clientX: number) => {
-    if (!mountedRef.current) return;
-    setIsDragging(true);
-    setStartPosition(clientX);
-    setMomentum(0);
-    setVelocityTracker([]);
-    setLastTouchTime(Date.now());
-
-    // Cancel any ongoing momentum animation
-    if (animationFrameRef.current) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-
-    updatePosition(clientX);
-  }, [updatePosition]);
-
-  // Enhanced touch move handling with velocity tracking
-  const handleMove = useCallback((clientX: number) => {
-    if (!mountedRef.current || !isDragging) return;
-    updatePosition(clientX);
-  }, [isDragging, updatePosition]);
-
-  // Enhanced touch end with momentum
-  const handleEnd = useCallback(() => {
-    if (!mountedRef.current) return;
-
-    const velocity = calculateVelocity();
-    setIsDragging(false);
-
-    // Apply momentum if velocity is significant
-    if (Math.abs(velocity) > 0.5) {
-      setMomentum(velocity);
-
-      // Animate momentum decay
-      const animateMomentum = () => {
-        if (Math.abs(momentum) > 0.1) {
-          updatePosition(sliderPosition + momentum, true);
-          animationFrameRef.current = requestAnimationFrame(animateMomentum);
-        }
-      };
-      animateMomentum();
-    }
-
-    setVelocityTracker([]);
-  }, [calculateVelocity, momentum, sliderPosition, updatePosition]);
-
-  // Swipe gesture detection
-  const handleSwipe = useCallback((direction: 'left' | 'right') => {
-    const swipeAmount = 15; // Percentage to move per swipe
-    const newPosition = direction === 'left'
-      ? Math.max(0, sliderPosition - swipeAmount)
-      : Math.min(100, sliderPosition + swipeAmount);
-
-    // Smooth transition to new position
-    const animateToPosition = (target: number) => {
-      const current = sliderPosition;
-      const diff = target - current;
-      const step = diff * 0.1;
-
-      if (Math.abs(diff) > 0.5) {
-        setSliderPosition(current + step);
-        requestAnimationFrame(() => animateToPosition(target));
-      } else {
-        setSliderPosition(target);
-      }
-    };
-
-    animateToPosition(newPosition);
-  }, [sliderPosition]);
-
-  // Enhanced mouse events
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    handleStart(e.clientX);
-  }, [handleStart]);
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    handleMove(e.clientX);
-  }, [handleMove]);
-
-  const handleMouseUp = useCallback(() => {
-    handleEnd();
-  }, [handleEnd]);
-
-  // Enhanced touch events with swipe detection
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    e.preventDefault(); // Prevent scrolling
-    const touch = e.touches[0];
-    handleStart(touch.clientX);
-  }, [handleStart]);
-
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    e.preventDefault();
-    const touch = e.touches[0];
-    handleMove(touch.clientX);
-  }, [handleMove]);
-
-  const handleTouchEnd = useCallback((e: TouchEvent) => {
-    e.preventDefault();
-
-    // Detect swipe gestures
-    const touch = e.changedTouches[0];
-    const timeDiff = Date.now() - lastTouchTime;
-    const distance = Math.abs(touch.clientX - startPosition);
-
-    // Quick swipe detection (< 300ms, > 50px)
-    if (timeDiff < 300 && distance > 50) {
-      const direction = touch.clientX > startPosition ? 'right' : 'left';
-      handleSwipe(direction);
-    }
-
-    handleEnd();
-  }, [handleEnd, handleSwipe, lastTouchTime, startPosition]);
-
-  // Global event handlers
-  useEffect(() => {
-    if (isDragging && mountedRef.current) {
-      document.addEventListener('mousemove', handleMouseMove, { passive: false });
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd, { passive: false });
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
-
-  // Cleanup effect
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
-
-  // Enhanced position setting with smooth animation
-  const setPosition = useCallback((position: number) => {
-    if (!mountedRef.current) return;
-
-    const animateToPosition = (target: number) => {
-      const current = sliderPosition;
-      const diff = target - current;
-      const step = diff * 0.15; // Smooth easing
-
-      if (Math.abs(diff) > 0.5) {
-        setSliderPosition(current + step);
-        requestAnimationFrame(() => animateToPosition(target));
-      } else {
-        setSliderPosition(target);
-      }
-    };
-
-    animateToPosition(position);
-  }, [sliderPosition]);
+  const currentImage = images[currentIndex];
 
   return (
-    <div className={`space-y-4 ${className}`}>
-      {/* Only show description if provided, without title and icon */}
-      {description && (
-        <div className="text-center">
-          <p className="text-gray-600">{description}</p>
-        </div>
-      )}
-
-      {/* Slider Container */}
-      <div className="relative">
-        <div
-          ref={containerRef}
-          className={`relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl touch-none ${imageContainerClassName}`}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-          style={{ touchAction: 'none' }} // Prevent default touch behaviors
-        >
-          {/* Before Image (Base Layer) */}
-          <div className="absolute inset-0">
-            {beforeImageSizes ? (
-              <picture className="block w-full h-full">
-                <source
-                  media="(min-width: 768px)"
-                  srcSet={beforeImageSizes.large}
-                  type="image/webp"
-                />
-                <source
-                  media="(min-width: 480px)"
-                  srcSet={beforeImageSizes.medium}
-                  type="image/webp"
-                />
-                <source
-                  srcSet={beforeImageSizes.small}
-                  type="image/webp"
-                />
-                <Image
-                  src={beforeImage}
-                  alt={beforeAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 800px"
-                  priority
-                />
-              </picture>
-            ) : (
-              <Image
-                src={beforeImage}
-                alt={beforeAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+    <div className={`w-full max-w-4xl mx-auto ${className}`}>
+      <Card className="overflow-hidden shadow-xl">
+        <CardContent className="p-0">
+          {/* Image Container */}
+          <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
+            {/* Before Image */}
+            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-0' : 'opacity-100'}`}>
+              <source media="(min-width: 768px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-large.webp')} type="image/webp" />
+              <source media="(min-width: 480px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
+              <source srcSet={currentImage.beforeSrc.replace('.JPG', '-small.webp')} type="image/webp" />
+              <img
+                src={currentImage.beforeSrc}
+                alt={currentImage.beforeAlt}
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
-            )}
-            {/* Before Label */}
-            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
-              Before
-            </div>
-          </div>
+            </picture>
 
-          {/* After Image (Clipped Layer) */}
-          <div
-            className="absolute inset-0 transition-all duration-75 ease-out"
-            style={{
-              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
-            }}
-          >
-            {afterImageSizes ? (
-              <picture className="block w-full h-full">
-                <source
-                  media="(min-width: 768px)"
-                  srcSet={afterImageSizes.large}
-                  type="image/webp"
-                />
-                <source
-                  media="(min-width: 480px)"
-                  srcSet={afterImageSizes.medium}
-                  type="image/webp"
-                />
-                <source
-                  srcSet={afterImageSizes.small}
-                  type="image/webp"
-                />
-                <Image
-                  src={afterImage}
-                  alt={afterAlt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 480px) 400px, (max-width: 768px) 600px, 800px"
-                />
-              </picture>
-            ) : (
-              <Image
-                src={afterImage}
-                alt={afterAlt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+            {/* After Image */}
+            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-100' : 'opacity-0'}`}>
+              <source media="(min-width: 768px)" srcSet={currentImage.afterSrc.replace('.JPG', '-large.webp')} type="image/webp" />
+              <source media="(min-width: 480px)" srcSet={currentImage.afterSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
+              <source srcSet={currentImage.afterSrc.replace('.JPG', '-small.webp')} type="image/webp" />
+              <img
+                src={currentImage.afterSrc}
+                alt={currentImage.afterAlt}
+                className="w-full h-full object-cover"
+                loading="lazy"
               />
-            )}
-            {/* After Label */}
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg z-10">
-              After
+            </picture>
+
+            {/* Before/After Toggle */}
+            <div className="absolute top-4 left-4 flex bg-black/50 rounded-lg overflow-hidden">
+              <button
+                onClick={() => setShowAfter(false)}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  !showAfter
+                    ? 'bg-white text-black'
+                    : 'text-white hover:bg-white/20'
+                }`}
+              >
+                Before
+              </button>
+              <button
+                onClick={() => setShowAfter(true)}
+                className={`px-4 py-2 text-sm font-medium transition-colors ${
+                  showAfter
+                    ? 'bg-white text-black'
+                    : 'text-white hover:bg-white/20'
+                }`}
+              >
+                After
+              </button>
             </div>
-          </div>
 
-          {/* Smooth Border Overlay */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute inset-0 rounded-2xl border-2 border-white/20 shadow-inner"></div>
-            <div className="absolute inset-1 rounded-2xl border border-white/10"></div>
-          </div>
+            {/* Navigation Arrows */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </>
+            )}
 
-          {/* Enhanced Slider Line with Touch Feedback */}
-          <div
-            className={`absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-all duration-75 ease-out z-20 ${
-              isDragging ? 'scale-110 bg-blue-400' : ''
-            }`}
-            style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
-          >
-            {/* Enhanced Slider Handle with Touch Feedback */}
-            <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize transition-all duration-200 ${
-              isDragging ? 'scale-125 bg-blue-50 border-blue-400 shadow-xl' : 'hover:bg-gray-50 hover:scale-110'
-            }`}>
-              <div className="flex space-x-1">
-                <ArrowLeft className={`w-4 h-4 ${isDragging ? 'text-blue-600' : 'text-gray-600'}`} />
-                <ArrowRight className={`w-4 h-4 ${isDragging ? 'text-blue-600' : 'text-gray-600'}`} />
+            {/* Slide Indicators */}
+            {images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentIndex(index);
+                      setShowAfter(false);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === currentIndex
+                        ? 'bg-white'
+                        : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
-            </div>
+            )}
           </div>
 
-          {/* Enhanced Progress Indicator */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {sliderPosition < 25 ? 'Before' : sliderPosition > 75 ? 'After' : 'Transition'}
-          </div>
-
-          {/* Mobile Swipe Hints (show briefly on load) */}
-          <div className="absolute inset-0 pointer-events-none md:hidden">
-            <div className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-lg px-2 py-1 text-xs text-gray-700 animate-pulse">
-              Swipe →
+          {/* Image Info */}
+          <div className="p-6">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h3 className="text-xl font-semibold text-pear-primary mb-2">
+                  {currentImage.title}
+                </h3>
+                <p className="text-gray-600 mb-3">
+                  {currentImage.description}
+                </p>
+              </div>
+              <Badge variant="outline" className="text-dental-green border-dental-green">
+                {currentImage.treatment}
+              </Badge>
             </div>
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 rounded-lg px-2 py-1 text-xs text-gray-700 animate-pulse">
-              ← Swipe
-            </div>
+
+            {/* Progress indicator for multiple images */}
+            {images.length > 1 && (
+              <div className="flex items-center justify-between text-sm text-gray-500">
+                <span>Case {currentIndex + 1} of {images.length}</span>
+                <span className={`font-medium ${showAfter ? 'text-dental-green' : 'text-gray-700'}`}>
+                  {showAfter ? 'After Treatment' : 'Before Treatment'}
+                </span>
+              </div>
+            )}
           </div>
-        </div>
-
-        {/* Enhanced Quick Position Controls */}
-        <div className="flex justify-center space-x-4 mt-4">
-          <Button
-            variant={sliderPosition <= 25 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(0)}
-            className="text-sm transition-all hover:scale-105"
-          >
-            Before
-          </Button>
-          <Button
-            variant={sliderPosition > 25 && sliderPosition < 75 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(50)}
-            className="text-sm transition-all hover:scale-105"
-          >
-            <Eye className="w-4 h-4 mr-1" />
-            Compare
-          </Button>
-          <Button
-            variant={sliderPosition >= 75 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(100)}
-            className="text-sm transition-all hover:scale-105"
-          >
-            After
-          </Button>
-        </div>
-      </div>
-
-      {/* Enhanced Instructions with Mobile Tips */}
-      <div className="text-center text-sm text-gray-600">
-        <p className="hidden md:block">Drag the slider or use the buttons to compare before and after results</p>
-        <p className="md:hidden">Touch and drag the slider, swipe left/right, or use the buttons to compare results</p>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
