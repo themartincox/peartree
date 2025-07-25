@@ -57,7 +57,28 @@ export const metadata: Metadata = {
 };
 
 export default function OrthodonticsPage() {
+  // Consolidated FAQs including both general practice and orthodontics-specific questions
   const orthodonticsFAQs = [
+    {
+      question: "Where is the nearest dentist in Burton Joyce?",
+      answer: "Pear Tree Dental is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
+    },
+    {
+      question: "What time does the dentist open?",
+      answer: "We open at 8:45 AM Monday through Thursday, and 8:00 AM on Friday. We're open until 5:00 PM Monday-Thursday and 3:30 PM Friday."
+    },
+    {
+      question: "How much does a dental checkup cost?",
+      answer: "NHS dental checkups cost £25.80, but our membership plans start at £10.95 per month and include free checkups, cleaning, and 10% off treatments."
+    },
+    {
+      question: "Do you take emergency appointments?",
+      answer: "Yes, we provide same-day emergency appointments. Call 0115 931 2935 immediately for urgent dental problems including severe pain, swelling, or trauma."
+    },
+    {
+      question: "Are you accepting new patients?",
+      answer: "Yes, we're accepting new NHS and private patients. Our membership plans offer immediate access with no waiting lists, starting from £10.95 per month."
+    },
     {
       question: "How much do clear aligners cost?",
       answer: "Clear aligner treatment starts from £2,400 for ClearCorrect and £2,800 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer flexible payment plans and 10% membership discounts."

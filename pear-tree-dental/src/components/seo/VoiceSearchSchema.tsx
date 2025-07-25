@@ -109,52 +109,6 @@ const VoiceSearchSchema = () => {
         }
       },
       {
-        "@type": "FAQPage",
-        "@id": "https://peartree.dental/#voice-faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Where is the nearest dentist in Burton Joyce?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Pear Tree Dental Centre is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What time does the dentist open?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We open at 8:45 AM Monday through Thursday, and 8:00 AM on Friday. We're open until 5:00 PM Monday-Thursday and 3:30 PM Friday."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does a dental checkup cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "NHS dental checkups cost £25.80, but our membership plans start at £10.95 per month and include free checkups, cleaning, and 10% off treatments."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you take emergency appointments?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we provide same-day emergency appointments. Call 0115 931 2935 immediately for urgent dental problems including severe pain, swelling, or trauma."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are you accepting new patients?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, we're accepting new NHS and private patients. Our membership plans offer immediate access with no waiting lists, starting from £10.95 per month."
-            }
-          }
-        ]
-      },
-      {
         "@type": "WebSite",
         "@id": "https://peartree.dental/#website",
         "url": "https://peartree.dental",
