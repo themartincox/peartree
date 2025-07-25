@@ -70,42 +70,27 @@ export default function ContactFormCard({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Track form submission attempt
-    trackBookingAttempt(`${formType}_form`, formType as 'contact' | 'booking');
-
     try {
       const formData = new FormData(e.currentTarget);
-
-      // Add form identification
-      formData.append('form-name', 'contact-form');
-
-      // Track submission with form data context
-      const service = formData.get('service') as string;
-      if (service) {
-        trackLocationConversion('form_submission_with_service', 'burton_joyce');
-      }
 
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString()
+        body: new URLSearchParams(formData as any).toString(),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        trackLocationConversion('form_submission_success', 'burton_joyce');
-
-        // Reset form
         if (formRef.current) {
           formRef.current.reset();
         }
       } else {
-        throw new Error('Submission failed');
+        // If the submission fails, we'll see the error in the console
+        throw new Error(`Form submission failed: ${response.statusText}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
-      trackLocationConversion('form_submission_error', 'burton_joyce');
     } finally {
       setIsSubmitting(false);
     }
@@ -139,10 +124,10 @@ export default function ContactFormCard({
               {/* Phone - High priority CTA */}
               <div className="group">
                 <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                     onClick={() => {
-                       trackLocationConversion('contact_info_phone_click', 'burton_joyce');
-                       window.open('tel:01159312935');
-                     }}>
+                  onClick={() => {
+                    trackLocationConversion('contact_info_phone_click', 'burton_joyce');
+                    window.open('tel:01159312935');
+                  }}>
                   <Phone className="h-5 w-5 text-pear-gold" />
                   <div>
                     <p className="font-medium">Call Us</p>
@@ -154,10 +139,10 @@ export default function ContactFormCard({
               {/* Email */}
               <div className="group">
                 <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                     onClick={() => {
-                       trackLocationConversion('contact_info_email_click', 'burton_joyce');
-                       window.open('mailto:hello@peartree.dental');
-                     }}>
+                  onClick={() => {
+                    trackLocationConversion('contact_info_email_click', 'burton_joyce');
+                    window.open('mailto:hello@peartree.dental');
+                  }}>
                   <Mail className="h-5 w-5 text-pear-gold" />
                   <div>
                     <p className="font-medium">Email Us</p>
@@ -169,10 +154,10 @@ export default function ContactFormCard({
               {/* Address with directions CTA */}
               <div className="group">
                 <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                     onClick={() => {
-                       trackLocationConversion('contact_info_directions_click', 'burton_joyce');
-                       window.open('https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL');
-                     }}>
+                  onClick={() => {
+                    trackLocationConversion('contact_info_directions_click', 'burton_joyce');
+                    window.open('https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL');
+                  }}>
                   <MapPin className="h-5 w-5 text-pear-gold" />
                   <div>
                     <p className="font-medium">Visit Us</p>
@@ -255,13 +240,13 @@ export default function ContactFormCard({
 
             {/* Contact Form */}
             <form
-  ref={formRef}
-  onSubmit={handleSubmit}
-  className="space-y-6"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field"
-  name="contact-form"
->
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="space-y-6"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+              name="contact-form"
+            >
               {/* Hidden form identification for Netlify */}
               <input type="hidden" name="form-name" value="contact-form" />
 
