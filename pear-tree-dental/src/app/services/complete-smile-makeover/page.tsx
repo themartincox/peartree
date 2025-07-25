@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
+
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import {

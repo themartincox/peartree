@@ -320,22 +320,18 @@ export default function ImplantsPage() {
 
           <div className="max-w-4xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/before-after/implants-before.png"
-              afterImage="/images/before-after/implants-after.png"
-              beforeAlt="Before dental implant - missing tooth gap"
-              afterAlt="After dental implant - natural-looking replacement tooth"
-              description="Complete dental implant transformation showing natural-looking tooth replacement"
+              images={[
+                {
+                  beforeSrc: "/images/before-after/implants-before.png",
+                  afterSrc: "/images/before-after/implants-after.png",
+                  beforeAlt: "Before dental implant - missing tooth gap",
+                  afterAlt: "After dental implant - natural-looking replacement tooth",
+                  title: "Dental Implant Transformation",
+                  description: "Complete dental implant transformation showing natural-looking tooth replacement",
+                  treatment: "Single Tooth Implant"
+                }
+              ]}
               className="mb-8"
-              beforeImageSizes={{
-                small: "/images/before-after/implants-before-small.webp",
-                medium: "/images/before-after/implants-before-medium.webp",
-                large: "/images/before-after/implants-before-large.webp"
-              }}
-              afterImageSizes={{
-                small: "/images/before-after/implants-after-small.webp",
-                medium: "/images/before-after/implants-after-medium.webp",
-                large: "/images/before-after/implants-after-large.webp"
-              }}
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

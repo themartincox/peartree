@@ -424,12 +424,17 @@ export default function TeethWhiteningPage() {
           <div className="max-w-4xl lg:max-w-6xl mx-auto">
             <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl" style={{ padding: '10px' }}>
               <BeforeAfterSlider
-                beforeImage="/images/teeth-whitening-before.webp"
-                afterImage="/images/teeth-whitening-after.webp"
-                beforeAlt="Teeth before professional whitening treatment - showing natural discoloration"
-                afterAlt="Teeth after professional whitening - dramatically whiter and brighter smile"
-                description="Real people, real results, achieved with our professional whitening systems"
-                imageContainerClassName="aspect-[4/3] lg:aspect-[8/3]"
+                images={[
+                  {
+                    beforeSrc: "/images/teeth-whitening-before.webp",
+                    afterSrc: "/images/teeth-whitening-after.webp",
+                    beforeAlt: "Teeth before professional whitening treatment - showing natural discoloration",
+                    afterAlt: "Teeth after professional whitening - dramatically whiter and brighter smile",
+                    title: "Professional Teeth Whitening",
+                    description: "Real people, real results, achieved with our professional whitening systems",
+                    treatment: "Teeth Whitening"
+                  }
+                ]}
               />
             </div>
           </div>

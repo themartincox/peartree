@@ -31,7 +31,7 @@ import {
   Palette,
   Wand2
 } from "lucide-react";
-import { getTreatmentPrice } from "@/data/pricing";
+import { LEGACY_PRICES } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Wedding Day Smile - Perfect Smile for Your Special Day | Pear Tree Dental",
@@ -90,7 +90,7 @@ export default function WeddingDaySmilePage() {
       treatment: "Professional Teeth Whitening",
       timeline: "2-4 weeks before wedding",
       appointments: "1-2 appointments",
-      price: getTreatmentPrice("Teeth Whitening"),
+      price: LEGACY_PRICES.TEETH_WHITENING,
       icon: Sparkles,
       description: "Quick and effective, often completed in just one or two appointments. For optimal results, we recommend scheduling your whitening treatment 2-4 weeks before your wedding.",
       difference: "Whilst at-home whitening kits can offer limited and often disappointing results, our professional-grade whitening treatments are safe, effective, and can lighten your teeth by several shades. This is the perfect, quick boost for a brighter, more youthful smile.",
@@ -101,7 +101,7 @@ export default function WeddingDaySmilePage() {
       treatment: "Porcelain Veneers or Composite Bonding",
       timeline: "1-2 months for veneers, 1 month for bonding",
       appointments: "Few appointments for veneers, single visit for bonding",
-      price: getTreatmentPrice("Porcelain Veneers"),
+      price: LEGACY_PRICES.PORCELAIN_VENEERS,
       icon: Crown,
       description: "Porcelain veneers typically require a few appointments over one to two months. Composite bonding can often be completed in a single visit.",
       difference: "Veneers offer a durable, long-lasting solution to transform your smile's shape, colour, and alignment, creating a stunningly uniform and natural look. Composite bonding is a fantastic and affordable option for repairing minor imperfections.",
@@ -112,7 +112,7 @@ export default function WeddingDaySmilePage() {
       treatment: "Invisalign® Clear Aligners",
       timeline: "Around a year, but results visible sooner",
       appointments: "Regular check-ups every 6-8 weeks",
-      price: getTreatmentPrice("Invisalign"),
+      price: LEGACY_PRICES.INVISALIGN,
       icon: Eye,
       description: "Whilst the average treatment time is around a year, many patients see significant results much sooner. We recommend a consultation as early as possible.",
       difference: "Invisalign® offers a discreet and comfortable way to straighten your teeth without the look of traditional braces. The clear aligners are virtually invisible and can be removed for eating and special occasions.",
@@ -536,25 +536,33 @@ export default function WeddingDaySmilePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Wedding Whitening Example */}
             <BeforeAfterSlider
-              beforeImage="/images/general-dental-checkup.webp"
-              afterImage="/images/cosmetic-dentistry-services.webp"
-              beforeAlt="Bride's teeth before professional whitening treatment"
-              afterAlt="Bride's teeth after professional whitening treatment - dramatically whiter"
-              title="Wedding Day Whitening"
-              description="Professional whitening gave Sarah the perfect bright smile for her wedding photos"
-              treatmentType="Teeth Whitening"
+              images={[
+                {
+                  beforeSrc: "/images/general-dental-checkup.webp",
+                  afterSrc: "/images/cosmetic-dentistry-services.webp",
+                  beforeAlt: "Bride's teeth before professional whitening treatment",
+                  afterAlt: "Bride's teeth after professional whitening treatment - dramatically whiter",
+                  title: "Wedding Day Whitening",
+                  description: "Professional whitening gave Sarah the perfect bright smile for her wedding photos",
+                  treatment: "Teeth Whitening"
+                }
+              ]}
               className="bg-white rounded-2xl p-6 shadow-lg"
             />
 
             {/* Complete Smile Makeover Example */}
             <BeforeAfterSlider
-              beforeImage="/images/dental-consultation-room.jpg"
-              afterImage="/images/heroes/cosmetic/wedding-smile-hero.jpg"
-              beforeAlt="Bride's smile before complete makeover with veneers"
-              afterAlt="Bride's smile after complete makeover with porcelain veneers"
-              title="Complete Bridal Makeover"
-              description="Emily's complete smile transformation with veneers created her dream wedding smile"
-              treatmentType="Smile Makeover"
+              images={[
+                {
+                  beforeSrc: "/images/dental-consultation-room.jpg",
+                  afterSrc: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
+                  beforeAlt: "Bride's smile before complete makeover with veneers",
+                  afterAlt: "Bride's smile after complete makeover with porcelain veneers",
+                  title: "Complete Bridal Makeover",
+                  description: "Emily's complete smile transformation with veneers created her dream wedding smile",
+                  treatment: "Smile Makeover"
+                }
+              ]}
               className="bg-white rounded-2xl p-6 shadow-lg"
             />
           </div>

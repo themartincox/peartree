@@ -10,6 +10,7 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
+
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Smile,
@@ -308,22 +309,18 @@ export default function OrthodonticsPage() {
 
           <div className="max-w-4xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/before-after/BCC-before.png"
-              afterImage="/images/before-after/BCC-after.png"
-              beforeAlt="Before orthodontic treatment - buccal corridor correction"
-              afterAlt="After orthodontic treatment - improved buccal corridor"
-              description="Complete smile transformation showing improved buccal corridor and overall smile aesthetics"
+              images={[
+                {
+                  beforeSrc: "/images/before-after/BCC-before.png",
+                  afterSrc: "/images/before-after/BCC-after.png",
+                  beforeAlt: "Before orthodontic treatment - buccal corridor correction",
+                  afterAlt: "After orthodontic treatment - improved buccal corridor",
+                  title: "Orthodontic Transformation",
+                  description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
+                  treatment: "Clear Aligners"
+                }
+              ]}
               className="mb-8"
-              beforeImageSizes={{
-                small: "/images/before-after/BCC-before-small.webp",
-                medium: "/images/before-after/BCC-before-medium.webp",
-                large: "/images/before-after/BCC-before-large.webp"
-              }}
-              afterImageSizes={{
-                small: "/images/before-after/BCC-after-small.webp",
-                medium: "/images/before-after/BCC-after-medium.webp",
-                large: "/images/before-after/BCC-after-large.webp"
-              }}
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -679,13 +676,17 @@ export default function OrthodonticsPage() {
 
             <div>
               <BeforeAfterSlider
-                beforeImage="/images/orthodontics-before.png"
-                afterImage="/images/orthodontics-after.png"
-                beforeAlt="Crooked and misaligned teeth before orthodontic treatment"
-                afterAlt="Perfectly straight and aligned teeth after clear aligner treatment"
-                title="Clear Aligner Transformation"
-                description="See the incredible results achieved with our orthodontic treatment"
-                treatmentType="Clear Aligners"
+                images={[
+                  {
+                    beforeSrc: "/images/orthodontics-before.png",
+                    afterSrc: "/images/orthodontics-after.png",
+                    beforeAlt: "Crooked and misaligned teeth before orthodontic treatment",
+                    afterAlt: "Perfectly straight and aligned teeth after clear aligner treatment",
+                    title: "Clear Aligner Transformation",
+                    description: "See the incredible results achieved with our orthodontic treatment",
+                    treatment: "Clear Aligners"
+                  }
+                ]}
                 className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-2xl p-6 shadow-xl"
               />
             </div>

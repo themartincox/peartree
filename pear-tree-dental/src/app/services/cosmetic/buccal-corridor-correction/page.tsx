@@ -441,22 +441,18 @@ export default function BuccalCorridorCorrectionPage() {
 
           <div className="max-w-4xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/before-after/BCC-before.png"
-              afterImage="/images/before-after/BCC-after.png"
-              beforeAlt="Before buccal corridor correction - narrow smile with dark spaces"
-              afterAlt="After buccal corridor correction - wider, fuller smile"
-              description="Complete buccal corridor correction showing elimination of dark spaces and improved smile width"
+              images={[
+                {
+                  beforeSrc: "/images/before-after/BCC-before.png",
+                  afterSrc: "/images/before-after/BCC-after.png",
+                  beforeAlt: "Before buccal corridor correction - narrow smile with dark spaces",
+                  afterAlt: "After buccal corridor correction - wider, fuller smile",
+                  title: "Buccal Corridor Correction",
+                  description: "Complete buccal corridor correction showing elimination of dark spaces and improved smile width",
+                  treatment: "Buccal Corridor Correction"
+                }
+              ]}
               className="mb-8"
-              beforeImageSizes={{
-                small: "/images/before-after/BCC-before-small.webp",
-                medium: "/images/before-after/BCC-before-medium.webp",
-                large: "/images/before-after/BCC-before-large.webp"
-              }}
-              afterImageSizes={{
-                small: "/images/before-after/BCC-after-small.webp",
-                medium: "/images/before-after/BCC-after-medium.webp",
-                large: "/images/before-after/BCC-after-large.webp"
-              }}
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
