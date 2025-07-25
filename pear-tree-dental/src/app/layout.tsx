@@ -185,7 +185,7 @@ export default function RootLayout({
           Skip to navigation
         </a>
 
-        <ServiceWorkerRegistration />
+        {/* <ServiceWorkerRegistration /> */}
         <Navigation />
 
         <main id="main-content" className="min-h-screen" role="main">
