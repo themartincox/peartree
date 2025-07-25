@@ -117,6 +117,7 @@ export default function OrthodonticsPage() {
       <ServiceFAQSchema
         serviceName="Orthodontics & Clear Aligners"
         faqs={orthodonticsFAQs}
+        pageUrl="/services/orthodontics"
       />
       {/* Hero Section */}
       <ServiceHero {...getServiceHeroConfig("/services/orthodontics")} />

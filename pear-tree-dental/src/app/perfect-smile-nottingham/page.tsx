@@ -269,6 +269,7 @@ export default function PerfectSmileNottinghamPage() {
       <ServiceFAQSchema
         serviceName="Perfect Smile Nottingham"
         faqs={perfectSmileFAQs}
+        pageUrl="/perfect-smile-nottingham"
       />
 
       {/* Hero Section */}

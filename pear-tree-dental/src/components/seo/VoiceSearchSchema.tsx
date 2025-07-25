@@ -6,14 +6,14 @@ const VoiceSearchSchema = () => {
     "@graph": [
       {
         "@type": "DentalClinic",
-        "@id": "https://peartreedentalcentre.co.uk/#dentist",
+        "@id": "https://peartree.dental/#dentist",
         "name": "Pear Tree Dental Centre",
         "alternateName": ["Pear Tree Dental", "Burton Joyce Dentist"],
         "description": "Modern dental practice in Burton Joyce offering comprehensive dental care, emergency appointments, and flexible membership plans from £10.95/month.",
         "telephone": "+44 115 931 2935",
         "email": "hello@peartree.dental",
-        "url": "https://peartreedentalcentre.co.uk",
-        "image": "https://peartreedentalcentre.co.uk/images/practice-exterior.jpg",
+        "url": "https://peartree.dental",
+        "image": "https://peartree.dental/images/practice-exterior.jpg",
         "priceRange": "£10.95-£29.95 per month",
         "paymentAccepted": ["Cash", "Credit Card", "NHS", "Private Insurance"],
         "currenciesAccepted": "GBP",
@@ -100,7 +100,7 @@ const VoiceSearchSchema = () => {
           "worstRating": "1"
         },
         "sameAs": [
-          "https://www.facebook.com/peartreedentalcentre",
+          "https://www.facebook.com/peartreeDental",
           "https://www.google.com/maps/place/Pear+Tree+Dental+Centre"
         ],
         "speakable": {
@@ -110,7 +110,7 @@ const VoiceSearchSchema = () => {
       },
       {
         "@type": "FAQPage",
-        "@id": "https://peartreedentalcentre.co.uk/#voice-faq",
+        "@id": "https://peartree.dental/#voice-faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -156,8 +156,8 @@ const VoiceSearchSchema = () => {
       },
       {
         "@type": "WebSite",
-        "@id": "https://peartreedentalcentre.co.uk/#website",
-        "url": "https://peartreedentalcentre.co.uk",
+        "@id": "https://peartree.dental/#website",
+        "url": "https://peartree.dental",
         "name": "Pear Tree Dental Centre",
         "description": "Burton Joyce's premier dental practice offering modern dental care with membership plans from £10.95/month",
         "potentialAction": [
@@ -165,7 +165,7 @@ const VoiceSearchSchema = () => {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://peartreedentalcentre.co.uk/search?q={search_term_string}"
+              "urlTemplate": "https://peartree.dental/search?q={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           },
@@ -173,7 +173,7 @@ const VoiceSearchSchema = () => {
             "@type": "ReserveAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "https://peartreedentalcentre.co.uk/contact"
+              "urlTemplate": "https://peartree.dental/contact"
             },
             "name": "Book Dental Appointment"
           }

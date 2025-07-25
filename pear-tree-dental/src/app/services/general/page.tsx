@@ -104,6 +104,7 @@ export default function GeneralDentistryPage() {
       <ServiceFAQSchema
         serviceName="General Dentistry"
         faqs={generalDentistryFAQs}
+        pageUrl="/services/general"
       />
       {/* Hero Section */}
       <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">

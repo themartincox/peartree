@@ -37,8 +37,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "image": "https://peartree.dental/images/practice-exterior.jpg",
     "logo": "https://peartree.dental/logo.png",
     "sameAs": [
-      "https://www.facebook.com/peartreedentalcentre",
-      "https://www.instagram.com/peartreedentalcentre"
+      "https://www.facebook.com/peartreeDental",
+      "https://www.instagram.com/peartree_dental/"
     ],
     "founder": {
       "@type": "Person",
@@ -391,6 +391,11 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     "review": [
       {
         "@type": "Review",
+        "itemReviewed": {
+          "@type": "LocalBusiness",
+          "@id": "https://peartree.dental/#organization",
+          "name": "Pear Tree Dental Centre"
+        },
         "author": {
           "@type": "Person",
           "name": "Sarah M."
@@ -400,7 +405,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
           "ratingValue": "5",
           "bestRating": "5"
         },
-        "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean."
+        "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean.",
+        "datePublished": "2024-06-15"
       }
     ]
   };

@@ -385,14 +385,7 @@ const FAQSection = () => {
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-white">
-      {/* Add FAQ Structured Data for current category */}
-      <FAQStructuredData
-        faqs={currentCategory.questions.map(q => ({
-          question: q.question,
-          answer: q.answer
-        }))}
-        category={currentCategory.name}
-      />
+      {/* FAQ Schema is now handled by individual pages to prevent duplicates */}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}

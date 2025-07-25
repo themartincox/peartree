@@ -10,11 +10,13 @@ interface FAQItem {
 interface ServiceFAQSchemaProps {
   serviceName: string;
   faqs: FAQItem[];
+  pageUrl?: string;
 }
 
 export default function ServiceFAQSchema({
   serviceName,
-  faqs
+  faqs,
+  pageUrl
 }: ServiceFAQSchemaProps) {
   if (!faqs || faqs.length === 0) {
     return null;
@@ -33,9 +35,14 @@ export default function ServiceFAQSchema({
     }))
   };
 
+  // Create unique ID using pageUrl if provided, fallback to serviceName
+  const schemaId = pageUrl
+    ? `faq-schema-${pageUrl.replace(/[^a-z0-9]/gi, '-').toLowerCase()}`
+    : `faq-schema-${serviceName.replace(/\s+/g, '-').toLowerCase()}`;
+
   return (
     <Script
-      id={`faq-schema-${serviceName.replace(/\s+/g, '-').toLowerCase()}`}
+      id={schemaId}
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(faqData)
