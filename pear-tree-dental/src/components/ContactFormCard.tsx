@@ -255,12 +255,13 @@ export default function ContactFormCard({
 
             {/* Contact Form */}
             <form
-              ref={formRef}
-              onSubmit={handleSubmit}
-              className="space-y-6"
-              data-netlify="true"
-              name="contact-form"
-            >
+  ref={formRef}
+  onSubmit={handleSubmit}
+  className="space-y-6"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  name="contact-form"
+>
               {/* Hidden form identification for Netlify */}
               <input type="hidden" name="form-name" value="contact-form" />
 
