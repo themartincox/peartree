@@ -208,7 +208,7 @@ export default function RootLayout({
         */}
 
         {/* Location Detection Widget */}
-       {/*  <LocationDetection /> */}
+        {/* <LocationDetection /> */}
       </body>
     </html>
   );
