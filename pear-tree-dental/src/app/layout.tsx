@@ -146,16 +146,16 @@ export default function RootLayout({
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="geo.region" content="GB-NTT" />
-        <meta name="geo.placename" content="Burton Joyce" />
+        <meta name="geo.placename" content="Nottingham" />
         <meta name="geo.position" content="52.9769;-1.0085" />
         <meta name="ICBM" content="52.9769, -1.0085" />
 
         {/* Additional SEO Meta Tags */}
         <meta name="business-hours" content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed" />
         <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
-        <meta name="rating" content="5.0" />
-        <meta name="review-count" content="200+" />
-        <meta name="service-area" content="Burton Joyce, Nottingham, Gedling, Arnold, Carlton, Mapperley" />
+        <meta name="rating" content="4.9" />
+        <meta name="review-count" content="460" />
+        <meta name="service-area" content="Burton Joyce, Nottingham, Gedling, Arnold, Carlton, Mapperley, West Bridgford, Lowdham, East Bridgford, Bingham, NG4, NG14, Rivendell, Radcliffe-on-Trent" />
 
         {/* Medical Practice Meta Tags */}
         <meta name="medical-specialty" content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery" />
@@ -164,7 +164,7 @@ export default function RootLayout({
 
         <LocalBusinessSchema includeDentistSpecific={true} />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
-        <ServiceAreaSchema primaryLocation="Burton Joyce" specialization="Dental Care" />
+        <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
 <link rel="manifest" href="/manifest.json" />
       </head>
