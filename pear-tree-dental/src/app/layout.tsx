@@ -166,6 +166,7 @@ export default function RootLayout({
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
         <ServiceAreaSchema primaryLocation="Burton Joyce" specialization="Dental Care" />
         <VoiceSearchSchema />
+<link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
         {/* Skip Links for Screen Readers */}
@@ -184,7 +185,7 @@ export default function RootLayout({
           Skip to navigation
         </a>
 
-        {/* <ServiceWorkerRegistration /> */}
+        <ServiceWorkerRegistration />
         <Navigation />
 
         <main id="main-content" className="min-h-screen" role="main">
