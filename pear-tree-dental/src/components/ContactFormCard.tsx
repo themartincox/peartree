@@ -175,7 +175,15 @@ export default function ContactFormCard({
                 <p className="text-sm text-red-700 mt-2">Please try again or call us directly at 0115 931 2935.</p>
               </div>
             )}
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" data-netlify="true" data-netlify-honeypot="bot-field" name="contact-form">
+            <form
+  ref={formRef}
+  onSubmit={handleSubmit}
+  className="space-y-6"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  name="contact-form"
+  action="/thank-you/"
+>
               <input type="hidden" name="form-name" value="contact-form" />
               <div className="hidden"><input name="bot-field" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
