@@ -1,167 +1,243 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface BeforeAfterImage {
-  beforeSrc: string;
-  afterSrc: string;
-  beforeAlt: string;
-  afterAlt: string;
-  title: string;
-  description: string;
-  treatment: string;
-}
+import { ArrowLeft, ArrowRight, Eye, Camera } from "lucide-react";
 
 interface BeforeAfterSliderProps {
-  images: BeforeAfterImage[];
+  beforeImage: string;
+  afterImage: string;
+  beforeAlt: string;
+  afterAlt: string;
+  title?: string;
+  description?: string;
+  treatmentType?: string;
   className?: string;
 }
 
-export default function BeforeAfterSlider({ images, className = "" }: BeforeAfterSliderProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showAfter, setShowAfter] = useState(false);
+export default function BeforeAfterSlider({
+  beforeImage,
+  afterImage,
+  beforeAlt,
+  afterAlt,
+  title,
+  description,
+  treatmentType,
+  className = ""
+}: BeforeAfterSliderProps) {
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mountedRef = useRef(true);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-    setShowAfter(false);
-  };
+  // Handle position updates with mounted check
+  const updatePosition = useCallback((clientX: number) => {
+    if (!mountedRef.current || !containerRef.current) return;
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-    setShowAfter(false);
-  };
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  }, []);
 
-  const currentImage = images[currentIndex];
+  // Handle mouse/touch events for dragging
+  const handleStart = useCallback((clientX: number) => {
+    if (!mountedRef.current) return;
+    setIsDragging(true);
+    updatePosition(clientX);
+  }, [updatePosition]);
+
+  const handleMove = useCallback((clientX: number) => {
+    if (!mountedRef.current) return;
+    updatePosition(clientX);
+  }, [updatePosition]);
+
+  const handleEnd = useCallback(() => {
+    if (!mountedRef.current) return;
+    setIsDragging(false);
+  }, []);
+
+  // Mouse events
+  const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    handleStart(e.clientX);
+  }, [handleStart]);
+
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    handleMove(e.clientX);
+  }, [handleMove]);
+
+  const handleMouseUp = useCallback(() => {
+    handleEnd();
+  }, [handleEnd]);
+
+  // Touch events
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    handleStart(e.touches[0].clientX);
+  }, [handleStart]);
+
+  const handleTouchMove = useCallback((e: TouchEvent) => {
+    e.preventDefault();
+    handleMove(e.touches[0].clientX);
+  }, [handleMove]);
+
+  const handleTouchEnd = useCallback(() => {
+    handleEnd();
+  }, [handleEnd]);
+
+  // Effect to handle global mouse/touch events
+  useEffect(() => {
+    if (isDragging && mountedRef.current) {
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
+
+  // Cleanup effect
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  // Quick position buttons
+  const setPosition = useCallback((position: number) => {
+    if (!mountedRef.current) return;
+    setSliderPosition(position);
+  }, []);
 
   return (
-    <div className={`w-full max-w-4xl mx-auto ${className}`}>
-      <Card className="overflow-hidden shadow-xl">
-        <CardContent className="p-0">
-          {/* Image Container */}
-          <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
-            {/* Before Image */}
-            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-0' : 'opacity-100'}`}>
-              <source media="(min-width: 768px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-large.webp')} type="image/webp" />
-              <source media="(min-width: 480px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
-              <source srcSet={currentImage.beforeSrc.replace('.JPG', '-small.webp')} type="image/webp" />
-              <img
-                src={currentImage.beforeSrc}
-                alt={currentImage.beforeAlt}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </picture>
+    <div className={`space-y-6 ${className}`}>
+      {/* Header */}
+      {(title || treatmentType) && (
+        <div className="text-center space-y-2">
+          {treatmentType && (
+            <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
+              <Camera className="w-4 h-4 mr-2" />
+              {treatmentType} Results
+            </Badge>
+          )}
+          {title && (
+            <h3 className="heading-serif text-2xl font-bold text-pear-primary">
+              {title}
+            </h3>
+          )}
+          {description && (
+            <p className="text-gray-600">{description}</p>
+          )}
+        </div>
+      )}
 
-            {/* After Image */}
-            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-100' : 'opacity-0'}`}>
-              <source media="(min-width: 768px)" srcSet={currentImage.afterSrc.replace('.JPG', '-large.webp')} type="image/webp" />
-              <source media="(min-width: 480px)" srcSet={currentImage.afterSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
-              <source srcSet={currentImage.afterSrc.replace('.JPG', '-small.webp')} type="image/webp" />
-              <img
-                src={currentImage.afterSrc}
-                alt={currentImage.afterAlt}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </picture>
-
-            {/* Before/After Toggle */}
-            <div className="absolute top-4 left-4 flex bg-black/50 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setShowAfter(false)}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  !showAfter
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
-                }`}
-              >
-                Before
-              </button>
-              <button
-                onClick={() => setShowAfter(true)}
-                className={`px-4 py-2 text-sm font-medium transition-colors ${
-                  showAfter
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
-                }`}
-              >
-                After
-              </button>
+      {/* Slider Container */}
+      <div className="relative">
+        <div
+          ref={containerRef}
+          className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+        >
+          {/* Before Image (Base Layer) */}
+          <div className="absolute inset-0">
+            <Image
+              src={beforeImage}
+              alt={beforeAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+            {/* Before Label */}
+            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+              Before
             </div>
-
-            {/* Navigation Arrows */}
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </>
-            )}
-
-            {/* Slide Indicators */}
-            {images.length > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
-                {images.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setCurrentIndex(index);
-                      setShowAfter(false);
-                    }}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentIndex
-                        ? 'bg-white'
-                        : 'bg-white/50 hover:bg-white/75'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-            )}
           </div>
 
-          {/* Image Info */}
-          <div className="p-6">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="text-xl font-semibold text-pear-primary mb-2">
-                  {currentImage.title}
-                </h3>
-                <p className="text-gray-600 mb-3">
-                  {currentImage.description}
-                </p>
-              </div>
-              <Badge variant="outline" className="text-dental-green border-dental-green">
-                {currentImage.treatment}
-              </Badge>
+          {/* After Image (Clipped Layer) */}
+          <div
+            className="absolute inset-0 transition-all duration-75 ease-out"
+            style={{
+              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
+            }}
+          >
+            <Image
+              src={afterImage}
+              alt={afterAlt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            {/* After Label */}
+            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+              After
             </div>
-
-            {/* Progress indicator for multiple images */}
-            {images.length > 1 && (
-              <div className="flex items-center justify-between text-sm text-gray-500">
-                <span>Case {currentIndex + 1} of {images.length}</span>
-                <span className={`font-medium ${showAfter ? 'text-dental-green' : 'text-gray-700'}`}>
-                  {showAfter ? 'After Treatment' : 'Before Treatment'}
-                </span>
-              </div>
-            )}
           </div>
-        </CardContent>
-      </Card>
+
+          {/* Slider Line */}
+          <div
+            className="absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-all duration-75 ease-out z-20"
+            style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+          >
+            {/* Slider Handle */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize hover:bg-gray-50 transition-colors">
+              <div className="flex space-x-1">
+                <ArrowLeft className="w-3 h-3 text-gray-600" />
+                <ArrowRight className="w-3 h-3 text-gray-600" />
+              </div>
+            </div>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            {sliderPosition < 25 ? 'Before' : sliderPosition > 75 ? 'After' : 'Transition'}
+          </div>
+        </div>
+
+        {/* Quick Position Controls */}
+        <div className="flex justify-center space-x-4 mt-4">
+          <Button
+            variant={sliderPosition <= 25 ? "default" : "outline"}
+            size="sm"
+            onClick={() => setPosition(0)}
+            className="text-sm"
+          >
+            Before
+          </Button>
+          <Button
+            variant={sliderPosition > 25 && sliderPosition < 75 ? "default" : "outline"}
+            size="sm"
+            onClick={() => setPosition(50)}
+            className="text-sm"
+          >
+            <Eye className="w-4 h-4 mr-1" />
+            Compare
+          </Button>
+          <Button
+            variant={sliderPosition >= 75 ? "default" : "outline"}
+            size="sm"
+            onClick={() => setPosition(100)}
+            className="text-sm"
+          >
+            After
+          </Button>
+        </div>
+      </div>
+
+      {/* Instructions */}
+      <div className="text-center text-sm text-gray-600">
+        <p>Drag the slider or use the buttons to compare before and after results</p>
+      </div>
     </div>
   );
 }
