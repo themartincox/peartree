@@ -17,7 +17,7 @@ import {
   Activity
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppWidget";
-import ServiceStructuredData, { serviceData } from "@/components/ServiceStructuredData";
+import ServiceStructuredData from '@/components/seo/ServiceStructuredData';
 
 export const metadata: Metadata = {
   title: "Dental Check-ups & Professional Cleaning | Routine Dental Care Burton Joyce - Pear Tree Dental",
