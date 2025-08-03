@@ -224,3 +224,6 @@ export default function WhatsAppWidget({
     </div>
   );
 }
+
+// ✅ Add this export for named imports in other files
+export const WhatsAppButton = WhatsAppWidget;
