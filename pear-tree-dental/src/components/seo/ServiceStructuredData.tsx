@@ -37,6 +37,7 @@ export default function ServiceStructuredData({
   availableChannel
 }: ServiceStructuredDataProps) {
   const serviceData = {
+
     "@context": "https://schema.org",
     "@type": "Service",
     "name": serviceName,
@@ -94,3 +95,4 @@ export default function ServiceStructuredData({
     />
   );
 }
+import { serviceData } from "@/components/ServiceStructuredData";
