@@ -17,8 +17,7 @@ import {
   Activity
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppWidget";
-import ServiceStructuredData, { serviceData } from "@/components/ServiceStructuredData";
-
+import ServiceStructuredData from '@/components/seo/ServiceStructuredData';
 export const metadata: Metadata = {
   title: "White Dental Fillings | Tooth-Coloured Fillings Burton Joyce - Pear Tree Dental",
   description: "Modern white dental fillings in Burton Joyce. Natural-looking, mercury-free composite fillings. Replace old amalgam fillings with tooth-coloured alternatives.",

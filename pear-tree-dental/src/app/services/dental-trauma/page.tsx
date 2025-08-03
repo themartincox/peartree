@@ -18,8 +18,7 @@ import {
   Siren
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppWidget";
-import ServiceStructuredData, { serviceData } from "@/components/ServiceStructuredData";
-
+import ServiceStructuredData from '@/components/seo/ServiceStructuredData';
 export const metadata: Metadata = {
   title: "Dental Trauma Treatment | Emergency Dental Injury Care - Pear Tree Dental",
   description: "Emergency dental trauma treatment in Burton Joyce. Knocked out teeth, broken teeth from sports injuries, accidents. Immediate care available 24/7.",

@@ -17,8 +17,7 @@ import {
   Smile
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppWidget";
-import ServiceStructuredData, { serviceData } from "@/components/ServiceStructuredData";
-
+import ServiceStructuredData from '@/components/seo/ServiceStructuredData';
 export const metadata: Metadata = {
   title: "Composite Bonding | Same-Day Smile Transformation Burton Joyce - Pear Tree Dental",
   description: "Composite bonding in Burton Joyce. Same-day smile transformation with tooth-coloured resin. Fix chips, gaps, and discoloration instantly.",

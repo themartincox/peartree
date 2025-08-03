@@ -18,8 +18,7 @@ import {
   Pill
 } from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppWidget";
-import ServiceStructuredData, { serviceData } from "@/components/ServiceStructuredData";
-
+import ServiceStructuredData from '@/components/seo/ServiceStructuredData';
 export const metadata: Metadata = {
   title: "Dental Abscess Emergency Treatment | Severe Toothache Relief - Pear Tree Dental",
   description: "Emergency dental abscess treatment in Burton Joyce. Severe toothache, facial swelling, fever. Immediate pain relief and infection treatment available.",
