@@ -35,7 +35,6 @@ export default function BeforeAfterSlider({
   // Handle position updates with mounted check
   const updatePosition = useCallback((clientX: number) => {
     if (!mountedRef.current || !containerRef.current) return;
-
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
@@ -90,17 +89,16 @@ export default function BeforeAfterSlider({
   // Effect to handle global mouse/touch events
   useEffect(() => {
     if (isDragging && mountedRef.current) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchmove", handleTouchMove, { passive: false });
+      document.addEventListener("touchend", handleTouchEnd);
     }
-
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
@@ -119,7 +117,7 @@ export default function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className={'space-y-6 ${className}'}>
+    <div className={`space-y-6 ${className}`}>
       {/* Header */}
       {(title || treatmentType) && (
         <div className="text-center space-y-2">
@@ -134,9 +132,7 @@ export default function BeforeAfterSlider({
               {title}
             </h3>
           )}
-          {description && (
-            <p className="text-gray-600">{description}</p>
-          )}
+          {description && <p className="text-gray-600">{description}</p>}
         </div>
       )}
 
@@ -158,7 +154,6 @@ export default function BeforeAfterSlider({
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
-            {/* Before Label */}
             <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
               Before
             </div>
@@ -168,7 +163,7 @@ export default function BeforeAfterSlider({
           <div
             className="absolute inset-0 transition-all duration-75 ease-out"
             style={{
-              clipPath: inset(0 ${100 - sliderPosition}% 0 0)
+              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
             }}
           >
             <Image
@@ -178,7 +173,6 @@ export default function BeforeAfterSlider({
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            {/* After Label */}
             <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
               After
             </div>
@@ -187,9 +181,8 @@ export default function BeforeAfterSlider({
           {/* Slider Line */}
           <div
             className="absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-all duration-75 ease-out z-20"
-            style={{ left: ${sliderPosition}%, transform: 'translateX(-50%)' }}
+            style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
           >
-            {/* Slider Handle */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize hover:bg-gray-50 transition-colors">
               <div className="flex space-x-1">
                 <ArrowLeft className="w-3 h-3 text-gray-600" />
@@ -200,7 +193,7 @@ export default function BeforeAfterSlider({
 
           {/* Progress Indicator */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {sliderPosition < 25 ? 'Before' : sliderPosition > 75 ? 'After' : 'Transition'}
+            {sliderPosition < 25 ? "Before" : sliderPosition > 75 ? "After" : "Transition"}
           </div>
         </div>
 
