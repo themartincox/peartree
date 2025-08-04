@@ -439,20 +439,16 @@ export default function BuccalCorridorCorrectionPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto mb-8">
             <BeforeAfterSlider
-              images={[
-                {
-                  beforeSrc: "/images/before-after/BCC-before.png",
-                  afterSrc: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Before buccal corridor correction - narrow smile with dark spaces",
-                  afterAlt: "After buccal corridor correction - wider, fuller smile",
-                  title: "Buccal Corridor Correction",
-                  description: "Complete buccal corridor correction showing elimination of dark spaces and improved smile width",
-                  treatment: "Buccal Corridor Correction"
-                }
-              ]}
-              className="mb-8"
+              beforeImage="/images/before-after/BCC-before.png"
+              afterImage="/images/before-after/BCC-after.png"
+              beforeAlt="Patient's smile before buccal corridor correction showing narrow smile with visible dark spaces on the sides"
+              afterAlt="Patient's smile after buccal corridor correction showing wider, fuller smile with eliminated dark spaces"
+              title="Buccal Corridor Correction Transformation"
+              description="Complete smile enhancement eliminating dark buccal corridors for a wider, more confident smile"
+              treatmentType="Buccal Corridor Correction"
+              className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

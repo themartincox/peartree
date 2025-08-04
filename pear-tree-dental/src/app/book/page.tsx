@@ -33,37 +33,7 @@ export default function BookPage() {
           </p>
         </div>
 
-        {/* Quick Contact Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-            <Phone className="w-12 h-12 text-dental-green mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-pear-primary mb-2">Call Us</h3>
-            <p className="text-gray-600 mb-4">For immediate booking or urgent concerns</p>
-            <Button asChild className="bg-dental-green hover:bg-dental-green/90 text-white">
-              <a href="tel:01159312935">0115 931 2935</a>
-            </Button>
-          </Card>
 
-          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-            <Mail className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-pear-primary mb-2">Email Us</h3>
-            <p className="text-gray-600 mb-4">For general inquiries and information</p>
-            <Button asChild variant="outline" className="border-pear-primary text-pear-primary">
-              <a href="mailto:hello@peartree.dental">hello@peartree.dental</a>
-            </Button>
-          </Card>
-
-          <Card className="text-center p-6 hover:shadow-lg transition-shadow">
-            <MapPin className="w-12 h-12 text-pear-gold mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-pear-primary mb-2">Visit Us</h3>
-            <p className="text-gray-600 mb-4">22 Nottingham Road, Burton Joyce</p>
-            <Button asChild variant="outline" className="border-pear-gold text-pear-gold">
-              <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noreferrer">
-                Get Directions
-              </a>
-            </Button>
-          </Card>
-        </div>
 
         {/* Booking Form */}
         <div className="max-w-6xl mx-auto">

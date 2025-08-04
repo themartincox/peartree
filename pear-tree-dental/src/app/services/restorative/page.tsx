@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterButton from "@/components/BeforeAfterButton";
 import {
   ShieldCheck,
   Wrench,
@@ -334,20 +335,18 @@ export default function RestorativeDentistryPage() {
             </p>
           </div>
 
-          <BeforeAfterSlider
-            images={[
-              {
-                beforeSrc: "/images/before-after/repair-restore-before.JPG",
-                afterSrc: "/images/before-after/repair-restore-after.JPG",
-                beforeAlt: "Damaged teeth before restorative treatment",
-                afterAlt: "Beautiful restored teeth after treatment",
-                title: "Complete Restorative Transformation",
-                description: "Comprehensive restoration using crowns and bridges to restore function and aesthetics",
-                treatment: "Crown & Bridge Work"
-              }
-            ]}
-            className="mb-16"
-          />
+          <div className="max-w-4xl mx-auto mb-16">
+            <BeforeAfterSlider
+              beforeImage="/images/before-after/flexible-denture-removable-bridge-before.png"
+              afterImage="/images/before-after/flexible-denture-removable-bridge-after.png"
+              beforeAlt="Patient before flexible denture treatment showing missing teeth and compromised smile"
+              afterAlt="Patient after flexible denture treatment with natural-looking, comfortable dentures providing full smile restoration"
+              title="Flexible Denture Transformation"
+              description="Revolutionary flexible denture technology providing superior comfort, natural appearance, and confident function"
+              treatmentType="Flexible Dentures"
+              className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6"
+            />
+          </div>
         </div>
       </section>
 
@@ -441,20 +440,24 @@ export default function RestorativeDentistryPage() {
             </p>
           </div>
 
-          <BeforeAfterSlider
-            images={[
-              {
-                beforeSrc: "/images/before-after/flexible-denture-removable-bridge-before.png",
-                afterSrc: "/images/before-after/flexible-denture-removable-bridge-after.png",
-                beforeAlt: "Before flexible denture treatment",
-                afterAlt: "After flexible denture treatment showing improved comfort and appearance",
-                title: "Flexible Denture Transformation",
-                description: "Comfortable, natural-looking flexible denture solution providing excellent fit and function",
-                treatment: "Flexible Dentures"
-              }
-            ]}
-            className="mb-16"
-          />
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="overflow-hidden" style={{ margin: '-10px 0', padding: '10px 0' }}>
+              <BeforeAfterButton
+                images={[
+                  {
+                    beforeSrc: "/images/before-after/repair-restore-before.JPG",
+                    afterSrc: "/images/before-after/repair-restore-after.JPG",
+                    beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
+                    afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
+                    title: "Dental Implant Restoration",
+                    description: "Complete tooth replacement with dental implant providing natural appearance and full functionality like your own teeth",
+                    treatment: "Single Tooth Implant"
+                  }
+                ]}
+                className="[&>div]:aspect-[16/8] [&_img]:object-cover [&_img]:object-center"
+              />
+            </div>
+          </div>
         </div>
       </section>
 

@@ -536,33 +536,27 @@ export default function WeddingDaySmilePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Wedding Whitening Example */}
             <BeforeAfterSlider
-              images={[
-                {
-                  beforeSrc: "/images/general-dental-checkup.webp",
-                  afterSrc: "/images/cosmetic-dentistry-services.webp",
-                  beforeAlt: "Bride's teeth before professional whitening treatment",
-                  afterAlt: "Bride's teeth after professional whitening treatment - dramatically whiter",
-                  title: "Wedding Day Whitening",
-                  description: "Professional whitening gave Sarah the perfect bright smile for her wedding photos",
-                  treatment: "Teeth Whitening"
-                }
-              ]}
-              className="bg-white rounded-2xl p-6 shadow-lg"
+              beforeImage="/images/before-after/whitening-composite-edge-bonding-before.JPG"
+              afterImage="/images/before-after/whitening-composite-edge-bonding-after.JPG"
+              beforeAlt="Bride's teeth before professional whitening treatment showing natural discoloration"
+              afterAlt="Bride's teeth after professional whitening treatment - dramatically whiter smile perfect for wedding photos"
+              title="Wedding Day Whitening"
+              description="Professional whitening transformation creating the perfect bright smile for your special day"
+              treatmentType="Wedding Whitening"
+              className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6"
             />
 
-            {/* Complete Smile Makeover Example */}
+            {/* Complete Smile Enhancement Example */}
             <BeforeAfterSlider
-              images={[
-                {
-                  beforeSrc: "/images/dental-consultation-room.jpg",
-                  afterSrc: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
-                  beforeAlt: "Bride's smile before complete makeover with veneers",
-                  afterAlt: "Bride's smile after complete makeover with porcelain veneers",
-                  title: "Complete Bridal Makeover",
-                  description: "Emily's complete smile transformation with veneers created her dream wedding smile",
-                  treatment: "Smile Makeover"
-                }
-              ]}
+              beforeImage="/images/before-after/BCC-before.png"
+              afterImage="/images/before-after/BCC-after.png"
+              beforeAlt="Bride's smile before buccal corridor correction showing narrow smile"
+              afterAlt="Bride's smile after buccal corridor correction showing wider, more photogenic smile"
+              title="Complete Bridal Smile Enhancement"
+              description="Comprehensive smile enhancement creating a wider, more confident smile perfect for wedding photography"
+              treatmentType="Bridal Smile Makeover"
+              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6"
+            />
               className="bg-white rounded-2xl p-6 shadow-lg"
             />
           </div>

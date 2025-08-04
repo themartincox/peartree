@@ -107,40 +107,50 @@ export default function ContactFormCard({
                 <span>Contact Information</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="group">
-                <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => {
-                    // trackLocationConversion('contact_info_phone_click', 'burton_joyce'); // <-- STEP 5: Commented out
-                    window.open('tel:01159312935');
-                  }}>
-                  <Phone className="h-5 w-5 text-pear-gold" />
-                  <div><p className="font-medium">Call Us</p><p className="text-sm text-white/90">0115 931 2935</p></div>
-                </div>
+            <CardContent className="space-y-4">
+              {/* Call Us Card */}
+              <div className="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                <Phone className="w-8 h-8 text-dental-green mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-pear-primary mb-2">Call Us</h3>
+                <p className="text-gray-600 text-sm mb-3">For immediate booking or urgent concerns</p>
+                <Button asChild size="sm" className="bg-dental-green hover:bg-dental-green/90 text-white">
+                  <a href="tel:01159312935">0115 931 2935</a>
+                </Button>
               </div>
-              <div className="group">
-                <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => {
-                    // trackLocationConversion('contact_info_email_click', 'burton_joyce'); // <-- STEP 5: Commented out
-                    window.open('mailto:hello@peartree.dental');
-                  }}>
-                  <Mail className="h-5 w-5 text-pear-gold" />
-                  <div><p className="font-medium">Email Us</p><p className="text-sm text-white/90">hello@peartree.dental</p></div>
-                </div>
+
+              {/* Email Us Card */}
+              <div className="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                <Mail className="w-8 h-8 text-pear-primary mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-pear-primary mb-2">Email Us</h3>
+                <p className="text-gray-600 text-sm mb-3">For general inquiries and information</p>
+                <Button asChild size="sm" variant="outline" className="border-pear-primary text-pear-primary">
+                  <a href="mailto:hello@peartree.dental">hello@peartree.dental</a>
+                </Button>
               </div>
-              <div className="group">
-                <div className="flex items-center space-x-3 p-3 rounded-lg bg-white/10 hover:bg-white/20 transition-colors cursor-pointer"
-                  onClick={() => {
-                    // trackLocationConversion('contact_info_directions_click', 'burton_joyce'); // <-- STEP 5: Commented out
-                    window.open('https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL');
-                  }}>
-                  <MapPin className="h-5 w-5 text-pear-gold" />
-                  <div><p className="font-medium">Visit Us</p><p className="text-sm text-white/90">22 Nottingham Road</p><p className="text-sm text-white/90">Burton Joyce, NG14 5AL</p></div>
-                </div>
+
+              {/* Visit Us Card */}
+              <div className="bg-white rounded-lg p-4 text-center hover:shadow-md transition-shadow">
+                <MapPin className="w-8 h-8 text-pear-gold mx-auto mb-3" />
+                <h3 className="text-lg font-bold text-pear-primary mb-2">Visit Us</h3>
+                <p className="text-gray-600 text-sm mb-3">22 Nottingham Road, Burton Joyce</p>
+                <Button asChild size="sm" variant="outline" className="border-pear-gold text-pear-gold">
+                  <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noreferrer">
+                    Get Directions
+                  </a>
+                </Button>
               </div>
-              <div className="border-t border-white/20 pt-4">
-                <div className="flex items-center space-x-3 mb-3"><Clock className="h-5 w-5 text-pear-gold" /><p className="font-medium">Opening Hours</p></div>
-                <div className="text-sm text-white/90 space-y-1 ml-8"><p>Mon-Thu: 8:45am - 5:00pm</p><p>Friday: 8:00am - 3:30pm</p><p>Sat-Sun: Closed</p></div>
+
+              {/* Opening Hours */}
+              <div className="border-t border-white/20 pt-4 mt-6">
+                <div className="flex items-center justify-center space-x-2 mb-3 text-white">
+                  <Clock className="h-5 w-5 text-pear-gold" />
+                  <p className="font-medium">Opening Hours</p>
+                </div>
+                <div className="text-sm text-white/90 space-y-1 text-center">
+                  <p>Mon-Thu: 8:45am - 5:00pm</p>
+                  <p>Friday: 8:00am - 3:30pm</p>
+                  <p>Sat-Sun: Closed</p>
+                </div>
               </div>
             </CardContent>
           </Card>

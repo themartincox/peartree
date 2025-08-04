@@ -54,7 +54,7 @@ export default function TeethWhiteningPage() {
     },
     {
       question: "How long does teeth whitening last?",
-      answer: "Professional whitening results typically last 1-3 years depending on your lifestyle habits. Enlighten whitening can provide even longer-lasting results with proper maintenance."
+      answer: "Professional whitening results typically last 10+ years depending on your lifestyle habits. Enlighten whitening can provide even longer-lasting results with proper maintenance."
     },
     {
       question: "Is teeth whitening safe?",
@@ -214,7 +214,7 @@ export default function TeethWhiteningPage() {
                     <div className="text-gray-600">Whiter in weeks</div>
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                    <div className="font-semibold text-yellow-600 text-lg">1-3 Years</div>
+                    <div className="font-semibold text-yellow-600 text-lg">10+ Years</div>
                     <div className="text-gray-600">Long-lasting</div>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ export default function TeethWhiteningPage() {
                   <div className="text-gray-600">Whiter in weeks</div>
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                  <div className="font-semibold text-yellow-600 text-lg">1-3 Years</div>
+                  <div className="font-semibold text-yellow-600 text-lg">10+ Years</div>
                   <div className="text-gray-600">Long-lasting</div>
                 </div>
               </div>
@@ -422,21 +422,16 @@ export default function TeethWhiteningPage() {
           </div>
 
           <div className="max-w-4xl lg:max-w-6xl mx-auto">
-            <div className="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-2xl" style={{ padding: '10px' }}>
-              <BeforeAfterSlider
-                images={[
-                  {
-                    beforeSrc: "/images/teeth-whitening-before.webp",
-                    afterSrc: "/images/teeth-whitening-after.webp",
-                    beforeAlt: "Teeth before professional whitening treatment - showing natural discoloration",
-                    afterAlt: "Teeth after professional whitening - dramatically whiter and brighter smile",
-                    title: "Professional Teeth Whitening",
-                    description: "Real people, real results, achieved with our professional whitening systems",
-                    treatment: "Teeth Whitening"
-                  }
-                ]}
-              />
-            </div>
+            <BeforeAfterSlider
+              beforeImage="/images/before-after/whitening-composite-edge-bonding-before.JPG"
+              afterImage="/images/before-after/whitening-composite-edge-bonding-after.JPG"
+              beforeAlt="Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections"
+              afterAlt="Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment"
+              title="Professional Whitening & Edge Bonding Results"
+              description="Real patient transformation achieved with our professional whitening system and composite edge bonding"
+              treatmentType="Professional Whitening & Edge Bonding"
+              className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6"
+            />
           </div>
         </div>
       </section>

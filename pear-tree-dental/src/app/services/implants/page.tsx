@@ -10,7 +10,7 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterButton from "@/components/BeforeAfterButton";
 import {
   Zap,
   Shield,
@@ -318,20 +318,19 @@ export default function ImplantsPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <BeforeAfterSlider
+          <div className="max-w-4xl mx-auto mb-8">
+            <BeforeAfterButton
               images={[
                 {
                   beforeSrc: "/images/before-after/implants-before.png",
                   afterSrc: "/images/before-after/implants-after.png",
-                  beforeAlt: "Before dental implant - missing tooth gap",
-                  afterAlt: "After dental implant - natural-looking replacement tooth",
-                  title: "Dental Implant Transformation",
-                  description: "Complete dental implant transformation showing natural-looking tooth replacement",
+                  beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
+                  afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
+                  title: "Single Tooth Implant Transformation",
+                  description: "Complete dental implant transformation showing natural-looking tooth replacement that functions just like your natural teeth",
                   treatment: "Single Tooth Implant"
                 }
               ]}
-              className="mb-8"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">

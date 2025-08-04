@@ -676,18 +676,14 @@ export default function OrthodonticsPage() {
 
             <div>
               <BeforeAfterSlider
-                images={[
-                  {
-                    beforeSrc: "/images/orthodontics-before.png",
-                    afterSrc: "/images/orthodontics-after.png",
-                    beforeAlt: "Crooked and misaligned teeth before orthodontic treatment",
-                    afterAlt: "Perfectly straight and aligned teeth after clear aligner treatment",
-                    title: "Clear Aligner Transformation",
-                    description: "See the incredible results achieved with our orthodontic treatment",
-                    treatment: "Clear Aligners"
-                  }
-                ]}
-                className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-2xl p-6 shadow-xl"
+                beforeImage="/images/before-after/BCC-before.png"
+                afterImage="/images/before-after/BCC-after.png"
+                beforeAlt="Patient's smile before orthodontic enhancement showing alignment and spacing concerns"
+                afterAlt="Patient's smile after orthodontic treatment showing improved alignment and spacing"
+                title="Orthodontic Smile Enhancement"
+                description="See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments"
+                treatmentType="Clear Aligner Treatment"
+                className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6"
               />
             </div>
           </div>
