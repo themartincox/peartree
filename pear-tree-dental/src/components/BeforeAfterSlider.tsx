@@ -119,7 +119,7 @@ export default function BeforeAfterSlider({
   }, []);
 
   return (
-    <div className={space-y-6 ${className}}>
+    <div className={'space-y-6 ${className}'}>
       {/* Header */}
       {(title || treatmentType) && (
         <div className="text-center space-y-2">
