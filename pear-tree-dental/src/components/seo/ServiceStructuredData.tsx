@@ -2,6 +2,7 @@
 
 import Script from 'next/script';
 
+
 interface ServiceStructuredDataProps {
   serviceName: string;
   description: string;
@@ -65,6 +66,7 @@ export default function ServiceStructuredData({
       }
     }),
     "areaServed": areaServed?.map(area => ({
+ 
       "@type": "Place",
       "name": area
     })) || [
@@ -94,3 +96,5 @@ export default function ServiceStructuredData({
     />
   );
 }
+
+export const serviceData = {};
