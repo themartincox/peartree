@@ -99,7 +99,7 @@ export default function ContactFormCard({
   return (
     <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${className}`}>
       {showContactInfo && (
-        <div className="lg:col-span-1 space-y-6">
+        <div className="lg:col-span-1 space-y-6 order-2 lg:order-1">
           <Card className="bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
@@ -158,7 +158,7 @@ export default function ContactFormCard({
       )}
 
       {/* The rest of the JSX is unchanged, only the logic and imports above are modified */}
-      <div className={showContactInfo ? "lg:col-span-2" : "lg:col-span-3"}>
+      <div className={showContactInfo ? "lg:col-span-2 order-1 lg:order-2" : "lg:col-span-3"}>
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">

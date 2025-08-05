@@ -48,7 +48,6 @@ export default function NewPatientsPage() {
   ];
 
   const whatToBring = [
-    "Photo ID (driving licence or passport)",
     "Previous dental records or X-rays if available",
     "List of current medications",
     "Insurance details or membership information",
@@ -89,13 +88,17 @@ export default function NewPatientsPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="btn-gold text-white font-semibold group">
-                <CalendarDays className="w-5 h-5 mr-2" />
-                Book Your First Appointment
-              </Button>
-              <Button size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
-                <Phone className="w-5 h-5 mr-2" />
-                Call 0115 931 2935
+              <Link href="/book">
+                <Button size="lg" className="btn-gold text-white font-semibold group">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Your First Appointment
+                </Button>
+              </Link>
+              <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
+                <a href="tel:01159312935">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Call 0115 931 2935
+                </a>
               </Button>
             </div>
           </div>
@@ -262,10 +265,12 @@ export default function NewPatientsPage() {
                   Learn About Membership
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
-                <CalendarDays className="w-5 h-5 mr-2" />
-                Book Consultation
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Consultation
+                </Button>
+              </Link>
             </div>
 
             <div className="mt-8 p-6 bg-white/10 rounded-2xl backdrop-blur-sm">

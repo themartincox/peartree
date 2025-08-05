@@ -173,17 +173,78 @@ export default function PracticePage() {
               <div className="relative">
                 <Card className="overflow-hidden shadow-xl">
                   <CardContent className="p-0">
-                    <div className="aspect-video bg-gradient-to-br from-pear-primary/10 to-pear-primary/5 flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <Building2 className="h-16 w-16 text-pear-primary mx-auto mb-4" />
-                        <h3 className="heading-serif text-xl font-semibold text-pear-primary mb-2">
-                          Modern Dental Practice
-                        </h3>
-                        <p className="text-gray-600">
-                          Easily accessible location with excellent transport links and free parking
-                        </p>
+                    <a
+                      href="https://www.google.com/maps/place/Pear+Tree+Dental+Centre/@52.9857989,-1.0448653,17z/data=!3m1!4b1!4m6!3m5!1s0x4879c65a8b3cba23:0xf52130aa5ccb21b!8m2!3d52.985799!4d-1.039989!16s%2Fg%2F1vxdxtj6?entry=ttu&g_ep=EgoyMDI1MDczMC4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative group cursor-pointer"
+                    >
+                      <div className="aspect-video bg-gradient-to-br from-green-100 via-blue-50 to-green-50 relative overflow-hidden">
+                        {/* Map-style background with roads and location indicator */}
+                        <div className="absolute inset-0">
+                          <svg viewBox="0 0 600 400" className="w-full h-full">
+                            {/* Background */}
+                            <rect width="600" height="400" fill="#f8fdf8" />
+
+                            {/* Roads */}
+                            <path d="M0 200 L600 200" stroke="#e2e8f0" strokeWidth="8" />
+                            <path d="M300 0 L300 400" stroke="#e2e8f0" strokeWidth="6" />
+                            <path d="M150 100 L450 100" stroke="#f1f5f9" strokeWidth="4" />
+                            <path d="M150 300 L450 300" stroke="#f1f5f9" strokeWidth="4" />
+
+                            {/* Main Road Label */}
+                            <text x="350" y="195" fontSize="12" fill="#64748b" fontFamily="Arial">Nottingham Road</text>
+
+                            {/* Location Pin */}
+                            <circle cx="320" cy="180" r="8" fill="#ef4444" />
+                            <path d="M320 170 L320 190" stroke="#dc2626" strokeWidth="2" />
+
+                            {/* Practice Building */}
+                            <rect x="310" y="185" width="20" height="15" fill="#09394d" rx="2" />
+
+                            {/* Surrounding area indicators */}
+                            <circle cx="200" cy="150" r="3" fill="#10b981" opacity="0.6" />
+                            <circle cx="450" cy="250" r="3" fill="#10b981" opacity="0.6" />
+                            <circle cx="150" cy="300" r="3" fill="#10b981" opacity="0.6" />
+
+                            {/* Burton Joyce label */}
+                            <text x="350" y="150" fontSize="14" fill="#09394d" fontWeight="bold" fontFamily="Arial">Burton Joyce</text>
+                          </svg>
+                        </div>
+
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+
+                        <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200">
+                          <div className="flex items-center space-x-2">
+                            <MapPin className="w-4 h-4 text-pear-primary" />
+                            <span className="text-sm font-medium text-pear-primary">View on Google Maps</span>
+                          </div>
+                        </div>
+
+                        <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-gray-200">
+                          <h3 className="font-semibold text-pear-primary mb-1">
+                            Pear Tree Dental
+                          </h3>
+                          <p className="text-sm text-gray-600">
+                            22 Nottingham Road, Burton Joyce, NG14 5AL
+                          </p>
+                          <div className="flex items-center space-x-4 mt-2 text-xs text-gray-500">
+                            <span>🚗 Free parking available</span>
+                            <span>🚌 Bus routes nearby</span>
+                          </div>
+                          <p className="text-xs text-pear-primary font-medium mt-1">
+                            Click to get directions
+                          </p>
+                        </div>
+
+                        {/* Hover effect indicator */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="bg-pear-primary text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                            Open in Google Maps
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                    </a>
                   </CardContent>
                 </Card>
               </div>

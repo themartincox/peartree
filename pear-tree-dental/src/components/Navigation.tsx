@@ -253,7 +253,7 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-3xl text-pear-primary xl:text-left lg:text-center">
+                <div className="brand-logo text-pear-primary xl:text-left lg:text-center" style={{ fontSize: 25, lineHeight: '1.125' }}>
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>

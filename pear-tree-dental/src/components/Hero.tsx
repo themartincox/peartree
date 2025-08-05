@@ -62,7 +62,7 @@ const Hero = () => {
           {/* Follow-up Text Third on Mobile */}
           <div className="text-center mb-8">
             <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS
+              Modern dental care serving Nottingham and surrounding areas. Skip the NHS
               waiting lists with our membership plans from just £10.95/month.
             </p>
           </div>
@@ -130,7 +130,7 @@ const Hero = () => {
 
             {/* Description */}
             <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-              Modern dental care in Burton Joyce, Nottinghamshire. Skip the NHS
+             Modern dental care serving Nottingham and surrounding areas. Skip the NHS
               waiting lists with our membership plans from just £10.95/month.
             </p>
 
