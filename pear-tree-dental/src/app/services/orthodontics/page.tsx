@@ -309,17 +309,13 @@ export default function OrthodonticsPage() {
 
           <div className="max-w-4xl mx-auto">
             <BeforeAfterSlider
-              images={[
-                {
-                  beforeSrc: "/images/before-after/BCC-before.png",
-                  afterSrc: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Before orthodontic treatment - buccal corridor correction",
-                  afterAlt: "After orthodontic treatment - improved buccal corridor",
-                  title: "Orthodontic Transformation",
-                  description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
-                  treatment: "Clear Aligners"
-                }
-              ]}
+              beforeImage="/images/before-after/BCC-before.png"
+              afterImage="/images/before-after/BCC-after.png"
+              beforeAlt="Before orthodontic treatment - buccal corridor correction"
+              afterAlt="After orthodontic treatment - improved buccal corridor"
+              title="Orthodontic Transformation"
+              description="Complete smile transformation showing improved buccal corridor and overall smile aesthetics"
+              treatmentType="Clear Aligners"
               className="mb-8"
             />
 
