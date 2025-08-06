@@ -24,7 +24,7 @@ import {
   Target,
   Settings,
   Layers,
-  Bridge
+  Link
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -80,7 +80,7 @@ export default function ArnoldDentalBridgesPage() {
       features: ["Most common type", "Excellent durability", "Natural appearance", "Immediate results"],
       price: "From £1,200",
       duration: "2-3 weeks",
-      icon: Bridge,
+      icon: Link,
       suitability: "1-4 missing teeth with healthy adjacent teeth"
     },
     {
@@ -231,7 +231,7 @@ export default function ArnoldDentalBridgesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
                 <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
-                  <Bridge className="w-5 h-5 mr-2" />
+                  <Link className="w-5 h-5 mr-2" />
                   Book Free Bridge Consultation
                 </Button>
               </Link>
@@ -539,7 +539,7 @@ export default function ArnoldDentalBridgesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
                 <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
-                  <Bridge className="w-5 h-5 mr-2" />
+                  <Link className="w-5 h-5 mr-2" />
                   Book Free Consultation
                 </Button>
               </Link>

@@ -31,7 +31,7 @@ import {
   Crown,
   Zap,
   DollarSign,
-  Tooth
+  Circle
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -88,7 +88,7 @@ export default function GedlingFamilyDentalImplantsPage() {
       timeframe: "3-6 months total treatment",
       pricing: "From £2,400",
       benefits: "Preserves adjacent teeth, most natural feel",
-      icon: Tooth
+      icon: Circle
     },
     {
       option: "Multiple Implants",
@@ -334,7 +334,7 @@ export default function GedlingFamilyDentalImplantsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full">
-                  <Tooth className="w-5 h-5 mr-2" />
+                  <Circle className="w-5 h-5 mr-2" />
                   Book Implant Consultation
                 </Button>
               </Link>
@@ -763,7 +763,7 @@ export default function GedlingFamilyDentalImplantsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full">
-                  <Tooth className="w-5 h-5 mr-2" />
+                  <Circle className="w-5 h-5 mr-2" />
                   Book Implant Consultation
                 </Button>
               </Link>
