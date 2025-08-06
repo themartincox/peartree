@@ -384,7 +384,7 @@ export default function GedlingFamilyDentalImplantsPage() {
             </div>
 
             <div className="text-center bg-blue-50 rounded-lg p-8">
-              <Tooth className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+              <Circle className="w-12 h-12 text-blue-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-pear-primary mb-4">Smart Investment in Permanent Tooth Replacement</h3>
               <p className="text-lg text-gray-600 mb-6">
                 We understand that Gedling working families make careful decisions about major investments.
@@ -715,7 +715,7 @@ export default function GedlingFamilyDentalImplantsPage() {
 
                 <div className="text-center">
                   <div className="bg-blue-50 rounded-lg p-6">
-                    <Tooth className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                    <Circle className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                     <h4 className="font-bold text-blue-700 mb-2">Family Dental Implants</h4>
                     <p className="text-gray-600">Practical tooth replacement solutions</p>
                   </div>
