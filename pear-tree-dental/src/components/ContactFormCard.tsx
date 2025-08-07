@@ -134,7 +134,7 @@ export default function ContactFormCard({
                 <h3 className="text-lg font-bold text-pear-primary mb-2">Visit Us</h3>
                 <p className="text-gray-600 text-sm mb-3">22 Nottingham Road, Burton Joyce</p>
                 <Button asChild size="sm" variant="outline" className="border-pear-gold text-pear-gold">
-                  <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noreferrer">
+                  <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE" target="_blank" rel="noreferrer">
                     Get Directions
                   </a>
                 </Button>

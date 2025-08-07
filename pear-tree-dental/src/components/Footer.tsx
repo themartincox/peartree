@@ -47,7 +47,7 @@ const Footer = () => {
                 <div className="text-xs sm:text-sm text-white/80">
                   <div>22 Nottingham Road</div>
                   <div>Burton Joyce, Nottingham</div>
-                  <div>UK NG14 5AL</div>
+                  <div>UK NG14 5AE</div>
                 </div>
               </div>
 

@@ -72,7 +72,7 @@ export default function NottinghamDentistPage() {
               "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AL",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
@@ -766,7 +766,7 @@ export default function NottinghamDentistPage() {
                 <p className="text-sm opacity-90">
                   22 Nottingham Road<br />
                   Burton Joyce<br />
-                  Nottinghamshire NG14 5AL<br />
+                  Nottinghamshire NG14 5AE<br />
                   <br />
                   Just 15 minutes from Nottingham city centre<br />
                   Free parking available

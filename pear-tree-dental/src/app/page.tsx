@@ -73,7 +73,7 @@ export default async function HomePage() {
     },
     {
       question: "Where is your dental practice located?",
-      answer: "We're located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We're easy to find on the main A612 road with free parking available directly outside the practice."
+      answer: "We're located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We're easy to find on the main A612 road with free parking available directly outside the practice."
     },
     {
       question: "What's included in a routine dental examination?",
@@ -81,7 +81,7 @@ export default async function HomePage() {
     },
     {
       question: "How can I contact the practice?",
-      answer: "You can call us at 0115 931 2935, email hello@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We also offer online booking for your convenience."
+      answer: "You can call us at 0115 931 2935, email hello@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We also offer online booking for your convenience."
     }
   ];
 

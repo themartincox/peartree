@@ -143,7 +143,7 @@ export default function PracticePage() {
                     <p className="text-gray-600 leading-relaxed">
                       22 Nottingham Road<br />
                       Burton Joyce<br />
-                      Nottingham, NG14 5AL
+                      Nottingham, NG14 5AE
                     </p>
                   </div>
                   <div>
@@ -226,7 +226,7 @@ export default function PracticePage() {
                             Pear Tree Dental
                           </h3>
                           <p className="text-sm text-gray-600">
-                            22 Nottingham Road, Burton Joyce, NG14 5AL
+                            22 Nottingham Road, Burton Joyce, NG14 5AE
                           </p>
                           <div className="flex items-center space-x-4 mt-2 text-xs text-gray-500">
                             <span>🚗 Free parking available</span>

@@ -20,7 +20,7 @@ const PracticeShowcase = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Main Practice Showcase */}
-            <Card className="relative overflow-hidden bg-white shadow-2xl h-[600px] md:h-[500px] group">
+            <Card className="relative overflow-hidden bg-white shadow-2xl h-[600px] lg:h-[500px] group">
               {/* Practice Image Background */}
               <div className="absolute inset-0">
                 <Image
@@ -34,12 +34,12 @@ const PracticeShowcase = () => {
               </div>
 
               {/* Content Overlay */}
-              <div className="relative p-6 md:p-8 h-full flex flex-col justify-between text-white z-10">
+              <div className="relative p-6 lg:p-8 h-full flex flex-col justify-between text-white z-10">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 leading-tight">
+                  <h2 className="text-2xl lg:text-3xl font-bold mb-3 lg:mb-4 leading-tight">
                     Experience Excellence in Every Detail
                   </h2>
-                  <p className="text-white/95 mb-4 md:mb-6 text-base md:text-lg leading-relaxed">
+                  <p className="text-white/95 mb-4 lg:mb-6 text-base lg:text-lg leading-relaxed">
                     Our practice combines cutting-edge technology with luxurious comfort.
                     From digital X-rays to relaxing treatment rooms, every aspect is designed
                     with your experience in mind.
@@ -90,7 +90,7 @@ const PracticeShowcase = () => {
                       <div className="text-gray-700">
                         <div className="font-medium">22 Nottingham Rd</div>
                         <div>Burton Joyce, Nottingham</div>
-                        <div>UK NG14 5AL</div>
+                        <div>UK NG14 5AE</div>
                       </div>
                     </div>
 

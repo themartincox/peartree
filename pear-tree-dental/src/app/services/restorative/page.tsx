@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import BeforeAfterButton from "@/components/BeforeAfterButton";
 import {
   ShieldCheck,
@@ -335,15 +335,26 @@ export default function RestorativeDentistryPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto mb-16">
-            <BeforeAfterSlider
-              beforeImage="/images/before-after/flexible-denture-removable-bridge-before.png"
-              afterImage="/images/before-after/flexible-denture-removable-bridge-after.png"
-              beforeAlt="Patient before flexible denture treatment showing missing teeth and compromised smile"
-              afterAlt="Patient after flexible denture treatment with natural-looking, comfortable dentures providing full smile restoration"
-              title="Flexible Denture Transformation"
-              description="Revolutionary flexible denture technology providing superior comfort, natural appearance, and confident function"
-              treatmentType="Flexible Dentures"
+          <div className="max-w-7xl mx-auto mb-16">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/flexible-denture-removable-bridge-before.png",
+                afterImage: "/images/before-after/flexible-denture-removable-bridge-after.png",
+                beforeAlt: "Patient before flexible denture treatment showing missing teeth and compromised smile",
+                afterAlt: "Patient after flexible denture treatment with natural-looking, comfortable dentures providing full smile restoration",
+                title: "Flexible Denture Transformation",
+                description: "Revolutionary flexible denture technology providing superior comfort, natural appearance, and confident function",
+                treatmentType: "Flexible Dentures"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/flexible-denture-removable-bridge-before.png",
+                afterImage: "/images/before-after/flexible-denture-removable-bridge-after.png",
+                beforeAlt: "Before dental crown treatment showing damaged and discolored tooth",
+                afterAlt: "After dental crown treatment with natural-looking porcelain crown restoration",
+                title: "Dental Crown Restoration",
+                description: "High-quality porcelain crown providing long-lasting protection and natural aesthetics",
+                treatmentType: "Porcelain Crown"
+              }}
               className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6"
             />
           </div>

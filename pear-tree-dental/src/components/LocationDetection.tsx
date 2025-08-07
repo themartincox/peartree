@@ -199,7 +199,7 @@ export default function LocationDetection() {
               <div className="flex items-center space-x-3 text-sm">
                 <MapPin className="w-4 h-4 text-dental-green" />
                 <span className="text-gray-700">
-                  <strong>22 Nottingham Road, Burton Joyce, NG14 5AL</strong>
+                  <strong>22 Nottingham Road, Burton Joyce, NG14 5AE</strong>
                 </span>
               </div>
 
@@ -236,7 +236,7 @@ export default function LocationDetection() {
                 </a>
               </Button>
               <Button asChild variant="outline" size="sm" className="flex-1" onClick={handleNavigation}>
-                <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL" target="_blank" rel="noopener noreferrer">
+                <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE" target="_blank" rel="noopener noreferrer">
                   <Navigation className="w-4 h-4 mr-1" />
                   Get Directions
                 </a>

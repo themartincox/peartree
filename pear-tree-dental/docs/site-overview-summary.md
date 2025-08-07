@@ -18,7 +18,7 @@
 **Pear Tree Dental** is a comprehensive digital presence for a modern dental practice located in Burton Joyce, Nottinghamshire, serving the greater Nottingham area. The website represents a premium dental practice offering both NHS and private services, with a strong focus on cosmetic dentistry, orthodontics, and advanced dental treatments.
 
 ### Key Business Information
-- **Location**: 22 Nottingham Road, Burton Joyce, NG14 5AL
+- **Location**: 22 Nottingham Road, Burton Joyce, NG14 5AE
 - **Phone**: 0115 931 2935
 - **Email**: hello@peartree.dental
 - **Service Area**: Burton Joyce, Nottingham, and surrounding areas

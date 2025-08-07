@@ -64,7 +64,7 @@ export default function NottinghamTeethStraighteningPage() {
               "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AL",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
@@ -532,7 +532,7 @@ export default function NottinghamTeethStraighteningPage() {
             <div className="mt-8 text-sm opacity-90">
               <p>
                 <MapPin className="h-4 w-4 inline mr-1" />
-                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AL
+                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE
               </p>
               <p className="mt-2">Convenient access from Nottingham city centre</p>
             </div>

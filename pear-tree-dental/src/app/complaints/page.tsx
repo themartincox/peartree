@@ -173,7 +173,7 @@ export default function ComplaintsPage() {
                     <p className="text-sm text-gray-600">
                       22 Nottingham Road<br />
                       Burton Joyce<br />
-                      NG14 5AL
+                      NG14 5AE
                     </p>
                   </div>
                 </div>
