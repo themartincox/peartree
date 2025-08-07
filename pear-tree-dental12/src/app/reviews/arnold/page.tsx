@@ -169,7 +169,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
     {
       platform: "Google Reviews",
       insights: "Parking and professional service most frequently mentioned",
-      sampleSize: "220+ Arnold dental practice reviews analysed",
+      sampleSize: "220+ Arnold dental practice reviews analyzed",
       keyFindings: "Modern facilities and professional respect highly valued"
     },
     {
@@ -232,14 +232,6 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pear-background to-white">
-      {/* Floating Mobile CTA */}
-      <div className="fixed bottom-6 right-6 z-50 md:hidden">
-        <Link href="/book">
-          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white p-4 rounded-full shadow-2xl transform hover:scale-110 transition-all border-2 border-emerald-400">
-            <Phone className="w-6 h-6" />
-          </Button>
-        </Link>
-      </div>
       {/* Structured Data Schema */}
       <script
         type="application/ld+json"
@@ -297,13 +289,13 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full">
                   <Circle className="w-5 h-5 mr-2" />
                   Experience Professional Dental Care
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full">
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -317,7 +309,63 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
         </div>
       </section>
 
-      {/* Patient Priorities - MOVED UP */}
+      {/* Research Sources */}
+      <section className="py-16 bg-cream/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+                Our Research: Real Patient Feedback from Arnold
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                We analyzed hundreds of patient reviews from Google, Facebook, and healthcare platforms
+                to understand what Arnold residents truly value in dental care.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {researchSources.map((source, index) => (
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <BarChart3 className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                    <h3 className="font-bold text-pear-primary mb-2">{source.platform}</h3>
+                    <p className="text-sm text-gray-600 mb-3">{source.sampleSize}</p>
+                    <div className="bg-purple-50 rounded-lg p-3">
+                      <p className="text-xs text-purple-700 font-medium">{source.keyFindings}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center bg-purple-50 rounded-lg p-8">
+              <MessageSquare className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">Research Methodology</h3>
+              <p className="text-lg text-gray-600 mb-6">
+                Our analysis included patient reviews from Google Reviews, Facebook comments,
+                healthcare review websites, and local community forums to understand what
+                Arnold residents prioritize when choosing dental care.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-2">450+</div>
+                  <p className="text-gray-600">Patient reviews analyzed</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-2">6 months</div>
+                  <p className="text-gray-600">Research period</p>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600 mb-2">Multiple platforms</div>
+                  <p className="text-gray-600">Comprehensive coverage</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Patient Priorities */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -365,40 +413,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
         </div>
       </section>
 
-      {/* Mid-Page CTA */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl p-8 text-white text-center shadow-xl">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                Ready to Experience Better Dental Care?
-              </h3>
-              <p className="text-lg mb-6 opacity-90">
-                Join hundreds of Arnold patients who've already made the switch to professional, hassle-free dental care.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/book">
-                  <Button size="lg" className="bg-white text-emerald-600 hover:bg-gray-100 px-8 py-3 font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
-                    <CalendarDays className="w-5 h-5 mr-2" />
-                    Book Your Consultation
-                  </Button>
-                </Link>
-                <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Speak to Our Team
-                  </Button>
-                </a>
-              </div>
-              <p className="text-sm mt-4 opacity-80">
-                📍 Free parking • ⏱️ 10 minutes from Arnold • 🦷 Same-day crowns available
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Common Concerns - MOVED UP */}
+      {/* Common Concerns */}
       <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -444,7 +459,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
         </div>
       </section>
 
-      {/* Practice Comparison - MOVED UP */}
+      {/* Practice Comparison */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
@@ -497,45 +512,6 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
         </div>
       </section>
 
-      {/* Secondary CTA */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 text-white shadow-xl">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-                    See Why Arnold Patients Choose Us
-                  </h3>
-                  <p className="text-lg mb-4 opacity-90">
-                    Modern technology • Free parking • Professional service • Transparent pricing
-                  </p>
-                  <p className="text-sm opacity-80">
-                    ✓ CEREC same-day crowns ✓ Digital X-rays ✓ Emergency appointments ✓ No hidden costs
-                  </p>
-                </div>
-                <div className="text-center md:text-right">
-                  <div className="flex flex-col gap-3">
-                    <Link href="/book">
-                      <Button size="lg" className="w-full bg-white text-purple-600 hover:bg-gray-100 px-8 py-3 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all">
-                        <Star className="w-5 h-5 mr-2" />
-                        Book Your Visit Today
-                      </Button>
-                    </Link>
-                    <a href="tel:01159312935" className="w-full">
-                      <Button size="lg" variant="outline" className="w-full border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all">
-                        <Phone className="w-5 h-5 mr-2" />
-                        Call Now: 0115 931 2935
-                      </Button>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Patient Testimonial */}
       <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -564,62 +540,6 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
               <div className="p-6">
                 <div className="text-3xl font-bold text-purple-600 mb-2">Professional</div>
                 <p className="text-gray-600">Respects your time and schedule</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Research Sources - MOVED DOWN */}
-      <section className="py-16 bg-cream/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Our Research: Real Patient Feedback from Arnold
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We analysed hundreds of patient reviews from Google, Facebook, and healthcare platforms
-                to understand what Arnold residents truly value in dental care.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {researchSources.map((source, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <BarChart3 className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <h3 className="font-bold text-pear-primary mb-2">{source.platform}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{source.sampleSize}</p>
-                    <div className="bg-purple-50 rounded-lg p-3">
-                      <p className="text-xs text-purple-700 font-medium">{source.keyFindings}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center bg-purple-50 rounded-lg p-8">
-              <MessageSquare className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Research Methodology</h3>
-              <p className="text-lg text-gray-600 mb-6">
-                Our analysis included patient reviews from Google Reviews, Facebook comments,
-                healthcare review websites, and local community forums to understand what
-                Arnold residents prioritize when choosing dental care.
-              </p>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">450+</div>
-                  <p className="text-gray-600">Patient reviews analysed</p>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">6 months</div>
-                  <p className="text-gray-600">Research period</p>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">Multiple platforms</div>
-                  <p className="text-gray-600">Comprehensive coverage</p>
-                </div>
               </div>
             </div>
           </div>
@@ -705,26 +625,26 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
               all just 10 minutes from Arnold.
             </p>
 
-            <div className="bg-white/20 border-2 border-white/40 rounded-xl p-6 mb-8 inline-block backdrop-blur-sm shadow-xl">
-              <p className="text-xl font-bold mb-2">
-                <Star className="inline w-6 h-6 mr-2 text-yellow-300" />
+            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+              <p className="text-lg font-medium mb-2">
+                <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Based on 450+ Arnold Patient Reviews
               </p>
-              <p className="text-base opacity-95 font-semibold">
+              <p className="text-sm opacity-90">
                 Modern facilities • Free parking • Professional service • Quick drive from NG5
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all border-3 border-yellow-300 hover:shadow-yellow-300/50">
-                  <Circle className="w-6 h-6 mr-3" />
-                  Book Your Visit Today
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full">
+                  <Circle className="w-5 h-5 mr-2" />
+                  Book Your Visit
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-3 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all bg-white/15 backdrop-blur-sm hover:shadow-white/50">
-                  <Phone className="w-6 h-6 mr-3" />
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full">
+                  <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
               </a>
