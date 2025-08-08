@@ -1,8 +1,8 @@
-import { Button } from "@/components/button"
+import { Button } from "@/components/ui/button"
 import SmileQuizClient from "@/components/SmileQuizClient" // direct import — no dynamic()
 
 export const metadata = {
-  title: "Smile Design Quiz — Peartree Dental",
+  title: "Smile Design Quiz — Pear Tree Dental",
   description:
     "Discover your perfect smile in 60 seconds. Take our Smile Design quiz to get a personalised plan and book a consultation.",
 }
