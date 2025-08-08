@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useMemo, useRef, useState } from "react"
-import { Button } from "@/components/button"
+import { Button } from "@/components/ui/button"
 
 // Questions and scoring map
 const QUESTIONS = [
