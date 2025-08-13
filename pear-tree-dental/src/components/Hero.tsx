@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] h-screen w-full overflow-hidden pt-0">
+    <section className="relative min-h-[100svh] h-screen w-full overflow-hidden -mt-20 pt-20"> 
       {/* Background image fills viewport, visible under transparent nav */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -39,12 +39,21 @@ const Hero = () => {
         <div className="lg:hidden py-2 sm:py-4">
           {/* H1 First on Mobile */}
           <div className="text-left mb-6">
-            <h1 className="heading-serif text-6xl sm:text-7xl font-bold text-white drop-shadow-md leading-tight">
-              Expert dental care
-              <br />
-              with a <span className="text-pear-gold font-bold">personal</span>
-              <br />
-              <span className="text-pear-gold font-bold">touch</span>
+            <h1 className="heading-serif text-5xl sm:text-6xl md:text-7xl font-bold text-white drop-shadow-md leading-tight">
+              <span className="md:hidden">
+                Expert dental
+                <br />
+                care with a
+                <br />
+                <span className="text-pear-gold font-bold">personal touch</span>
+              </span>
+              <span className="hidden md:inline">
+                Expert dental care
+                <br />
+                with a <span className="text-pear-gold font-bold">personal</span>
+                <br />
+                <span className="text-pear-gold font-bold">touch</span>
+              </span>
             </h1>
           </div>
 
@@ -157,8 +166,8 @@ const Hero = () => {
       </div>
 
       {/* Family Image - positioned outside container, directly relative to section */}
-      <div className="hidden lg:block absolute right-8 bottom-0 z-20 overflow-hidden">
-        <div className="relative transform -translate-y-[5px]">
+      <div className="hidden lg:block absolute right-0 bottom-0 z-20 overflow-hidden">
+        <div className="relative transform -translate-y-[5px] translate-x-[50px]">
           <Image
             src="/images/heroes/pear-tree-family-hero-43.png"
             alt="Happy family at Pear Tree Dental - parents and children smiling"
