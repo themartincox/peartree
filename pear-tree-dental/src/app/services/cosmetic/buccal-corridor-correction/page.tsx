@@ -380,7 +380,7 @@ export default function BuccalCorridorCorrectionPage() {
                     <div>
                       <h4 className="font-semibold text-pear-primary mb-2">Key Features:</h4>
                       <ul className="space-y-1">
-                        {option.features.map((feature, index) => (
+                        {(option.features || []).map((feature, index) => (
                           <li key={index} className="flex items-center text-sm text-gray-600">
                             <Zap className="w-4 h-4 text-pear-gold mr-2 flex-shrink-0" />
                             {feature}

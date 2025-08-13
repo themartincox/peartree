@@ -448,7 +448,7 @@ export default function PatientEducationPage() {
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {article.tags.map((tag) => (
+                    {(article.tags || []).map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs bg-gray-100">
                         {tag}
                       </Badge>

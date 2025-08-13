@@ -393,7 +393,7 @@ export default function MapperleyFamilySmileMakeoversPage() {
                         <Badge variant="outline" className="mb-4">{makeover.timeline}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {makeover.treatments.map((treatment, idx) => (
+                        {(makeover.treatments || []).map((treatment, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{treatment}</span>
@@ -435,7 +435,7 @@ export default function MapperleyFamilySmileMakeoversPage() {
                         <h3 className="font-bold text-pear-primary mb-2">{component.component}</h3>
                         <p className="text-gray-600 text-sm mb-4">{component.description}</p>
                         <div className="space-y-2 mb-4">
-                          {component.benefits.map((benefit, idx) => (
+                          {(component.benefits || []).map((benefit, idx) => (
                             <div key={idx} className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-purple-500 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{benefit}</span>
@@ -480,7 +480,7 @@ export default function MapperleyFamilySmileMakeoversPage() {
                     <p className="text-sm text-gray-600 mb-3">{phase.description}</p>
                     <Badge variant="outline" className="mb-4">{phase.duration}</Badge>
                     <div className="space-y-1">
-                      {phase.activities.map((activity, idx) => (
+                      {(phase.activities || []).map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-purple-500 flex-shrink-0" />
                           {activity}

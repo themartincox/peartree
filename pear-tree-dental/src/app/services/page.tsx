@@ -233,7 +233,7 @@ const ServicesPage = () => {
                       </p>
 
                       <div className="space-y-2 mb-6">
-                        {service.features.map((feature, index) => (
+                        {(service.features || []).map((feature, index) => (
                           <div key={index} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
                             <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>
@@ -313,7 +313,7 @@ const ServicesPage = () => {
                       </p>
 
                       <div className="space-y-2 mb-6">
-                        {service.features.map((feature, index) => (
+                        {(service.features || []).map((feature, index) => (
                           <div key={index} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
                             <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>

@@ -158,7 +158,7 @@ export default function NG14DentalPage() {
                   "Stoke Bardolph",
                   "New Developments",
                   "Rural NG14"
-                ].map((area, index) => (
+                ] || []).map((area, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-dental-green flex-shrink-0" />
                     <span className="text-white">{area}</span>
@@ -255,7 +255,7 @@ export default function NG14DentalPage() {
                       { task: "Register with NG14 GP practice", completed: true },
                       { task: "Register with local dentist", completed: false, important: true },
                       { task: "Explore NG14 local amenities", completed: false }
-                    ].map((item, index) => (
+                    ] || []).map((item, index) => (
                       <div key={index} className={`flex items-center space-x-3 p-3 rounded-lg ${
                         item.important ? 'bg-pear-gold/20 border border-pear-gold/30' :
                         item.completed ? 'bg-dental-green/10' : 'bg-gray-50'
@@ -415,7 +415,7 @@ export default function NG14DentalPage() {
                   features: ["Regular checkups", "Professional cleaning", "Oral health advice", "Early detection"],
                   popular: "Foundation of health"
                 }
-              ].map((service, index) => {
+              ] || []).map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
@@ -426,7 +426,7 @@ export default function NG14DentalPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
+                        {(service.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -479,11 +479,11 @@ export default function NG14DentalPage() {
                   rating: 5,
                   service: "Regular Care"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -505,7 +505,7 @@ export default function NG14DentalPage() {
             <div className="mt-12 text-center">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
-                  {[...Array(5)].map((_, i) => (
+                  {([...Array(5)] || []).map((_, i) => (
                     <Star key={i} className="w-6 h-6 fill-current" />
                   ))}
                 </div>

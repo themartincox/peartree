@@ -271,7 +271,7 @@ export default function EastBridgfordPage() {
                   price: "From £75",
                   badge: "Village Health"
                 }
-              ].map((service, index) => {
+              ] || []).map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <Card key={index} className="p-6 border border-pear-primary/20 hover:border-pear-primary/40 transition-all hover:shadow-lg">
@@ -292,7 +292,7 @@ export default function EastBridgfordPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
+                        {(service.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -362,11 +362,11 @@ export default function EastBridgfordPage() {
                   rating: 5,
                   service: "Village Smile Design"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-xl border border-pear-primary/20">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-pear-primary">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -387,7 +387,7 @@ export default function EastBridgfordPage() {
               <div className="bg-gradient-to-r from-pear-primary/10 to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-pear-primary">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-6 h-6 fill-current" />
                     ))}
                   </div>

@@ -239,10 +239,7 @@ const Navigation = () => {
         )}
         aria-label="Main navigation"
       >
-       <div className={cn(
-       "container mx-auto px-4 sm:px-6 lg:px-8",
-       isHome && "bg-transparent" 
-       )}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
             <Link

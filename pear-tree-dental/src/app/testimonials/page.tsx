@@ -219,7 +219,7 @@ export default function TestimonialsPage() {
   const allTestimonials = testimonials.filter(t => !t.featured);
 
   const renderStars = (rating: number) => {
-    return [...Array(5)].map((_, i) => (
+    return ([...Array(5)] || []).map((_, i) => (
       <Star
         key={i}
         className={`w-4 h-4 ${
@@ -375,7 +375,7 @@ export default function TestimonialsPage() {
 
                     {/* Treatment Tags */}
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {testimonial.treatment.map((treatment) => (
+                      {(testimonial.treatment || []).map((treatment) => (
                         <Badge key={treatment} variant="outline" className="text-xs">
                           {treatment}
                         </Badge>
@@ -469,7 +469,7 @@ export default function TestimonialsPage() {
 
                     {/* Treatment Tags */}
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {testimonial.treatment.map((treatment) => (
+                      {(testimonial.treatment || []).map((treatment) => (
                         <Badge key={treatment} variant="outline" className="text-xs">
                           {treatment}
                         </Badge>

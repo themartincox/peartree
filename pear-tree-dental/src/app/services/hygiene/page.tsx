@@ -328,7 +328,7 @@ export default function HygieneServicesPage() {
                     <div className="space-y-2">
                       <h4 className="font-semibold text-pear-primary">Benefits:</h4>
                       <div className="grid grid-cols-2 gap-2">
-                        {service.benefits.map((benefit, index) => (
+                        {(service.benefits || []).map((benefit, index) => (
                           <div key={index} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-cyan-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>

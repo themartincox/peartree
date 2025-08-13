@@ -428,7 +428,7 @@ export default function MapperleyMultiGenerationalRehabilitationPage() {
                         <Badge variant="outline" className="mb-4">{rehabilitation.timeline}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {rehabilitation.treatments.map((treatment, idx) => (
+                        {(rehabilitation.treatments || []).map((treatment, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-indigo-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{treatment}</span>
@@ -474,7 +474,7 @@ export default function MapperleyMultiGenerationalRehabilitationPage() {
                         <div>
                           <h4 className="font-semibold text-indigo-600 text-sm mb-1">Common Needs:</h4>
                           <ul className="space-y-1">
-                            {group.commonNeeds.map((need, idx) => (
+                            {(group.commonNeeds || []).map((need, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-indigo-500 flex-shrink-0" />
                                 {need}
@@ -486,7 +486,7 @@ export default function MapperleyMultiGenerationalRehabilitationPage() {
                         <div>
                           <h4 className="font-semibold text-indigo-600 text-sm mb-1">Treatment Approach:</h4>
                           <ul className="space-y-1">
-                            {group.treatmentApproach.map((approach, idx) => (
+                            {(group.treatmentApproach || []).map((approach, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Star className="w-3 h-3 text-indigo-500 flex-shrink-0" />
                                 {approach}
@@ -534,7 +534,7 @@ export default function MapperleyMultiGenerationalRehabilitationPage() {
                         <h3 className="font-bold text-pear-primary mb-2">{component.component}</h3>
                         <p className="text-gray-600 text-sm mb-4">{component.description}</p>
                         <div className="space-y-2 mb-4">
-                          {component.benefits.map((benefit, idx) => (
+                          {(component.benefits || []).map((benefit, idx) => (
                             <div key={idx} className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-indigo-500 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{benefit}</span>
@@ -579,7 +579,7 @@ export default function MapperleyMultiGenerationalRehabilitationPage() {
                     <p className="text-sm text-gray-600 mb-3">{phase.description}</p>
                     <Badge variant="outline" className="mb-4">{phase.duration}</Badge>
                     <div className="space-y-1">
-                      {phase.activities.map((activity, idx) => (
+                      {(phase.activities || []).map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-indigo-500 flex-shrink-0" />
                           {activity}

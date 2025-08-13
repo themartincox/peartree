@@ -297,7 +297,7 @@ export default function PartialDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-emerald-500 text-white">Preserve & Replace</Badge>
                     <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
+                      {([...Array(5)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-emerald-500 fill-current" />
                       ))}
                     </div>
@@ -383,7 +383,7 @@ export default function PartialDenturesPage() {
                   <div>
                     <h4 className="font-semibold text-green-700 mb-2">Advantages:</h4>
                     <div className="space-y-1">
-                      {type.pros.map((pro, index) => (
+                      {(type.pros || []).map((pro, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{pro}</span>
@@ -394,7 +394,7 @@ export default function PartialDenturesPage() {
                   <div>
                     <h4 className="font-semibold text-amber-700 mb-2">Considerations:</h4>
                     <div className="space-y-1">
-                      {type.cons.map((con, index) => (
+                      {(type.cons || []).map((con, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <Clock className="w-4 h-4 text-amber-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{con}</span>

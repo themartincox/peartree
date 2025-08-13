@@ -136,7 +136,7 @@ export default function PricingPage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 mb-6">
-                    {plan.includes.map((item, idx) => (
+                    {(plan.includes || []).map((item, idx) => (
                       <li key={idx} className="flex items-center space-x-2">
                         <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                         <span className="text-sm text-gray-700">{item}</span>

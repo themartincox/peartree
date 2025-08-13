@@ -270,7 +270,7 @@ export default function EnlightenWhiteningPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-orange-500 text-white">Enlighten Guarantee</Badge>
                     <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
+                      {([...Array(5)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
                       ))}
                     </div>
@@ -364,7 +364,7 @@ export default function EnlightenWhiteningPage() {
                     </div>
                     <div className="lg:col-span-2">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {phase.details.map((detail, idx) => (
+                        {(phase.details || []).map((detail, idx) => (
                           <div key={idx} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-orange-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{detail}</span>

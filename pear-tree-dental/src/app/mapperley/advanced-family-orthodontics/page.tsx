@@ -424,7 +424,7 @@ export default function MapperleyAdvancedFamilyOrthodonticsPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        {solution.benefits.map((benefit, idx) => (
+                        {(solution.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-teal-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -470,7 +470,7 @@ export default function MapperleyAdvancedFamilyOrthodonticsPage() {
                         <div>
                           <h4 className="font-semibold text-teal-600 text-sm mb-1">Premium Solutions:</h4>
                           <ul className="space-y-1">
-                            {group.premiumSolutions.map((solution, idx) => (
+                            {(group.premiumSolutions || []).map((solution, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-teal-500 flex-shrink-0" />
                                 {solution}
@@ -482,7 +482,7 @@ export default function MapperleyAdvancedFamilyOrthodonticsPage() {
                         <div>
                           <h4 className="font-semibold text-teal-600 text-sm mb-1">Family Considerations:</h4>
                           <ul className="space-y-1">
-                            {group.familyConsiderations.map((consideration, idx) => (
+                            {(group.familyConsiderations || []).map((consideration, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Star className="w-3 h-3 text-teal-500 flex-shrink-0" />
                                 {consideration}
@@ -530,7 +530,7 @@ export default function MapperleyAdvancedFamilyOrthodonticsPage() {
                         <h3 className="font-bold text-pear-primary mb-2">{tech.technology}</h3>
                         <p className="text-gray-600 text-sm mb-4">{tech.description}</p>
                         <div className="space-y-2 mb-4">
-                          {tech.advantages.map((advantage, idx) => (
+                          {(tech.advantages || []).map((advantage, idx) => (
                             <div key={idx} className="flex items-center gap-2">
                               <CheckCircle className="w-4 h-4 text-teal-500 flex-shrink-0" />
                               <span className="text-sm text-gray-700">{advantage}</span>
@@ -575,7 +575,7 @@ export default function MapperleyAdvancedFamilyOrthodonticsPage() {
                     <p className="text-sm text-gray-600 mb-3">{step.description}</p>
                     <Badge variant="outline" className="mb-4">{step.duration}</Badge>
                     <div className="space-y-1">
-                      {step.activities.map((activity, idx) => (
+                      {(step.activities || []).map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-teal-500 flex-shrink-0" />
                           {activity}

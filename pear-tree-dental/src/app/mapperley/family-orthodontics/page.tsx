@@ -368,7 +368,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
                         <Badge variant="outline" className="text-xs">{option.bestFor}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {option.features.map((feature, idx) => (
+                        {(option.features || []).map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{feature}</span>
@@ -419,7 +419,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
                         <div>
                           <h4 className="font-semibold text-purple-600 text-sm mb-1">Family Considerations:</h4>
                           <ul className="space-y-1">
-                            {group.familyConsiderations.map((consideration, idx) => (
+                            {(group.familyConsiderations || []).map((consideration, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-purple-500 flex-shrink-0" />
                                 {consideration}

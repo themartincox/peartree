@@ -218,7 +218,7 @@ export default function GedlingPage() {
                   icon: Clock,
                   features: ["Dental implants", "Orthodontics", "Invisalign", "ClearCorrect"]
                 }
-              ].map((service, index) => {
+              ] || []).map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
@@ -229,7 +229,7 @@ export default function GedlingPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
+                        {(service.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -276,11 +276,11 @@ export default function GedlingPage() {
                   rating: 5,
                   service: "General Care"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -303,7 +303,7 @@ export default function GedlingPage() {
             <div className="mt-12 text-center">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
-                  {[...Array(5)].map((_, i) => (
+                  {([...Array(5)] || []).map((_, i) => (
                     <Star key={i} className="w-6 h-6 fill-current" />
                   ))}
                 </div>

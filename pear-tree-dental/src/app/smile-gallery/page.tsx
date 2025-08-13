@@ -411,7 +411,7 @@ export default function SmileGalleryPage() {
 
                     {/* Treatment Tags */}
                     <div className="flex flex-wrap gap-2">
-                      {item.treatment.map((treatment) => (
+                      {(item.treatment || []).map((treatment) => (
                         <Badge key={treatment} variant="outline" className="text-soft-pink border-soft-pink">
                           {treatment}
                         </Badge>
@@ -522,7 +522,7 @@ export default function SmileGalleryPage() {
 
                   {/* Treatment Tags */}
                   <div className="flex flex-wrap gap-1 mb-3">
-                    {item.treatment.map((treatment) => (
+                    {(item.treatment || []).map((treatment) => (
                       <Badge key={treatment} variant="outline" className="text-xs">
                         {treatment}
                       </Badge>
@@ -573,7 +573,7 @@ export default function SmileGalleryPage() {
               { name: "Dental Veneers", icon: Shield, count: "85+", color: "soft-pink" },
               { name: "Dental Implants", icon: Award, count: "200+", color: "dental-green" },
               { name: "Smile Makeovers", icon: Heart, count: "65+", color: "pear-primary" }
-            ].map((category) => {
+            ] || []).map((category) => {
               const Icon = category.icon;
               return (
                 <Link key={category.name} href={`/smile-gallery?category=${category.name.toLowerCase().replace(' ', '-')}`}>

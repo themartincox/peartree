@@ -427,7 +427,7 @@ export default function GedlingFamilyDentistryPage() {
                       <div>
                         <h4 className="font-semibold text-blue-600 text-sm mb-2">Common Treatments:</h4>
                         <ul className="space-y-1">
-                          {group.commonTreatments.map((treatment, idx) => (
+                          {(group.commonTreatments || []).map((treatment, idx) => (
                             <li key={idx} className="text-sm text-gray-700 flex items-center gap-2">
                               <CheckCircle className="w-3 h-3 text-blue-500 flex-shrink-0" />
                               {treatment}

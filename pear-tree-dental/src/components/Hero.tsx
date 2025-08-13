@@ -19,7 +19,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] h-screen w-full overflow-hidden -mt-20 pt-20"> 
+    <section className="relative min-h-[100svh] h-screen w-full overflow-hidden -mt-20 pt-20">
       {/* Background image fills viewport, visible under transparent nav */}
       <div className="absolute inset-0 -z-10">
         <Image

@@ -190,7 +190,7 @@ export default function OrthodonticsPage() {
                     "Compliance indicators",
                     "Proven track record",
                     "Comprehensive case coverage"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                       <span className="text-sm text-gray-700">{feature}</span>
@@ -238,7 +238,7 @@ export default function OrthodonticsPage() {
                     "Comfortable fit",
                     "Digital treatment planning",
                     "Regular progress monitoring"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-lavender flex-shrink-0" />
                       <span className="text-sm text-gray-700">{feature}</span>
@@ -279,7 +279,7 @@ export default function OrthodonticsPage() {
                         { feature: "Treatment Time", aligners: "6-18 months", braces: "18-36 months" },
                         { feature: "Office Visits", aligners: "Every 6-8 weeks", braces: "Every 4-6 weeks" },
                         { feature: "Emergency Visits", aligners: "Rare", braces: "Common (broken brackets)" }
-                      ].map((row, index) => (
+                      ] || []).map((row, index) => (
                         <tr key={index} className="hover:bg-gray-50">
                           <td className="px-6 py-4 text-sm font-medium text-gray-700">{row.feature}</td>
                           <td className="px-6 py-4 text-sm text-center text-soft-pink font-semibold">{row.aligners}</td>
@@ -389,7 +389,7 @@ export default function OrthodonticsPage() {
                     title: "Faster Treatment Time",
                     description: "Average treatment time of 6-18 months compared to 18-36 months with traditional braces, getting you results sooner."
                   }
-                ].map((benefit, index) => {
+                ] || []).map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
@@ -483,7 +483,7 @@ export default function OrthodonticsPage() {
                 description: "Continue playing sports and musical instruments without worry. No risk of cuts from broken brackets.",
                 benefit: "Active lifestyle maintained"
               }
-            ].map((advantage, index) => {
+            ] || []).map((advantage, index) => {
               const Icon = advantage.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink/20 bg-white">
@@ -542,7 +542,7 @@ export default function OrthodonticsPage() {
                 features: ["Biocompatible materials", "Stain-resistant plastic", "Optimal flexibility", "Durable construction"],
                 icon: Shield
               }
-            ].map((feature, index) => {
+            ] || []).map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -557,7 +557,7 @@ export default function OrthodonticsPage() {
                   <CardContent>
                     <p className="text-gray-600 mb-4">{feature.description}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {feature.features.map((item, idx) => (
+                      {(feature.features || []).map((item, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                           <span className="text-sm text-gray-700">{item}</span>
@@ -614,7 +614,7 @@ export default function OrthodonticsPage() {
                 icon: TrendingUp,
                 features: ["Progress monitoring", "New aligners", "Adjustments if needed"]
               }
-            ].map((step, index) => {
+            ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
                 <Card key={index} className="relative overflow-hidden border-2 border-soft-pink/20 hover:border-soft-pink/40 transition-colors">
@@ -630,7 +630,7 @@ export default function OrthodonticsPage() {
                   <CardContent>
                     <p className="text-gray-600 mb-4">{step.description}</p>
                     <ul className="space-y-2">
-                      {step.features.map((feature, idx) => (
+                      {(step.features || []).map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                           <span className="text-sm text-gray-700">{feature}</span>
@@ -665,7 +665,7 @@ export default function OrthodonticsPage() {
                   { condition: "Underbite", description: "Lower teeth extend past upper teeth" },
                   { condition: "Crossbite", description: "Some upper teeth sit inside lower teeth" },
                   { condition: "Open Bite", description: "Front teeth don't meet when biting down" }
-                ].map((item, index) => (
+                ] || []).map((item, index) => (
                   <div key={index} className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-xl p-4 border border-soft-pink/20">
                     <h3 className="font-semibold text-pear-primary mb-2">{item.condition}</h3>
                     <p className="text-sm text-gray-600">{item.description}</p>
@@ -741,7 +741,7 @@ export default function OrthodonticsPage() {
                     "Regular monitoring visits",
                     "Retainers included",
                     "2-year guarantee"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -773,7 +773,7 @@ export default function OrthodonticsPage() {
                     "Extended warranty options",
                     "Flexible payment plans",
                     "Ongoing dental care included"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>

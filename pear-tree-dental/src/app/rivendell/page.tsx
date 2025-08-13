@@ -181,7 +181,7 @@ export default function RivendellPage() {
                       { task: "Find local schools", status: "complete" },
                       { task: "Register with dentist", status: "pending", highlight: true },
                       { task: "Explore local amenities", status: "pending" }
-                    ].map((item, index) => (
+                    ] || []).map((item, index) => (
                       <div key={index} className={`flex items-center space-x-3 p-3 rounded-lg ${
                         item.highlight ? 'bg-pear-gold/20 border border-pear-gold/30' :
                         item.status === 'complete' ? 'bg-dental-green/10' : 'bg-gray-50'
@@ -334,7 +334,7 @@ export default function RivendellPage() {
                   price: "From £300",
                   badge: "Confidence Boost"
                 }
-              ].map((service, index) => {
+              ] || []).map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
@@ -355,7 +355,7 @@ export default function RivendellPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
+                        {(service.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -428,11 +428,11 @@ export default function RivendellPage() {
                   service: "Family Membership",
                   children: "Family of 5"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg border border-dental-green/20">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -453,7 +453,7 @@ export default function RivendellPage() {
               <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-dental-green">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-6 h-6 fill-current" />
                     ))}
                   </div>

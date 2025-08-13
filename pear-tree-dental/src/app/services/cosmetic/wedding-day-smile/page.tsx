@@ -449,7 +449,7 @@ export default function WeddingDaySmilePage() {
                     <div className="bg-rose-50 p-6">
                       <h4 className="font-semibold text-pear-primary mb-4">Key Benefits:</h4>
                       <ul className="space-y-3">
-                        {treatment.benefits.map((benefit, idx) => (
+                        {(treatment.benefits || []).map((benefit, idx) => (
                           <li key={idx} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -502,7 +502,7 @@ export default function WeddingDaySmilePage() {
                   <div>
                     <h4 className="font-semibold text-pear-primary mb-2">Included Treatments:</h4>
                     <ul className="space-y-1">
-                      {pkg.treatments.map((treatment, idx) => (
+                      {(pkg.treatments || []).map((treatment, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{treatment}</span>

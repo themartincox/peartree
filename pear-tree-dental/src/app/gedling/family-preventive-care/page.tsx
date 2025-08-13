@@ -489,7 +489,7 @@ export default function GedlingFamilyPreventiveCare() {
                         <div className="mb-3">
                           <h4 className="font-semibold text-green-600 text-sm mb-2">Key Services:</h4>
                           <ul className="space-y-1">
-                            {group.keyServices.map((service, idx) => (
+                            {(group.keyServices || []).map((service, idx) => (
                               <li key={idx} className="text-sm text-gray-700 flex items-center gap-2">
                                 <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
                                 {service}

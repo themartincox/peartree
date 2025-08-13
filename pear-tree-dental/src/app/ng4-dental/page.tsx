@@ -160,7 +160,7 @@ export default function NG4DentalPage() {
                   "St Albans",
                   "New Estates",
                   "Sherwood Areas"
-                ].map((area, index) => (
+                ] || []).map((area, index) => (
                   <div key={index} className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-dental-green flex-shrink-0" />
                     <span className="text-white">{area}</span>
@@ -399,7 +399,7 @@ export default function NG4DentalPage() {
                   price: "From £2,500",
                   popular: "Latest technology"
                 }
-              ].map((service, index) => {
+              ] || []).map((service, index) => {
                 const Icon = service.icon;
                 return (
                   <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
@@ -417,7 +417,7 @@ export default function NG4DentalPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {service.features.map((feature, idx) => (
+                        {(service.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -490,11 +490,11 @@ export default function NG4DentalPage() {
                   rating: 5,
                   service: "Emergency Care"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -516,7 +516,7 @@ export default function NG4DentalPage() {
             <div className="mt-12 text-center">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
-                  {[...Array(5)].map((_, i) => (
+                  {([...Array(5)] || []).map((_, i) => (
                     <Star key={i} className="w-6 h-6 fill-current" />
                   ))}
                 </div>

@@ -291,7 +291,7 @@ export default function ArnoldDentalCrownsPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        {crown.features.map((feature, idx) => (
+                        {(crown.features || []).map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                             <span className="text-sm text-gray-700">{feature}</span>

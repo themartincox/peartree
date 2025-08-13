@@ -321,7 +321,7 @@ export default function MapperleyChildrensDentistryPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        {group.services.map((service, idx) => (
+                        {(group.services || []).map((service, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{service}</span>
@@ -388,7 +388,7 @@ export default function MapperleyChildrensDentistryPage() {
                           </div>
                           <p className="text-gray-600 text-sm mb-4">{service.description}</p>
                           <div className="space-y-2">
-                            {service.benefits.map((benefit, idx) => (
+                            {(service.benefits || []).map((benefit, idx) => (
                               <div key={idx} className="flex items-center gap-2">
                                 <CheckCircle className="w-4 h-4 text-blue-500 flex-shrink-0" />
                                 <span className="text-sm text-gray-700">{benefit}</span>

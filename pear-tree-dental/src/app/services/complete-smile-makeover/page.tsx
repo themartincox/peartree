@@ -384,7 +384,7 @@ export default function CompleteSmileMakeoverPage() {
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
-                      {treatment.benefits.map((benefit, idx) => (
+                      {(treatment.benefits || []).map((benefit, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{benefit}</span>
@@ -433,7 +433,7 @@ export default function CompleteSmileMakeoverPage() {
                   <div>
                     <h4 className="font-semibold text-pear-primary mb-2">Typical Treatments:</h4>
                     <ul className="space-y-1">
-                      {pkg.treatments.map((treatment, idx) => (
+                      {(pkg.treatments || []).map((treatment, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{treatment}</span>
@@ -546,7 +546,7 @@ export default function CompleteSmileMakeoverPage() {
                     <span className={`text-xs ${accentColors[index]} font-medium`}>{step.duration}</span>
                   </div>
                   <ul className="text-xs text-gray-500 space-y-1">
-                    {step.includes.map((item, idx) => (
+                    {(step.includes || []).map((item, idx) => (
                       <li key={idx}>• {item}</li>
                     ))}
                   </ul>
@@ -592,7 +592,7 @@ export default function CompleteSmileMakeoverPage() {
                     "Multiple procedures included",
                     "Progress monitoring",
                     "Final adjustments"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -624,7 +624,7 @@ export default function CompleteSmileMakeoverPage() {
                     "Flexible payment plans",
                     "Ongoing maintenance included",
                     "Additional family discounts"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>

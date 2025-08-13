@@ -269,7 +269,7 @@ export default function WestBridgfordSmileDesignPage() {
                   icon: Crown,
                   time: "2-6 visits"
                 }
-              ].map((step, index) => {
+              ] || []).map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <Card key={index} className="p-6 text-center border border-pear-gold/20">
@@ -351,7 +351,7 @@ export default function WestBridgfordSmileDesignPage() {
                   price: "From £2,800",
                   popular: "Discreet straightening"
                 }
-              ].map((treatment, index) => {
+              ] || []).map((treatment, index) => {
                 const Icon = treatment.icon;
                 return (
                   <Card key={index} className="p-6 border border-pear-gold/20 hover:border-pear-gold/40 transition-colors">
@@ -368,7 +368,7 @@ export default function WestBridgfordSmileDesignPage() {
                       <p className="text-gray-600">{treatment.description}</p>
                       <div className="text-sm font-semibold text-dental-green">{treatment.price}</div>
                       <ul className="space-y-1">
-                        {treatment.features.map((feature, idx) => (
+                        {(treatment.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -482,11 +482,11 @@ export default function WestBridgfordSmileDesignPage() {
                   rating: 5,
                   treatment: "Porcelain Veneer Design"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-pear-gold">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>

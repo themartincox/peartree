@@ -288,7 +288,7 @@ export default function ArnoldCompositeBondingPage() {
                         <span className="text-sm text-gray-600">{treatment.duration}</span>
                       </div>
                       <div className="space-y-2">
-                        {treatment.benefits.map((benefit, idx) => (
+                        {(treatment.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -364,7 +364,7 @@ export default function ArnoldCompositeBondingPage() {
                   description: "Professional polishing for natural shine",
                   duration: "15 minutes"
                 }
-              ].map((step, index) => (
+              ] || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

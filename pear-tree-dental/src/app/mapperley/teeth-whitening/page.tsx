@@ -378,7 +378,7 @@ export default function MapperleyTeethWhiteningPage() {
                         <Badge variant="outline" className="text-xs">{option.bestFor}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {option.features.map((feature, idx) => (
+                        {(option.features || []).map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-yellow-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{feature}</span>
@@ -424,7 +424,7 @@ export default function MapperleyTeethWhiteningPage() {
                         <div>
                           <h4 className="font-semibold text-yellow-600 text-sm mb-1">Best Options:</h4>
                           <ul className="space-y-1">
-                            {group.bestOptions.map((option, idx) => (
+                            {(group.bestOptions || []).map((option, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-yellow-500 flex-shrink-0" />
                                 {option}
@@ -436,7 +436,7 @@ export default function MapperleyTeethWhiteningPage() {
                         <div>
                           <h4 className="font-semibold text-yellow-600 text-sm mb-1">Whitening Tips:</h4>
                           <ul className="space-y-1">
-                            {group.whiteningTips.map((tip, idx) => (
+                            {(group.whiteningTips || []).map((tip, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Star className="w-3 h-3 text-yellow-500 flex-shrink-0" />
                                 {tip}
@@ -463,7 +463,7 @@ export default function MapperleyTeethWhiteningPage() {
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-2">
-                        {tipCategory.tips.map((tip, idx) => (
+                        {(tipCategory.tips || []).map((tip, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-yellow-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{tip}</span>

@@ -396,7 +396,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <Badge variant="outline" className="text-xs">{implant.bestFor}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {implant.benefits.map((benefit, idx) => (
+                        {(implant.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -442,7 +442,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <div>
                           <h4 className="font-semibold text-emerald-600 text-sm mb-1">Implant Solutions:</h4>
                           <ul className="space-y-1">
-                            {group.implantSolutions.map((solution, idx) => (
+                            {(group.implantSolutions || []).map((solution, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                                 {solution}
@@ -454,7 +454,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <div>
                           <h4 className="font-semibold text-emerald-600 text-sm mb-1">Family Considerations:</h4>
                           <ul className="space-y-1">
-                            {group.familyConsiderations.map((consideration, idx) => (
+                            {(group.familyConsiderations || []).map((consideration, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Star className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                                 {consideration}
@@ -502,7 +502,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                     <p className="text-sm text-gray-600 mb-3">{phase.description}</p>
                     <Badge variant="outline" className="mb-4">{phase.duration}</Badge>
                     <div className="space-y-1">
-                      {phase.activities.map((activity, idx) => (
+                      {(phase.activities || []).map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                           {activity}

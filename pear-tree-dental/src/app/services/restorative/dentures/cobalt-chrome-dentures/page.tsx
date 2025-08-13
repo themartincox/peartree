@@ -313,7 +313,7 @@ export default function CobaltChromeDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-slate-600 text-white">Premium Craftsmanship</Badge>
                     <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
+                      {([...Array(5)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-slate-600 fill-current" />
                       ))}
                     </div>

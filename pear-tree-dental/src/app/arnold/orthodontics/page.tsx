@@ -319,7 +319,7 @@ export default function ArnoldOrthodonticsPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        {option.features.map((feature, idx) => (
+                        {(option.features || []).map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                             <span className="text-sm text-gray-700">{feature}</span>
@@ -380,7 +380,7 @@ export default function ArnoldOrthodonticsPage() {
                     <div>
                       <h4 className="font-semibold text-pear-primary mb-2">Benefits:</h4>
                       <ul className="space-y-1">
-                        {group.benefits.map((benefit, idx) => (
+                        {(group.benefits || []).map((benefit, idx) => (
                           <li key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -391,7 +391,7 @@ export default function ArnoldOrthodonticsPage() {
                     <div>
                       <h4 className="font-semibold text-pear-primary mb-2">Recommended Options:</h4>
                       <div className="flex flex-wrap gap-2">
-                        {group.recommendedOptions.map((option, idx) => (
+                        {(group.recommendedOptions || []).map((option, idx) => (
                           <Badge key={idx} variant="outline" className="text-xs">
                             {option}
                           </Badge>

@@ -278,7 +278,7 @@ export default function GeneralDentistryPage() {
                 price: "From £150",
                 icon: Users
               }
-            ].map((service, index) => {
+            ] || []).map((service, index) => {
               const Icon = service.icon;
               return (
                 <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green/10 border-2 border-dental-green/20 hover:border-dental-green hover:shadow-xl hover:shadow-dental-green/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
@@ -293,7 +293,7 @@ export default function GeneralDentistryPage() {
                     </div>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{service.description}</p>
                     <ul className="space-y-1">
-                      {service.features.map((feature, idx) => (
+                      {(service.features || []).map((feature, idx) => (
                         <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                           <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
                           <span>{feature}</span>
@@ -341,7 +341,7 @@ export default function GeneralDentistryPage() {
                     title: "Whole Health Connection",
                     description: "Good oral health is linked to overall health. We help protect your general wellbeing too."
                   }
-                ].map((benefit, index) => {
+                ] || []).map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">

@@ -362,7 +362,7 @@ export default function DenturesPage() {
                     <div>
                       <h4 className="font-semibold text-pear-primary mb-2">Features:</h4>
                       <div className="space-y-1">
-                        {denture.features.map((feature, index) => (
+                        {(denture.features || []).map((feature, index) => (
                           <div key={index} className="flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-amber-600 flex-shrink-0" />
                             <span className="text-xs text-gray-700">{feature}</span>

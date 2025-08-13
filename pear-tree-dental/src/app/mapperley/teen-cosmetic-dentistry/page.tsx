@@ -426,7 +426,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                         </div>
                       </div>
                       <div className="space-y-2">
-                        {treatment.benefits.map((benefit, idx) => (
+                        {(treatment.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pink-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -472,7 +472,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                         <div>
                           <h4 className="font-semibold text-pink-600 text-sm mb-1">Cosmetic Solutions:</h4>
                           <ul className="space-y-1">
-                            {concern.cosmeticSolutions.map((solution, idx) => (
+                            {(concern.cosmeticSolutions || []).map((solution, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-pink-500 flex-shrink-0" />
                                 {solution}
@@ -484,7 +484,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                         <div>
                           <h4 className="font-semibold text-pink-600 text-sm mb-1">Parental Considerations:</h4>
                           <ul className="space-y-1">
-                            {concern.parentalConsiderations.map((consideration, idx) => (
+                            {(concern.parentalConsiderations || []).map((consideration, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Users className="w-3 h-3 text-pink-500 flex-shrink-0" />
                                 {consideration}
@@ -582,7 +582,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                     <p className="text-sm text-gray-600 mb-3">{step.description}</p>
                     <Badge variant="outline" className="mb-4">{step.duration}</Badge>
                     <div className="space-y-1">
-                      {step.activities.map((activity, idx) => (
+                      {(step.activities || []).map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-pink-500 flex-shrink-0" />
                           {activity}

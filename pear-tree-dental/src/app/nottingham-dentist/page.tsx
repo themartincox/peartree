@@ -481,7 +481,7 @@ export default function NottinghamDentistPage() {
               <Card className="p-6 shadow-lg">
                 <CardContent>
                   <div className="flex items-center space-x-1 text-dental-green mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
@@ -497,7 +497,7 @@ export default function NottinghamDentistPage() {
               <Card className="p-6 shadow-lg">
                 <CardContent>
                   <div className="flex items-center space-x-1 text-dental-green mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
@@ -513,7 +513,7 @@ export default function NottinghamDentistPage() {
               <Card className="p-6 shadow-lg">
                 <CardContent>
                   <div className="flex items-center space-x-1 text-dental-green mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>

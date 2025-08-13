@@ -417,7 +417,7 @@ export default function RestorativeDentistryPage() {
                   <div className="mb-6">
                     <span className="text-gray-500 text-sm">Materials:</span>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      {treatment.materials.map((material) => (
+                      {(treatment.materials || []).map((material) => (
                         <Badge key={material} variant="secondary" className="text-xs">
                           {material}
                         </Badge>
@@ -498,7 +498,7 @@ export default function RestorativeDentistryPage() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    {material.benefits.map((benefit, benefitIndex) => (
+                    {(material.benefits || []).map((benefit, benefitIndex) => (
                       <li key={benefitIndex} className="flex items-center space-x-2 text-sm">
                         <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                         <span className="text-gray-700">{benefit}</span>

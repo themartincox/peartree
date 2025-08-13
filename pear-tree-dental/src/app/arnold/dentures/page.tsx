@@ -281,7 +281,7 @@ export default function ArnoldDenturesPage() {
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="space-y-2">
-                        {denture.features.map((feature, idx) => (
+                        {(denture.features || []).map((feature, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                             <span className="text-sm text-gray-700">{feature}</span>
@@ -364,7 +364,7 @@ export default function ArnoldDenturesPage() {
                   description: "Delivery and adjustment for perfect fit",
                   duration: "1 hour"
                 }
-              ].map((step, index) => (
+              ] || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

@@ -165,7 +165,7 @@ export default function ImplantsPage() {
                 url: "/services/implants/all-on-4",
                 buttonText: "Explore All-on-4"
               }
-            ].map((implant, index) => (
+            ] || []).map((implant, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
                 {implant.image === "all-on-4" ? (
                   <div className="aspect-[4/3] relative overflow-hidden">
@@ -211,7 +211,7 @@ export default function ImplantsPage() {
                     </div>
 
                     <ul className="space-y-2">
-                      {implant.features.map((feature, idx) => (
+                      {(implant.features || []).map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                           <span className="text-sm text-gray-700">{feature}</span>
@@ -277,7 +277,7 @@ export default function ImplantsPage() {
                 icon: Award,
                 duration: "2-3 weeks"
               }
-            ].map((step, index) => {
+            ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
                 <Card key={index} className="relative overflow-hidden border-2 border-pear-primary/20 hover:border-pear-primary/40 transition-colors">
@@ -390,7 +390,7 @@ export default function ImplantsPage() {
                     title: "Protect Adjacent Teeth",
                     description: "Unlike bridges, implants don't require altering healthy adjacent teeth for support."
                   }
-                ].map((benefit, index) => {
+                ] || []).map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
@@ -431,7 +431,7 @@ export default function ImplantsPage() {
                           { feature: "Adjacent Teeth", implant: "Preserved", bridge: "Altered", denture: "Preserved" },
                           { feature: "Cleaning", implant: "Brush & Floss", bridge: "Special Tools", denture: "Remove Daily" },
                           { feature: "Eating Ability", implant: "100%", bridge: "90%", denture: "60%" }
-                        ].map((row, index) => (
+                        ] || []).map((row, index) => (
                           <tr key={index} className="hover:bg-gray-50">
                             <td className="px-4 py-3 text-sm font-medium text-gray-700">{row.feature}</td>
                             <td className="px-4 py-3 text-sm text-center text-pear-primary font-semibold">{row.implant}</td>
@@ -478,7 +478,7 @@ export default function ImplantsPage() {
                     "Custom crown",
                     "All follow-up care",
                     "10-year guarantee"
-                  ].map((feature, index) => (
+                  ] || []).map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>

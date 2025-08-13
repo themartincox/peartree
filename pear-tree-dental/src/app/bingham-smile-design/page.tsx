@@ -269,7 +269,7 @@ export default function BinghamSmileDesignPage() {
                   icon: Crown,
                   time: "2-8 visits"
                 }
-              ].map((step, index) => {
+              ] || []).map((step, index) => {
                 const Icon = step.icon;
                 return (
                   <Card key={index} className="p-6 text-center border border-dental-green/20">
@@ -351,7 +351,7 @@ export default function BinghamSmileDesignPage() {
                   price: "From £45 per visit",
                   popular: "Maintain results"
                 }
-              ].map((treatment, index) => {
+              ] || []).map((treatment, index) => {
                 const Icon = treatment.icon;
                 return (
                   <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
@@ -368,7 +368,7 @@ export default function BinghamSmileDesignPage() {
                       <p className="text-gray-600">{treatment.description}</p>
                       <div className="text-sm font-semibold text-pear-gold">{treatment.price}</div>
                       <ul className="space-y-1">
-                        {treatment.features.map((feature, idx) => (
+                        {(treatment.features || []).map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -479,11 +479,11 @@ export default function BinghamSmileDesignPage() {
                   rating: 5,
                   treatment: "Digital Smile Design Family Package"
                 }
-              ].map((review, index) => (
+              ] || []).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
-                      {[...Array(review.rating)].map((_, i) => (
+                      {([...Array(review.rating)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>

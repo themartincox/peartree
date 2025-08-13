@@ -215,7 +215,7 @@ export default function EmergencyDentistNottinghamPage() {
                 icon: Activity,
                 color: "red",
               },
-            ].map((condition, index) => (
+            ] || []).map((condition, index) => (
               <Card
                 key={index}
                 className="border-l-4 border-l-red-500 hover:shadow-lg transition-shadow"

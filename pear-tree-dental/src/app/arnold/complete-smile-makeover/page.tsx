@@ -283,7 +283,7 @@ export default function ArnoldCompleteSmileMakeoverPage() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
-                      {option.treatments.map((treatment, idx) => (
+                      {(option.treatments || []).map((treatment, idx) => (
                         <div key={idx} className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                           <span className="text-sm text-gray-700">{treatment}</span>

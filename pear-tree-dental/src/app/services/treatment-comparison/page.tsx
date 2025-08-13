@@ -502,7 +502,7 @@ export default function TreatmentComparisonPage() {
                         {treatment.category}
                       </Badge>
                       <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
+                        {([...Array(5)] || []).map((_, i) => (
                           <Star key={i} className={`w-3 h-3 ${colors.text} fill-current`} />
                         ))}
                       </div>
@@ -674,7 +674,7 @@ export default function TreatmentComparisonPage() {
                         Advantages
                       </h4>
                       <ul className="space-y-2">
-                        {treatment.pros.map((pro, index) => (
+                        {(treatment.pros || []).map((pro, index) => (
                           <li key={index} className="flex items-start space-x-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{pro}</span>
@@ -690,7 +690,7 @@ export default function TreatmentComparisonPage() {
                         Considerations
                       </h4>
                       <ul className="space-y-2 mb-4">
-                        {treatment.cons.map((con, index) => (
+                        {(treatment.cons || []).map((con, index) => (
                           <li key={index} className="flex items-start space-x-2">
                             <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{con}</span>

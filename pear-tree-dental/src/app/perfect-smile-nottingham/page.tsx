@@ -318,7 +318,7 @@ export default function PerfectSmileNottinghamPage() {
                 { icon: Users, text: "500+ Smiles" },
                 { icon: Award, text: "Expert Team" },
                 { icon: MapPin, text: "Nottingham Local" }
-              ].map((item, index) => {
+              ] || []).map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div key={index} className="flex flex-col items-center space-y-2">
@@ -431,7 +431,7 @@ export default function PerfectSmileNottinghamPage() {
                 description: "Your perfect smile deserves perfect care. We provide comprehensive aftercare to ensure your results remain flawless for years to come.",
                 icon: Shield
               }
-            ].map((step, index) => {
+            ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
                 <Card key={index} className="relative text-center hover:shadow-lg transition-shadow">
@@ -484,7 +484,7 @@ export default function PerfectSmileNottinghamPage() {
                     <p className="text-gray-600 mb-6">{option.description}</p>
 
                     <div className="space-y-3">
-                      {option.features.map((feature, idx) => (
+                      {(option.features || []).map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-purple-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{feature}</span>
@@ -516,7 +516,7 @@ export default function PerfectSmileNottinghamPage() {
               <Card key={index} className="border-2 border-purple-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-5 h-5 text-purple-500 fill-current" />
                     ))}
                   </div>
@@ -582,7 +582,7 @@ export default function PerfectSmileNottinghamPage() {
                 { icon: Clock, title: "Interest-free finance available" },
                 { icon: Shield, title: "Insurance benefits consultation" },
                 { icon: Users, title: "Family and multiple treatment discounts" }
-              ].map((option, index) => {
+              ] || []).map((option, index) => {
                 const Icon = option.icon;
                 return (
                   <Card key={index} className="border-2 border-purple-200">
@@ -656,7 +656,7 @@ export default function PerfectSmileNottinghamPage() {
                 description: "The moment you see your completed perfect smile is truly special. Our patients often describe it as life changing - and we never tire of witnessing that joy.",
                 icon: Sparkles
               }
-            ].map((experience, index) => {
+            ] || []).map((experience, index) => {
               const Icon = experience.icon;
               return (
                 <Card key={index} className="border-2 border-purple-100 hover:border-purple-200 transition-colors">
@@ -695,7 +695,7 @@ export default function PerfectSmileNottinghamPage() {
                   "Listen to your perfect smile vision and concerns",
                   "Conduct a thorough examination of your current smile",
                   "Create digital previews of your potential results"
-                ].map((item, index) => (
+                ] || []).map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>
@@ -707,7 +707,7 @@ export default function PerfectSmileNottinghamPage() {
                   "Explain all suitable treatment options",
                   "Provide transparent pricing and payment options",
                   "Answer every question you have about the process"
-                ].map((item, index) => (
+                ] || []).map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>

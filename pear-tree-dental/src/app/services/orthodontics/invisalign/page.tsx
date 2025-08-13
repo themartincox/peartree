@@ -385,7 +385,7 @@ export default function InvisalignPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">Premium Technology</Badge>
                     <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
+                      {([...Array(5)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>
@@ -509,7 +509,7 @@ export default function InvisalignPage() {
                   </Badge>
                   <p className="text-sm text-gray-600 font-medium">{pkg.ideal}</p>
                   <ul className="space-y-2">
-                    {pkg.features.map((feature, idx) => (
+                    {(pkg.features || []).map((feature, idx) => (
                       <li key={idx} className="flex items-start space-x-2">
                         <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-700">{feature}</span>

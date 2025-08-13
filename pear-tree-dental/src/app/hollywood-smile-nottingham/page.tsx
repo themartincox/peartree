@@ -259,7 +259,7 @@ export default function HollywoodSmileNottinghamPage() {
                 { icon: Users, text: "500+ Smiles" },
                 { icon: Award, text: "Expert Team" },
                 { icon: MapPin, text: "Nottingham Based" }
-              ].map((item, index) => {
+              ] || []).map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div key={index} className="flex flex-col items-center space-y-2">
@@ -336,7 +336,7 @@ export default function HollywoodSmileNottinghamPage() {
                   <p className="text-gray-600 mb-6">{option.description}</p>
 
                   <div className="space-y-3 mb-6">
-                    {option.features.map((feature, idx) => (
+                    {(option.features || []).map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
                         <span className="text-sm text-gray-700">{feature}</span>
@@ -377,7 +377,7 @@ export default function HollywoodSmileNottinghamPage() {
               <Card key={index} className="border-2 border-amber-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-5 h-5 text-amber-500 fill-current" />
                     ))}
                   </div>
@@ -485,7 +485,7 @@ export default function HollywoodSmileNottinghamPage() {
                 description: "The moment you see your completed Hollywood smile for the first time is unforgettable. It's one of the most emotional and joyful experiences.",
                 icon: Heart
               }
-            ].map((step, index) => {
+            ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
                 <Card key={index} className="relative text-center hover:shadow-lg transition-shadow">
@@ -523,7 +523,7 @@ export default function HollywoodSmileNottinghamPage() {
                 { icon: Clock, title: "Flexible monthly payments" },
                 { icon: Shield, title: "Insurance claim assistance" },
                 { icon: Users, title: "Corporate wellness discounts" }
-              ].map((option, index) => {
+              ] || []).map((option, index) => {
                 const Icon = option.icon;
                 return (
                   <Card key={index} className="border-2 border-amber-200">
@@ -584,7 +584,7 @@ export default function HollywoodSmileNottinghamPage() {
                   "Discuss your Hollywood smile goals",
                   "Examine your current smile and oral health",
                   "Show you digital previews of your results"
-                ].map((item, index) => (
+                ] || []).map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>
@@ -596,7 +596,7 @@ export default function HollywoodSmileNottinghamPage() {
                   "Explain your treatment options and timeline",
                   "Provide detailed investment information",
                   "Answer all your questions about the process"
-                ].map((item, index) => (
+                ] || []).map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>

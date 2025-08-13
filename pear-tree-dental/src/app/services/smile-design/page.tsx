@@ -178,7 +178,7 @@ export default function SmileDesignPage() {
                 description: "Honest advice about what's possible with no obligation to proceed",
                 value: "Included"
               }
-            ].map((item, index) => {
+            ] || []).map((item, index) => {
               const Icon = item.icon;
               return (
                 <Card key={index} className="p-6 border-2 border-pear-gold/20 hover:border-pear-gold/40 transition-colors">
@@ -244,7 +244,7 @@ export default function SmileDesignPage() {
                     title: "Treatment Planning",
                     description: "Create a step-by-step plan to achieve your desired results with clear timelines."
                   }
-                ].map((step, index) => (
+                ] || []).map((step, index) => (
                   <div key={index} className="flex space-x-4">
                     <div className="w-10 h-10 bg-pear-gold text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">
                       {step.step}
@@ -310,7 +310,7 @@ export default function SmileDesignPage() {
                 timeframe: "1 visit",
                 price: "From £150/tooth"
               }
-            ].map((treatment, index) => (
+            ] || []).map((treatment, index) => (
               <Card key={index} className="p-6 border border-gray-200 hover:border-pear-gold/40 transition-colors">
                 <div className="space-y-4">
                   <h3 className="font-bold text-lg text-pear-primary">{treatment.title}</h3>
@@ -368,11 +368,11 @@ export default function SmileDesignPage() {
                 quote: "I was amazed how much difference small changes could make. The preview helped me understand the process.",
                 result: "Same day treatment, natural results"
               }
-            ].map((story, index) => (
+            ] || []).map((story, index) => (
               <Card key={index} className="p-6 bg-white shadow-lg">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-1 text-pear-gold">
-                    {[...Array(5)].map((_, i) => (
+                    {([...Array(5)] || []).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>
@@ -466,7 +466,7 @@ export default function SmileDesignPage() {
                   question: "What if I decide to proceed with treatment?",
                   answer: "If you choose to go ahead, we'll create a detailed treatment plan with clear timelines and costs. We offer flexible payment options and membership discounts to make treatment affordable."
                 }
-              ].map((faq, index) => (
+              ] || []).map((faq, index) => (
                 <Card key={index} className="p-6">
                   <h3 className="font-semibold text-pear-primary mb-3">{faq.question}</h3>
                   <p className="text-gray-700">{faq.answer}</p>

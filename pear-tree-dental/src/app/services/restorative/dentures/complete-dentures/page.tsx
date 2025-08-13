@@ -308,7 +308,7 @@ export default function CompleteDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">Complete Solution</Badge>
                     <div className="flex space-x-1">
-                      {[...Array(5)].map((_, i) => (
+                      {([...Array(5)] || []).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>
@@ -392,7 +392,7 @@ export default function CompleteDenturesPage() {
                   <div>
                     <h4 className="font-semibold text-pear-primary mb-2">Advantages:</h4>
                     <div className="space-y-1">
-                      {type.advantages.map((advantage, index) => (
+                      {(type.advantages || []).map((advantage, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{advantage}</span>

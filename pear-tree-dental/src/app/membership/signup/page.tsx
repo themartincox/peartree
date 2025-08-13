@@ -546,7 +546,7 @@ export default function MembershipSignupPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="flex justify-between">
-              {[1, 2, 3, 4].map((step) => (
+              {([1, 2, 3, 4] || []).map((step) => (
                 <div key={step} className="flex flex-col items-center py-4">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
                     step <= currentStep
@@ -742,7 +742,7 @@ export default function MembershipSignupPage() {
                               <div className="text-xs opacity-70 mt-1">Best value for families</div>
                             </div>
                             <div className="space-y-2">
-                              {plans.family.features.map((feature, index) => (
+                              {plans.(family.features || []).map((feature, index) => (
                                 <div key={index} className="flex items-start space-x-2">
                                   <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-white" />
                                   <span className="text-sm text-white">{feature}</span>
@@ -791,7 +791,7 @@ export default function MembershipSignupPage() {
                         </div>
 
                         <div className="space-y-2">
-                          {plan.features.map((feature, index) => (
+                          {(plan.features || []).map((feature, index) => (
                             <div key={index} className="flex items-start space-x-2">
                               <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
                                 selectedPlan === key ? 'text-white' : `text-${plan.color}`
@@ -1332,7 +1332,7 @@ export default function MembershipSignupPage() {
                       </div>
                     ) : (
                       <div className="space-y-4">
-                        {formData.familyMembers.map((member, index) => (
+                        {(formData.familyMembers || []).map((member, index) => (
                           <Card key={index} className="p-4 bg-gray-50">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                               <Input
@@ -1569,7 +1569,7 @@ export default function MembershipSignupPage() {
                         <div className="opacity-90 mt-1">{currentPlan.dailyCost}</div>
 
                         <div className="mt-4 space-y-2">
-                          {currentPlan.features.map((feature, index) => (
+                          {(currentPlan.features || []).map((feature, index) => (
                             <div key={index} className="flex items-center space-x-2">
                               <CheckCircle className="w-4 h-4 text-white" />
                               <span className="text-sm">{feature}</span>
@@ -1582,7 +1582,7 @@ export default function MembershipSignupPage() {
                         <div className="mt-4">
                           <h4 className="font-semibold mb-2">Family Members:</h4>
                           <div className="space-y-2">
-                            {formData.familyMembers.map((member, index) => (
+                            {(formData.familyMembers || []).map((member, index) => (
                               <div key={index} className="text-sm text-gray-600">
                                 {member.firstName} {member.lastName} ({member.relationship})
                               </div>
