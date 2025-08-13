@@ -213,7 +213,7 @@ export default function MembershipApplicationsAdmin() {
           </h2>
 
           <div className="grid gap-6">
-            {applications.map((app, index) => (
+            {(applications || []).map((app, index) => (
               <div key={app.id || index} className="p-6 border rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <div>

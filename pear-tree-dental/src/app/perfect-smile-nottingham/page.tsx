@@ -347,7 +347,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {perfectSmileFeatures.map((feature, index) => (
+            {(perfectSmileFeatures || []).map((feature, index) => (
               <Card key={index} className="border-2 border-purple-100 hover:border-purple-200 transition-colors text-center">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -375,7 +375,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {nottinghamAdvantages.map((advantage, index) => {
+            {(nottinghamAdvantages || []).map((advantage, index) => {
               const Icon = advantage.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white">
@@ -465,7 +465,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {treatmentOptions.map((option, index) => {
+            {(treatmentOptions || []).map((option, index) => {
               const Icon = option.icon;
               return (
                 <Card key={index} className="hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-purple-200 bg-white">
@@ -512,7 +512,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {(testimonials || []).map((testimonial, index) => (
               <Card key={index} className="border-2 border-purple-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
@@ -547,7 +547,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseUs.map((reason, index) => {
+            {(whyChooseUs || []).map((reason, index) => {
               const Icon = reason.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow bg-white">
@@ -609,7 +609,7 @@ export default function PerfectSmileNottinghamPage() {
             </div>
 
             <div className="space-y-6">
-              {perfectSmileFAQs.map((faq, index) => (
+              {(perfectSmileFAQs || []).map((faq, index) => (
                 <Card key={index} className="border-2 border-purple-100 bg-white">
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-3">{faq.question}</h3>

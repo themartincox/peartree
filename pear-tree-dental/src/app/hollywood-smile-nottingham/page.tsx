@@ -288,7 +288,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => {
+            {(benefits || []).map((benefit, index) => {
               const [title, description] = benefit.split(' - ');
               return (
                 <Card key={index} className="border-2 border-amber-100 hover:border-amber-200 transition-colors">
@@ -323,7 +323,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {treatmentOptions.map((option, index) => (
+            {(treatmentOptions || []).map((option, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-amber-200">
                 <CardHeader className="text-center pb-4">
                   <div className="w-16 h-16 bg-gradient-to-r from-amber-600 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -373,7 +373,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {(testimonials || []).map((testimonial, index) => (
               <Card key={index} className="border-2 border-amber-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
@@ -408,7 +408,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseUs.map((reason, index) => {
+            {(whyChooseUs || []).map((reason, index) => {
               const Icon = reason.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -554,7 +554,7 @@ export default function HollywoodSmileNottinghamPage() {
             </div>
 
             <div className="space-y-6">
-              {hollywoodSmileFAQs.map((faq, index) => (
+              {(hollywoodSmileFAQs || []).map((faq, index) => (
                 <Card key={index} className="border-2 border-amber-100">
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-3">{faq.question}</h3>

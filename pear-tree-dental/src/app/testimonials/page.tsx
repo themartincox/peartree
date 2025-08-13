@@ -278,7 +278,7 @@ export default function TestimonialsPage() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {stats.map((stat) => {
+              {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <Card key={stat.label} className="border-2 border-pear-gold/20 bg-white/80">
@@ -335,7 +335,7 @@ export default function TestimonialsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredTestimonials.map((testimonial) => (
+            {(featuredTestimonials || []).map((testimonial) => (
               <Card key={testimonial.id} className="relative hover:shadow-xl transition-all duration-300 border-2 border-pear-gold/20 bg-white/90">
                 {/* Featured Badge */}
                 <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">
@@ -419,7 +419,7 @@ export default function TestimonialsPage() {
               <h3 className="font-semibold text-pear-primary">Filter by Treatment</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {treatmentCategories.map((category) => (
+              {(treatmentCategories || []).map((category) => (
                 <Button
                   key={category}
                   variant="outline"
@@ -434,7 +434,7 @@ export default function TestimonialsPage() {
 
           {/* Reviews Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {allTestimonials.map((testimonial) => (
+            {(allTestimonials || []).map((testimonial) => (
               <Card key={testimonial.id} className="hover:shadow-lg transition-shadow border border-gray-200">
                 <CardContent className="p-6">
                   {/* Quote Icon */}

@@ -218,7 +218,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {reasonsToSwitch.map((reason) => (
+              {(reasonsToSwitch || []).map((reason) => (
                 <Card key={reason.title} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <div className="flex items-center space-x-3">
@@ -270,7 +270,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {nhsVsMembership.map((item, index) => (
+                      {(nhsVsMembership || []).map((item, index) => (
                         <tr key={index} className="border-b hover:bg-muted/50 transition-colors">
                           <td className="py-4 px-4 font-medium">{item.aspect}</td>
                           <td className="py-4 px-4 text-center text-muted-foreground">{item.nhs}</td>
@@ -368,7 +368,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {switchingProcess.map((step, index) => (
+              {(switchingProcess || []).map((step, index) => (
                 <Card key={step.step} className="text-center relative">
                   <CardHeader>
                     <div className="w-12 h-12 bg-accent-gold text-primary rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
@@ -425,7 +425,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </h2>
 
             <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, index) => (
+              {(faqs || []).map((faq, index) => (
                 <AccordionItem
                   key={`faq-${index}`}
                   value={`item-${index}`}

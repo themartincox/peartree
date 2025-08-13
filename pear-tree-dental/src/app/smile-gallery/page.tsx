@@ -282,7 +282,7 @@ export default function SmileGalleryPage() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {stats.map((stat) => {
+              {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <Card key={stat.label} className="border-2 border-soft-pink/20 bg-white/80">
@@ -339,7 +339,7 @@ export default function SmileGalleryPage() {
               <h3 className="font-semibold text-pear-primary">Filter by Treatment Type</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
+              {(categories || []).map((category) => (
                 <Button
                   key={category}
                   variant="outline"
@@ -367,7 +367,7 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {featuredItems.map((item) => (
+            {(featuredItems || []).map((item) => (
               <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:shadow-2xl transition-all duration-300">
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white text-center py-2 text-sm font-semibold">
@@ -471,7 +471,7 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allItems.map((item) => (
+            {(allItems || []).map((item) => (
               <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   {/* Before/After Split Image */}

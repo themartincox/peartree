@@ -327,7 +327,7 @@ export default function PatientEducationPage() {
 
             {/* Stats Grid */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 max-w-2xl mx-auto">
-              {stats.map((stat) => {
+              {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <Card key={stat.label} className="border-2 border-pear-primary/20 bg-white/80 flex-1">
@@ -376,7 +376,7 @@ export default function PatientEducationPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {quickAccess.map((item) => {
+            {(quickAccess || []).map((item) => {
               const Icon = item.icon;
               return (
                 <Card key={item.title} className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-pear-primary/30">
@@ -412,7 +412,7 @@ export default function PatientEducationPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredArticles.map((article) => (
+            {(featuredArticles || []).map((article) => (
               <Card key={article.id} className="group hover:shadow-xl transition-all duration-300 border-2 border-pear-gold/20">
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">

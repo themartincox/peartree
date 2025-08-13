@@ -266,7 +266,7 @@ export default function PracticePage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {facilities.map((facility) => {
+            {(facilities || []).map((facility) => {
               const IconComponent = facility.icon;
               return (
                 <Card key={facility.title} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
@@ -301,7 +301,7 @@ export default function PracticePage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {values.map((value) => (
+            {(values || []).map((value) => (
               <Card key={value.title} className="group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4">
@@ -337,7 +337,7 @@ export default function PracticePage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {amenities.map((amenity) => {
+            {(amenities || []).map((amenity) => {
               const IconComponent = amenity.icon;
               return (
                 <Card key={amenity.title} className="group hover:shadow-lg transition-all duration-300">

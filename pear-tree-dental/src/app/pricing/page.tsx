@@ -122,7 +122,7 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {membershipPlans.map((plan, index) => (
+            {(membershipPlans || []).map((plan, index) => (
               <Card key={plan.name} className={`relative ${plan.popular ? 'border-2 border-pear-gold' : ''}`}>
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -175,7 +175,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {formattedGeneralTreatments.map((treatment, index) => (
+                  {(formattedGeneralTreatments || []).map((treatment, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                       <span className="text-gray-700">{treatment.name}</span>
                       <span className="font-semibold text-pear-primary">{treatment.price}</span>
@@ -192,7 +192,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {formattedCosmeticTreatments.map((treatment, index) => (
+                  {(formattedCosmeticTreatments || []).map((treatment, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                       <span className="text-gray-700">{treatment.name}</span>
                       <span className="font-semibold text-pear-primary">{treatment.price}</span>
@@ -209,7 +209,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {formattedRestorativeTreatments.map((treatment, index) => (
+                  {(formattedRestorativeTreatments || []).map((treatment, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                       <span className="text-gray-700">{treatment.name}</span>
                       <span className="font-semibold text-pear-primary">{treatment.price}</span>
@@ -226,7 +226,7 @@ export default function PricingPage() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
-                  {formattedImplantTreatments.map((treatment, index) => (
+                  {(formattedImplantTreatments || []).map((treatment, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
                       <span className="text-gray-700">{treatment.name}</span>
                       <span className="font-semibold text-pear-primary">{treatment.price}</span>

@@ -117,7 +117,7 @@ export default function NewPatientsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whatToExpect.map((item, index) => {
+            {(whatToExpect || []).map((item, index) => {
               const Icon = item.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -151,7 +151,7 @@ export default function NewPatientsPage() {
               </p>
 
               <ul className="space-y-4 mb-8">
-                {whatToBring.map((item, index) => (
+                {(whatToBring || []).map((item, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
@@ -237,7 +237,7 @@ export default function NewPatientsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {policies.map((policy, index) => (
+            {(policies || []).map((policy, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-lg text-pear-primary">{policy.title}</CardTitle>

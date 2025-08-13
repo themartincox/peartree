@@ -153,7 +153,7 @@ export default function TeamPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {principals.map((dentist) => (
+            {(principals || []).map((dentist) => (
               <Card key={dentist.gdc} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
                 <CardContent className="p-8">
                   <div className="text-center">
@@ -208,7 +208,7 @@ export default function TeamPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {associates.map((dentist) => (
+            {(associates || []).map((dentist) => (
               <Card key={dentist.gdc} className="group hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="text-center">
@@ -263,7 +263,7 @@ export default function TeamPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {supportTeam.map((member) => (
+            {(supportTeam || []).map((member) => (
               <Card key={member.name} className="group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="text-center">
@@ -314,7 +314,7 @@ export default function TeamPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
-            {nurses.map((nurse) => (
+            {(nurses || []).map((nurse) => (
               <Card key={nurse.name} className="group hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-4">
                   <div className="text-center">
