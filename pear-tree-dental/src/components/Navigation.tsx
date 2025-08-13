@@ -17,6 +17,7 @@ import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
 import NavigationErrorBoundary from "@/components/navigation/NavigationErrorBoundary";
+import { usePathname } from "next/navigation";
 
 // Lazy load non-critical navigation components
 const LazyNavigationItems = lazy(() =>
@@ -35,6 +36,8 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const { startTiming, endTiming } = usePerformanceMonitor();
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   // Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
@@ -230,7 +233,9 @@ const Navigation = () => {
           "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
-            : "transform translate-y-0 opacity-100 bg-white shadow-lg"
+            : isHome
+              ? "transform translate-y-0 opacity-100 bg-transparent"
+              : "transform translate-y-0 opacity-100 bg-white shadow-lg"
         )}
         aria-label="Main navigation"
       >

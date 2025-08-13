@@ -347,13 +347,13 @@ export default function RestorativeDentistryPage() {
                 treatmentType: "Flexible Dentures"
               }}
               secondarySlider={{
-                beforeImage: "/images/before-after/flexible-denture-removable-bridge-before.png",
-                afterImage: "/images/before-after/flexible-denture-removable-bridge-after.png",
-                beforeAlt: "Before dental crown treatment showing damaged and discolored tooth",
-                afterAlt: "After dental crown treatment with natural-looking porcelain crown restoration",
-                title: "Dental Crown Restoration",
-                description: "High-quality porcelain crown providing long-lasting protection and natural aesthetics",
-                treatmentType: "Porcelain Crown"
+                beforeImage: "/images/before-after/dental-composite-bond-before.png",
+                afterImage: "/images/before-after/dental-composite-bond-after.png",
+                beforeAlt: "Before dental composite bonding showing chipped, cracked, or discolored tooth",
+                afterAlt: "After dental composite bonding with seamlessly repaired, natural-looking tooth restoration",
+                title: "Dental Composite Bonding",
+                description: "Conservative tooth-colored restoration for chips, cracks, and gaps providing natural appearance",
+                treatmentType: "Composite Bonding"
               }}
               className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6"
             />

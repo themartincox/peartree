@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceHero from "@/components/ServiceHero";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import {
   Sparkles,
@@ -119,19 +120,22 @@ export default function CosmeticDentistryPage() {
 
   const beforeAfterCases = [
     {
-      title: "Teeth Whitening Transformation",
-      description: "Professional whitening achieved 6 shades improvement",
-      timeframe: "Single appointment"
+      title: "Orthodontics - ClearCorrect Treatment",
+      description: "Teeth straightening transformation using clear aligners for a perfectly aligned smile",
+      timeframe: "12-18 months",
+      beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
+      afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
+      beforeAlt: "Before orthodontics treatment showing misaligned teeth",
+      afterAlt: "After ClearCorrect treatment showing straight, aligned teeth"
     },
     {
-      title: "Complete Veneer Makeover",
-      description: "8 porcelain veneers creating perfect symmetry",
-      timeframe: "3 weeks"
-    },
-    {
-      title: "Complete Smile Makeover",
-      description: "Comprehensive transformation combining multiple treatments",
-      timeframe: "8-12 weeks"
+      title: "Whitening + Composite Edge Bonding",
+      description: "Professional whitening combined with composite bonding for enhanced tooth shape and brightness",
+      timeframe: "2-3 appointments",
+      beforeImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp",
+      afterImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp",
+      beforeAlt: "Before whitening and bonding treatment showing stained and irregular teeth",
+      afterAlt: "After Enlighten whitening and composite bonding showing bright, perfectly shaped teeth"
     }
   ];
 
@@ -435,48 +439,7 @@ export default function CosmeticDentistryPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {beforeAfterCases.map((case_study, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  {index === 0 ? (
-                    // Special styling for teeth whitening with BCC-smile image
-                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 shadow-md">
-                      <picture>
-                        <source media="(min-width: 768px)" srcSet="/images/buccal-corridor/BCC-smile-medium.webp" type="image/webp" />
-                        <source media="(min-width: 480px)" srcSet="/images/buccal-corridor/BCC-smile-small.webp" type="image/webp" />
-                        <source srcSet="/images/buccal-corridor/BCC-smile-thumb.webp" type="image/webp" />
-                        <img
-                          src="/images/buccal-corridor/BCC-smile.png"
-                          alt="Teeth whitening transformation showing improved smile"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </picture>
-                    </div>
-                  ) : index === 2 ? (
-                    // Special styling for smile makeover with teeth-whitening-after image
-                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 shadow-md">
-                      <img
-                        src="/images/teeth-whitening-after.webp"
-                        alt="Complete smile makeover transformation result"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  ) : (
-                    // Placeholder for other cases
-                    <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-2xl flex items-center justify-center mb-4">
-                      <Smile className="w-16 h-16 text-soft-pink" />
-                    </div>
-                  )}
-                  <h3 className="font-semibold text-pear-primary mb-2">{case_study.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{case_study.description}</p>
-                  <Badge variant="secondary">{case_study.timeframe}</Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <BeforeAfterSlider images={beforeAfterCases} />
         </div>
       </section>
 

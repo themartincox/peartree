@@ -1,243 +1,161 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { useState, useRef, useEffect } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ArrowRight, Eye, Camera } from "lucide-react";
 
-interface BeforeAfterSliderProps {
+interface BeforeAfterImage {
+  title: string;
+  description: string;
+  timeframe: string;
   beforeImage: string;
   afterImage: string;
   beforeAlt: string;
   afterAlt: string;
-  title?: string;
-  description?: string;
-  treatmentType?: string;
-  className?: string;
 }
 
-export default function BeforeAfterSlider({
-  beforeImage,
-  afterImage,
-  beforeAlt,
-  afterAlt,
-  title,
-  description,
-  treatmentType,
-  className = ""
-}: BeforeAfterSliderProps) {
+interface BeforeAfterSliderProps {
+  images: BeforeAfterImage[];
+}
+
+const BeforeAfterSlider = ({ images }: BeforeAfterSliderProps) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {images.map((image, index) => (
+        <BeforeAfterSliderCard key={index} image={image} />
+      ))}
+    </div>
+  );
+};
+
+interface BeforeAfterSliderCardProps {
+  image: BeforeAfterImage;
+}
+
+const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const mountedRef = useRef(true);
 
-  // Handle position updates with mounted check
-  const updatePosition = useCallback((clientX: number) => {
-    if (!mountedRef.current || !containerRef.current) return;
+  const handleMouseDown = () => {
+    setIsDragging(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
 
     const rect = containerRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
+    const x = e.clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
-  }, []);
+  };
 
-  // Handle mouse/touch events for dragging
-  const handleStart = useCallback((clientX: number) => {
-    if (!mountedRef.current) return;
+  const handleTouchStart = () => {
     setIsDragging(true);
-    updatePosition(clientX);
-  }, [updatePosition]);
+  };
 
-  const handleMove = useCallback((clientX: number) => {
-    if (!mountedRef.current) return;
-    updatePosition(clientX);
-  }, [updatePosition]);
-
-  const handleEnd = useCallback(() => {
-    if (!mountedRef.current) return;
+  const handleTouchEnd = () => {
     setIsDragging(false);
-  }, []);
+  };
 
-  // Mouse events
-  const handleMouseDown = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    handleStart(e.clientX);
-  }, [handleStart]);
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current) return;
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    handleMove(e.clientX);
-  }, [handleMove]);
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.touches[0].clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  };
 
-  const handleMouseUp = useCallback(() => {
-    handleEnd();
-  }, [handleEnd]);
-
-  // Touch events
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    handleStart(e.touches[0].clientX);
-  }, [handleStart]);
-
-  const handleTouchMove = useCallback((e: TouchEvent) => {
-    e.preventDefault();
-    handleMove(e.touches[0].clientX);
-  }, [handleMove]);
-
-  const handleTouchEnd = useCallback(() => {
-    handleEnd();
-  }, [handleEnd]);
-
-  // Effect to handle global mouse/touch events
   useEffect(() => {
-    if (isDragging && mountedRef.current) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd);
+    const handleGlobalMouseUp = () => setIsDragging(false);
+    const handleGlobalTouchEnd = () => setIsDragging(false);
+
+    if (isDragging) {
+      document.addEventListener('mouseup', handleGlobalMouseUp);
+      document.addEventListener('touchend', handleGlobalTouchEnd);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('mouseup', handleGlobalMouseUp);
+      document.removeEventListener('touchend', handleGlobalTouchEnd);
     };
-  }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
-
-  // Cleanup effect
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
-
-  // Quick position buttons
-  const setPosition = useCallback((position: number) => {
-    if (!mountedRef.current) return;
-    setSliderPosition(position);
-  }, []);
+  }, [isDragging]);
 
   return (
-    <div className={`space-y-6 ${className}`}>
-      {/* Header */}
-      {(title || treatmentType) && (
-        <div className="text-center space-y-2">
-          {treatmentType && (
-            <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
-              <Camera className="w-4 h-4 mr-2" />
-              {treatmentType} Results
-            </Badge>
-          )}
-          {title && (
-            <h3 className="heading-serif text-2xl font-bold text-pear-primary">
-              {title}
-            </h3>
-          )}
-          {description && (
-            <p className="text-gray-600">{description}</p>
-          )}
-        </div>
-      )}
-
-      {/* Slider Container */}
-      <div className="relative">
+    <Card className="hover:shadow-lg transition-shadow overflow-hidden">
+      <CardContent className="p-0">
         <div
           ref={containerRef}
-          className="relative aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
+          className="relative aspect-[16/9] overflow-hidden cursor-ew-resize select-none"
+          onMouseMove={handleMouseMove}
           onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
           onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onTouchMove={handleTouchMove}
         >
-          {/* Before Image (Base Layer) */}
+          {/* After Image (Background) */}
           <div className="absolute inset-0">
-            <Image
-              src={beforeImage}
-              alt={beforeAlt}
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
-              priority
+            <img
+              src={image.afterImage}
+              alt={image.afterAlt}
+              className="w-full h-full object-cover"
+              draggable={false}
             />
-            {/* Before Label */}
-            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-              Before
+            <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              After
             </div>
           </div>
 
-          {/* After Image (Clipped Layer) */}
+          {/* Before Image (Overlay) */}
           <div
-            className="absolute inset-0 transition-all duration-75 ease-out"
-            style={{
-              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
-            }}
+            className="absolute inset-0 overflow-hidden"
+            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
           >
-            <Image
-              src={afterImage}
-              alt={afterAlt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+            <img
+              src={image.beforeImage}
+              alt={image.beforeAlt}
+              className="w-full h-full object-cover"
+              draggable={false}
             />
-            {/* After Label */}
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-              After
+            <div className="absolute top-4 left-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+              Before
             </div>
           </div>
 
           {/* Slider Line */}
           <div
-            className="absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-all duration-75 ease-out z-20"
+            className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10"
             style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
           >
             {/* Slider Handle */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize hover:bg-gray-50 transition-colors">
-              <div className="flex space-x-1">
-                <ArrowLeft className="w-3 h-3 text-gray-600" />
-                <ArrowRight className="w-3 h-3 text-gray-600" />
-              </div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
+              <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
             </div>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {sliderPosition < 25 ? 'Before' : sliderPosition > 75 ? 'After' : 'Transition'}
+          {/* Instruction Text */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-xs">
+            Drag to compare
           </div>
         </div>
 
-        {/* Quick Position Controls */}
-        <div className="flex justify-center space-x-4 mt-4">
-          <Button
-            variant={sliderPosition <= 25 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(0)}
-            className="text-sm"
-          >
-            Before
-          </Button>
-          <Button
-            variant={sliderPosition > 25 && sliderPosition < 75 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(50)}
-            className="text-sm"
-          >
-            <Eye className="w-4 h-4 mr-1" />
-            Compare
-          </Button>
-          <Button
-            variant={sliderPosition >= 75 ? "default" : "outline"}
-            size="sm"
-            onClick={() => setPosition(100)}
-            className="text-sm"
-          >
-            After
-          </Button>
+        {/* Image Info */}
+        <div className="p-6">
+          <h3 className="font-semibold text-pear-primary mb-2 text-lg">{image.title}</h3>
+          <p className="text-gray-600 text-sm mb-3">{image.description}</p>
+          <Badge variant="secondary" className="bg-soft-pink/20 text-pear-primary border-soft-pink/30">
+            {image.timeframe}
+          </Badge>
         </div>
-      </div>
-
-      {/* Instructions */}
-      <div className="text-center text-sm text-gray-600">
-        <p>Drag the slider or use the buttons to compare before and after results</p>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
-}
+};
+
+export default BeforeAfterSlider;

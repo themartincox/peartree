@@ -50,8 +50,7 @@ export default function NewPatientsPage() {
   const whatToBring = [
     "Previous dental records or X-rays if available",
     "List of current medications",
-    "Insurance details or membership information",
-    "Completed new patient forms (download below)"
+    "Insurance details or membership information"
   ];
 
   const policies = [
@@ -151,7 +150,7 @@ export default function NewPatientsPage() {
                 please bring the following items with you.
               </p>
 
-              <ul className="space-y-4">
+              <ul className="space-y-4 mb-8">
                 {whatToBring.map((item, index) => (
                   <li key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
@@ -160,30 +159,36 @@ export default function NewPatientsPage() {
                 ))}
               </ul>
 
-              <div className="mt-8 p-6 bg-pear-primary/5 rounded-2xl border border-pear-primary/10">
-                <h3 className="font-semibold text-pear-primary mb-2">Download New Patient Forms</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Save time by completing your forms before your visit.
-                </p>
-                <Button className="bg-pear-primary text-white hover:bg-pear-primary/90">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Download Forms
+              <Link href="/book">
+                <Button size="lg" className="btn-gold text-white font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Your First Appointment
                 </Button>
-              </div>
+              </Link>
             </div>
 
             <div className="lg:pl-8">
-              <Card className="shadow-2xl">
-                <CardHeader className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                  <CardTitle className="flex items-center">
+              <Card className="shadow-2xl overflow-hidden relative">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: "url('/images/pear-tree-dental-building-NG145AE.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center"
+                  }}
+                >
+                  <div className="absolute inset-0 bg-pear-primary/50"></div>
+                </div>
+
+                <div className="relative z-10 p-6 space-y-4 text-white">
+                  <CardTitle className="flex items-center text-white mb-6">
                     <MapPin className="w-5 h-5 mr-2" />
                     Practice Information
                   </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
+
                   <div>
-                    <h4 className="font-semibold text-pear-primary mb-2">Address</h4>
-                    <p className="text-gray-600">
+                    <h4 className="font-semibold text-white mb-2">Address</h4>
+                    <p className="text-white/90">
                       22 Nottingham Road<br />
                       Burton Joyce, Nottingham<br />
                       UK NG14 5AE
@@ -191,13 +196,13 @@ export default function NewPatientsPage() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pear-primary mb-2">Phone</h4>
-                    <p className="text-gray-600">0115 931 2935</p>
+                    <h4 className="font-semibold text-white mb-2">Phone</h4>
+                    <p className="text-white/90">0115 931 2935</p>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-pear-primary mb-2">Opening Hours</h4>
-                    <div className="text-gray-600 text-sm space-y-1">
+                    <h4 className="font-semibold text-white mb-2">Opening Hours</h4>
+                    <div className="text-white/90 text-sm space-y-1">
                       <div className="flex justify-between">
                         <span>Monday - Thursday</span>
                         <span>8:45 am - 5 pm</span>
@@ -212,7 +217,7 @@ export default function NewPatientsPage() {
                       </div>
                     </div>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </div>
           </div>

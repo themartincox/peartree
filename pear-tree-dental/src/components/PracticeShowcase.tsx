@@ -53,8 +53,6 @@ const PracticeShowcase = () => {
                     <GoogleReviewsWidget />
                   </div>
                 </div>
-
-
               </div>
             </Card>
 
