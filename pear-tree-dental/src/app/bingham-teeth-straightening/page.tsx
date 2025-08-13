@@ -308,7 +308,7 @@ export default function BinghamTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              {[
+              {([
                 {
                   step: "1",
                   title: "Family Consultation",
@@ -431,7 +431,7 @@ export default function BinghamTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "The Williams Family",
                   location: "Bingham",

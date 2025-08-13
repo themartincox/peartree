@@ -268,14 +268,14 @@ export default function InvisalignPage() {
         duration="6-18 months treatment time"
         preparation="iTero digital scanning, ClinCheck planning, custom aligner fabrication"
         recovery="No recovery needed - continue normal activities"
-        benefits={[
+        benefits={([
           "World's most advanced clear aligner system",
           "SmartTrack material for superior comfort",
           "ClinCheck 3D treatment visualization",
           "Proven results in 14+ million patients",
           "Complex case treatment capabilities"
         ]}
-        risks={[
+        risks={([
           "Higher investment than alternatives",
           "Requires patient compliance (20-22 hours daily)",
           "Temporary speech changes initially",

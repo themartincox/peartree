@@ -199,14 +199,14 @@ export default function SingleImplantPage() {
         duration="3-6 months total treatment"
         preparation="Comprehensive examination, 3D imaging, treatment planning"
         recovery="3-6 months healing for osseointegration"
-        benefits={[
+        benefits={([
           "Preserves adjacent healthy teeth",
           "Prevents bone loss",
           "Natural appearance and function",
           "98% success rate",
           "Long-lasting solution 25+ years"
         ]}
-        risks={[
+        risks={([
           "Surgical risks (minimal)",
           "Implant rejection (very rare)",
           "Infection (preventable with care)",

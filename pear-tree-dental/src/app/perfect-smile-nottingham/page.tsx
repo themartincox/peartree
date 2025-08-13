@@ -247,14 +247,14 @@ export default function PerfectSmileNottinghamPage() {
         duration="2-12 weeks depending on treatment"
         preparation="Comprehensive smile analysis, digital design, personalised treatment planning"
         recovery="Minimal downtime, immediate confidence boost"
-        benefits={[
+        benefits={([
           "Perfectly personalised smile design",
           "Natural-looking beautiful results",
           "Increased confidence and self-esteem",
           "Long-lasting smile transformation",
           "Expert local care in Nottingham"
         ]}
-        risks={[
+        risks={([
           "Temporary sensitivity possible",
           "Individual healing variation",
           "Requires ongoing maintenance",
@@ -313,7 +313,7 @@ export default function PerfectSmileNottinghamPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              {[
+              {([
                 { icon: Star, text: "Perfect Results" },
                 { icon: Users, text: "500+ Smiles" },
                 { icon: Award, text: "Expert Team" },
@@ -406,7 +406,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {([
               {
                 step: "1",
                 title: "Comprehensive Smile Analysis",
@@ -577,7 +577,7 @@ export default function PerfectSmileNottinghamPage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {[
+              {([
                 { icon: CreditCard, title: "Extended payment plans to suit any budget" },
                 { icon: Clock, title: "Interest-free finance available" },
                 { icon: Shield, title: "Insurance benefits consultation" },
@@ -635,7 +635,7 @@ export default function PerfectSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {[
+            {([
               {
                 title: "Your Perfect Smile Consultation",
                 description: "During your comprehensive consultation, we'll listen to your concerns, understand your goals, and show you exactly what your perfect smile could look like using our advanced imaging technology.",
@@ -691,7 +691,7 @@ export default function PerfectSmileNottinghamPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-left">
               <div className="space-y-3">
-                {[
+                {([
                   "Listen to your perfect smile vision and concerns",
                   "Conduct a thorough examination of your current smile",
                   "Create digital previews of your potential results"
@@ -703,7 +703,7 @@ export default function PerfectSmileNottinghamPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                {[
+                {([
                   "Explain all suitable treatment options",
                   "Provide transparent pricing and payment options",
                   "Answer every question you have about the process"

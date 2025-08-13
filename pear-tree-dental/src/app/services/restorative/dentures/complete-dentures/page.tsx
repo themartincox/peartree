@@ -189,14 +189,14 @@ export default function CompleteDenturesPage() {
         duration="4-6 weeks for conventional, immediate placement available"
         preparation="Extractions if needed, impressions, treatment planning"
         recovery="Adjustment period 4-8 weeks for optimal comfort"
-        benefits={[
+        benefits={([
           "Complete oral function restoration",
           "Natural appearance",
           "Improved facial support",
           "Enhanced confidence",
           "Better nutrition and health"
         ]}
-        risks={[
+        risks={([
           "Initial adjustment period",
           "Possible sore spots initially",
           "May require relines over time",

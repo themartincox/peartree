@@ -83,14 +83,14 @@ export default function GeneralDentistryPage() {
         duration="30-60 minutes per appointment"
         preparation="No special preparation required for routine check-ups"
         recovery="No recovery time needed for check-ups and cleanings"
-        benefits={[
+        benefits={([
           "Early problem detection",
           "Prevent serious dental issues",
           "Maintain oral health",
           "NHS and private options",
           "Family-friendly care"
         ]}
-        risks={[
+        risks={([
           "Minimal risks for routine care",
           "Slight sensitivity after cleaning",
           "Very rare allergic reactions to materials"
@@ -235,7 +235,7 @@ export default function GeneralDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 title: "Dental Check-ups",
                 description: "Comprehensive examinations to detect issues early",
@@ -325,7 +325,7 @@ export default function GeneralDentistryPage() {
               </p>
 
               <div className="space-y-6">
-                {[
+                {([
                   {
                     icon: Shield,
                     title: "Early Detection",

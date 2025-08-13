@@ -199,14 +199,14 @@ export default function BoutiqueWhiteningPage() {
         duration="2-3 weeks home treatment"
         preparation="Dental examination, custom tray impressions"
         recovery="No downtime, possible mild sensitivity"
-        benefits={[
+        benefits={([
           "6-8 shades whiter teeth",
           "Custom-fitted treatment trays",
           "Professional-grade whitening gel",
           "Flexible at-home schedule",
           "Professional supervision"
         ]}
-        risks={[
+        risks={([
           "Mild temporary sensitivity",
           "Requires consistent daily use",
           "Not suitable for all stain types",

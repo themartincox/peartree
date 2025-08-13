@@ -154,14 +154,14 @@ export default function AirFlowStainRemovalPage() {
         duration="30-45 minutes"
         preparation="No special preparation required"
         recovery="No downtime, can eat and drink immediately"
-        benefits={[
+        benefits={([
           "Removes stubborn surface stains",
           "Gentle and comfortable treatment",
           "Immediate visible results",
           "Safe for tooth enamel",
           "More effective than traditional scaling"
         ]}
-        risks={[
+        risks={([
           "Temporary sensitivity (rare)",
           "Not suitable for deep intrinsic stains",
           "May cause slight gum irritation",

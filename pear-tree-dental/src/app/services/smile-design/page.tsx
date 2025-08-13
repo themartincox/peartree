@@ -141,7 +141,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 icon: Camera,
                 title: "Digital Smile Analysis",
@@ -223,7 +223,7 @@ export default function SmileDesignPage() {
               </p>
 
               <div className="space-y-6">
-                {[
+                {([
                   {
                     step: "1",
                     title: "Digital Photography",
@@ -285,7 +285,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
+            {([
               {
                 title: "Porcelain Veneers",
                 description: "Ultra-thin shells that create an instant perfect smile",
@@ -349,7 +349,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 name: "Sarah M.",
                 treatment: "Porcelain Veneers",
@@ -445,7 +445,7 @@ export default function SmileDesignPage() {
             </div>
 
             <div className="space-y-6">
-              {[
+              {([
                 {
                   question: "Is the consultation really free?",
                   answer: "Yes, absolutely! Our smile design consultation normally costs £150, but we're offering it completely free for a limited time. There are no hidden costs or obligations."

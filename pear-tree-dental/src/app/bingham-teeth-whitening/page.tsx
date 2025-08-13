@@ -370,7 +370,7 @@ export default function BinghamTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Linda & Tom Johnson",
                   location: "Bingham",

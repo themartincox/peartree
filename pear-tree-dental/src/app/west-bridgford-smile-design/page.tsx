@@ -240,7 +240,7 @@ export default function WestBridgfordSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
+              {([
                 {
                   step: "1",
                   title: "Consultation & Analysis",
@@ -302,7 +302,7 @@ export default function WestBridgfordSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "Porcelain Veneers",
                   description: "Ultra-thin porcelain shells for dramatic transformation",
@@ -457,7 +457,7 @@ export default function WestBridgfordSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Victoria Hamilton",
                   location: "West Bridgford",

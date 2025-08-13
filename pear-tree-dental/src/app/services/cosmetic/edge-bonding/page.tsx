@@ -168,14 +168,14 @@ export default function CompositeEdgeBondingPage() {
         duration="30-60 minutes per tooth"
         preparation="No special preparation required"
         recovery="No downtime, immediate normal function"
-        benefits={[
+        benefits={([
           "Immediate smile improvement",
           "No drilling or tooth removal",
           "Natural appearance",
           "Same-day completion",
           "Cost-effective solution"
         ]}
-        risks={[
+        risks={([
           "May chip or wear over time",
           "Requires replacement every 5-8 years",
           "Not suitable for large restorations",

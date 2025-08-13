@@ -181,7 +181,7 @@ export default function GedlingPage() {
             </h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "General Dentistry",
                   description: "Routine check-ups, cleanings, and preventive care",
@@ -254,7 +254,7 @@ export default function GedlingPage() {
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Mark D.",
                   location: "Gedling",

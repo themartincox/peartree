@@ -282,7 +282,7 @@ export default function CompleteSmileMakeoverPage() {
         duration="2-12 months depending on treatment plan"
         preparation="Comprehensive consultation, digital smile design, treatment planning"
         recovery="Varies by treatment - minimal downtime for most procedures"
-        benefits={[
+        benefits={([
           "Complete smile transformation",
           "Dramatically improved appearance",
           "Enhanced self-confidence",
@@ -290,7 +290,7 @@ export default function CompleteSmileMakeoverPage() {
           "Long-lasting beautiful results",
           "Natural-looking smile design"
         ]}
-        risks={[
+        risks={([
           "Significant financial investment",
           "Extended treatment timeline for complex cases",
           "Possible temporary sensitivity",
@@ -585,7 +585,7 @@ export default function CompleteSmileMakeoverPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {[
+                  {([
                     "Comprehensive consultation",
                     "Digital smile design",
                     "Coordinated treatment plan",
@@ -617,7 +617,7 @@ export default function CompleteSmileMakeoverPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {[
+                  {([
                     "10% discount on all treatments",
                     "Priority appointment scheduling",
                     "Extended warranty options",

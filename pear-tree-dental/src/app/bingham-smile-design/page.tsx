@@ -240,7 +240,7 @@ export default function BinghamSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
+              {([
                 {
                   step: "1",
                   title: "Family Consultation",
@@ -302,7 +302,7 @@ export default function BinghamSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "Porcelain Veneers",
                   description: "Ultra-thin porcelain shells for dramatic transformation",
@@ -457,7 +457,7 @@ export default function BinghamSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "The Robinson Family",
                   location: "Bingham",

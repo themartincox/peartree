@@ -383,14 +383,14 @@ export default function TreatmentComparisonPage() {
         duration="Instant comparison"
         preparation="Review your needs and preferences"
         recovery="N/A - comparison tool"
-        benefits={[
+        benefits={([
           "Compare all treatment options",
           "Understand costs and benefits",
           "Make informed decisions",
           "Find best option for your needs",
           "Expert guidance included"
         ]}
-        risks={[
+        risks={([
           "Individual needs may vary",
           "Professional consultation recommended",
           "Final treatment plan may differ"

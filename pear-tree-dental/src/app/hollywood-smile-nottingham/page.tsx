@@ -189,14 +189,14 @@ export default function HollywoodSmileNottinghamPage() {
         duration="2-4 weeks treatment time"
         preparation="Digital smile design, comprehensive planning, custom veneer creation"
         recovery="Minimal downtime, immediate results"
-        benefits={[
+        benefits={([
           "Camera-ready perfect smile",
           "Custom-designed for your face",
           "Natural yet stunning appearance",
           "Boost confidence dramatically",
           "15-20 year lifespan"
         ]}
-        risks={[
+        risks={([
           "Temporary sensitivity possible",
           "Irreversible tooth preparation",
           "Requires ongoing maintenance",
@@ -254,7 +254,7 @@ export default function HollywoodSmileNottinghamPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              {[
+              {([
                 { icon: Star, text: "5-Star Results" },
                 { icon: Users, text: "500+ Smiles" },
                 { icon: Award, text: "Expert Team" },
@@ -460,7 +460,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {([
               {
                 step: "1",
                 title: "Your Personal Consultation",
@@ -518,7 +518,7 @@ export default function HollywoodSmileNottinghamPage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {[
+              {([
                 { icon: CreditCard, title: "Interest-free finance plans" },
                 { icon: Clock, title: "Flexible monthly payments" },
                 { icon: Shield, title: "Insurance claim assistance" },
@@ -580,7 +580,7 @@ export default function HollywoodSmileNottinghamPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-left">
               <div className="space-y-3">
-                {[
+                {([
                   "Discuss your Hollywood smile goals",
                   "Examine your current smile and oral health",
                   "Show you digital previews of your results"
@@ -592,7 +592,7 @@ export default function HollywoodSmileNottinghamPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                {[
+                {([
                   "Explain your treatment options and timeline",
                   "Provide detailed investment information",
                   "Answer all your questions about the process"

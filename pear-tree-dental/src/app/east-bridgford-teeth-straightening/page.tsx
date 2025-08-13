@@ -307,7 +307,7 @@ export default function EastBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              {[
+              {([
                 {
                   step: "1",
                   title: "Village Consultation",
@@ -430,7 +430,7 @@ export default function EastBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Dr. Richard Pemberton",
                   location: "East Bridgford Village",

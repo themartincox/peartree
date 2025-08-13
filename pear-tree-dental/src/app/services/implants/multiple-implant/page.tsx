@@ -226,14 +226,14 @@ export default function MultipleImplantPage() {
         duration="4-6 months total treatment"
         preparation="Comprehensive examination, 3D imaging, multi-implant planning"
         recovery="3-6 months healing for osseointegration"
-        benefits={[
+        benefits={([
           "Independent function for each tooth",
           "Comprehensive bone preservation",
           "Natural aesthetics and feel",
           "Superior long-term success",
           "Easy individual maintenance"
         ]}
-        risks={[
+        risks={([
           "Surgical risks (minimal)",
           "Higher initial investment",
           "Extended treatment time",

@@ -194,14 +194,14 @@ export default function ValplastDenturesPage() {
         duration="2-3 appointments over 2-3 weeks"
         preparation="Dental examination, impressions, treatment planning"
         recovery="Immediate wear, adjustment period 1-2 weeks"
-        benefits={[
+        benefits={([
           "Virtually invisible appearance",
           "Metal-free and hypoallergenic",
           "Flexible and comfortable",
           "Durable and break-resistant",
           "Natural gum-colored clasps"
         ]}
-        risks={[
+        risks={([
           "Adjustment period required",
           "May need periodic relines",
           "Not suitable for all cases",

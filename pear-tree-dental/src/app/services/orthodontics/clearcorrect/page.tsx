@@ -228,14 +228,14 @@ export default function ClearCorrectPage() {
         duration="6-18 months treatment time"
         preparation="Digital impressions, 3D planning, custom aligner fabrication"
         recovery="No recovery needed - continue normal activities"
-        benefits={[
+        benefits={([
           "20-30% more affordable than premium alternatives",
           "95% invisible clear aligners",
           "Removable for eating and cleaning",
           "Comfortable ClearQuartz material",
           "Effective for most orthodontic cases"
         ]}
-        risks={[
+        risks={([
           "Requires patient compliance (20-22 hours daily)",
           "Temporary speech changes initially",
           "Mild discomfort with new aligners",

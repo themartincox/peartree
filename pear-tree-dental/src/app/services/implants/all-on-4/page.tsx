@@ -256,14 +256,14 @@ export default function AllOn4Page() {
         duration="Same day teeth, 3-6 months total treatment"
         preparation="Comprehensive planning, 3D imaging, computer-guided surgery"
         recovery="Immediate function with temporary teeth, final restoration after healing"
-        benefits={[
+        benefits={([
           "Same day teeth replacement",
           "Only 4 implants needed per arch",
           "Often avoids bone grafting",
           "Immediate functional improvement",
           "Cost-effective full arch solution"
         ]}
-        risks={[
+        risks={([
           "Surgical risks (minimal)",
           "Temporary diet restrictions",
           "Possible prosthetic adjustments needed",

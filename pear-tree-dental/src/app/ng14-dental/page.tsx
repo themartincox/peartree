@@ -149,7 +149,7 @@ export default function NG14DentalPage() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-3xl mx-auto">
               <h3 className="text-lg font-semibold mb-4 text-pear-gold">NG14 Areas We Serve</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                {[
+                {([
                   "Burton Joyce",
                   "Lowdham",
                   "Calverton",
@@ -248,7 +248,7 @@ export default function NG14DentalPage() {
                 <div className="bg-white rounded-xl p-6 shadow-lg border border-dental-green/20">
                   <h3 className="text-xl font-bold mb-6 text-dental-green">NG14 New Resident Checklist</h3>
                   <div className="space-y-4">
-                    {[
+                    {([
                       { task: "Set up utilities (gas, electric, water)", completed: true },
                       { task: "Register with local council", completed: true },
                       { task: "Find nearby schools", completed: true },
@@ -372,7 +372,7 @@ export default function NG14DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "NG14 Family Care",
                   description: "Dental care for the whole family",
@@ -457,7 +457,7 @@ export default function NG14DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "David Thompson",
                   location: "Burton Joyce, NG14",

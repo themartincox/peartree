@@ -369,7 +369,7 @@ export default function EastBridgfordTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Margaret & Robert Hartley",
                   location: "East Bridgford Village",

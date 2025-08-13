@@ -87,14 +87,14 @@ export default function ImplantsPage() {
         duration="3-6 months total treatment time"
         preparation="Comprehensive assessment, 3D imaging, treatment planning"
         recovery="3-6 months healing period for osseointegration"
-        benefits={[
+        benefits={([
           "98% success rate",
           "25+ year lifespan",
           "Preserves jawbone",
           "Natural function and appearance",
           "No impact on adjacent teeth"
         ]}
-        risks={[
+        risks={([
           "Infection (rare with proper care)",
           "Implant rejection (very rare)",
           "Sinus problems (upper jaw only)",
@@ -128,7 +128,7 @@ export default function ImplantsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {([
               {
                 title: "Single Implant",
                 description: "Replace one missing tooth with a natural-looking implant crown",
@@ -248,7 +248,7 @@ export default function ImplantsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {([
               {
                 step: "01",
                 title: "Consultation & Planning",
@@ -320,7 +320,7 @@ export default function ImplantsPage() {
 
           <div className="max-w-4xl mx-auto mb-8">
             <BeforeAfterButton
-              images={[
+              images={([
                 {
                   beforeSrc: "/images/before-after/implants-before.png",
                   afterSrc: "/images/before-after/implants-after.png",
@@ -369,7 +369,7 @@ export default function ImplantsPage() {
                 Why Choose Dental Implants?
               </h2>
               <div className="space-y-6">
-                {[
+                {([
                   {
                     icon: Shield,
                     title: "Permanent Solution",
@@ -425,7 +425,7 @@ export default function ImplantsPage() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-200">
-                        {[
+                        {([
                           { feature: "Lifespan", implant: "25+ years", bridge: "10-15 years", denture: "5-7 years" },
                           { feature: "Bone Preservation", implant: "✓", bridge: "✗", denture: "✗" },
                           { feature: "Adjacent Teeth", implant: "Preserved", bridge: "Altered", denture: "Preserved" },
@@ -471,7 +471,7 @@ export default function ImplantsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {[
+                  {([
                     "Premium titanium implant",
                     "Surgical placement",
                     "Healing abutment",

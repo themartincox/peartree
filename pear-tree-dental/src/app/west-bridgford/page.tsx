@@ -98,7 +98,7 @@ export default function WestBridgfordPage() {
         serviceName="Premium Dental Care for West Bridgford"
         serviceDescription="Comprehensive premium dental services including cosmetic dentistry, dental implants, and advanced treatments for discerning West Bridgford residents"
         procedureType="Comprehensive Dental Care"
-        areaServed={["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
+        areaServed={(["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
       />
 
       {/* Service Area Schema for West Bridgford Coverage */}
@@ -238,7 +238,7 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "Cosmetic Excellence",
                   description: "Transform your smile with premium aesthetic treatments",
@@ -356,7 +356,7 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Dr. Margaret Thompson",
                   location: "West Bridgford",

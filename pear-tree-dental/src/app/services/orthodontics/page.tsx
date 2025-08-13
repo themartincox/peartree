@@ -117,14 +117,14 @@ export default function OrthodonticsPage() {
         duration="6-18 months treatment time"
         preparation="Digital impressions, treatment planning, aligner fabrication"
         recovery="No recovery needed - continue normal activities"
-        benefits={[
+        benefits={([
           "95% invisible treatment",
           "Removable for eating and cleaning",
           "No food restrictions",
           "Comfortable smooth plastic",
           "Shorter treatment time than braces"
         ]}
-        risks={[
+        risks={([
           "Temporary speech changes initially",
           "Mild discomfort with new aligners",
           "Requires patient compliance",
@@ -183,7 +183,7 @@ export default function OrthodonticsPage() {
                   The world's most advanced clear aligner system with proven results for mild to complex cases.
                 </p>
                 <ul className="space-y-3 mb-6">
-                  {[
+                  {([
                     "SmartTrack material for comfort",
                     "Precision attachments when needed",
                     "Virtual treatment planning",
@@ -231,7 +231,7 @@ export default function OrthodonticsPage() {
                   Premium clear aligners offering excellent value with effective treatment for most orthodontic cases.
                 </p>
                 <ul className="space-y-3 mb-6">
-                  {[
+                  {([
                     "ClearQuartz material",
                     "Excellent value for money",
                     "Effective for most cases",
@@ -271,7 +271,7 @@ export default function OrthodonticsPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {[
+                      {([
                         { feature: "Visibility", aligners: "Nearly invisible", braces: "Highly visible metal" },
                         { feature: "Comfort", aligners: "Smooth plastic", braces: "Metal brackets/wires" },
                         { feature: "Eating", aligners: "Remove for meals", braces: "Food restrictions" },
@@ -368,7 +368,7 @@ export default function OrthodonticsPage() {
                 Why Choose Clear Aligners?
               </h3>
               <div className="space-y-6">
-                {[
+                {([
                   {
                     icon: Eye,
                     title: "Nearly Invisible Treatment",
@@ -446,7 +446,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 icon: Smile,
                 title: "Eat Anything",
@@ -517,7 +517,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
+            {([
               {
                 title: "3D Digital Planning",
                 description: "Advanced computer modeling creates a precise treatment plan showing exactly how your teeth will move at each stage.",
@@ -585,7 +585,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
+            {([
               {
                 step: "01",
                 title: "Smile Assessment",
@@ -658,7 +658,7 @@ export default function OrthodonticsPage() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {[
+                {([
                   { condition: "Crowded Teeth", description: "Insufficient space causing overlapping" },
                   { condition: "Gaps & Spacing", description: "Unwanted spaces between teeth" },
                   { condition: "Overbite", description: "Upper teeth overlap lower teeth too much" },
@@ -734,7 +734,7 @@ export default function OrthodonticsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {[
+                  {([
                     "Comprehensive assessment",
                     "Digital treatment planning",
                     "Custom aligner sets",
@@ -766,7 +766,7 @@ export default function OrthodonticsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {[
+                  {([
                     "10% discount on all treatments",
                     "Free initial consultation",
                     "Priority appointment booking",

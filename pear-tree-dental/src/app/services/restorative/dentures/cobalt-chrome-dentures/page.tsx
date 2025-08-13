@@ -194,14 +194,14 @@ export default function CobaltChromeDenturesPage() {
         duration="3-4 appointments over 3-4 weeks"
         preparation="Dental examination, impressions, bite registration"
         recovery="Immediate wear, adjustment period 1-2 weeks"
-        benefits={[
+        benefits={([
           "Superior strength and durability",
           "Precision-cast metal framework",
           "Exceptional retention and stability",
           "Long-lasting 10-15+ years",
           "Minimal tissue coverage"
         ]}
-        risks={[
+        risks={([
           "Higher initial cost",
           "Metal may be slightly visible",
           "Requires skilled craftsmanship",

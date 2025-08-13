@@ -157,14 +157,14 @@ export default function EnlightenWhiteningPage() {
         duration="2 weeks home treatment + 1 hour practice visit"
         preparation="Dental examination, custom tray fitting, oral health assessment"
         recovery="No downtime, minimal sensitivity"
-        benefits={[
+        benefits={([
           "Guaranteed B1 shade result",
           "Minimal sensitivity formula",
           "Long-lasting results (3+ years)",
           "Gold standard whitening system",
           "Professional supervision throughout"
         ]}
-        risks={[
+        risks={([
           "Minimal temporary sensitivity",
           "Not suitable for pregnant/nursing women",
           "Results depend on following protocol",

@@ -183,14 +183,14 @@ export default function BiodentineFillingPage() {
         duration="45-60 minutes"
         preparation="Local anesthesia if needed, standard cavity preparation"
         recovery="Minimal sensitivity, normal function restored immediately"
-        benefits={[
+        benefits={([
           "Bioactive healing promotion",
           "Superior sealing properties",
           "Reduced post-operative sensitivity",
           "Long-lasting restoration",
           "Strengthens surrounding tooth structure"
         ]}
-        risks={[
+        risks={([
           "Standard filling risks apply",
           "Higher cost than traditional materials",
           "Not suitable for all cases",

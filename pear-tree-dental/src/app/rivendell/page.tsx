@@ -175,7 +175,7 @@ export default function RivendellPage() {
                 <div className="bg-gradient-to-r from-dental-green/10 to-dental-green/5 rounded-xl p-6">
                   <h3 className="text-2xl font-bold mb-6 text-dental-navy">New Home Checklist</h3>
                   <div className="space-y-4">
-                    {[
+                    {([
                       { task: "Set up utilities", status: "complete" },
                       { task: "Register with GP", status: "complete" },
                       { task: "Find local schools", status: "complete" },
@@ -285,7 +285,7 @@ export default function RivendellPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "Children's Dentistry",
                   description: "Gentle dental care to keep young smiles healthy",
@@ -403,7 +403,7 @@ export default function RivendellPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Emma & Tom Bradley",
                   location: "Rivendell",

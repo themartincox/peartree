@@ -215,7 +215,7 @@ export default function BurtonJoycePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 title: "Family Dentistry",
                 description: "Gentle care for all ages, from toddlers to grandparents",
@@ -314,7 +314,7 @@ export default function BurtonJoycePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
+            {([
               {
                 name: "Sarah Williams",
                 location: "Burton Joyce",

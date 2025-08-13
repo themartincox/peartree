@@ -308,7 +308,7 @@ export default function WestBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-8">
-              {[
+              {([
                 {
                   step: "1",
                   title: "Consultation",
@@ -431,7 +431,7 @@ export default function WestBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "David Chen",
                   location: "West Bridgford",

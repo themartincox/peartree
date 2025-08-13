@@ -151,7 +151,7 @@ export default function NG4DentalPage() {
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto">
               <h3 className="text-lg font-semibold mb-4 text-pear-gold">NG4 Communities We Serve</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                {[
+                {([
                   "Arnold",
                   "Gedling",
                   "Carlton",
@@ -350,7 +350,7 @@ export default function NG4DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   title: "NG4 Family Dentistry",
                   description: "Complete dental care for NG4 families",
@@ -468,7 +468,7 @@ export default function NG4DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Lisa Williams",
                   location: "Arnold, NG4",

@@ -370,7 +370,7 @@ export default function WestBridgfordTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {[
+              {([
                 {
                   name: "Sarah Mitchell",
                   location: "West Bridgford",
