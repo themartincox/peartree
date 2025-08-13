@@ -247,14 +247,14 @@ export default function PerfectSmileNottinghamPage() {
         duration="2-12 weeks depending on treatment"
         preparation="Comprehensive smile analysis, digital design, personalised treatment planning"
         recovery="Minimal downtime, immediate confidence boost"
-        benefits={([
+        benefits={[
           "Perfectly personalised smile design",
           "Natural-looking beautiful results",
           "Increased confidence and self-esteem",
           "Long-lasting smile transformation",
           "Expert local care in Nottingham"
         ]}
-        risks={([
+        risks={[
           "Temporary sensitivity possible",
           "Individual healing variation",
           "Requires ongoing maintenance",

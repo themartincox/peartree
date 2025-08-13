@@ -56,7 +56,7 @@ export default function EmergencyDentistNottinghamPage() {
       <NottinghamTransportSchema
         fromLocation="Nottingham"
         estimatedTravelTime="15 minutes"
-        transportModes={(["car", "taxi", "public_transport"]}
+        transportModes={["car", "taxi", "public_transport"]}
         routeDescription="Emergency dental care accessible from Nottingham city center via A612 direct route"
       />
 

@@ -546,7 +546,7 @@ export default function MembershipSignupPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative">
             <div className="flex justify-between">
-              {([1, 2, 3, 4] || []).map((step) => (
+              {[1, 2, 3, 4].map((step) => (
                 <div key={step} className="flex flex-col items-center py-4">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold ${
                     step <= currentStep

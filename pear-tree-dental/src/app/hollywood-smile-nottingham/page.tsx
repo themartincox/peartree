@@ -189,14 +189,14 @@ export default function HollywoodSmileNottinghamPage() {
         duration="2-4 weeks treatment time"
         preparation="Digital smile design, comprehensive planning, custom veneer creation"
         recovery="Minimal downtime, immediate results"
-        benefits={([
+        benefits={[
           "Camera-ready perfect smile",
           "Custom-designed for your face",
           "Natural yet stunning appearance",
           "Boost confidence dramatically",
           "15-20 year lifespan"
         ]}
-        risks={([
+        risks={[
           "Temporary sensitivity possible",
           "Irreversible tooth preparation",
           "Requires ongoing maintenance",
