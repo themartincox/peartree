@@ -285,11 +285,11 @@ function generateRecommendations(testResults: JourneyTestResult[]): string[] {
   const warnings = testResults.filter(r => r.status === 'warning');
 
   if (errors.length > 0) {
-    recommendations.push(`🔴 Fix ${errors.length} critical errors: ${errors.map(e => e.step).join(', ')}`);
+    recommendations.push(`🔴 Fix ${errors.length} critical errors: ${(errors || []).map(e => e.step).join(', ')}`);
   }
 
   if (warnings.length > 0) {
-    recommendations.push(`🟡 Address ${warnings.length} warnings: ${warnings.map(w => w.step).join(', ')}`);
+    recommendations.push(`🟡 Address ${warnings.length} warnings: ${(warnings || []).map(w => w.step).join(', ')}`);
   }
 
   if (errors.length === 0 && warnings.length === 0) {
