@@ -258,7 +258,7 @@ export default function ArnoldRootCanalPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => {
+              {(benefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -290,7 +290,7 @@ export default function ArnoldRootCanalPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {symptoms.map((symptom, index) => {
+              {(symptoms || []).map((symptom, index) => {
                 const IconComponent = symptom.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow">
@@ -351,7 +351,7 @@ export default function ArnoldRootCanalPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {treatmentStages.map((stage, index) => {
+              {(treatmentStages || []).map((stage, index) => {
                 const IconComponent = stage.icon;
                 return (
                   <Card key={stage.stage} className="text-center hover:shadow-lg transition-shadow">
