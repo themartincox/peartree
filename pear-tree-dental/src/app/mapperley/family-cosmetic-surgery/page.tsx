@@ -316,7 +316,7 @@ export default function MapperleyFamilyCosmeticSurgeryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-rose-200">
@@ -372,7 +372,7 @@ export default function MapperleyFamilyCosmeticSurgeryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {cosmeticProcedures.map((procedure, index) => {
+              {(cosmeticProcedures || []).map((procedure, index) => {
                 const IconComponent = procedure.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-rose-400 relative">
@@ -425,7 +425,7 @@ export default function MapperleyFamilyCosmeticSurgeryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {surgicalSpecialties.map((specialty, index) => (
+              {(surgicalSpecialties || []).map((specialty, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -471,7 +471,7 @@ export default function MapperleyFamilyCosmeticSurgeryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {familyTimeline.map((phase, index) => (
+              {(familyTimeline || []).map((phase, index) => (
                 <Card key={phase.phase} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-rose-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

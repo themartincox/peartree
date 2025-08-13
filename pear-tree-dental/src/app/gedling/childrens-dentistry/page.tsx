@@ -352,7 +352,7 @@ export default function GedlingChildrensDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {workingParentsBenefits.map((benefit, index) => {
+              {(workingParentsBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-green-200">
@@ -408,7 +408,7 @@ export default function GedlingChildrensDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {childrenServices.map((service, index) => {
+              {(childrenServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-green-400">
@@ -453,7 +453,7 @@ export default function GedlingChildrensDentistryPage() {
             </div>
 
             <div className="space-y-8">
-              {ageAppropriateServices.map((group, index) => (
+              {(ageAppropriateServices || []).map((group, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
@@ -506,7 +506,7 @@ export default function GedlingChildrensDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {convenientFeatures.map((feature, index) => (
+              {(convenientFeatures || []).map((feature, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -544,7 +544,7 @@ export default function GedlingChildrensDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {preventionStrategies.map((strategy, index) => (
+              {(preventionStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

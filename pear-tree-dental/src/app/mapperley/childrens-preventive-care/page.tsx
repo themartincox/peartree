@@ -314,7 +314,7 @@ export default function MapperleyChildrensPreventivePage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-blue-200">
@@ -370,7 +370,7 @@ export default function MapperleyChildrensPreventivePage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {preventiveServices.map((service, index) => {
+              {(preventiveServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-blue-400 relative">
@@ -426,7 +426,7 @@ export default function MapperleyChildrensPreventivePage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {ageBasedPrevention.map((group, index) => {
+              {(ageBasedPrevention || []).map((group, index) => {
                 const IconComponent = group.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -490,7 +490,7 @@ export default function MapperleyChildrensPreventivePage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {preventionTechnologies.map((tech, index) => (
+              {(preventionTechnologies || []).map((tech, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

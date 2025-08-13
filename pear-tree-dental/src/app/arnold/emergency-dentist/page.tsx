@@ -256,7 +256,7 @@ export default function ArnoldEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-              {emergencyTypes.map((emergency, index) => {
+              {(emergencyTypes || []).map((emergency, index) => {
                 const IconComponent = emergency.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">

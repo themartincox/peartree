@@ -318,7 +318,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {valueBenefits.map((benefit, index) => {
+              {(valueBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-yellow-200">
@@ -374,7 +374,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {whiteningOptions.map((option, index) => {
+              {(whiteningOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-yellow-400 relative">
@@ -429,7 +429,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
                 <div className="text-center">Better Value</div>
               </div>
 
-              {comparisonChart.map((item, index) => (
+              {(comparisonChart || []).map((item, index) => (
                 <div key={index} className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50">
                   <div className="font-semibold text-gray-700">{item.aspect}</div>
                   <div className="text-center text-sm text-gray-600 px-2">{item.professional}</div>
@@ -474,7 +474,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {affordabilityFeatures.map((feature, index) => (
+              {(affordabilityFeatures || []).map((feature, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

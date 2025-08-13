@@ -306,7 +306,7 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-red-200">
@@ -362,7 +362,7 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {emergencyServices.map((service, index) => {
+              {(emergencyServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-red-400">
@@ -405,7 +405,7 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {emergencyScenarios.map((scenario, index) => (
+              {(emergencyScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>
@@ -453,7 +453,7 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {workingFamilyFeatures.map((feature, index) => (
+              {(workingFamilyFeatures || []).map((feature, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

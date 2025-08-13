@@ -235,7 +235,7 @@ export default function ArnoldDenturesPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => {
+              {(benefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -267,7 +267,7 @@ export default function ArnoldDenturesPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {dentureTypes.map((denture, index) => {
+              {(dentureTypes || []).map((denture, index) => {
                 const IconComponent = denture.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-primary">

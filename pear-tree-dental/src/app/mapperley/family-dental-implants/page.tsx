@@ -314,7 +314,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-emerald-200">
@@ -370,7 +370,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyImplantTypes.map((implant, index) => {
+              {(familyImplantTypes || []).map((implant, index) => {
                 const IconComponent = implant.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-emerald-400 relative">
@@ -427,7 +427,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {generationalNeeds.map((group, index) => {
+              {(generationalNeeds || []).map((group, index) => {
                 const IconComponent = group.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -492,7 +492,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {treatmentTimeline.map((phase, index) => (
+              {(treatmentTimeline || []).map((phase, index) => (
                 <Card key={phase.phase} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

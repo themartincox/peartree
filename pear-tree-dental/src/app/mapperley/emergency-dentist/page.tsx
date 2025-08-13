@@ -263,7 +263,7 @@ export default function MapperleyEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyEmergencies.map((emergency, index) => {
+              {(familyEmergencies || []).map((emergency, index) => {
                 const IconComponent = emergency.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-red-500">
@@ -326,7 +326,7 @@ export default function MapperleyEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -358,7 +358,7 @@ export default function MapperleyEmergencyDentistPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {emergencyProtocol.map((step, index) => (
+              {(emergencyProtocol || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

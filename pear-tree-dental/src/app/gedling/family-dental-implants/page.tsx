@@ -469,7 +469,7 @@ export default function GedlingFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-             {(familyScenarios || []).map((scenario, index) => (
+              {(familyScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>

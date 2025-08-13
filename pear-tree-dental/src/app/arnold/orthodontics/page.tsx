@@ -261,7 +261,7 @@ export default function ArnoldOrthodonticsPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {benefits.map((benefit, index) => {
+              {(benefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -293,7 +293,7 @@ export default function ArnoldOrthodonticsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {orthodonticOptions.map((option, index) => {
+              {(orthodonticOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-primary relative">
@@ -370,7 +370,7 @@ export default function ArnoldOrthodonticsPage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
-              {ageGroups.map((group, index) => (
+              {(ageGroups || []).map((group, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle className="text-xl text-pear-primary">{group.group}</CardTitle>

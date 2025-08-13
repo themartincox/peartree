@@ -261,7 +261,7 @@ export default function ArnoldDentalBridgesPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {advantages.map((advantage, index) => {
+              {(advantages || []).map((advantage, index) => {
                 const IconComponent = advantage.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -293,7 +293,7 @@ export default function ArnoldDentalBridgesPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {bridgeTypes.map((bridge, index) => {
+              {(bridgeTypes || []).map((bridge, index) => {
                 const IconComponent = bridge.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-primary">
@@ -365,7 +365,7 @@ export default function ArnoldDentalBridgesPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {process.map((step, index) => (
+              {(process || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

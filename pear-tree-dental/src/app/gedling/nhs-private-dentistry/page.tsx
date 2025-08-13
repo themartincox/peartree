@@ -319,7 +319,7 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {flexibilityBenefits.map((benefit, index) => {
+              {(flexibilityBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-green-200">
@@ -375,7 +375,7 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-16">
-              {treatmentOptions.map((option, index) => {
+              {(treatmentOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -428,7 +428,7 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <div className="space-y-6">
-              {nhsPrivateComparison.map((comparison, index) => (
+              {(nhsPrivateComparison || []).map((comparison, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
@@ -477,7 +477,7 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {smartChoiceStrategies.map((strategy, index) => (
+              {(smartChoiceStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

@@ -345,7 +345,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {familyBenefits.map((benefit, index) => {
+              {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-pink-200">
@@ -401,7 +401,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {teenTreatments.map((treatment, index) => {
+              {(teenTreatments || []).map((treatment, index) => {
                 const IconComponent = treatment.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pink-400 relative">
@@ -457,7 +457,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {teenConcerns.map((concern, index) => {
+              {(teenConcerns || []).map((concern, index) => {
                 const IconComponent = concern.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -521,7 +521,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {parentalGuidance.map((guidance, index) => (
+              {(parentalGuidance || []).map((guidance, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
@@ -572,7 +572,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {treatmentApproach.map((step, index) => (
+              {(treatmentApproach || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

@@ -374,7 +374,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {affordableBenefits.map((benefit, index) => {
+              {(affordableBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-rose-200">
@@ -430,7 +430,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {makeoverPackages.map((makeover, index) => {
+              {(makeoverPackages || []).map((makeover, index) => {
                 const IconComponent = makeover.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-rose-400">
@@ -478,7 +478,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {makeoverScenarios.map((scenario, index) => (
+              {(makeoverScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>
@@ -538,7 +538,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {treatmentOptions.map((treatment, index) => (
+              {(treatmentOptions || []).map((treatment, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-2">{treatment.treatment}</h3>
@@ -588,7 +588,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {affordabilityStrategies.map((strategy, index) => (
+              {(affordabilityStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

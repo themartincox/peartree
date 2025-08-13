@@ -370,7 +370,7 @@ export default function GedlingFlexiblePaymentDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {flexibleBenefits.map((benefit, index) => {
+              {(flexibleBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-teal-200">
@@ -426,7 +426,7 @@ export default function GedlingFlexiblePaymentDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {paymentOptions.map((option, index) => {
+              {(paymentOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-teal-400">
@@ -474,7 +474,7 @@ export default function GedlingFlexiblePaymentDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {budgetScenarios.map((scenario, index) => (
+              {(budgetScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>
@@ -528,7 +528,7 @@ export default function GedlingFlexiblePaymentDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {treatmentCostExamples.map((treatment, index) => (
+              {(treatmentCostExamples || []).map((treatment, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-2">{treatment.treatment}</h3>
@@ -577,7 +577,7 @@ export default function GedlingFlexiblePaymentDentistryPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {budgetStrategies.map((strategy, index) => (
+              {(budgetStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

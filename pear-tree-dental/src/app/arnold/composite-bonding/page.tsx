@@ -235,7 +235,7 @@ export default function ArnoldCompositeBondingPage() {
             </div>
 
             <div className="grid md:grid-cols-4 gap-6 mb-12">
-              {advantages.map((advantage, index) => {
+              {(advantages || []).map((advantage, index) => {
                 const IconComponent = advantage.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -267,7 +267,7 @@ export default function ArnoldCompositeBondingPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {bondingTreatments.map((treatment, index) => {
+              {(bondingTreatments || []).map((treatment, index) => {
                 const IconComponent = treatment.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-primary">

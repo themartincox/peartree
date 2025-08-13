@@ -241,7 +241,7 @@ export default function ArnoldPorcelainVeneersPage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              {veneerTypes.map((veneer, index) => {
+              {(veneerTypes || []).map((veneer, index) => {
                 const IconComponent = veneer.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-gold">

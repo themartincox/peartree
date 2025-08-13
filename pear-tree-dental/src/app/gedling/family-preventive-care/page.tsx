@@ -376,7 +376,7 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {longTermBenefits.map((benefit, index) => {
+              {(longTermBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-green-200">
@@ -432,7 +432,7 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {preventiveServices.map((service, index) => {
+              {(preventiveServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-green-400">
@@ -478,7 +478,7 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="space-y-8">
-              {ageSpecificPrevention.map((group, index) => (
+              {(ageSpecificPrevention || []).map((group, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
@@ -537,7 +537,7 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="space-y-6">
-              {preventionROI.map((investment, index) => (
+              {(preventionROI || []).map((investment, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-5 gap-4">
@@ -591,7 +591,7 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {familyHealthStrategies.map((strategy, index) => (
+              {(familyHealthStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">

@@ -270,7 +270,7 @@ export default function ArnoldCompleteSmileMakeoverPage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 mb-16">
-              {makeoverOptions.map((option, index) => (
+              {(makeoverOptions || []).map((option, index) => (
                 <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-gold">
                   <CardHeader className="text-center pb-4">
                     <CardTitle className="text-xl text-pear-primary mb-2">{option.name}</CardTitle>
@@ -341,7 +341,7 @@ export default function ArnoldCompleteSmileMakeoverPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {makeoverSteps.map((step, index) => (
+              {(makeoverSteps || []).map((step, index) => (
                 <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

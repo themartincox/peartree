@@ -349,7 +349,7 @@ export default function GedlingDentalCrownsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {qualityBenefits.map((benefit, index) => {
+              {(qualityBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-amber-200">
@@ -405,7 +405,7 @@ export default function GedlingDentalCrownsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {crownOptions.map((option, index) => {
+              {(crownOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-amber-400">
@@ -450,7 +450,7 @@ export default function GedlingDentalCrownsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {crownScenarios.map((scenario, index) => (
+              {(crownScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>
@@ -499,7 +499,7 @@ export default function GedlingDentalCrownsPage() {
             </div>
 
             <div className="space-y-6">
-              {crownMaterials.map((material, index) => (
+              {(crownMaterials || []).map((material, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-4 gap-6">
@@ -548,7 +548,7 @@ export default function GedlingDentalCrownsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {valueStrategies.map((strategy, index) => (
+              {(valueStrategies || []).map((strategy, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
