@@ -307,7 +307,7 @@ export default function AirFlowStainRemovalPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -337,7 +337,7 @@ export default function AirFlowStainRemovalPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {stainTypes.map((stain) => {
+            {(stainTypes || []).map((stain) => {
               const Icon = stain.icon;
               return (
                 <Card key={stain.source} className="text-center hover:shadow-lg transition-shadow">
@@ -372,7 +372,7 @@ export default function AirFlowStainRemovalPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

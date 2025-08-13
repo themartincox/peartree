@@ -354,7 +354,7 @@ export default function CobaltChromeDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -384,7 +384,7 @@ export default function CobaltChromeDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {manufacturing.map((stage) => {
+            {(manufacturing || []).map((stage) => {
               const Icon = stage.icon;
               return (
                 <Card key={stage.stage} className="text-center hover:shadow-lg transition-shadow">
@@ -416,7 +416,7 @@ export default function CobaltChromeDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {features.map((feature, index) => (
+            {(features || []).map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 bg-slate-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-slate-600 flex-shrink-0" />
                 <span className="text-gray-700">{feature}</span>
@@ -450,7 +450,7 @@ export default function CobaltChromeDenturesPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparisons.map((item, index) => (
+                  {(comparisons || []).map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -483,7 +483,7 @@ export default function CobaltChromeDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-slate-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

@@ -306,7 +306,7 @@ export default function RestorativeDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -375,7 +375,7 @@ export default function RestorativeDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {treatments.map((treatment) => (
+            {(treatments || []).map((treatment) => (
               <Card
                 key={treatment.name}
                 className={`hover:shadow-xl transition-all duration-300 ${
@@ -486,7 +486,7 @@ export default function RestorativeDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {materials.map((material, index) => (
+            {(materials || []).map((material, index) => (
               <Card key={index} className="bg-gradient-to-br from-green-50/50 to-teal-50/50 border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-lg font-semibold text-pear-primary">
@@ -526,7 +526,7 @@ export default function RestorativeDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative bg-white border-dental-green/20">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-soft-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg">

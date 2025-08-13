@@ -189,7 +189,7 @@ const ServicesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {coreServices.map((service) => {
+            {(coreServices || []).map((service) => {
               const ServiceIcon = service.icon;
               return (
                 <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">
@@ -273,7 +273,7 @@ const ServicesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {cosmeticServices.map((service) => {
+            {(cosmeticServices || []).map((service) => {
               const ServiceIcon = service.icon;
               return (
                 <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">

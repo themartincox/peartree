@@ -287,7 +287,7 @@ export default function VeneersPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            {veneerTypes.map((veneer, index) => {
+            {(veneerTypes || []).map((veneer, index) => {
               const IconComponent = veneer.icon;
               const colorClasses = {
                 'soft-pink': 'bg-soft-pink border-soft-pink/30',
@@ -451,7 +451,7 @@ export default function VeneersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {commonBenefits.map((benefit, index) => {
+            {(commonBenefits || []).map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
@@ -481,7 +481,7 @@ export default function VeneersPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              {treatmentProcess.map((step, index) => (
+              {(treatmentProcess || []).map((step, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-lg">{step.step}</span>
@@ -510,7 +510,7 @@ export default function VeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
+            {(faqs || []).map((faq, index) => (
               <Card key={index} className="p-6">
                 <h3 className="font-semibold text-pear-primary mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>
@@ -546,7 +546,7 @@ export default function VeneersPage() {
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {veneerTypes.map((veneer) => (
+            {(veneerTypes || []).map((veneer) => (
               <Link key={veneer.id} href={veneer.href}>
                 <Button variant="ghost" className="text-white hover:bg-white/10">
                   Learn About {veneer.name.split(' ')[0]} Veneers

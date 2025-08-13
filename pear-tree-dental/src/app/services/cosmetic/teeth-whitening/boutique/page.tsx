@@ -359,7 +359,7 @@ export default function BoutiqueWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature) => {
+            {(features || []).map((feature) => {
               const Icon = feature.icon;
               return (
                 <Card
@@ -408,7 +408,7 @@ export default function BoutiqueWhiteningPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.map((item, index) => (
+                  {(comparison || []).map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -441,7 +441,7 @@ export default function BoutiqueWhiteningPage() {
           </div>
 
           <div className="space-y-8 max-w-5xl mx-auto">
-            {process.map((phase, index) => (
+            {(process || []).map((phase, index) => (
               <Card key={phase.phase} className="overflow-hidden">
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -489,7 +489,7 @@ export default function BoutiqueWhiteningPage() {
               </p>
 
               <div className="space-y-4">
-                {benefits.map((benefit, index) => (
+                {(benefits || []).map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{benefit}</span>

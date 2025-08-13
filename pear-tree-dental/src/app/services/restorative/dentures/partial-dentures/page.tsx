@@ -338,7 +338,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -368,7 +368,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {types.map((type) => (
+            {(types || []).map((type) => (
               <Card key={type.type} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{type.type}</CardTitle>
@@ -428,7 +428,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {features.map((feature, index) => (
+            {(features || []).map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 bg-emerald-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                 <span className="text-gray-700">{feature}</span>
@@ -452,7 +452,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {candidateFactors.map((factor) => {
+            {(candidateFactors || []).map((factor) => {
               const Icon = factor.icon;
               return (
                 <Card key={factor.situation} className="text-center hover:shadow-lg transition-shadow">
@@ -484,7 +484,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

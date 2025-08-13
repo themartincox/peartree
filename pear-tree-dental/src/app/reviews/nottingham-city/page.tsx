@@ -324,7 +324,7 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {researchSources.map((source, index) => (
+              {(researchSources || []).map((source, index) => (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <BarChart3 className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
@@ -380,7 +380,7 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {patientPriorities.map((priority, index) => {
+              {(patientPriorities || []).map((priority, index) => {
                 const IconComponent = priority.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -427,7 +427,7 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             </div>
 
             <div className="space-y-8">
-              {commonConcerns.map((concern, index) => (
+              {(commonConcerns || []).map((concern, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-4 gap-4 items-center">
@@ -481,7 +481,7 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
                 <div className="text-center">Winner</div>
               </div>
 
-              {practiceComparison.map((item, index) => (
+              {(practiceComparison || []).map((item, index) => (
                 <div key={index} className="grid grid-cols-5 p-4 border-b border-gray-100 hover:bg-gray-50">
                   <div className="font-semibold text-gray-700">{item.factor}</div>
                   <div className="text-center text-sm text-gray-600 px-2">{item.traditionalPractices}</div>

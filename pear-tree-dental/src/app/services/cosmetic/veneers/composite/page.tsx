@@ -387,7 +387,7 @@ export default function CompositeVeneersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
+            {(benefits || []).map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
@@ -420,7 +420,7 @@ export default function CompositeVeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {sameDayProcess.map((step, index) => {
+            {(sameDayProcess || []).map((step, index) => {
               const IconComponent = step.icon;
               return (
                 <Card key={index} className="p-6 text-center">
@@ -459,7 +459,7 @@ export default function CompositeVeneersPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonData.map((row, index) => (
+                {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
                     <td className="p-4 text-center bg-dental-green/10 font-semibold text-pear-primary">{row.composite}</td>
@@ -483,7 +483,7 @@ export default function CompositeVeneersPage() {
                 Key Advantages
               </h2>
               <div className="space-y-6">
-                {keyAdvantages.map((advantage, index) => {
+                {(keyAdvantages || []).map((advantage, index) => {
                   const IconComponent = advantage.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
@@ -506,7 +506,7 @@ export default function CompositeVeneersPage() {
                 Considerations
               </h2>
               <div className="space-y-6">
-                {considerations.map((consideration, index) => {
+                {(considerations || []).map((consideration, index) => {
                   const IconComponent = consideration.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
@@ -540,7 +540,7 @@ export default function CompositeVeneersPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              {treatmentSteps.map((step, index) => (
+              {(treatmentSteps || []).map((step, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-lg">{step.step}</span>
@@ -569,7 +569,7 @@ export default function CompositeVeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-            {careInstructions.map((instruction, index) => {
+            {(careInstructions || []).map((instruction, index) => {
               const IconComponent = instruction.icon;
               return (
                 <Card key={index} className="p-6">
@@ -602,7 +602,7 @@ export default function CompositeVeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
+            {(faqs || []).map((faq, index) => (
               <Card key={index} className="p-6">
                 <h3 className="font-semibold text-pear-primary mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>

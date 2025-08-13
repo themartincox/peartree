@@ -344,7 +344,7 @@ export default function PrivateDentistNottinghamOverviewPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              {escapeAdvantages.map((escape, index) => (
+              {(escapeAdvantages || []).map((escape, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-emerald-200">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
@@ -389,7 +389,7 @@ export default function PrivateDentistNottinghamOverviewPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {whyPatientsSwitch.map((reason, index) => {
+              {(whyPatientsSwitch || []).map((reason, index) => {
                 const IconComponent = reason.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-emerald-200">
@@ -438,7 +438,7 @@ export default function PrivateDentistNottinghamOverviewPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              {modernAdvantages.map((advantage, index) => (
+              {(modernAdvantages || []).map((advantage, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <h3 className="font-bold text-pear-primary mb-3 text-lg">{advantage.advantage}</h3>
@@ -492,7 +492,7 @@ export default function PrivateDentistNottinghamOverviewPage() {
                 <div className="text-center">Pear Tree Experience</div>
               </div>
 
-              {patientJourneyComparison.map((stage, index) => (
+              {(patientJourneyComparison || []).map((stage, index) => (
                 <div key={index} className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50">
                   <div className="font-semibold text-gray-700">{stage.stage}</div>
                   <div className="text-center text-sm text-red-600 px-2">{stage.traditional}</div>

@@ -285,7 +285,7 @@ export default function HygieneServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {services.map((service) => {
+            {(services || []).map((service) => {
               const Icon = service.icon;
               return (
                 <Card
@@ -368,7 +368,7 @@ export default function HygieneServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -398,7 +398,7 @@ export default function HygieneServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {whyChooseUs.map((reason, index) => (
+            {(whyChooseUs || []).map((reason, index) => (
               <div key={index} className="flex items-center space-x-3 bg-cyan-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-cyan-600 flex-shrink-0" />
                 <span className="text-gray-700">{reason}</span>
@@ -422,7 +422,7 @@ export default function HygieneServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

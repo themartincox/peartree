@@ -386,7 +386,7 @@ export default function ClearCorrectPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -416,7 +416,7 @@ export default function ClearCorrectPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features.map((feature) => (
+            {(features || []).map((feature) => (
               <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{feature.title}</CardTitle>
@@ -448,7 +448,7 @@ export default function ClearCorrectPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {suitability.map((condition) => {
+            {(suitability || []).map((condition) => {
               const Icon = condition.icon;
               return (
                 <Card key={condition.condition} className="text-center hover:shadow-lg transition-shadow">
@@ -483,7 +483,7 @@ export default function ClearCorrectPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {advantages.map((advantage, index) => (
+            {(advantages || []).map((advantage, index) => (
               <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
                 <CheckCircle className="w-5 h-5 text-indigo-600 flex-shrink-0" />
                 <span className="text-gray-700">{advantage}</span>
@@ -518,7 +518,7 @@ export default function ClearCorrectPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.map((item, index) => (
+                  {(comparison || []).map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -552,7 +552,7 @@ export default function ClearCorrectPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

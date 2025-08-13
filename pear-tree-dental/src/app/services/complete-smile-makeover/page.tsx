@@ -336,7 +336,7 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = iconMap[benefit.icon as keyof typeof iconMap] || Star;
               return (
                 <div key={benefit.title} className="text-center">
@@ -366,7 +366,7 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {treatmentOptions.map((treatment) => {
+            {(treatmentOptions || []).map((treatment) => {
               const Icon = treatment.icon;
               return (
                 <Card key={treatment.title} className="hover:shadow-lg transition-shadow border-2 border-rose-200 hover:border-rose-400">
@@ -413,7 +413,7 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {makeoverPackages.map((pkg, index) => (
+            {(makeoverPackages || []).map((pkg, index) => (
               <Card key={pkg.name} className={`hover:shadow-lg transition-shadow ${index === 1 || index === 2 ? 'border-2 border-rose-300' : ''}`}>
                 <CardHeader>
                   <div className="flex justify-between items-start">
@@ -462,7 +462,7 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {beforeAfterCases.map((caseStudy, index) => (
+            {(beforeAfterCases || []).map((caseStudy, index) => (
               <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                   <div className="text-center">
@@ -520,7 +520,7 @@ export default function CompleteSmileMakeoverPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => {
+            {(process || []).map((step, index) => {
               const colorClasses = [
                 "bg-gradient-to-br from-pear-primary to-pear-primary/80",
                 "bg-gradient-to-br from-pear-gold to-pear-gold/80",

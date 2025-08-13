@@ -354,7 +354,7 @@ export default function BuccalCorridorCorrectionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {treatmentOptions.map((option) => (
+            {(treatmentOptions || []).map((option) => (
               <Card key={option.name} className="hover:shadow-xl transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="text-xl font-semibold text-pear-primary mb-2">
@@ -409,7 +409,7 @@ export default function BuccalCorridorCorrectionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -562,7 +562,7 @@ export default function BuccalCorridorCorrectionPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => {
+            {(process || []).map((step, index) => {
               const colorClasses = [
                 "bg-gradient-to-br from-pear-primary to-pear-primary/80",
                 "bg-gradient-to-br from-pear-gold to-pear-gold/80",

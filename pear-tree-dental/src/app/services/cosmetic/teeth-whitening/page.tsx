@@ -308,7 +308,7 @@ export default function TeethWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {whiteningOptions.map((option) => (
+            {(whiteningOptions || []).map((option) => (
               <Card
                 key={option.name}
                 className={`relative hover:shadow-xl transition-all duration-300 h-full ${
@@ -393,7 +393,7 @@ export default function TeethWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -461,7 +461,7 @@ export default function TeethWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

@@ -332,7 +332,7 @@ export default function PorcelainVeneersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
+            {(benefits || []).map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
@@ -375,7 +375,7 @@ export default function PorcelainVeneersPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonData.map((row, index) => (
+                {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
                     <td className="p-4 text-center bg-pear-gold/10 font-semibold text-pear-primary">{row.porcelain}</td>
@@ -399,7 +399,7 @@ export default function PorcelainVeneersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {keyBenefits.map((benefit, index) => {
+            {(keyBenefits || []).map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
@@ -429,7 +429,7 @@ export default function PorcelainVeneersPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              {treatmentSteps.map((step, index) => (
+              {(treatmentSteps || []).map((step, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-lg">{step.step}</span>
@@ -461,7 +461,7 @@ export default function PorcelainVeneersPage() {
                 Ideal Candidates
               </h3>
               <ul className="space-y-3">
-                {idealCandidates.map((item, index) => (
+                {(idealCandidates || []).map((item, index) => (
                   <li key={index} className="flex items-start space-x-2">
                     <Check className="w-4 h-4 text-dental-green mt-1 flex-shrink-0" />
                     <span className="text-gray-600">{item}</span>
@@ -476,7 +476,7 @@ export default function PorcelainVeneersPage() {
                 May Not Be Suitable
               </h3>
               <ul className="space-y-3">
-                {notSuitable.map((item, index) => (
+                {(notSuitable || []).map((item, index) => (
                   <li key={index} className="flex items-start space-x-2">
                     <X className="w-4 h-4 text-red-600 mt-1 flex-shrink-0" />
                     <span className="text-gray-600">{item}</span>
@@ -501,7 +501,7 @@ export default function PorcelainVeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
+            {(faqs || []).map((faq, index) => (
               <Card key={index} className="p-6">
                 <h3 className="font-semibold text-pear-primary mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>

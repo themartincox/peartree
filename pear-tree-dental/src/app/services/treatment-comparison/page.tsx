@@ -477,7 +477,7 @@ export default function TreatmentComparisonPage() {
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {categories.map((category) => {
+            {(categories || []).map((category) => {
               const categoryColors = getColorClasses(category.color);
               return (
                 <Badge
@@ -492,7 +492,7 @@ export default function TreatmentComparisonPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {treatments.map((treatment) => {
+            {(treatments || []).map((treatment) => {
               const colors = getColorClasses(treatment.color);
               return (
                 <Card key={treatment.id} className={`hover:shadow-lg transition-all duration-300 border-2 ${colors.border}`}>
@@ -584,7 +584,7 @@ export default function TreatmentComparisonPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {treatments.map((treatment, index) => (
+                    {(treatments || []).map((treatment, index) => (
                       <tr key={treatment.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                         <td className="py-4 px-6">
                           <div className="flex items-center space-x-3">
@@ -653,7 +653,7 @@ export default function TreatmentComparisonPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {treatments.map((treatment) => {
+            {(treatments || []).map((treatment) => {
               const colors = getColorClasses(treatment.color);
               return (
                 <Card key={treatment.id} className="h-full flex flex-col">

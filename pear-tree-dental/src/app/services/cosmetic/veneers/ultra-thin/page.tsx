@@ -276,7 +276,7 @@ export default function UltraThinVeneersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => {
+            {(benefits || []).map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
@@ -319,7 +319,7 @@ export default function UltraThinVeneersPage() {
                 </tr>
               </thead>
               <tbody>
-                {comparisonData.map((row, index) => (
+                {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
                     <td className="p-4 text-center bg-soft-pink/10 font-semibold text-pear-primary">{row.ultraThin}</td>
@@ -347,7 +347,7 @@ export default function UltraThinVeneersPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
-              {treatmentSteps.map((step, index) => (
+              {(treatmentSteps || []).map((step, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-lg">{step.step}</span>
@@ -376,7 +376,7 @@ export default function UltraThinVeneersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto space-y-6">
-            {faqs.map((faq, index) => (
+            {(faqs || []).map((faq, index) => (
               <Card key={index} className="p-6">
                 <h3 className="font-semibold text-pear-primary mb-3">{faq.question}</h3>
                 <p className="text-gray-600">{faq.answer}</p>

@@ -346,7 +346,7 @@ export default function WeddingDaySmilePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {timelineBenefits.map((benefit, index) => {
+            {(timelineBenefits || []).map((benefit, index) => {
               const Icon = benefit.icon;
               const colorClasses = [
                 "bg-gradient-to-br from-pear-primary/20 to-pear-primary/10",
@@ -388,7 +388,7 @@ export default function WeddingDaySmilePage() {
           </div>
 
           <div className="space-y-12">
-            {treatmentTimeline.map((treatment, index) => {
+            {(treatmentTimeline || []).map((treatment, index) => {
               const Icon = treatment.icon;
               const colorClasses = [
                 "bg-gradient-to-br from-pear-primary to-pear-primary/80",
@@ -482,7 +482,7 @@ export default function WeddingDaySmilePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {weddingPackages.map((pkg, index) => (
+            {(weddingPackages || []).map((pkg, index) => (
               <Card key={pkg.name} className={`hover:shadow-lg transition-shadow text-center ${index === 1 ? 'border-2 border-rose-300 scale-105' : 'border border-rose-200'}`}>
                 {index === 1 && (
                   <div className="bg-rose-500 text-white text-center py-2 text-sm font-semibold">

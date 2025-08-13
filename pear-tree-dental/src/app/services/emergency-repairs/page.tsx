@@ -121,7 +121,7 @@ export default function EmergencyRepairsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {emergencyRepairs.map((repair, index) => {
+            {(emergencyRepairs || []).map((repair, index) => {
               const Icon = repair.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">

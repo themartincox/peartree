@@ -414,7 +414,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -444,7 +444,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {technology.map((tech) => (
+            {(technology || []).map((tech) => (
               <Card key={tech.aspect} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{tech.aspect}</CardTitle>
@@ -476,7 +476,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {candidates.map((candidate) => {
+            {(candidates || []).map((candidate) => {
               const Icon = candidate.icon;
               return (
                 <Card key={candidate.condition} className="text-center hover:shadow-lg transition-shadow">
@@ -511,7 +511,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {advantages.map((advantage, index) => (
+            {(advantages || []).map((advantage, index) => (
               <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
                 <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0" />
                 <span className="text-gray-700">{advantage}</span>
@@ -546,7 +546,7 @@ export default function AllOn4Page() {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparison.map((item, index) => (
+                  {(comparison || []).map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -580,7 +580,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {timeline.map((phase, index) => (
+            {(timeline || []).map((phase, index) => (
               <Card key={phase.phase} className="hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
                   <CardTitle className="text-lg text-pear-primary">{phase.phase}</CardTitle>
@@ -618,7 +618,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">

@@ -349,7 +349,7 @@ export default function CompleteDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit) => {
+            {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -379,7 +379,7 @@ export default function CompleteDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {types.map((type) => (
+            {(types || []).map((type) => (
               <Card key={type.type} className="hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{type.type}</CardTitle>
@@ -425,7 +425,7 @@ export default function CompleteDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {features.map((feature, index) => (
+            {(features || []).map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 bg-blue-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
                 <span className="text-gray-700">{feature}</span>
@@ -449,7 +449,7 @@ export default function CompleteDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            {careInstructions.map((care) => {
+            {(careInstructions || []).map((care) => {
               const Icon = care.icon;
               return (
                 <Card key={care.aspect} className="text-center hover:shadow-lg transition-shadow">
@@ -475,7 +475,7 @@ export default function CompleteDenturesPage() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {adjustmentTips.map((tip, index) => (
+                {(adjustmentTips || []).map((tip, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-gray-700">{tip}</span>
@@ -501,7 +501,7 @@ export default function CompleteDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
+            {(process || []).map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
