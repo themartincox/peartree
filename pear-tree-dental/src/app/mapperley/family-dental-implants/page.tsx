@@ -55,8 +55,49 @@ export const metadata: Metadata = {
   }
 };
 
-export default function MapperleyFamilyDentalImplantsPage() {
-  const mapperleyImplantsFAQs = [
+// Type definitions for strict mode compliance
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Benefit {
+  benefit: string;
+  description: string;
+  value: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+interface ImplantType {
+  implantType: string;
+  description: string;
+  benefits: string[];
+  bestFor: string;
+  treatment: string;
+  price: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  highlight: string;
+}
+
+interface GenerationalNeed {
+  ageGroup: string;
+  commonNeeds: string;
+  implantSolutions: string[];
+  familyConsiderations: string[];
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+interface TreatmentPhase {
+  phase: string;
+  title: string;
+  duration: string;
+  familyFocus: string;
+  activities: string[];
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+export default function MapperleyFamilyDentalImplantsPage(): React.JSX.Element {
+  const mapperleyImplantsFAQs: FAQ[] = [
     {
       question: "How convenient are family dental implants from Mapperley?",
       answer: "Pear Tree Dental is literally just down the road from Mapperley. We're specialists in coordinated family implant care, treating multiple generations with premium implant solutions and family-focused scheduling."
@@ -79,7 +120,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
     }
   ];
 
-  const familyImplantTypes = [
+  const familyImplantTypes: ImplantType[] = [
     {
       implantType: "Single Family Implants",
       description: "Individual tooth replacement for parents and young adults",
@@ -122,7 +163,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
     }
   ];
 
-  const familyBenefits = [
+  const familyBenefits: Benefit[] = [
     {
       benefit: "Multi-Generational Planning",
       description: "Coordinate implant care across different family generations",
@@ -314,7 +355,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {(familyBenefits || []).map((benefit, index) => {
+              {familyBenefits.map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
                   <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-emerald-200">
@@ -370,7 +411,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              {(familyImplantTypes || []).map((implant, index) => {
+              {familyImplantTypes.map((implant, index) => {
                 const IconComponent = implant.icon;
                 return (
                   <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-emerald-400 relative">
@@ -396,7 +437,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <Badge variant="outline" className="text-xs">{implant.bestFor}</Badge>
                       </div>
                       <div className="space-y-2">
-                        {(implant.benefits || []).map((benefit, idx) => (
+                        {implant.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{benefit}</span>
@@ -427,7 +468,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {(generationalNeeds || []).map((group, index) => {
+              {generationalNeeds.map((group, index) => {
                 const IconComponent = group.icon;
                 return (
                   <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -442,7 +483,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <div>
                           <h4 className="font-semibold text-emerald-600 text-sm mb-1">Implant Solutions:</h4>
                           <ul className="space-y-1">
-                            {(group.implantSolutions || []).map((solution, idx) => (
+                            {group.implantSolutions.map((solution, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                                 {solution}
@@ -454,7 +495,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                         <div>
                           <h4 className="font-semibold text-emerald-600 text-sm mb-1">Family Considerations:</h4>
                           <ul className="space-y-1">
-                            {(group.familyConsiderations || []).map((consideration, idx) => (
+                            {group.familyConsiderations.map((consideration, idx) => (
                               <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                                 <Star className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                                 {consideration}
@@ -492,7 +533,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {(treatmentTimeline || []).map((phase, index) => (
+              {treatmentTimeline.map((phase, index) => (
                 <Card key={phase.phase} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -502,7 +543,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
                     <p className="text-sm text-gray-600 mb-3">{phase.description}</p>
                     <Badge variant="outline" className="mb-4">{phase.duration}</Badge>
                     <div className="space-y-1">
-                      {(phase.activities || []).map((activity, idx) => (
+                      {phase.activities.map((activity, idx) => (
                         <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
                           <CheckCircle className="w-3 h-3 text-emerald-500 flex-shrink-0" />
                           {activity}

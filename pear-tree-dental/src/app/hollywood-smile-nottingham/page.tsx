@@ -23,6 +23,49 @@ import {
   CreditCard
 } from "lucide-react";
 
+// Type definitions for strict mode compliance
+interface IconTextItem {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  text: string;
+}
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface TreatmentOption {
+  name: string;
+  subtitle: string;
+  description: string;
+  features: string[];
+  ideal: string;
+}
+
+interface WhyChooseUsItem {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  title: string;
+  description: string;
+}
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  location: string;
+}
+
+interface ProcessStep {
+  step: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
+
+interface PaymentOption {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  title: string;
+}
+
 export const metadata: Metadata = {
   title: "Hollywood Smile Nottingham | Perfect Smile Transformation | Pear Tree Dental",
   description: "Transform your smile with a stunning Hollywood smile in Nottingham. Camera-ready results, expert craftsmanship, flexible payments. Book your consultation today at Pear Tree Dental.",
@@ -82,8 +125,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function HollywoodSmileNottinghamPage() {
-  const hollywoodSmileFAQs = [
+export default function HollywoodSmileNottinghamPage(): React.JSX.Element {
+  const hollywoodSmileFAQs: FAQ[] = [
     {
       question: "How long does it take to get a Hollywood smile?",
       answer: "Most Hollywood smile treatments take 2-4 weeks from consultation to completion, though some complex cases may require additional time for optimal results."
@@ -106,7 +149,7 @@ export default function HollywoodSmileNottinghamPage() {
     }
   ];
 
-  const treatmentOptions = [
+  const treatmentOptions: TreatmentOption[] = [
     {
       name: "Porcelain Veneers",
       subtitle: "The Gold Standard",
@@ -130,7 +173,7 @@ export default function HollywoodSmileNottinghamPage() {
     }
   ];
 
-  const whyChooseUs = [
+  const whyChooseUs: WhyChooseUsItem[] = [
     {
       icon: Award,
       title: "Artistic Excellence",
@@ -153,14 +196,14 @@ export default function HollywoodSmileNottinghamPage() {
     }
   ];
 
-  const benefits = [
+  const benefits: string[] = [
     "Flawless Symmetry - Each tooth perfectly positioned and shaped to complement your face",
     "Brilliant Whiteness - A radiant shade that catches the light beautifully",
     "Natural Elegance - Results that look stunning yet completely authentic",
     "Confident Presence - The kind of smile that commands attention for all the right reasons"
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
       quote: "I never imagined I could have a smile like this without going to London. The team at Pear Tree Dental gave me the Hollywood smile I'd dreamed of for years. Now I smile in every photo!",
       author: "Sarah M.",
@@ -177,6 +220,62 @@ export default function HollywoodSmileNottinghamPage() {
       location: "Beeston"
     }
   ];
+
+  const heroStats: IconTextItem[] = [
+    { icon: Star, text: "5-Star Results" },
+    { icon: Users, text: "500+ Smiles" },
+    { icon: Award, text: "Expert Team" },
+    { icon: MapPin, text: "Nottingham Based" }
+  ];
+
+  const processSteps: ProcessStep[] = [
+    {
+      step: "1",
+      title: "Your Personal Consultation",
+      description: "We begin by understanding your vision for your Hollywood smile. Using advanced digital imaging, we'll show you exactly how your transformed smile will look.",
+      icon: Camera
+    },
+    {
+      step: "2", 
+      title: "Bespoke Treatment Planning",
+      description: "Your Hollywood smile design is created specifically for you, taking into account your facial structure, skin tone, and personal style preferences.",
+      icon: Award
+    },
+    {
+      step: "3",
+      title: "Expert Craftsmanship", 
+      description: "Our skilled technicians create your veneers or restorations using the finest materials and latest techniques, ensuring perfection.",
+      icon: Sparkles
+    },
+    {
+      step: "4",
+      title: "The Big Reveal",
+      description: "The moment you see your completed Hollywood smile for the first time is unforgettable. It's one of the most emotional and joyful experiences.",
+      icon: Heart
+    }
+  ];
+
+  const paymentOptions: PaymentOption[] = [
+    { icon: CreditCard, title: "Interest-free finance plans" },
+    { icon: Clock, title: "Flexible monthly payments" },
+    { icon: Shield, title: "Insurance claim assistance" },
+    { icon: Users, title: "Corporate wellness discounts" }
+  ];
+
+  const consultationFeatures1: string[] = [
+    "Discuss your Hollywood smile goals",
+    "Examine your current smile and oral health", 
+    "Show you digital previews of your results"
+  ];
+
+  const consultationFeatures2: string[] = [
+    "Explain your treatment options and timeline",
+    "Provide detailed investment information",
+    "Answer all your questions about the process"
+  ];
+
+  // Helper for star ratings
+  const starRating = Array.from({ length: 5 }, (_, i) => i);
 
   return (
     <div className="min-h-screen bg-white">
@@ -254,12 +353,7 @@ export default function HollywoodSmileNottinghamPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              {([
-                { icon: Star, text: "5-Star Results" },
-                { icon: Users, text: "500+ Smiles" },
-                { icon: Award, text: "Expert Team" },
-                { icon: MapPin, text: "Nottingham Based" }
-              ] || []).map((item, index) => {
+              {heroStats.map((item, index) => {
                 const Icon = item.icon;
                 return (
                   <div key={index} className="flex flex-col items-center space-y-2">
@@ -288,7 +382,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {(benefits || []).map((benefit, index) => {
+            {benefits.map((benefit, index) => {
               const [title, description] = benefit.split(' - ');
               return (
                 <Card key={index} className="border-2 border-amber-100 hover:border-amber-200 transition-colors">
@@ -323,7 +417,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {(treatmentOptions || []).map((option, index) => (
+            {treatmentOptions.map((option, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-amber-200">
                 <CardHeader className="text-center pb-4">
                   <div className="w-16 h-16 bg-gradient-to-r from-amber-600 to-yellow-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -336,7 +430,7 @@ export default function HollywoodSmileNottinghamPage() {
                   <p className="text-gray-600 mb-6">{option.description}</p>
 
                   <div className="space-y-3 mb-6">
-                    {(option.features || []).map((feature, idx) => (
+                    {option.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-2">
                         <CheckCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
                         <span className="text-sm text-gray-700">{feature}</span>
@@ -373,11 +467,11 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {(testimonials || []).map((testimonial, index) => (
+            {testimonials.map((testimonial, index) => (
               <Card key={index} className="border-2 border-amber-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
-                    {([...Array(5)] || []).map((_, i) => (
+                    {starRating.map((i) => (
                       <Star key={i} className="w-5 h-5 text-amber-500 fill-current" />
                     ))}
                   </div>
@@ -408,7 +502,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(whyChooseUs || []).map((reason, index) => {
+            {whyChooseUs.map((reason, index) => {
               const Icon = reason.icon;
               return (
                 <Card key={index} className="text-center hover:shadow-lg transition-shadow">
@@ -460,32 +554,7 @@ export default function HollywoodSmileNottinghamPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {([
-              {
-                step: "1",
-                title: "Your Personal Consultation",
-                description: "We begin by understanding your vision for your Hollywood smile. Using advanced digital imaging, we'll show you exactly how your transformed smile will look.",
-                icon: Camera
-              },
-              {
-                step: "2",
-                title: "Bespoke Treatment Planning",
-                description: "Your Hollywood smile design is created specifically for you, taking into account your facial structure, skin tone, and personal style preferences.",
-                icon: Award
-              },
-              {
-                step: "3",
-                title: "Expert Craftsmanship",
-                description: "Our skilled technicians create your veneers or restorations using the finest materials and latest techniques, ensuring perfection.",
-                icon: Sparkles
-              },
-              {
-                step: "4",
-                title: "The Big Reveal",
-                description: "The moment you see your completed Hollywood smile for the first time is unforgettable. It's one of the most emotional and joyful experiences.",
-                icon: Heart
-              }
-            ] || []).map((step, index) => {
+            {processSteps.map((step, index) => {
               const Icon = step.icon;
               return (
                 <Card key={index} className="relative text-center hover:shadow-lg transition-shadow">
@@ -518,12 +587,7 @@ export default function HollywoodSmileNottinghamPage() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {([
-                { icon: CreditCard, title: "Interest-free finance plans" },
-                { icon: Clock, title: "Flexible monthly payments" },
-                { icon: Shield, title: "Insurance claim assistance" },
-                { icon: Users, title: "Corporate wellness discounts" }
-              ] || []).map((option, index) => {
+              {paymentOptions.map((option, index) => {
                 const Icon = option.icon;
                 return (
                   <Card key={index} className="border-2 border-amber-200">
@@ -554,7 +618,7 @@ export default function HollywoodSmileNottinghamPage() {
             </div>
 
             <div className="space-y-6">
-              {(hollywoodSmileFAQs || []).map((faq, index) => (
+              {hollywoodSmileFAQs.map((faq, index) => (
                 <Card key={index} className="border-2 border-amber-100">
                   <CardContent className="p-6">
                     <h3 className="font-semibold text-gray-900 mb-3">{faq.question}</h3>
@@ -580,11 +644,7 @@ export default function HollywoodSmileNottinghamPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-left">
               <div className="space-y-3">
-                {([
-                  "Discuss your Hollywood smile goals",
-                  "Examine your current smile and oral health",
-                  "Show you digital previews of your results"
-                ] || []).map((item, index) => (
+                {consultationFeatures1.map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>
@@ -592,11 +652,7 @@ export default function HollywoodSmileNottinghamPage() {
                 ))}
               </div>
               <div className="space-y-3">
-                {([
-                  "Explain your treatment options and timeline",
-                  "Provide detailed investment information",
-                  "Answer all your questions about the process"
-                ] || []).map((item, index) => (
+                {consultationFeatures2.map((item, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="w-5 h-5 text-white flex-shrink-0" />
                     <span>{item}</span>
