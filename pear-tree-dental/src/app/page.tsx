@@ -20,8 +20,7 @@ const ServicesOverview = dynamic(() => import("@/components/ServicesOverview"), 
 });
 
 const TreatmentJourney = dynamic(() => import("@/components/TreatmentJourney"), {
-  // Fixed height to prevent CLS (Cumulative Layout Shift)
-  loading: () => <HappyPatientLoader height="h-[600px]" message="Mapping your treatment journey..." />
+  loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />
 });
 
 const MembershipHighlight = dynamic(() => import("@/components/MembershipHighlight"), {
@@ -35,7 +34,6 @@ const FAQSection = dynamic(() => import("@/components/FAQSection"), {
 const VoiceSearchOptimization = dynamic(() => import("@/components/VoiceSearchOptimization"), {
   loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />
 });
-
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
@@ -45,10 +43,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const variant = await getVariant();
   const variantMetadata = getVariantMetadata(variant);
 
-  // Added nullish coalescing for TypeScript safety and fallback values
   return {
-    title: variantMetadata.title ?? 'Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care',
-    description: variantMetadata.description ?? 'Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care.',
+    title: variantMetadata.title,
+    description: variantMetadata.description,
     // Include variant info for debugging (invisible in production)
     other: {
       'x-ab-variant': variant,

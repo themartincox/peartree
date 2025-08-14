@@ -2,9 +2,10 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "bun install && DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' next build --no-lint"
+  command = "bun install && bun run build:optimized"
 
 [build.environment]
+
   DISABLE_ESLINT_PLUGIN = "true"
   SKIP_ENV_VALIDATION = "true"
   NEXT_TELEMETRY_DISABLED = "1"
@@ -79,5 +80,6 @@
     Cache-Control = "public, max-age=0, must-revalidate"
 
 # Let Netlify handle compression automatically - no manual compression config
+
 # Form handling configuration - Netlify will detect forms automatically from HTML
 # Honeypot protection is configured in the form HTML itself with data-netlify-honeypot="bot-field"

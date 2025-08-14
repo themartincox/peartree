@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import LiveChatWidget from "@/components/LiveChatWidget";
 import LocationDetection from "@/components/LocationDetection";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
@@ -113,7 +114,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* DNS Prefetch for faster resource loading */}
+        {/* DNS Prefetch for faster font loading */}
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
@@ -121,8 +122,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* Note: Image preloading handled by Next.js Image component with priority prop */}
-        {/* Canonical URL handled by metadataBase in metadata object above */}
+        {/* Preload critical images for LCP optimization */}
+        <link rel="preload" as="image" href="/images/dental-practice-hero-burton-joyce.webp" />
+        <link rel="preload" as="image" href="/images/general-dental-checkup.webp" />
+        <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
+
+        <link rel="canonical" href="https://peartree.dental" />
 
         {/* Favicon Links - Complete Suite */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -131,8 +136,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
         <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
-        {/* PWA and Mobile Meta Tags */}
         <meta name="theme-color" content="#09394d" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -142,14 +145,12 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#09394d" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="format-detection" content="telephone=no" />
-        
-        {/* Geographic Meta Tags */}
         <meta name="geo.region" content="GB-NTT" />
         <meta name="geo.placename" content="Nottingham" />
         <meta name="geo.position" content="52.9769;-1.0085" />
         <meta name="ICBM" content="52.9769, -1.0085" />
 
-        {/* Business-Specific SEO Meta Tags */}
+        {/* Additional SEO Meta Tags */}
         <meta name="business-hours" content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed" />
         <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
         <meta name="rating" content="4.9" />
@@ -161,17 +162,14 @@ export default function RootLayout({
         <meta name="healthcare-provider" content="NHS and Private Dental Practice" />
         <meta name="emergency-services" content="Available" />
 
-        {/* Structured Data Schemas */}
         <LocalBusinessSchema includeDentistSpecific={true} />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
         <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
-        
-        {/* PWA Manifest */}
-        <link rel="manifest" href="/manifest.json" />
+<link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`min-h-screen bg-pear-background relative ${cormorantGaramond.variable} ${montserrat.variable}`}>
-        {/* Skip Links for Accessibility */}
+      <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
+        {/* Skip Links for Screen Readers */}
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
@@ -187,31 +185,29 @@ export default function RootLayout({
           Skip to navigation
         </a>
 
-        {/* Service Worker for PWA functionality */}
         <ServiceWorkerRegistration />
-        
-        {/* Navigation Header - Properly positioned overlay */}
-        <header id="navigation" className="absolute top-0 left-0 w-full z-30">
-          <Navigation />
-        </header>
+        <Navigation />
 
-        {/* Main Content Area */}
         <main id="main-content" className="min-h-screen" role="main">
           <PageTransition>
             {children}
           </PageTransition>
         </main>
-        
-        {/* Footer */}
         <Footer />
 
-        {/* WhatsApp Widget - Ready for activation */}
+        {/* Communication Widgets - Currently Deactivated */}
+        {/*
+        <LiveChatWidget
+          position="bottom-left"
+        />
+
         <WhatsAppWidget
           phoneNumber="447525114953"
           position="bottom-right"
         />
+        */}
 
-        {/* Location Detection for personalized experience */}
+        {/* Location Detection Widget */}
         <LocationDetection />
       </body>
     </html>
