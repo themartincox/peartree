@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 
 const Hero = () => {
-  const { trackPhoneClick, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
+  const { trackPhoneClick, trackBookingAttempt, trackLocationConversion } =
+    useConversionTracking();
 
   const handleBookingClick = () => {
     trackBookingAttempt("hero_primary", "booking");
@@ -50,7 +50,8 @@ const Hero = () => {
               <span className="hidden md:inline">
                 Expert dental care
                 <br />
-                with a <span className="text-pear-gold font-bold">personal</span>
+                with a{" "}
+                <span className="text-pear-gold font-bold">personal</span>
                 <br />
                 <span className="text-pear-gold font-bold">touch</span>
               </span>
@@ -60,8 +61,9 @@ const Hero = () => {
           {/* Follow-up Text */}
           <div className="text-left mb-8">
             <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl">
-              Modern dental care serving Nottingham and surrounding areas. Skip the NHS
-              waiting lists with our membership plans from just £10.95/month.
+              Modern dental care serving Nottingham and surrounding areas. Skip
+              the NHS waiting lists with our membership plans from just
+              £10.95/month.
             </p>
           </div>
 
@@ -101,7 +103,9 @@ const Hero = () => {
             className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto animate-fade-in"
             onClick={handleMembershipClick}
           >
-            <Link href="/membership">Enjoy peace of mind from just 36p per day</Link>
+            <Link href="/membership">
+              Enjoy peace of mind from just 36p per day
+            </Link>
           </Button>
         </div>
 
@@ -114,7 +118,8 @@ const Hero = () => {
               <h1 className="heading-serif text-[85px] font-bold text-white drop-shadow-md leading-tight">
                 Expert dental care
                 <br />
-                with a <span className="text-pear-gold font-bold">personal</span>
+                with a{" "}
+                <span className="text-pear-gold font-bold">personal</span>
                 <br />
                 <span className="text-pear-gold font-bold">touch</span>
               </h1>
@@ -122,8 +127,9 @@ const Hero = () => {
 
             {/* Description */}
             <p className="text-xl text-white/90 leading-relaxed max-w-lg">
-              Modern dental care serving Nottingham and surrounding areas. Skip the NHS
-              waiting lists with our membership plans from just £10.95/month.
+              Modern dental care serving Nottingham and surrounding areas. Skip
+              the NHS waiting lists with our membership plans from just
+              £10.95/month.
             </p>
 
             {/* CTA Buttons with Tracking */}
@@ -159,7 +165,9 @@ const Hero = () => {
               className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto animate-fade-in"
               onClick={handleMembershipClick}
             >
-              <Link href="/membership">Enjoy peace of mind from just 36p per day</Link>
+              <Link href="/membership">
+                Enjoy peace of mind from just 36p per day
+              </Link>
             </Button>
           </div>
         </div>
@@ -178,7 +186,6 @@ const Hero = () => {
           />
         </div>
       </div>
-
     </section>
   );
 };

@@ -1,17 +1,11 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import { Clock, Heart, MapPin, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Users,
-  Heart
-} from "lucide-react";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 const PracticeShowcase = () => {
   return (
@@ -40,13 +34,16 @@ const PracticeShowcase = () => {
                     Experience Excellence in Every Detail
                   </h2>
                   <p className="text-white/95 mb-4 lg:mb-6 text-base lg:text-lg leading-relaxed">
-                    Our practice combines cutting-edge technology with luxurious comfort.
-                    From digital X-rays to relaxing treatment rooms, every aspect is designed
-                    with your experience in mind.
+                    Our practice combines cutting-edge technology with luxurious
+                    comfort. From digital X-rays to relaxing treatment rooms,
+                    every aspect is designed with your experience in mind.
                   </p>
 
                   {/* Sticky Trigger Element - invisible marker for when widget should become sticky */}
-                  <div id="reviews-sticky-trigger" className="absolute w-1 h-1 opacity-0 pointer-events-none"></div>
+                  <div
+                    id="reviews-sticky-trigger"
+                    className="absolute w-1 h-1 opacity-0 pointer-events-none"
+                  ></div>
 
                   {/* Google Reviews Widget - Homepage Position */}
                   <div className="mt-6">
@@ -80,7 +77,9 @@ const PracticeShowcase = () => {
                 </div>
 
                 <div className="space-y-4 relative z-10">
-                  <h4 className="font-semibold text-pear-primary text-lg">Visit Our Practice</h4>
+                  <h4 className="font-semibold text-pear-primary text-lg">
+                    Visit Our Practice
+                  </h4>
 
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
@@ -110,7 +109,9 @@ const PracticeShowcase = () => {
                             <span>Closed</span>
                           </div>
                         </div>
-                        <div className="text-xs text-gray-600 mt-2">Emergencies by arrangement</div>
+                        <div className="text-xs text-gray-600 mt-2">
+                          Emergencies by arrangement
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -118,7 +119,12 @@ const PracticeShowcase = () => {
                   <Button
                     variant="outline"
                     className="w-full border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white transition-all duration-300"
-                    onClick={() => window.open('https://www.google.com/maps/dir/?api=1&destination=22+Nottingham+Rd,+Burton+Joyce,+Nottingham,+UK,+NG14+5AE', '_blank')}
+                    onClick={() =>
+                      window.open(
+                        "https://www.google.com/maps/dir/?api=1&destination=22+Nottingham+Rd,+Burton+Joyce,+Nottingham,+UK,+NG14+5AE",
+                        "_blank",
+                      )
+                    }
                     aria-label="Get directions to Pear Tree Dental practice in Burton Joyce"
                   >
                     <MapPin className="w-4 h-4 mr-2" />
@@ -134,8 +140,12 @@ const PracticeShowcase = () => {
                     <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                       <Users className="w-6 h-6 text-soft-blue" />
                     </div>
-                    <h5 className="font-semibold text-pear-primary text-sm">Expert Team</h5>
-                    <p className="text-xs text-gray-600 mt-1">Highly qualified dentists</p>
+                    <h5 className="font-semibold text-pear-primary text-sm">
+                      Expert Team
+                    </h5>
+                    <p className="text-xs text-gray-600 mt-1">
+                      Highly qualified dentists
+                    </p>
                   </Card>
                 </Link>
 
@@ -143,8 +153,12 @@ const PracticeShowcase = () => {
                   <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Heart className="w-6 h-6 text-soft-pink" />
                   </div>
-                  <h5 className="font-semibold text-pear-primary text-sm">Patient Care</h5>
-                  <p className="text-xs text-gray-600 mt-1">Comfort-focused approach</p>
+                  <h5 className="font-semibold text-pear-primary text-sm">
+                    Patient Care
+                  </h5>
+                  <p className="text-xs text-gray-600 mt-1">
+                    Comfort-focused approach
+                  </p>
                 </Card>
               </div>
             </div>

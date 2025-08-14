@@ -10,33 +10,36 @@ interface FAQStructuredDataProps {
   category?: string;
 }
 
-export default function FAQStructuredData({ faqs, category }: FAQStructuredDataProps) {
+export default function FAQStructuredData({
+  faqs,
+  category,
+}: FAQStructuredDataProps) {
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer
-      }
+        text: faq.answer,
+      },
     })),
     // Add category-specific properties
     ...(category && {
-      "about": {
+      about: {
         "@type": "MedicalProcedure",
-        "name": category
-      }
-    })
+        name: category,
+      },
+    }),
   };
 
   return (
     <Script
-      id={`faq-schema-${category || 'general'}`}
+      id={`faq-schema-${category || "general"}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(faqSchema)
+        __html: JSON.stringify(faqSchema),
       }}
     />
   );

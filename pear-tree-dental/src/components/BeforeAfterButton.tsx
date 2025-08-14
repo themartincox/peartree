@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface BeforeAfterImage {
   beforeSrc: string;
@@ -20,7 +20,10 @@ interface BeforeAfterSliderProps {
   className?: string;
 }
 
-export default function BeforeAfterSlider({ images, className = "" }: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({
+  images,
+  className = "",
+}: BeforeAfterSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAfter, setShowAfter] = useState(false);
 
@@ -43,10 +46,23 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
           {/* Image Container */}
           <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
             {/* Before Image */}
-            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-0' : 'opacity-100'}`}>
-              <source media="(min-width: 768px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-large.webp')} type="image/webp" />
-              <source media="(min-width: 480px)" srcSet={currentImage.beforeSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
-              <source srcSet={currentImage.beforeSrc.replace('.JPG', '-small.webp')} type="image/webp" />
+            <picture
+              className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? "opacity-0" : "opacity-100"}`}
+            >
+              <source
+                media="(min-width: 768px)"
+                srcSet={currentImage.beforeSrc.replace(".JPG", "-large.webp")}
+                type="image/webp"
+              />
+              <source
+                media="(min-width: 480px)"
+                srcSet={currentImage.beforeSrc.replace(".JPG", "-medium.webp")}
+                type="image/webp"
+              />
+              <source
+                srcSet={currentImage.beforeSrc.replace(".JPG", "-small.webp")}
+                type="image/webp"
+              />
               <img
                 src={currentImage.beforeSrc}
                 alt={currentImage.beforeAlt}
@@ -56,10 +72,23 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
             </picture>
 
             {/* After Image */}
-            <picture className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? 'opacity-100' : 'opacity-0'}`}>
-              <source media="(min-width: 768px)" srcSet={currentImage.afterSrc.replace('.JPG', '-large.webp')} type="image/webp" />
-              <source media="(min-width: 480px)" srcSet={currentImage.afterSrc.replace('.JPG', '-medium.webp')} type="image/webp" />
-              <source srcSet={currentImage.afterSrc.replace('.JPG', '-small.webp')} type="image/webp" />
+            <picture
+              className={`absolute inset-0 transition-opacity duration-500 ${showAfter ? "opacity-100" : "opacity-0"}`}
+            >
+              <source
+                media="(min-width: 768px)"
+                srcSet={currentImage.afterSrc.replace(".JPG", "-large.webp")}
+                type="image/webp"
+              />
+              <source
+                media="(min-width: 480px)"
+                srcSet={currentImage.afterSrc.replace(".JPG", "-medium.webp")}
+                type="image/webp"
+              />
+              <source
+                srcSet={currentImage.afterSrc.replace(".JPG", "-small.webp")}
+                type="image/webp"
+              />
               <img
                 src={currentImage.afterSrc}
                 alt={currentImage.afterAlt}
@@ -74,8 +103,8 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                 onClick={() => setShowAfter(false)}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   !showAfter
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white/20"
                 }`}
               >
                 Before
@@ -84,8 +113,8 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                 onClick={() => setShowAfter(true)}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   showAfter
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
+                    ? "bg-white text-black"
+                    : "text-white hover:bg-white/20"
                 }`}
               >
                 After
@@ -124,8 +153,8 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                     }}
                     className={`w-2 h-2 rounded-full transition-colors ${
                       index === currentIndex
-                        ? 'bg-white'
-                        : 'bg-white/50 hover:bg-white/75'
+                        ? "bg-white"
+                        : "bg-white/50 hover:bg-white/75"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
@@ -141,11 +170,12 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                 <h3 className="text-xl font-semibold text-pear-primary mb-2">
                   {currentImage.title}
                 </h3>
-                <p className="text-gray-600 mb-3">
-                  {currentImage.description}
-                </p>
+                <p className="text-gray-600 mb-3">{currentImage.description}</p>
               </div>
-              <Badge variant="outline" className="text-dental-green border-dental-green">
+              <Badge
+                variant="outline"
+                className="text-dental-green border-dental-green"
+              >
                 {currentImage.treatment}
               </Badge>
             </div>
@@ -153,9 +183,13 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
             {/* Progress indicator for multiple images */}
             {images.length > 1 && (
               <div className="flex items-center justify-between text-sm text-gray-500">
-                <span>Case {currentIndex + 1} of {images.length}</span>
-                <span className={`font-medium ${showAfter ? 'text-dental-green' : 'text-gray-700'}`}>
-                  {showAfter ? 'After Treatment' : 'Before Treatment'}
+                <span>
+                  Case {currentIndex + 1} of {images.length}
+                </span>
+                <span
+                  className={`font-medium ${showAfter ? "text-dental-green" : "text-gray-700"}`}
+                >
+                  {showAfter ? "After Treatment" : "Before Treatment"}
                 </span>
               </div>
             )}

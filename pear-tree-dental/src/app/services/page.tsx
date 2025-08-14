@@ -1,134 +1,180 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
-  Heart,
-  Shield,
-  Sparkles,
-  Zap,
-  Smile,
   AlertCircle,
-  CalendarDays,
-  Phone,
   ArrowRight,
-  Crown,
+  CalendarDays,
   CheckCircle,
   Clock,
-  Users,
+  Crown,
+  Heart,
+  Phone,
+  Shield,
+  Smile,
+  Sparkles,
   Star,
-  Scissors
+  Users,
+  Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Dental Services - Comprehensive Care at Pear Tree Dental Burton Joyce",
-  description: "Discover our full range of dental services including general dentistry, cosmetic treatments, implants, orthodontics, and emergency care. Quality dental care in Burton Joyce, Nottingham.",
-  keywords: "dental services, dentist Burton Joyce, cosmetic dentistry, dental implants, orthodontics, emergency dentist, general dentistry, restorative dentistry, Nottingham",
+  title:
+    "Dental Services - Comprehensive Care at Pear Tree Dental Burton Joyce",
+  description:
+    "Discover our full range of dental services including general dentistry, cosmetic treatments, implants, orthodontics, and emergency care. Quality dental care in Burton Joyce, Nottingham.",
+  keywords:
+    "dental services, dentist Burton Joyce, cosmetic dentistry, dental implants, orthodontics, emergency dentist, general dentistry, restorative dentistry, Nottingham",
   openGraph: {
     title: "Complete Dental Services - Pear Tree Dental Burton Joyce",
-    description: "From routine check-ups to smile makeovers, discover our comprehensive dental services designed to keep your smile healthy and beautiful.",
+    description:
+      "From routine check-ups to smile makeovers, discover our comprehensive dental services designed to keep your smile healthy and beautiful.",
     type: "website",
-  }
+  },
 };
 
 const services = [
   {
     id: "general",
     title: "General Dentistry",
-    description: "Comprehensive dental care for your everyday needs including check-ups, cleanings, and preventive treatments.",
+    description:
+      "Comprehensive dental care for your everyday needs including check-ups, cleanings, and preventive treatments.",
     href: "/services/general",
     icon: Heart,
     color: "dental-green",
-    features: ["Regular Check-ups", "Professional Cleaning", "Fluoride Treatments", "Oral Health Advice"],
+    features: [
+      "Regular Check-ups",
+      "Professional Cleaning",
+      "Fluoride Treatments",
+      "Oral Health Advice",
+    ],
     image: "/images/general-dental-checkup.webp",
-    isCore: true
+    isCore: true,
   },
   {
     id: "restorative",
     title: "Restorative Dentistry",
-    description: "Repair and restore your teeth to optimal health with our advanced restorative treatments.",
+    description:
+      "Repair and restore your teeth to optimal health with our advanced restorative treatments.",
     href: "/services/restorative",
     icon: Shield,
     color: "dental-green",
-    features: ["Fillings", "Crowns & Bridges", "Root Canal Treatment", "Dentures"],
+    features: [
+      "Fillings",
+      "Crowns & Bridges",
+      "Root Canal Treatment",
+      "Dentures",
+    ],
     image: "/images/restorative-dental-treatment.webp",
-    isCore: true
+    isCore: true,
   },
   {
     id: "cosmetic",
     title: "Cosmetic Dentistry",
-    description: "Transform your smile with our aesthetic treatments designed to enhance your natural beauty.",
+    description:
+      "Transform your smile with our aesthetic treatments designed to enhance your natural beauty.",
     href: "/services/cosmetic",
     icon: Sparkles,
     color: "soft-pink",
-    features: ["Teeth Whitening", "Porcelain Veneers", "Composite Bonding", "Smile Makeovers"],
+    features: [
+      "Teeth Whitening",
+      "Porcelain Veneers",
+      "Composite Bonding",
+      "Smile Makeovers",
+    ],
     image: "/images/cosmetic-dentistry-services.webp",
-    isCore: false
+    isCore: false,
   },
   {
     id: "complete-smile-makeover",
     title: "Complete Smile Makeover",
-    description: "Total smile transformation combining multiple treatments for comprehensive aesthetic and functional improvement.",
+    description:
+      "Total smile transformation combining multiple treatments for comprehensive aesthetic and functional improvement.",
     href: "/services/complete-smile-makeover",
     icon: Zap,
     color: "rose-500",
-    features: ["Digital Smile Design", "Multiple Treatments", "Coordinated Care", "Life-Changing Results"],
+    features: [
+      "Digital Smile Design",
+      "Multiple Treatments",
+      "Coordinated Care",
+      "Life-Changing Results",
+    ],
     image: "/images/complete-smile-makeover.webp",
     isCore: false,
-    featured: true
+    featured: true,
   },
   {
     id: "wedding-day-smile",
     title: "Wedding Day Smile",
-    description: "Perfect smile for your special day with timeline-based treatments designed specifically for brides and grooms.",
+    description:
+      "Perfect smile for your special day with timeline-based treatments designed specifically for brides and grooms.",
     href: "/wedding-day-smile",
     icon: Heart,
     color: "rose-500",
-    features: ["Timeline Planning", "Bridal Packages", "Perfect Day Guarantee", "Quick Enhancements"],
+    features: [
+      "Timeline Planning",
+      "Bridal Packages",
+      "Perfect Day Guarantee",
+      "Quick Enhancements",
+    ],
     image: "/images/wedding-day-smile.webp",
     isCore: false,
-    featured: true
+    featured: true,
   },
   {
     id: "implants",
     title: "Implant Dentistry",
-    description: "Permanent tooth replacement solutions that look, feel, and function like natural teeth.",
+    description:
+      "Permanent tooth replacement solutions that look, feel, and function like natural teeth.",
     href: "/services/implants",
     icon: Crown,
     color: "soft-pink",
-    features: ["Single Implants", "Multiple Implants", "Full Mouth Restoration", "Implant-Supported Dentures"],
+    features: [
+      "Single Implants",
+      "Multiple Implants",
+      "Full Mouth Restoration",
+      "Implant-Supported Dentures",
+    ],
     image: "/images/dental-implants-procedure.webp",
-    isCore: false
+    isCore: false,
   },
   {
     id: "orthodontics",
     title: "Orthodontics",
-    description: "Straighten your teeth with modern orthodontic solutions including clear aligners.",
+    description:
+      "Straighten your teeth with modern orthodontic solutions including clear aligners.",
     href: "/services/orthodontics",
     icon: Smile,
     color: "soft-pink",
     features: ["Invisalign", "ClearCorrect", "Traditional Braces", "Retainers"],
     image: "/images/orthodontics-invisalign-treatment.webp",
-    isCore: false
+    isCore: false,
   },
   {
     id: "emergency",
     title: "Emergency Dentistry",
-    description: "Urgent dental care when you need it most. We're here to help with dental emergencies.",
+    description:
+      "Urgent dental care when you need it most. We're here to help with dental emergencies.",
     href: "/services/emergency",
     icon: AlertCircle,
     color: "red-500",
-    features: ["Pain Relief", "Urgent Repairs", "Same-Day Appointments", "Out-of-Hours Care"],
+    features: [
+      "Pain Relief",
+      "Urgent Repairs",
+      "Same-Day Appointments",
+      "Out-of-Hours Care",
+    ],
     image: "/images/emergency-dental-care.webp",
-    isCore: true
-  }
+    isCore: true,
+  },
 ];
 
-const ServicesPage = () => {
-  const coreServices = services.filter(service => service.isCore);
-  const cosmeticServices = services.filter(service => !service.isCore);
+const ServicesPage = (): React.JSX.Element => {
+  const coreServices = services.filter((service) => service.isCore);
+  const cosmeticServices = services.filter((service) => !service.isCore);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
@@ -140,7 +186,10 @@ const ServicesPage = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6 bg-white/10 text-white border-white/20">
+            <Badge
+              variant="secondary"
+              className="mb-6 bg-white/10 text-white border-white/20"
+            >
               <Heart className="w-4 h-4 mr-2" />
               Complete Dental Care
             </Badge>
@@ -150,18 +199,28 @@ const ServicesPage = () => {
             </h1>
 
             <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-              From routine care to smile transformations, we offer the full spectrum of dental treatments
-              in our state-of-the-art Burton Joyce practice.
+              From routine care to smile transformations, we offer the full
+              spectrum of dental treatments in our state-of-the-art Burton Joyce
+              practice.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4"
+              >
                 <Link href="/contact">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Your Consultation
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white bg-[#f20202] text-white hover:bg-white hover:text-pear-primary px-8 py-4">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white bg-[#f20202] text-white hover:bg-white hover:text-pear-primary px-8 py-4"
+              >
                 <Link href="/urgent-dental-pain">
                   <Phone className="w-5 h-5 mr-2" />
                   Emergency Care
@@ -176,7 +235,10 @@ const ServicesPage = () => {
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-dental-green/10 text-dental-green">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-dental-green/10 text-dental-green"
+            >
               <Shield className="w-4 h-4 mr-2" />
               Essential Care
             </Badge>
@@ -184,7 +246,8 @@ const ServicesPage = () => {
               Core Dental Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Foundation treatments that keep your oral health in optimal condition
+              Foundation treatments that keep your oral health in optimal
+              condition
             </p>
           </div>
 
@@ -192,7 +255,10 @@ const ServicesPage = () => {
             {(coreServices || []).map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">
+                <Card
+                  key={service.id}
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                >
                   {/* Background Image */}
                   {service.image && (
                     <div className="absolute inset-0">
@@ -213,12 +279,21 @@ const ServicesPage = () => {
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
-                          <ServiceIcon className={`w-6 h-6 ${
-                            service.color === 'red-500' ? 'text-red-500' : service.color === 'dental-green' ? 'text-dental-green' : 'text-soft-pink'
-                          }`} />
+                          <ServiceIcon
+                            className={`w-6 h-6 ${
+                              service.color === "red-500"
+                                ? "text-red-500"
+                                : service.color === "dental-green"
+                                  ? "text-dental-green"
+                                  : "text-soft-pink"
+                            }`}
+                          />
                         </div>
                         {service.isCore && (
-                          <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs backdrop-blur-sm">
+                          <Badge
+                            variant="secondary"
+                            className="bg-dental-green/10 text-dental-green text-xs backdrop-blur-sm"
+                          >
                             Essential
                           </Badge>
                         )}
@@ -234,14 +309,22 @@ const ServicesPage = () => {
 
                       <div className="space-y-2 mb-6">
                         {(service.features || []).map((feature, index) => (
-                          <div key={index} className="flex items-center space-x-2">
+                          <div
+                            key={index}
+                            className="flex items-center space-x-2"
+                          >
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
-                            <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>
+                            <span className="text-sm text-white/90 drop-shadow-md">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
 
-                      <Button asChild className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg">
+                      <Button
+                        asChild
+                        className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
+                      >
                         <Link href={service.href}>
                           Learn More
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -260,7 +343,10 @@ const ServicesPage = () => {
       <section className="py-16 bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-soft-pink/10 text-soft-pink">
+            <Badge
+              variant="secondary"
+              className="mb-4 bg-soft-pink/10 text-soft-pink"
+            >
               <Sparkles className="w-4 h-4 mr-2" />
               Smile Enhancement
             </Badge>
@@ -268,7 +354,8 @@ const ServicesPage = () => {
               Cosmetic & Specialty Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Advanced treatments to transform your smile and boost your confidence
+              Advanced treatments to transform your smile and boost your
+              confidence
             </p>
           </div>
 
@@ -276,7 +363,10 @@ const ServicesPage = () => {
             {(cosmeticServices || []).map((service) => {
               const ServiceIcon = service.icon;
               return (
-                <Card key={service.id} className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden">
+                <Card
+                  key={service.id}
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                >
                   {/* Background Image */}
                   {service.image && (
                     <div className="absolute inset-0">
@@ -299,7 +389,10 @@ const ServicesPage = () => {
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
                           <ServiceIcon className="w-6 h-6 text-soft-pink" />
                         </div>
-                        <Badge variant="secondary" className="bg-soft-pink/10 text-soft-pink text-xs backdrop-blur-sm">
+                        <Badge
+                          variant="secondary"
+                          className="bg-soft-pink/10 text-soft-pink text-xs backdrop-blur-sm"
+                        >
                           Cosmetic
                         </Badge>
                       </div>
@@ -314,14 +407,22 @@ const ServicesPage = () => {
 
                       <div className="space-y-2 mb-6">
                         {(service.features || []).map((feature, index) => (
-                          <div key={index} className="flex items-center space-x-2">
+                          <div
+                            key={index}
+                            className="flex items-center space-x-2"
+                          >
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
-                            <span className="text-sm text-white/90 drop-shadow-md">{feature}</span>
+                            <span className="text-sm text-white/90 drop-shadow-md">
+                              {feature}
+                            </span>
                           </div>
                         ))}
                       </div>
 
-                      <Button asChild className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg">
+                      <Button
+                        asChild
+                        className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
+                      >
                         <Link href={service.href}>
                           Learn More
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -345,33 +446,55 @@ const ServicesPage = () => {
                 Why Choose Pear Tree Dental?
               </h2>
               <p className="text-lg text-gray-600">
-                Experience the difference of comprehensive, patient-centered dental care
+                Experience the difference of comprehensive, patient-centered
+                dental care
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Link href="/about/team" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Link
+                href="/about/team"
+                className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-gold/90 transition-all duration-300">
                   <Users className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-gold transition-colors">Expert Team</h3>
-                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Experienced dental professionals committed to excellence</p>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-gold transition-colors">
+                  Expert Team
+                </h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
+                  Experienced dental professionals committed to excellence
+                </p>
               </Link>
 
-              <Link href="/about/practice" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Link
+                href="/about/practice"
+                className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-dental-green/90 transition-all duration-300">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-dental-green transition-colors">Modern Technology</h3>
-                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">State-of-the-art equipment for optimal treatment outcomes</p>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-dental-green transition-colors">
+                  Modern Technology
+                </h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
+                  State-of-the-art equipment for optimal treatment outcomes
+                </p>
               </Link>
 
-              <Link href="/contact" className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer">
+              <Link
+                href="/contact"
+                className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
+              >
                 <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-soft-pink/90 transition-all duration-300">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-soft-pink transition-colors">Flexible Scheduling</h3>
-                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Convenient appointment times to fit your busy lifestyle</p>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-soft-pink transition-colors">
+                  Flexible Scheduling
+                </h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
+                  Convenient appointment times to fit your busy lifestyle
+                </p>
               </Link>
 
               <a
@@ -383,8 +506,12 @@ const ServicesPage = () => {
                 <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-primary/90 transition-all duration-300">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-primary/80 transition-colors">5-Star Care</h3>
-                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">Consistently rated excellent by our satisfied patients</p>
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-primary/80 transition-colors">
+                  5-Star Care
+                </h3>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
+                  Consistently rated excellent by our satisfied patients
+                </p>
               </a>
             </div>
           </div>
@@ -399,19 +526,31 @@ const ServicesPage = () => {
               Ready to Start Your Dental Journey?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Take the first step towards optimal oral health and a confident smile.
-              Our team is here to provide personalized care tailored to your needs.
+              Take the first step towards optimal oral health and a confident
+              smile. Our team is here to provide personalized care tailored to
+              your needs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4">
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4"
+              >
                 <Link href="/contact">
-                  <CalendarDays className="w-5 h-5 mr-2" />Book Your Consultationn
+                  <CalendarDays className="w-5 h-5 mr-2" />
+                  Book Your Consultationn
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white bg-[#e5b03e] text-white hover:bg-white hover:text-pear-primary px-8 py-4">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-white bg-[#e5b03e] text-white hover:bg-white hover:text-pear-primary px-8 py-4"
+              >
                 <Link href="/membership">
-                  <Crown className="w-5 h-5 mr-2" />Explore Memberships
+                  <Crown className="w-5 h-5 mr-2" />
+                  Explore Memberships
                 </Link>
               </Button>
             </div>

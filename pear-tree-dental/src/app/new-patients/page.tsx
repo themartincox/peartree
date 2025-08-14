@@ -1,26 +1,28 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
-import Link from "next/link";
 import {
   CalendarDays,
+  CheckCircle,
   Clock,
+  CreditCard,
   FileText,
   Heart,
-  Phone,
   MapPin,
-  CheckCircle,
-  CreditCard,
+  Phone,
   Stethoscope,
-  Users
+  Users,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "New Patients - Pear Tree Dental | Burton Joyce, Nottinghamshire",
-  description: "Welcome to Pear Tree Dental! New patient information, what to expect, forms, and booking your first appointment at our Burton Joyce practice.",
-  keywords: "new patients, first appointment, dental registration, Burton Joyce dentist, new patient forms",
+  description:
+    "Welcome to Pear Tree Dental! New patient information, what to expect, forms, and booking your first appointment at our Burton Joyce practice.",
+  keywords:
+    "new patients, first appointment, dental registration, Burton Joyce dentist, new patient forms",
 };
 
 export default function NewPatientsPage() {
@@ -28,44 +30,51 @@ export default function NewPatientsPage() {
     {
       icon: Users,
       title: "Warm Welcome",
-      description: "Our friendly team will greet you and help you feel comfortable from the moment you arrive."
+      description:
+        "Our friendly team will greet you and help you feel comfortable from the moment you arrive.",
     },
     {
       icon: FileText,
       title: "Medical History",
-      description: "We'll review your medical and dental history to provide the best possible care."
+      description:
+        "We'll review your medical and dental history to provide the best possible care.",
     },
     {
       icon: Stethoscope,
       title: "Comprehensive Examination",
-      description: "Thorough dental examination including X-rays if needed to assess your oral health."
+      description:
+        "Thorough dental examination including X-rays if needed to assess your oral health.",
     },
     {
       icon: Heart,
       title: "Personalised Treatment Plan",
-      description: "We'll discuss findings and create a tailored treatment plan that fits your needs and budget."
-    }
+      description:
+        "We'll discuss findings and create a tailored treatment plan that fits your needs and budget.",
+    },
   ];
 
   const whatToBring = [
     "Previous dental records or X-rays if available",
     "List of current medications",
-    "Insurance details or membership information"
+    "Insurance details or membership information",
   ];
 
   const policies = [
     {
       title: "Appointment Policy",
-      description: "Please arrive 15 minutes early for your first appointment. We require 24 hours notice for cancellations."
+      description:
+        "Please arrive 15 minutes early for your first appointment. We require 24 hours notice for cancellations.",
     },
     {
       title: "Payment Options",
-      description: "We accept cash, card, and offer flexible payment plans. Membership plans available from £10.95/month."
+      description:
+        "We accept cash, card, and offer flexible payment plans. Membership plans available from £10.95/month.",
     },
     {
       title: "Emergency Care",
-      description: "For dental emergencies outside office hours, please call our emergency line for guidance."
-    }
+      description:
+        "For dental emergencies outside office hours, please call our emergency line for guidance.",
+    },
   ];
 
   return (
@@ -79,21 +88,31 @@ export default function NewPatientsPage() {
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-pear-gold text-white">Welcome</Badge>
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary mb-6">
-              Welcome to <span className="text-pear-gold">Pear Tree Dental</span>
+              Welcome to{" "}
+              <span className="text-pear-gold">Pear Tree Dental</span>
             </h1>
             <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed mb-8">
-              We're excited to welcome you to our dental family. Here's everything you need to know
-              about your first visit to our Burton Joyce practice.
+              We're excited to welcome you to our dental family. Here's
+              everything you need to know about your first visit to our Burton
+              Joyce practice.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="btn-gold text-white font-semibold group">
+                <Button
+                  size="lg"
+                  className="btn-gold text-white font-semibold group"
+                >
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Your First Appointment
                 </Button>
               </Link>
-              <Button asChild size="lg" variant="outline" className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="text-pear-primary border-pear-primary hover:bg-pear-primary hover:text-white"
+              >
                 <a href="tel:01159312935">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
@@ -112,7 +131,8 @@ export default function NewPatientsPage() {
               What to Expect at Your First Visit
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Your comfort and care are our top priorities. Here's what you can expect during your first appointment with us.
+              Your comfort and care are our top priorities. Here's what you can
+              expect during your first appointment with us.
             </p>
           </div>
 
@@ -120,12 +140,17 @@ export default function NewPatientsPage() {
             {(whatToExpect || []).map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardHeader>
                     <div className="w-16 h-16 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <CardTitle className="text-lg text-pear-primary">{item.title}</CardTitle>
+                    <CardTitle className="text-lg text-pear-primary">
+                      {item.title}
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 text-sm">{item.description}</p>
@@ -146,8 +171,8 @@ export default function NewPatientsPage() {
                 What to Bring to Your Appointment
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                To ensure your first visit goes smoothly and we can provide the best care possible,
-                please bring the following items with you.
+                To ensure your first visit goes smoothly and we can provide the
+                best care possible, please bring the following items with you.
               </p>
 
               <ul className="space-y-4 mb-8">
@@ -172,9 +197,10 @@ export default function NewPatientsPage() {
                 <div
                   className="absolute inset-0"
                   style={{
-                    backgroundImage: "url('/images/pear-tree-dental-building-NG145AE.webp')",
+                    backgroundImage:
+                      "url('/images/pear-tree-dental-building-NG145AE.webp')",
                     backgroundSize: "cover",
-                    backgroundPosition: "center"
+                    backgroundPosition: "center",
                   }}
                 >
                   <div className="absolute inset-0 bg-pear-primary/50"></div>
@@ -189,8 +215,10 @@ export default function NewPatientsPage() {
                   <div>
                     <h4 className="font-semibold text-white mb-2">Address</h4>
                     <p className="text-white/90">
-                      22 Nottingham Road<br />
-                      Burton Joyce, Nottingham<br />
+                      22 Nottingham Road
+                      <br />
+                      Burton Joyce, Nottingham
+                      <br />
                       UK NG14 5AE
                     </p>
                   </div>
@@ -201,7 +229,9 @@ export default function NewPatientsPage() {
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white mb-2">Opening Hours</h4>
+                    <h4 className="font-semibold text-white mb-2">
+                      Opening Hours
+                    </h4>
                     <div className="text-white/90 text-sm space-y-1">
                       <div className="flex justify-between">
                         <span>Monday - Thursday</span>
@@ -232,7 +262,8 @@ export default function NewPatientsPage() {
               Practice Policies
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Understanding our policies helps ensure a smooth experience for all our patients.
+              Understanding our policies helps ensure a smooth experience for
+              all our patients.
             </p>
           </div>
 
@@ -240,7 +271,9 @@ export default function NewPatientsPage() {
             {(policies || []).map((policy, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="text-lg text-pear-primary">{policy.title}</CardTitle>
+                  <CardTitle className="text-lg text-pear-primary">
+                    {policy.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 text-sm">{policy.description}</p>
@@ -259,8 +292,9 @@ export default function NewPatientsPage() {
               Skip the NHS Waiting Lists
             </h2>
             <p className="text-xl mb-8 text-white/90">
-              Join our membership plan from just £10.95/month for immediate access to dental care,
-              no waiting lists, and significant savings on treatments.
+              Join our membership plan from just £10.95/month for immediate
+              access to dental care, no waiting lists, and significant savings
+              on treatments.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -271,7 +305,10 @@ export default function NewPatientsPage() {
                 </Button>
               </Link>
               <Link href="/book">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                <Button
+                  size="lg"
+                  className="bg-white text-pear-primary hover:bg-white/90 font-semibold"
+                >
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
@@ -284,7 +321,8 @@ export default function NewPatientsPage() {
                 <span className="font-semibold">Emergency Care Available</span>
               </div>
               <p className="text-white/90 text-sm">
-                Out of hours emergency care by arrangement. Call for urgent dental needs.
+                Out of hours emergency care by arrangement. Call for urgent
+                dental needs.
               </p>
             </div>
           </div>

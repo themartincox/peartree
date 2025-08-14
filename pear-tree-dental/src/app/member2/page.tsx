@@ -1,44 +1,34 @@
+import { Check } from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
-import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
-import {
-  Check,
-  Star,
-  Users,
-  Shield,
-  Heart,
-  Clock,
-  ArrowRight,
-  X,
-  Phone,
-  Mail
-} from "lucide-react";
 import dynamic from "next/dynamic";
-
+import ExaminationSection from "@/components/membership/ExaminationSection";
 // Critical components - loaded immediately
 import SimplifiedPlanSelector from "@/components/membership/SimplifiedPlanSelector";
-import ExaminationSection from "@/components/membership/ExaminationSection";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
 
 // Non-critical components - loaded dynamically with loading states
-const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
-  loading: () => <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
-});
+const BenefitsSection = dynamic(
+  () => import("@/components/membership/BenefitsSection"),
+  {
+    loading: () => (
+      <div className="h-48 animate-pulse bg-gray-100 rounded-lg" />
+    ),
+  },
+);
 
 const FaqSection = dynamic(() => import("@/components/membership/FaqSection"), {
-  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />
+  loading: () => <div className="h-96 animate-pulse bg-gray-100 rounded-lg" />,
 });
 
 const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
-  loading: () => <div className="h-32 animate-pulse bg-gray-100 rounded-lg" />
+  loading: () => <div className="h-32 animate-pulse bg-gray-100 rounded-lg" />,
 });
 
 export const metadata: Metadata = {
   title: "Simplified Dental Membership Plans | Pear Tree Dental",
-  description: "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49. Simple billing, complete peace of mind.",
+  description:
+    "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49. Simple billing, complete peace of mind.",
   keywords: [
     "simplified dental membership plans",
     "dental plan Burton Joyce",
@@ -48,20 +38,19 @@ export const metadata: Metadata = {
     "family dental plans",
     "dental check-ups included",
     "dental hygienist appointments",
-    "dental treatment discounts"
+    "dental treatment discounts",
   ],
   openGraph: {
     title: "Simplified Dental Membership Plans | Pear Tree Dental",
-    description: "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49.",
+    description:
+      "Choose from our simplified dental membership plans in Burton Joyce. Essentials £14.50, Premium £24.95, All-in £29.95, Family £49.",
     type: "website",
-    url: "https://peartree.dental/member2"
-  }
+    url: "https://peartree.dental/member2",
+  },
 };
 
 export default function SimplifiedMembershipPage() {
-  const breadcrumbItems = [
-    { name: "Simplified Membership Plans" }
-  ];
+  const breadcrumbItems = [{ name: "Simplified Membership Plans" }];
 
   return (
     <div className="min-h-screen bg-white">
@@ -82,8 +71,8 @@ export default function SimplifiedMembershipPage() {
           </h1>
 
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-            We've simplified our membership plans to make choosing easier.
-            Four clear options with everything you need for excellent dental care.
+            We've simplified our membership plans to make choosing easier. Four
+            clear options with everything you need for excellent dental care.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 text-sm">
@@ -128,7 +117,11 @@ export default function SimplifiedMembershipPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                  <span>
+                    Referral to a specialist for any dental procedure or a
+                    referral for any specialist test such as an OPG x-ray / CT
+                    scan
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
@@ -136,7 +129,8 @@ export default function SimplifiedMembershipPage() {
                 </li>
               </ul>
               <div className="mt-4 text-sm text-gray-600">
-                All other routine treatments receive 10% discount with membership plans
+                All other routine treatments receive 10% discount with
+                membership plans
               </div>
             </div>
           </div>

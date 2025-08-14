@@ -1,38 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { generateDirectDebitGuaranteePDF, generateMembershipTermsPDF, downloadPDF } from "@/lib/generatePersonalizedPDFs";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Baby,
+  Building2,
+  CalendarDays,
+  CheckCircle,
+  ChevronDown,
+  Crown,
+  Download,
+  Eye, 
+  FileText,
+  Lock,
+  Mail,
+  Shield,
+  Star,
+  User,
+  UserPlus,
+  Users,
+  Zap
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Crown,
-  CheckCircle,
-  Shield,
-  ArrowRight,
-  ArrowLeft,
-  CalendarDays,
-  Phone,
-  Mail,
-  User,
-  Lock,
-  Building2,
-  CreditCard,
-  Users,
-  Baby,
-  UserPlus,
-  Sparkles,
-  Star,
-  Zap,
-  Heart,
-  FileText,
-  Download,
-  ChevronDown,
-  Eye
-} from "lucide-react";
+import { downloadPDF, generateDirectDebitGuaranteePDF, generateMembershipTermsPDF } from "@/lib/generatePersonalizedPDFs";
 
 export default function MembershipSignupPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -209,10 +204,10 @@ export default function MembershipSignupPage() {
     if (cleaned.length <= 6) {
       cleaned = cleaned.replace(/[^0-9]/g, ''); // Remove hyphens for processing
       if (cleaned.length >= 2) {
-        cleaned = cleaned.substring(0, 2) + '-' + cleaned.substring(2);
+        cleaned = `${cleaned.substring(0, 2)}-${cleaned.substring(2)}`;
       }
       if (cleaned.length >= 5) {
-        cleaned = cleaned.substring(0, 5) + '-' + cleaned.substring(5, 7);
+        cleaned = `${cleaned.substring(0, 5)}-${cleaned.substring(5, 7)}`;
       }
     }
 
@@ -534,7 +529,7 @@ export default function MembershipSignupPage() {
 
     // Use requestAnimationFrame to ensure smooth scrolling after render
     requestAnimationFrame(scrollToTop);
-  }, [currentStep]);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
@@ -1270,8 +1265,7 @@ export default function MembershipSignupPage() {
 
                     {/* Staff Member Section - Only show for clinic access */}
                     {isClinicAccess && (
-                      <>
-                        <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
+                      <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
                           <div className="bg-pear-primary/5 p-4 rounded-lg">
                             <div className="flex items-center mb-3">
                               <User className="w-5 h-5 text-pear-primary mr-2" />
@@ -1307,7 +1301,6 @@ export default function MembershipSignupPage() {
                             </div>
                           </div>
                         </div>
-                      </>
                     )}
                   </div>
 

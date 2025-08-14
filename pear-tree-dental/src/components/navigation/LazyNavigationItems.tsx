@@ -21,7 +21,11 @@ interface LazyNavigationItemsProps {
   onItemClick: () => void;
 }
 
-const LazyNavigationItems = ({ services, about, onItemClick }: LazyNavigationItemsProps) => {
+const LazyNavigationItems = ({
+  services,
+  about,
+  onItemClick,
+}: LazyNavigationItemsProps) => {
   return (
     <div className="pt-4 border-t border-gray-200">
       <nav className="flex flex-col space-y-4">
@@ -57,10 +61,18 @@ const LazyNavigationItems = ({ services, about, onItemClick }: LazyNavigationIte
           </div>
         </div>
 
-        <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={onItemClick}>
+        <Link
+          href="/new-patients"
+          className="text-pear-primary hover:text-pear-gold transition-colors font-medium"
+          onClick={onItemClick}
+        >
           New Patients
         </Link>
-        <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={onItemClick}>
+        <Link
+          href="/contact"
+          className="text-pear-primary hover:text-pear-gold transition-colors font-medium"
+          onClick={onItemClick}
+        >
           Contact
         </Link>
       </nav>

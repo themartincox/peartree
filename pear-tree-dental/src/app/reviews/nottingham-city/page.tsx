@@ -1,44 +1,32 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
   Award,
-  Navigation,
-  Home,
-  CreditCard,
+  BarChart3,
   Calendar,
-  ThumbsUp,
-  FileText,
-  Activity,
-  TrendingUp,
-  Target,
-  Timer,
-  Crown,
-  Zap,
-  DollarSign,
+  Car,
   Circle,
+  DollarSign,
+  MapPin,
   MessageSquare,
+  Navigation,
+  Phone,
   Search,
-  BarChart3
+  Star,
+  Timer,
+  Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import FAQSection from "@/components/FAQSection";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Nottingham City Dental Care: What Local Patients Really Value | Pear Tree Dental",
-  description: "Explore what patients in Nottingham City say about local dental care – from parking and pricing to modern facilities and appointment access. Find the right practice for you.",
+  title:
+    "Nottingham City Dental Care: What Local Patients Really Value | Pear Tree Dental",
+  description:
+    "Explore what patients in Nottingham City say about local dental care – from parking and pricing to modern facilities and appointment access. Find the right practice for you.",
   keywords: [
     "Nottingham City dental care",
     "dentist Nottingham City reviews",
@@ -46,188 +34,254 @@ export const metadata: Metadata = {
     "NG1 dental care",
     "private dentist Nottingham City",
     "dental care Nottingham City",
-    "Nottingham City dentist feedback"
+    "Nottingham City dentist feedback",
   ],
   openGraph: {
-    title: "Nottingham City Dental Care: What Local Patients Really Value | Pear Tree Dental",
-    description: "Explore what patients in Nottingham City say about local dental care – from parking and pricing to modern facilities.",
-    url: "https://peartree.dental/reviews/nottingham-city"
+    title:
+      "Nottingham City Dental Care: What Local Patients Really Value | Pear Tree Dental",
+    description:
+      "Explore what patients in Nottingham City say about local dental care – from parking and pricing to modern facilities.",
+    url: "https://peartree.dental/reviews/nottingham-city",
   },
   alternates: {
-    canonical: "https://peartree.dental/reviews/nottingham-city"
-  }
+    canonical: "https://peartree.dental/reviews/nottingham-city",
+  },
 };
 
 export default function NottinghamCityDentalCarePatientFeedbackPage() {
   const patientFeedbackFAQs = [
     {
-      question: "How does Pear Tree Dental compare to city centre practices serving Nottingham professionals like City Dental?",
-      answer: "Patients often compare city centre practices based on convenience, appointment availability, and professional service. Pear Tree offers executive-level facilities, efficient scheduling, and transparent pricing with easy escape from city centre complications."
+      question:
+        "How does Pear Tree Dental compare to city centre practices serving Nottingham professionals like City Dental?",
+      answer:
+        "Patients often compare city centre practices based on convenience, appointment availability, and professional service. Pear Tree offers executive-level facilities, efficient scheduling, and transparent pricing with easy escape from city centre complications.",
     },
     {
-      question: "What do patients say about accessing dental care from Nottingham City centre?",
-      answer: "Access and efficiency are paramount for city professionals. Many struggle with expensive parking and crowded facilities, while practices like Pear Tree Dental offer professional-grade care with convenient access away from city centre hassles."
+      question:
+        "What do patients say about accessing dental care from Nottingham City centre?",
+      answer:
+        "Access and efficiency are paramount for city professionals. Many struggle with expensive parking and crowded facilities, while practices like Pear Tree Dental offer professional-grade care with convenient access away from city centre hassles.",
     },
     {
-      question: "How do Nottingham City dental costs compare between practices?",
-      answer: "Cost transparency varies significantly between city centre practices. Business professionals appreciate clear pricing that reflects quality, which is why practices with transparent executive fee structures tend to receive better feedback than those with hidden costs."
+      question:
+        "How do Nottingham City dental costs compare between practices?",
+      answer:
+        "Cost transparency varies significantly between city centre practices. Business professionals appreciate clear pricing that reflects quality, which is why practices with transparent executive fee structures tend to receive better feedback than those with hidden costs.",
     },
     {
-      question: "What technology do Nottingham City patients expect from modern dental practices?",
-      answer: "City professionals expect the highest standard of technology - advanced digital X-rays, cutting-edge intraoral cameras, and executive-level equipment. Reviews show patients seek practices that invest in professional-grade technology."
+      question:
+        "What technology do Nottingham City patients expect from modern dental practices?",
+      answer:
+        "City professionals expect the highest standard of technology - advanced digital X-rays, cutting-edge intraoral cameras, and executive-level equipment. Reviews show patients seek practices that invest in professional-grade technology.",
     },
     {
-      question: "How important is professional service to Nottingham City dental patients?",
-      answer: "Extremely important! City professionals expect executive-level service standards, flexible appointment scheduling, and professional excellence that matches their business environment and time constraints."
-    }
+      question:
+        "How important is professional service to Nottingham City dental patients?",
+      answer:
+        "Extremely important! City professionals expect executive-level service standards, flexible appointment scheduling, and professional excellence that matches their business environment and time constraints.",
+    },
   ];
 
   const patientPriorities = [
     {
       priority: "Executive Convenience",
-      description: "Seamless access without city centre parking complications and traffic",
-      patientFeedback: "City professionals need efficient, executive-level convenience",
-      peartreeAdvantage: "Escape city centre hassles with free parking and efficient access",
-      icon: Car
+      description:
+        "Seamless access without city centre parking complications and traffic",
+      patientFeedback:
+        "City professionals need efficient, executive-level convenience",
+      peartreeAdvantage:
+        "Escape city centre hassles with free parking and efficient access",
+      icon: Car,
     },
     {
       priority: "Professional Technology",
-      description: "State-of-the-art equipment matching business technology expectations",
-      patientFeedback: "City professionals expect cutting-edge technology and digital solutions",
-      peartreeAdvantage: "Latest digital technology and professional-grade CEREC same-day crowns",
-      icon: Zap
+      description:
+        "State-of-the-art equipment matching business technology expectations",
+      patientFeedback:
+        "City professionals expect cutting-edge technology and digital solutions",
+      peartreeAdvantage:
+        "Latest digital technology and professional-grade CEREC same-day crowns",
+      icon: Zap,
     },
     {
       priority: "Executive Service Standards",
-      description: "Professional excellence and service quality matching business expectations",
-      patientFeedback: "City professionals expect service levels matching their business environment",
-      peartreeAdvantage: "Professional service delivery with executive-level standards",
-      icon: Award
+      description:
+        "Professional excellence and service quality matching business expectations",
+      patientFeedback:
+        "City professionals expect service levels matching their business environment",
+      peartreeAdvantage:
+        "Professional service delivery with executive-level standards",
+      icon: Award,
     },
     {
       priority: "Time Efficiency",
-      description: "Streamlined appointments that respect demanding professional schedules",
-      patientFeedback: "City professionals need efficient service that maximizes their valuable time",
-      peartreeAdvantage: "Time-efficient scheduling with same-day treatments and executive priority",
-      icon: Timer
+      description:
+        "Streamlined appointments that respect demanding professional schedules",
+      patientFeedback:
+        "City professionals need efficient service that maximizes their valuable time",
+      peartreeAdvantage:
+        "Time-efficient scheduling with same-day treatments and executive priority",
+      icon: Timer,
     },
     {
       priority: "Professional Pricing Transparency",
-      description: "Clear, executive-level pricing that reflects quality service",
-      patientFeedback: "Business professionals prefer transparent pricing matching service quality",
-      peartreeAdvantage: "Clear professional pricing with executive-level transparency",
-      icon: DollarSign
+      description:
+        "Clear, executive-level pricing that reflects quality service",
+      patientFeedback:
+        "Business professionals prefer transparent pricing matching service quality",
+      peartreeAdvantage:
+        "Clear professional pricing with executive-level transparency",
+      icon: DollarSign,
     },
     {
       priority: "Business Schedule Flexibility",
-      description: "Appointment flexibility accommodating demanding business schedules",
-      patientFeedback: "City professionals need scheduling that fits around business meetings and travel",
-      peartreeAdvantage: "Executive scheduling flexibility with business travel accommodation",
-      icon: Calendar
-    }
+      description:
+        "Appointment flexibility accommodating demanding business schedules",
+      patientFeedback:
+        "City professionals need scheduling that fits around business meetings and travel",
+      peartreeAdvantage:
+        "Executive scheduling flexibility with business travel accommodation",
+      icon: Calendar,
+    },
   ];
 
   const commonConcerns = [
     {
       concern: "City Centre Parking Costs and Complications",
       frequency: "Mentioned in 87% of Nottingham City professional reviews",
-      impact: "Affects appointment punctuality and adds significant expense to treatment",
+      impact:
+        "Affects appointment punctuality and adds significant expense to treatment",
       solution: "Choose practices with convenient, cost-free parking solutions",
-      peartreeApproach: "Free executive parking - just 15 minutes from city centre without complications"
+      peartreeApproach:
+        "Free executive parking - just 15 minutes from city centre without complications",
     },
     {
       concern: "Crowded City Centre Environment",
-      frequency: "Mentioned in 78% of professional practice environment reviews",
-      impact: "Affects relaxation and doesn't match professional service expectations",
-      solution: "Look for practices offering professional, executive-level environments",
-      peartreeApproach: "Professional spa-like environment away from city centre crowds and stress"
+      frequency:
+        "Mentioned in 78% of professional practice environment reviews",
+      impact:
+        "Affects relaxation and doesn't match professional service expectations",
+      solution:
+        "Look for practices offering professional, executive-level environments",
+      peartreeApproach:
+        "Professional spa-like environment away from city centre crowds and stress",
     },
     {
       concern: "Time-Consuming City Centre Access",
       frequency: "Mentioned in 74% of busy professional scheduling complaints",
-      impact: "Disrupts business schedules and wastes valuable professional time",
-      solution: "Select practices with efficient access and time-saving treatments",
-      peartreeApproach: "Efficient escape from city centre with same-day treatments and executive efficiency"
+      impact:
+        "Disrupts business schedules and wastes valuable professional time",
+      solution:
+        "Select practices with efficient access and time-saving treatments",
+      peartreeApproach:
+        "Efficient escape from city centre with same-day treatments and executive efficiency",
     },
     {
       concern: "Inflexible Professional Scheduling",
       frequency: "Mentioned in 71% of business professional frustrations",
-      impact: "Conflicts with business meetings, travel, and professional commitments",
-      solution: "Choose practices understanding and accommodating business schedules",
-      peartreeApproach: "Executive scheduling flexibility with business travel and meeting accommodation"
+      impact:
+        "Conflicts with business meetings, travel, and professional commitments",
+      solution:
+        "Choose practices understanding and accommodating business schedules",
+      peartreeApproach:
+        "Executive scheduling flexibility with business travel and meeting accommodation",
     },
     {
       concern: "City Centre Service Quality Inconsistency",
       frequency: "Mentioned in 66% of professional service standard reviews",
-      impact: "Doesn't match business professional expectations for service excellence",
-      solution: "Choose practices maintaining consistent professional service standards",
-      peartreeApproach: "Consistent professional service exceeding business environment expectations"
-    }
+      impact:
+        "Doesn't match business professional expectations for service excellence",
+      solution:
+        "Choose practices maintaining consistent professional service standards",
+      peartreeApproach:
+        "Consistent professional service exceeding business environment expectations",
+    },
   ];
 
   const researchSources = [
     {
       platform: "Google Reviews",
-      insights: "Professional service and city centre escape most frequently mentioned",
+      insights:
+        "Professional service and city centre escape most frequently mentioned",
       sampleSize: "200+ Nottingham City professional practice reviews analyzed",
-      keyFindings: "Executive convenience and professional service quality highly valued"
+      keyFindings:
+        "Executive convenience and professional service quality highly valued",
     },
     {
       platform: "Facebook Comments",
-      insights: "Professional recommendations focus on convenience and executive service",
+      insights:
+        "Professional recommendations focus on convenience and executive service",
       sampleSize: "90+ social media posts and comments reviewed",
-      keyFindings: "City professionals share experiences about escaping city centre complications"
+      keyFindings:
+        "City professionals share experiences about escaping city centre complications",
     },
     {
       platform: "Healthcare Review Sites",
-      insights: "Professional treatment quality and executive service most important factors",
+      insights:
+        "Professional treatment quality and executive service most important factors",
       sampleSize: "120+ detailed patient reviews across multiple platforms",
-      keyFindings: "Business professionals willing to travel for executive-level service"
+      keyFindings:
+        "Business professionals willing to travel for executive-level service",
     },
     {
       platform: "Local Business Forums",
-      insights: "Professional word-of-mouth emphasizes efficiency and executive convenience",
-      sampleSize: "35+ discussion threads about professional dental care access",
-      keyFindings: "Business referrals highly influential in professional practice selection"
-    }
+      insights:
+        "Professional word-of-mouth emphasizes efficiency and executive convenience",
+      sampleSize:
+        "35+ discussion threads about professional dental care access",
+      keyFindings:
+        "Business referrals highly influential in professional practice selection",
+    },
   ];
 
   const practiceComparison = [
     {
       factor: "Professional Convenience",
-      traditionalPractices: "City centre complications, expensive parking, traffic delays",
-      modernPractices: "Convenient access, executive parking, efficient scheduling",
+      traditionalPractices:
+        "City centre complications, expensive parking, traffic delays",
+      modernPractices:
+        "Convenient access, executive parking, efficient scheduling",
       patientPreference: "Strongly prefer hassle-free executive convenience",
-      winner: "Modern"
+      winner: "Modern",
     },
     {
       factor: "Professional Technology",
-      traditionalPractices: "Standard city equipment, limited professional technology investment",
+      traditionalPractices:
+        "Standard city equipment, limited professional technology investment",
       modernPractices: "Cutting-edge technology, professional-grade equipment",
-      patientPreference: "Expect business-level technology and professional equipment",
-      winner: "Modern"
+      patientPreference:
+        "Expect business-level technology and professional equipment",
+      winner: "Modern",
     },
     {
       factor: "Executive Service Standards",
-      traditionalPractices: "Variable city service, inconsistent professional standards",
+      traditionalPractices:
+        "Variable city service, inconsistent professional standards",
       modernPractices: "Consistent executive service, professional excellence",
-      patientPreference: "Need service levels matching business environment expectations",
-      winner: "Modern"
+      patientPreference:
+        "Need service levels matching business environment expectations",
+      winner: "Modern",
     },
     {
       factor: "Business Schedule Accommodation",
-      traditionalPractices: "Rigid city hours, limited professional accommodation",
-      modernPractices: "Flexible executive scheduling, business travel understanding",
-      patientPreference: "Need scheduling flexibility for demanding business commitments",
-      winner: "Modern"
+      traditionalPractices:
+        "Rigid city hours, limited professional accommodation",
+      modernPractices:
+        "Flexible executive scheduling, business travel understanding",
+      patientPreference:
+        "Need scheduling flexibility for demanding business commitments",
+      winner: "Modern",
     },
     {
       factor: "Professional Time Efficiency",
-      traditionalPractices: "Time-consuming city appointments, multiple visit requirements",
-      modernPractices: "Efficient treatments, same-day options, executive priority",
-      patientPreference: "Value time efficiency and streamlined professional service",
-      winner: "Modern"
-    }
+      traditionalPractices:
+        "Time-consuming city appointments, multiple visit requirements",
+      modernPractices:
+        "Efficient treatments, same-day options, executive priority",
+      patientPreference:
+        "Value time efficiency and streamlined professional service",
+      winner: "Modern",
+    },
   ];
 
   return (
@@ -239,25 +293,25 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
+            mainEntity: [
               {
                 "@type": "Question",
-                "name": "How does Pear Tree Dental compare to city centre practices serving Nottingham professionals like City Dental?",
-                "acceptedAnswer": {
+                name: "How does Pear Tree Dental compare to city centre practices serving Nottingham professionals like City Dental?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Patients often compare city centre practices based on convenience, appointment availability, and professional service. Pear Tree offers executive-level facilities, efficient scheduling, and transparent pricing with easy escape from city centre complications."
-                }
+                  text: "Patients often compare city centre practices based on convenience, appointment availability, and professional service. Pear Tree offers executive-level facilities, efficient scheduling, and transparent pricing with easy escape from city centre complications.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "What do patients say about accessing dental care from Nottingham City centre?",
-                "acceptedAnswer": {
+                name: "What do patients say about accessing dental care from Nottingham City centre?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Access and efficiency are paramount for city professionals. Many struggle with expensive parking and crowded facilities, while practices like Pear Tree Dental offer professional-grade care with convenient access away from city centre hassles."
-                }
-              }
-            ]
-          })
+                  text: "Access and efficiency are paramount for city professionals. Many struggle with expensive parking and crowded facilities, while practices like Pear Tree Dental offer professional-grade care with convenient access away from city centre hassles.",
+                },
+              },
+            ],
+          }),
         }}
       />
 
@@ -273,7 +327,9 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              What Nottingham City Patients <span className="text-yellow-300">Really Value</span> in Dental Care
+              What Nottingham City Patients{" "}
+              <span className="text-yellow-300">Really Value</span> in Dental
+              Care
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -283,19 +339,27 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Search className="inline w-5 h-5 mr-2" />
-                Analysis of 450+ city professional patient reviews across Google, Facebook, and healthcare platforms
+                Analysis of 450+ city professional patient reviews across
+                Google, Facebook, and healthcare platforms
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Experience Executive Dental Care
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -303,7 +367,10 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">🔍 Based on comprehensive analysis of Nottingham City professional patient feedback</p>
+              <p className="text-lg font-semibold">
+                🔍 Based on comprehensive analysis of Nottingham City
+                professional patient feedback
+              </p>
             </div>
           </div>
         </div>
@@ -315,23 +382,34 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Our Research: Real Patient Feedback from Nottingham City Professionals
+                Our Research: Real Patient Feedback from Nottingham City
+                Professionals
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We analyzed hundreds of patient reviews from Google, Facebook, and healthcare platforms
-                to understand what busy city professionals truly value in dental care.
+                We analyzed hundreds of patient reviews from Google, Facebook,
+                and healthcare platforms to understand what busy city
+                professionals truly value in dental care.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {(researchSources || []).map((source, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <BarChart3 className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-                    <h3 className="font-bold text-pear-primary mb-2">{source.platform}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{source.sampleSize}</p>
+                    <h3 className="font-bold text-pear-primary mb-2">
+                      {source.platform}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3">
+                      {source.sampleSize}
+                    </p>
                     <div className="bg-indigo-50 rounded-lg p-3">
-                      <p className="text-xs text-indigo-700 font-medium">{source.keyFindings}</p>
+                      <p className="text-xs text-indigo-700 font-medium">
+                        {source.keyFindings}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -340,24 +418,35 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
 
             <div className="mt-12 text-center bg-indigo-50 rounded-lg p-8">
               <MessageSquare className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Professional Research Methodology</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Professional Research Methodology
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                Our analysis included patient reviews from Google Reviews, Facebook comments,
-                healthcare review websites, and business forums to understand what
-                Nottingham City professionals prioritize when choosing dental care.
+                Our analysis included patient reviews from Google Reviews,
+                Facebook comments, healthcare review websites, and business
+                forums to understand what Nottingham City professionals
+                prioritize when choosing dental care.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-indigo-600 mb-2">450+</div>
+                  <div className="text-2xl font-bold text-indigo-600 mb-2">
+                    450+
+                  </div>
                   <p className="text-gray-600">Professional reviews analyzed</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-indigo-600 mb-2">6 months</div>
+                  <div className="text-2xl font-bold text-indigo-600 mb-2">
+                    6 months
+                  </div>
                   <p className="text-gray-600">Research period</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-indigo-600 mb-2">Executive focus</div>
-                  <p className="text-gray-600">Professional convenience priority</p>
+                  <div className="text-2xl font-bold text-indigo-600 mb-2">
+                    Executive focus
+                  </div>
+                  <p className="text-gray-600">
+                    Professional convenience priority
+                  </p>
                 </div>
               </div>
             </div>
@@ -371,11 +460,13 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Top 6 Priorities from Nottingham City Professional Patient Feedback
+                Top 6 Priorities from Nottingham City Professional Patient
+                Feedback
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Based on our analysis of city professional reviews and business community discussions,
-                these are the factors that matter most to demanding Nottingham City dental patients.
+                Based on our analysis of city professional reviews and business
+                community discussions, these are the factors that matter most to
+                demanding Nottingham City dental patients.
               </p>
             </div>
 
@@ -383,24 +474,39 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
               {(patientPriorities || []).map((priority, index) => {
                 const IconComponent = priority.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="p-3 bg-indigo-100 rounded-full">
                           <IconComponent className="w-6 h-6 text-indigo-600" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-bold text-pear-primary mb-2">{priority.priority}</h3>
-                          <p className="text-sm text-gray-600 mb-3">{priority.description}</p>
+                          <h3 className="font-bold text-pear-primary mb-2">
+                            {priority.priority}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-3">
+                            {priority.description}
+                          </p>
 
                           <div className="mb-3">
-                            <h4 className="font-semibold text-red-600 text-xs mb-1">Professional Expectation:</h4>
-                            <p className="text-xs text-gray-700">{priority.patientFeedback}</p>
+                            <h4 className="font-semibold text-red-600 text-xs mb-1">
+                              Professional Expectation:
+                            </h4>
+                            <p className="text-xs text-gray-700">
+                              {priority.patientFeedback}
+                            </p>
                           </div>
 
                           <div className="bg-green-50 rounded-lg p-3">
-                            <h4 className="font-semibold text-green-700 text-xs mb-1">Pear Tree Advantage:</h4>
-                            <p className="text-xs text-green-700">{priority.peartreeAdvantage}</p>
+                            <h4 className="font-semibold text-green-700 text-xs mb-1">
+                              Pear Tree Advantage:
+                            </h4>
+                            <p className="text-xs text-green-700">
+                              {priority.peartreeAdvantage}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -419,10 +525,12 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Most Common Concerns in Nottingham City Professional Patient Reviews
+                Most Common Concerns in Nottingham City Professional Patient
+                Reviews
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding what challenges city professionals helps identify what to look for when choosing a dental practice.
+                Understanding what challenges city professionals helps identify
+                what to look for when choosing a dental practice.
               </p>
             </div>
 
@@ -432,23 +540,39 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-4 gap-4 items-center">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-2">{concern.concern}</h3>
-                        <Badge className="bg-red-100 text-red-700 text-xs">{concern.frequency}</Badge>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {concern.concern}
+                        </h3>
+                        <Badge className="bg-red-100 text-red-700 text-xs">
+                          {concern.frequency}
+                        </Badge>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-gray-700 text-sm mb-1">Professional Impact:</h4>
-                        <p className="text-sm text-gray-600">{concern.impact}</p>
+                        <h4 className="font-semibold text-gray-700 text-sm mb-1">
+                          Professional Impact:
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          {concern.impact}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-indigo-700 text-sm mb-1">Solution:</h4>
-                        <p className="text-sm text-indigo-700">{concern.solution}</p>
+                        <h4 className="font-semibold text-indigo-700 text-sm mb-1">
+                          Solution:
+                        </h4>
+                        <p className="text-sm text-indigo-700">
+                          {concern.solution}
+                        </p>
                       </div>
 
                       <div className="bg-green-50 rounded-lg p-3">
-                        <h4 className="font-semibold text-green-700 text-sm mb-1">Our Professional Approach:</h4>
-                        <p className="text-sm text-green-700">{concern.peartreeApproach}</p>
+                        <h4 className="font-semibold text-green-700 text-sm mb-1">
+                          Our Professional Approach:
+                        </h4>
+                        <p className="text-sm text-green-700">
+                          {concern.peartreeApproach}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -465,10 +589,12 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                City Centre vs Modern Professional Practices: What Nottingham City Patients Prefer
+                City Centre vs Modern Professional Practices: What Nottingham
+                City Patients Prefer
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                City professional feedback clearly shows preferences for modern approaches that deliver executive-level service.
+                City professional feedback clearly shows preferences for modern
+                approaches that deliver executive-level service.
               </p>
             </div>
 
@@ -482,11 +608,22 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
               </div>
 
               {(practiceComparison || []).map((item, index) => (
-                <div key={index} className="grid grid-cols-5 p-4 border-b border-gray-100 hover:bg-gray-50">
-                  <div className="font-semibold text-gray-700">{item.factor}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.traditionalPractices}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.modernPractices}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.patientPreference}</div>
+                <div
+                  key={index}
+                  className="grid grid-cols-5 p-4 border-b border-gray-100 hover:bg-gray-50"
+                >
+                  <div className="font-semibold text-gray-700">
+                    {item.factor}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.traditionalPractices}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.modernPractices}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.patientPreference}
+                  </div>
                   <div className="text-center">
                     <Badge
                       className={
@@ -504,8 +641,10 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
 
             <div className="mt-8 text-center">
               <p className="text-lg text-gray-600">
-                <strong>Clear Professional Preference:</strong> Modern dental practices consistently receive better
-                feedback for executive convenience, professional service, and understanding of business demands.
+                <strong>Clear Professional Preference:</strong> Modern dental
+                practices consistently receive better feedback for executive
+                convenience, professional service, and understanding of business
+                demands.
               </p>
             </div>
           </div>
@@ -518,7 +657,8 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-4">
-                What Nottingham City Professionals Say About Executive Dental Care
+                What Nottingham City Professionals Say About Executive Dental
+                Care
               </h2>
             </div>
 
@@ -530,15 +670,21 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">Professional service</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  Professional service
+                </div>
                 <p className="text-gray-600">Executive-level standards</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">No city hassles</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  No city hassles
+                </div>
                 <p className="text-gray-600">Escape parking and crowds</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">15 minutes</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  15 minutes
+                </div>
                 <p className="text-gray-600">Quick escape from city centre</p>
               </div>
             </div>
@@ -555,7 +701,8 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
                 Nottingham City Professional Dental Care Questions
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from our research into Nottingham City professional patient feedback
+                Common questions from our research into Nottingham City
+                professional patient feedback
               </p>
             </div>
 
@@ -569,7 +716,8 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
-              Executive Dental Care - Efficient Escape from Nottingham City Centre
+              Executive Dental Care - Efficient Escape from Nottingham City
+              Centre
             </h2>
 
             <div className="bg-white rounded-xl p-8 shadow-lg mb-8">
@@ -584,15 +732,21 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
                     <p>2. Escape city traffic through countryside</p>
                     <p>3. Arrive at Burton Joyce (15 minutes)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Just 15 minutes with free executive parking</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Just 15 minutes with free executive parking
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-indigo-50 rounded-lg p-6">
                     <Car className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-indigo-700 mb-2">Executive Convenience</h4>
-                    <p className="text-gray-600">Escape city centre complications</p>
+                    <h4 className="font-bold text-indigo-700 mb-2">
+                      Executive Convenience
+                    </h4>
+                    <p className="text-gray-600">
+                      Escape city centre complications
+                    </p>
                   </div>
                 </div>
               </div>
@@ -604,7 +758,10 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from City Centre
               </Button>
@@ -621,8 +778,9 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
               Experience What Nottingham City Professionals Value Most
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Executive convenience, professional technology, efficient service, and transparent pricing -
-              all just 15 minutes from city centre complications.
+              Executive convenience, professional technology, efficient service,
+              and transparent pricing - all just 15 minutes from city centre
+              complications.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -631,19 +789,27 @@ export default function NottinghamCityDentalCarePatientFeedbackPage() {
                 Based on 450+ Nottingham City Professional Patient Reviews
               </p>
               <p className="text-sm opacity-90">
-                Executive service • No city hassles • Professional convenience • Quick escape from NG1
+                Executive service • No city hassles • Professional convenience •
+                Quick escape from NG1
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Book Your Professional Visit
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

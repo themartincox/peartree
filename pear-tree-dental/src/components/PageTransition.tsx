@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -12,7 +12,7 @@ const pageVariants = {
   initial: {
     opacity: 0,
     y: 20,
-    scale: 0.98
+    scale: 0.98,
   },
   enter: {
     opacity: 1,
@@ -21,8 +21,8 @@ const pageVariants = {
     transition: {
       duration: 0.4,
       ease: [0.25, 0.46, 0.45, 0.94],
-      staggerChildren: 0.1
-    }
+      staggerChildren: 0.1,
+    },
   },
   exit: {
     opacity: 0,
@@ -30,24 +30,24 @@ const pageVariants = {
     scale: 0.98,
     transition: {
       duration: 0.3,
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }
-  }
+      ease: [0.25, 0.46, 0.45, 0.94],
+    },
+  },
 };
 
 const childVariants = {
   initial: {
     opacity: 0,
-    y: 10
+    y: 10,
   },
   enter: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.3,
-      ease: "easeOut"
-    }
-  }
+      ease: "easeOut",
+    },
+  },
 };
 
 export default function PageTransition({ children }: PageTransitionProps) {
@@ -63,9 +63,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
         exit="exit"
         className="min-h-screen"
       >
-        <motion.div variants={childVariants}>
-          {children}
-        </motion.div>
+        <motion.div variants={childVariants}>{children}</motion.div>
       </motion.div>
     </AnimatePresence>
   );

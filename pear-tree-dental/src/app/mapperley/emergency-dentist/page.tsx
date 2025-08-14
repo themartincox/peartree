@@ -1,37 +1,31 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Crown,
-  Sparkles,
-  Award,
-  Navigation,
   AlertTriangle,
-  Users,
   Baby,
+  Car,
+  Clock,
   GraduationCap,
+  Heart,
   Home,
+  MapPin,
+  Navigation,
   PhoneCall,
-  Zap
+  Star,
+  Users,
+  Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import FAQSection from "@/components/FAQSection";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Emergency Dentist in Mapperley - Family Dental Emergency Care | Pear Tree Dental",
-  description: "Emergency dentist for Mapperley families. Child dental trauma, family dental emergencies, and urgent care for all ages just 15 minutes away. Same-day appointments available.",
+  title:
+    "Emergency Dentist in Mapperley - Family Dental Emergency Care | Pear Tree Dental",
+  description:
+    "Emergency dentist for Mapperley families. Child dental trauma, family dental emergencies, and urgent care for all ages just 15 minutes away. Same-day appointments available.",
   keywords: [
     "emergency dentist Mapperley",
     "family dental emergency Mapperley",
@@ -39,40 +33,48 @@ export const metadata: Metadata = {
     "dental emergency Sherwood",
     "toothache relief Mapperley",
     "family dentist emergency Mapperley",
-    "urgent dental care Mapperley"
+    "urgent dental care Mapperley",
   ],
   openGraph: {
-    title: "Emergency Dentist in Mapperley - Family Dental Emergency Care | Pear Tree Dental",
-    description: "Emergency dentist for Mapperley families. Child dental trauma and urgent care for all ages just 15 minutes away.",
-    url: "https://peartree.dental/mapperley/emergency-dentist"
+    title:
+      "Emergency Dentist in Mapperley - Family Dental Emergency Care | Pear Tree Dental",
+    description:
+      "Emergency dentist for Mapperley families. Child dental trauma and urgent care for all ages just 15 minutes away.",
+    url: "https://peartree.dental/mapperley/emergency-dentist",
   },
   alternates: {
-    canonical: "https://peartree.dental/mapperley/emergency-dentist"
-  }
+    canonical: "https://peartree.dental/mapperley/emergency-dentist",
+  },
 };
 
 export default function MapperleyEmergencyDentistPage() {
   const mapperleyEmergencyFAQs = [
     {
       question: "How far is emergency dental care from Mapperley families?",
-      answer: "Pear Tree Dental is just 15 minutes from Mapperley via the A6097. We're experienced family emergency dentists providing urgent care for children, parents, and grandparents."
+      answer:
+        "Pear Tree Dental is just 15 minutes from Mapperley via the A6097. We're experienced family emergency dentists providing urgent care for children, parents, and grandparents.",
     },
     {
       question: "Do you handle child dental emergencies from Mapperley?",
-      answer: "Yes! We specialize in child dental trauma including knocked-out teeth, chipped teeth from sports, and severe toothache. We're gentle, reassuring, and experienced with anxious children."
+      answer:
+        "Yes! We specialize in child dental trauma including knocked-out teeth, chipped teeth from sports, and severe toothache. We're gentle, reassuring, and experienced with anxious children.",
     },
     {
       question: "Can you see my whole family for dental emergencies?",
-      answer: "Absolutely! We provide emergency care for all ages - from toddlers to grandparents. Same-day appointments available for the whole family when needed."
+      answer:
+        "Absolutely! We provide emergency care for all ages - from toddlers to grandparents. Same-day appointments available for the whole family when needed.",
     },
     {
       question: "What should I do if my child knocks out a tooth in Mapperley?",
-      answer: "Call us immediately! Keep the tooth moist (in milk or saliva), don't scrub it, and get to us within 30-60 minutes. We can often save knocked-out teeth with quick action."
+      answer:
+        "Call us immediately! Keep the tooth moist (in milk or saliva), don't scrub it, and get to us within 30-60 minutes. We can often save knocked-out teeth with quick action.",
     },
     {
-      question: "What makes your emergency service special for Mapperley families?",
-      answer: "We combine child-friendly emergency care, multi-generational experience, same-day family appointments, and convenient Mapperley access. We understand family dental emergencies."
-    }
+      question:
+        "What makes your emergency service special for Mapperley families?",
+      answer:
+        "We combine child-friendly emergency care, multi-generational experience, same-day family appointments, and convenient Mapperley access. We understand family dental emergencies.",
+    },
   ];
 
   const familyEmergencies = [
@@ -82,7 +84,7 @@ export default function MapperleyEmergencyDentistPage() {
       urgency: "Immediate",
       ageGroup: "Children & Teens",
       action: "Call within 30 minutes for best outcomes",
-      icon: Baby
+      icon: Baby,
     },
     {
       emergency: "Family Toothache",
@@ -90,7 +92,7 @@ export default function MapperleyEmergencyDentistPage() {
       urgency: "Same Day",
       ageGroup: "All Ages",
       action: "Same-day appointments for pain relief",
-      icon: AlertTriangle
+      icon: AlertTriangle,
     },
     {
       emergency: "Broken Family Dentures",
@@ -98,7 +100,7 @@ export default function MapperleyEmergencyDentistPage() {
       urgency: "Within 24 hours",
       ageGroup: "Adults & Seniors",
       action: "Repair or temporary replacement options",
-      icon: Users
+      icon: Users,
     },
     {
       emergency: "Teen Orthodontic Emergency",
@@ -106,31 +108,35 @@ export default function MapperleyEmergencyDentistPage() {
       urgency: "Within 48 hours",
       ageGroup: "Teenagers",
       action: "Prevent damage and discomfort to treatment",
-      icon: GraduationCap
-    }
+      icon: GraduationCap,
+    },
   ];
 
   const familyBenefits = [
     {
       icon: Users,
       title: "Whole Family Care",
-      description: "Emergency appointments for all family members from toddlers to grandparents"
+      description:
+        "Emergency appointments for all family members from toddlers to grandparents",
     },
     {
       icon: Heart,
       title: "Child-Friendly Approach",
-      description: "Gentle, reassuring care specifically designed for anxious children"
+      description:
+        "Gentle, reassuring care specifically designed for anxious children",
     },
     {
       icon: Zap,
       title: "Same-Day Family Slots",
-      description: "Multiple family appointments available on the same day when needed"
+      description:
+        "Multiple family appointments available on the same day when needed",
     },
     {
       icon: Home,
       title: "Family Peace of Mind",
-      description: "Experienced with children's fears and parental concerns during emergencies"
-    }
+      description:
+        "Experienced with children's fears and parental concerns during emergencies",
+    },
   ];
 
   const emergencyProtocol = [
@@ -138,26 +144,26 @@ export default function MapperleyEmergencyDentistPage() {
       step: "1",
       title: "Emergency Call",
       description: "Call our family emergency line and describe the situation",
-      familyFocus: "Stay calm - we'll guide you through immediate care"
+      familyFocus: "Stay calm - we'll guide you through immediate care",
     },
     {
       step: "2",
       title: "Immediate Advice",
       description: "Get instant guidance for home care while traveling to us",
-      familyFocus: "Child-friendly instructions for parents"
+      familyFocus: "Child-friendly instructions for parents",
     },
     {
       step: "3",
       title: "Priority Treatment",
       description: "Fast-track family emergency appointments",
-      familyFocus: "Minimize waiting time for distressed children"
+      familyFocus: "Minimize waiting time for distressed children",
     },
     {
       step: "4",
       title: "Family Follow-Up",
       description: "Ensure recovery and prevent future family emergencies",
-      familyFocus: "Prevention advice for the whole family"
-    }
+      familyFocus: "Prevention advice for the whole family",
+    },
   ];
 
   return (
@@ -169,34 +175,32 @@ export default function MapperleyEmergencyDentistPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Emergency Dentist in Mapperley",
-            "image": "https://peartree.dental/images/emergency-dentist-mapperley.jpg",
-            "url": "https://peartree.dental/mapperley/emergency-dentist",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Emergency Dentist in Mapperley",
+            image:
+              "https://peartree.dental/images/emergency-dentist-mapperley.jpg",
+            url: "https://peartree.dental/mapperley/emergency-dentist",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Mapperley, NG5"
+              name: "Mapperley, NG5",
             },
-            "medicalSpecialty": "Emergency Dentistry - Family Emergency Care",
-            "geo": {
+            medicalSpecialty: "Emergency Dentistry - Family Emergency Care",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£80-£300"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£80-£300",
+          }),
         }}
       />
 
@@ -212,7 +216,8 @@ export default function MapperleyEmergencyDentistPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Emergency Dentist in <span className="text-yellow-300">Mapperley</span>
+              Emergency Dentist in{" "}
+              <span className="text-yellow-300">Mapperley</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -228,13 +233,20 @@ export default function MapperleyEmergencyDentistPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-bold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-bold rounded-full"
+                >
                   <PhoneCall className="w-5 h-5 mr-2" />
                   EMERGENCY: 0115 931 2935
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Users className="w-5 h-5 mr-2" />
                   Book Family Emergency
                 </Button>
@@ -242,7 +254,10 @@ export default function MapperleyEmergencyDentistPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">🚨 Child dental trauma? Call immediately - we'll see your family today!</p>
+              <p className="text-lg font-semibold">
+                🚨 Child dental trauma? Call immediately - we'll see your family
+                today!
+              </p>
             </div>
           </div>
         </div>
@@ -257,8 +272,9 @@ export default function MapperleyEmergencyDentistPage() {
                 Common Family Dental Emergencies from Mapperley
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                From playground accidents to midnight toothaches, we understand family dental emergencies.
-                Our experienced team provides gentle, effective care for every family member.
+                From playground accidents to midnight toothaches, we understand
+                family dental emergencies. Our experienced team provides gentle,
+                effective care for every family member.
               </p>
             </div>
 
@@ -266,7 +282,10 @@ export default function MapperleyEmergencyDentistPage() {
               {(familyEmergencies || []).map((emergency, index) => {
                 const IconComponent = emergency.icon;
                 return (
-                  <Card key={index} className="hover:shadow-xl transition-shadow border-l-4 border-red-500">
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl transition-shadow border-l-4 border-red-500"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="p-3 bg-red-100 rounded-full">
@@ -274,16 +293,26 @@ export default function MapperleyEmergencyDentistPage() {
                         </div>
                         <div className="flex-1">
                           <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-bold text-red-700">{emergency.emergency}</h3>
-                            <Badge className="bg-red-100 text-red-700 text-xs">{emergency.ageGroup}</Badge>
+                            <h3 className="font-bold text-red-700">
+                              {emergency.emergency}
+                            </h3>
+                            <Badge className="bg-red-100 text-red-700 text-xs">
+                              {emergency.ageGroup}
+                            </Badge>
                           </div>
-                          <p className="text-gray-600 text-sm mb-3">{emergency.description}</p>
+                          <p className="text-gray-600 text-sm mb-3">
+                            {emergency.description}
+                          </p>
                           <div className="space-y-2">
                             <div className="flex items-center gap-2">
                               <Clock className="w-4 h-4 text-red-500" />
-                              <span className="text-sm font-medium text-red-600">{emergency.urgency}</span>
+                              <span className="text-sm font-medium text-red-600">
+                                {emergency.urgency}
+                              </span>
                             </div>
-                            <p className="text-sm text-gray-600 font-medium">{emergency.action}</p>
+                            <p className="text-sm text-gray-600 font-medium">
+                              {emergency.action}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -295,13 +324,19 @@ export default function MapperleyEmergencyDentistPage() {
 
             <div className="text-center bg-red-100 rounded-lg p-8">
               <PhoneCall className="w-12 h-12 text-red-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-red-700 mb-4">Family Emergency? Don't Wait!</h3>
+              <h3 className="text-2xl font-bold text-red-700 mb-4">
+                Family Emergency? Don't Wait!
+              </h3>
               <p className="text-lg text-gray-700 mb-6">
-                Child dental trauma needs immediate attention. The sooner we see your family,
-                the better the outcome. We're experienced with children's dental emergencies.
+                Child dental trauma needs immediate attention. The sooner we see
+                your family, the better the outcome. We're experienced with
+                children's dental emergencies.
               </p>
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-xl font-bold">
+                <Button
+                  size="lg"
+                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 text-xl font-bold"
+                >
                   <PhoneCall className="w-6 h-6 mr-2" />
                   CALL NOW: 0115 931 2935
                 </Button>
@@ -320,8 +355,10 @@ export default function MapperleyEmergencyDentistPage() {
                 Why Mapperley Families Choose Our Emergency Care
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We understand that family dental emergencies are stressful, especially with children involved.
-                Our gentle, experienced approach puts families at ease while providing effective emergency treatment.
+                We understand that family dental emergencies are stressful,
+                especially with children involved. Our gentle, experienced
+                approach puts families at ease while providing effective
+                emergency treatment.
               </p>
             </div>
 
@@ -329,11 +366,18 @@ export default function MapperleyEmergencyDentistPage() {
               {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.title}</h3>
-                      <p className="text-gray-600 text-sm">{benefit.description}</p>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {benefit.description}
+                      </p>
                     </CardContent>
                   </Card>
                 );
@@ -352,22 +396,32 @@ export default function MapperleyEmergencyDentistPage() {
                 Our Family Emergency Process
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                When your family faces a dental emergency, we spring into action with a proven
-                process designed to minimize stress and maximize care for all ages.
+                When your family faces a dental emergency, we spring into action
+                with a proven process designed to minimize stress and maximize
+                care for all ages.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {(emergencyProtocol || []).map((step, index) => (
-                <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
+              {(emergencyProtocol || []).map((step, _index) => (
+                <Card
+                  key={step.step}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                       {step.step}
                     </div>
-                    <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{step.description}</p>
+                    <h3 className="font-semibold text-pear-primary mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3">
+                      {step.description}
+                    </p>
                     <div className="bg-blue-50 rounded-lg p-3">
-                      <p className="text-sm text-blue-700 font-medium">{step.familyFocus}</p>
+                      <p className="text-sm text-blue-700 font-medium">
+                        {step.familyFocus}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -395,15 +449,21 @@ export default function MapperleyEmergencyDentistPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">Same day</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  Same day
+                </div>
                 <p className="text-gray-600">Family emergency appointments</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">All ages</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  All ages
+                </div>
                 <p className="text-gray-600">Toddlers to grandparents</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">Child-friendly</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  Child-friendly
+                </div>
                 <p className="text-gray-600">Gentle, reassuring care</p>
               </div>
             </div>
@@ -420,7 +480,8 @@ export default function MapperleyEmergencyDentistPage() {
                 Family Emergency Questions from Mapperley Parents
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Mapperley families about emergency dental care for children and adults
+                Common questions from Mapperley families about emergency dental
+                care for children and adults
               </p>
             </div>
 
@@ -449,15 +510,22 @@ export default function MapperleyEmergencyDentistPage() {
                     <p>2. Continue for 6 miles through Gedling</p>
                     <p>3. Turn right into Burton Joyce</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey time: 15 minutes</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey time: 15 minutes
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-red-50 rounded-lg p-6">
                     <Users className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-red-700 mb-2">Family Emergency Priority</h4>
-                    <p className="text-gray-600">Fast-track appointments for families with children in distress</p>
+                    <h4 className="font-bold text-red-700 mb-2">
+                      Family Emergency Priority
+                    </h4>
+                    <p className="text-gray-600">
+                      Fast-track appointments for families with children in
+                      distress
+                    </p>
                   </div>
                 </div>
               </div>
@@ -469,7 +537,10 @@ export default function MapperleyEmergencyDentistPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Mapperley
               </Button>
@@ -486,8 +557,9 @@ export default function MapperleyEmergencyDentistPage() {
               Family Dental Emergency? We're Here to Help Mapperley Families
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't let dental emergencies disrupt your family. From child dental trauma to family toothaches,
-              we provide gentle, expert emergency care just 15 minutes from Mapperley.
+              Don't let dental emergencies disrupt your family. From child
+              dental trauma to family toothaches, we provide gentle, expert
+              emergency care just 15 minutes from Mapperley.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -496,19 +568,27 @@ export default function MapperleyEmergencyDentistPage() {
                 Family Emergency Services
               </p>
               <p className="text-sm opacity-90">
-                Child dental trauma specialists • Same-day family appointments • Gentle care for all ages
+                Child dental trauma specialists • Same-day family appointments •
+                Gentle care for all ages
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-bold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-bold rounded-full"
+                >
                   <PhoneCall className="w-5 h-5 mr-2" />
                   EMERGENCY: 0115 931 2935
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Users className="w-5 h-5 mr-2" />
                   Book Family Emergency
                 </Button>

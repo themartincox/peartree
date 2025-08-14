@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 // Custom hook for scroll-triggered animations
 export const useScrollAnimation = () => {
@@ -16,7 +16,9 @@ export const useScrollAnimation = () => {
 // Hook for progressive scroll animations with stagger
 export const useStaggeredInView = (itemCount: number, delay = 0.1) => {
   const refs = useRef<(HTMLElement | null)[]>([]);
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(itemCount).fill(false));
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(
+    new Array(itemCount).fill(false),
+  );
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -26,20 +28,23 @@ export const useStaggeredInView = (itemCount: number, delay = 0.1) => {
         const observer = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting) {
-              setTimeout(() => {
-                setVisibleItems(prev => {
-                  const newState = [...prev];
-                  newState[index] = true;
-                  return newState;
-                });
-              }, index * delay * 1000);
+              setTimeout(
+                () => {
+                  setVisibleItems((prev) => {
+                    const newState = [...prev];
+                    newState[index] = true;
+                    return newState;
+                  });
+                },
+                index * delay * 1000,
+              );
               observer.disconnect();
             }
           },
           {
             threshold: 0.2,
             rootMargin: "-50px",
-          }
+          },
         );
         observer.observe(ref);
         observers.push(observer);
@@ -47,9 +52,9 @@ export const useStaggeredInView = (itemCount: number, delay = 0.1) => {
     });
 
     return () => {
-      observers.forEach(observer => observer.disconnect());
+      observers.forEach((observer) => observer.disconnect());
     };
-  }, [itemCount, delay]);
+  }, [delay]);
 
   const setRef = (index: number) => (el: HTMLElement | null) => {
     refs.current[index] = el;
@@ -66,11 +71,11 @@ export const useParallax = (speed = 0.5) => {
   useEffect(() => {
     const handleScroll = () => {
       if (!ref.current) return;
-      
+
       const rect = ref.current.getBoundingClientRect();
       const scrolled = window.scrollY;
       const rate = scrolled * speed;
-      
+
       setOffset(rate);
     };
 
@@ -87,7 +92,8 @@ export const useScrollProgress = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const totalHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = (window.scrollY / totalHeight) * 100;
       setProgress(Math.min(Math.max(currentProgress, 0), 100));
     };
@@ -115,7 +121,7 @@ export const useInViewCustom = (options?: IntersectionObserverInit) => {
         threshold: 0.1,
         rootMargin: "0px",
         ...options,
-      }
+      },
     );
 
     const currentRef = ref.current;

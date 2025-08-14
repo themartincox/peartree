@@ -1,45 +1,32 @@
+import {
+  ArrowRight,
+  Calendar,
+  Car,
+  Circle,
+  DollarSign,
+  Heart,
+  MapPin,
+  Navigation,
+  Phone,
+  Shield,
+  Sparkles,
+  Star,
+  Users,
+  Zap,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
-  Award,
-  Navigation,
-  Home,
-  CreditCard,
-  Calendar,
-  ThumbsUp,
-  FileText,
-  Activity,
-  TrendingUp,
-  Target,
-  Timer,
-  Crown,
-  Zap,
-  DollarSign,
-  Circle,
-  ArrowRight,
-  Sparkles,
-  Building2
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Looking for a Family Dentist in Carlton? Try Pear Tree Dental",
-  description: "Modern family dental care with free parking and child-friendly service – just 12 minutes from NG4. Discover why Carlton families are choosing Pear Tree Dental.",
+  description:
+    "Modern family dental care with free parking and child-friendly service – just 12 minutes from NG4. Discover why Carlton families are choosing Pear Tree Dental.",
   keywords: [
     "family dentist Carlton",
     "Carlton dental alternative",
@@ -47,181 +34,209 @@ export const metadata: Metadata = {
     "family dental care Carlton",
     "dental practice near Carlton",
     "Carlton dentist",
-    "child-friendly dentist NG4"
+    "child-friendly dentist NG4",
   ],
   openGraph: {
     title: "Looking for a Family Dentist in Carlton? Try Pear Tree Dental",
-    description: "Modern family dental care with free parking and child-friendly service – just 12 minutes from NG4.",
-    url: "https://peartree.dental/alternatives/carlton"
+    description:
+      "Modern family dental care with free parking and child-friendly service – just 12 minutes from NG4.",
+    url: "https://peartree.dental/alternatives/carlton",
   },
   alternates: {
-    canonical: "https://peartree.dental/alternatives/carlton"
-  }
+    canonical: "https://peartree.dental/alternatives/carlton",
+  },
 };
 
 export default function FamilyDentistCarltonOverviewPage() {
   const alternativesFAQs = [
     {
-      question: "What are the alternatives to traditional dental practices in Carlton?",
-      answer: "Many families seek newer practices offering modern technology, child-friendly environments, and convenient parking. Pear Tree Dental delivers these benefits while maintaining comprehensive family care."
+      question:
+        "What are the alternatives to traditional dental practices in Carlton?",
+      answer:
+        "Many families seek newer practices offering modern technology, child-friendly environments, and convenient parking. Pear Tree Dental delivers these benefits while maintaining comprehensive family care.",
     },
     {
-      question: "Why are Carlton families switching to practices outside their local area?",
-      answer: "Limited parking, outdated facilities, and lack of child-friendly environments drive families to seek modern alternatives. Practices like Pear Tree offer free parking, latest technology, and family-focused care."
+      question:
+        "Why are Carlton families switching to practices outside their local area?",
+      answer:
+        "Limited parking, outdated facilities, and lack of child-friendly environments drive families to seek modern alternatives. Practices like Pear Tree offer free parking, latest technology, and family-focused care.",
     },
     {
-      question: "How do modern family dentists compare to traditional Carlton practices?",
-      answer: "Modern family practices typically offer digital X-rays, child-friendly environments, CEREC same-day crowns, and better parking. The investment in family experience often provides superior value."
+      question:
+        "How do modern family dentists compare to traditional Carlton practices?",
+      answer:
+        "Modern family practices typically offer digital X-rays, child-friendly environments, CEREC same-day crowns, and better parking. The investment in family experience often provides superior value.",
     },
     {
       question: "Is it worth traveling outside Carlton for family dental care?",
-      answer: "Many Carlton families find that a 12-minute drive to a modern practice with free parking and child-friendly care actually saves time and provides better experience for the whole family."
+      answer:
+        "Many Carlton families find that a 12-minute drive to a modern practice with free parking and child-friendly care actually saves time and provides better experience for the whole family.",
     },
     {
-      question: "What should Carlton families look for in a modern dental practice?",
-      answer: "Key factors include convenient parking, child-friendly environment, modern equipment, transparent pricing, and family-focused scheduling. Pear Tree Dental specifically addresses these family priorities."
-    }
+      question:
+        "What should Carlton families look for in a modern dental practice?",
+      answer:
+        "Key factors include convenient parking, child-friendly environment, modern equipment, transparent pricing, and family-focused scheduling. Pear Tree Dental specifically addresses these family priorities.",
+    },
   ];
 
   const whyFamiliesSwitch = [
     {
       reason: "Parking Problems for Families",
-      oldExperience: "Limited parking, carrying children and equipment, stress before appointments",
+      oldExperience:
+        "Limited parking, carrying children and equipment, stress before appointments",
       newSolution: "Free parking directly outside - easy family access",
       impact: "Transforms family visits from stressful to relaxed",
-      icon: Car
+      icon: Car,
     },
     {
       reason: "Child-Unfriendly Environment",
-      oldExperience: "Clinical atmosphere, no child entertainment, anxious children",
+      oldExperience:
+        "Clinical atmosphere, no child entertainment, anxious children",
       newSolution: "Welcoming environment designed for families and children",
       impact: "Children feel comfortable and less anxious about dental visits",
-      icon: Heart
+      icon: Heart,
     },
     {
       reason: "Outdated Technology",
-      oldExperience: "Film X-rays, messy impressions, multiple visits for crowns",
-      newSolution: "Digital X-rays, CEREC same-day crowns, child-friendly technology",
+      oldExperience:
+        "Film X-rays, messy impressions, multiple visits for crowns",
+      newSolution:
+        "Digital X-rays, CEREC same-day crowns, child-friendly technology",
       impact: "Fewer visits, more comfortable treatment for children",
-      icon: Zap
+      icon: Zap,
     },
     {
       reason: "Inflexible Family Scheduling",
-      oldExperience: "Limited hours, no family appointments, difficult scheduling",
-      newSolution: "Family-friendly scheduling, multiple family members together",
+      oldExperience:
+        "Limited hours, no family appointments, difficult scheduling",
+      newSolution:
+        "Family-friendly scheduling, multiple family members together",
       impact: "Better fits family schedules and reduces multiple trips",
-      icon: Calendar
+      icon: Calendar,
     },
     {
       reason: "Hidden Costs for Families",
-      oldExperience: "Surprise charges, unclear family pricing, budget uncertainty",
+      oldExperience:
+        "Surprise charges, unclear family pricing, budget uncertainty",
       newSolution: "Transparent family pricing, clear estimates, no surprises",
       impact: "Family budgeting confidence and trust in treatment costs",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       reason: "Impersonal Service",
-      oldExperience: "Rushed appointments, different staff, no family continuity",
-      newSolution: "Personal family care, consistent team, relationship building",
+      oldExperience:
+        "Rushed appointments, different staff, no family continuity",
+      newSolution:
+        "Personal family care, consistent team, relationship building",
       impact: "Builds trust and comfort for entire family",
-      icon: Shield
-    }
+      icon: Shield,
+    },
   ];
 
   const familyAdvantages = [
     {
       advantage: "Child-Friendly CEREC Crowns",
       description: "Same-day crowns mean children don't need multiple visits",
-      traditionalAlternative: "Multiple appointments, temporary crowns, anxious returns",
+      traditionalAlternative:
+        "Multiple appointments, temporary crowns, anxious returns",
       familyBenefit: "Less time off school, reduced anxiety, immediate results",
-      technology: "Child-friendly CEREC technology with entertainment during treatment"
+      technology:
+        "Child-friendly CEREC technology with entertainment during treatment",
     },
     {
       advantage: "Digital X-Rays for Children",
       description: "90% less radiation and instant results for child safety",
-      traditionalAlternative: "Higher radiation film X-rays with processing delays",
+      traditionalAlternative:
+        "Higher radiation film X-rays with processing delays",
       familyBenefit: "Safer for children, faster results, less waiting time",
-      technology: "Child-safe digital sensors and instant family-friendly explanations"
+      technology:
+        "Child-safe digital sensors and instant family-friendly explanations",
     },
     {
       advantage: "Family Entertainment Technology",
       description: "Intraoral cameras and screens keep children engaged",
-      traditionalAlternative: "No visual aids, verbal explanations children don't understand",
+      traditionalAlternative:
+        "No visual aids, verbal explanations children don't understand",
       familyBenefit: "Children understand their treatment and feel involved",
-      technology: "High-definition cameras and child-friendly displays"
+      technology: "High-definition cameras and child-friendly displays",
     },
     {
       advantage: "Transparent Family Pricing",
       description: "Clear family treatment plans and pricing for all members",
-      traditionalAlternative: "Complex pricing, separate quotes, family budget confusion",
+      traditionalAlternative:
+        "Complex pricing, separate quotes, family budget confusion",
       familyBenefit: "Family budget planning and understanding of all costs",
-      technology: "Digital family treatment planning and cost estimation"
+      technology: "Digital family treatment planning and cost estimation",
     },
     {
       advantage: "Family Parking Convenience",
       description: "Free parking with easy access for families with children",
-      traditionalAlternative: "Limited parking, carrying children and bags, stress",
+      traditionalAlternative:
+        "Limited parking, carrying children and bags, stress",
       familyBenefit: "Easy family arrivals, no parking stress or costs",
-      technology: "Dedicated family parking with direct practice access"
+      technology: "Dedicated family parking with direct practice access",
     },
     {
       advantage: "Comprehensive Family Care",
       description: "Care for all family members from children to grandparents",
-      traditionalAlternative: "Age-limited services, referrals to other practices",
+      traditionalAlternative:
+        "Age-limited services, referrals to other practices",
       familyBenefit: "One practice for whole family, continuity of care",
-      technology: "Age-appropriate technology and treatment approaches"
-    }
+      technology: "Age-appropriate technology and treatment approaches",
+    },
   ];
 
   const familyJourneyComparison = [
     {
       stage: "Planning Family Visit",
-      traditional: "Individual appointments, complex scheduling, parking concerns",
+      traditional:
+        "Individual appointments, complex scheduling, parking concerns",
       modern: "Family scheduling options, easier planning",
-      peartree: "Coordinated family appointments, guaranteed free parking"
+      peartree: "Coordinated family appointments, guaranteed free parking",
     },
     {
       stage: "Arrival with Family",
       traditional: "Search for parking with children, carry equipment, stress",
       modern: "Designated parking, easier access",
-      peartree: "Free parking directly outside, easy family access"
+      peartree: "Free parking directly outside, easy family access",
     },
     {
       stage: "Children's Comfort",
       traditional: "Clinical environment, anxious children, no entertainment",
       modern: "Some child considerations, basic comfort",
-      peartree: "Child-friendly environment, entertainment, family comfort"
+      peartree: "Child-friendly environment, entertainment, family comfort",
     },
     {
       stage: "Family Treatment",
       traditional: "Separate treatments, different explanations, confusion",
       modern: "Some family coordination, better communication",
-      peartree: "Coordinated family care, visual explanations for all ages"
+      peartree: "Coordinated family care, visual explanations for all ages",
     },
     {
       stage: "Treatment Understanding",
       traditional: "Adult-focused explanations, children don't understand",
       modern: "Some age-appropriate communication",
-      peartree: "Age-appropriate explanations using visual technology"
+      peartree: "Age-appropriate explanations using visual technology",
     },
     {
       stage: "Family Treatment Planning",
       traditional: "Individual plans, complex family coordination",
       modern: "Some family planning, better coordination",
-      peartree: "Comprehensive family treatment plans with clear pricing"
+      peartree: "Comprehensive family treatment plans with clear pricing",
     },
     {
       stage: "Treatment Delivery",
       traditional: "Multiple visits, temporary solutions, anxious returns",
       modern: "Fewer visits, some modern technology",
-      peartree: "Same-day treatments, minimal family visits, maximum comfort"
+      peartree: "Same-day treatments, minimal family visits, maximum comfort",
     },
     {
       stage: "Family Follow-Up",
       traditional: "Individual follow-ups, complex family scheduling",
       modern: "Some family coordination, basic follow-up",
-      peartree: "Coordinated family aftercare and preventive planning"
-    }
+      peartree: "Coordinated family aftercare and preventive planning",
+    },
   ];
 
   const familyBenefits = [
@@ -229,26 +244,27 @@ export default function FamilyDentistCarltonOverviewPage() {
       benefit: "One Practice for Whole Family",
       description: "Care for all ages from toddlers to grandparents",
       advantage: "Simplified family dental care with consistent team",
-      details: "Comprehensive services for every family member's needs"
+      details: "Comprehensive services for every family member's needs",
     },
     {
       benefit: "Child-Friendly Environment",
       description: "Welcoming atmosphere designed to reduce children's anxiety",
       advantage: "Positive dental experiences that last a lifetime",
-      details: "Entertainment systems and gentle approach for young patients"
+      details: "Entertainment systems and gentle approach for young patients",
     },
     {
       benefit: "Family Scheduling Convenience",
-      description: "Coordinate multiple family members in efficient appointments",
+      description:
+        "Coordinate multiple family members in efficient appointments",
       advantage: "Less time off work and school, fewer practice visits",
-      details: "Back-to-back appointments and family treatment coordination"
+      details: "Back-to-back appointments and family treatment coordination",
     },
     {
       benefit: "Family Budget Transparency",
       description: "Clear pricing for family treatments and payment plans",
       advantage: "Plan family dental budgets with confidence",
-      details: "Family discounts and flexible payment options available"
-    }
+      details: "Family discounts and flexible payment options available",
+    },
   ];
 
   return (
@@ -260,25 +276,25 @@ export default function FamilyDentistCarltonOverviewPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
+            mainEntity: [
               {
                 "@type": "Question",
-                "name": "What are the alternatives to traditional dental practices in Carlton?",
-                "acceptedAnswer": {
+                name: "What are the alternatives to traditional dental practices in Carlton?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Many families seek newer practices offering modern technology, child-friendly environments, and convenient parking. Pear Tree Dental delivers these benefits while maintaining comprehensive family care."
-                }
+                  text: "Many families seek newer practices offering modern technology, child-friendly environments, and convenient parking. Pear Tree Dental delivers these benefits while maintaining comprehensive family care.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "Why are Carlton families switching to practices outside their local area?",
-                "acceptedAnswer": {
+                name: "Why are Carlton families switching to practices outside their local area?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Limited parking, outdated facilities, and lack of child-friendly environments drive families to seek modern alternatives. Practices like Pear Tree offer free parking, latest technology, and family-focused care."
-                }
-              }
-            ]
-          })
+                  text: "Limited parking, outdated facilities, and lack of child-friendly environments drive families to seek modern alternatives. Practices like Pear Tree offer free parking, latest technology, and family-focused care.",
+                },
+              },
+            ],
+          }),
         }}
       />
 
@@ -294,7 +310,9 @@ export default function FamilyDentistCarltonOverviewPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Looking for a <span className="text-yellow-300">Family Dentist</span> in Carlton?
+              Looking for a{" "}
+              <span className="text-yellow-300">Family Dentist</span> in
+              Carlton?
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -304,19 +322,27 @@ export default function FamilyDentistCarltonOverviewPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <ArrowRight className="inline w-5 h-5 mr-2" />
-                Child-friendly care, free parking, and modern tech – just 12 minutes from NG4
+                Child-friendly care, free parking, and modern tech – just 12
+                minutes from NG4
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Experience Modern Family Care
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -324,7 +350,9 @@ export default function FamilyDentistCarltonOverviewPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">👨‍👩‍👧‍👦 Just 12 minutes from Carlton with free family parking!</p>
+              <p className="text-lg font-semibold">
+                👨‍👩‍👧‍👦 Just 12 minutes from Carlton with free family parking!
+              </p>
             </div>
           </div>
         </div>
@@ -339,8 +367,9 @@ export default function FamilyDentistCarltonOverviewPage() {
                 Why Carlton Families Are Switching to Modern Family Dental Care
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Traditional local practices have served Carlton families, but modern family alternatives
-                offer significant advantages that improve the entire family dental experience.
+                Traditional local practices have served Carlton families, but
+                modern family alternatives offer significant advantages that
+                improve the entire family dental experience.
               </p>
             </div>
 
@@ -348,27 +377,44 @@ export default function FamilyDentistCarltonOverviewPage() {
               {(whyFamiliesSwitch || []).map((reason, index) => {
                 const IconComponent = reason.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-indigo-200">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow border-2 border-indigo-200"
+                  >
                     <CardContent className="p-6">
                       <div className="text-center mb-4">
                         <IconComponent className="w-12 h-12 text-indigo-600 mx-auto mb-3" />
-                        <h3 className="font-bold text-pear-primary">{reason.reason}</h3>
+                        <h3 className="font-bold text-pear-primary">
+                          {reason.reason}
+                        </h3>
                       </div>
 
                       <div className="space-y-3">
                         <div className="bg-red-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-red-700 text-sm mb-1">Traditional Experience:</h4>
-                          <p className="text-sm text-red-700">{reason.oldExperience}</p>
+                          <h4 className="font-semibold text-red-700 text-sm mb-1">
+                            Traditional Experience:
+                          </h4>
+                          <p className="text-sm text-red-700">
+                            {reason.oldExperience}
+                          </p>
                         </div>
 
                         <div className="bg-indigo-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">Family Solution:</h4>
-                          <p className="text-sm text-indigo-700">{reason.newSolution}</p>
+                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">
+                            Family Solution:
+                          </h4>
+                          <p className="text-sm text-indigo-700">
+                            {reason.newSolution}
+                          </p>
                         </div>
 
                         <div className="bg-blue-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-blue-700 text-sm mb-1">Family Impact:</h4>
-                          <p className="text-sm text-blue-700">{reason.impact}</p>
+                          <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                            Family Impact:
+                          </h4>
+                          <p className="text-sm text-blue-700">
+                            {reason.impact}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -389,8 +435,8 @@ export default function FamilyDentistCarltonOverviewPage() {
                 Modern Family Dental Technology: The Pear Tree Family Advantage
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Advanced technology designed specifically for families –
-                better results, less anxiety, and more convenient for everyone.
+                Advanced technology designed specifically for families – better
+                results, less anxiety, and more convenient for everyone.
               </p>
             </div>
 
@@ -398,26 +444,40 @@ export default function FamilyDentistCarltonOverviewPage() {
               {(familyAdvantages || []).map((advantage, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-pear-primary mb-3 text-lg">{advantage.advantage}</h3>
+                    <h3 className="font-bold text-pear-primary mb-3 text-lg">
+                      {advantage.advantage}
+                    </h3>
 
                     <div className="space-y-4">
                       <p className="text-gray-700">{advantage.description}</p>
 
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="bg-red-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-red-700 text-sm mb-1">Traditional Method:</h4>
-                          <p className="text-sm text-red-700">{advantage.traditionalAlternative}</p>
+                          <h4 className="font-semibold text-red-700 text-sm mb-1">
+                            Traditional Method:
+                          </h4>
+                          <p className="text-sm text-red-700">
+                            {advantage.traditionalAlternative}
+                          </p>
                         </div>
 
                         <div className="bg-indigo-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">Family Benefit:</h4>
-                          <p className="text-sm text-indigo-700">{advantage.familyBenefit}</p>
+                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">
+                            Family Benefit:
+                          </h4>
+                          <p className="text-sm text-indigo-700">
+                            {advantage.familyBenefit}
+                          </p>
                         </div>
                       </div>
 
                       <div className="bg-blue-50 rounded-lg p-3">
-                        <h4 className="font-semibold text-blue-700 text-sm mb-1">Our Technology:</h4>
-                        <p className="text-sm text-blue-700">{advantage.technology}</p>
+                        <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                          Our Technology:
+                        </h4>
+                        <p className="text-sm text-blue-700">
+                          {advantage.technology}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -437,7 +497,8 @@ export default function FamilyDentistCarltonOverviewPage() {
                 Your Family Journey: Traditional vs Modern vs Pear Tree
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Experience the difference that modern family dental care makes at every step.
+                Experience the difference that modern family dental care makes
+                at every step.
               </p>
             </div>
 
@@ -450,19 +511,31 @@ export default function FamilyDentistCarltonOverviewPage() {
               </div>
 
               {(familyJourneyComparison || []).map((stage, index) => (
-                <div key={index} className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50">
-                  <div className="font-semibold text-gray-700">{stage.stage}</div>
-                  <div className="text-center text-sm text-red-600 px-2">{stage.traditional}</div>
-                  <div className="text-center text-sm text-blue-600 px-2">{stage.modern}</div>
-                  <div className="text-center text-sm text-indigo-600 px-2 font-semibold">{stage.peartree}</div>
+                <div
+                  key={index}
+                  className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50"
+                >
+                  <div className="font-semibold text-gray-700">
+                    {stage.stage}
+                  </div>
+                  <div className="text-center text-sm text-red-600 px-2">
+                    {stage.traditional}
+                  </div>
+                  <div className="text-center text-sm text-blue-600 px-2">
+                    {stage.modern}
+                  </div>
+                  <div className="text-center text-sm text-indigo-600 px-2 font-semibold">
+                    {stage.peartree}
+                  </div>
                 </div>
               ))}
             </div>
 
             <div className="mt-8 text-center">
               <p className="text-lg text-gray-600">
-                <strong>The Pear Tree Family Difference:</strong> Every step designed around your family's comfort,
-                convenience, and creating positive dental experiences for all ages.
+                <strong>The Pear Tree Family Difference:</strong> Every step
+                designed around your family's comfort, convenience, and creating
+                positive dental experiences for all ages.
               </p>
             </div>
           </div>
@@ -478,7 +551,8 @@ export default function FamilyDentistCarltonOverviewPage() {
                 Perfect Family Solution for Carlton Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                One practice that truly understands and caters to the needs of modern families.
+                One practice that truly understands and caters to the needs of
+                modern families.
               </p>
             </div>
 
@@ -491,17 +565,29 @@ export default function FamilyDentistCarltonOverviewPage() {
                         <Users className="w-6 h-6 text-indigo-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                        <p className="text-gray-700 mb-3">{benefit.description}</p>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {benefit.benefit}
+                        </h3>
+                        <p className="text-gray-700 mb-3">
+                          {benefit.description}
+                        </p>
 
                         <div className="bg-indigo-50 rounded-lg p-3 mb-3">
-                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">Family Advantage:</h4>
-                          <p className="text-sm text-indigo-700">{benefit.advantage}</p>
+                          <h4 className="font-semibold text-indigo-700 text-sm mb-1">
+                            Family Advantage:
+                          </h4>
+                          <p className="text-sm text-indigo-700">
+                            {benefit.advantage}
+                          </p>
                         </div>
 
                         <div className="bg-blue-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-blue-700 text-sm mb-1">Details:</h4>
-                          <p className="text-sm text-blue-700">{benefit.details}</p>
+                          <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                            Details:
+                          </h4>
+                          <p className="text-sm text-blue-700">
+                            {benefit.details}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -531,15 +617,21 @@ export default function FamilyDentistCarltonOverviewPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">Kids love it</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  Kids love it
+                </div>
                 <p className="text-gray-600">Child-friendly environment</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">Free family parking</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  Free family parking
+                </div>
                 <p className="text-gray-600">Easy access for families</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-indigo-600 mb-2">One-visit crowns</div>
+                <div className="text-3xl font-bold text-indigo-600 mb-2">
+                  One-visit crowns
+                </div>
                 <p className="text-gray-600">Less time off for parents</p>
               </div>
             </div>
@@ -555,7 +647,8 @@ export default function FamilyDentistCarltonOverviewPage() {
               Modern Family Dental Care Results for Carlton Families
             </h2>
             <p className="text-lg text-gray-600">
-              See the difference that family-focused care and modern technology make
+              See the difference that family-focused care and modern technology
+              make
             </p>
           </div>
 
@@ -612,15 +705,21 @@ export default function FamilyDentistCarltonOverviewPage() {
                     <p>2. Continue onto A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce</p>
                     <p>4. Arrive at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Free family parking directly outside</p>
+                    <p className="text-pear-primary font-semibold">
+                      Free family parking directly outside
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-indigo-50 rounded-lg p-6">
                     <Users className="w-12 h-12 text-indigo-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-indigo-700 mb-2">Family Convenience</h4>
-                    <p className="text-gray-600">Easy access for the whole family</p>
+                    <h4 className="font-bold text-indigo-700 mb-2">
+                      Family Convenience
+                    </h4>
+                    <p className="text-gray-600">
+                      Easy access for the whole family
+                    </p>
                   </div>
                 </div>
               </div>
@@ -632,7 +731,10 @@ export default function FamilyDentistCarltonOverviewPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Carlton
               </Button>
@@ -649,8 +751,8 @@ export default function FamilyDentistCarltonOverviewPage() {
               Make the Switch to Modern Family Dental Care
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Experience what Carlton families are discovering –
-              child-friendly care, free parking, and modern technology just minutes away.
+              Experience what Carlton families are discovering – child-friendly
+              care, free parking, and modern technology just minutes away.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -659,19 +761,27 @@ export default function FamilyDentistCarltonOverviewPage() {
                 The Modern Family Alternative to Traditional Dental Care
               </p>
               <p className="text-sm opacity-90">
-                Child-friendly care • Free family parking • Modern technology • 12 minutes from NG4
+                Child-friendly care • Free family parking • Modern technology •
+                12 minutes from NG4
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-indigo-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Try Modern Family Care
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

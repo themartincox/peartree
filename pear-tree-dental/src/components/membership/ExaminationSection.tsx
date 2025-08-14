@@ -1,7 +1,7 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const examinationItems = [
   "A full health check of your mouth, teeth and gums",
@@ -20,7 +20,8 @@ export default function ExaminationSection() {
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">
-              What is a <span className="text-pear-primary">Dental Examination</span>?
+              What is a{" "}
+              <span className="text-pear-primary">Dental Examination</span>?
             </h2>
             <p className="text-gray-600 text-lg mb-6">
               Our comprehensive dental examinations are much more than just a
@@ -48,7 +49,9 @@ export default function ExaminationSection() {
             <div className="relative bg-white p-6 rounded-2xl shadow-lg">
               <div className="space-y-6">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-pear-primary">Full Digital X-rays</h3>
+                  <h3 className="text-lg font-semibold text-pear-primary">
+                    Full Digital X-rays
+                  </h3>
                   <p className="text-sm text-gray-600">
                     Modern, low-radiation digital X-rays allow us to see what's
                     happening beneath the surface, detecting issues like decay,

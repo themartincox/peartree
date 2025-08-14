@@ -1,28 +1,25 @@
+import {
+  ArrowRight,
+  Award,
+  CheckCircle,
+  ChevronLeft,
+  Clock,
+  Crown,
+  Grid3X3, 
+  Layers,
+  Shield,
+  Sparkles,
+  Star,
+  Target,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
-import {
-  Crown,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Shield,
-  Sparkles,
-  Users,
-  ChevronLeft,
-  Award,
-  Heart,
-  Target,
-  Zap,
-  Layers,
-  Grid3X3
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Multiple Dental Implants - Replace Several Missing Teeth | Pear Tree Dental",

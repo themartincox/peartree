@@ -1,29 +1,25 @@
+import {
+  ArrowRight,
+  Award,
+  Calendar,
+  Camera,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Eye,
+  Filter,
+  Heart,
+  Shield,
+  Sparkles,
+  Star,
+  Users,
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import {
-  Camera,
-  ArrowRight,
-  Filter,
-  Eye,
-  Star,
-  Calendar,
-  CheckCircle,
-  Sparkles,
-  Shield,
-  Heart,
-  Zap,
-  Award,
-  Users,
-  Clock,
-  PlayCircle,
-  ExternalLink,
-  Download
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Smile Gallery - Before & After Results | Pear Tree Dental Burton Joyce",

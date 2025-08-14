@@ -1,43 +1,43 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
+  Award,
   CheckCircle,
-  Car,
-  CalendarDays,
+  Clock,
+  MapPin,
+  Phone,
   Shield,
   Sparkles,
+  Users,
   Zap,
-  Award,
-  Users
-} from 'lucide-react';
+} from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: 'Teeth Whitening Nottingham - Professional Whitening | Pear Tree Dental',
-  description: 'Professional teeth whitening in Nottingham. Enlighten and Boutique whitening systems. Safe, effective treatment from £295. Book your consultation today.',
+  title:
+    "Teeth Whitening Nottingham - Professional Whitening | Pear Tree Dental",
+  description:
+    "Professional teeth whitening in Nottingham. Enlighten and Boutique whitening systems. Safe, effective treatment from £295. Book your consultation today.",
   keywords: [
-    'teeth whitening Nottingham',
-    'professional teeth whitening Nottingham',
-    'dental whitening Nottingham',
-    'Enlighten whitening Nottingham',
-    'Boutique whitening Nottingham',
-    'laser teeth whitening Nottingham',
-    'cosmetic dentist Nottingham'
+    "teeth whitening Nottingham",
+    "professional teeth whitening Nottingham",
+    "dental whitening Nottingham",
+    "Enlighten whitening Nottingham",
+    "Boutique whitening Nottingham",
+    "laser teeth whitening Nottingham",
+    "cosmetic dentist Nottingham",
   ],
   openGraph: {
-    title: 'Teeth Whitening Nottingham - Professional Whitening | Pear Tree Dental',
-    description: 'Transform your smile with professional teeth whitening in Nottingham. Enlighten and Boutique systems available. Safe, effective, lasting results.',
-    url: 'https://peartree.dental/nottingham-teeth-whitening'
+    title:
+      "Teeth Whitening Nottingham - Professional Whitening | Pear Tree Dental",
+    description:
+      "Transform your smile with professional teeth whitening in Nottingham. Enlighten and Boutique systems available. Safe, effective, lasting results.",
+    url: "https://peartree.dental/nottingham-teeth-whitening",
   },
   alternates: {
-    canonical: 'https://peartree.dental/nottingham-teeth-whitening'
-  }
+    canonical: "https://peartree.dental/nottingham-teeth-whitening",
+  },
 };
 
 export default function NottinghamTeethWhiteningPage() {
@@ -51,56 +51,57 @@ export default function NottinghamTeethWhiteningPage() {
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
             "@id": "https://peartree.dental/nottingham-teeth-whitening",
-            "name": "Pear Tree Dental - Teeth Whitening Nottingham",
-            "image": "https://peartree.dental/images/teeth-whitening-nottingham.jpg",
-            "description": "Professional teeth whitening treatment in Nottingham. Enlighten and Boutique whitening systems for safe, effective results.",
-            "url": "https://peartree.dental/nottingham-teeth-whitening",
-            "telephone": "+441159312520",
-            "address": {
+            name: "Pear Tree Dental - Teeth Whitening Nottingham",
+            image:
+              "https://peartree.dental/images/teeth-whitening-nottingham.jpg",
+            description:
+              "Professional teeth whitening treatment in Nottingham. Enlighten and Boutique whitening systems for safe, effective results.",
+            url: "https://peartree.dental/nottingham-teeth-whitening",
+            telephone: "+441159312520",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "GB"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "GB",
             },
-            "geo": {
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.9833,
-              "longitude": -1.0833
+              latitude: 52.9833,
+              longitude: -1.0833,
             },
-            "openingHours": [
-              "Mo-Fr 08:30-17:30",
-              "Sa 08:30-14:00"
-            ],
-            "medicalSpecialty": "Cosmetic Dentistry",
-            "serviceArea": {
+            openingHours: ["Mo-Fr 08:30-17:30", "Sa 08:30-14:00"],
+            medicalSpecialty: "Cosmetic Dentistry",
+            serviceArea: {
               "@type": "City",
-              "name": "Nottingham"
+              name: "Nottingham",
             },
-            "hasOfferCatalog": {
+            hasOfferCatalog: {
               "@type": "OfferCatalog",
-              "name": "Teeth Whitening Services",
-              "itemListElement": [
+              name: "Teeth Whitening Services",
+              itemListElement: [
                 {
                   "@type": "Offer",
-                  "itemOffered": {
+                  itemOffered: {
                     "@type": "MedicalProcedure",
-                    "name": "Enlighten Teeth Whitening",
-                    "description": "Premium teeth whitening system guaranteed to whiten to shade B1"
-                  }
+                    name: "Enlighten Teeth Whitening",
+                    description:
+                      "Premium teeth whitening system guaranteed to whiten to shade B1",
+                  },
                 },
                 {
                   "@type": "Offer",
-                  "itemOffered": {
+                  itemOffered: {
                     "@type": "MedicalProcedure",
-                    "name": "Boutique Teeth Whitening",
-                    "description": "Professional whitening system with excellent results"
-                  }
-                }
-              ]
-            }
-          })
+                    name: "Boutique Teeth Whitening",
+                    description:
+                      "Professional whitening system with excellent results",
+                  },
+                },
+              ],
+            },
+          }),
         }}
       />
 
@@ -115,14 +116,15 @@ export default function NottinghamTeethWhiteningPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Professional Teeth Whitening in{' '}
+              Professional Teeth Whitening in{" "}
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
             <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
               Transform your smile with safe, effective teeth whitening.
               <br className="hidden sm:block" />
-              Enlighten & Boutique systems available - guaranteed results from £295.
+              Enlighten & Boutique systems available - guaranteed results from
+              £295.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -175,7 +177,8 @@ export default function NottinghamTeethWhiteningPage() {
               Professional Whitening Systems Available in Nottingham
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              We offer the latest professional whitening systems with proven track records for safe, effective results.
+              We offer the latest professional whitening systems with proven
+              track records for safe, effective results.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -185,14 +188,21 @@ export default function NottinghamTeethWhiteningPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">Enlighten Evolution 3</CardTitle>
-                  <p className="text-gray-600">The only whitening system guaranteed to whiten to shade B1</p>
+                  <CardTitle className="text-2xl text-dental-green">
+                    Enlighten Evolution 3
+                  </CardTitle>
+                  <p className="text-gray-600">
+                    The only whitening system guaranteed to whiten to shade B1
+                  </p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span>Guaranteed to reach shade B1 (the whitest natural tooth shade)</span>
+                      <span>
+                        Guaranteed to reach shade B1 (the whitest natural tooth
+                        shade)
+                      </span>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
@@ -208,8 +218,12 @@ export default function NottinghamTeethWhiteningPage() {
                     </div>
                   </div>
                   <div className="text-center p-4 bg-dental-green/10 rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">From £495</p>
-                    <p className="text-sm text-gray-600">Complete treatment including trays</p>
+                    <p className="text-2xl font-bold text-dental-green">
+                      From £495
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Complete treatment including trays
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -220,8 +234,12 @@ export default function NottinghamTeethWhiteningPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Sparkles className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">Boutique Whitening</CardTitle>
-                  <p className="text-gray-600">Professional whitening with excellent results</p>
+                  <CardTitle className="text-2xl text-dental-green">
+                    Boutique Whitening
+                  </CardTitle>
+                  <p className="text-gray-600">
+                    Professional whitening with excellent results
+                  </p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 mb-6">
@@ -239,12 +257,18 @@ export default function NottinghamTeethWhiteningPage() {
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span>Home whitening system with professional support</span>
+                      <span>
+                        Home whitening system with professional support
+                      </span>
                     </div>
                   </div>
                   <div className="text-center p-4 bg-dental-green/10 rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">From £295</p>
-                    <p className="text-sm text-gray-600">Complete treatment including trays</p>
+                    <p className="text-2xl font-bold text-dental-green">
+                      From £295
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      Complete treatment including trays
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -270,7 +294,10 @@ export default function NottinghamTeethWhiteningPage() {
                   <CardTitle className="text-lg">Certified Experts</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Our dentists are certified in professional whitening systems with years of experience</p>
+                  <p className="text-gray-600">
+                    Our dentists are certified in professional whitening systems
+                    with years of experience
+                  </p>
                 </CardContent>
               </Card>
 
@@ -282,7 +309,10 @@ export default function NottinghamTeethWhiteningPage() {
                   <CardTitle className="text-lg">Safe Treatment</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Professional-grade materials and techniques ensure safe, comfortable treatment</p>
+                  <p className="text-gray-600">
+                    Professional-grade materials and techniques ensure safe,
+                    comfortable treatment
+                  </p>
                 </CardContent>
               </Card>
 
@@ -294,7 +324,10 @@ export default function NottinghamTeethWhiteningPage() {
                   <CardTitle className="text-lg">Personalised Care</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Tailored treatment plans based on your individual needs and desired results</p>
+                  <p className="text-gray-600">
+                    Tailored treatment plans based on your individual needs and
+                    desired results
+                  </p>
                 </CardContent>
               </Card>
 
@@ -306,7 +339,10 @@ export default function NottinghamTeethWhiteningPage() {
                   <CardTitle className="text-lg">Fast Results</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">See noticeable improvement in just days with our professional whitening systems</p>
+                  <p className="text-gray-600">
+                    See noticeable improvement in just days with our
+                    professional whitening systems
+                  </p>
                 </CardContent>
               </Card>
 
@@ -318,7 +354,10 @@ export default function NottinghamTeethWhiteningPage() {
                   <CardTitle className="text-lg">Convenient Location</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Easily accessible from Nottingham city centre - just 15 minutes by car</p>
+                  <p className="text-gray-600">
+                    Easily accessible from Nottingham city centre - just 15
+                    minutes by car
+                  </p>
                 </CardContent>
               </Card>
 
@@ -327,10 +366,15 @@ export default function NottinghamTeethWhiteningPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Clock className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-lg">Flexible Appointments</CardTitle>
+                  <CardTitle className="text-lg">
+                    Flexible Appointments
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">Evening and weekend appointments available to fit your busy schedule</p>
+                  <p className="text-gray-600">
+                    Evening and weekend appointments available to fit your busy
+                    schedule
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -352,10 +396,13 @@ export default function NottinghamTeethWhiteningPage() {
                   1
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Initial Consultation</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Initial Consultation
+                  </h3>
                   <p className="text-gray-600">
-                    Comprehensive assessment of your teeth and gums. We'll discuss your goals,
-                    explain the available options, and recommend the best whitening system for you.
+                    Comprehensive assessment of your teeth and gums. We'll
+                    discuss your goals, explain the available options, and
+                    recommend the best whitening system for you.
                   </p>
                 </div>
               </div>
@@ -367,8 +414,9 @@ export default function NottinghamTeethWhiteningPage() {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Preparation</h3>
                   <p className="text-gray-600">
-                    We'll take impressions to create your custom whitening trays and ensure
-                    your teeth are clean and healthy before starting treatment.
+                    We'll take impressions to create your custom whitening trays
+                    and ensure your teeth are clean and healthy before starting
+                    treatment.
                   </p>
                 </div>
               </div>
@@ -378,10 +426,13 @@ export default function NottinghamTeethWhiteningPage() {
                   3
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Whitening Treatment</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Whitening Treatment
+                  </h3>
                   <p className="text-gray-600">
-                    Begin your whitening treatment with custom trays and professional-grade gel.
-                    Some systems include an in-practice activation session.
+                    Begin your whitening treatment with custom trays and
+                    professional-grade gel. Some systems include an in-practice
+                    activation session.
                   </p>
                 </div>
               </div>
@@ -391,10 +442,12 @@ export default function NottinghamTeethWhiteningPage() {
                   4
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Follow-up & Maintenance</h3>
+                  <h3 className="text-xl font-semibold mb-2">
+                    Follow-up & Maintenance
+                  </h3>
                   <p className="text-gray-600">
-                    Regular check-ins to monitor progress and provide guidance on maintaining
-                    your beautiful white smile long-term.
+                    Regular check-ins to monitor progress and provide guidance
+                    on maintaining your beautiful white smile long-term.
                   </p>
                 </div>
               </div>
@@ -411,8 +464,8 @@ export default function NottinghamTeethWhiteningPage() {
               Ready for a Brighter, Whiter Smile?
             </h2>
             <p className="text-xl mb-8">
-              Book your teeth whitening consultation today and discover how professional
-              whitening can transform your confidence.
+              Book your teeth whitening consultation today and discover how
+              professional whitening can transform your confidence.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -432,9 +485,7 @@ export default function NottinghamTeethWhiteningPage() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-dental-green px-8 py-4"
               >
-                <Link href="/contact">
-                  Book Online Consultation
-                </Link>
+                <Link href="/contact">Book Online Consultation</Link>
               </Button>
             </div>
 
@@ -443,7 +494,9 @@ export default function NottinghamTeethWhiteningPage() {
                 <MapPin className="h-4 w-4 inline mr-1" />
                 22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE
               </p>
-              <p className="mt-2">Just 15 minutes from Nottingham city centre</p>
+              <p className="mt-2">
+                Just 15 minutes from Nottingham city centre
+              </p>
             </div>
           </div>
         </div>

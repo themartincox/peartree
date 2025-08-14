@@ -1,33 +1,34 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Crown,
-  Sparkles,
   Award,
+  Car,
+  CheckCircle,
+  Clock,
+  Crown,
+  Eye,
+  Heart,
+  MapPin,
   Navigation,
   Palette,
-  Eye,
-  Smile
+  Phone,
+  Shield,
+  Smile,
+  Sparkles,
+  Star,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import FAQSection from "@/components/FAQSection";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Porcelain Veneers in Arnold - Premium Smile Makeover | Pear Tree Dental",
-  description: "Premium porcelain veneers for Arnold residents. Ultra-thin veneers and smile transformations just 15 minutes away. Expert cosmetic dentistry with 10-year guarantees.",
+  title:
+    "Porcelain Veneers in Arnold - Premium Smile Makeover | Pear Tree Dental",
+  description:
+    "Premium porcelain veneers for Arnold residents. Ultra-thin veneers and smile transformations just 15 minutes away. Expert cosmetic dentistry with 10-year guarantees.",
   keywords: [
     "porcelain veneers Arnold",
     "dental veneers Arnold",
@@ -35,58 +36,73 @@ export const metadata: Metadata = {
     "cosmetic dentist Arnold NG5",
     "ultra-thin veneers Arnold",
     "composite veneers Arnold",
-    "smile transformation Arnold"
+    "smile transformation Arnold",
   ],
   openGraph: {
-    title: "Porcelain Veneers in Arnold - Premium Smile Makeover | Pear Tree Dental",
-    description: "Premium porcelain veneers for Arnold residents. Expert cosmetic dentistry just 15 minutes away with 10-year guarantees.",
-    url: "https://peartree.dental/arnold/porcelain-veneers"
+    title:
+      "Porcelain Veneers in Arnold - Premium Smile Makeover | Pear Tree Dental",
+    description:
+      "Premium porcelain veneers for Arnold residents. Expert cosmetic dentistry just 15 minutes away with 10-year guarantees.",
+    url: "https://peartree.dental/arnold/porcelain-veneers",
   },
   alternates: {
-    canonical: "https://peartree.dental/arnold/porcelain-veneers"
-  }
+    canonical: "https://peartree.dental/arnold/porcelain-veneers",
+  },
 };
 
 export default function ArnoldPorcelainVeneersPage() {
   const arnoldVeneersFAQs = [
     {
       question: "How far is porcelain veneer treatment from Arnold?",
-      answer: "Pear Tree Dental is just 15 minutes from Arnold via the A6097. We're one of Nottinghamshire's leading cosmetic dental practices with award-winning veneer results and free parking."
+      answer:
+        "Pear Tree Dental is just 15 minutes from Arnold via the A6097. We're one of Nottinghamshire's leading cosmetic dental practices with award-winning veneer results and free parking.",
     },
     {
       question: "What types of veneers are available for Arnold patients?",
-      answer: "We offer premium porcelain veneers, ultra-thin veneers, and composite veneers. Each option is tailored to your needs, budget, and desired outcome with expert cosmetic dentistry."
+      answer:
+        "We offer premium porcelain veneers, ultra-thin veneers, and composite veneers. Each option is tailored to your needs, budget, and desired outcome with expert cosmetic dentistry.",
     },
     {
       question: "How long do porcelain veneers last for Arnold patients?",
-      answer: "High-quality porcelain veneers typically last 10-15 years with proper care. We provide comprehensive aftercare and a 10-year guarantee on all premium veneer treatments."
+      answer:
+        "High-quality porcelain veneers typically last 10-15 years with proper care. We provide comprehensive aftercare and a 10-year guarantee on all premium veneer treatments.",
     },
     {
       question: "Can I see my new smile before veneers are fitted?",
-      answer: "Absolutely! We use digital smile design technology to show you exactly how your new veneers will look before any treatment begins. You'll see your transformation in advance."
+      answer:
+        "Absolutely! We use digital smile design technology to show you exactly how your new veneers will look before any treatment begins. You'll see your transformation in advance.",
     },
     {
       question: "What makes your veneer service special for Arnold residents?",
-      answer: "We combine advanced digital smile design, premium porcelain materials, expert cosmetic dentistry, and convenient Arnold access. Our veneers are indistinguishable from natural teeth."
-    }
+      answer:
+        "We combine advanced digital smile design, premium porcelain materials, expert cosmetic dentistry, and convenient Arnold access. Our veneers are indistinguishable from natural teeth.",
+    },
   ];
 
   const veneerTypes = [
     {
       name: "Ultra-Thin Veneers",
       description: "Minimal prep veneers as thin as 0.3mm",
-      benefits: ["Minimal tooth removal", "Reversible option", "Quick placement"],
+      benefits: [
+        "Minimal tooth removal",
+        "Reversible option",
+        "Quick placement",
+      ],
       price: "From £750",
       duration: "2-3 weeks",
-      icon: Sparkles
+      icon: Sparkles,
     },
     {
       name: "Premium Porcelain",
       description: "Traditional porcelain veneers for complete transformation",
-      benefits: ["Maximum durability", "Perfect aesthetics", "10-year guarantee"],
+      benefits: [
+        "Maximum durability",
+        "Perfect aesthetics",
+        "10-year guarantee",
+      ],
       price: "From £950",
       duration: "3-4 weeks",
-      icon: Crown
+      icon: Crown,
     },
     {
       name: "Composite Veneers",
@@ -94,8 +110,8 @@ export default function ArnoldPorcelainVeneersPage() {
       benefits: ["Completed in one visit", "More affordable", "Repairable"],
       price: "From £350",
       duration: "Same day",
-      icon: Smile
-    }
+      icon: Smile,
+    },
   ];
 
   return (
@@ -107,34 +123,32 @@ export default function ArnoldPorcelainVeneersPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Porcelain Veneers in Arnold",
-            "image": "https://peartree.dental/images/porcelain-veneers-arnold.jpg",
-            "url": "https://peartree.dental/arnold/porcelain-veneers",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Porcelain Veneers in Arnold",
+            image:
+              "https://peartree.dental/images/porcelain-veneers-arnold.jpg",
+            url: "https://peartree.dental/arnold/porcelain-veneers",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Arnold, NG5"
+              name: "Arnold, NG5",
             },
-            "medicalSpecialty": "Cosmetic Dentistry - Porcelain Veneers",
-            "geo": {
+            medicalSpecialty: "Cosmetic Dentistry - Porcelain Veneers",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£350-£950"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£350-£950",
+          }),
         }}
       />
 
@@ -150,7 +164,8 @@ export default function ArnoldPorcelainVeneersPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Porcelain Veneers in <span className="text-pear-gold">Arnold</span>
+              Porcelain Veneers in{" "}
+              <span className="text-pear-gold">Arnold</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -166,13 +181,20 @@ export default function ArnoldPorcelainVeneersPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Crown className="w-5 h-5 mr-2" />
                   Book Free Veneers Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>
@@ -191,9 +213,11 @@ export default function ArnoldPorcelainVeneersPage() {
                 Why Arnold Professionals Choose Premium Porcelain Veneers
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Arnold's discerning professionals understand that a perfect smile is an investment in their success.
-                Our award-winning cosmetic dentistry practice in Burton Joyce offers premium porcelain veneers
-                with digital smile design, just 15 minutes from Arnold with convenient free parking.
+                Arnold's discerning professionals understand that a perfect
+                smile is an investment in their success. Our award-winning
+                cosmetic dentistry practice in Burton Joyce offers premium
+                porcelain veneers with digital smile design, just 15 minutes
+                from Arnold with convenient free parking.
               </p>
             </div>
 
@@ -201,24 +225,39 @@ export default function ArnoldPorcelainVeneersPage() {
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Palette className="w-12 h-12 text-pear-gold mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">Digital Smile Design</h3>
-                  <p className="text-gray-600">See your new smile before treatment with advanced 3D preview technology</p>
+                  <h3 className="font-bold text-pear-primary mb-2">
+                    Digital Smile Design
+                  </h3>
+                  <p className="text-gray-600">
+                    See your new smile before treatment with advanced 3D preview
+                    technology
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Award className="w-12 h-12 text-dental-green mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">10-Year Guarantee</h3>
-                  <p className="text-gray-600">Comprehensive warranty on all premium porcelain veneer treatments</p>
+                  <h3 className="font-bold text-pear-primary mb-2">
+                    10-Year Guarantee
+                  </h3>
+                  <p className="text-gray-600">
+                    Comprehensive warranty on all premium porcelain veneer
+                    treatments
+                  </p>
                 </CardContent>
               </Card>
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Eye className="w-12 h-12 text-soft-pink mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">Natural Results</h3>
-                  <p className="text-gray-600">Indistinguishable from natural teeth with expert color matching</p>
+                  <h3 className="font-bold text-pear-primary mb-2">
+                    Natural Results
+                  </h3>
+                  <p className="text-gray-600">
+                    Indistinguishable from natural teeth with expert color
+                    matching
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -235,8 +274,9 @@ export default function ArnoldPorcelainVeneersPage() {
                 Premium Veneer Options for Arnold Patients
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                From minimal-prep ultra-thin veneers to complete smile transformations,
-                we offer the perfect veneer solution for every Arnold patient's needs and budget.
+                From minimal-prep ultra-thin veneers to complete smile
+                transformations, we offer the perfect veneer solution for every
+                Arnold patient's needs and budget.
               </p>
             </div>
 
@@ -244,29 +284,42 @@ export default function ArnoldPorcelainVeneersPage() {
               {(veneerTypes || []).map((veneer, index) => {
                 const IconComponent = veneer.icon;
                 return (
-                  <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-gold">
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pear-gold"
+                  >
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-pear-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-pear-gold" />
                       </div>
-                      <CardTitle className="text-xl text-pear-primary">{veneer.name}</CardTitle>
-                      <p className="text-gray-600 text-sm">{veneer.description}</p>
+                      <CardTitle className="text-xl text-pear-primary">
+                        {veneer.name}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {veneer.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="space-y-2">
                         {(veneer.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                            <span className="text-sm text-gray-700">{benefit}</span>
+                            <span className="text-sm text-gray-700">
+                              {benefit}
+                            </span>
                           </div>
                         ))}
                       </div>
                       <div className="pt-4 border-t text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{veneer.price}</p>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {veneer.price}
+                        </p>
                         <p className="text-sm text-gray-600">Per veneer</p>
                         <div className="flex items-center justify-center gap-2 mt-2">
                           <Clock className="w-4 h-4 text-gray-500" />
-                          <span className="text-sm text-gray-600">{veneer.duration}</span>
+                          <span className="text-sm text-gray-600">
+                            {veneer.duration}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -282,7 +335,9 @@ export default function ArnoldPorcelainVeneersPage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="flex items-center gap-3 justify-center">
                   <Shield className="w-6 h-6 text-pear-primary" />
-                  <span className="text-gray-600">Stain-resistant porcelain</span>
+                  <span className="text-gray-600">
+                    Stain-resistant porcelain
+                  </span>
                 </div>
                 <div className="flex items-center gap-3 justify-center">
                   <Award className="w-6 h-6 text-pear-primary" />
@@ -290,7 +345,9 @@ export default function ArnoldPorcelainVeneersPage() {
                 </div>
                 <div className="flex items-center gap-3 justify-center">
                   <Heart className="w-6 h-6 text-pear-primary" />
-                  <span className="text-gray-600">Boost confidence instantly</span>
+                  <span className="text-gray-600">
+                    Boost confidence instantly
+                  </span>
                 </div>
               </div>
             </div>
@@ -316,15 +373,21 @@ export default function ArnoldPorcelainVeneersPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">3D Preview</div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">
+                  3D Preview
+                </div>
                 <p className="text-gray-600">See your new smile in advance</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">10 years</div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">
+                  10 years
+                </div>
                 <p className="text-gray-600">Comprehensive guarantee</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">2-4 weeks</div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">
+                  2-4 weeks
+                </div>
                 <p className="text-gray-600">Complete transformation time</p>
               </div>
             </div>
@@ -340,7 +403,8 @@ export default function ArnoldPorcelainVeneersPage() {
               Stunning Veneer Transformations from Local Patients
             </h2>
             <p className="text-lg text-gray-600">
-              See the incredible smile makeovers achieved with our premium porcelain veneers
+              See the incredible smile makeovers achieved with our premium
+              porcelain veneers
             </p>
           </div>
 
@@ -368,7 +432,8 @@ export default function ArnoldPorcelainVeneersPage() {
                 Porcelain Veneer Questions from Arnold Patients
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from our Arnold patients about premium veneer treatments
+                Common questions from our Arnold patients about premium veneer
+                treatments
               </p>
             </div>
 
@@ -397,15 +462,21 @@ export default function ArnoldPorcelainVeneersPage() {
                     <p>2. Continue for 8 miles through Gedling</p>
                     <p>3. Turn right into Burton Joyce</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey time: 15 minutes</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey time: 15 minutes
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-pear-primary/10 rounded-lg p-6">
                     <Car className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                    <h4 className="font-bold text-pear-primary mb-2">Premium Experience</h4>
-                    <p className="text-gray-600">Comfortable environment perfect for smile transformations</p>
+                    <h4 className="font-bold text-pear-primary mb-2">
+                      Premium Experience
+                    </h4>
+                    <p className="text-gray-600">
+                      Comfortable environment perfect for smile transformations
+                    </p>
                   </div>
                 </div>
               </div>
@@ -417,7 +488,10 @@ export default function ArnoldPorcelainVeneersPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Arnold
               </Button>
@@ -434,8 +508,9 @@ export default function ArnoldPorcelainVeneersPage() {
               Transform Your Smile with Premium Veneers from Arnold
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Book your veneer consultation from Arnold — digital smile design, premium materials,
-              and expert cosmetic dentistry just 15 minutes from your doorstep.
+              Book your veneer consultation from Arnold — digital smile design,
+              premium materials, and expert cosmetic dentistry just 15 minutes
+              from your doorstep.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -444,19 +519,27 @@ export default function ArnoldPorcelainVeneersPage() {
                 Special Offer for Arnold Patients
               </p>
               <p className="text-sm opacity-90">
-                Free digital smile design worth £250 • 0% interest payment plans available
+                Free digital smile design worth £250 • 0% interest payment plans
+                available
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Crown className="w-5 h-5 mr-2" />
                   Book Free Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>

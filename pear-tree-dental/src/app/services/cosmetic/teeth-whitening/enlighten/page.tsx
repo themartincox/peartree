@@ -1,24 +1,22 @@
+import {
+  ArrowRight,
+  Award,
+  CheckCircle,
+  ChevronLeft,
+  Clock,
+  Heart, 
+  Shield,
+  Star,
+  Target,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
-import {
-  Award,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Shield,
-  Zap,
-  Users,
-  ChevronLeft,
-  Target,
-  Heart
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {

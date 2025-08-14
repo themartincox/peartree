@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { MessageCircle, X, Phone, Calendar, MapPin, Clock } from "lucide-react";
+import { Calendar, Clock, MapPin, MessageCircle, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 
 interface WhatsAppWidgetProps {
   phoneNumber?: string;
@@ -15,7 +14,7 @@ interface WhatsAppWidgetProps {
 export default function WhatsAppWidget({
   phoneNumber = "447123456789", // Replace with actual practice WhatsApp number
   position = "bottom-right",
-  className = ""
+  className = "",
 }: WhatsAppWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
@@ -31,9 +30,13 @@ export default function WhatsAppWidget({
   }, []);
 
   const getContextualMessage = () => {
-    const baseMessage = "Hello! I'm interested in dental services at Pear Tree Dental.";
+    const baseMessage =
+      "Hello! I'm interested in dental services at Pear Tree Dental.";
 
-    if (currentPage.includes("/services/emergency") || currentPage.includes("/urgent")) {
+    if (
+      currentPage.includes("/services/emergency") ||
+      currentPage.includes("/urgent")
+    ) {
       return `🚨 URGENT: I need emergency dental care at Pear Tree Dental. Can you help me?`;
     }
 
@@ -45,12 +48,18 @@ export default function WhatsAppWidget({
       return `${baseMessage} I'm interested in cosmetic dentistry options like veneers or teeth whitening.`;
     }
 
-    if (currentPage.includes("/services/orthodontics") || currentPage.includes("/invisalign")) {
+    if (
+      currentPage.includes("/services/orthodontics") ||
+      currentPage.includes("/invisalign")
+    ) {
       return `${baseMessage} I'd like information about teeth straightening with Invisalign or clear aligners.`;
     }
 
     if (currentPage.includes("/services/")) {
-      const service = currentPage.split("/services/")[1]?.replace(/\//g, " ").replace(/-/g, " ");
+      const service = currentPage
+        .split("/services/")[1]
+        ?.replace(/\//g, " ")
+        .replace(/-/g, " ");
       return `${baseMessage} I'd like to know more about ${service}.`;
     }
 
@@ -88,28 +97,32 @@ export default function WhatsAppWidget({
     {
       icon: Calendar,
       title: "Book Appointment",
-      message: "Hi! I'd like to book a dental appointment at Pear Tree Dental. What's your next available slot?"
+      message:
+        "Hi! I'd like to book a dental appointment at Pear Tree Dental. What's your next available slot?",
     },
     {
       icon: Phone,
       title: "Emergency Care",
-      message: "🚨 EMERGENCY: I need urgent dental care. I'm experiencing severe dental pain and need immediate assistance."
+      message:
+        "🚨 EMERGENCY: I need urgent dental care. I'm experiencing severe dental pain and need immediate assistance.",
     },
     {
       icon: MapPin,
       title: "New Patient",
-      message: "Hello! I'm a new patient interested in registering with Pear Tree Dental. Can you help me get started?"
+      message:
+        "Hello! I'm a new patient interested in registering with Pear Tree Dental. Can you help me get started?",
     },
     {
       icon: Clock,
       title: "Membership Plans",
-      message: "Hi! I'd like to learn about your dental membership plans starting from £10.95/month and what's included."
-    }
+      message:
+        "Hi! I'd like to learn about your dental membership plans starting from £10.95/month and what's included.",
+    },
   ];
 
   const positionClasses = {
     "bottom-right": "bottom-6 right-6",
-    "bottom-left": "bottom-6 left-6"
+    "bottom-left": "bottom-6 left-6",
   };
 
   if (!isVisible) return null;
@@ -127,7 +140,9 @@ export default function WhatsAppWidget({
                 </div>
                 <div>
                   <CardTitle className="text-lg">Pear Tree Dental</CardTitle>
-                  <p className="text-sm text-green-100">Usually replies instantly</p>
+                  <p className="text-sm text-green-100">
+                    Usually replies instantly
+                  </p>
                 </div>
               </div>
               <Button
@@ -143,7 +158,8 @@ export default function WhatsAppWidget({
 
           <CardContent className="p-4 space-y-3">
             <div className="text-sm text-gray-600 mb-4">
-              👋 Hi! How can we help you today? Choose a quick option or send a custom message:
+              👋 Hi! How can we help you today? Choose a quick option or send a
+              custom message:
             </div>
 
             {/* Quick Message Options */}
@@ -161,7 +177,9 @@ export default function WhatsAppWidget({
                         <Icon className="w-4 h-4 text-green-600" />
                       </div>
                       <div>
-                        <div className="font-medium text-sm text-gray-900">{msg.title}</div>
+                        <div className="font-medium text-sm text-gray-900">
+                          {msg.title}
+                        </div>
                       </div>
                     </div>
                   </button>
@@ -180,9 +198,9 @@ export default function WhatsAppWidget({
 
             {/* Practice Info */}
             <div className="text-xs text-gray-500 text-center mt-3 pt-3 border-t">
-              📍 Burton Joyce, Nottinghamshire<br />
-              📞 0115 931 2935<br />
-              🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
+              📍 Burton Joyce, Nottinghamshire
+              <br />📞 0115 931 2935
+              <br />🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
             </div>
           </CardContent>
         </Card>
@@ -219,8 +237,6 @@ export default function WhatsAppWidget({
           </div>
         )}
       </div>
-
-
     </div>
   );
 }

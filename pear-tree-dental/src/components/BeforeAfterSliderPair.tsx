@@ -1,7 +1,6 @@
 "use client";
 
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import { Card } from "@/components/ui/card";
 
 interface SliderData {
   beforeImage: string;
@@ -26,7 +25,7 @@ export default function BeforeAfterSliderPair({
   secondarySlider,
   sectionTitle,
   sectionDescription,
-  className = ""
+  className = "",
 }: BeforeAfterSliderPairProps) {
   return (
     <div className={`space-y-8 ${className}`}>
@@ -79,7 +78,9 @@ export default function BeforeAfterSliderPair({
 
       {/* Additional Information */}
       <div className="text-center text-sm text-gray-600 mt-8">
-        <p>Compare real patient results - drag sliders to see transformations</p>
+        <p>
+          Compare real patient results - drag sliders to see transformations
+        </p>
       </div>
     </div>
   );

@@ -1,41 +1,34 @@
+import {
+  Camera,
+  CheckCircle,
+  GraduationCap,
+  Heart,
+  Home,
+  MapPin,
+  Navigation,
+  Phone,
+  Shield,
+  Smile,
+  Sparkles,
+  Star,
+  Target,
+  TrendingUp,
+  Users,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Crown,
-  Sparkles,
-  Award,
-  Navigation,
-  Baby,
-  Users,
-  GraduationCap,
-  Home,
-  Target,
-  Gift,
-  Camera,
-  Smile,
-  TrendingUp,
-  UserCheck,
-  Zap
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Teen Cosmetic Dentistry in Mapperley - Confidence Building Treatments | Pear Tree Dental",
-  description: "Teen cosmetic dentistry for affluent Mapperley families. Confidence-building treatments, parent-approved cosmetic solutions, and teen-focused care just down the road.",
+  title:
+    "Teen Cosmetic Dentistry in Mapperley - Confidence Building Treatments | Pear Tree Dental",
+  description:
+    "Teen cosmetic dentistry for affluent Mapperley families. Confidence-building treatments, parent-approved cosmetic solutions, and teen-focused care just down the road.",
   keywords: [
     "teen cosmetic dentistry Mapperley",
     "teenage cosmetic dentistry Mapperley",
@@ -43,145 +36,212 @@ export const metadata: Metadata = {
     "teen veneers Mapperley",
     "confidence building dentistry Sherwood",
     "teen smile makeover Mapperley",
-    "teenage dental aesthetics Mapperley"
+    "teenage dental aesthetics Mapperley",
   ],
   openGraph: {
-    title: "Teen Cosmetic Dentistry in Mapperley - Confidence Building Treatments | Pear Tree Dental",
-    description: "Teen cosmetic dentistry for affluent Mapperley families. Confidence-building treatments with parental approval just down the road.",
-    url: "https://peartree.dental/mapperley/teen-cosmetic-dentistry"
+    title:
+      "Teen Cosmetic Dentistry in Mapperley - Confidence Building Treatments | Pear Tree Dental",
+    description:
+      "Teen cosmetic dentistry for affluent Mapperley families. Confidence-building treatments with parental approval just down the road.",
+    url: "https://peartree.dental/mapperley/teen-cosmetic-dentistry",
   },
   alternates: {
-    canonical: "https://peartree.dental/mapperley/teen-cosmetic-dentistry"
-  }
+    canonical: "https://peartree.dental/mapperley/teen-cosmetic-dentistry",
+  },
 };
 
 export default function MapperleyTeenCosmeticDentistryPage() {
   const mapperleyTeenCosmeticFAQs = [
     {
       question: "How convenient is teen cosmetic dentistry from Mapperley?",
-      answer: "Pear Tree Dental is literally just down the road from Mapperley. We're specialists in teen cosmetic treatments, providing confidence-building solutions with parental guidance and age-appropriate approaches."
+      answer:
+        "Pear Tree Dental is literally just down the road from Mapperley. We're specialists in teen cosmetic treatments, providing confidence-building solutions with parental guidance and age-appropriate approaches.",
     },
     {
       question: "What cosmetic treatments are suitable for teenagers?",
-      answer: "We offer teen-safe whitening, composite bonding, clear aligners, minor veneers, and smile contouring. All treatments require parental approval and are designed to build confidence while maintaining dental health."
+      answer:
+        "We offer teen-safe whitening, composite bonding, clear aligners, minor veneers, and smile contouring. All treatments require parental approval and are designed to build confidence while maintaining dental health.",
     },
     {
-      question: "Do you require parental involvement for teen cosmetic treatments?",
-      answer: "Absolutely! We believe parents should be involved in all cosmetic decisions. We provide comprehensive consultations with both teen and parent to ensure everyone is comfortable with the treatment plan."
+      question:
+        "Do you require parental involvement for teen cosmetic treatments?",
+      answer:
+        "Absolutely! We believe parents should be involved in all cosmetic decisions. We provide comprehensive consultations with both teen and parent to ensure everyone is comfortable with the treatment plan.",
     },
     {
-      question: "What makes your teen cosmetic service special for Mapperley families?",
-      answer: "We combine teen-appropriate treatments, parental guidance, confidence-building focus, convenient location, and understanding of teenage concerns. Our approach builds self-esteem while maintaining oral health."
+      question:
+        "What makes your teen cosmetic service special for Mapperley families?",
+      answer:
+        "We combine teen-appropriate treatments, parental guidance, confidence-building focus, convenient location, and understanding of teenage concerns. Our approach builds self-esteem while maintaining oral health.",
     },
     {
       question: "How do you ensure treatments are age-appropriate for teens?",
-      answer: "We use conservative approaches, prioritize dental health, ensure treatments are reversible when possible, and always consider the teenager's developing dental structure and future needs."
-    }
+      answer:
+        "We use conservative approaches, prioritize dental health, ensure treatments are reversible when possible, and always consider the teenager's developing dental structure and future needs.",
+    },
   ];
 
   const teenTreatments = [
     {
       treatment: "Teen-Safe Teeth Whitening",
       description: "Gentle whitening specifically formulated for teenage teeth",
-      benefits: ["Age-appropriate strength", "Safe for developing teeth", "Immediate confidence boost", "Professional supervision"],
+      benefits: [
+        "Age-appropriate strength",
+        "Safe for developing teeth",
+        "Immediate confidence boost",
+        "Professional supervision",
+      ],
       ageRange: "16+ years with parental approval",
       duration: "1-2 weeks",
       price: "From £220",
       icon: Sparkles,
-      highlight: "Most Popular"
+      highlight: "Most Popular",
     },
     {
       treatment: "Composite Bonding",
       description: "Natural-looking repairs for chips, gaps, and imperfections",
-      benefits: ["Same-day results", "Conservative approach", "Reversible treatment", "Natural appearance"],
+      benefits: [
+        "Same-day results",
+        "Conservative approach",
+        "Reversible treatment",
+        "Natural appearance",
+      ],
       ageRange: "14+ years",
       duration: "1-2 hours",
       price: "From £150 per tooth",
       icon: Smile,
-      highlight: "Instant Results"
+      highlight: "Instant Results",
     },
     {
       treatment: "Teen Clear Aligners",
       description: "Discreet orthodontic treatment for image-conscious teens",
-      benefits: ["Nearly invisible", "Removable for activities", "Gradual improvement", "Social confidence"],
+      benefits: [
+        "Nearly invisible",
+        "Removable for activities",
+        "Gradual improvement",
+        "Social confidence",
+      ],
       ageRange: "13+ years",
       duration: "6-18 months",
       price: "From £2,200",
       icon: TrendingUp,
-      highlight: "Discreet Option"
+      highlight: "Discreet Option",
     },
     {
       treatment: "Smile Contouring",
       description: "Gentle reshaping for improved tooth proportions",
-      benefits: ["Subtle improvements", "Pain-free procedure", "Immediate results", "Enhanced harmony"],
+      benefits: [
+        "Subtle improvements",
+        "Pain-free procedure",
+        "Immediate results",
+        "Enhanced harmony",
+      ],
       ageRange: "16+ years",
       duration: "30-60 minutes",
       price: "From £120 per tooth",
       icon: Target,
-      highlight: "Conservative"
-    }
+      highlight: "Conservative",
+    },
   ];
 
   const familyBenefits = [
     {
       benefit: "Confidence Building Focus",
-      description: "Treatments designed to enhance teenage self-esteem and social confidence",
+      description:
+        "Treatments designed to enhance teenage self-esteem and social confidence",
       value: "Improved teenage wellbeing",
-      icon: Heart
+      icon: Heart,
     },
     {
       benefit: "Parental Partnership",
-      description: "Full parental involvement in treatment planning and decision-making",
+      description:
+        "Full parental involvement in treatment planning and decision-making",
       value: "Family peace of mind",
-      icon: Users
+      icon: Users,
     },
     {
       benefit: "Age-Appropriate Care",
-      description: "Conservative treatments suitable for developing teenage dental structures",
+      description:
+        "Conservative treatments suitable for developing teenage dental structures",
       value: "Safe, responsible treatment",
-      icon: Shield
+      icon: Shield,
     },
     {
       benefit: "Convenient Excellence",
-      description: "Premium teen cosmetic care just down the road from Mapperley",
+      description:
+        "Premium teen cosmetic care just down the road from Mapperley",
       value: "Accessible expertise",
-      icon: Home
-    }
+      icon: Home,
+    },
   ];
 
   const teenConcerns = [
     {
       concern: "Social Confidence",
-      description: "Teenagers worry about their appearance and social acceptance",
-      cosmeticSolutions: ["Teeth whitening for brighter smiles", "Bonding for perfect front teeth", "Clear aligners for straight teeth"],
-      parentalConsiderations: ["Age-appropriate treatments", "Conservative approaches", "Building self-esteem"],
+      description:
+        "Teenagers worry about their appearance and social acceptance",
+      cosmeticSolutions: [
+        "Teeth whitening for brighter smiles",
+        "Bonding for perfect front teeth",
+        "Clear aligners for straight teeth",
+      ],
+      parentalConsiderations: [
+        "Age-appropriate treatments",
+        "Conservative approaches",
+        "Building self-esteem",
+      ],
       outcomes: "Enhanced confidence and social comfort",
-      icon: Heart
+      icon: Heart,
     },
     {
       concern: "School & Social Life",
-      description: "Treatments must fit around school, sports, and social activities",
-      cosmeticSolutions: ["Removable aligners", "Quick bonding procedures", "Weekend appointments available"],
-      parentalConsiderations: ["Minimal school disruption", "Activity compatibility", "Flexible scheduling"],
+      description:
+        "Treatments must fit around school, sports, and social activities",
+      cosmeticSolutions: [
+        "Removable aligners",
+        "Quick bonding procedures",
+        "Weekend appointments available",
+      ],
+      parentalConsiderations: [
+        "Minimal school disruption",
+        "Activity compatibility",
+        "Flexible scheduling",
+      ],
       outcomes: "Treatment that fits teenage lifestyle",
-      icon: GraduationCap
+      icon: GraduationCap,
     },
     {
       concern: "Image Consciousness",
       description: "Teens want improvements without obvious dental work",
-      cosmeticSolutions: ["Natural-looking results", "Subtle improvements", "Gradual enhancement"],
-      parentalConsiderations: ["Conservative treatment", "Natural appearance", "Age-appropriate results"],
+      cosmeticSolutions: [
+        "Natural-looking results",
+        "Subtle improvements",
+        "Gradual enhancement",
+      ],
+      parentalConsiderations: [
+        "Conservative treatment",
+        "Natural appearance",
+        "Age-appropriate results",
+      ],
       outcomes: "Beautiful, natural-looking improvements",
-      icon: Camera
+      icon: Camera,
     },
     {
       concern: "Future Dental Health",
       description: "Treatments should support long-term oral health goals",
-      cosmeticSolutions: ["Health-preserving treatments", "Reversible options", "Foundation for future care"],
-      parentalConsiderations: ["Long-term dental health", "Conservative approaches", "Future flexibility"],
+      cosmeticSolutions: [
+        "Health-preserving treatments",
+        "Reversible options",
+        "Foundation for future care",
+      ],
+      parentalConsiderations: [
+        "Long-term dental health",
+        "Conservative approaches",
+        "Future flexibility",
+      ],
       outcomes: "Healthy foundation for adult dental care",
-      icon: Shield
-    }
+      icon: Shield,
+    },
   ];
 
   const parentalGuidance = [
@@ -190,29 +250,29 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       parentRole: "Active participation in choosing appropriate treatments",
       teenInvolvement: "Express preferences and concerns openly",
       professionalInput: "Expert guidance on age-appropriate options",
-      decisionProcess: "Collaborative family decision-making"
+      decisionProcess: "Collaborative family decision-making",
     },
     {
       guidanceArea: "Realistic Expectations",
       parentRole: "Help set appropriate goals and timelines",
       teenInvolvement: "Understand treatment limitations and benefits",
       professionalInput: "Provide honest assessment of achievable results",
-      decisionProcess: "Clear communication about expected outcomes"
+      decisionProcess: "Clear communication about expected outcomes",
     },
     {
       guidanceArea: "Financial Investment",
       parentRole: "Make informed decisions about treatment costs",
       teenInvolvement: "Appreciate investment in their confidence",
       professionalInput: "Transparent pricing and payment options",
-      decisionProcess: "Family budget planning and investment decisions"
+      decisionProcess: "Family budget planning and investment decisions",
     },
     {
       guidanceArea: "Maintenance Commitment",
       parentRole: "Support ongoing care and oral hygiene",
       teenInvolvement: "Take responsibility for treatment maintenance",
       professionalInput: "Provide care instructions and follow-up",
-      decisionProcess: "Establish home care routines and responsibilities"
-    }
+      decisionProcess: "Establish home care routines and responsibilities",
+    },
   ];
 
   const treatmentApproach = [
@@ -220,26 +280,46 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       step: "Family Consultation",
       description: "Comprehensive assessment with teen and parent together",
       duration: "60-90 minutes",
-      activities: ["Teen concerns discussion", "Parental input gathering", "Treatment option review", "Expectation setting"]
+      activities: [
+        "Teen concerns discussion",
+        "Parental input gathering",
+        "Treatment option review",
+        "Expectation setting",
+      ],
     },
     {
       step: "Treatment Planning",
       description: "Collaborative planning with family involvement",
       duration: "Follow-up consultation",
-      activities: ["Age-appropriate options", "Parental approval process", "Timeline establishment", "Investment planning"]
+      activities: [
+        "Age-appropriate options",
+        "Parental approval process",
+        "Timeline establishment",
+        "Investment planning",
+      ],
     },
     {
       step: "Conservative Treatment",
       description: "Gentle, teen-appropriate cosmetic procedures",
       duration: "Varies by treatment",
-      activities: ["Minimally invasive techniques", "Comfort prioritization", "Natural-looking results", "Progress monitoring"]
+      activities: [
+        "Minimally invasive techniques",
+        "Comfort prioritization",
+        "Natural-looking results",
+        "Progress monitoring",
+      ],
     },
     {
       step: "Confidence Building",
       description: "Follow-up care and confidence assessment",
       duration: "Ongoing support",
-      activities: ["Results evaluation", "Confidence building", "Maintenance planning", "Future care guidance"]
-    }
+      activities: [
+        "Results evaluation",
+        "Confidence building",
+        "Maintenance planning",
+        "Future care guidance",
+      ],
+    },
   ];
 
   return (
@@ -251,34 +331,33 @@ export default function MapperleyTeenCosmeticDentistryPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Teen Cosmetic Dentistry in Mapperley",
-            "image": "https://peartree.dental/images/teen-cosmetic-dentistry-mapperley.jpg",
-            "url": "https://peartree.dental/mapperley/teen-cosmetic-dentistry",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Teen Cosmetic Dentistry in Mapperley",
+            image:
+              "https://peartree.dental/images/teen-cosmetic-dentistry-mapperley.jpg",
+            url: "https://peartree.dental/mapperley/teen-cosmetic-dentistry",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Mapperley, NG5"
+              name: "Mapperley, NG5",
             },
-            "medicalSpecialty": "Teenage Cosmetic Dentistry - Confidence Building Care",
-            "geo": {
+            medicalSpecialty:
+              "Teenage Cosmetic Dentistry - Confidence Building Care",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£120-£2200"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£120-£2200",
+          }),
         }}
       />
 
@@ -294,7 +373,8 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Teen Cosmetic Dentistry in <span className="text-yellow-300">Mapperley</span>
+              Teen Cosmetic Dentistry in{" "}
+              <span className="text-yellow-300">Mapperley</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -310,13 +390,20 @@ export default function MapperleyTeenCosmeticDentistryPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-pink-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-pink-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Heart className="w-5 h-5 mr-2" />
                   Book Teen Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pink-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-pink-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>
@@ -324,7 +411,9 @@ export default function MapperleyTeenCosmeticDentistryPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">💫 Building teenage confidence with parent-approved treatments!</p>
+              <p className="text-lg font-semibold">
+                💫 Building teenage confidence with parent-approved treatments!
+              </p>
             </div>
           </div>
         </div>
@@ -339,8 +428,10 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Teen Cosmetic Excellence for Mapperley Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Affluent Mapperley families understand the importance of teenage confidence and self-esteem.
-                Our teen cosmetic approach combines age-appropriate treatments with parental guidance and professional expertise.
+                Affluent Mapperley families understand the importance of teenage
+                confidence and self-esteem. Our teen cosmetic approach combines
+                age-appropriate treatments with parental guidance and
+                professional expertise.
               </p>
             </div>
 
@@ -348,12 +439,21 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-pink-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-pink-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-pink-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-pink-100 text-pink-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-pink-100 text-pink-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -362,22 +462,32 @@ export default function MapperleyTeenCosmeticDentistryPage() {
 
             <div className="text-center bg-pink-50 rounded-lg p-8">
               <Heart className="w-12 h-12 text-pink-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Building Teenage Confidence</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Building Teenage Confidence
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that teenage years are crucial for self-esteem development. Our cosmetic treatments
-                are designed to build confidence while maintaining dental health and involving parents in decisions.
+                We understand that teenage years are crucial for self-esteem
+                development. Our cosmetic treatments are designed to build
+                confidence while maintaining dental health and involving parents
+                in decisions.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-pink-600 mb-2">Teen-focused</div>
+                  <div className="text-2xl font-bold text-pink-600 mb-2">
+                    Teen-focused
+                  </div>
                   <p className="text-gray-600">Age-appropriate treatments</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-pink-600 mb-2">Parent-approved</div>
+                  <div className="text-2xl font-bold text-pink-600 mb-2">
+                    Parent-approved
+                  </div>
                   <p className="text-gray-600">Full family involvement</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-pink-600 mb-2">Down the road</div>
+                  <div className="text-2xl font-bold text-pink-600 mb-2">
+                    Down the road
+                  </div>
                   <p className="text-gray-600">Ultimate convenience</p>
                 </div>
               </div>
@@ -395,8 +505,9 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Teen-Appropriate Cosmetic Treatments for Mapperley Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our teen cosmetic treatments are carefully selected to be age-appropriate, confidence-building,
-                and safe for developing teenage dental structures with full parental involvement.
+                Our teen cosmetic treatments are carefully selected to be
+                age-appropriate, confidence-building, and safe for developing
+                teenage dental structures with full parental involvement.
               </p>
             </div>
 
@@ -404,32 +515,49 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               {(teenTreatments || []).map((treatment, index) => {
                 const IconComponent = treatment.icon;
                 return (
-                  <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pink-400 relative">
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-pink-400 relative"
+                  >
                     {treatment.highlight && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <Badge className="bg-pink-600 text-white">{treatment.highlight}</Badge>
+                        <Badge className="bg-pink-600 text-white">
+                          {treatment.highlight}
+                        </Badge>
                       </div>
                     )}
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-pink-600" />
                       </div>
-                      <CardTitle className="text-lg text-pear-primary">{treatment.treatment}</CardTitle>
-                      <p className="text-gray-600 text-sm">{treatment.description}</p>
+                      <CardTitle className="text-lg text-pear-primary">
+                        {treatment.treatment}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {treatment.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{treatment.price}</p>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {treatment.price}
+                        </p>
                         <div className="flex flex-col gap-1 mb-2">
-                          <Badge variant="outline" className="text-xs">{treatment.ageRange}</Badge>
-                          <span className="text-xs text-gray-600">{treatment.duration}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {treatment.ageRange}
+                          </Badge>
+                          <span className="text-xs text-gray-600">
+                            {treatment.duration}
+                          </span>
                         </div>
                       </div>
                       <div className="space-y-2">
                         {(treatment.benefits || []).map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2">
                             <CheckCircle className="w-4 h-4 text-pink-600 flex-shrink-0" />
-                            <span className="text-sm text-gray-700">{benefit}</span>
+                            <span className="text-sm text-gray-700">
+                              {benefit}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -451,8 +579,9 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Understanding Teenage Cosmetic Concerns in Mapperley
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We understand the unique concerns teenagers face about their appearance.
-                Our approach addresses these concerns with appropriate solutions and full parental support.
+                We understand the unique concerns teenagers face about their
+                appearance. Our approach addresses these concerns with
+                appropriate solutions and full parental support.
               </p>
             </div>
 
@@ -460,41 +589,64 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               {(teenConcerns || []).map((concern, index) => {
                 const IconComponent = concern.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <div className="text-center mb-4">
                         <IconComponent className="w-12 h-12 text-pink-600 mx-auto mb-2" />
-                        <h3 className="font-bold text-pear-primary">{concern.concern}</h3>
-                        <p className="text-gray-600 text-sm">{concern.description}</p>
+                        <h3 className="font-bold text-pear-primary">
+                          {concern.concern}
+                        </h3>
+                        <p className="text-gray-600 text-sm">
+                          {concern.description}
+                        </p>
                       </div>
 
                       <div className="space-y-3">
                         <div>
-                          <h4 className="font-semibold text-pink-600 text-sm mb-1">Cosmetic Solutions:</h4>
+                          <h4 className="font-semibold text-pink-600 text-sm mb-1">
+                            Cosmetic Solutions:
+                          </h4>
                           <ul className="space-y-1">
-                            {(concern.cosmeticSolutions || []).map((solution, idx) => (
-                              <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
-                                <CheckCircle className="w-3 h-3 text-pink-500 flex-shrink-0" />
-                                {solution}
-                              </li>
-                            ))}
+                            {(concern.cosmeticSolutions || []).map(
+                              (solution, idx) => (
+                                <li
+                                  key={idx}
+                                  className="text-xs text-gray-600 flex items-center gap-1"
+                                >
+                                  <CheckCircle className="w-3 h-3 text-pink-500 flex-shrink-0" />
+                                  {solution}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
 
                         <div>
-                          <h4 className="font-semibold text-pink-600 text-sm mb-1">Parental Considerations:</h4>
+                          <h4 className="font-semibold text-pink-600 text-sm mb-1">
+                            Parental Considerations:
+                          </h4>
                           <ul className="space-y-1">
-                            {(concern.parentalConsiderations || []).map((consideration, idx) => (
-                              <li key={idx} className="text-xs text-gray-600 flex items-center gap-1">
-                                <Users className="w-3 h-3 text-pink-500 flex-shrink-0" />
-                                {consideration}
-                              </li>
-                            ))}
+                            {(concern.parentalConsiderations || []).map(
+                              (consideration, idx) => (
+                                <li
+                                  key={idx}
+                                  className="text-xs text-gray-600 flex items-center gap-1"
+                                >
+                                  <Users className="w-3 h-3 text-pink-500 flex-shrink-0" />
+                                  {consideration}
+                                </li>
+                              ),
+                            )}
                           </ul>
                         </div>
 
                         <div className="bg-pink-50 rounded-lg p-3">
-                          <p className="text-sm text-pink-700 font-medium">{concern.outcomes}</p>
+                          <p className="text-sm text-pink-700 font-medium">
+                            {concern.outcomes}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -515,8 +667,9 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Parental Partnership in Teen Cosmetic Care
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Mapperley parents are actively involved in their teenager's cosmetic dental decisions.
-                We provide comprehensive guidance to ensure the best outcomes for the whole family.
+                Mapperley parents are actively involved in their teenager's
+                cosmetic dental decisions. We provide comprehensive guidance to
+                ensure the best outcomes for the whole family.
               </p>
             </div>
 
@@ -526,27 +679,43 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                   <CardContent className="p-6">
                     <div className="text-center mb-4">
                       <Users className="w-12 h-12 text-pink-600 mx-auto mb-2" />
-                      <h3 className="font-bold text-pear-primary">{guidance.guidanceArea}</h3>
+                      <h3 className="font-bold text-pear-primary">
+                        {guidance.guidanceArea}
+                      </h3>
                     </div>
 
                     <div className="space-y-3">
                       <div>
-                        <h4 className="font-semibold text-pink-600 text-sm mb-1">Parent Role:</h4>
-                        <p className="text-xs text-gray-600">{guidance.parentRole}</p>
+                        <h4 className="font-semibold text-pink-600 text-sm mb-1">
+                          Parent Role:
+                        </h4>
+                        <p className="text-xs text-gray-600">
+                          {guidance.parentRole}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-pink-600 text-sm mb-1">Teen Involvement:</h4>
-                        <p className="text-xs text-gray-600">{guidance.teenInvolvement}</p>
+                        <h4 className="font-semibold text-pink-600 text-sm mb-1">
+                          Teen Involvement:
+                        </h4>
+                        <p className="text-xs text-gray-600">
+                          {guidance.teenInvolvement}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-pink-600 text-sm mb-1">Professional Input:</h4>
-                        <p className="text-xs text-gray-600">{guidance.professionalInput}</p>
+                        <h4 className="font-semibold text-pink-600 text-sm mb-1">
+                          Professional Input:
+                        </h4>
+                        <p className="text-xs text-gray-600">
+                          {guidance.professionalInput}
+                        </p>
                       </div>
 
                       <div className="bg-pink-50 rounded-lg p-3">
-                        <p className="text-sm text-pink-700 font-medium">{guidance.decisionProcess}</p>
+                        <p className="text-sm text-pink-700 font-medium">
+                          {guidance.decisionProcess}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -566,24 +735,37 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Our Teen Cosmetic Treatment Approach
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our systematic approach ensures that teenage cosmetic treatments are appropriate,
-                safe, and confidence-building with full family involvement and support.
+                Our systematic approach ensures that teenage cosmetic treatments
+                are appropriate, safe, and confidence-building with full family
+                involvement and support.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {(treatmentApproach || []).map((step, index) => (
-                <Card key={step.step} className="text-center hover:shadow-lg transition-shadow">
+                <Card
+                  key={step.step}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                       {index + 1}
                     </div>
-                    <h3 className="font-semibold text-pear-primary mb-2">{step.step}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{step.description}</p>
-                    <Badge variant="outline" className="mb-4">{step.duration}</Badge>
+                    <h3 className="font-semibold text-pear-primary mb-2">
+                      {step.step}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3">
+                      {step.description}
+                    </p>
+                    <Badge variant="outline" className="mb-4">
+                      {step.duration}
+                    </Badge>
                     <div className="space-y-1">
                       {(step.activities || []).map((activity, idx) => (
-                        <div key={idx} className="text-xs text-gray-600 flex items-center gap-1">
+                        <div
+                          key={idx}
+                          className="text-xs text-gray-600 flex items-center gap-1"
+                        >
                           <CheckCircle className="w-3 h-3 text-pink-500 flex-shrink-0" />
                           {activity}
                         </div>
@@ -615,15 +797,21 @@ export default function MapperleyTeenCosmeticDentistryPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-pink-600 mb-2">Teen-focused</div>
+                <div className="text-3xl font-bold text-pink-600 mb-2">
+                  Teen-focused
+                </div>
                 <p className="text-gray-600">Age-appropriate treatments</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pink-600 mb-2">Parent-approved</div>
+                <div className="text-3xl font-bold text-pink-600 mb-2">
+                  Parent-approved
+                </div>
                 <p className="text-gray-600">Full family involvement</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pink-600 mb-2">Confidence boost</div>
+                <div className="text-3xl font-bold text-pink-600 mb-2">
+                  Confidence boost
+                </div>
                 <p className="text-gray-600">Enhanced self-esteem</p>
               </div>
             </div>
@@ -639,7 +827,8 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               Confidence-Building Results for Mapperley Teens
             </h2>
             <p className="text-lg text-gray-600">
-              See the beautiful, age-appropriate cosmetic transformations achieved by Mapperley teenagers
+              See the beautiful, age-appropriate cosmetic transformations
+              achieved by Mapperley teenagers
             </p>
           </div>
 
@@ -667,7 +856,8 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Teen Cosmetic Questions from Mapperley Parents
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from affluent Mapperley families about teen cosmetic dentistry
+                Common questions from affluent Mapperley families about teen
+                cosmetic dentistry
               </p>
             </div>
 
@@ -696,15 +886,21 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                     <p>2. Continue for just 6 miles through Gedling</p>
                     <p>3. Turn right into Burton Joyce</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Just down the road!</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Just down the road!
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-pink-50 rounded-lg p-6">
                     <Heart className="w-12 h-12 text-pink-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-pink-700 mb-2">Teen-Focused Care</h4>
-                    <p className="text-gray-600">Confidence-building cosmetic treatments</p>
+                    <h4 className="font-bold text-pink-700 mb-2">
+                      Teen-Focused Care
+                    </h4>
+                    <p className="text-gray-600">
+                      Confidence-building cosmetic treatments
+                    </p>
                   </div>
                 </div>
               </div>
@@ -716,7 +912,10 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Mapperley
               </Button>
@@ -730,11 +929,13 @@ export default function MapperleyTeenCosmeticDentistryPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
-              Build Your Teenager's Confidence with Expert Cosmetic Care from Mapperley
+              Build Your Teenager's Confidence with Expert Cosmetic Care from
+              Mapperley
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Give your teenager the gift of confident smiles and enhanced self-esteem. Book your teen
-              cosmetic consultation from Mapperley with age-appropriate treatments and full parental involvement.
+              Give your teenager the gift of confident smiles and enhanced
+              self-esteem. Book your teen cosmetic consultation from Mapperley
+              with age-appropriate treatments and full parental involvement.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -743,19 +944,27 @@ export default function MapperleyTeenCosmeticDentistryPage() {
                 Teen Cosmetic Specialists
               </p>
               <p className="text-sm opacity-90">
-                Age-appropriate treatments • Parental partnership • Confidence building • Just down the road
+                Age-appropriate treatments • Parental partnership • Confidence
+                building • Just down the road
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-pink-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-pink-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Heart className="w-5 h-5 mr-2" />
                   Book Teen Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pink-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-pink-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>

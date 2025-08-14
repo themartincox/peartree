@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, Users } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // Define the plan data
 const plans = [
@@ -14,10 +20,7 @@ const plans = [
     name: "ESSENTIAL MAINTENANCE",
     price: "£10.95",
     color: "plan-a",
-    features: [
-      "1 Dental check up a year",
-      "1 Scale & Polish a year",
-    ],
+    features: ["1 Dental check up a year", "1 Scale & Polish a year"],
     perDay: "36p per day",
     sticker: null,
   },
@@ -26,10 +29,7 @@ const plans = [
     name: "ROUTINE CARE",
     price: "£15.95",
     color: "plan-b",
-    features: [
-      "2 Dental check ups a year",
-      "1 Scale & Polish a year",
-    ],
+    features: ["2 Dental check ups a year", "1 Scale & Polish a year"],
     perDay: "53p per day",
     sticker: null,
   },
@@ -38,10 +38,7 @@ const plans = [
     name: "COMPLETE CARE",
     price: "£19.95",
     color: "plan-c",
-    features: [
-      "2 Dental check ups a year",
-      "2 Scale & Polishes a year",
-    ],
+    features: ["2 Dental check ups a year", "2 Scale & Polishes a year"],
     perDay: "66p per day",
     sticker: "Most Popular",
   },
@@ -71,7 +68,8 @@ const plans = [
       "50% off stain removal",
     ],
     perDay: "99p per day",
-    description: "Specifically designed for patients with periodontal disease and gum issues",
+    description:
+      "Specifically designed for patients with periodontal disease and gum issues",
     sticker: null,
   },
 ];
@@ -93,10 +91,12 @@ export default function PlanSelector() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">
-            <span className="text-pear-primary">Affordable</span> Plans for Every Smile
+            <span className="text-pear-primary">Affordable</span> Plans for
+            Every Smile
           </h2>
           <p className="text-gray-600 text-lg">
-            Choose how often you want to be seen and find the perfect membership plan for your dental care needs.
+            Choose how often you want to be seen and find the perfect membership
+            plan for your dental care needs.
           </p>
         </div>
 
@@ -111,14 +111,18 @@ export default function PlanSelector() {
               <Card
                 className={`h-full flex flex-col ${
                   selectedPlan === plan.id
-                    ? 'ring-2 ring-pear-primary ring-offset-2'
-                    : 'hover:border-pear-primary/50'
+                    ? "ring-2 ring-pear-primary ring-offset-2"
+                    : "hover:border-pear-primary/50"
                 } cursor-pointer transition-all duration-200`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
                 {/* Fixed Height Header with Color Bar */}
-                <CardHeader className={`${planGradientClasses[plan.color]} rounded-t-xl pb-3 pt-6 min-h-[120px] flex flex-col justify-center`}>
-                  <CardTitle className="text-center text-base leading-tight mb-2">{plan.name}</CardTitle>
+                <CardHeader
+                  className={`${planGradientClasses[plan.color]} rounded-t-xl pb-3 pt-6 min-h-[120px] flex flex-col justify-center`}
+                >
+                  <CardTitle className="text-center text-base leading-tight mb-2">
+                    {plan.name}
+                  </CardTitle>
                   <div className="text-center">
                     <span className="text-2xl font-bold">{plan.price}</span>
                     <span className="text-sm font-medium"> / MONTH</span>
@@ -131,7 +135,9 @@ export default function PlanSelector() {
                   <div className="min-h-[60px] mb-4">
                     {plan.description && (
                       <div className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                        <p className="text-xs text-blue-800 font-medium">{plan.description}</p>
+                        <p className="text-xs text-blue-800 font-medium">
+                          {plan.description}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -157,16 +163,16 @@ export default function PlanSelector() {
                 {/* Fixed Height Footer */}
                 <CardFooter className="pt-2 pb-4">
                   {selectedPlan === plan.id ? (
-                    <a href={`/membership/signup?plan=${plan.id}`} className="w-full">
+                    <a
+                      href={`/membership/signup?plan=${plan.id}`}
+                      className="w-full"
+                    >
                       <Button className="w-full" variant="default">
                         Join Plan
                       </Button>
                     </a>
                   ) : (
-                    <Button
-                      className="w-full"
-                      variant="outline"
-                    >
+                    <Button className="w-full" variant="outline">
                       Select Plan
                     </Button>
                   )}
@@ -190,8 +196,11 @@ export default function PlanSelector() {
         {/* Join Plan Button - First Instance */}
         <div className="border-t pt-8 pb-8 text-center">
           <a href="/membership/signup">
-            <Button size="lg" className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white">
-              Join {plans.find(p => p.id === selectedPlan)?.name} Now
+            <Button
+              size="lg"
+              className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white"
+            >
+              Join {plans.find((p) => p.id === selectedPlan)?.name} Now
             </Button>
           </a>
         </div>
@@ -199,8 +208,12 @@ export default function PlanSelector() {
         {/* Family Plan Section - Full Width */}
         <div id="family-plan" className="mt-8 mb-10">
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-pear-primary mb-2">Family Plan</h3>
-            <p className="text-gray-600">Perfect solution for families at one address</p>
+            <h3 className="text-2xl font-bold text-pear-primary mb-2">
+              Family Plan
+            </h3>
+            <p className="text-gray-600">
+              Perfect solution for families at one address
+            </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -211,8 +224,8 @@ export default function PlanSelector() {
               <Card
                 className={`border-2 cursor-pointer transition-all duration-200 ${
                   selectedPlan === "family"
-                    ? 'border-pear-primary ring-2 ring-pear-primary ring-offset-2'
-                    : 'border-pear-primary hover:border-pear-primary/70'
+                    ? "border-pear-primary ring-2 ring-pear-primary ring-offset-2"
+                    : "border-pear-primary hover:border-pear-primary/70"
                 }`}
                 onClick={() => setSelectedPlan("family")}
               >
@@ -221,12 +234,16 @@ export default function PlanSelector() {
                   <CardHeader className="bg-gradient-to-r from-pear-primary to-dental-green text-white md:rounded-tl-xl lg:rounded-tl-xl md:rounded-tr-none lg:rounded-tr-none pb-4 pt-8">
                     <div className="text-center">
                       <Users className="w-8 h-8 mx-auto mb-2" />
-                      <CardTitle className="text-xl mb-2">FAMILY PLAN</CardTitle>
+                      <CardTitle className="text-xl mb-2">
+                        FAMILY PLAN
+                      </CardTitle>
                       <div className="text-center">
                         <span className="text-3xl font-bold">£49.50</span>
                         <span className="text-sm font-medium"> / MONTH</span>
                       </div>
-                      <p className="text-sm text-white mt-2 font-medium">2 Adults + up to 3 Children</p>
+                      <p className="text-sm text-white mt-2 font-medium">
+                        2 Adults + up to 3 Children
+                      </p>
                       <div className="mt-4">
                         <span className="inline-flex bg-white/40 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-pear-primary">
                           £1.65 per day for the whole family
@@ -277,13 +294,22 @@ export default function PlanSelector() {
 
                     <div className="mt-6 text-center">
                       {selectedPlan === "family" ? (
-                        <a href="/membership/signup?plan=family" className="inline-block">
-                          <Button className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90" size="lg">
+                        <a
+                          href="/membership/signup?plan=family"
+                          className="inline-block"
+                        >
+                          <Button
+                            className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90"
+                            size="lg"
+                          >
                             Join Plan
                           </Button>
                         </a>
                       ) : (
-                        <Button className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90" size="lg">
+                        <Button
+                          className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90"
+                          size="lg"
+                        >
                           Select Plan
                         </Button>
                       )}
@@ -308,12 +334,20 @@ export default function PlanSelector() {
 
         <div className="border-t pt-8 text-center">
           <p className="text-sm text-gray-600 mb-6 max-w-2xl mx-auto">
-            <strong>Under 18s join free</strong> when a parent joins the plan. Or £5.20/month for under 18s joining alone.
+            <strong>Under 18s join free</strong> when a parent joins the plan.
+            Or £5.20/month for under 18s joining alone.
           </p>
 
           <a href={`/membership/signup?plan=${selectedPlan}`}>
-            <Button size="lg" className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white">
-              Join {selectedPlan === "family" ? "Family Plan" : plans.find(p => p.id === selectedPlan)?.name} Now
+            <Button
+              size="lg"
+              className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white"
+            >
+              Join{" "}
+              {selectedPlan === "family"
+                ? "Family Plan"
+                : plans.find((p) => p.id === selectedPlan)?.name}{" "}
+              Now
             </Button>
           </a>
         </div>

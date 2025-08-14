@@ -1,6 +1,13 @@
-'use client';
+"use client";
 
-import { Shield, Banknote, HeartPulse, Timer, Search, Stethoscope } from "lucide-react";
+import {
+  Banknote,
+  HeartPulse,
+  Search,
+  Shield,
+  Stethoscope,
+  Timer,
+} from "lucide-react";
 
 const emergencyBenefits = [
   {
@@ -13,7 +20,8 @@ const emergencyBenefits = [
     id: "accident",
     icon: <Banknote className="h-6 w-6 text-pear-primary" />,
     title: "Accident Cover",
-    description: "Up to £12,000 towards dental treatment cost as a result of an accident",
+    description:
+      "Up to £12,000 towards dental treatment cost as a result of an accident",
   },
   {
     id: "hospital",
@@ -47,10 +55,13 @@ export default function BenefitsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">
-            Worldwide Dental <span className="text-pear-primary">Accident & Emergency</span> Cover
+            Worldwide Dental{" "}
+            <span className="text-pear-primary">Accident & Emergency</span>{" "}
+            Cover
           </h2>
           <p className="text-gray-600 text-lg">
-            All our membership plans include comprehensive emergency coverage, giving you peace of mind whether you're at home or abroad.
+            All our membership plans include comprehensive emergency coverage,
+            giving you peace of mind whether you're at home or abroad.
           </p>
         </div>
 
@@ -66,7 +77,9 @@ export default function BenefitsSection() {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    {benefit.title}
+                  </h3>
                   <p className="text-gray-600 text-sm">{benefit.description}</p>
                 </div>
               </div>
@@ -76,7 +89,10 @@ export default function BenefitsSection() {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-gray-500 max-w-2xl mx-auto">
-            For full details on coverage limits and exclusions, please speak with our team when you join. Emergency and accident coverage is provided by a third-party insurer and is subject to their terms and conditions.
+            For full details on coverage limits and exclusions, please speak
+            with our team when you join. Emergency and accident coverage is
+            provided by a third-party insurer and is subject to their terms and
+            conditions.
           </p>
         </div>
       </div>

@@ -1,24 +1,26 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
-import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
 import {
-  Clock,
-  Phone,
-  CalendarDays,
   AlertTriangle,
+  ArrowRight,
+  CalendarDays,
+  Clock,
   Heart,
+  Phone,
   Shield,
   Zap,
-  ArrowRight
 } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Emergency Dentist Burton Joyce | Urgent Dental Emergency Care | Pear Tree Dental",
-  description: "Emergency dentist in Burton Joyce, Nottinghamshire. Dental pain relief, broken teeth, lost fillings. Often same-day emergency appointments. Call 0115 931 2935 now.",
+  title:
+    "Emergency Dentist Burton Joyce | Urgent Dental Emergency Care | Pear Tree Dental",
+  description:
+    "Emergency dentist in Burton Joyce, Nottinghamshire. Dental pain relief, broken teeth, lost fillings. Often same-day emergency appointments. Call 0115 931 2935 now.",
   keywords: [
     "emergency dentist Burton Joyce",
     "dental emergency Nottingham",
@@ -26,56 +28,63 @@ export const metadata: Metadata = {
     "broken tooth emergency",
     "urgent dental emergency",
     "urgent dental care",
-    "dental pain relief"
+    "dental pain relief",
   ],
   openGraph: {
     title: "Emergency Dentist | Urgent Care | Pear Tree Dental",
-    description: "Emergency dentist in Burton Joyce. Often same-day appointments for dental emergencies. Call now 0115 931 2935",
+    description:
+      "Emergency dentist in Burton Joyce. Often same-day appointments for dental emergencies. Call now 0115 931 2935",
     type: "website",
-    url: "https://peartree.dental/services/emergency"
+    url: "https://peartree.dental/services/emergency",
   },
   alternates: {
-    canonical: "https://peartree.dental/services/emergency"
-  }
+    canonical: "https://peartree.dental/services/emergency",
+  },
 };
 
-export default function EmergencyPage() {
+export default function EmergencyPage(): React.JSX.Element {
   const breadcrumbItems = [
     { name: "Services", url: "/services" },
-    { name: "Emergency Dentistry" }
+    { name: "Emergency Dentistry" },
   ];
 
   const emergencyServices = [
     {
       title: "Severe Tooth Pain",
-      description: "Immediate pain relief for severe toothaches and dental infections",
+      description:
+        "Immediate pain relief for severe toothaches and dental infections",
       icon: AlertTriangle,
-      timeframe: "Rapid"
+      timeframe: "Rapid",
     },
     {
       title: "Broken or Chipped Teeth",
-      description: "Emergency repair for damaged teeth from accidents or trauma",
+      description:
+        "Emergency repair for damaged teeth from accidents or trauma",
       icon: Shield,
-      timeframe: "Often Same Day"
+      timeframe: "Often Same Day",
     },
     {
       title: "Lost Fillings or Crowns",
-      description: "Quick replacement of lost dental work to prevent further damage",
+      description:
+        "Quick replacement of lost dental work to prevent further damage",
       icon: Heart,
-      timeframe: "Often Same Day"
+      timeframe: "Often Same Day",
     },
     {
       title: "Dental Trauma",
       description: "Immediate care for knocked-out or loose teeth",
       icon: Zap,
-      timeframe: "Emergency"
-    }
+      timeframe: "Emergency",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* SEO Schema */}
-      <MedicalOrganizationSchema page="services" serviceType="Emergency Dentistry" />
+      <MedicalOrganizationSchema
+        page="services"
+        serviceType="Emergency Dentistry"
+      />
 
       {/* Breadcrumb Navigation */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
@@ -95,27 +104,39 @@ export default function EmergencyPage() {
             <span className="block text-red-600">When You Need It Most</span>
           </h1>
 
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">Dental emergencies don't wait for convenient times. Our experienced team provides immediate relief for urgent dental problems aiming for same-day appointments.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+            Dental emergencies don't wait for convenient times. Our experienced
+            team provides immediate relief for urgent dental problems aiming for
+            same-day appointments.
           </p>
 
           <div className="bg-amber-100 border border-amber-300 rounded-lg p-4 mb-8 max-w-2xl mx-auto">
             <div className="flex items-center">
               <AlertTriangle className="w-5 h-5 text-amber-600 mr-2" />
               <p className="text-amber-800 font-medium">
-                <strong>Serious Trauma:</strong> In cases of severe facial injury or life-threatening emergencies, call 999 immediately before contacting us.
+                <strong>Serious Trauma:</strong> In cases of severe facial
+                injury or life-threatening emergencies, call 999 immediately
+                before contacting us.
               </p>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="tel:01159312935">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
+              <Button
+                size="lg"
+                className="bg-red-600 hover:bg-red-700 text-white"
+              >
                 <Phone className="w-5 h-5 mr-2" />
                 Emergency: 0115 931 2935
               </Button>
             </a>
             <Link href="/book">
-              <Button size="lg" variant="outline" className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+              >
                 <CalendarDays className="w-5 h-5 mr-2" />
                 Book Emergency Appointment
               </Button>
@@ -132,7 +153,8 @@ export default function EmergencyPage() {
               Emergency Dental Services
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We handle all types of dental emergencies with quick, professional care
+              We handle all types of dental emergencies with quick, professional
+              care
             </p>
           </div>
 
@@ -147,9 +169,14 @@ export default function EmergencyPage() {
                         <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                           <Icon className="w-6 h-6 text-red-600" />
                         </div>
-                        <CardTitle className="text-xl">{service.title}</CardTitle>
+                        <CardTitle className="text-xl">
+                          {service.title}
+                        </CardTitle>
                       </div>
-                      <Badge variant="outline" className="border-red-200 text-red-700">
+                      <Badge
+                        variant="outline"
+                        className="border-red-200 text-red-700"
+                      >
                         {service.timeframe}
                       </Badge>
                     </div>
@@ -182,7 +209,9 @@ export default function EmergencyPage() {
                 1
               </div>
               <h3 className="text-lg font-semibold mb-2">Stay Calm</h3>
-              <p className="text-gray-600">Take a deep breath and assess the situation</p>
+              <p className="text-gray-600">
+                Take a deep breath and assess the situation
+              </p>
             </div>
 
             <div className="text-center">
@@ -190,7 +219,9 @@ export default function EmergencyPage() {
                 2
               </div>
               <h3 className="text-lg font-semibold mb-2">Control Bleeding</h3>
-              <p className="text-gray-600">Apply gentle pressure with clean gauze or cloth</p>
+              <p className="text-gray-600">
+                Apply gentle pressure with clean gauze or cloth
+              </p>
             </div>
 
             <div className="text-center">
@@ -198,15 +229,21 @@ export default function EmergencyPage() {
                 3
               </div>
               <h3 className="text-lg font-semibold mb-2">Manage Pain</h3>
-              <p className="text-gray-600">Use cold compress and over-the-counter pain relief</p>
+              <p className="text-gray-600">
+                Use cold compress and over-the-counter pain relief
+              </p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
                 4
               </div>
-              <h3 className="text-lg font-semibold mb-2">Contact Us Immediately</h3>
-              <p className="text-gray-600">Call our emergency line for urgent care</p>
+              <h3 className="text-lg font-semibold mb-2">
+                Contact Us Immediately
+              </h3>
+              <p className="text-gray-600">
+                Call our emergency line for urgent care
+              </p>
             </div>
           </div>
         </div>
@@ -220,19 +257,25 @@ export default function EmergencyPage() {
               Don't Suffer in Pain - Call Now
             </h2>
             <p className="text-xl mb-8 text-red-100">
-              Our emergency dental team is ready to provide immediate relief
-              and professional care when you need it most.
+              Our emergency dental team is ready to provide immediate relief and
+              professional care when you need it most.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
+                <Button
+                  size="lg"
+                  className="bg-white text-red-600 hover:bg-gray-100"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>
               </a>
               <Link href="/services/emergency-repairs">
-                <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 hover:text-red-700">
+                <Button
+                  size="lg"
+                  className="bg-white text-red-600 hover:bg-gray-100 hover:text-red-700"
+                >
                   <ArrowRight className="w-5 h-5 mr-2" />
                   Emergency Repairs
                 </Button>

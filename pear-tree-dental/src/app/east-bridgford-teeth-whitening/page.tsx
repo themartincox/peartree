@@ -1,46 +1,45 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
+  ArrowRight,
+  Award,
+  Camera,
   Car,
-  CalendarDays,
+  Clock,
+  Crown,
+  Heart,
+  MapPin,
+  Phone,
   Shield,
   Sparkles,
-  ArrowRight,
-  Camera,
-  Coffee,
-  Award,
-  Crown,
-  Users,
-  Heart,
-  TreePine
-} from 'lucide-react';
+  Star,
+  TreePine,
+} from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: 'Teeth Whitening East Bridgford - Village Professional Whitening | Pear Tree Dental',
-  description: 'Exclusive teeth whitening for East Bridgford village residents. Professional whitening treatments with village convenience and personal service.',
+  title:
+    "Teeth Whitening East Bridgford - Village Professional Whitening | Pear Tree Dental",
+  description:
+    "Exclusive teeth whitening for East Bridgford village residents. Professional whitening treatments with village convenience and personal service.",
   keywords: [
-    'teeth whitening East Bridgford',
-    'village teeth whitening East Bridgford',
-    'professional teeth whitening East Bridgford',
-    'dental whitening East Bridgford',
-    'smile whitening East Bridgford'
+    "teeth whitening East Bridgford",
+    "village teeth whitening East Bridgford",
+    "professional teeth whitening East Bridgford",
+    "dental whitening East Bridgford",
+    "smile whitening East Bridgford",
   ],
   openGraph: {
-    title: 'Village Teeth Whitening in East Bridgford - Pear Tree Dental',
-    description: 'Transform your smile with exclusive teeth whitening for East Bridgford village residents.',
-    url: 'https://peartree.dental/east-bridgford-teeth-whitening'
+    title: "Village Teeth Whitening in East Bridgford - Pear Tree Dental",
+    description:
+      "Transform your smile with exclusive teeth whitening for East Bridgford village residents.",
+    url: "https://peartree.dental/east-bridgford-teeth-whitening",
   },
   alternates: {
-    canonical: 'https://peartree.dental/east-bridgford-teeth-whitening'
-  }
+    canonical: "https://peartree.dental/east-bridgford-teeth-whitening",
+  },
 };
 
 export default function EastBridgfordTeethWhiteningPage() {
@@ -54,26 +53,27 @@ export default function EastBridgfordTeethWhiteningPage() {
             "@context": "https://schema.org",
             "@type": "MedicalProcedure",
             "@id": "https://peartree.dental/east-bridgford-teeth-whitening",
-            "name": "Professional Teeth Whitening - East Bridgford",
-            "description": "Exclusive teeth whitening treatments for East Bridgford village residents with personalized service.",
-            "provider": {
+            name: "Professional Teeth Whitening - East Bridgford",
+            description:
+              "Exclusive teeth whitening treatments for East Bridgford village residents with personalized service.",
+            provider: {
               "@type": "Dentist",
-              "name": "Pear Tree Dental",
-              "address": {
+              name: "Pear Tree Dental",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "Main Street",
-                "addressLocality": "Burton Joyce",
-                "addressRegion": "Nottinghamshire",
-                "postalCode": "NG14 5DP",
-                "addressCountry": "GB"
+                streetAddress: "Main Street",
+                addressLocality: "Burton Joyce",
+                addressRegion: "Nottinghamshire",
+                postalCode: "NG14 5DP",
+                addressCountry: "GB",
               },
-              "telephone": "0115 931 2935"
+              telephone: "0115 931 2935",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "East Bridgford, Nottinghamshire"
-            }
-          })
+              name: "East Bridgford, Nottinghamshire",
+            },
+          }),
         }}
       />
 
@@ -83,17 +83,22 @@ export default function EastBridgfordTeethWhiteningPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-6">
               <MapPin className="h-6 w-6 text-pear-primary" />
-              <span className="text-pear-primary font-medium">East Bridgford Village</span>
+              <span className="text-pear-primary font-medium">
+                East Bridgford Village
+              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               Village Teeth Whitening
-              <span className="text-pear-primary block">for East Bridgford</span>
+              <span className="text-pear-primary block">
+                for East Bridgford
+              </span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Exclusive professional teeth whitening for East Bridgford village residents.
-              Just 5 minutes away with the personal service and attention to detail you deserve.
+              Exclusive professional teeth whitening for East Bridgford village
+              residents. Just 5 minutes away with the personal service and
+              attention to detail you deserve.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -122,15 +127,23 @@ export default function EastBridgfordTeethWhiteningPage() {
 
             {/* Key Benefits for East Bridgford */}
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge variant="secondary" className="bg-pear-primary/20 text-pear-primary border-pear-primary/30">
+              <Badge
+                variant="secondary"
+                className="bg-pear-primary/20 text-pear-primary border-pear-primary/30"
+              >
                 <Clock className="w-4 h-4 mr-1" />
                 Same-Day Results
               </Badge>
-              <Badge variant="secondary" className="bg-dental-green/20 text-dental-green border-dental-green/30">
-                <Car className="w-4 h-4 mr-1" />
-                5 mins from Village
+              <Badge
+                variant="secondary"
+                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+              >
+                <Car className="w-4 h-4 mr-1" />5 mins from Village
               </Badge>
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30"
+              >
                 <TreePine className="w-4 h-4 mr-1" />
                 Village Exclusive
               </Badge>
@@ -144,9 +157,13 @@ export default function EastBridgfordTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Exclusive Whitening Options for East Bridgford Village</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Exclusive Whitening Options for East Bridgford Village
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Choose from our range of professional whitening treatments, all designed to deliver exceptional results with the personal touch that village life deserves.
+                Choose from our range of professional whitening treatments, all
+                designed to deliver exceptional results with the personal touch
+                that village life deserves.
               </p>
             </div>
 
@@ -155,13 +172,20 @@ export default function EastBridgfordTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Sparkles className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Village Same-Day</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-pear-primary/10 text-pear-primary">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-pear-primary/10 text-pear-primary"
+                  >
                     Village Exclusive
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-pear-primary mb-2">£395</p>
-                  <p className="text-gray-600 mb-4">Professional in-chair whitening with personal service</p>
+                  <p className="text-2xl font-bold text-pear-primary mb-2">
+                    £395
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    Professional in-chair whitening with personal service
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Up to 8 shades lighter in one session</p>
                     <p>• 60-90 minute village appointment</p>
@@ -178,20 +202,30 @@ export default function EastBridgfordTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Camera className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Village Take-Home</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-dental-green/10 text-dental-green">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-dental-green/10 text-dental-green"
+                  >
                     Personal Choice
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-dental-green mb-2">£295</p>
-                  <p className="text-gray-600 mb-4">Custom trays with village convenience</p>
+                  <p className="text-2xl font-bold text-dental-green mb-2">
+                    £295
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    Custom trays with village convenience
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Custom-fitted whitening trays</p>
                     <p>• Professional grade gel</p>
                     <p>• Whiten in village comfort</p>
                     <p>• Personal follow-up care</p>
                   </div>
-                  <Button variant="outline" className="w-full border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="w-full border-dental-green text-dental-green hover:bg-dental-green hover:text-white"
+                  >
                     Book Village Consultation
                   </Button>
                 </CardContent>
@@ -201,21 +235,31 @@ export default function EastBridgfordTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Village Premium</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-pear-gold/10 text-pear-gold">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-pear-gold/10 text-pear-gold"
+                  >
                     Complete Care
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-2xl font-bold text-pear-gold mb-2">£550</p>
-                  <p className="text-sm text-gray-500 line-through mb-2">Was £690</p>
-                  <p className="text-gray-600 mb-4">Complete whitening package with village benefits</p>
+                  <p className="text-sm text-gray-500 line-through mb-2">
+                    Was £690
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    Complete whitening package with village benefits
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Same-day whitening session</p>
                     <p>• Custom take-home trays</p>
                     <p>• Professional maintenance gel</p>
                     <p>• Village member benefits</p>
                   </div>
-                  <Button variant="outline" className="w-full border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-dental-navy">
+                  <Button
+                    variant="outline"
+                    className="w-full border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-dental-navy"
+                  >
                     Book Premium Package
                   </Button>
                 </CardContent>
@@ -231,17 +275,22 @@ export default function EastBridgfordTeethWhiteningPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-8">Why East Bridgford Village Chooses Professional Whitening</h2>
+                <h2 className="text-3xl font-bold mb-8">
+                  Why East Bridgford Village Chooses Professional Whitening
+                </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Award className="w-6 h-6 text-pear-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Superior Village Care</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Superior Village Care
+                      </h3>
                       <p className="text-gray-700">
-                        Professional-grade whitening delivers results that over-the-counter products simply cannot match,
-                        with the personal attention that village residents deserve.
+                        Professional-grade whitening delivers results that
+                        over-the-counter products simply cannot match, with the
+                        personal attention that village residents deserve.
                       </p>
                     </div>
                   </div>
@@ -251,10 +300,13 @@ export default function EastBridgfordTeethWhiteningPage() {
                       <Shield className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Safe & Personal</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Safe & Personal
+                      </h3>
                       <p className="text-gray-700">
-                        Professional supervision ensures safe application and optimal results while providing
-                        the personal care and attention you expect from village service.
+                        Professional supervision ensures safe application and
+                        optimal results while providing the personal care and
+                        attention you expect from village service.
                       </p>
                     </div>
                   </div>
@@ -264,10 +316,13 @@ export default function EastBridgfordTeethWhiteningPage() {
                       <Clock className="w-6 h-6 text-pear-gold" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Long-Lasting Results</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Long-Lasting Results
+                      </h3>
                       <p className="text-gray-700">
-                        Professional whitening results typically last 1-3 years with proper care, far longer
-                        than store-bought alternatives, with ongoing village support.
+                        Professional whitening results typically last 1-3 years
+                        with proper care, far longer than store-bought
+                        alternatives, with ongoing village support.
                       </p>
                     </div>
                   </div>
@@ -279,8 +334,12 @@ export default function EastBridgfordTeethWhiteningPage() {
                   <div className="aspect-[4/3] bg-gradient-to-br from-pear-primary/10 to-dental-green/20 flex items-center justify-center">
                     <div className="text-center p-8">
                       <Sparkles className="w-16 h-16 mx-auto mb-4 text-pear-primary" />
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">VILLAGE WHITENING</h3>
-                      <p className="text-gray-600 mb-4">Exclusive results for East Bridgford</p>
+                      <h3 className="text-xl font-bold text-gray-700 mb-2">
+                        VILLAGE WHITENING
+                      </h3>
+                      <p className="text-gray-600 mb-4">
+                        Exclusive results for East Bridgford
+                      </p>
                       <div className="space-y-2 text-sm text-gray-600">
                         <p>• Village exclusive service</p>
                         <p>• Up to 8 shades lighter</p>
@@ -301,9 +360,12 @@ export default function EastBridgfordTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Village Convenience from East Bridgford</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Village Convenience from East Bridgford
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Professional teeth whitening without the city center hassle. Beautiful countryside route and personal village service.
+                Professional teeth whitening without the city center hassle.
+                Beautiful countryside route and personal village service.
               </p>
             </div>
 
@@ -311,10 +373,13 @@ export default function EastBridgfordTeethWhiteningPage() {
               <Card className="p-6 border border-pear-primary/20">
                 <div className="flex items-center space-x-3 mb-4">
                   <Car className="h-8 w-8 text-pear-primary" />
-                  <h3 className="text-xl font-semibold">5-Minute Village Journey</h3>
+                  <h3 className="text-xl font-semibold">
+                    5-Minute Village Journey
+                  </h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Peaceful countryside route from East Bridgford via A46 and A612. Beautiful village-to-village access.
+                  Peaceful countryside route from East Bridgford via A46 and
+                  A612. Beautiful village-to-village access.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• Scenic countryside route</p>
@@ -329,7 +394,8 @@ export default function EastBridgfordTeethWhiteningPage() {
                   <h3 className="text-xl font-semibold">Village Scheduling</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Flexible appointment times with village priority booking and personal scheduling attention.
+                  Flexible appointment times with village priority booking and
+                  personal scheduling attention.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• Village priority booking</p>
@@ -344,7 +410,8 @@ export default function EastBridgfordTeethWhiteningPage() {
                   <h3 className="text-xl font-semibold">Village Care</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Personal attention and community care that makes every village resident feel valued and special.
+                  Personal attention and community care that makes every village
+                  resident feel valued and special.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• Know you by name service</p>
@@ -362,36 +429,41 @@ export default function EastBridgfordTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">What East Bridgford Village Says</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                What East Bridgford Village Says
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Real reviews from fellow East Bridgford village residents who've transformed their smiles
+                Real reviews from fellow East Bridgford village residents who've
+                transformed their smiles
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {([
-                {
-                  name: "Margaret & Robert Hartley",
-                  location: "East Bridgford Village",
-                  text: "Absolutely wonderful! The personal attention we received was exceptional. Our smiles are 6 shades brighter and the village journey was so peaceful.",
-                  rating: 5,
-                  treatment: "Village Premium Package"
-                },
-                {
-                  name: "Dr. Catherine Williams",
-                  location: "East Bridgford",
-                  text: "Perfect for village life! The team knows me by name and the results exceeded my expectations. Professional service with a personal touch.",
-                  rating: 5,
-                  treatment: "Village Same-Day Whitening"
-                },
-                {
-                  name: "James Thompson",
-                  location: "East Bridgford Village",
-                  text: "The take-home kit was ideal. Personal consultation and follow-up care made all the difference. Genuine village service excellence.",
-                  rating: 5,
-                  treatment: "Village Take-Home Kit"
-                }
-              ] || []).map((review, index) => (
+              {(
+                [
+                  {
+                    name: "Margaret & Robert Hartley",
+                    location: "East Bridgford Village",
+                    text: "Absolutely wonderful! The personal attention we received was exceptional. Our smiles are 6 shades brighter and the village journey was so peaceful.",
+                    rating: 5,
+                    treatment: "Village Premium Package",
+                  },
+                  {
+                    name: "Dr. Catherine Williams",
+                    location: "East Bridgford",
+                    text: "Perfect for village life! The team knows me by name and the results exceeded my expectations. Professional service with a personal touch.",
+                    rating: 5,
+                    treatment: "Village Same-Day Whitening",
+                  },
+                  {
+                    name: "James Thompson",
+                    location: "East Bridgford Village",
+                    text: "The take-home kit was ideal. Personal consultation and follow-up care made all the difference. Genuine village service excellence.",
+                    rating: 5,
+                    treatment: "Village Take-Home Kit",
+                  },
+                ] || []
+              ).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-pear-primary">
@@ -403,9 +475,15 @@ export default function EastBridgfordTeethWhiteningPage() {
                       "{review.text}"
                     </blockquote>
                     <div className="border-t pt-4">
-                      <div className="font-semibold text-pear-primary">{review.name}</div>
-                      <div className="text-sm text-gray-600">{review.location}</div>
-                      <div className="text-sm text-dental-green font-medium">{review.treatment}</div>
+                      <div className="font-semibold text-pear-primary">
+                        {review.name}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        {review.location}
+                      </div>
+                      <div className="text-sm text-dental-green font-medium">
+                        {review.treatment}
+                      </div>
                     </div>
                   </div>
                 </Card>
@@ -423,8 +501,9 @@ export default function EastBridgfordTeethWhiteningPage() {
               Ready to Transform Your Village Smile?
             </h2>
             <p className="text-xl mb-8 text-white/90">
-              Join East Bridgford village residents who've discovered the confidence that comes with a brighter smile
-              and the personal care that village life deserves.
+              Join East Bridgford village residents who've discovered the
+              confidence that comes with a brighter smile and the personal care
+              that village life deserves.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

@@ -1,31 +1,35 @@
+import {
+  ArrowRight,
+  CheckCircle,
+  Shield,
+  Sparkles,
+  Star,
+  Timer,
+  Users,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
-import Link from "next/link";
-import VideoHero from "@/components/VideoHero";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
-  Sparkles,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Users,
-  Shield,
-  Zap,
-  Award,
-  Timer,
-  Coffee
-} from "lucide-react";
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import VideoHero from "@/components/VideoHero";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
-  title: "Professional Teeth Whitening - Transform Your Smile | Pear Tree Dental",
-  description: "Professional teeth whitening in Burton Joyce. Enlighten & Boutique whitening systems available. From £400. Book your consultation today for a brighter smile.",
+  title:
+    "Professional Teeth Whitening - Transform Your Smile | Pear Tree Dental",
+  description:
+    "Professional teeth whitening in Burton Joyce. Enlighten & Boutique whitening systems available. From £400. Book your consultation today for a brighter smile.",
   keywords: [
     "teeth whitening Burton Joyce",
     "professional teeth whitening Nottingham",
@@ -33,41 +37,46 @@ export const metadata: Metadata = {
     "Boutique whitening system",
     "smile whitening Nottinghamshire",
     "teeth bleaching Burton Joyce",
-    "professional whitening treatment"
+    "professional whitening treatment",
   ],
   openGraph: {
     title: "Professional Teeth Whitening | Pear Tree Dental Burton Joyce",
-    description: "Transform your smile with professional teeth whitening. Enlighten & Boutique systems available from £400.",
+    description:
+      "Transform your smile with professional teeth whitening. Enlighten & Boutique systems available from £400.",
     type: "website",
-    url: "https://peartree.dental/services/cosmetic/teeth-whitening"
+    url: "https://peartree.dental/services/cosmetic/teeth-whitening",
   },
   alternates: {
-    canonical: "https://peartree.dental/services/cosmetic/teeth-whitening"
-  }
+    canonical: "https://peartree.dental/services/cosmetic/teeth-whitening",
+  },
 };
 
 export default function TeethWhiteningPage() {
   const whiteningFAQs = [
     {
       question: "How much does professional teeth whitening cost?",
-      answer: `Our professional whitening treatments start from ${getTreatmentPrice("Teeth Whitening")} for our standard system, with Enlighten whitening at ${getTreatmentPrice("Enlighten Whitening")}. We offer payment plans to help spread the cost.`
+      answer: `Our professional whitening treatments start from ${getTreatmentPrice("Teeth Whitening")} for our standard system, with Enlighten whitening at ${getTreatmentPrice("Enlighten Whitening")}. We offer payment plans to help spread the cost.`,
     },
     {
       question: "How long does teeth whitening last?",
-      answer: "Professional whitening results typically last 10+ years depending on your lifestyle habits. Enlighten whitening can provide even longer-lasting results with proper maintenance."
+      answer:
+        "Professional whitening results typically last 10+ years depending on your lifestyle habits. Enlighten whitening can provide even longer-lasting results with proper maintenance.",
     },
     {
       question: "Is teeth whitening safe?",
-      answer: "Yes, professional teeth whitening is completely safe when performed by qualified dental professionals. We use clinically proven systems and monitor your progress throughout treatment."
+      answer:
+        "Yes, professional teeth whitening is completely safe when performed by qualified dental professionals. We use clinically proven systems and monitor your progress throughout treatment.",
     },
     {
       question: "Will teeth whitening work on all stains?",
-      answer: "Professional whitening is most effective on yellow and brown stains from coffee, tea, wine, and aging. Some intrinsic stains may require alternative treatments like veneers."
+      answer:
+        "Professional whitening is most effective on yellow and brown stains from coffee, tea, wine, and aging. Some intrinsic stains may require alternative treatments like veneers.",
     },
     {
       question: "How many shades whiter will my teeth become?",
-      answer: "Most patients achieve 6-8 shades whiter with our standard treatments. Enlighten whitening can achieve even more dramatic results, often up to B1 shade."
-    }
+      answer:
+        "Most patients achieve 6-8 shades whiter with our standard treatments. Enlighten whitening can achieve even more dramatic results, often up to B1 shade.",
+    },
   ];
 
   const whiteningOptions = [
@@ -76,80 +85,90 @@ export default function TeethWhiteningPage() {
       price: getTreatmentPrice("Teeth Whitening"),
       duration: "2-3 weeks",
       shades: "6-8 shades",
-      description: "Professional at-home whitening system with custom-fitted trays",
+      description:
+        "Professional at-home whitening system with custom-fitted trays",
       features: [
         "Custom-made whitening trays",
         "Professional-strength gel",
         "Flexible treatment schedule",
         "Gradual, comfortable whitening",
-        "6-8 shades improvement"
+        "6-8 shades improvement",
       ],
       popular: true,
-      link: "/services/cosmetic/teeth-whitening/boutique"
+      link: "/services/cosmetic/teeth-whitening/boutique",
     },
     {
       name: "Enlighten Whitening",
       price: getTreatmentPrice("Enlighten Whitening"),
       duration: "2 weeks + 1 visit",
       shades: "Up to B1 shade",
-      description: "The most effective whitening system available with guaranteed results",
+      description:
+        "The most effective whitening system available with guaranteed results",
       features: [
         "Guaranteed B1 shade result",
         "Combines home and in-practice treatment",
         "Minimal sensitivity",
         "Long-lasting results",
-        "Gold standard whitening system"
+        "Gold standard whitening system",
       ],
       popular: false,
       premium: true,
-      link: "/services/cosmetic/teeth-whitening/enlighten"
-    }
+      link: "/services/cosmetic/teeth-whitening/enlighten",
+    },
   ];
 
   const benefits = [
     {
       icon: Star,
       title: "Boost Confidence",
-      description: "A brighter smile enhances your confidence in social and professional situations"
+      description:
+        "A brighter smile enhances your confidence in social and professional situations",
     },
     {
       icon: Users,
       title: "Look Younger",
-      description: "Whiter teeth can take years off your appearance and create a more youthful look"
+      description:
+        "Whiter teeth can take years off your appearance and create a more youthful look",
     },
     {
       icon: Shield,
       title: "Safe & Professional",
-      description: "Clinical-grade treatments supervised by qualified dental professionals"
+      description:
+        "Clinical-grade treatments supervised by qualified dental professionals",
     },
     {
       icon: Timer,
       title: "Quick Results",
-      description: "See noticeable improvements in just a few days with professional systems"
-    }
+      description:
+        "See noticeable improvements in just a few days with professional systems",
+    },
   ];
 
   const process = [
     {
       step: "1",
       title: "Consultation",
-      description: "Assessment of your teeth and discussion of your whitening goals"
+      description:
+        "Assessment of your teeth and discussion of your whitening goals",
     },
     {
       step: "2",
       title: "Impressions",
-      description: "Custom trays are made from precise impressions of your teeth"
+      description:
+        "Custom trays are made from precise impressions of your teeth",
     },
     {
       step: "3",
       title: "Treatment Start",
-      description: "Begin your whitening journey with professional-grade gel and custom trays"
+      description:
+        "Begin your whitening journey with professional-grade gel and custom trays",
     },
     {
       step: "4",
       title: "Monitor Progress",
-      description: "Regular check-ins to ensure optimal results and comfort throughout treatment"
-    }
+      description:
+        "Regular check-ins to ensure optimal results and comfort throughout treatment",
+    },
   ];
 
   return (
@@ -167,13 +186,13 @@ export default function TeethWhiteningPage() {
           "Professional supervision",
           "Custom-fitted treatment trays",
           "Long-lasting results",
-          "Boost confidence and appearance"
+          "Boost confidence and appearance",
         ]}
         risks={[
           "Temporary tooth sensitivity",
           "Temporary gum irritation",
           "Not effective on all stain types",
-          "Results vary by individual"
+          "Results vary by individual",
         ]}
         rating={4.9}
         reviewCount={450}
@@ -210,32 +229,42 @@ export default function TeethWhiteningPage() {
                 {/* Results Summary */}
                 <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
                   <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                    <div className="font-semibold text-yellow-600 text-lg">Up to 8 Shades</div>
+                    <div className="font-semibold text-yellow-600 text-lg">
+                      Up to 8 Shades
+                    </div>
                     <div className="text-gray-600">Whiter in weeks</div>
                   </div>
                   <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                    <div className="font-semibold text-yellow-600 text-lg">10+ Years</div>
+                    <div className="font-semibold text-yellow-600 text-lg">
+                      10+ Years
+                    </div>
                     <div className="text-gray-600">Long-lasting</div>
                   </div>
                 </div>
               </div>
 
               {/* Badge - Third on mobile, provides context */}
-              <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
+              <Badge
+                variant="secondary"
+                className="bg-yellow-100 text-yellow-800"
+              >
                 <Sparkles className="w-4 h-4 mr-2" />
                 Professional Teeth Whitening
               </Badge>
 
               {/* Description - Fourth on mobile */}
               <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
-                Transform your smile with professional teeth whitening treatments. Choose from our
-                advanced Boutique or premium Enlighten whitening systems for stunning, long-lasting results.
+                Transform your smile with professional teeth whitening
+                treatments. Choose from our advanced Boutique or premium
+                Enlighten whitening systems for stunning, long-lasting results.
               </p>
 
               {/* Social Proof - Fifth on mobile */}
               <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-white mr-2 fill-current" />
-                <span className="text-sm font-semibold text-white">Over 1,000 satisfied patients</span>
+                <span className="text-sm font-semibold text-white">
+                  Over 1,000 satisfied patients
+                </span>
               </div>
 
               {/* Key Benefits - Sixth on mobile */}
@@ -246,7 +275,9 @@ export default function TeethWhiteningPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-yellow-600" />
-                  <span className="text-sm font-medium">Professional grade</span>
+                  <span className="text-sm font-medium">
+                    Professional grade
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-yellow-600" />
@@ -254,14 +285,19 @@ export default function TeethWhiteningPage() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-yellow-600" />
-                  <span className="text-sm font-medium">Long-lasting results</span>
+                  <span className="text-sm font-medium">
+                    Long-lasting results
+                  </span>
                 </div>
               </div>
 
               {/* CTAs - Seventh on mobile */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold group">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold group"
+                  >
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -281,11 +317,15 @@ export default function TeethWhiteningPage() {
               {/* Results Summary */}
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
                 <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                  <div className="font-semibold text-yellow-600 text-lg">Up to 8 Shades</div>
+                  <div className="font-semibold text-yellow-600 text-lg">
+                    Up to 8 Shades
+                  </div>
                   <div className="text-gray-600">Whiter in weeks</div>
                 </div>
                 <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
-                  <div className="font-semibold text-yellow-600 text-lg">10+ Years</div>
+                  <div className="font-semibold text-yellow-600 text-lg">
+                    10+ Years
+                  </div>
                   <div className="text-gray-600">Long-lasting</div>
                 </div>
               </div>
@@ -302,8 +342,8 @@ export default function TeethWhiteningPage() {
               Choose Your Whitening System
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer two professional whitening systems to suit different needs and budgets,
-              both delivering exceptional results.
+              We offer two professional whitening systems to suit different
+              needs and budgets, both delivering exceptional results.
             </p>
           </div>
 
@@ -312,7 +352,11 @@ export default function TeethWhiteningPage() {
               <Card
                 key={option.name}
                 className={`relative hover:shadow-xl transition-all duration-300 h-full ${
-                  option.popular ? 'border-2 border-yellow-500' : option.premium ? 'border-2 border-orange-500' : ''
+                  option.popular
+                    ? "border-2 border-yellow-500"
+                    : option.premium
+                      ? "border-2 border-orange-500"
+                      : ""
                 }`}
               >
                 {option.popular && (
@@ -326,13 +370,19 @@ export default function TeethWhiteningPage() {
                   </div>
                 )}
 
-                <CardHeader className={option.popular || option.premium ? 'pt-12' : 'pt-6'}>
+                <CardHeader
+                  className={
+                    option.popular || option.premium ? "pt-12" : "pt-6"
+                  }
+                >
                   <div className="flex justify-between items-start mb-4">
                     <CardTitle className="text-2xl font-semibold text-pear-primary">
                       {option.name}
                     </CardTitle>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-yellow-600">{option.price}</div>
+                      <div className="text-3xl font-bold text-yellow-600">
+                        {option.price}
+                      </div>
                     </div>
                   </div>
                   <CardDescription className="text-gray-600 text-lg">
@@ -345,11 +395,15 @@ export default function TeethWhiteningPage() {
                   <div className="grid grid-cols-2 gap-4 p-4 bg-gray-50 rounded-lg">
                     <div>
                       <div className="text-sm text-gray-500">Duration</div>
-                      <div className="font-semibold text-pear-primary">{option.duration}</div>
+                      <div className="font-semibold text-pear-primary">
+                        {option.duration}
+                      </div>
                     </div>
                     <div>
                       <div className="text-sm text-gray-500">Results</div>
-                      <div className="font-semibold text-pear-primary">{option.shades}</div>
+                      <div className="font-semibold text-pear-primary">
+                        {option.shades}
+                      </div>
                     </div>
                   </div>
 
@@ -387,8 +441,9 @@ export default function TeethWhiteningPage() {
               Why Choose Professional Whitening?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional whitening delivers superior results compared to over-the-counter products,
-              with safety and effectiveness you can trust.
+              Professional whitening delivers superior results compared to
+              over-the-counter products, with safety and effectiveness you can
+              trust.
             </p>
           </div>
 
@@ -400,7 +455,9 @@ export default function TeethWhiteningPage() {
                   <div className="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-yellow-600" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {benefit.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{benefit.description}</p>
                 </div>
               );
@@ -417,29 +474,40 @@ export default function TeethWhiteningPage() {
               See the Transformation
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Professional whitening delivers dramatic results that over-the-counter products simply cannot match.
+              Professional whitening delivers dramatic results that
+              over-the-counter products simply cannot match.
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto">
             <BeforeAfterSliderPair
               primarySlider={{
-                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
-                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
-                beforeAlt: "Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections",
-                afterAlt: "Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment",
+                beforeImage:
+                  "/images/before-after/whitening-composite-edge-bonding-before.JPG",
+                afterImage:
+                  "/images/before-after/whitening-composite-edge-bonding-after.JPG",
+                beforeAlt:
+                  "Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections",
+                afterAlt:
+                  "Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment",
                 title: "Professional Whitening & Edge Bonding",
-                description: "Real patient transformation achieved with our professional whitening system and composite edge bonding",
-                treatmentType: "Professional Whitening & Edge Bonding"
+                description:
+                  "Real patient transformation achieved with our professional whitening system and composite edge bonding",
+                treatmentType: "Professional Whitening & Edge Bonding",
               }}
               secondarySlider={{
-                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
-                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
-                beforeAlt: "Before teeth whitening showing stained and discolored teeth",
-                afterAlt: "After professional whitening treatment with brilliant white smile",
+                beforeImage:
+                  "/images/before-after/whitening-composite-edge-bonding-before.JPG",
+                afterImage:
+                  "/images/before-after/whitening-composite-edge-bonding-after.JPG",
+                beforeAlt:
+                  "Before teeth whitening showing stained and discolored teeth",
+                afterAlt:
+                  "After professional whitening treatment with brilliant white smile",
                 title: "Enlighten Whitening Results",
-                description: "Guaranteed shade B1 whitening achieved with our premium Enlighten system",
-                treatmentType: "Enlighten Whitening"
+                description:
+                  "Guaranteed shade B1 whitening achieved with our premium Enlighten system",
+                treatmentType: "Enlighten Whitening",
               }}
               className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6"
             />
@@ -455,8 +523,8 @@ export default function TeethWhiteningPage() {
               Your Whitening Journey
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our simple 4-step process ensures you get the best possible results from your
-              professional whitening treatment.
+              Our simple 4-step process ensures you get the best possible
+              results from your professional whitening treatment.
             </p>
           </div>
 
@@ -467,7 +535,9 @@ export default function TeethWhiteningPage() {
                   <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                     {step.step}
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{step.description}</p>
                 </CardContent>
                 {index < process.length - 1 && (
@@ -490,19 +560,27 @@ export default function TeethWhiteningPage() {
                 Ready for a Brighter Smile?
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Book your free consultation today and discover which whitening system is perfect for you.
-                Start your journey to a more confident, radiant smile.
+                Book your free consultation today and discover which whitening
+                system is perfect for you. Start your journey to a more
+                confident, radiant smile.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-yellow-600 hover:bg-white/90 font-semibold">
+                  <Button
+                    size="lg"
+                    className="bg-white text-yellow-600 hover:bg-white/90 font-semibold"
+                  >
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 font-semibold bg-transparent">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-yellow-600 font-semibold bg-transparent"
+                  >
                     Call 0115 931 2935
                   </Button>
                 </a>

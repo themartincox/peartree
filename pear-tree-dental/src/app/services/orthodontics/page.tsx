@@ -1,33 +1,30 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
-import ServiceHero from "@/components/ServiceHero";
-import { getServiceHeroConfig } from "@/data/serviceHeroes";
-
-import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import {
-  Smile,
-  Star,
+  Award,
+  CalendarDays,
   CheckCircle,
   Clock,
-  Shield,
   Eye,
-  ArrowRight,
-  CalendarDays,
-  Phone,
-  Users,
-  Award,
   Heart,
+  Phone,
+  Shield,
+  Smile,
   Sparkles,
-  TrendingUp
+  Star,
+  TrendingUp, 
+  Users
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
+import ServiceHero from "@/components/ServiceHero";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
 export const metadata: Metadata = {
   title: "Orthodontics Burton Joyce | Invisalign & Clear Aligners | Pear Tree Dental",

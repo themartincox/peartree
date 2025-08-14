@@ -1,29 +1,35 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
 import {
-  Sparkles,
-  Star,
   ArrowRight,
   CheckCircle,
-  Clock,
-  Shield,
-  Users,
   Heart,
+  Shield,
+  Smile,
+  Sparkles,
+  Star,
   Wind,
-  Award,
-  Smile
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, {
+  commonDentalFAQs,
+} from "@/components/seo/ServiceFAQSchema";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Dental Hygiene Services - Professional Cleaning in Burton Joyce",
-  description: "Professional dental hygiene services in Burton Joyce. Scale & polish, Air Flow stain removal, preventive care. Keep your teeth and gums healthy with expert hygiene treatments.",
+  description:
+    "Professional dental hygiene services in Burton Joyce. Scale & polish, Air Flow stain removal, preventive care. Keep your teeth and gums healthy with expert hygiene treatments.",
   keywords: [
     "dental hygiene Burton Joyce",
     "scale and polish Nottingham",
@@ -31,88 +37,111 @@ export const metadata: Metadata = {
     "dental cleaning Nottinghamshire",
     "preventive dental care",
     "gum disease prevention",
-    "professional teeth cleaning"
+    "professional teeth cleaning",
   ],
   openGraph: {
-    title: "Professional Dental Hygiene Services | Pear Tree Dental Burton Joyce",
-    description: "Expert dental hygiene treatments including scale & polish and Air Flow stain removal for optimal oral health.",
+    title:
+      "Professional Dental Hygiene Services | Pear Tree Dental Burton Joyce",
+    description:
+      "Expert dental hygiene treatments including scale & polish and Air Flow stain removal for optimal oral health.",
     type: "website",
-    url: "https://peartree.dental/services/hygiene"
+    url: "https://peartree.dental/services/hygiene",
   },
   alternates: {
-    canonical: "https://peartree.dental/services/hygiene"
-  }
+    canonical: "https://peartree.dental/services/hygiene",
+  },
 };
 
-export default function HygieneServicesPage() {
+export default function HygieneServicesPage(): React.JSX.Element {
   const hygieneFAQs = [
     {
       question: "How often should I have professional dental cleaning?",
-      answer: "Most patients benefit from professional cleaning every 6 months. However, some patients with gum disease or heavy staining may need more frequent visits. Our hygienist will recommend the ideal frequency based on your oral health."
+      answer:
+        "Most patients benefit from professional cleaning every 6 months. However, some patients with gum disease or heavy staining may need more frequent visits. Our hygienist will recommend the ideal frequency based on your oral health.",
     },
     {
       question: "What's the difference between scale & polish and Air Flow?",
-      answer: "Scale & polish removes tartar and plaque using traditional instruments and polishing. Air Flow uses advanced technology to remove stubborn stains and biofilm that traditional cleaning can't reach. Both are important for optimal oral health."
+      answer:
+        "Scale & polish removes tartar and plaque using traditional instruments and polishing. Air Flow uses advanced technology to remove stubborn stains and biofilm that traditional cleaning can't reach. Both are important for optimal oral health.",
     },
     {
       question: "Is professional dental cleaning painful?",
-      answer: "Professional cleaning is generally comfortable. Some patients may experience mild sensitivity, especially if they have gum inflammation. We use gentle techniques and can provide numbing gel if needed for comfort."
+      answer:
+        "Professional cleaning is generally comfortable. Some patients may experience mild sensitivity, especially if they have gum inflammation. We use gentle techniques and can provide numbing gel if needed for comfort.",
     },
     {
       question: "Can hygiene treatment help with bad breath?",
-      answer: "Yes! Professional cleaning removes bacteria and plaque that cause bad breath. Regular hygiene appointments, combined with good home care, significantly improve breath freshness and oral health."
+      answer:
+        "Yes! Professional cleaning removes bacteria and plaque that cause bad breath. Regular hygiene appointments, combined with good home care, significantly improve breath freshness and oral health.",
     },
     {
       question: "What should I expect during a hygiene appointment?",
-      answer: "Your appointment includes examination of teeth and gums, removal of plaque and tartar, polishing, and personalized advice on home care. We may also apply fluoride treatment for additional protection."
+      answer:
+        "Your appointment includes examination of teeth and gums, removal of plaque and tartar, polishing, and personalized advice on home care. We may also apply fluoride treatment for additional protection.",
     },
-    commonDentalFAQs.insurance
+    commonDentalFAQs.insurance,
   ];
 
   const services = [
     {
       name: "Scale & Polish",
-      description: "Professional removal of plaque and tartar with polishing for smooth, clean teeth",
+      description:
+        "Professional removal of plaque and tartar with polishing for smooth, clean teeth",
       price: getTreatmentPrice("Scale and Polish (Hygienist)"),
       duration: "30-45 minutes",
-      benefits: ["Removes plaque & tartar", "Polishes teeth", "Prevents gum disease", "Fresh breath"],
+      benefits: [
+        "Removes plaque & tartar",
+        "Polishes teeth",
+        "Prevents gum disease",
+        "Fresh breath",
+      ],
       popular: true,
       link: "/services/hygiene/scale-polish",
-      icon: Sparkles
+      icon: Sparkles,
     },
     {
       name: "Air Flow Stain Removal",
-      description: "Advanced stain removal system for stubborn coffee, tea, wine, and tobacco stains",
+      description:
+        "Advanced stain removal system for stubborn coffee, tea, wine, and tobacco stains",
       price: getTreatmentPrice("Air Flow Stain Removal"),
       duration: "30-45 minutes",
-      benefits: ["Removes stubborn stains", "Gentle on enamel", "Instant results", "No harsh scraping"],
+      benefits: [
+        "Removes stubborn stains",
+        "Gentle on enamel",
+        "Instant results",
+        "No harsh scraping",
+      ],
       popular: false,
       link: "/services/hygiene/airflow-stain-removal",
-      icon: Wind
-    }
+      icon: Wind,
+    },
   ];
 
   const benefits = [
     {
       icon: Shield,
       title: "Prevent Gum Disease",
-      description: "Regular cleaning prevents gingivitis and periodontitis, protecting your gums"
+      description:
+        "Regular cleaning prevents gingivitis and periodontitis, protecting your gums",
     },
     {
       icon: Sparkles,
       title: "Remove Stains",
-      description: "Professional cleaning removes surface stains for a brighter smile"
+      description:
+        "Professional cleaning removes surface stains for a brighter smile",
     },
     {
       icon: Heart,
       title: "Improve Overall Health",
-      description: "Good oral hygiene is linked to better heart health and overall wellbeing"
+      description:
+        "Good oral hygiene is linked to better heart health and overall wellbeing",
     },
     {
       icon: Smile,
       title: "Fresh Breath",
-      description: "Eliminate bacteria and plaque that cause persistent bad breath"
-    }
+      description:
+        "Eliminate bacteria and plaque that cause persistent bad breath",
+    },
   ];
 
   const whyChooseUs = [
@@ -123,30 +152,33 @@ export default function HygieneServicesPage() {
     "Flexible appointment times",
     "Membership plans available",
     "Modern, clean environment",
-    "Focus on preventive care"
+    "Focus on preventive care",
   ];
 
   const process = [
     {
       step: "1",
       title: "Assessment",
-      description: "Thorough examination of your teeth, gums, and oral health status"
+      description:
+        "Thorough examination of your teeth, gums, and oral health status",
     },
     {
       step: "2",
       title: "Professional Cleaning",
-      description: "Removal of plaque, tartar, and stains using appropriate techniques"
+      description:
+        "Removal of plaque, tartar, and stains using appropriate techniques",
     },
     {
       step: "3",
       title: "Polishing",
-      description: "Smooth polishing to remove surface stains and bacteria"
+      description: "Smooth polishing to remove surface stains and bacteria",
     },
     {
       step: "4",
       title: "Education",
-      description: "Personalized advice on home care and maintaining oral health"
-    }
+      description:
+        "Personalized advice on home care and maintaining oral health",
+    },
   ];
 
   return (
@@ -165,13 +197,13 @@ export default function HygieneServicesPage() {
           "Removes plaque and tartar",
           "Eliminates surface stains",
           "Improves breath freshness",
-          "Maintains oral health"
+          "Maintains oral health",
         ]}
         risks={[
           "Mild temporary sensitivity",
           "Slight gum irritation possible",
           "Not suitable during pregnancy (Air Flow)",
-          "May cause minor bleeding if gums inflamed"
+          "May cause minor bleeding if gums inflamed",
         ]}
         rating={4.8}
         reviewCount={250}
@@ -200,21 +232,26 @@ export default function HygieneServicesPage() {
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
-                Maintain optimal oral health with our professional hygiene services.
-                From routine scale & polish to advanced Air Flow stain removal.
+                Maintain optimal oral health with our professional hygiene
+                services. From routine scale & polish to advanced Air Flow stain
+                removal.
               </p>
 
               {/* Social Proof */}
               <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
-                <span className="text-sm font-semibold text-pear-gold">Trusted hygiene care for over 15 years</span>
+                <span className="text-sm font-semibold text-pear-gold">
+                  Trusted hygiene care for over 15 years
+                </span>
               </div>
 
               {/* Key Benefits */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-cyan-600" />
-                  <span className="text-sm font-medium">Prevent gum disease</span>
+                  <span className="text-sm font-medium">
+                    Prevent gum disease
+                  </span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="w-5 h-5 text-cyan-600" />
@@ -232,11 +269,18 @@ export default function HygieneServicesPage() {
 
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold group">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold group"
+                >
                   Book Hygiene Appointment
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-cyan-500 text-cyan-600 hover:bg-cyan-500 hover:text-white">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-cyan-500 text-cyan-600 hover:bg-cyan-500 hover:text-white"
+                >
                   Call 0115 931 2935
                 </Button>
               </div>
@@ -246,22 +290,32 @@ export default function HygieneServicesPage() {
             <div className="relative">
               <Card className="bg-gradient-to-br from-cyan-100 to-blue-100 p-8 h-96">
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-semibold text-pear-primary">Healthy Gums, Healthy Life</h3>
+                  <h3 className="text-2xl font-semibold text-pear-primary">
+                    Healthy Gums, Healthy Life
+                  </h3>
                   <p className="text-gray-600">
-                    Professional hygiene care is essential for preventing gum disease,
-                    maintaining fresh breath, and supporting your overall health.
+                    Professional hygiene care is essential for preventing gum
+                    disease, maintaining fresh breath, and supporting your
+                    overall health.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-cyan-600">Every 6 months</div>
+                      <div className="font-semibold text-cyan-600">
+                        Every 6 months
+                      </div>
                       <div className="text-gray-600">Recommended frequency</div>
                     </div>
                     <div className="bg-white/50 p-3 rounded-lg">
-                      <div className="font-semibold text-cyan-600">30-45 mins</div>
+                      <div className="font-semibold text-cyan-600">
+                        30-45 mins
+                      </div>
                       <div className="text-gray-600">Appointment time</div>
                     </div>
                   </div>
-                  <Button variant="secondary" className="bg-white text-cyan-600 hover:bg-white/90">
+                  <Button
+                    variant="secondary"
+                    className="bg-white text-cyan-600 hover:bg-white/90"
+                  >
                     Learn More About Benefits
                   </Button>
                 </div>
@@ -291,7 +345,7 @@ export default function HygieneServicesPage() {
                 <Card
                   key={service.name}
                   className={`relative hover:shadow-xl transition-all duration-300 h-full ${
-                    service.popular ? 'border-2 border-cyan-500' : ''
+                    service.popular ? "border-2 border-cyan-500" : ""
                   }`}
                 >
                   {service.popular && (
@@ -300,7 +354,7 @@ export default function HygieneServicesPage() {
                     </div>
                   )}
 
-                  <CardHeader className={service.popular ? 'pt-12' : 'pt-6'}>
+                  <CardHeader className={service.popular ? "pt-12" : "pt-6"}>
                     <div className="flex items-center space-x-3 mb-4">
                       <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center">
                         <Icon className="w-6 h-6 text-cyan-600" />
@@ -309,7 +363,10 @@ export default function HygieneServicesPage() {
                         <CardTitle className="text-xl font-semibold text-pear-primary">
                           {service.name}
                         </CardTitle>
-                        <Badge variant="outline" className="text-cyan-600 border-cyan-600 mt-1">
+                        <Badge
+                          variant="outline"
+                          className="text-cyan-600 border-cyan-600 mt-1"
+                        >
                           {service.price}
                         </Badge>
                       </div>
@@ -321,17 +378,25 @@ export default function HygieneServicesPage() {
 
                   <CardContent className="space-y-6">
                     <div className="text-sm text-gray-500">
-                      <span className="font-medium">Duration:</span> {service.duration}
+                      <span className="font-medium">Duration:</span>{" "}
+                      {service.duration}
                     </div>
 
                     {/* Benefits */}
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-pear-primary">Benefits:</h4>
+                      <h4 className="font-semibold text-pear-primary">
+                        Benefits:
+                      </h4>
                       <div className="grid grid-cols-2 gap-2">
                         {(service.benefits || []).map((benefit, index) => (
-                          <div key={index} className="flex items-center space-x-2">
+                          <div
+                            key={index}
+                            className="flex items-center space-x-2"
+                          >
                             <CheckCircle className="w-4 h-4 text-cyan-600 flex-shrink-0" />
-                            <span className="text-sm text-gray-700">{benefit}</span>
+                            <span className="text-sm text-gray-700">
+                              {benefit}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -362,8 +427,8 @@ export default function HygieneServicesPage() {
               Why Professional Hygiene Matters
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Regular professional hygiene care does more than keep your mouth clean -
-              it protects your overall health and wellbeing.
+              Regular professional hygiene care does more than keep your mouth
+              clean - it protects your overall health and wellbeing.
             </p>
           </div>
 
@@ -375,7 +440,9 @@ export default function HygieneServicesPage() {
                   <div className="w-16 h-16 bg-cyan-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-cyan-600" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {benefit.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{benefit.description}</p>
                 </div>
               );
@@ -392,14 +459,17 @@ export default function HygieneServicesPage() {
               Why Choose Our Hygiene Services?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the difference that expert hygiene care can make
-              to your oral health and confidence.
+              Experience the difference that expert hygiene care can make to
+              your oral health and confidence.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {(whyChooseUs || []).map((reason, index) => (
-              <div key={index} className="flex items-center space-x-3 bg-cyan-50 p-4 rounded-lg">
+              <div
+                key={index}
+                className="flex items-center space-x-3 bg-cyan-50 p-4 rounded-lg"
+              >
                 <CheckCircle className="w-5 h-5 text-cyan-600 flex-shrink-0" />
                 <span className="text-gray-700">{reason}</span>
               </div>
@@ -416,8 +486,8 @@ export default function HygieneServicesPage() {
               What to Expect
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive hygiene appointments follow a proven process
-              to ensure optimal results and your comfort.
+              Our comprehensive hygiene appointments follow a proven process to
+              ensure optimal results and your comfort.
             </p>
           </div>
 
@@ -428,7 +498,9 @@ export default function HygieneServicesPage() {
                   <div className="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                     {step.step}
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{step.description}</p>
                 </CardContent>
                 {index < process.length - 1 && (
@@ -451,19 +523,27 @@ export default function HygieneServicesPage() {
                 Book Your Hygiene Appointment
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Take the first step towards optimal oral health. Our expert hygienists
-                are ready to help you maintain a healthy, beautiful smile.
+                Take the first step towards optimal oral health. Our expert
+                hygienists are ready to help you maintain a healthy, beautiful
+                smile.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-cyan-600 hover:bg-white/90 font-semibold">
+                  <Button
+                    size="lg"
+                    className="bg-white text-cyan-600 hover:bg-white/90 font-semibold"
+                  >
                     Book Hygiene Appointment
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-600">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-white hover:bg-white hover:text-cyan-600"
+                  >
                     Call 0115 931 2935
                   </Button>
                 </a>

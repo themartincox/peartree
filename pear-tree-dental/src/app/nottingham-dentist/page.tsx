@@ -1,53 +1,53 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
   Award,
-  Users,
-  Heart,
-  Zap,
-  Eye,
-  Sparkles,
   Building2,
-  ThumbsUp,
-  Trophy,
+  CheckCircle,
+  Clock,
+  Eye,
+  Heart,
+  MapPin,
+  Phone,
+  Shield,
+  Smile,
+  Sparkles,
+  Star,
   Target,
-  Smile
-} from 'lucide-react';
+  Trophy,
+  Users,
+  Zap,
+} from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: 'Best Dentist Nottingham - Pear Tree Dental | Award-Winning Dental Care',
-  description: 'Discover why Pear Tree Dental is rated the best dentist in Nottingham. Modern facilities, expert team, membership plans from £10.95/month. Book your appointment today.',
+  title:
+    "Best Dentist Nottingham - Pear Tree Dental | Award-Winning Dental Care",
+  description:
+    "Discover why Pear Tree Dental is rated the best dentist in Nottingham. Modern facilities, expert team, membership plans from £10.95/month. Book your appointment today.",
   keywords: [
-    'dentist Nottingham',
-    'best dentist Nottingham',
-    'dental practice Nottingham',
-    'private dentist Nottingham',
-    'family dentist Nottingham',
-    'cosmetic dentist Nottingham',
-    'emergency dentist Nottingham',
-    'dental care Nottingham',
-    'teeth cleaning Nottingham',
-    'dental check up Nottingham'
+    "dentist Nottingham",
+    "best dentist Nottingham",
+    "dental practice Nottingham",
+    "private dentist Nottingham",
+    "family dentist Nottingham",
+    "cosmetic dentist Nottingham",
+    "emergency dentist Nottingham",
+    "dental care Nottingham",
+    "teeth cleaning Nottingham",
+    "dental check up Nottingham",
   ],
   openGraph: {
-    title: 'Best Dentist Nottingham - Pear Tree Dental | Award-Winning Dental Care',
-    description: 'Discover why Pear Tree Dental is rated the best dentist in Nottingham. Modern facilities, expert team, and comprehensive dental care.',
-    url: 'https://peartree.dental/nottingham-dentist'
+    title:
+      "Best Dentist Nottingham - Pear Tree Dental | Award-Winning Dental Care",
+    description:
+      "Discover why Pear Tree Dental is rated the best dentist in Nottingham. Modern facilities, expert team, and comprehensive dental care.",
+    url: "https://peartree.dental/nottingham-dentist",
   },
   alternates: {
-    canonical: 'https://peartree.dental/nottingham-dentist'
-  }
+    canonical: "https://peartree.dental/nottingham-dentist",
+  },
 };
 
 export default function NottinghamDentistPage() {
@@ -61,69 +61,69 @@ export default function NottinghamDentistPage() {
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
             "@id": "https://peartree.dental/nottingham-dentist",
-            "name": "Pear Tree Dental - Best Dentist Nottingham",
-            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
-            "description": "Award-winning dental practice serving Nottingham. Comprehensive dental care with modern facilities, expert team, and affordable membership plans.",
-            "url": "https://peartree.dental/nottingham-dentist",
-            "telephone": "+441159312935",
-            "priceRange": "££",
-            "address": {
+            name: "Pear Tree Dental - Best Dentist Nottingham",
+            image:
+              "https://peartree.dental/images/pear-tree-dental-practice.jpg",
+            description:
+              "Award-winning dental practice serving Nottingham. Comprehensive dental care with modern facilities, expert team, and affordable membership plans.",
+            url: "https://peartree.dental/nottingham-dentist",
+            telephone: "+441159312935",
+            priceRange: "££",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "GB"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "GB",
             },
-            "geo": {
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.9833,
-              "longitude": -1.0833
+              latitude: 52.9833,
+              longitude: -1.0833,
             },
-            "openingHours": [
-              "Mo-Fr 08:30-17:30",
-              "Sa 08:30-14:00"
-            ],
-            "medicalSpecialty": [
+            openingHours: ["Mo-Fr 08:30-17:30", "Sa 08:30-14:00"],
+            medicalSpecialty: [
               "General Dentistry",
               "Cosmetic Dentistry",
               "Orthodontics",
               "Dental Implants",
-              "Emergency Dentistry"
+              "Emergency Dentistry",
             ],
-            "serviceArea": {
+            serviceArea: {
               "@type": "City",
-              "name": "Nottingham"
+              name: "Nottingham",
             },
-            "aggregateRating": {
+            aggregateRating: {
               "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "reviewCount": "245",
-              "bestRating": "5"
+              ratingValue: "4.9",
+              reviewCount: "245",
+              bestRating: "5",
             },
-            "hasOfferCatalog": {
+            hasOfferCatalog: {
               "@type": "OfferCatalog",
-              "name": "Dental Services",
-              "itemListElement": [
+              name: "Dental Services",
+              itemListElement: [
                 {
                   "@type": "Offer",
-                  "itemOffered": {
+                  itemOffered: {
                     "@type": "MedicalProcedure",
-                    "name": "Dental Membership Plans",
-                    "description": "Affordable membership plans from £10.95/month"
-                  }
+                    name: "Dental Membership Plans",
+                    description:
+                      "Affordable membership plans from £10.95/month",
+                  },
                 },
                 {
                   "@type": "Offer",
-                  "itemOffered": {
+                  itemOffered: {
                     "@type": "MedicalProcedure",
-                    "name": "Emergency Dental Care",
-                    "description": "Same-day emergency appointments available"
-                  }
-                }
-              ]
-            }
-          })
+                    name: "Emergency Dental Care",
+                    description: "Same-day emergency appointments available",
+                  },
+                },
+              ],
+            },
+          }),
         }}
       />
 
@@ -138,7 +138,7 @@ export default function NottinghamDentistPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Best Dentist in{' '}
+              Best Dentist in{" "}
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
@@ -165,9 +165,7 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="border-dental-green text-dental-green hover:bg-dental-green hover:text-dental-navy px-8 py-4"
               >
-                <Link href="/membership">
-                  View Membership Plans
-                </Link>
+                <Link href="/membership">View Membership Plans</Link>
               </Button>
             </div>
 
@@ -206,7 +204,9 @@ export default function NottinghamDentistPage() {
               Why Pear Tree Dental is Nottingham's Premier Choice
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Discover what sets us apart from other dental practices in Nottingham and why patients consistently choose us for their dental care.
+              Discover what sets us apart from other dental practices in
+              Nottingham and why patients consistently choose us for their
+              dental care.
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -215,25 +215,35 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Building2 className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">State-of-the-Art Facility</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    State-of-the-Art Facility
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Latest digital dental technology</span>
+                      <span className="text-sm">
+                        Latest digital dental technology
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Modern, comfortable treatment rooms</span>
+                      <span className="text-sm">
+                        Modern, comfortable treatment rooms
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Advanced sterilisation systems</span>
+                      <span className="text-sm">
+                        Advanced sterilisation systems
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Relaxing patient environment</span>
+                      <span className="text-sm">
+                        Relaxing patient environment
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -244,7 +254,9 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">Expert Dental Team</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    Expert Dental Team
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -254,7 +266,9 @@ export default function NottinghamDentistPage() {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Ongoing professional development</span>
+                      <span className="text-sm">
+                        Ongoing professional development
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
@@ -262,7 +276,9 @@ export default function NottinghamDentistPage() {
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Specialist treatment options</span>
+                      <span className="text-sm">
+                        Specialist treatment options
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -273,13 +289,17 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Heart className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">Affordable Membership</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    Affordable Membership
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Plans from just £10.95/month</span>
+                      <span className="text-sm">
+                        Plans from just £10.95/month
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
@@ -302,17 +322,23 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">Emergency Care</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    Emergency Care
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Same-day emergency appointments</span>
+                      <span className="text-sm">
+                        Same-day emergency appointments
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">24/7 emergency advice line</span>
+                      <span className="text-sm">
+                        24/7 emergency advice line
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
@@ -331,13 +357,17 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">Convenient Location</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    Convenient Location
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">15 minutes from Nottingham centre</span>
+                      <span className="text-sm">
+                        15 minutes from Nottingham centre
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
@@ -360,13 +390,17 @@ export default function NottinghamDentistPage() {
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-xl text-dental-green">Comprehensive Services</CardTitle>
+                  <CardTitle className="text-xl text-dental-green">
+                    Comprehensive Services
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">General & preventive dentistry</span>
+                      <span className="text-sm">
+                        General & preventive dentistry
+                      </span>
                     </div>
                     <div className="flex items-start space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green mt-0.5 flex-shrink-0" />
@@ -486,11 +520,14 @@ export default function NottinghamDentistPage() {
                     ))}
                   </div>
                   <p className="text-gray-600 mb-4">
-                    "Outstanding dental care! The team at Pear Tree Dental made my treatment comfortable and stress-free.
-                    Best dentist I've ever been to in Nottingham."
+                    "Outstanding dental care! The team at Pear Tree Dental made
+                    my treatment comfortable and stress-free. Best dentist I've
+                    ever been to in Nottingham."
                   </p>
                   <div className="font-semibold">Sarah M.</div>
-                  <div className="text-sm text-gray-500">Nottingham City Centre</div>
+                  <div className="text-sm text-gray-500">
+                    Nottingham City Centre
+                  </div>
                 </CardContent>
               </Card>
 
@@ -502,8 +539,9 @@ export default function NottinghamDentistPage() {
                     ))}
                   </div>
                   <p className="text-gray-600 mb-4">
-                    "The membership plan is fantastic value! Regular check-ups and cleanings without the worry of
-                    unexpected bills. Highly recommend to anyone in Nottingham."
+                    "The membership plan is fantastic value! Regular check-ups
+                    and cleanings without the worry of unexpected bills. Highly
+                    recommend to anyone in Nottingham."
                   </p>
                   <div className="font-semibold">James T.</div>
                   <div className="text-sm text-gray-500">West Bridgford</div>
@@ -518,8 +556,9 @@ export default function NottinghamDentistPage() {
                     ))}
                   </div>
                   <p className="text-gray-600 mb-4">
-                    "Amazing cosmetic work! My smile makeover exceeded all expectations. The whole family now comes here.
-                    Simply the best dental practice in Nottingham."
+                    "Amazing cosmetic work! My smile makeover exceeded all
+                    expectations. The whole family now comes here. Simply the
+                    best dental practice in Nottingham."
                   </p>
                   <div className="font-semibold">Emma R.</div>
                   <div className="text-sm text-gray-500">Beeston</div>
@@ -534,9 +573,7 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white"
               >
-                <Link href="/testimonials">
-                  Read More Reviews
-                </Link>
+                <Link href="/testimonials">Read More Reviews</Link>
               </Button>
             </div>
           </div>
@@ -556,59 +593,87 @@ export default function NottinghamDentistPage() {
                 <thead>
                   <tr className="bg-dental-green text-white">
                     <th className="py-4 px-6 text-left">Features</th>
-                    <th className="py-4 px-6 text-center font-bold">Pear Tree Dental</th>
+                    <th className="py-4 px-6 text-center font-bold">
+                      Pear Tree Dental
+                    </th>
                     <th className="py-4 px-6 text-center">Other Practices</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">Membership Plans Available</td>
+                    <td className="py-4 px-6 font-medium">
+                      Membership Plans Available
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Limited</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Limited
+                    </td>
                   </tr>
                   <tr className="border-b bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Same-Day Emergency Appointments</td>
+                    <td className="py-4 px-6 font-medium">
+                      Same-Day Emergency Appointments
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Variable</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Variable
+                    </td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-6 font-medium">Free Parking</td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Rarely</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Rarely
+                    </td>
                   </tr>
                   <tr className="border-b bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Latest Digital Technology</td>
+                    <td className="py-4 px-6 font-medium">
+                      Latest Digital Technology
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Mixed</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Mixed
+                    </td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">Transparent Pricing</td>
+                    <td className="py-4 px-6 font-medium">
+                      Transparent Pricing
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Often Hidden</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Often Hidden
+                    </td>
                   </tr>
                   <tr className="border-b bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Comfortable Environment</td>
+                    <td className="py-4 px-6 font-medium">
+                      Comfortable Environment
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Standard</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Standard
+                    </td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium">Family-Friendly Approach</td>
+                    <td className="py-4 px-6 font-medium">
+                      Family-Friendly Approach
+                    </td>
                     <td className="py-4 px-6 text-center">
                       <CheckCircle className="w-5 h-5 text-dental-green mx-auto" />
                     </td>
-                    <td className="py-4 px-6 text-center text-gray-400">Variable</td>
+                    <td className="py-4 px-6 text-center text-gray-400">
+                      Variable
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -625,13 +690,16 @@ export default function NottinghamDentistPage() {
               Affordable Membership Plans for Nottingham Residents
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Our membership plans make quality dental care accessible and affordable for everyone in Nottingham.
+              Our membership plans make quality dental care accessible and
+              affordable for everyone in Nottingham.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="p-6 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-dental-green">Essential Care</CardTitle>
+                  <CardTitle className="text-2xl text-dental-green">
+                    Essential Care
+                  </CardTitle>
                   <div className="text-3xl font-bold mt-2">£10.95</div>
                   <div className="text-gray-600">/month</div>
                 </CardHeader>
@@ -660,7 +728,9 @@ export default function NottinghamDentistPage() {
                   </span>
                 </div>
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-dental-green">Complete Care</CardTitle>
+                  <CardTitle className="text-2xl text-dental-green">
+                    Complete Care
+                  </CardTitle>
                   <div className="text-3xl font-bold mt-2">£19.95</div>
                   <div className="text-gray-600">/month</div>
                 </CardHeader>
@@ -684,7 +754,9 @@ export default function NottinghamDentistPage() {
 
               <Card className="p-6 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl text-dental-green">Family Plan</CardTitle>
+                  <CardTitle className="text-2xl text-dental-green">
+                    Family Plan
+                  </CardTitle>
                   <div className="text-3xl font-bold mt-2">£49.50</div>
                   <div className="text-gray-600">/month</div>
                 </CardHeader>
@@ -692,7 +764,9 @@ export default function NottinghamDentistPage() {
                   <ul className="space-y-3">
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green" />
-                      <span className="text-sm">Covers 2 adults + children</span>
+                      <span className="text-sm">
+                        Covers 2 adults + children
+                      </span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green" />
@@ -700,7 +774,9 @@ export default function NottinghamDentistPage() {
                     </li>
                     <li className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-dental-green" />
-                      <span className="text-sm">Family appointment priority</span>
+                      <span className="text-sm">
+                        Family appointment priority
+                      </span>
                     </li>
                   </ul>
                 </CardContent>
@@ -713,9 +789,7 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8 py-4"
               >
-                <Link href="/membership">
-                  View All Membership Plans
-                </Link>
+                <Link href="/membership">View All Membership Plans</Link>
               </Button>
             </div>
           </div>
@@ -730,8 +804,9 @@ export default function NottinghamDentistPage() {
               Ready to Experience Nottingham's Best Dental Care?
             </h2>
             <p className="text-xl mb-8">
-              Join over 2,000 satisfied patients who trust Pear Tree Dental for their dental health.
-              Book your appointment today and discover the difference.
+              Join over 2,000 satisfied patients who trust Pear Tree Dental for
+              their dental health. Book your appointment today and discover the
+              difference.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -751,9 +826,7 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-dental-green px-8 py-4"
               >
-                <Link href="/contact">
-                  Book Online Appointment
-                </Link>
+                <Link href="/contact">Book Online Appointment</Link>
               </Button>
             </div>
 
@@ -764,11 +837,15 @@ export default function NottinghamDentistPage() {
                   Practice Location
                 </h3>
                 <p className="text-sm opacity-90">
-                  22 Nottingham Road<br />
-                  Burton Joyce<br />
-                  Nottinghamshire NG14 5AE<br />
+                  22 Nottingham Road
                   <br />
-                  Just 15 minutes from Nottingham city centre<br />
+                  Burton Joyce
+                  <br />
+                  Nottinghamshire NG14 5AE
+                  <br />
+                  <br />
+                  Just 15 minutes from Nottingham city centre
+                  <br />
                   Free parking available
                 </p>
               </div>

@@ -1,20 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { MessageCircle, X, Send, Phone, User, Clock, Minimize2, Maximize2 } from "lucide-react";
+import { Maximize2, MessageCircle, Minimize2, Send, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
+
 // Avatar component not used to avoid import issues
 
 interface Message {
   id: string;
-  sender: 'user' | 'agent';
+  sender: "user" | "agent";
   message: string;
   timestamp: Date;
-  type?: 'text' | 'system' | 'quick-reply';
+  type?: "text" | "system" | "quick-reply";
 }
 
 interface LiveChatWidgetProps {
@@ -24,7 +23,7 @@ interface LiveChatWidgetProps {
 
 export default function LiveChatWidget({
   position = "bottom-left",
-  className = ""
+  className = "",
 }: LiveChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -32,7 +31,9 @@ export default function LiveChatWidget({
   const [newMessage, setNewMessage] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [userInfo, setUserInfo] = useState({ name: "", email: "", phone: "" });
-  const [chatStage, setChatStage] = useState<'welcome' | 'info' | 'chat'>('welcome');
+  const [chatStage, setChatStage] = useState<"welcome" | "info" | "chat">(
+    "welcome",
+  );
   const [currentPage, setCurrentPage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -47,39 +48,51 @@ export default function LiveChatWidget({
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [scrollToBottom]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const addMessage = (message: string, sender: 'user' | 'agent', type: 'text' | 'system' | 'quick-reply' = 'text') => {
+  const addMessage = (
+    message: string,
+    sender: "user" | "agent",
+    type: "text" | "system" | "quick-reply" = "text",
+  ) => {
     const newMsg: Message = {
       id: Math.random().toString(36).substr(2, 9),
       sender,
       message,
       timestamp: new Date(),
-      type
+      type,
     };
-    setMessages(prev => [...prev, newMsg]);
+    setMessages((prev) => [...prev, newMsg]);
   };
 
   const handleWelcomeStart = () => {
-    setChatStage('info');
-    addMessage("Welcome to Pear Tree Dental! I'm here to help you. To get started, could you please share your details?", 'agent', 'system');
+    setChatStage("info");
+    addMessage(
+      "Welcome to Pear Tree Dental! I'm here to help you. To get started, could you please share your details?",
+      "agent",
+      "system",
+    );
   };
 
   const handleInfoSubmit = () => {
     if (userInfo.name && userInfo.email) {
-      setChatStage('chat');
-      addMessage(`Thank you ${userInfo.name}! I'm Jav, your virtual dental assistant. How can I help you today?`, 'agent', 'system');
+      setChatStage("chat");
+      addMessage(
+        `Thank you ${userInfo.name}! I'm Jav, your virtual dental assistant. How can I help you today?`,
+        "agent",
+        "system",
+      );
 
       // Add context-aware quick replies based on current page
       setTimeout(() => {
         const quickReplies = getContextualQuickReplies();
         quickReplies.forEach((reply, index) => {
           setTimeout(() => {
-            addMessage(reply, 'agent', 'quick-reply');
+            addMessage(reply, "agent", "quick-reply");
           }, index * 500);
         });
       }, 1000);
@@ -87,35 +100,38 @@ export default function LiveChatWidget({
   };
 
   const getContextualQuickReplies = () => {
-    if (currentPage.includes('/services/emergency') || currentPage.includes('/urgent')) {
+    if (
+      currentPage.includes("/services/emergency") ||
+      currentPage.includes("/urgent")
+    ) {
       return [
         "I need emergency dental care",
         "I have severe tooth pain",
-        "I broke a tooth"
+        "I broke a tooth",
       ];
     }
 
-    if (currentPage.includes('/services/cosmetic')) {
+    if (currentPage.includes("/services/cosmetic")) {
       return [
         "Tell me about teeth whitening",
         "I want information about veneers",
-        "What cosmetic treatments do you offer?"
+        "What cosmetic treatments do you offer?",
       ];
     }
 
-    if (currentPage.includes('/services/implants')) {
+    if (currentPage.includes("/services/implants")) {
       return [
         "How much do dental implants cost?",
         "Am I suitable for implants?",
-        "What's the implant process?"
+        "What's the implant process?",
       ];
     }
 
-    if (currentPage.includes('/membership')) {
+    if (currentPage.includes("/membership")) {
       return [
         "Tell me about membership plans",
         "What's included in the £10.95 plan?",
-        "How do I sign up for membership?"
+        "How do I sign up for membership?",
       ];
     }
 
@@ -123,13 +139,13 @@ export default function LiveChatWidget({
       "I'd like to book an appointment",
       "I'm a new patient",
       "What are your opening hours?",
-      "Do you accept NHS patients?"
+      "Do you accept NHS patients?",
     ];
   };
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      addMessage(newMessage, 'user');
+      addMessage(newMessage, "user");
       setNewMessage("");
 
       // Simulate agent typing
@@ -142,7 +158,7 @@ export default function LiveChatWidget({
   };
 
   const handleQuickReply = (reply: string) => {
-    addMessage(reply, 'user');
+    addMessage(reply, "user");
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
@@ -153,26 +169,64 @@ export default function LiveChatWidget({
   const handleAgentResponse = (userMessage: string) => {
     const lowerMessage = userMessage.toLowerCase();
 
-    if (lowerMessage.includes('emergency') || lowerMessage.includes('pain') || lowerMessage.includes('urgent')) {
-      addMessage("I understand you need urgent care. Please call our emergency line immediately at 0115 931 2935. If it's outside hours, we have an emergency dentist on call. Would you like me to help you with anything else while you're here?", 'agent');
-    } else if (lowerMessage.includes('appointment') || lowerMessage.includes('book')) {
-      addMessage("I'd be happy to help you book an appointment! We have availability this week. You can call us at 0115 931 2935 or would you prefer to share your preferred day/time and I'll check our availability?", 'agent');
-    } else if (lowerMessage.includes('cost') || lowerMessage.includes('price') || lowerMessage.includes('how much')) {
-      addMessage("Our treatment costs vary depending on your specific needs. We offer free consultations to assess your requirements and provide accurate pricing. We also have membership plans starting from £10.95/month. Would you like to book a consultation?", 'agent');
-    } else if (lowerMessage.includes('membership') || lowerMessage.includes('plan')) {
-      addMessage("Our membership plans are great value! Starting from £10.95/month, they include check-ups, hygienist visits, and discounts on treatments. Would you like me to explain the different plan options?", 'agent');
-    } else if (lowerMessage.includes('hours') || lowerMessage.includes('open')) {
-      addMessage("We're open Monday to Friday 8:00AM-6:00PM, and Saturday 8:00AM-2:00PM. We're closed Sundays. We also offer emergency appointments outside these hours. Would you like to book an appointment?", 'agent');
-    } else if (lowerMessage.includes('new patient')) {
-      addMessage("Welcome! As a new patient, you'll receive a comprehensive examination including X-rays and treatment planning. Your first appointment is typically 45 minutes. We accept both NHS and private patients. Would you like to register with us?", 'agent');
+    if (
+      lowerMessage.includes("emergency") ||
+      lowerMessage.includes("pain") ||
+      lowerMessage.includes("urgent")
+    ) {
+      addMessage(
+        "I understand you need urgent care. Please call our emergency line immediately at 0115 931 2935. If it's outside hours, we have an emergency dentist on call. Would you like me to help you with anything else while you're here?",
+        "agent",
+      );
+    } else if (
+      lowerMessage.includes("appointment") ||
+      lowerMessage.includes("book")
+    ) {
+      addMessage(
+        "I'd be happy to help you book an appointment! We have availability this week. You can call us at 0115 931 2935 or would you prefer to share your preferred day/time and I'll check our availability?",
+        "agent",
+      );
+    } else if (
+      lowerMessage.includes("cost") ||
+      lowerMessage.includes("price") ||
+      lowerMessage.includes("how much")
+    ) {
+      addMessage(
+        "Our treatment costs vary depending on your specific needs. We offer free consultations to assess your requirements and provide accurate pricing. We also have membership plans starting from £10.95/month. Would you like to book a consultation?",
+        "agent",
+      );
+    } else if (
+      lowerMessage.includes("membership") ||
+      lowerMessage.includes("plan")
+    ) {
+      addMessage(
+        "Our membership plans are great value! Starting from £10.95/month, they include check-ups, hygienist visits, and discounts on treatments. Would you like me to explain the different plan options?",
+        "agent",
+      );
+    } else if (
+      lowerMessage.includes("hours") ||
+      lowerMessage.includes("open")
+    ) {
+      addMessage(
+        "We're open Monday to Friday 8:00AM-6:00PM, and Saturday 8:00AM-2:00PM. We're closed Sundays. We also offer emergency appointments outside these hours. Would you like to book an appointment?",
+        "agent",
+      );
+    } else if (lowerMessage.includes("new patient")) {
+      addMessage(
+        "Welcome! As a new patient, you'll receive a comprehensive examination including X-rays and treatment planning. Your first appointment is typically 45 minutes. We accept both NHS and private patients. Would you like to register with us?",
+        "agent",
+      );
     } else {
-      addMessage("Thank you for your question! I'd love to help you with that. For detailed information about your specific needs, I'd recommend speaking with one of our dental professionals. Would you like me to arrange a call back or book you a consultation?", 'agent');
+      addMessage(
+        "Thank you for your question! I'd love to help you with that. For detailed information about your specific needs, I'd recommend speaking with one of our dental professionals. Would you like me to arrange a call back or book you a consultation?",
+        "agent",
+      );
     }
   };
 
   const positionClasses = {
     "bottom-left": "bottom-6 left-6",
-    "bottom-right": "bottom-6 right-96" // Positioned to avoid WhatsApp widget
+    "bottom-right": "bottom-6 right-96", // Positioned to avoid WhatsApp widget
   };
 
   if (!isVisible) return null;
@@ -181,9 +235,11 @@ export default function LiveChatWidget({
     <div className={`fixed ${positionClasses[position]} z-40 ${className}`}>
       {/* Chat Window */}
       {isOpen && (
-        <Card className={`mb-4 shadow-2xl border-2 border-blue-200 transition-all duration-300 ${
-          isMinimized ? 'w-80 h-16' : 'w-80 h-96'
-        }`}>
+        <Card
+          className={`mb-4 shadow-2xl border-2 border-blue-200 transition-all duration-300 ${
+            isMinimized ? "w-80 h-16" : "w-80 h-96"
+          }`}
+        >
           <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-lg p-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -191,8 +247,12 @@ export default function LiveChatWidget({
                   JV
                 </div>
                 <div>
-                  <CardTitle className="text-sm">Jav - Dental Assistant</CardTitle>
-                  <p className="text-xs text-blue-100">Typically replies instantly</p>
+                  <CardTitle className="text-sm">
+                    Jav - Dental Assistant
+                  </CardTitle>
+                  <p className="text-xs text-blue-100">
+                    Typically replies instantly
+                  </p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -202,7 +262,11 @@ export default function LiveChatWidget({
                   onClick={() => setIsMinimized(!isMinimized)}
                   className="text-white hover:bg-white/20 h-6 w-6 p-0"
                 >
-                  {isMinimized ? <Maximize2 className="w-3 h-3" /> : <Minimize2 className="w-3 h-3" />}
+                  {isMinimized ? (
+                    <Maximize2 className="w-3 h-3" />
+                  ) : (
+                    <Minimize2 className="w-3 h-3" />
+                  )}
                 </Button>
                 <Button
                   variant="ghost"
@@ -218,42 +282,68 @@ export default function LiveChatWidget({
 
           {!isMinimized && (
             <CardContent className="p-0 flex flex-col h-80">
-              {chatStage === 'welcome' && (
+              {chatStage === "welcome" && (
                 <div className="flex-1 p-4 flex flex-col justify-center text-center space-y-4">
                   <div className="text-2xl">👋</div>
-                  <h3 className="font-semibold text-gray-900">Welcome to Pear Tree Dental!</h3>
+                  <h3 className="font-semibold text-gray-900">
+                    Welcome to Pear Tree Dental!
+                  </h3>
                   <p className="text-sm text-gray-600">
-                    Our virtual dental assistant is here to help you 24/7. Get instant answers about treatments, bookings, and emergency care.
+                    Our virtual dental assistant is here to help you 24/7. Get
+                    instant answers about treatments, bookings, and emergency
+                    care.
                   </p>
-                  <Button onClick={handleWelcomeStart} className="bg-blue-600 hover:bg-blue-700">
+                  <Button
+                    onClick={handleWelcomeStart}
+                    className="bg-blue-600 hover:bg-blue-700"
+                  >
                     Start Chat
                   </Button>
                 </div>
               )}
 
-              {chatStage === 'info' && (
+              {chatStage === "info" && (
                 <div className="flex-1 p-4 space-y-4">
                   <div className="text-center mb-4">
-                    <h3 className="font-semibold text-gray-900">Let's get started!</h3>
-                    <p className="text-xs text-gray-600">Please share your details for a personalized experience</p>
+                    <h3 className="font-semibold text-gray-900">
+                      Let's get started!
+                    </h3>
+                    <p className="text-xs text-gray-600">
+                      Please share your details for a personalized experience
+                    </p>
                   </div>
                   <div className="space-y-3">
                     <Input
                       placeholder="Your name"
                       value={userInfo.name}
-                      onChange={(e) => setUserInfo(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={(e) =>
+                        setUserInfo((prev) => ({
+                          ...prev,
+                          name: e.target.value,
+                        }))
+                      }
                     />
                     <Input
                       type="email"
                       placeholder="Email address"
                       value={userInfo.email}
-                      onChange={(e) => setUserInfo(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) =>
+                        setUserInfo((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                     />
                     <Input
                       type="tel"
                       placeholder="Phone number (optional)"
                       value={userInfo.phone}
-                      onChange={(e) => setUserInfo(prev => ({ ...prev, phone: e.target.value }))}
+                      onChange={(e) =>
+                        setUserInfo((prev) => ({
+                          ...prev,
+                          phone: e.target.value,
+                        }))
+                      }
                     />
                     <Button
                       onClick={handleInfoSubmit}
@@ -266,13 +356,16 @@ export default function LiveChatWidget({
                 </div>
               )}
 
-              {chatStage === 'chat' && (
+              {chatStage === "chat" && (
                 <>
                   {/* Messages Area */}
                   <div className="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50">
                     {messages.map((message) => (
-                      <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                        {message.type === 'quick-reply' ? (
+                      <div
+                        key={message.id}
+                        className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                      >
+                        {message.type === "quick-reply" ? (
                           <button
                             onClick={() => handleQuickReply(message.message)}
                             className="bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs px-3 py-2 rounded-full border border-blue-300 transition-colors"
@@ -280,13 +373,15 @@ export default function LiveChatWidget({
                             {message.message}
                           </button>
                         ) : (
-                          <div className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
-                            message.sender === 'user'
-                              ? 'bg-blue-600 text-white rounded-br-none'
-                              : message.type === 'system'
-                              ? 'bg-gray-200 text-gray-800 border'
-                              : 'bg-white text-gray-800 border rounded-bl-none'
-                          }`}>
+                          <div
+                            className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
+                              message.sender === "user"
+                                ? "bg-blue-600 text-white rounded-br-none"
+                                : message.type === "system"
+                                  ? "bg-gray-200 text-gray-800 border"
+                                  : "bg-white text-gray-800 border rounded-bl-none"
+                            }`}
+                          >
                             {message.message}
                           </div>
                         )}
@@ -298,8 +393,14 @@ export default function LiveChatWidget({
                         <div className="bg-white text-gray-800 border px-3 py-2 rounded-lg rounded-bl-none">
                           <div className="flex space-x-1">
                             <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                            <div
+                              className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                              style={{ animationDelay: "0.1s" }}
+                            ></div>
+                            <div
+                              className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                              style={{ animationDelay: "0.2s" }}
+                            ></div>
                           </div>
                         </div>
                       </div>
@@ -314,7 +415,9 @@ export default function LiveChatWidget({
                         placeholder="Type your message..."
                         value={newMessage}
                         onChange={(e) => setNewMessage(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                        onKeyDown={(e) =>
+                          e.key === "Enter" && handleSendMessage()
+                        }
                         className="flex-1"
                       />
                       <Button
@@ -364,8 +467,6 @@ export default function LiveChatWidget({
           </div>
         )}
       </div>
-
-
     </div>
   );
 }

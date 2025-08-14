@@ -1,16 +1,19 @@
+import { Award, Heart, Stethoscope, Users } from "lucide-react";
 import type { Metadata } from "next";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Stethoscope, Users, Award, Heart } from "lucide-react";
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Our Dental Team Burton Joyce | Expert Professionals | Pear Tree",
-  description: "Meet our experienced team of dental professionals at Pear Tree Dental. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated team provides exceptional dental care.",
-  keywords: "dental team, dentists Burton Joyce, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham",
+  description:
+    "Meet our experienced team of dental professionals at Pear Tree Dental. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated team provides exceptional dental care.",
+  keywords:
+    "dental team, dentists Burton Joyce, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham",
   openGraph: {
     title: "Our Team | Pear Tree Dental",
-    description: "Meet our experienced team of dental professionals dedicated to providing exceptional care.",
+    description:
+      "Meet our experienced team of dental professionals dedicated to providing exceptional care.",
     type: "website",
   },
 };
@@ -22,7 +25,8 @@ const principals = [
     role: "Principal Dentist",
     gdc: "290378",
     image: "https://ext.same-assets.com/523564123/2131251075.jpeg",
-    description: "With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques."
+    description:
+      "With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques.",
   },
   {
     name: "Imrana Ishaque",
@@ -30,8 +34,9 @@ const principals = [
     role: "Principal Dentist",
     gdc: "252578",
     image: "https://ext.same-assets.com/523564123/3375693680.jpeg",
-    description: "Imrana brings specialised expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available."
-  }
+    description:
+      "Imrana brings specialised expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available.",
+  },
 ];
 
 const associates = [
@@ -41,7 +46,8 @@ const associates = [
     role: "Associate Dentist",
     gdc: "60861",
     image: "https://ext.same-assets.com/523564123/686632134.jpeg",
-    description: "With years of experience in general and restorative dentistry, Janet provides compassionate care with a gentle approach."
+    description:
+      "With years of experience in general and restorative dentistry, Janet provides compassionate care with a gentle approach.",
   },
   {
     name: "Gavin Goh",
@@ -49,8 +55,9 @@ const associates = [
     role: "Associate Dentist",
     gdc: "264893",
     image: "https://ext.same-assets.com/523564123/410337074.jpeg",
-    description: "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health."
-  }
+    description:
+      "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health.",
+  },
 ];
 
 const supportTeam = [
@@ -58,54 +65,57 @@ const supportTeam = [
     name: "Kirsten Pownall",
     role: "Practice Manager",
     image: "https://ext.same-assets.com/523564123/1366642287.jpeg",
-    description: "Kirsten ensures the smooth operation of our practice and coordinates patient care to provide an exceptional experience."
+    description:
+      "Kirsten ensures the smooth operation of our practice and coordinates patient care to provide an exceptional experience.",
   },
   {
     name: "Jade Taore",
     qualifications: "BSc (Hons)",
     role: "Dental Therapist",
     image: "https://ext.same-assets.com/523564123/221362571.jpeg",
-    description: "Jade specialises in preventive treatments and oral health education, working closely with our dentists to maintain your oral health."
+    description:
+      "Jade specialises in preventive treatments and oral health education, working closely with our dentists to maintain your oral health.",
   },
   {
     name: "Lee-Anne Smith",
     role: "Hygienist",
     image: "https://ext.same-assets.com/523564123/3263532149.png",
-    description: "Lee-Anne provides professional cleaning and hygiene treatments, helping you maintain healthy gums and teeth."
-  }
+    description:
+      "Lee-Anne provides professional cleaning and hygiene treatments, helping you maintain healthy gums and teeth.",
+  },
 ];
 
 const nurses = [
   {
     name: "Amy Simpson",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2699379883.jpeg"
+    image: "https://ext.same-assets.com/523564123/2699379883.jpeg",
   },
   {
     name: "Madiyah Qadeer",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2850927388.jpeg"
+    image: "https://ext.same-assets.com/523564123/2850927388.jpeg",
   },
   {
     name: "Caitlin Swinscoe",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/4087775093.jpeg"
+    image: "https://ext.same-assets.com/523564123/4087775093.jpeg",
   },
   {
     name: "Hannah Buckley",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2850927388.jpeg"
+    image: "https://ext.same-assets.com/523564123/2850927388.jpeg",
   },
   {
     name: "Katy Parkes",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/1108163630.jpeg"
+    image: "https://ext.same-assets.com/523564123/1108163630.jpeg",
   },
   {
     name: "Sarah Simpson",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/1195986396.jpeg"
-  }
+    image: "https://ext.same-assets.com/523564123/1195986396.jpeg",
+  },
 ];
 
 export default function TeamPage() {
@@ -127,9 +137,11 @@ export default function TeamPage() {
               Dedication. Expertise. Passion.
             </p>
             <p className="text-lg leading-relaxed opacity-80 max-w-3xl mx-auto">
-              We are a friendly, well-experienced team dedicated to providing our patients with the greatest care possible.
-              We are continually striving to learn more and invest in ourselves and the practice to ensure our patients
-              receive the most up-to-date treatments and care available.
+              We are a friendly, well-experienced team dedicated to providing
+              our patients with the greatest care possible. We are continually
+              striving to learn more and invest in ourselves and the practice to
+              ensure our patients receive the most up-to-date treatments and
+              care available.
             </p>
           </div>
         </div>
@@ -148,13 +160,17 @@ export default function TeamPage() {
               Principal Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our practice is led by experienced principal dentists committed to excellence in dental care
+              Our practice is led by experienced principal dentists committed to
+              excellence in dental care
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {(principals || []).map((dentist) => (
-              <Card key={dentist.gdc} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
+              <Card
+                key={dentist.gdc}
+                className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30"
+              >
                 <CardContent className="p-8">
                   <div className="text-center">
                     <div className="relative mb-6 mx-auto w-48 h-48">
@@ -173,11 +189,18 @@ export default function TeamPage() {
                       {dentist.name}
                     </h3>
                     <div className="space-y-2 mb-4">
-                      <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
+                      <Badge
+                        variant="secondary"
+                        className="bg-pear-primary/10 text-pear-primary"
+                      >
                         {dentist.qualifications}
                       </Badge>
-                      <p className="text-lg font-semibold text-gray-700">{dentist.role}</p>
-                      <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
+                      <p className="text-lg font-semibold text-gray-700">
+                        {dentist.role}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        GDC: {dentist.gdc}
+                      </p>
                     </div>
                     <p className="text-gray-600 leading-relaxed">
                       {dentist.description}
@@ -203,13 +226,17 @@ export default function TeamPage() {
               Associate Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals providing specialised care across all areas of dentistry
+              Experienced professionals providing specialised care across all
+              areas of dentistry
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {(associates || []).map((dentist) => (
-              <Card key={dentist.gdc} className="group hover:shadow-xl transition-all duration-300">
+              <Card
+                key={dentist.gdc}
+                className="group hover:shadow-xl transition-all duration-300"
+              >
                 <CardContent className="p-8">
                   <div className="text-center">
                     <div className="relative mb-6 mx-auto w-40 h-40">
@@ -228,11 +255,18 @@ export default function TeamPage() {
                       {dentist.name}
                     </h3>
                     <div className="space-y-2 mb-4">
-                      <Badge variant="outline" className="border-pear-primary/30 text-pear-primary">
+                      <Badge
+                        variant="outline"
+                        className="border-pear-primary/30 text-pear-primary"
+                      >
                         {dentist.qualifications}
                       </Badge>
-                      <p className="text-lg font-semibold text-gray-700">{dentist.role}</p>
-                      <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
+                      <p className="text-lg font-semibold text-gray-700">
+                        {dentist.role}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        GDC: {dentist.gdc}
+                      </p>
                     </div>
                     <p className="text-gray-600 leading-relaxed">
                       {dentist.description}
@@ -258,13 +292,17 @@ export default function TeamPage() {
               Support Team
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our dedicated support professionals ensure every aspect of your care is exceptional
+              Our dedicated support professionals ensure every aspect of your
+              care is exceptional
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {(supportTeam || []).map((member) => (
-              <Card key={member.name} className="group hover:shadow-lg transition-all duration-300">
+              <Card
+                key={member.name}
+                className="group hover:shadow-lg transition-all duration-300"
+              >
                 <CardContent className="p-6">
                   <div className="text-center">
                     <div className="relative mb-4 mx-auto w-32 h-32">
@@ -284,11 +322,16 @@ export default function TeamPage() {
                     </h3>
                     <div className="space-y-1 mb-3">
                       {member.qualifications && (
-                        <Badge variant="outline" className="border-pear-primary/30 text-pear-primary text-xs">
+                        <Badge
+                          variant="outline"
+                          className="border-pear-primary/30 text-pear-primary text-xs"
+                        >
                           {member.qualifications}
                         </Badge>
                       )}
-                      <p className="font-semibold text-gray-700">{member.role}</p>
+                      <p className="font-semibold text-gray-700">
+                        {member.role}
+                      </p>
                     </div>
                     <p className="text-sm text-gray-600 leading-relaxed">
                       {member.description}
@@ -309,13 +352,17 @@ export default function TeamPage() {
               Meet Our Nurses
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our lovely nurses are here to always ensure you are comfortable every step of the way
+              Our lovely nurses are here to always ensure you are comfortable
+              every step of the way
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
             {(nurses || []).map((nurse) => (
-              <Card key={nurse.name} className="group hover:shadow-lg transition-all duration-300">
+              <Card
+                key={nurse.name}
+                className="group hover:shadow-lg transition-all duration-300"
+              >
                 <CardContent className="p-4">
                   <div className="text-center">
                     <div className="relative mb-3 mx-auto w-24 h-24">
@@ -333,7 +380,9 @@ export default function TeamPage() {
                     <h3 className="heading-serif text-sm font-bold text-pear-primary mb-1">
                       {nurse.name}
                     </h3>
-                    <p className="text-xs font-semibold text-gray-700">{nurse.role}</p>
+                    <p className="text-xs font-semibold text-gray-700">
+                      {nurse.role}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -350,7 +399,8 @@ export default function TeamPage() {
               Ready to Meet Our Team?
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Experience the difference that dedicated, experienced professionals can make to your dental health
+              Experience the difference that dedicated, experienced
+              professionals can make to your dental health
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a

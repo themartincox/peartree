@@ -1,39 +1,32 @@
+import {
+  Award,
+  Car,
+  CreditCard,
+  DollarSign,
+  Home,
+  MapPin,
+  Navigation,
+  Phone,
+  Sparkles,
+  Star,
+  ThumbsUp,
+  Users,
+  Zap,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Sparkles,
-  Award,
-  Navigation,
-  Users,
-  Baby,
-  Home,
-  CreditCard,
-  Calendar,
-  ThumbsUp,
-  FileText,
-  Zap,
-  TrendingUp,
-  DollarSign
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Affordable Teeth Whitening in Gedling - Professional Results for Working Families | Pear Tree Dental",
-  description: "Affordable teeth whitening for Gedling working families. Professional results, payment plans available, and family-friendly service. Quick drive from Gedling NG4.",
+  title:
+    "Affordable Teeth Whitening in Gedling - Professional Results for Working Families | Pear Tree Dental",
+  description:
+    "Affordable teeth whitening for Gedling working families. Professional results, payment plans available, and family-friendly service. Quick drive from Gedling NG4.",
   keywords: [
     "affordable teeth whitening Gedling",
     "cheap teeth whitening Gedling NG4",
@@ -41,40 +34,48 @@ export const metadata: Metadata = {
     "teeth whitening payment plans Gedling",
     "family teeth whitening Gedling",
     "budget whitening Gedling",
-    "value teeth whitening Gedling"
+    "value teeth whitening Gedling",
   ],
   openGraph: {
-    title: "Affordable Teeth Whitening in Gedling - Professional Results for Working Families | Pear Tree Dental",
-    description: "Affordable teeth whitening for Gedling working families. Professional results with payment plans available.",
-    url: "https://peartree.dental/gedling/affordable-teeth-whitening"
+    title:
+      "Affordable Teeth Whitening in Gedling - Professional Results for Working Families | Pear Tree Dental",
+    description:
+      "Affordable teeth whitening for Gedling working families. Professional results with payment plans available.",
+    url: "https://peartree.dental/gedling/affordable-teeth-whitening",
   },
   alternates: {
-    canonical: "https://peartree.dental/gedling/affordable-teeth-whitening"
-  }
+    canonical: "https://peartree.dental/gedling/affordable-teeth-whitening",
+  },
 };
 
 export default function GedlingAffordableTeethWhiteningPage() {
   const gedlingWhiteningFAQs = [
     {
       question: "How affordable is professional teeth whitening from Gedling?",
-      answer: "We believe professional teeth whitening should be accessible to Gedling working families. We offer competitive pricing starting from £195, with payment plan options available. Our transparent pricing means no hidden costs - just professional results at fair prices."
+      answer:
+        "We believe professional teeth whitening should be accessible to Gedling working families. We offer competitive pricing starting from £195, with payment plan options available. Our transparent pricing means no hidden costs - just professional results at fair prices.",
     },
     {
-      question: "How does professional whitening compare to shop-bought options?",
-      answer: "Professional whitening is significantly more effective and safer than shop-bought kits. We use higher-strength, regulated whitening agents with custom-made trays for even results. Most patients see 3-8 shades improvement versus 1-2 with shop kits."
+      question:
+        "How does professional whitening compare to shop-bought options?",
+      answer:
+        "Professional whitening is significantly more effective and safer than shop-bought kits. We use higher-strength, regulated whitening agents with custom-made trays for even results. Most patients see 3-8 shades improvement versus 1-2 with shop kits.",
     },
     {
       question: "Can multiple family members get whitening together?",
-      answer: "Absolutely! We offer family whitening packages that can save money when multiple family members want treatment. We can often schedule appointments together and provide family discounts for Gedling working families."
+      answer:
+        "Absolutely! We offer family whitening packages that can save money when multiple family members want treatment. We can often schedule appointments together and provide family discounts for Gedling working families.",
     },
     {
       question: "How long do the whitening results last?",
-      answer: "Professional whitening typically lasts 1-3 years with proper care. We provide aftercare advice and top-up options to help maintain your results. The investment in professional whitening gives longer-lasting results than cheaper alternatives."
+      answer:
+        "Professional whitening typically lasts 1-3 years with proper care. We provide aftercare advice and top-up options to help maintain your results. The investment in professional whitening gives longer-lasting results than cheaper alternatives.",
     },
     {
       question: "What payment options do you offer for whitening?",
-      answer: "We understand budgeting is important for working families. We offer payment plans to spread the cost over several months, making professional whitening more accessible. All payment options are discussed upfront with clear terms."
-    }
+      answer:
+        "We understand budgeting is important for working families. We offer payment plans to spread the cost over several months, making professional whitening more accessible. All payment options are discussed upfront with clear terms.",
+    },
   ];
 
   const whiteningOptions = [
@@ -85,7 +86,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
       results: "3-6 shades whiter",
       price: "From £195",
       icon: Home,
-      highlight: "Most Popular"
+      highlight: "Most Popular",
     },
     {
       option: "In-Chair Whitening",
@@ -94,7 +95,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
       results: "4-8 shades whiter",
       price: "From £350",
       icon: Zap,
-      highlight: "Fastest Results"
+      highlight: "Fastest Results",
     },
     {
       option: "Combined Treatment",
@@ -103,7 +104,7 @@ export default function GedlingAffordableTeethWhiteningPage() {
       results: "6-10 shades whiter",
       price: "From £485",
       icon: Award,
-      highlight: "Best Value"
+      highlight: "Best Value",
     },
     {
       option: "Family Package",
@@ -112,8 +113,8 @@ export default function GedlingAffordableTeethWhiteningPage() {
       results: "Professional results for all",
       price: "From £165 per person",
       icon: Users,
-      highlight: "Family Discount"
-    }
+      highlight: "Family Discount",
+    },
   ];
 
   const valueBenefits = [
@@ -121,26 +122,26 @@ export default function GedlingAffordableTeethWhiteningPage() {
       benefit: "Transparent Affordable Pricing",
       description: "Clear costs with no hidden fees or surprise charges",
       value: "Budget-friendly confidence",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       benefit: "Payment Plan Options",
       description: "Spread the cost over several months to fit your budget",
       value: "Manageable payments",
-      icon: CreditCard
+      icon: CreditCard,
     },
     {
       benefit: "Professional Grade Results",
       description: "Superior results compared to shop-bought alternatives",
       value: "Better value for money",
-      icon: Award
+      icon: Award,
     },
     {
       benefit: "Family Whitening Discounts",
       description: "Special pricing when multiple family members get treatment",
       value: "Additional savings",
-      icon: Users
-    }
+      icon: Users,
+    },
   ];
 
   const comparisonChart = [
@@ -148,71 +149,71 @@ export default function GedlingAffordableTeethWhiteningPage() {
       aspect: "Safety & Regulation",
       professional: "Regulated, dentist-supervised treatment",
       shopBought: "Variable quality, no supervision",
-      winner: "Professional"
+      winner: "Professional",
     },
     {
       aspect: "Whitening Strength",
       professional: "Higher strength, regulated whitening agents",
       shopBought: "Limited strength, less effective",
-      winner: "Professional"
+      winner: "Professional",
     },
     {
       aspect: "Custom Fit",
       professional: "Custom-made trays for even results",
       shopBought: "One-size-fits-all, uneven results",
-      winner: "Professional"
+      winner: "Professional",
     },
     {
       aspect: "Results Duration",
       professional: "1-3 years with proper care",
       shopBought: "3-6 months typically",
-      winner: "Professional"
+      winner: "Professional",
     },
     {
       aspect: "Upfront Cost",
       professional: "Higher initial investment",
       shopBought: "Lower upfront cost",
-      winner: "Shop-bought"
+      winner: "Shop-bought",
     },
     {
       aspect: "Long-term Value",
       professional: "Better value over time",
       shopBought: "Need frequent replacement",
-      winner: "Professional"
-    }
+      winner: "Professional",
+    },
   ];
 
   const affordabilityFeatures = [
     {
       feature: "Clear Pricing Structure",
       description: "All costs explained upfront with no hidden fees",
-      benefit: "Budget with confidence knowing exact costs"
+      benefit: "Budget with confidence knowing exact costs",
     },
     {
       feature: "Flexible Payment Plans",
       description: "Spread treatment cost over 6-12 months",
-      benefit: "Makes professional whitening accessible to working families"
+      benefit: "Makes professional whitening accessible to working families",
     },
     {
       feature: "Family Discount Packages",
       description: "Reduced per-person cost for multiple family members",
-      benefit: "Whole family can achieve whiter smiles affordably"
+      benefit: "Whole family can achieve whiter smiles affordably",
     },
     {
       feature: "Value-Focused Treatment Options",
       description: "Range of options to suit different budgets",
-      benefit: "Professional results at prices that work for you"
+      benefit: "Professional results at prices that work for you",
     },
     {
       feature: "Long-Lasting Results",
       description: "Professional whitening lasts significantly longer",
-      benefit: "Better value per year compared to shop alternatives"
+      benefit: "Better value per year compared to shop alternatives",
     },
     {
       feature: "Aftercare Support Included",
       description: "Maintenance advice and top-up options available",
-      benefit: "Maximize your investment with ongoing support"
-    }
+      benefit: "Maximize your investment with ongoing support",
+    },
   ];
 
   return (
@@ -224,34 +225,32 @@ export default function GedlingAffordableTeethWhiteningPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Affordable Teeth Whitening in Gedling",
-            "image": "https://peartree.dental/images/affordable-teeth-whitening-gedling.jpg",
-            "url": "https://peartree.dental/gedling/affordable-teeth-whitening",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Affordable Teeth Whitening in Gedling",
+            image:
+              "https://peartree.dental/images/affordable-teeth-whitening-gedling.jpg",
+            url: "https://peartree.dental/gedling/affordable-teeth-whitening",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Gedling, NG4"
+              name: "Gedling, NG4",
             },
-            "medicalSpecialty": "Cosmetic Dentistry - Affordable Teeth Whitening",
-            "geo": {
+            medicalSpecialty: "Cosmetic Dentistry - Affordable Teeth Whitening",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£165-£485"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£165-£485",
+          }),
         }}
       />
 
@@ -267,7 +266,8 @@ export default function GedlingAffordableTeethWhiteningPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Affordable Teeth Whitening in <span className="text-yellow-300">Gedling</span>
+              Affordable Teeth Whitening in{" "}
+              <span className="text-yellow-300">Gedling</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -277,19 +277,27 @@ export default function GedlingAffordableTeethWhiteningPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
-                Quick drive from Gedling — Professional whitening from £195 with payment plans
+                Quick drive from Gedling — Professional whitening from £195 with
+                payment plans
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Sparkles className="w-5 h-5 mr-2" />
                   Book Affordable Whitening
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -297,7 +305,10 @@ export default function GedlingAffordableTeethWhiteningPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">✨ Professional whitening with payment plans for busy Gedling families!</p>
+              <p className="text-lg font-semibold">
+                ✨ Professional whitening with payment plans for busy Gedling
+                families!
+              </p>
             </div>
           </div>
         </div>
@@ -309,11 +320,14 @@ export default function GedlingAffordableTeethWhiteningPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Affordable Professional Teeth Whitening for Gedling Working Families
+                Affordable Professional Teeth Whitening for Gedling Working
+                Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We believe everyone deserves a confident smile. Our affordable teeth whitening options provide
-                professional results with transparent pricing and payment plans designed for working family budgets.
+                We believe everyone deserves a confident smile. Our affordable
+                teeth whitening options provide professional results with
+                transparent pricing and payment plans designed for working
+                family budgets.
               </p>
             </div>
 
@@ -321,12 +335,21 @@ export default function GedlingAffordableTeethWhiteningPage() {
               {(valueBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-yellow-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-yellow-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-yellow-100 text-yellow-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-yellow-100 text-yellow-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -335,22 +358,31 @@ export default function GedlingAffordableTeethWhiteningPage() {
 
             <div className="text-center bg-yellow-50 rounded-lg p-8">
               <Sparkles className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Professional Whitening Made Affordable</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Professional Whitening Made Affordable
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that Gedling working families want professional results without breaking the budget.
-                Our affordable whitening options provide superior results with flexible payment options.
+                We understand that Gedling working families want professional
+                results without breaking the budget. Our affordable whitening
+                options provide superior results with flexible payment options.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-yellow-600 mb-2">From £195</div>
+                  <div className="text-2xl font-bold text-yellow-600 mb-2">
+                    From £195
+                  </div>
                   <p className="text-gray-600">Professional home whitening</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-yellow-600 mb-2">Payment plans</div>
+                  <div className="text-2xl font-bold text-yellow-600 mb-2">
+                    Payment plans
+                  </div>
                   <p className="text-gray-600">Spread cost over 6-12 months</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-yellow-600 mb-2">Quick drive</div>
+                  <div className="text-2xl font-bold text-yellow-600 mb-2">
+                    Quick drive
+                  </div>
                   <p className="text-gray-600">Convenient from Gedling</p>
                 </div>
               </div>
@@ -368,8 +400,9 @@ export default function GedlingAffordableTeethWhiteningPage() {
                 Affordable Professional Whitening Options for Gedling Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Choose from our range of professional whitening options designed to fit
-                different budgets and lifestyles for Gedling working families.
+                Choose from our range of professional whitening options designed
+                to fit different budgets and lifestyles for Gedling working
+                families.
               </p>
             </div>
 
@@ -377,25 +410,40 @@ export default function GedlingAffordableTeethWhiteningPage() {
               {(whiteningOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
-                  <Card key={index} className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-yellow-400 relative">
+                  <Card
+                    key={index}
+                    className="hover:shadow-xl transition-shadow border-2 border-gray-200 hover:border-yellow-400 relative"
+                  >
                     {option.highlight && (
                       <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <Badge className="bg-yellow-600 text-white">{option.highlight}</Badge>
+                        <Badge className="bg-yellow-600 text-white">
+                          {option.highlight}
+                        </Badge>
                       </div>
                     )}
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-yellow-600" />
                       </div>
-                      <CardTitle className="text-lg text-pear-primary">{option.option}</CardTitle>
-                      <p className="text-gray-600 text-sm">{option.description}</p>
+                      <CardTitle className="text-lg text-pear-primary">
+                        {option.option}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {option.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{option.price}</p>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {option.price}
+                        </p>
                         <div className="flex flex-col gap-1 mb-2">
-                          <Badge variant="outline" className="text-xs">{option.duration}</Badge>
-                          <span className="text-xs text-gray-600">{option.results}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {option.duration}
+                          </Badge>
+                          <span className="text-xs text-gray-600">
+                            {option.results}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -413,11 +461,13 @@ export default function GedlingAffordableTeethWhiteningPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Professional vs Shop-Bought: Value Comparison for Gedling Families
+                Professional vs Shop-Bought: Value Comparison for Gedling
+                Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding the real value difference between professional whitening and
-                shop-bought alternatives helps Gedling families make informed decisions.
+                Understanding the real value difference between professional
+                whitening and shop-bought alternatives helps Gedling families
+                make informed decisions.
               </p>
             </div>
 
@@ -430,10 +480,19 @@ export default function GedlingAffordableTeethWhiteningPage() {
               </div>
 
               {(comparisonChart || []).map((item, index) => (
-                <div key={index} className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50">
-                  <div className="font-semibold text-gray-700">{item.aspect}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.professional}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.shopBought}</div>
+                <div
+                  key={index}
+                  className="grid grid-cols-4 p-4 border-b border-gray-100 hover:bg-gray-50"
+                >
+                  <div className="font-semibold text-gray-700">
+                    {item.aspect}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.professional}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.shopBought}
+                  </div>
                   <div className="text-center">
                     <Badge
                       className={
@@ -451,8 +510,9 @@ export default function GedlingAffordableTeethWhiteningPage() {
 
             <div className="mt-8 text-center">
               <p className="text-lg text-gray-600">
-                <strong>Overall Winner:</strong> Professional whitening provides superior value with longer-lasting,
-                safer results that save money over time for Gedling working families.
+                <strong>Overall Winner:</strong> Professional whitening provides
+                superior value with longer-lasting, safer results that save
+                money over time for Gedling working families.
               </p>
             </div>
           </div>
@@ -465,11 +525,13 @@ export default function GedlingAffordableTeethWhiteningPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Making Professional Whitening Affordable for Gedling Working Families
+                Making Professional Whitening Affordable for Gedling Working
+                Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our commitment to affordability means Gedling working families can access
-                professional teeth whitening with flexible options that fit their budgets.
+                Our commitment to affordability means Gedling working families
+                can access professional teeth whitening with flexible options
+                that fit their budgets.
               </p>
             </div>
 
@@ -482,10 +544,16 @@ export default function GedlingAffordableTeethWhiteningPage() {
                         <ThumbsUp className="w-6 h-6 text-yellow-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{feature.feature}</h3>
-                        <p className="text-gray-600 text-sm mb-3">{feature.description}</p>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {feature.feature}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {feature.description}
+                        </p>
                         <div className="bg-yellow-50 rounded-lg p-3">
-                          <p className="text-sm text-yellow-700 font-medium">{feature.benefit}</p>
+                          <p className="text-sm text-yellow-700 font-medium">
+                            {feature.benefit}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -515,16 +583,26 @@ export default function GedlingAffordableTeethWhiteningPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-yellow-600 mb-2">Payment plan</div>
-                <p className="text-gray-600">Made professional whitening affordable</p>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">
+                  Payment plan
+                </div>
+                <p className="text-gray-600">
+                  Made professional whitening affordable
+                </p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-yellow-600 mb-2">5 shades whiter</div>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">
+                  5 shades whiter
+                </div>
                 <p className="text-gray-600">Amazing professional results</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-yellow-600 mb-2">More confidence</div>
-                <p className="text-gray-600">Improved work and social confidence</p>
+                <div className="text-3xl font-bold text-yellow-600 mb-2">
+                  More confidence
+                </div>
+                <p className="text-gray-600">
+                  Improved work and social confidence
+                </p>
               </div>
             </div>
           </div>
@@ -539,7 +617,8 @@ export default function GedlingAffordableTeethWhiteningPage() {
               Professional Whitening Results for Gedling Families
             </h2>
             <p className="text-lg text-gray-600">
-              See the amazing results achieved by Gedling working families with our affordable professional whitening
+              See the amazing results achieved by Gedling working families with
+              our affordable professional whitening
             </p>
           </div>
 
@@ -567,7 +646,8 @@ export default function GedlingAffordableTeethWhiteningPage() {
                 Affordable Whitening Questions from Gedling Families
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Gedling working families about affordable professional teeth whitening
+                Common questions from Gedling working families about affordable
+                professional teeth whitening
               </p>
             </div>
 
@@ -596,15 +676,21 @@ export default function GedlingAffordableTeethWhiteningPage() {
                     <p>2. Continue on the A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 miles)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Quick 15-minute drive</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Quick 15-minute drive
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-yellow-50 rounded-lg p-6">
                     <Sparkles className="w-12 h-12 text-yellow-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-yellow-700 mb-2">Affordable Whitening</h4>
-                    <p className="text-gray-600">Professional results with payment plans</p>
+                    <h4 className="font-bold text-yellow-700 mb-2">
+                      Affordable Whitening
+                    </h4>
+                    <p className="text-gray-600">
+                      Professional results with payment plans
+                    </p>
                   </div>
                 </div>
               </div>
@@ -616,7 +702,10 @@ export default function GedlingAffordableTeethWhiteningPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Gedling
               </Button>
@@ -630,11 +719,13 @@ export default function GedlingAffordableTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
-              Get Professional Teeth Whitening That Fits Your Budget from Gedling
+              Get Professional Teeth Whitening That Fits Your Budget from
+              Gedling
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't let budget concerns stop you from achieving the confident smile you deserve.
-              Book affordable professional whitening with payment plans designed for working families.
+              Don't let budget concerns stop you from achieving the confident
+              smile you deserve. Book affordable professional whitening with
+              payment plans designed for working families.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -643,19 +734,27 @@ export default function GedlingAffordableTeethWhiteningPage() {
                 Affordable Whitening Specialists
               </p>
               <p className="text-sm opacity-90">
-                Professional results • Payment plans available • Family discounts • Quick drive from Gedling
+                Professional results • Payment plans available • Family
+                discounts • Quick drive from Gedling
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-gray-100 text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Sparkles className="w-5 h-5 mr-2" />
                   Book Affordable Whitening
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-yellow-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

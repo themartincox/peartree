@@ -1,5 +1,5 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import type { Variant } from '@/lib/ab-testing';
+import { type NextRequest, NextResponse } from "next/server";
+import type { Variant } from "@/lib/ab-testing";
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,11 +7,8 @@ export async function POST(request: NextRequest) {
     const { variant, event, data } = body;
 
     // Validate variant
-    if (!variant || !['A', 'B', 'C'].includes(variant)) {
-      return NextResponse.json(
-        { error: 'Invalid variant' },
-        { status: 400 }
-      );
+    if (!variant || !["A", "B", "C"].includes(variant)) {
+      return NextResponse.json({ error: "Invalid variant" }, { status: 400 });
     }
 
     // Create tracking data
@@ -19,14 +16,17 @@ export async function POST(request: NextRequest) {
       timestamp: new Date().toISOString(),
       variant: variant as Variant,
       event,
-      user_agent: request.headers.get('user-agent'),
-      ip: request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown',
-      referer: request.headers.get('referer'),
+      user_agent: request.headers.get("user-agent"),
+      ip:
+        request.headers.get("x-forwarded-for") ||
+        request.headers.get("x-real-ip") ||
+        "unknown",
+      referer: request.headers.get("referer"),
       data,
     };
 
     // Log to console (replace with your analytics service)
-    console.log('[A/B Test Analytics]:', trackingData);
+    console.log("[A/B Test Analytics]:", trackingData);
 
     // Here you would send to your analytics service
     // Examples:
@@ -39,10 +39,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('A/B Test analytics error:', error);
+    console.error("A/B Test analytics error:", error);
     return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
+      { error: "Internal server error" },
+      { status: 500 },
     );
   }
 }
@@ -58,7 +58,7 @@ async function sendToGoogleAnalytics(data: {
   const apiSecret = process.env.GA_API_SECRET;
 
   if (!measurementId || !apiSecret) {
-    console.warn('Google Analytics credentials not configured');
+    console.warn("Google Analytics credentials not configured");
     return;
   }
 
@@ -66,9 +66,9 @@ async function sendToGoogleAnalytics(data: {
     const response = await fetch(
       `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           client_id: generateClientId(data.ip), // Generate a client ID based on IP
@@ -83,14 +83,14 @@ async function sendToGoogleAnalytics(data: {
             },
           ],
         }),
-      }
+      },
     );
 
     if (!response.ok) {
-      console.warn('Failed to send to Google Analytics:', response.status);
+      console.warn("Failed to send to Google Analytics:", response.status);
     }
   } catch (error) {
-    console.warn('Google Analytics tracking failed:', error);
+    console.warn("Google Analytics tracking failed:", error);
   }
 }
 
@@ -101,7 +101,7 @@ function generateClientId(ip: string): string {
   let hash = 0;
   for (let i = 0; i < ip.length; i++) {
     const char = ip.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = (hash << 5) - hash + char;
     hash = hash & hash; // Convert to 32-bit integer
   }
   return Math.abs(hash).toString();

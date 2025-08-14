@@ -1,27 +1,24 @@
+import {
+  Award,
+  CalendarDays,
+  Car,
+  CheckCircle,
+  Clock,
+  Crown,
+  Heart,
+  MapPin,
+  Phone,
+  Shield,
+  Sparkles, 
+  Star,
+} from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import MedicalPracticeSchema from '@/components/seo/MedicalPracticeSchema';
 import ServiceAreaSchema from '@/components/seo/ServiceAreaSchema';
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Navigation,
-  Route,
-  Users,
-  Award,
-  Crown,
-  Sparkles
-} from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const metadata: Metadata = {
   title: 'Premium Dentist in West Bridgford - Pear Tree Dental | Quality Dental Care',

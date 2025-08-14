@@ -1,40 +1,42 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, Zap } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const services = [
   {
     id: "growth",
     title: "Growth Marketing",
-    description: "Expert marketing strategies that deliver measurable results and sustainable growth for your business.",
+    description:
+      "Expert marketing strategies that deliver measurable results and sustainable growth for your business.",
     features: [
       "SEO & Content Strategy",
       "Email Marketing Automation",
       "Social Media Management",
-      "Brand Identity & Design"
+      "Brand Identity & Design",
     ],
     href: "/growth-marketing",
     color: "from-forest-green to-emerald-500",
-    icon: <BarChart3 className="h-8 w-8" />
+    icon: <BarChart3 className="h-8 w-8" />,
   },
   {
     id: "ai",
     title: "AI & Automation",
-    description: "Intelligent automation solutions that streamline operations and unlock new possibilities for efficiency.",
+    description:
+      "Intelligent automation solutions that streamline operations and unlock new possibilities for efficiency.",
     features: [
       "Process Automation",
       "Intelligent Chatbots",
       "Predictive Analytics",
-      "Custom AI Solutions"
+      "Custom AI Solutions",
     ],
     href: "/ai-automation",
     color: "from-coral-red to-orange-500",
-    icon: <Zap className="h-8 w-8" />
-  }
+    icon: <Zap className="h-8 w-8" />,
+  },
 ];
 
 export default function EnhancedServiceCards() {
@@ -46,19 +48,25 @@ export default function EnhancedServiceCards() {
         <Card
           key={service.id}
           className={`relative group border-0 shadow-lg transition-all duration-300 overflow-hidden ${
-            hoveredCard === service.id ? "shadow-2xl scale-105" : "hover:shadow-xl"
+            hoveredCard === service.id
+              ? "shadow-2xl scale-105"
+              : "hover:shadow-xl"
           }`}
           onMouseEnter={() => setHoveredCard(service.id)}
           onMouseLeave={() => setHoveredCard(null)}
         >
           {/* Background gradient */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 transition-opacity duration-300 ${
-            hoveredCard === service.id ? "opacity-10" : ""
-          }`} />
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 transition-opacity duration-300 ${
+              hoveredCard === service.id ? "opacity-10" : ""
+            }`}
+          />
 
           <CardHeader className="relative z-10 pb-4">
             <div className="flex items-center space-x-4 mb-4">
-              <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white shadow-lg`}>
+              <div
+                className={`w-12 h-12 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center text-white shadow-lg`}
+              >
                 {service.icon}
               </div>
               <CardTitle className="text-2xl font-heading font-bold text-midnight-blue">
@@ -99,7 +107,9 @@ export default function EnhancedServiceCards() {
           {/* Simple hover effect */}
           {hoveredCard === service.id && (
             <div className="absolute inset-0 pointer-events-none">
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 animate-pulse`} />
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 animate-pulse`}
+              />
             </div>
           )}
         </Card>

@@ -1,5 +1,5 @@
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 // For now, return a simple blog post page since this appears to be placeholder content
 interface BlogPost {
@@ -13,21 +13,26 @@ interface BlogPost {
 // Mock blog posts for now
 const blogPosts: BlogPost[] = [
   {
-    slug: 'dental-health-tips',
-    title: 'Essential Dental Health Tips',
-    content: 'Maintaining good dental health is crucial for overall wellbeing...',
-    publishedAt: '2024-01-15',
-    author: 'Dr. Smith'
-  }
+    slug: "dental-health-tips",
+    title: "Essential Dental Health Tips",
+    content:
+      "Maintaining good dental health is crucial for overall wellbeing...",
+    publishedAt: "2024-01-15",
+    author: "Dr. Smith",
+  },
 ];
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     return {
-      title: 'Post Not Found',
+      title: "Post Not Found",
     };
   }
 
@@ -37,9 +42,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
     notFound();
@@ -54,7 +63,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {post.title}
             </h1>
             <div className="text-gray-600">
-              <p>By {post.author} • {new Date(post.publishedAt).toLocaleDateString()}</p>
+              <p>
+                By {post.author} •{" "}
+                {new Date(post.publishedAt).toLocaleDateString()}
+              </p>
             </div>
           </header>
 

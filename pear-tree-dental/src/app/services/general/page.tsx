@@ -1,27 +1,25 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import {
-  Heart,
-  Shield,
+  ArrowRight,
+  Award,
+  Baby,
+  CalendarDays,
   CheckCircle,
   Clock,
-  Users,
+  Heart,
   Phone,
-  ArrowRight,
-  CalendarDays,
-  Star,
-  Award,
+  Shield,
   Stethoscope,
-  Baby,
-  UserCheck
+  UserCheck, 
+  Users
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "General Dentistry Burton Joyce | NHS & Private Care | Pear Tree Dental",

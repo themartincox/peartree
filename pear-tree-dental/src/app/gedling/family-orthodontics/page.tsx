@@ -1,41 +1,32 @@
+import {
+  Award,
+  Car,
+  Clock,
+  DollarSign,
+  MapPin,
+  Navigation,
+  Phone,
+  Shield,
+  Smile,
+  Star,
+  Target,
+  ThumbsUp,
+  Users,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
-  Baby,
-  Award,
-  Navigation,
-  Home,
-  CreditCard,
-  Calendar,
-  ThumbsUp,
-  FileText,
-  Smile,
-  TrendingUp,
-  DollarSign,
-  Target,
-  Activity,
-  Timer
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Family Orthodontics in Gedling - Affordable Braces for Working Families | Pear Tree Dental",
-  description: "Family orthodontics for Gedling working families. Affordable braces, flexible payment plans, and convenient scheduling. Quality teeth straightening. Quick drive from Gedling NG4.",
+  title:
+    "Family Orthodontics in Gedling - Affordable Braces for Working Families | Pear Tree Dental",
+  description:
+    "Family orthodontics for Gedling working families. Affordable braces, flexible payment plans, and convenient scheduling. Quality teeth straightening. Quick drive from Gedling NG4.",
   keywords: [
     "family orthodontics Gedling",
     "affordable braces Gedling NG4",
@@ -43,40 +34,50 @@ export const metadata: Metadata = {
     "family braces Gedling",
     "working families orthodontics Gedling",
     "teeth straightening Gedling",
-    "invisalign Gedling"
+    "invisalign Gedling",
   ],
   openGraph: {
-    title: "Family Orthodontics in Gedling - Affordable Braces for Working Families | Pear Tree Dental",
-    description: "Family orthodontics for Gedling working families. Affordable braces with flexible payment plans and convenient scheduling.",
-    url: "https://peartree.dental/gedling/family-orthodontics"
+    title:
+      "Family Orthodontics in Gedling - Affordable Braces for Working Families | Pear Tree Dental",
+    description:
+      "Family orthodontics for Gedling working families. Affordable braces with flexible payment plans and convenient scheduling.",
+    url: "https://peartree.dental/gedling/family-orthodontics",
   },
   alternates: {
-    canonical: "https://peartree.dental/gedling/family-orthodontics"
-  }
+    canonical: "https://peartree.dental/gedling/family-orthodontics",
+  },
 };
 
 export default function GedlingFamilyOrthodonticsPage() {
   const gedlingOrthoFAQs = [
     {
       question: "How affordable are braces for working families from Gedling?",
-      answer: "We believe quality orthodontics should be accessible to Gedling working families. Our affordable braces start from £2,200 with flexible payment plans available to spread costs over 24-36 months. We provide transparent pricing and family discounts for multiple children."
+      answer:
+        "We believe quality orthodontics should be accessible to Gedling working families. Our affordable braces start from £2,200 with flexible payment plans available to spread costs over 24-36 months. We provide transparent pricing and family discounts for multiple children.",
     },
     {
       question: "Can multiple family members get braces at the same time?",
-      answer: "Absolutely! Many Gedling working families choose to start orthodontic treatment for multiple children together. We offer family discounts and can coordinate appointments to save time and travel. Payment plans can cover the whole family treatment."
+      answer:
+        "Absolutely! Many Gedling working families choose to start orthodontic treatment for multiple children together. We offer family discounts and can coordinate appointments to save time and travel. Payment plans can cover the whole family treatment.",
     },
     {
-      question: "How do you fit orthodontic appointments around work schedules?",
-      answer: "We understand working families in Gedling have busy schedules. We offer early morning, evening, and Saturday appointments for orthodontic care. Regular adjustment appointments are typically quick (15-20 minutes) and can often be scheduled during lunch breaks."
+      question:
+        "How do you fit orthodontic appointments around work schedules?",
+      answer:
+        "We understand working families in Gedling have busy schedules. We offer early morning, evening, and Saturday appointments for orthodontic care. Regular adjustment appointments are typically quick (15-20 minutes) and can often be scheduled during lunch breaks.",
     },
     {
-      question: "What's the difference between affordable and expensive braces?",
-      answer: "Our affordable braces use quality materials and proven techniques, just with simpler brackets and fewer aesthetic options. More expensive options offer faster treatment or near-invisible appearance. We explain all options honestly so Gedling families can choose what fits their budget."
+      question:
+        "What's the difference between affordable and expensive braces?",
+      answer:
+        "Our affordable braces use quality materials and proven techniques, just with simpler brackets and fewer aesthetic options. More expensive options offer faster treatment or near-invisible appearance. We explain all options honestly so Gedling families can choose what fits their budget.",
     },
     {
-      question: "How long does orthodontic treatment take for children and adults?",
-      answer: "Treatment typically takes 18-24 months for children and 18-30 months for adults. We provide realistic timelines upfront and regular progress updates. The investment in straight teeth provides lifelong benefits for confidence and oral health."
-    }
+      question:
+        "How long does orthodontic treatment take for children and adults?",
+      answer:
+        "Treatment typically takes 18-24 months for children and 18-30 months for adults. We provide realistic timelines upfront and regular progress updates. The investment in straight teeth provides lifelong benefits for confidence and oral health.",
+    },
   ];
 
   const orthodonticOptions = [
@@ -87,7 +88,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       duration: "18-24 months",
       pricing: "From £2,200",
       benefits: "Most affordable option, proven results",
-      icon: Shield
+      icon: Shield,
     },
     {
       option: "Ceramic Clear Braces",
@@ -96,7 +97,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       duration: "18-26 months",
       pricing: "From £2,800",
       benefits: "Discreet appearance, effective",
-      icon: Smile
+      icon: Smile,
     },
     {
       option: "Invisalign Teen",
@@ -105,7 +106,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       duration: "12-18 months",
       pricing: "From £3,200",
       benefits: "Nearly invisible, removable",
-      icon: Target
+      icon: Target,
     },
     {
       option: "Adult Invisalign",
@@ -114,35 +115,36 @@ export default function GedlingFamilyOrthodonticsPage() {
       duration: "12-20 months",
       pricing: "From £3,500",
       benefits: "Discreet, convenient for work",
-      icon: Award
-    }
+      icon: Award,
+    },
   ];
 
   const familyBenefits = [
     {
       benefit: "Affordable Payment Plans",
-      description: "Spread treatment costs over 24-36 months with 0% interest options",
+      description:
+        "Spread treatment costs over 24-36 months with 0% interest options",
       value: "Budget-friendly orthodontics",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       benefit: "Family Coordination",
       description: "Schedule multiple family members together for convenience",
       value: "Time-saving efficiency",
-      icon: Users
+      icon: Users,
     },
     {
       benefit: "Flexible Scheduling",
       description: "Early morning, evening, and weekend appointments available",
       value: "Work-friendly timing",
-      icon: Clock
+      icon: Clock,
     },
     {
       benefit: "Quality Results",
       description: "Proven orthodontic techniques with affordable options",
       value: "Value for money",
-      icon: Award
-    }
+      icon: Award,
+    },
   ];
 
   const ageSpecificTreatment = [
@@ -152,7 +154,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       benefits: "Guide jaw development, prevent complex problems",
       options: "Space maintainers, expanders, limited braces",
       investment: "From £1,200 - prevents costly future treatment",
-      familyValue: "Early treatment often shorter and less expensive"
+      familyValue: "Early treatment often shorter and less expensive",
     },
     {
       ageGroup: "Teenagers (12-18 years)",
@@ -160,7 +162,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       benefits: "Straight teeth, improved confidence, better oral health",
       options: "Metal braces, ceramic braces, Invisalign Teen",
       investment: "From £2,200 - investment in lifelong confidence",
-      familyValue: "Most effective age for treatment, lasting results"
+      familyValue: "Most effective age for treatment, lasting results",
     },
     {
       ageGroup: "Young Adults (18-25 years)",
@@ -168,7 +170,7 @@ export default function GedlingFamilyOrthodonticsPage() {
       benefits: "Career confidence, improved facial aesthetics",
       options: "Clear braces, Invisalign, lingual braces",
       investment: "From £2,800 - professional investment in appearance",
-      familyValue: "Discretion important for work and social situations"
+      familyValue: "Discretion important for work and social situations",
     },
     {
       ageGroup: "Parents (25+ years)",
@@ -176,8 +178,8 @@ export default function GedlingFamilyOrthodonticsPage() {
       benefits: "Set good example, improve confidence, better health",
       options: "Invisalign, clear braces, traditional braces",
       investment: "From £3,200 - family investment in health and confidence",
-      familyValue: "Show children importance of dental health"
-    }
+      familyValue: "Show children importance of dental health",
+    },
   ];
 
   const affordabilityStrategies = [
@@ -185,38 +187,40 @@ export default function GedlingFamilyOrthodonticsPage() {
       strategy: "Family Treatment Planning",
       approach: "Coordinate orthodontic treatment across family members",
       benefit: "Family discounts and efficient use of appointments",
-      savings: "Save up to 15% when treating multiple family members"
+      savings: "Save up to 15% when treating multiple family members",
     },
     {
       strategy: "Flexible Payment Options",
       approach: "Spread costs over 24-36 months with 0% interest plans",
-      benefit: "Make quality orthodontics affordable for working family budgets",
-      savings: "Monthly payments from £75-£120 instead of large upfront cost"
+      benefit:
+        "Make quality orthodontics affordable for working family budgets",
+      savings: "Monthly payments from £75-£120 instead of large upfront cost",
     },
     {
       strategy: "Early Intervention",
       approach: "Start treatment at optimal age to reduce complexity",
       benefit: "Shorter, simpler treatment with better results",
-      savings: "Early treatment often 30-50% less expensive than later correction"
+      savings:
+        "Early treatment often 30-50% less expensive than later correction",
     },
     {
       strategy: "Treatment Option Guidance",
       approach: "Honest advice about which option offers best value",
       benefit: "Choose treatment that fits needs and budget",
-      savings: "Avoid paying for features you don't need"
+      savings: "Avoid paying for features you don't need",
     },
     {
       strategy: "Insurance Coordination",
       approach: "Maximize dental insurance benefits for orthodontic care",
       benefit: "Reduce out-of-pocket costs for working families",
-      savings: "Insurance can cover £500-£1,500 of treatment costs"
+      savings: "Insurance can cover £500-£1,500 of treatment costs",
     },
     {
       strategy: "Maintenance Planning",
       approach: "Proper retainer care to maintain results long-term",
       benefit: "Protect investment with good aftercare",
-      savings: "Prevent need for re-treatment worth thousands"
-    }
+      savings: "Prevent need for re-treatment worth thousands",
+    },
   ];
 
   return (
@@ -228,34 +232,33 @@ export default function GedlingFamilyOrthodonticsPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Family Orthodontics in Gedling",
-            "image": "https://peartree.dental/images/family-orthodontics-gedling.jpg",
-            "url": "https://peartree.dental/gedling/family-orthodontics",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Family Orthodontics in Gedling",
+            image:
+              "https://peartree.dental/images/family-orthodontics-gedling.jpg",
+            url: "https://peartree.dental/gedling/family-orthodontics",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Gedling, NG4"
+              name: "Gedling, NG4",
             },
-            "medicalSpecialty": "Orthodontics - Family Braces & Teeth Straightening",
-            "geo": {
+            medicalSpecialty:
+              "Orthodontics - Family Braces & Teeth Straightening",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£1,200-£3,500"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£1,200-£3,500",
+          }),
         }}
       />
 
@@ -271,7 +274,8 @@ export default function GedlingFamilyOrthodonticsPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Family Orthodontics in <span className="text-yellow-300">Gedling</span>
+              Family Orthodontics in{" "}
+              <span className="text-yellow-300">Gedling</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -281,19 +285,27 @@ export default function GedlingFamilyOrthodonticsPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
-                Quick drive from Gedling — Quality braces from £2,200 with payment plans
+                Quick drive from Gedling — Quality braces from £2,200 with
+                payment plans
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Smile className="w-5 h-5 mr-2" />
                   Book Family Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -301,7 +313,10 @@ export default function GedlingFamilyOrthodonticsPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">👨‍👩‍👧‍👦 Affordable family orthodontics with payment plans for Gedling families!</p>
+              <p className="text-lg font-semibold">
+                👨‍👩‍👧‍👦 Affordable family orthodontics with payment plans for
+                Gedling families!
+              </p>
             </div>
           </div>
         </div>
@@ -316,8 +331,10 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Affordable Family Orthodontics for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We understand that Gedling working families want quality orthodontic treatment that fits their
-                budget and schedule. Our affordable braces and flexible payment plans make straight teeth achievable for the whole family.
+                We understand that Gedling working families want quality
+                orthodontic treatment that fits their budget and schedule. Our
+                affordable braces and flexible payment plans make straight teeth
+                achievable for the whole family.
               </p>
             </div>
 
@@ -325,12 +342,21 @@ export default function GedlingFamilyOrthodonticsPage() {
               {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-purple-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-purple-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-purple-100 text-purple-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-purple-100 text-purple-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -339,22 +365,32 @@ export default function GedlingFamilyOrthodonticsPage() {
 
             <div className="text-center bg-purple-50 rounded-lg p-8">
               <Smile className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Quality Orthodontics Made Affordable</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Quality Orthodontics Made Affordable
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We believe every Gedling family deserves access to quality orthodontic care. Our affordable options
-                and flexible payment plans ensure straight teeth and confident smiles are within reach for working families.
+                We believe every Gedling family deserves access to quality
+                orthodontic care. Our affordable options and flexible payment
+                plans ensure straight teeth and confident smiles are within
+                reach for working families.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">From £2,200</div>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                    From £2,200
+                  </div>
                   <p className="text-gray-600">Quality braces for all ages</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">Payment plans</div>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                    Payment plans
+                  </div>
                   <p className="text-gray-600">From £75 per month</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-purple-600 mb-2">Quick drive</div>
+                  <div className="text-2xl font-bold text-purple-600 mb-2">
+                    Quick drive
+                  </div>
                   <p className="text-gray-600">Convenient from Gedling</p>
                 </div>
               </div>
@@ -372,8 +408,9 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Affordable Orthodontic Options for Gedling Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Choose from our range of quality orthodontic treatments designed to fit
-                different budgets and lifestyles for Gedling working families.
+                Choose from our range of quality orthodontic treatments designed
+                to fit different budgets and lifestyles for Gedling working
+                families.
               </p>
             </div>
 
@@ -381,24 +418,39 @@ export default function GedlingFamilyOrthodonticsPage() {
               {(orthodonticOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-purple-400">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-purple-400"
+                  >
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-purple-600" />
                       </div>
-                      <CardTitle className="text-lg text-pear-primary">{option.option}</CardTitle>
-                      <p className="text-gray-600 text-sm">{option.description}</p>
+                      <CardTitle className="text-lg text-pear-primary">
+                        {option.option}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {option.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{option.pricing}</p>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {option.pricing}
+                        </p>
                         <div className="flex flex-col gap-1 mb-2">
-                          <Badge variant="outline" className="text-xs">{option.duration}</Badge>
-                          <span className="text-xs text-gray-600">{option.suitability}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {option.duration}
+                          </Badge>
+                          <span className="text-xs text-gray-600">
+                            {option.suitability}
+                          </span>
                         </div>
                       </div>
                       <div className="bg-purple-50 rounded-lg p-3">
-                        <p className="text-sm text-purple-700 font-medium">{option.benefits}</p>
+                        <p className="text-sm text-purple-700 font-medium">
+                          {option.benefits}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -418,8 +470,9 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Age-Appropriate Orthodontics for Every Gedling Family Member
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Each family member has different orthodontic needs and considerations.
-                Our age-specific approach ensures optimal treatment timing and value for working families.
+                Each family member has different orthodontic needs and
+                considerations. Our age-specific approach ensures optimal
+                treatment timing and value for working families.
               </p>
             </div>
 
@@ -429,24 +482,44 @@ export default function GedlingFamilyOrthodonticsPage() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-2 text-lg">{group.ageGroup}</h3>
-                        <p className="text-gray-600 text-sm mb-3">{group.approach}</p>
+                        <h3 className="font-bold text-pear-primary mb-2 text-lg">
+                          {group.ageGroup}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {group.approach}
+                        </p>
                         <div className="bg-purple-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-purple-700 text-sm mb-1">Benefits:</h4>
-                          <p className="text-sm text-purple-700">{group.benefits}</p>
+                          <h4 className="font-semibold text-purple-700 text-sm mb-1">
+                            Benefits:
+                          </h4>
+                          <p className="text-sm text-purple-700">
+                            {group.benefits}
+                          </p>
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-purple-600 text-sm mb-2">Treatment Options:</h4>
-                        <p className="text-sm text-gray-700 mb-3">{group.options}</p>
-                        <h4 className="font-semibold text-purple-600 text-sm mb-2">Investment:</h4>
-                        <p className="text-sm text-gray-700">{group.investment}</p>
+                        <h4 className="font-semibold text-purple-600 text-sm mb-2">
+                          Treatment Options:
+                        </h4>
+                        <p className="text-sm text-gray-700 mb-3">
+                          {group.options}
+                        </p>
+                        <h4 className="font-semibold text-purple-600 text-sm mb-2">
+                          Investment:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {group.investment}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-purple-600 text-sm mb-2">Family Value:</h4>
-                        <p className="text-sm text-gray-700">{group.familyValue}</p>
+                        <h4 className="font-semibold text-purple-600 text-sm mb-2">
+                          Family Value:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {group.familyValue}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -466,8 +539,9 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Making Orthodontics Affordable for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our commitment to affordability means Gedling working families can access
-                quality orthodontic care with smart strategies that fit their budgets.
+                Our commitment to affordability means Gedling working families
+                can access quality orthodontic care with smart strategies that
+                fit their budgets.
               </p>
             </div>
 
@@ -480,19 +554,33 @@ export default function GedlingFamilyOrthodonticsPage() {
                         <ThumbsUp className="w-6 h-6 text-purple-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{strategy.strategy}</h3>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {strategy.strategy}
+                        </h3>
                         <div className="space-y-3">
                           <div>
-                            <h4 className="font-semibold text-purple-600 text-sm mb-1">Approach:</h4>
-                            <p className="text-sm text-gray-700">{strategy.approach}</p>
+                            <h4 className="font-semibold text-purple-600 text-sm mb-1">
+                              Approach:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.approach}
+                            </p>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-purple-600 text-sm mb-1">Benefit:</h4>
-                            <p className="text-sm text-gray-700">{strategy.benefit}</p>
+                            <h4 className="font-semibold text-purple-600 text-sm mb-1">
+                              Benefit:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.benefit}
+                            </p>
                           </div>
                           <div className="bg-purple-50 rounded-lg p-3">
-                            <h4 className="font-semibold text-purple-700 text-sm mb-1">Savings:</h4>
-                            <p className="text-sm text-purple-700">{strategy.savings}</p>
+                            <h4 className="font-semibold text-purple-700 text-sm mb-1">
+                              Savings:
+                            </h4>
+                            <p className="text-sm text-purple-700">
+                              {strategy.savings}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -523,15 +611,21 @@ export default function GedlingFamilyOrthodonticsPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-purple-600 mb-2">£85 per month</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">
+                  £85 per month
+                </div>
                 <p className="text-gray-600">Affordable family payment plan</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-purple-600 mb-2">Three children</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">
+                  Three children
+                </div>
                 <p className="text-gray-600">All treated successfully</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-purple-600 mb-2">Flexible times</div>
+                <div className="text-3xl font-bold text-purple-600 mb-2">
+                  Flexible times
+                </div>
                 <p className="text-gray-600">Worked around busy schedules</p>
               </div>
             </div>
@@ -547,7 +641,8 @@ export default function GedlingFamilyOrthodonticsPage() {
               Family Orthodontic Results for Gedling Families
             </h2>
             <p className="text-lg text-gray-600">
-              See the amazing transformations achieved by Gedling working families with our affordable orthodontic treatment
+              See the amazing transformations achieved by Gedling working
+              families with our affordable orthodontic treatment
             </p>
           </div>
 
@@ -575,7 +670,8 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Family Orthodontic Questions from Gedling Families
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Gedling working families about affordable family orthodontic treatment
+                Common questions from Gedling working families about affordable
+                family orthodontic treatment
               </p>
             </div>
 
@@ -604,15 +700,21 @@ export default function GedlingFamilyOrthodonticsPage() {
                     <p>2. Continue on the A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 miles)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Quick 15-minute drive</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Quick 15-minute drive
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-purple-50 rounded-lg p-6">
                     <Smile className="w-12 h-12 text-purple-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-purple-700 mb-2">Family Orthodontics</h4>
-                    <p className="text-gray-600">Affordable braces with payment plans</p>
+                    <h4 className="font-bold text-purple-700 mb-2">
+                      Family Orthodontics
+                    </h4>
+                    <p className="text-gray-600">
+                      Affordable braces with payment plans
+                    </p>
                   </div>
                 </div>
               </div>
@@ -624,7 +726,10 @@ export default function GedlingFamilyOrthodonticsPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Gedling
               </Button>
@@ -641,8 +746,9 @@ export default function GedlingFamilyOrthodonticsPage() {
               Give Your Family the Gift of Straight Teeth from Gedling
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't let budget concerns stop your family from achieving beautiful, confident smiles.
-              Book affordable orthodontic treatment with payment plans designed for working families.
+              Don't let budget concerns stop your family from achieving
+              beautiful, confident smiles. Book affordable orthodontic treatment
+              with payment plans designed for working families.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -651,19 +757,27 @@ export default function GedlingFamilyOrthodonticsPage() {
                 Family Orthodontic Specialists
               </p>
               <p className="text-sm opacity-90">
-                Affordable braces • Payment plans available • Family discounts • Quick drive from Gedling
+                Affordable braces • Payment plans available • Family discounts •
+                Quick drive from Gedling
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-purple-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Smile className="w-5 h-5 mr-2" />
                   Book Family Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

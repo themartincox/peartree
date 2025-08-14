@@ -1,44 +1,34 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
 import {
+  Activity,
+  Baby,
+  Car,
+  CheckCircle,
+  DollarSign,
+  GraduationCap,
+  HeartHandshake,
   MapPin,
-  Clock,
+  Navigation,
   Phone,
   Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
-  Award,
-  Navigation,
-  Home,
-  CreditCard,
-  Calendar,
+  Stethoscope,
   ThumbsUp,
-  FileText,
-  Activity,
-  TrendingUp,
-  Target,
   Timer,
-  HeartHandshake,
-  Zap,
-  DollarSign,
-  Baby,
-  GraduationCap,
-  Stethoscope
+  TrendingUp,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import FAQSection from "@/components/FAQSection";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Family Preventive Care in Gedling - Long-Term Health Focus for Working Families | Pear Tree Dental",
-  description: "Family preventive care for Gedling working families. Long-term dental health focus, family health plans, and convenient preventive services. Quick drive from Gedling NG4.",
+  title:
+    "Family Preventive Care in Gedling - Long-Term Health Focus for Working Families | Pear Tree Dental",
+  description:
+    "Family preventive care for Gedling working families. Long-term dental health focus, family health plans, and convenient preventive services. Quick drive from Gedling NG4.",
   keywords: [
     "family preventive care Gedling",
     "preventive dentistry Gedling NG4",
@@ -46,40 +36,49 @@ export const metadata: Metadata = {
     "long term dental care Gedling",
     "working families preventive dentist Gedling",
     "family health plans Gedling",
-    "comprehensive preventive care Gedling"
+    "comprehensive preventive care Gedling",
   ],
   openGraph: {
-    title: "Family Preventive Care in Gedling - Long-Term Health Focus for Working Families | Pear Tree Dental",
-    description: "Family preventive care for Gedling working families. Long-term dental health focus with convenient family health plans.",
-    url: "https://peartree.dental/gedling/family-preventive-care"
+    title:
+      "Family Preventive Care in Gedling - Long-Term Health Focus for Working Families | Pear Tree Dental",
+    description:
+      "Family preventive care for Gedling working families. Long-term dental health focus with convenient family health plans.",
+    url: "https://peartree.dental/gedling/family-preventive-care",
   },
   alternates: {
-    canonical: "https://peartree.dental/gedling/family-preventive-care"
-  }
+    canonical: "https://peartree.dental/gedling/family-preventive-care",
+  },
 };
 
 export default function GedlingFamilyPreventiveCare() {
   const gedlingPreventiveFAQs = [
     {
-      question: "How does preventive care save money for working families from Gedling?",
-      answer: "Preventive care is the most cost-effective approach to dental health. Regular check-ups and cleanings prevent expensive problems like root canals, crowns, and extractions. For a typical Gedling family, preventive care costs around £400-600 annually but can prevent thousands in future treatment costs."
+      question:
+        "How does preventive care save money for working families from Gedling?",
+      answer:
+        "Preventive care is the most cost-effective approach to dental health. Regular check-ups and cleanings prevent expensive problems like root canals, crowns, and extractions. For a typical Gedling family, preventive care costs around £400-600 annually but can prevent thousands in future treatment costs.",
     },
     {
       question: "What's included in your family preventive care plans?",
-      answer: "Our family plans include regular examinations, professional cleaning, fluoride treatments, dietary advice, and early problem detection. We tailor plans for each family member's age and risk factors, ensuring comprehensive coverage for everyone from toddlers to grandparents."
+      answer:
+        "Our family plans include regular examinations, professional cleaning, fluoride treatments, dietary advice, and early problem detection. We tailor plans for each family member's age and risk factors, ensuring comprehensive coverage for everyone from toddlers to grandparents.",
     },
     {
-      question: "How do you make preventive care convenient for busy working families?",
-      answer: "We offer flexible scheduling including early morning, evening, and weekend appointments. We can coordinate multiple family members' appointments together and provide reminder systems. Being just a quick drive from Gedling makes regular visits manageable even with busy work schedules."
+      question:
+        "How do you make preventive care convenient for busy working families?",
+      answer:
+        "We offer flexible scheduling including early morning, evening, and weekend appointments. We can coordinate multiple family members' appointments together and provide reminder systems. Being just a quick drive from Gedling makes regular visits manageable even with busy work schedules.",
     },
     {
       question: "When should children start preventive care?",
-      answer: "Children should start preventive visits by their first birthday or within 6 months of first tooth eruption. Early preventive care establishes good habits, prevents early childhood cavities, and guides proper development. It's the foundation for lifelong dental health."
+      answer:
+        "Children should start preventive visits by their first birthday or within 6 months of first tooth eruption. Early preventive care establishes good habits, prevents early childhood cavities, and guides proper development. It's the foundation for lifelong dental health.",
     },
     {
       question: "How do you track family dental health over time?",
-      answer: "We maintain comprehensive family health records tracking each member's progress, risk factors, and treatment history. This allows us to identify patterns, plan treatments efficiently, and provide personalized preventive strategies for optimal long-term family health."
-    }
+      answer:
+        "We maintain comprehensive family health records tracking each member's progress, risk factors, and treatment history. This allows us to identify patterns, plan treatments efficiently, and provide personalized preventive strategies for optimal long-term family health.",
+    },
   ];
 
   const preventiveServices = [
@@ -90,7 +89,7 @@ export default function GedlingFamilyPreventiveCare() {
       ageGroup: "All ages",
       benefits: "Early problem detection, health monitoring",
       cost: "From £65 per person",
-      icon: Stethoscope
+      icon: Stethoscope,
     },
     {
       service: "Professional Cleaning & Hygiene",
@@ -99,7 +98,7 @@ export default function GedlingFamilyPreventiveCare() {
       ageGroup: "All ages",
       benefits: "Prevents gum disease and cavities",
       cost: "From £85 per person",
-      icon: Activity
+      icon: Activity,
     },
     {
       service: "Children's Preventive Treatments",
@@ -108,7 +107,7 @@ export default function GedlingFamilyPreventiveCare() {
       ageGroup: "Ages 6-16",
       benefits: "90% cavity reduction with sealants",
       cost: "From £35 per treatment",
-      icon: Baby
+      icon: Baby,
     },
     {
       service: "Family Health Education",
@@ -117,8 +116,8 @@ export default function GedlingFamilyPreventiveCare() {
       ageGroup: "All family members",
       benefits: "Improved home care, better outcomes",
       cost: "Included in visits",
-      icon: GraduationCap
-    }
+      icon: GraduationCap,
+    },
   ];
 
   const longTermBenefits = [
@@ -126,116 +125,164 @@ export default function GedlingFamilyPreventiveCare() {
       benefit: "Cost Prevention",
       description: "Regular care prevents expensive emergency treatments",
       value: "Saves thousands long-term",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       benefit: "Health Monitoring",
       description: "Track family health trends and address issues early",
       value: "Optimal family health",
-      icon: TrendingUp
+      icon: TrendingUp,
     },
     {
       benefit: "Convenient Coordination",
       description: "Family appointments scheduled together for efficiency",
       value: "Time-saving convenience",
-      icon: Timer
+      icon: Timer,
     },
     {
       benefit: "Lifestyle Integration",
       description: "Dental health becomes natural part of family routine",
       value: "Sustainable health habits",
-      icon: HeartHandshake
-    }
+      icon: HeartHandshake,
+    },
   ];
 
   const ageSpecificPrevention = [
     {
       ageGroup: "Babies & Toddlers (6 months - 3 years)",
       preventiveFocus: "Early development monitoring and habit establishment",
-      keyServices: ["First dental visit", "Fluoride varnish", "Feeding guidance", "Thumb sucking counseling"],
+      keyServices: [
+        "First dental visit",
+        "Fluoride varnish",
+        "Feeding guidance",
+        "Thumb sucking counseling",
+      ],
       healthGoals: "Prevent early childhood cavities, establish good habits",
-      parentGuidance: "Home care instruction, dietary counseling, development expectations",
-      longTermImpact: "Foundation for lifelong oral health and positive dental attitudes"
+      parentGuidance:
+        "Home care instruction, dietary counseling, development expectations",
+      longTermImpact:
+        "Foundation for lifelong oral health and positive dental attitudes",
     },
     {
       ageGroup: "Preschool Children (3-6 years)",
       preventiveFocus: "Cavity prevention and oral hygiene skill building",
-      keyServices: ["Regular cleaning", "Fluoride treatments", "Sealant preparation", "Hygiene education"],
+      keyServices: [
+        "Regular cleaning",
+        "Fluoride treatments",
+        "Sealant preparation",
+        "Hygiene education",
+      ],
       healthGoals: "Maintain cavity-free teeth, develop brushing skills",
       parentGuidance: "Supervised brushing techniques, nutrition counseling",
-      longTermImpact: "Establishes routine care and prevents school-age dental problems"
+      longTermImpact:
+        "Establishes routine care and prevents school-age dental problems",
     },
     {
       ageGroup: "School Age (6-12 years)",
       preventiveFocus: "Permanent tooth protection and orthodontic monitoring",
-      keyServices: ["Dental sealants", "Professional cleaning", "Orthodontic screening", "Sports protection"],
+      keyServices: [
+        "Dental sealants",
+        "Professional cleaning",
+        "Orthodontic screening",
+        "Sports protection",
+      ],
       healthGoals: "Protect new permanent teeth, monitor development",
-      parentGuidance: "Independence building, diet modification, injury prevention",
-      longTermImpact: "Critical protection during high-risk cavity years"
+      parentGuidance:
+        "Independence building, diet modification, injury prevention",
+      longTermImpact: "Critical protection during high-risk cavity years",
     },
     {
       ageGroup: "Teenagers (13-18 years)",
       preventiveFocus: "Independence building and lifestyle-related prevention",
-      keyServices: ["Comprehensive care", "Wisdom tooth monitoring", "Orthodontic maintenance", "Lifestyle counseling"],
-      healthGoals: "Maintain health through hormonal changes and increased independence",
+      keyServices: [
+        "Comprehensive care",
+        "Wisdom tooth monitoring",
+        "Orthodontic maintenance",
+        "Lifestyle counseling",
+      ],
+      healthGoals:
+        "Maintain health through hormonal changes and increased independence",
       parentGuidance: "Supporting independence while maintaining supervision",
-      longTermImpact: "Transition to adult responsibility for oral health"
+      longTermImpact: "Transition to adult responsibility for oral health",
     },
     {
       ageGroup: "Working Adults (19-64 years)",
       preventiveFocus: "Disease prevention and systemic health connections",
-      keyServices: ["Gum disease prevention", "Cancer screening", "Stress-related monitoring", "Restoration maintenance"],
-      healthGoals: "Maintain teeth for life, prevent systemic health complications",
-      parentGuidance: "Model good habits for children, family health leadership",
-      longTermImpact: "Maintains function and health through productive years"
+      keyServices: [
+        "Gum disease prevention",
+        "Cancer screening",
+        "Stress-related monitoring",
+        "Restoration maintenance",
+      ],
+      healthGoals:
+        "Maintain teeth for life, prevent systemic health complications",
+      parentGuidance:
+        "Model good habits for children, family health leadership",
+      longTermImpact: "Maintains function and health through productive years",
     },
     {
       ageGroup: "Seniors (65+ years)",
       preventiveFocus: "Maintaining function and managing age-related changes",
-      keyServices: ["Medication interaction monitoring", "Dry mouth management", "Restoration maintenance", "Mobility accommodations"],
+      keyServices: [
+        "Medication interaction monitoring",
+        "Dry mouth management",
+        "Restoration maintenance",
+        "Mobility accommodations",
+      ],
       healthGoals: "Maintain nutrition capacity and quality of life",
       parentGuidance: "Family support for appointments and home care",
-      longTermImpact: "Preserves independence and health in later years"
-    }
+      longTermImpact: "Preserves independence and health in later years",
+    },
   ];
 
   const familyHealthStrategies = [
     {
       strategy: "Coordinated Family Care Plans",
-      approach: "Develop comprehensive health strategies for entire family unit",
+      approach:
+        "Develop comprehensive health strategies for entire family unit",
       benefit: "Efficient care coordination and better health outcomes",
-      implementation: "Schedule family members together, track family health trends"
+      implementation:
+        "Schedule family members together, track family health trends",
     },
     {
       strategy: "Risk-Based Prevention",
-      approach: "Tailor preventive care intensity based on individual and family risk factors",
+      approach:
+        "Tailor preventive care intensity based on individual and family risk factors",
       benefit: "Optimal prevention without over-treatment or under-treatment",
-      implementation: "Assess genetics, lifestyle, and environmental factors for each family member"
+      implementation:
+        "Assess genetics, lifestyle, and environmental factors for each family member",
     },
     {
       strategy: "Educational Family Approach",
-      approach: "Educate entire family about oral health connections to overall wellness",
+      approach:
+        "Educate entire family about oral health connections to overall wellness",
       benefit: "Improved home care and health decision-making",
-      implementation: "Family education sessions, age-appropriate health information"
+      implementation:
+        "Family education sessions, age-appropriate health information",
     },
     {
       strategy: "Long-Term Health Investment",
-      approach: "Focus on prevention as investment in family's future health and finances",
+      approach:
+        "Focus on prevention as investment in family's future health and finances",
       benefit: "Reduced lifetime dental costs and improved quality of life",
-      implementation: "Track savings from prevention, demonstrate long-term value"
+      implementation:
+        "Track savings from prevention, demonstrate long-term value",
     },
     {
       strategy: "Lifestyle Integration",
       approach: "Make oral health natural part of family's daily routines",
       benefit: "Sustainable health habits that last a lifetime",
-      implementation: "Practical home care strategies, family-friendly health practices"
+      implementation:
+        "Practical home care strategies, family-friendly health practices",
     },
     {
       strategy: "Health Monitoring & Tracking",
-      approach: "Use technology and records to track family health trends over time",
+      approach:
+        "Use technology and records to track family health trends over time",
       benefit: "Early problem identification and treatment optimization",
-      implementation: "Digital health records, progress tracking, predictive care planning"
-    }
+      implementation:
+        "Digital health records, progress tracking, predictive care planning",
+    },
   ];
 
   const preventionROI = [
@@ -245,7 +292,7 @@ export default function GedlingFamilyPreventiveCare() {
       prevention: "Regular check-ups, cleanings, fluoride, sealants",
       problemsPrevented: "Cavities, gum disease, emergencies",
       costAvoided: "£2,000-5,000 in treatments",
-      roi: "300-800% return on investment"
+      roi: "300-800% return on investment",
     },
     {
       preventiveInvestment: "Children's Dental Sealants",
@@ -253,7 +300,7 @@ export default function GedlingFamilyPreventiveCare() {
       prevention: "Protective coating on permanent molars",
       problemsPrevented: "90% reduction in back tooth cavities",
       costAvoided: "£150-400 per filling avoided",
-      roi: "300-600% return on investment"
+      roi: "300-600% return on investment",
     },
     {
       preventiveInvestment: "Early Orthodontic Intervention",
@@ -261,7 +308,7 @@ export default function GedlingFamilyPreventiveCare() {
       prevention: "Guide jaw development and tooth eruption",
       problemsPrevented: "Complex orthodontic problems",
       costAvoided: "£2,000-4,000 in complex treatment",
-      roi: "150-300% return on investment"
+      roi: "150-300% return on investment",
     },
     {
       preventiveInvestment: "Gum Disease Prevention",
@@ -269,8 +316,8 @@ export default function GedlingFamilyPreventiveCare() {
       prevention: "Professional cleaning and monitoring",
       problemsPrevented: "Gum disease, tooth loss, systemic complications",
       costAvoided: "£3,000-10,000 in advanced treatment",
-      roi: "1,500-5,000% return on investment"
-    }
+      roi: "1,500-5,000% return on investment",
+    },
   ];
 
   return (
@@ -282,34 +329,32 @@ export default function GedlingFamilyPreventiveCare() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Family Preventive Care in Gedling",
-            "image": "https://peartree.dental/images/family-preventive-care-gedling.jpg",
-            "url": "https://peartree.dental/gedling/family-preventive-care",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Family Preventive Care in Gedling",
+            image:
+              "https://peartree.dental/images/family-preventive-care-gedling.jpg",
+            url: "https://peartree.dental/gedling/family-preventive-care",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Gedling, NG4"
+              name: "Gedling, NG4",
             },
-            "medicalSpecialty": "Preventive Dentistry - Family Health Focus",
-            "geo": {
+            medicalSpecialty: "Preventive Dentistry - Family Health Focus",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£35-£85"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£35-£85",
+          }),
         }}
       />
 
@@ -325,7 +370,8 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Family Preventive Care in <span className="text-yellow-300">Gedling</span>
+              Family Preventive Care in{" "}
+              <span className="text-yellow-300">Gedling</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -335,19 +381,27 @@ export default function GedlingFamilyPreventiveCare() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
-                Quick drive from Gedling — Comprehensive family health plans from £400 annually
+                Quick drive from Gedling — Comprehensive family health plans
+                from £400 annually
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <HeartHandshake className="w-5 h-5 mr-2" />
                   Book Family Health Plan
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -355,7 +409,10 @@ export default function GedlingFamilyPreventiveCare() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">💚 Long-term family health investment with convenient care for Gedling families!</p>
+              <p className="text-lg font-semibold">
+                💚 Long-term family health investment with convenient care for
+                Gedling families!
+              </p>
             </div>
           </div>
         </div>
@@ -370,8 +427,10 @@ export default function GedlingFamilyPreventiveCare() {
                 Long-Term Family Health Investment for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We understand that Gedling working families need dental care that focuses on long-term health and
-                financial benefits. Our preventive approach saves money while ensuring optimal health for every family member.
+                We understand that Gedling working families need dental care
+                that focuses on long-term health and financial benefits. Our
+                preventive approach saves money while ensuring optimal health
+                for every family member.
               </p>
             </div>
 
@@ -379,12 +438,21 @@ export default function GedlingFamilyPreventiveCare() {
               {(longTermBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-green-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-green-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-green-100 text-green-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-green-100 text-green-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -393,22 +461,34 @@ export default function GedlingFamilyPreventiveCare() {
 
             <div className="text-center bg-green-50 rounded-lg p-8">
               <HeartHandshake className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Prevention: The Smart Investment for Working Families</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Prevention: The Smart Investment for Working Families
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that Gedling working families make careful decisions about health investments.
-                Preventive care provides the highest return on investment while ensuring optimal health for every family member.
+                We understand that Gedling working families make careful
+                decisions about health investments. Preventive care provides the
+                highest return on investment while ensuring optimal health for
+                every family member.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">300-800% ROI</div>
-                  <p className="text-gray-600">Return on prevention investment</p>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    300-800% ROI
+                  </div>
+                  <p className="text-gray-600">
+                    Return on prevention investment
+                  </p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">Family coordination</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    Family coordination
+                  </div>
                   <p className="text-gray-600">Efficient scheduling and care</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">Quick drive</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    Quick drive
+                  </div>
                   <p className="text-gray-600">Convenient from Gedling</p>
                 </div>
               </div>
@@ -426,8 +506,9 @@ export default function GedlingFamilyPreventiveCare() {
                 Comprehensive Preventive Services for Gedling Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our family preventive care covers all aspects of dental health for every family member,
-                from babies to grandparents, with convenient scheduling and long-term health focus.
+                Our family preventive care covers all aspects of dental health
+                for every family member, from babies to grandparents, with
+                convenient scheduling and long-term health focus.
               </p>
             </div>
 
@@ -435,24 +516,39 @@ export default function GedlingFamilyPreventiveCare() {
               {(preventiveServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-green-400">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-green-400"
+                  >
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-green-600" />
                       </div>
-                      <CardTitle className="text-lg text-pear-primary">{service.service}</CardTitle>
-                      <p className="text-gray-600 text-sm">{service.description}</p>
+                      <CardTitle className="text-lg text-pear-primary">
+                        {service.service}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {service.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{service.cost}</p>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {service.cost}
+                        </p>
                         <div className="flex flex-col gap-1 mb-2">
-                          <Badge variant="outline" className="text-xs">{service.frequency}</Badge>
-                          <span className="text-xs text-gray-600">{service.ageGroup}</span>
+                          <Badge variant="outline" className="text-xs">
+                            {service.frequency}
+                          </Badge>
+                          <span className="text-xs text-gray-600">
+                            {service.ageGroup}
+                          </span>
                         </div>
                       </div>
                       <div className="bg-green-50 rounded-lg p-3">
-                        <p className="text-sm text-green-700 font-medium">{service.benefits}</p>
+                        <p className="text-sm text-green-700 font-medium">
+                          {service.benefits}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -473,7 +569,8 @@ export default function GedlingFamilyPreventiveCare() {
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Each life stage has unique preventive needs and opportunities.
-                Our age-specific approach ensures optimal prevention strategies for every family member.
+                Our age-specific approach ensures optimal prevention strategies
+                for every family member.
               </p>
             </div>
 
@@ -483,14 +580,23 @@ export default function GedlingFamilyPreventiveCare() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-2 text-lg">{group.ageGroup}</h3>
-                        <p className="text-gray-600 text-sm mb-3">{group.preventiveFocus}</p>
+                        <h3 className="font-bold text-pear-primary mb-2 text-lg">
+                          {group.ageGroup}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {group.preventiveFocus}
+                        </p>
 
                         <div className="mb-3">
-                          <h4 className="font-semibold text-green-600 text-sm mb-2">Key Services:</h4>
+                          <h4 className="font-semibold text-green-600 text-sm mb-2">
+                            Key Services:
+                          </h4>
                           <ul className="space-y-1">
                             {(group.keyServices || []).map((service, idx) => (
-                              <li key={idx} className="text-sm text-gray-700 flex items-center gap-2">
+                              <li
+                                key={idx}
+                                className="text-sm text-gray-700 flex items-center gap-2"
+                              >
                                 <CheckCircle className="w-3 h-3 text-green-500 flex-shrink-0" />
                                 {service}
                               </li>
@@ -500,17 +606,29 @@ export default function GedlingFamilyPreventiveCare() {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-green-600 text-sm mb-2">Health Goals:</h4>
-                        <p className="text-sm text-gray-700 mb-3">{group.healthGoals}</p>
+                        <h4 className="font-semibold text-green-600 text-sm mb-2">
+                          Health Goals:
+                        </h4>
+                        <p className="text-sm text-gray-700 mb-3">
+                          {group.healthGoals}
+                        </p>
 
-                        <h4 className="font-semibold text-green-600 text-sm mb-2">Parent Guidance:</h4>
-                        <p className="text-sm text-gray-700">{group.parentGuidance}</p>
+                        <h4 className="font-semibold text-green-600 text-sm mb-2">
+                          Parent Guidance:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {group.parentGuidance}
+                        </p>
                       </div>
 
                       <div>
                         <div className="bg-green-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-green-700 text-sm mb-1">Long-Term Impact:</h4>
-                          <p className="text-sm text-green-700">{group.longTermImpact}</p>
+                          <h4 className="font-semibold text-green-700 text-sm mb-1">
+                            Long-Term Impact:
+                          </h4>
+                          <p className="text-sm text-green-700">
+                            {group.longTermImpact}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -531,8 +649,9 @@ export default function GedlingFamilyPreventiveCare() {
                 Prevention Investment Returns for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding the financial benefits of preventive care helps working families
-                make informed decisions about their family's long-term health investment.
+                Understanding the financial benefits of preventive care helps
+                working families make informed decisions about their family's
+                long-term health investment.
               </p>
             </div>
 
@@ -542,29 +661,49 @@ export default function GedlingFamilyPreventiveCare() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-5 gap-4">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-1">{investment.preventiveInvestment}</h3>
-                        <p className="text-2xl font-bold text-green-600">{investment.cost}</p>
+                        <h3 className="font-bold text-pear-primary mb-1">
+                          {investment.preventiveInvestment}
+                        </h3>
+                        <p className="text-2xl font-bold text-green-600">
+                          {investment.cost}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-green-600 text-sm mb-1">Prevention:</h4>
-                        <p className="text-sm text-gray-700">{investment.prevention}</p>
+                        <h4 className="font-semibold text-green-600 text-sm mb-1">
+                          Prevention:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {investment.prevention}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-green-600 text-sm mb-1">Problems Prevented:</h4>
-                        <p className="text-sm text-gray-700">{investment.problemsPrevented}</p>
+                        <h4 className="font-semibold text-green-600 text-sm mb-1">
+                          Problems Prevented:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {investment.problemsPrevented}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-green-600 text-sm mb-1">Cost Avoided:</h4>
-                        <p className="text-sm text-gray-700">{investment.costAvoided}</p>
+                        <h4 className="font-semibold text-green-600 text-sm mb-1">
+                          Cost Avoided:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {investment.costAvoided}
+                        </p>
                       </div>
 
                       <div>
                         <div className="bg-green-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-green-700 text-sm mb-1">ROI:</h4>
-                          <p className="text-sm text-green-700 font-bold">{investment.roi}</p>
+                          <h4 className="font-semibold text-green-700 text-sm mb-1">
+                            ROI:
+                          </h4>
+                          <p className="text-sm text-green-700 font-bold">
+                            {investment.roi}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -582,11 +721,13 @@ export default function GedlingFamilyPreventiveCare() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Comprehensive Family Health Strategies for Gedling Working Families
+                Comprehensive Family Health Strategies for Gedling Working
+                Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our systematic approach to family preventive care ensures optimal
-                health outcomes while maximizing convenience and value for working families.
+                Our systematic approach to family preventive care ensures
+                optimal health outcomes while maximizing convenience and value
+                for working families.
               </p>
             </div>
 
@@ -599,19 +740,33 @@ export default function GedlingFamilyPreventiveCare() {
                         <ThumbsUp className="w-6 h-6 text-green-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{strategy.strategy}</h3>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {strategy.strategy}
+                        </h3>
                         <div className="space-y-3">
                           <div>
-                            <h4 className="font-semibold text-green-600 text-sm mb-1">Approach:</h4>
-                            <p className="text-sm text-gray-700">{strategy.approach}</p>
+                            <h4 className="font-semibold text-green-600 text-sm mb-1">
+                              Approach:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.approach}
+                            </p>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-green-600 text-sm mb-1">Benefit:</h4>
-                            <p className="text-sm text-gray-700">{strategy.benefit}</p>
+                            <h4 className="font-semibold text-green-600 text-sm mb-1">
+                              Benefit:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.benefit}
+                            </p>
                           </div>
                           <div className="bg-green-50 rounded-lg p-3">
-                            <h4 className="font-semibold text-green-700 text-sm mb-1">Implementation:</h4>
-                            <p className="text-sm text-green-700">{strategy.implementation}</p>
+                            <h4 className="font-semibold text-green-700 text-sm mb-1">
+                              Implementation:
+                            </h4>
+                            <p className="text-sm text-green-700">
+                              {strategy.implementation}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -642,15 +797,23 @@ export default function GedlingFamilyPreventiveCare() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">£1,800 over 3 years</div>
-                <p className="text-gray-600">Total family preventive investment</p>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  £1,800 over 3 years
+                </div>
+                <p className="text-gray-600">
+                  Total family preventive investment
+                </p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">Zero emergencies</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  Zero emergencies
+                </div>
                 <p className="text-gray-600">No unexpected dental problems</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">Thousands saved</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  Thousands saved
+                </div>
                 <p className="text-gray-600">Avoided expensive treatments</p>
               </div>
             </div>
@@ -666,7 +829,8 @@ export default function GedlingFamilyPreventiveCare() {
               Long-Term Family Health Results for Gedling Families
             </h2>
             <p className="text-lg text-gray-600">
-              See how our preventive focus maintains optimal health and prevents problems over time
+              See how our preventive focus maintains optimal health and prevents
+              problems over time
             </p>
           </div>
 
@@ -694,7 +858,8 @@ export default function GedlingFamilyPreventiveCare() {
                 Family Preventive Care Questions from Gedling Families
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Gedling working families about long-term family health investment
+                Common questions from Gedling working families about long-term
+                family health investment
               </p>
             </div>
 
@@ -723,15 +888,21 @@ export default function GedlingFamilyPreventiveCare() {
                     <p>2. Continue on the A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 miles)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Quick 15-minute drive</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Quick 15-minute drive
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-green-50 rounded-lg p-6">
                     <HeartHandshake className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-green-700 mb-2">Family Preventive Care</h4>
-                    <p className="text-gray-600">Long-term health investment plans</p>
+                    <h4 className="font-bold text-green-700 mb-2">
+                      Family Preventive Care
+                    </h4>
+                    <p className="text-gray-600">
+                      Long-term health investment plans
+                    </p>
                   </div>
                 </div>
               </div>
@@ -743,7 +914,10 @@ export default function GedlingFamilyPreventiveCare() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Gedling
               </Button>
@@ -760,8 +934,9 @@ export default function GedlingFamilyPreventiveCare() {
               Invest in Your Family's Long-Term Health from Gedling Today
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't wait for problems to develop. Start your family's preventive health journey
-              with comprehensive care that saves money and ensures optimal health for everyone.
+              Don't wait for problems to develop. Start your family's preventive
+              health journey with comprehensive care that saves money and
+              ensures optimal health for everyone.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -770,19 +945,27 @@ export default function GedlingFamilyPreventiveCare() {
                 Family Preventive Health Specialists
               </p>
               <p className="text-sm opacity-90">
-                Long-term focus • Family coordination • Cost-effective care • Quick drive from Gedling
+                Long-term focus • Family coordination • Cost-effective care •
+                Quick drive from Gedling
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <HeartHandshake className="w-5 h-5 mr-2" />
                   Book Family Health Plan
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { Star, X } from "lucide-react";
+import { useEffect } from "react";
 
 interface Review {
   id: string;
@@ -24,70 +24,71 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
       author: "Marie Q",
       rating: 5,
       text: "Javaad you have actually made me smile and I've gained so much confidence with my smile. It's been just over 24hrs since you fitted my composite and my family and friends are amazed at the result, as am I! Thank you so much for your time and patience with a rather nervous patient.",
-      date: "2 weeks ago"
+      date: "2 weeks ago",
     },
     {
       id: "2",
       author: "Meekz",
       rating: 5,
       text: "Thanx Pear Tree Dentist! Janet is always so friendly and makes me feel great about looking after my teeth. She always goes above and beyond, I would definitely recommend Pear Tree Dentist in Burton Joyce.",
-      date: "1 month ago"
+      date: "1 month ago",
     },
     {
       id: "3",
       author: "Marie R",
       rating: 5,
       text: "After visiting a dentist for over 50 years, I can honestly say this is the best one I have been to. Polite, organised, professional and for once in my life, I am not stressed about my appointments.",
-      date: "3 weeks ago"
+      date: "3 weeks ago",
     },
     {
       id: "4",
       author: "Miriam B",
       rating: 5,
       text: "Had to join here with my 2 small boys as nowhere nearer was taking NHS patients but am really pleased we did because the dentist Imrana is very good at her job and very reassuring. Great with my two boys age 1 and 3. Would recommend!",
-      date: "1 week ago"
+      date: "1 week ago",
     },
     {
       id: "5",
       author: "Emily M",
       rating: 5,
       text: "I've been coming to this dentist for 30 years since the age of 3! I travel 45 minutes to get here and I wouldn't change it. Janet is absolutely brilliant and has always looked after me and all the family that see her too.",
-      date: "2 months ago"
+      date: "2 months ago",
     },
     {
       id: "6",
       author: "Charlotte P",
       rating: 5,
       text: "I'm frightened about going to the dentist. So glad I found this one. Great dentist. She is very patient and positive with me. Wouldn't go anywhere else!",
-      date: "5 days ago"
+      date: "5 days ago",
     },
     {
       id: "7",
       author: "Ian P",
       rating: 5,
       text: "Javaad is an absolutely lovely chap and a truly skilled Dentist. No one wants a tooth extraction, but if I'm having one done, it's him I want on the business end. Cheers chap.",
-      date: "1 week ago"
-    }
+      date: "1 week ago",
+    },
   ];
 
-  const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+  const averageRating =
+    reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 
   // Close modal on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         onClose();
       }
     };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'hidden';
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-      document.body.style.overflow = 'unset';
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen, onClose]);
 
@@ -109,11 +110,16 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
               <span className="text-white font-bold text-lg">G</span>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900">Google Reviews</h2>
+              <h2 className="text-xl font-bold text-gray-900">
+                Google Reviews
+              </h2>
               <div className="flex items-center space-x-2">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star
+                      key={i}
+                      className="w-4 h-4 text-yellow-400 fill-current"
+                    />
                   ))}
                 </div>
                 <span className="text-sm text-gray-600">
@@ -133,7 +139,10 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
         {/* Reviews List */}
         <div className="overflow-y-auto max-h-[60vh] p-6 space-y-6">
           {reviews.map((review) => (
-            <div key={review.id} className="border-b border-gray-100 pb-6 last:border-b-0">
+            <div
+              key={review.id}
+              className="border-b border-gray-100 pb-6 last:border-b-0"
+            >
               <div className="flex items-start space-x-4">
                 <div className="w-10 h-10 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-sm">
@@ -142,15 +151,22 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="font-semibold text-gray-900">{review.author}</h3>
+                    <h3 className="font-semibold text-gray-900">
+                      {review.author}
+                    </h3>
                     <div className="flex">
                       {[...Array(review.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                        <Star
+                          key={i}
+                          className="w-4 h-4 text-yellow-400 fill-current"
+                        />
                       ))}
                     </div>
                     <span className="text-sm text-gray-500">{review.date}</span>
                   </div>
-                  <p className="text-gray-700 leading-relaxed">"{review.text}"</p>
+                  <p className="text-gray-700 leading-relaxed">
+                    "{review.text}"
+                  </p>
                 </div>
               </div>
             </div>

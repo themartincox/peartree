@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import LocationDetection from "@/components/LocationDetection";
+import Navigation from "@/components/Navigation";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
-import LiveChatWidget from "@/components/LiveChatWidget";
-import LocationDetection from "@/components/LocationDetection";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
@@ -15,28 +13,30 @@ import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
 // Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-cormorant'
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
 });
 
 const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  style: ['normal', 'italic'],
-  display: 'swap',
-  variable: '--font-montserrat'
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://peartree.dental'),
+  metadataBase: new URL("https://peartree.dental"),
   title: {
     template: "%s | Pear Tree Dental - Private Dentist Nottingham",
-    default: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care"
+    default:
+      "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
   },
-  description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care. NHS and private options with membership plans from £10.95/month. Book today.",
+  description:
+    "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care. NHS and private options with membership plans from £10.95/month. Book today.",
   keywords: [
     "private dentist Nottingham",
     "family dentist Nottingham",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     "root canal treatment",
     "dental hygienist Nottingham",
     "preventive dentistry",
-    "oral health Nottingham"
+    "oral health Nottingham",
   ],
   authors: [{ name: "Pear Tree Dental" }],
   creator: "Pear Tree Dental",
@@ -74,8 +74,10 @@ export const metadata: Metadata = {
     locale: "en_GB",
     url: "https://peartree.dental",
     siteName: "Pear Tree Dental",
-    title: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
-    description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care.",
+    title:
+      "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
+    description:
+      "Private dentist in Nottingham offering trusted family and cosmetic dental care. Modern treatments including dental implants, Invisalign, teeth whitening, and emergency care.",
     images: [
       {
         url: "/og-image.jpg",
@@ -97,8 +99,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@PearTreeDental",
     creator: "@PearTreeDental",
-    title: "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
-    description: "Private dentist in Nottingham offering trusted family and cosmetic dental care. NHS & private treatments, implants, Invisalign & emergency care.",
+    title:
+      "Private Dentist Nottingham | Pear Tree Dental | Trusted Family & Cosmetic Care",
+    description:
+      "Private dentist in Nottingham offering trusted family and cosmetic dental care. NHS & private treatments, implants, Invisalign & emergency care.",
     images: ["/twitter-image.jpg"],
   },
   verification: {
@@ -120,22 +124,62 @@ export default function RootLayout({
 
         {/* Preconnect for critical font resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
 
         {/* Preload critical images for LCP optimization */}
-        <link rel="preload" as="image" href="/images/dental-practice-hero-burton-joyce.webp" />
-        <link rel="preload" as="image" href="/images/general-dental-checkup.webp" />
-        <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/dental-practice-hero-burton-joyce.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/general-dental-checkup.webp"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/images/cosmetic-dentistry-services.webp"
+        />
 
         <link rel="canonical" href="https://peartree.dental" />
 
         {/* Favicon Links - Complete Suite */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="192x192"
+          href="/android-chrome-192x192.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="512x512"
+          href="/android-chrome-512x512.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
         <meta name="theme-color" content="#09394d" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -151,24 +195,44 @@ export default function RootLayout({
         <meta name="ICBM" content="52.9769, -1.0085" />
 
         {/* Additional SEO Meta Tags */}
-        <meta name="business-hours" content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed" />
-        <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
+        <meta
+          name="business-hours"
+          content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed"
+        />
+        <meta
+          name="payment-accepted"
+          content="Cash, Credit Card, NHS, Private Insurance"
+        />
         <meta name="rating" content="4.9" />
         <meta name="review-count" content="460" />
-        <meta name="service-area" content="Burton Joyce, Nottingham, Gedling, Arnold, Carlton, Mapperley, West Bridgford, Lowdham, East Bridgford, Bingham, NG4, NG14, Rivendell, Radcliffe-on-Trent" />
+        <meta
+          name="service-area"
+          content="Burton Joyce, Nottingham, Gedling, Arnold, Carlton, Mapperley, West Bridgford, Lowdham, East Bridgford, Bingham, NG4, NG14, Rivendell, Radcliffe-on-Trent"
+        />
 
         {/* Medical Practice Meta Tags */}
-        <meta name="medical-specialty" content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery" />
-        <meta name="healthcare-provider" content="NHS and Private Dental Practice" />
+        <meta
+          name="medical-specialty"
+          content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery"
+        />
+        <meta
+          name="healthcare-provider"
+          content="NHS and Private Dental Practice"
+        />
         <meta name="emergency-services" content="Available" />
 
         <LocalBusinessSchema includeDentistSpecific={true} />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
-        <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
+        <ServiceAreaSchema
+          primaryLocation="Nottingham"
+          specialization="Dental Care"
+        />
         <VoiceSearchSchema />
-<link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
+      <body
+        className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}
+      >
         {/* Skip Links for Screen Readers */}
         <a
           href="#main-content"
@@ -189,9 +253,7 @@ export default function RootLayout({
         <Navigation />
 
         <main id="main-content" className="min-h-screen" role="main">
-          <PageTransition>
-            {children}
-          </PageTransition>
+          <PageTransition>{children}</PageTransition>
         </main>
         <Footer />
 

@@ -1,31 +1,27 @@
+import {
+  ArrowRight,
+  Award,
+  CheckCircle,
+  ChevronLeft,
+  Clock,
+  Crown,
+  Eye,
+  Layers, 
+  Smile,
+  Sparkles,
+  Star,
+  Target,
+  TrendingUp,
+  Zap
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
-import {
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Shield,
-  Sparkles,
-  Users,
-  ChevronLeft,
-  Award,
-  Heart,
-  Target,
-  Zap,
-  Eye,
-  Smile,
-  Crown,
-  Calendar,
-  TrendingUp,
-  Layers
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Invisalign Clear Aligners - Premium Teeth Straightening | Pear Tree Dental",

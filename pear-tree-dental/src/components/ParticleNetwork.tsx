@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 interface Particle {
   x: number;
@@ -14,14 +14,17 @@ export default function ParticleNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Optimized particle configuration
-  const config = useMemo(() => ({
-    particleCount: 30, // Further reduced for more subtle effect
-    maxDistance: 120,
-    speed: 0.3,
-    particleSize: 1.5,
-    lineOpacity: 0.08, // Much more subtle lines
-    particleOpacity: 0.25, // Much more subtle particles
-  }), []);
+  const config = useMemo(
+    () => ({
+      particleCount: 30, // Further reduced for more subtle effect
+      maxDistance: 120,
+      speed: 0.3,
+      particleSize: 1.5,
+      lineOpacity: 0.08, // Much more subtle lines
+      particleOpacity: 0.25, // Much more subtle particles
+    }),
+    [],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -38,8 +41,8 @@ export default function ParticleNetwork() {
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      canvas.style.width = rect.width + "px";
-      canvas.style.height = rect.height + "px";
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
     };
 
     const createParticles = () => {
@@ -84,7 +87,8 @@ export default function ParticleNetwork() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < config.maxDistance) {
-            const opacity = (1 - distance / config.maxDistance) * config.lineOpacity;
+            const opacity =
+              (1 - distance / config.maxDistance) * config.lineOpacity;
 
             ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
             ctx.lineWidth = 0.5;

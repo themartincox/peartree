@@ -1,35 +1,35 @@
 "use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import {
-  Users,
+  CheckCircle,
+  Database,
+  Eye,
+  FileText,
+  Lock,
   Mail,
   Settings,
-  FileText,
-  Database,
   Shield,
-  Eye,
-  Lock,
-  CheckCircle
-} from 'lucide-react';
+  Users,
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   // Simple password check (in production, use proper authentication)
   const handleLogin = () => {
     // Simple password check - replace with proper auth in production
-    if (password === 'peartree2024' || password === 'admin123') {
+    if (password === "peartree2024" || password === "admin123") {
       setIsAuthenticated(true);
-      setError('');
+      setError("");
     } else {
-      setError('Invalid password');
+      setError("Invalid password");
     }
   };
 
@@ -40,7 +40,9 @@ export default function AdminDashboard() {
           <CardHeader className="text-center">
             <Shield className="h-12 w-12 mx-auto text-pear-primary mb-4" />
             <CardTitle>Admin Access</CardTitle>
-            <p className="text-sm text-gray-600">Enter admin password to continue</p>
+            <p className="text-sm text-gray-600">
+              Enter admin password to continue
+            </p>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
@@ -49,11 +51,9 @@ export default function AdminDashboard() {
                 placeholder="Admin password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+                onKeyDown={(e) => e.key === "Enter" && handleLogin()}
               />
-              {error && (
-                <p className="text-sm text-red-600 mt-2">{error}</p>
-              )}
+              {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
             </div>
             <Button onClick={handleLogin} className="w-full">
               <Lock className="h-4 w-4 mr-2" />
@@ -130,7 +130,6 @@ export default function AdminDashboard() {
 
         {/* Admin Tools */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
           {/* Membership Applications */}
           <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
@@ -141,7 +140,8 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600 mb-4">
-                View and manage membership application backups. Download applications as CSV or clear old records.
+                View and manage membership application backups. Download
+                applications as CSV or clear old records.
               </p>
               <Link href="/dentalhub/membership-applications">
                 <Button className="w-full">
@@ -162,7 +162,8 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600 mb-4">
-                Test email configuration and view email delivery status. Configure Gmail App Password for live emails.
+                Test email configuration and view email delivery status.
+                Configure Gmail App Password for live emails.
               </p>
               <Link href="/api/test-email" target="_blank">
                 <Button variant="outline" className="w-full">
@@ -183,7 +184,8 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600 mb-4">
-                Configure system settings, environment variables, and application preferences.
+                Configure system settings, environment variables, and
+                application preferences.
               </p>
               <Button variant="outline" className="w-full" disabled>
                 <FileText className="h-4 w-4 mr-2" />
@@ -206,12 +208,20 @@ export default function AdminDashboard() {
               </p>
               <div className="space-y-2">
                 <Link href="/api/membership/submit" target="_blank">
-                  <Button variant="outline" size="sm" className="w-full text-xs">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full text-xs"
+                  >
                     View Membership API
                   </Button>
                 </Link>
                 <Link href="/api/admin/membership-applications" target="_blank">
-                  <Button variant="outline" size="sm" className="w-full text-xs">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full text-xs"
+                  >
                     Admin API
                   </Button>
                 </Link>
@@ -229,7 +239,8 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-600 mb-4">
-                System documentation, setup guides, and troubleshooting information.
+                System documentation, setup guides, and troubleshooting
+                information.
               </p>
               <Link href="/.same/email-setup-instructions.md" target="_blank">
                 <Button variant="outline" className="w-full">
@@ -253,10 +264,20 @@ export default function AdminDashboard() {
                 Common administrative tasks and system utilities.
               </p>
               <div className="space-y-2">
-                <Button variant="outline" size="sm" className="w-full text-xs" onClick={() => window.location.reload()}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full text-xs"
+                  onClick={() => window.location.reload()}
+                >
                   Refresh Dashboard
                 </Button>
-                <Button variant="outline" size="sm" className="w-full text-xs" onClick={() => setIsAuthenticated(false)}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full text-xs"
+                  onClick={() => setIsAuthenticated(false)}
+                >
                   Logout
                 </Button>
               </div>
@@ -269,14 +290,26 @@ export default function AdminDashboard() {
           <h3 className="text-lg font-semibold mb-4">System Information</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
             <div>
-              <p><strong>Version:</strong> 316</p>
-              <p><strong>Last Updated:</strong> {new Date().toLocaleDateString()}</p>
-              <p><strong>Environment:</strong> Production</p>
+              <p>
+                <strong>Version:</strong> 316
+              </p>
+              <p>
+                <strong>Last Updated:</strong> {new Date().toLocaleDateString()}
+              </p>
+              <p>
+                <strong>Environment:</strong> Production
+              </p>
             </div>
             <div>
-              <p><strong>Backup Storage:</strong> File-based (.applications/)</p>
-              <p><strong>Email Status:</strong> Requires Gmail App Password</p>
-              <p><strong>Deployment:</strong> Netlify Dynamic</p>
+              <p>
+                <strong>Backup Storage:</strong> File-based (.applications/)
+              </p>
+              <p>
+                <strong>Email Status:</strong> Requires Gmail App Password
+              </p>
+              <p>
+                <strong>Deployment:</strong> Netlify Dynamic
+              </p>
             </div>
           </div>
         </div>

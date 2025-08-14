@@ -13,7 +13,7 @@ export default function VideoHero({
   videoSrc,
   posterImage,
   fallbackImage,
-  altText
+  altText,
 }: VideoHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -58,8 +58,16 @@ export default function VideoHero({
           onClick={togglePlayPause}
           aria-label="Play/pause video"
         >
-          <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832L12 11.202a1 1 0 000-1.664L9.555 8.168z" clipRule="evenodd" />
+          <svg
+            className="w-4 h-4 text-white"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832L12 11.202a1 1 0 000-1.664L9.555 8.168z"
+              clipRule="evenodd"
+            />
           </svg>
         </button>
       </div>

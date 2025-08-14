@@ -1,7 +1,16 @@
+import {
+  Clock,
+  Facebook,
+  Instagram,
+  Mail,
+  MapPin,
+  Phone,
+  Star,
+  Twitter,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Mail, Clock, Star, Facebook, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -20,9 +29,9 @@ const Footer = () => {
             </div>
 
             <p className="text-white/80 text-sm leading-relaxed">
-              Premium dental care in Burton Joyce, Nottinghamshire.
-              Modern dentistry with a personal touch, serving the local
-              community with excellence since our establishment.
+              Premium dental care in Burton Joyce, Nottinghamshire. Modern
+              dentistry with a personal touch, serving the local community with
+              excellence since our establishment.
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
@@ -33,13 +42,17 @@ const Footer = () => {
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
               </div>
-              <span className="text-xs sm:text-sm text-white/80">400+ Google Reviews</span>
+              <span className="text-xs sm:text-sm text-white/80">
+                400+ Google Reviews
+              </span>
             </div>
           </div>
 
           {/* Contact Information */}
           <div className="space-y-4 sm:space-y-6">
-            <h3 className="text-base sm:text-lg font-semibold text-white">Contact Us</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">
+              Contact Us
+            </h3>
 
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start space-x-2 sm:space-x-3">
@@ -53,14 +66,20 @@ const Footer = () => {
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
-                <a href="tel:01159312935" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors">
+                <a
+                  href="tel:01159312935"
+                  className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors"
+                >
                   0115 931 2935
                 </a>
               </div>
 
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
-                <a href="mailto:hello@peartree.dental" className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all">
+                <a
+                  href="mailto:hello@peartree.dental"
+                  className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all"
+                >
                   hello@peartree.dental
                 </a>
               </div>
@@ -69,7 +88,9 @@ const Footer = () => {
 
           {/* Opening Hours */}
           <div className="space-y-4 sm:space-y-6">
-            <h3 className="text-base sm:text-lg font-semibold text-white">Opening Hours</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">
+              Opening Hours
+            </h3>
 
             <div className="space-y-1 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
@@ -110,10 +131,15 @@ const Footer = () => {
 
           {/* Quick Links & CTA */}
           <div className="space-y-4 sm:space-y-6 sm:col-span-2 lg:col-span-1">
-            <h3 className="text-base sm:text-lg font-semibold text-white">Quick Links</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-white">
+              Quick Links
+            </h3>
 
             <div className="space-y-2 sm:space-y-3">
-              <Link href="/services/emergency" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
+              <Link
+                href="/services/emergency"
+                className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors"
+              >
                 🚨 Dental Pain?
               </Link>
               <Link href="/membership">
@@ -122,36 +148,69 @@ const Footer = () => {
                 </Button>
               </Link>
               <Link href="/book">
-                <Button variant="outline" className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm">
+                <Button
+                  variant="outline"
+                  className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm"
+                >
                   Book Consultation
                 </Button>
               </Link>
             </div>
 
             <div className="space-y-2 sm:space-y-3">
-              <Link href="/new-patients" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+              <Link
+                href="/new-patients"
+                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+              >
                 New Patient Information
               </Link>
-              <Link href="/about/practice" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+              <Link
+                href="/about/practice"
+                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+              >
                 Our Practice
               </Link>
-              <Link href="/testimonials" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+              <Link
+                href="/testimonials"
+                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+              >
                 Patient Reviews
               </Link>
-              <Link href="/pricing" className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors">
+              <Link
+                href="/pricing"
+                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+              >
                 Pricing
               </Link>
             </div>
 
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
-              <a href="https://www.facebook.com/peartreeDental" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Facebook">
+              <a
+                href="https://www.facebook.com/peartreeDental"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Facebook"
+              >
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="https://www.instagram.com/peartree_dental/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Instagram">
+              <a
+                href="https://www.instagram.com/peartree_dental/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Instagram"
+              >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="https://twitter.com/peartreeDental" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-pear-gold transition-colors" aria-label="Visit Pear Tree Dental on Twitter">
+              <a
+                href="https://twitter.com/peartreeDental"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-pear-gold transition-colors"
+                aria-label="Visit Pear Tree Dental on Twitter"
+              >
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </div>
@@ -165,13 +224,22 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs sm:text-sm text-white/60">
             <span>© 2025 Pear Tree Dental. All rights reserved.</span>
             <div className="flex flex-wrap justify-center space-x-3 sm:space-x-4">
-              <Link href="/privacy" className="hover:text-white transition-colors">
+              <Link
+                href="/privacy"
+                className="hover:text-white transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
+              <Link
+                href="/terms"
+                className="hover:text-white transition-colors"
+              >
                 Terms of Service
               </Link>
-              <Link href="/complaints" className="hover:text-white transition-colors">
+              <Link
+                href="/complaints"
+                className="hover:text-white transition-colors"
+              >
                 Complaints Procedure
               </Link>
             </div>
@@ -179,7 +247,17 @@ const Footer = () => {
 
           <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-white/60">
             <span>Regulated by the General Dental Council</span>
-            <span>Website delivered by <a href="https://www.postino.cc" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Postino</a></span>
+            <span>
+              Website delivered by{" "}
+              <a
+                href="https://www.postino.cc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Postino
+              </a>
+            </span>
           </div>
         </div>
       </div>

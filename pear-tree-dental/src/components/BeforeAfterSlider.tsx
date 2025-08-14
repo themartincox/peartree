@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface BeforeAfterImage {
   title: string;
@@ -76,13 +76,13 @@ const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
     const handleGlobalTouchEnd = () => setIsDragging(false);
 
     if (isDragging) {
-      document.addEventListener('mouseup', handleGlobalMouseUp);
-      document.addEventListener('touchend', handleGlobalTouchEnd);
+      document.addEventListener("mouseup", handleGlobalMouseUp);
+      document.addEventListener("touchend", handleGlobalTouchEnd);
     }
 
     return () => {
-      document.removeEventListener('mouseup', handleGlobalMouseUp);
-      document.removeEventListener('touchend', handleGlobalTouchEnd);
+      document.removeEventListener("mouseup", handleGlobalMouseUp);
+      document.removeEventListener("touchend", handleGlobalTouchEnd);
     };
   }, [isDragging]);
 
@@ -131,7 +131,10 @@ const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
           {/* Slider Line */}
           <div
             className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10"
-            style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+            style={{
+              left: `${sliderPosition}%`,
+              transform: "translateX(-50%)",
+            }}
           >
             {/* Slider Handle */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center">
@@ -147,9 +150,14 @@ const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
 
         {/* Image Info */}
         <div className="p-6">
-          <h3 className="font-semibold text-pear-primary mb-2 text-lg">{image.title}</h3>
+          <h3 className="font-semibold text-pear-primary mb-2 text-lg">
+            {image.title}
+          </h3>
           <p className="text-gray-600 text-sm mb-3">{image.description}</p>
-          <Badge variant="secondary" className="bg-soft-pink/20 text-pear-primary border-soft-pink/30">
+          <Badge
+            variant="secondary"
+            className="bg-soft-pink/20 text-pear-primary border-soft-pink/30"
+          >
             {image.timeframe}
           </Badge>
         </div>

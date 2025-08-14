@@ -1,29 +1,25 @@
+import {
+  ArrowRight,
+  Award,
+  CheckCircle,
+  ChevronLeft,
+  Clock,
+  Crown,
+  Grid,
+  Shield,
+  Smile, 
+  Star,
+  Target,
+  Zap
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
-import {
-  Crown,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Shield,
-  Sparkles,
-  Users,
-  ChevronLeft,
-  Award,
-  Heart,
-  Target,
-  Zap,
-  Layers,
-  Grid,
-  Smile
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "All-on-4 Dental Implants - Full Arch Restoration | Pear Tree Dental",
@@ -580,7 +576,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(timeline || []).map((phase, index) => (
+            {(timeline || []).map((phase, _index) => (
               <Card key={phase.phase} className="hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
                   <CardTitle className="text-lg text-pear-primary">{phase.phase}</CardTitle>

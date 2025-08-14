@@ -1,61 +1,63 @@
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
-import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
-import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
-import {
-  Check,
-  Star,
-  Users,
-  Shield,
-  Heart,
-  Clock,
-  ArrowRight,
-  X,
-  Phone,
-  Mail
-} from "lucide-react";
 import dynamic from "next/dynamic";
-
-// Import welcoming loaders
-import {
-  FamilyCareLoader,
-  DentalTeamLoader,
-  HappyPatientLoader,
-  DiverseSmilesLoader
-} from "@/components/WelcomingLoader";
-
+import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import ExaminationSection from "@/components/membership/ExaminationSection";
 // Critical components - loaded immediately
 import PlanSelector from "@/components/membership/PlanSelector";
-import ExaminationSection from "@/components/membership/ExaminationSection";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
+import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
+// Import welcoming loaders
+import {
+  DentalTeamLoader,
+  DiverseSmilesLoader,
+  FamilyCareLoader,
+  HappyPatientLoader,
+} from "@/components/WelcomingLoader";
 
 // Non-critical components - loaded dynamically with loading states
-const PlanComparisonSlider = dynamic(() => import("@/components/membership/PlanComparisonSlider"), {
-  loading: () => <FamilyCareLoader message="Loading membership comparison..." />
-});
+const PlanComparisonSlider = dynamic(
+  () => import("@/components/membership/PlanComparisonSlider"),
+  {
+    loading: () => (
+      <FamilyCareLoader message="Loading membership comparison..." />
+    ),
+  },
+);
 
 const CtaSection = dynamic(() => import("@/components/membership/CtaSection"), {
-  loading: () => <DentalTeamLoader height="h-64" message="Preparing your next steps..." />
+  loading: () => (
+    <DentalTeamLoader height="h-64" message="Preparing your next steps..." />
+  ),
 });
 
 const FaqSection = dynamic(() => import("@/components/membership/FaqSection"), {
-  loading: () => <HappyPatientLoader height="h-48" message="Loading helpful answers..." />
+  loading: () => (
+    <HappyPatientLoader height="h-48" message="Loading helpful answers..." />
+  ),
 });
 
-const BenefitsSection = dynamic(() => import("@/components/membership/BenefitsSection"), {
-  loading: () => <DiverseSmilesLoader message="Showcasing amazing benefits..." />
-});
+const BenefitsSection = dynamic(
+  () => import("@/components/membership/BenefitsSection"),
+  {
+    loading: () => (
+      <DiverseSmilesLoader message="Showcasing amazing benefits..." />
+    ),
+  },
+);
 
-const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavingsChart"), {
-  loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />
-});
+const PlanSavingsChart = dynamic(
+  () => import("@/components/membership/PlanSavingsChart"),
+  {
+    loading: () => (
+      <div className="h-64 animate-pulse bg-gray-100 rounded-lg" />
+    ),
+  },
+);
 
 export const metadata: Metadata = {
   title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-  description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money. Adult, child & family plans available.",
+  description:
+    "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money. Adult, child & family plans available.",
   keywords: [
     "dental membership plans Nottingham",
     "dental plan Burton Joyce",
@@ -66,23 +68,22 @@ export const metadata: Metadata = {
     "child dental membership",
     "dental check-ups included",
     "dental hygienist appointments",
-    "dental treatment discounts"
+    "dental treatment discounts",
   ],
   openGraph: {
     title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-    description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
+    description:
+      "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
     type: "website",
-    url: "https://peartree.dental/membership"
+    url: "https://peartree.dental/membership",
   },
   alternates: {
-    canonical: "https://peartree.dental/membership"
-  }
+    canonical: "https://peartree.dental/membership",
+  },
 };
 
 export default function MembershipPage() {
-  const breadcrumbItems = [
-    { name: "Membership Plans" }
-  ];
+  const breadcrumbItems = [{ name: "Membership Plans" }];
 
   return (
     <div className="min-h-screen bg-white">
@@ -106,8 +107,9 @@ export default function MembershipPage() {
           </h1>
 
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-            Choose the right plan and take control of your dental health with our
-            transparent, affordable membership options. No hidden fees, just care you can trust.
+            Choose the right plan and take control of your dental health with
+            our transparent, affordable membership options. No hidden fees, just
+            care you can trust.
           </p>
         </div>
       </section>
@@ -143,14 +145,20 @@ export default function MembershipPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="lg:text-left">Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
+                  <span className="lg:text-left">
+                    Referral to a specialist for any dental procedure or a
+                    referral for any specialist test such as an OPG x-ray / CT
+                    scan
+                  </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span>Orthodontics, implants</span>
                 </li>
               </ul>
-              <div className="mt-4 text-sm text-gray-600">All other routine treatments receive 10% discount with membership plans
+              <div className="mt-4 text-sm text-gray-600">
+                All other routine treatments receive 10% discount with
+                membership plans
               </div>
             </div>
           </div>

@@ -1,47 +1,45 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
+  ArrowRight,
+  Award,
+  Camera,
   Car,
-  CalendarDays,
+  Clock,
+  Crown,
+  Heart,
+  MapPin,
+  Phone,
   Shield,
   Sparkles,
-  ArrowRight,
-  Camera,
-  Coffee,
-  Award,
-  Crown,
+  Star,
   Users,
-  Heart,
-  Baby
-} from 'lucide-react';
+} from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: 'Teeth Whitening Bingham - Professional Whitening | Pear Tree Dental',
-  description: 'Professional teeth whitening for Bingham residents. Family-friendly whitening treatments, same-day options, and take-home kits. Book your consultation today.',
+  title: "Teeth Whitening Bingham - Professional Whitening | Pear Tree Dental",
+  description:
+    "Professional teeth whitening for Bingham residents. Family-friendly whitening treatments, same-day options, and take-home kits. Book your consultation today.",
   keywords: [
-    'teeth whitening Bingham',
-    'professional teeth whitening Bingham',
-    'family teeth whitening Bingham',
-    'dental whitening Bingham',
-    'same day teeth whitening',
-    'smile whitening Bingham'
+    "teeth whitening Bingham",
+    "professional teeth whitening Bingham",
+    "family teeth whitening Bingham",
+    "dental whitening Bingham",
+    "same day teeth whitening",
+    "smile whitening Bingham",
   ],
   openGraph: {
-    title: 'Professional Teeth Whitening in Bingham - Pear Tree Dental',
-    description: 'Transform your smile with professional teeth whitening in Bingham. Family-friendly treatments with immediate results.',
-    url: 'https://peartree.dental/bingham-teeth-whitening'
+    title: "Professional Teeth Whitening in Bingham - Pear Tree Dental",
+    description:
+      "Transform your smile with professional teeth whitening in Bingham. Family-friendly treatments with immediate results.",
+    url: "https://peartree.dental/bingham-teeth-whitening",
   },
   alternates: {
-    canonical: 'https://peartree.dental/bingham-teeth-whitening'
-  }
+    canonical: "https://peartree.dental/bingham-teeth-whitening",
+  },
 };
 
 export default function BinghamTeethWhiteningPage() {
@@ -55,26 +53,27 @@ export default function BinghamTeethWhiteningPage() {
             "@context": "https://schema.org",
             "@type": "MedicalProcedure",
             "@id": "https://peartree.dental/bingham-teeth-whitening",
-            "name": "Professional Teeth Whitening - Bingham",
-            "description": "Professional teeth whitening treatments for Bingham residents using advanced whitening technology in a family-friendly environment.",
-            "provider": {
+            name: "Professional Teeth Whitening - Bingham",
+            description:
+              "Professional teeth whitening treatments for Bingham residents using advanced whitening technology in a family-friendly environment.",
+            provider: {
               "@type": "Dentist",
-              "name": "Pear Tree Dental",
-              "address": {
+              name: "Pear Tree Dental",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "Main Street",
-                "addressLocality": "Burton Joyce",
-                "addressRegion": "Nottinghamshire",
-                "postalCode": "NG14 5DP",
-                "addressCountry": "GB"
+                streetAddress: "Main Street",
+                addressLocality: "Burton Joyce",
+                addressRegion: "Nottinghamshire",
+                postalCode: "NG14 5DP",
+                addressCountry: "GB",
               },
-              "telephone": "0115 931 2935"
+              telephone: "0115 931 2935",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Bingham, Nottinghamshire"
-            }
-          })
+              name: "Bingham, Nottinghamshire",
+            },
+          }),
         }}
       />
 
@@ -93,8 +92,9 @@ export default function BinghamTeethWhiteningPage() {
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Transform your smile with professional teeth whitening treatments just 8 minutes from Bingham.
-              Safe, effective treatments in a welcoming family environment that Bingham residents trust.
+              Transform your smile with professional teeth whitening treatments
+              just 8 minutes from Bingham. Safe, effective treatments in a
+              welcoming family environment that Bingham residents trust.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -123,15 +123,23 @@ export default function BinghamTeethWhiteningPage() {
 
             {/* Key Benefits for Bingham */}
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge variant="secondary" className="bg-dental-green/20 text-dental-green border-dental-green/30">
+              <Badge
+                variant="secondary"
+                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+              >
                 <Clock className="w-4 h-4 mr-1" />
                 Same-Day Results
               </Badge>
-              <Badge variant="secondary" className="bg-pear-gold/20 text-pear-gold border-pear-gold/30">
-                <Car className="w-4 h-4 mr-1" />
-                8 mins from Bingham
+              <Badge
+                variant="secondary"
+                className="bg-pear-gold/20 text-pear-gold border-pear-gold/30"
+              >
+                <Car className="w-4 h-4 mr-1" />8 mins from Bingham
               </Badge>
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+              <Badge
+                variant="secondary"
+                className="bg-white/20 text-white border-white/30"
+              >
                 <Users className="w-4 h-4 mr-1" />
                 Family Friendly
               </Badge>
@@ -145,9 +153,13 @@ export default function BinghamTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Professional Whitening Options for Bingham</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Professional Whitening Options for Bingham
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Choose from our range of professional whitening treatments, all designed to deliver beautiful results in a comfortable, family-friendly environment.
+                Choose from our range of professional whitening treatments, all
+                designed to deliver beautiful results in a comfortable,
+                family-friendly environment.
               </p>
             </div>
 
@@ -156,13 +168,20 @@ export default function BinghamTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Sparkles className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Same-Day Whitening</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-dental-green/10 text-dental-green">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-dental-green/10 text-dental-green"
+                  >
                     Most Popular
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-dental-green mb-2">£395</p>
-                  <p className="text-gray-600 mb-4">Professional in-chair whitening with immediate results</p>
+                  <p className="text-2xl font-bold text-dental-green mb-2">
+                    £395
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    Professional in-chair whitening with immediate results
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Up to 8 shades lighter in one session</p>
                     <p>• 60-90 minute appointment</p>
@@ -179,20 +198,28 @@ export default function BinghamTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Camera className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Take-Home Whitening</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-pear-gold/10 text-pear-gold">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-pear-gold/10 text-pear-gold"
+                  >
                     Family Choice
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-2xl font-bold text-pear-gold mb-2">£295</p>
-                  <p className="text-gray-600 mb-4">Custom trays for professional home whitening</p>
+                  <p className="text-gray-600 mb-4">
+                    Custom trays for professional home whitening
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Custom-fitted whitening trays</p>
                     <p>• Professional grade gel</p>
                     <p>• Whiten at your convenience</p>
                     <p>• Perfect for busy families</p>
                   </div>
-                  <Button variant="outline" className="w-full border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-dental-navy">
+                  <Button
+                    variant="outline"
+                    className="w-full border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-dental-navy"
+                  >
                     Book Take-Home Kit
                   </Button>
                 </CardContent>
@@ -202,21 +229,33 @@ export default function BinghamTeethWhiteningPage() {
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Family Package</CardTitle>
-                  <Badge variant="secondary" className="mt-2 bg-pear-primary/10 text-pear-primary">
+                  <Badge
+                    variant="secondary"
+                    className="mt-2 bg-pear-primary/10 text-pear-primary"
+                  >
                     Best Value
                   </Badge>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <p className="text-2xl font-bold text-pear-primary mb-2">£550</p>
-                  <p className="text-sm text-gray-500 line-through mb-2">Was £690</p>
-                  <p className="text-gray-600 mb-4">In-chair treatment plus take-home maintenance</p>
+                  <p className="text-2xl font-bold text-pear-primary mb-2">
+                    £550
+                  </p>
+                  <p className="text-sm text-gray-500 line-through mb-2">
+                    Was £690
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    In-chair treatment plus take-home maintenance
+                  </p>
                   <div className="space-y-2 text-sm text-gray-700 mb-6">
                     <p>• Same-day whitening session</p>
                     <p>• Custom take-home trays</p>
                     <p>• Professional maintenance gel</p>
                     <p>• Family appointment scheduling</p>
                   </div>
-                  <Button variant="outline" className="w-full border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="w-full border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white"
+                  >
                     Book Complete Package
                   </Button>
                 </CardContent>
@@ -232,17 +271,22 @@ export default function BinghamTeethWhiteningPage() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-8">Why Bingham Families Choose Professional Whitening</h2>
+                <h2 className="text-3xl font-bold mb-8">
+                  Why Bingham Families Choose Professional Whitening
+                </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
                       <Award className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Superior Results</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Superior Results
+                      </h3>
                       <p className="text-gray-700">
-                        Professional-grade whitening delivers results that over-the-counter products simply cannot match.
-                        Lighten teeth by up to 8 shades safely and effectively.
+                        Professional-grade whitening delivers results that
+                        over-the-counter products simply cannot match. Lighten
+                        teeth by up to 8 shades safely and effectively.
                       </p>
                     </div>
                   </div>
@@ -252,10 +296,13 @@ export default function BinghamTeethWhiteningPage() {
                       <Shield className="w-6 h-6 text-pear-gold" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Safe & Family-Friendly</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Safe & Family-Friendly
+                      </h3>
                       <p className="text-gray-700">
-                        Professional supervision ensures safe application and optimal results while protecting
-                        your teeth and gums in a welcoming family environment.
+                        Professional supervision ensures safe application and
+                        optimal results while protecting your teeth and gums in
+                        a welcoming family environment.
                       </p>
                     </div>
                   </div>
@@ -265,10 +312,13 @@ export default function BinghamTeethWhiteningPage() {
                       <Clock className="w-6 h-6 text-pear-primary" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl mb-2">Long-Lasting Results</h3>
+                      <h3 className="font-bold text-xl mb-2">
+                        Long-Lasting Results
+                      </h3>
                       <p className="text-gray-700">
-                        Professional whitening results typically last 1-3 years with proper care, far longer
-                        than store-bought alternatives.
+                        Professional whitening results typically last 1-3 years
+                        with proper care, far longer than store-bought
+                        alternatives.
                       </p>
                     </div>
                   </div>
@@ -280,8 +330,12 @@ export default function BinghamTeethWhiteningPage() {
                   <div className="aspect-[4/3] bg-gradient-to-br from-dental-green/10 to-pear-gold/20 flex items-center justify-center">
                     <div className="text-center p-8">
                       <Sparkles className="w-16 h-16 mx-auto mb-4 text-dental-green" />
-                      <h3 className="text-xl font-bold text-gray-700 mb-2">FAMILY WHITENING</h3>
-                      <p className="text-gray-600 mb-4">Professional results for Bingham families</p>
+                      <h3 className="text-xl font-bold text-gray-700 mb-2">
+                        FAMILY WHITENING
+                      </h3>
+                      <p className="text-gray-600 mb-4">
+                        Professional results for Bingham families
+                      </p>
                       <div className="space-y-2 text-sm text-gray-600">
                         <p>• Safe for the whole family</p>
                         <p>• Up to 8 shades lighter</p>
@@ -302,9 +356,12 @@ export default function BinghamTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Convenient Access from Bingham</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Convenient Access from Bingham
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Professional teeth whitening without the hassle. Easy A52 journey, free parking, flexible family scheduling.
+                Professional teeth whitening without the hassle. Easy A52
+                journey, free parking, flexible family scheduling.
               </p>
             </div>
 
@@ -315,7 +372,8 @@ export default function BinghamTeethWhiteningPage() {
                   <h3 className="text-xl font-semibold">8-Minute Journey</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Direct route from Bingham via A52. Easy dual carriageway access with no city center traffic.
+                  Direct route from Bingham via A52. Easy dual carriageway
+                  access with no city center traffic.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• Straight down the A52</p>
@@ -330,7 +388,8 @@ export default function BinghamTeethWhiteningPage() {
                   <h3 className="text-xl font-semibold">Family Scheduling</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Flexible appointment times to fit around family life, school runs, and work schedules.
+                  Flexible appointment times to fit around family life, school
+                  runs, and work schedules.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• After school appointments</p>
@@ -345,7 +404,8 @@ export default function BinghamTeethWhiteningPage() {
                   <h3 className="text-xl font-semibold">Family Care</h3>
                 </div>
                 <p className="text-gray-700 mb-4">
-                  Welcoming environment where the whole family feels comfortable and at ease.
+                  Welcoming environment where the whole family feels comfortable
+                  and at ease.
                 </p>
                 <div className="space-y-2 text-sm text-gray-600">
                   <p>• Child-friendly approach</p>
@@ -363,36 +423,41 @@ export default function BinghamTeethWhiteningPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">What Bingham Families Say</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                What Bingham Families Say
+              </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Real reviews from Bingham residents who've transformed their smiles with professional whitening
+                Real reviews from Bingham residents who've transformed their
+                smiles with professional whitening
               </p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {([
-                {
-                  name: "Linda & Tom Johnson",
-                  location: "Bingham",
-                  text: "Fantastic results for both of us! The team made us feel so welcome and the journey from Bingham was a breeze. Our smiles have never looked better.",
-                  rating: 5,
-                  treatment: "Family Whitening Package"
-                },
-                {
-                  name: "Sophie Chen",
-                  location: "Bingham",
-                  text: "Perfect for busy mums! The take-home kit meant I could whiten my teeth when it suited me. Professional results without the hassle.",
-                  rating: 5,
-                  treatment: "Take-Home Whitening"
-                },
-                {
-                  name: "Mike Roberts",
-                  location: "Bingham",
-                  text: "Same-day whitening was incredible. 6 shades whiter in just over an hour. The A52 route makes it so convenient from Bingham.",
-                  rating: 5,
-                  treatment: "Same-Day Whitening"
-                }
-              ] || []).map((review, index) => (
+              {(
+                [
+                  {
+                    name: "Linda & Tom Johnson",
+                    location: "Bingham",
+                    text: "Fantastic results for both of us! The team made us feel so welcome and the journey from Bingham was a breeze. Our smiles have never looked better.",
+                    rating: 5,
+                    treatment: "Family Whitening Package",
+                  },
+                  {
+                    name: "Sophie Chen",
+                    location: "Bingham",
+                    text: "Perfect for busy mums! The take-home kit meant I could whiten my teeth when it suited me. Professional results without the hassle.",
+                    rating: 5,
+                    treatment: "Take-Home Whitening",
+                  },
+                  {
+                    name: "Mike Roberts",
+                    location: "Bingham",
+                    text: "Same-day whitening was incredible. 6 shades whiter in just over an hour. The A52 route makes it so convenient from Bingham.",
+                    rating: 5,
+                    treatment: "Same-Day Whitening",
+                  },
+                ] || []
+              ).map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
@@ -404,9 +469,15 @@ export default function BinghamTeethWhiteningPage() {
                       "{review.text}"
                     </blockquote>
                     <div className="border-t pt-4">
-                      <div className="font-semibold text-dental-green">{review.name}</div>
-                      <div className="text-sm text-gray-600">{review.location}</div>
-                      <div className="text-sm text-pear-gold font-medium">{review.treatment}</div>
+                      <div className="font-semibold text-dental-green">
+                        {review.name}
+                      </div>
+                      <div className="text-sm text-gray-600">
+                        {review.location}
+                      </div>
+                      <div className="text-sm text-pear-gold font-medium">
+                        {review.treatment}
+                      </div>
                     </div>
                   </div>
                 </Card>
@@ -424,8 +495,9 @@ export default function BinghamTeethWhiteningPage() {
               Ready to Transform Your Family's Smiles?
             </h2>
             <p className="text-xl mb-8 text-white/90">
-              Join Bingham families who've discovered the confidence that comes with a brighter, whiter smile.
-              Book your professional whitening consultation today.
+              Join Bingham families who've discovered the confidence that comes
+              with a brighter, whiter smile. Book your professional whitening
+              consultation today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

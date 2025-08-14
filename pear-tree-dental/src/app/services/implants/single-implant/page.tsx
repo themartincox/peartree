@@ -1,28 +1,23 @@
+import {
+  ArrowRight,
+  Award,
+  CheckCircle,
+  ChevronLeft,
+  Clock,
+  Crown,
+  Heart,
+  Shield,
+  Star,
+  Target,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import Link from "next/link";
-import {
-  Crown,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  Shield,
-  Sparkles,
-  Users,
-  ChevronLeft,
-  Award,
-  Heart,
-  Target,
-  Zap,
-  Camera
-} from "lucide-react";
-import { getTreatmentPrice } from "@/data/pricing";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Single Dental Implant - Replace One Missing Tooth | Pear Tree Dental",

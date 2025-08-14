@@ -1,39 +1,33 @@
+import {
+  AlertTriangle,
+  Baby,
+  Calendar,
+  Car,
+  CreditCard,
+  MapPin,
+  Navigation,
+  Phone,
+  Shield,
+  Star,
+  Stethoscope,
+  ThumbsUp,
+  Timer,
+  Users,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  AlertTriangle,
-  Zap,
-  Award,
-  Navigation,
-  Users,
-  Baby,
-  Home,
-  CreditCard,
-  Calendar,
-  ThumbsUp,
-  FileText,
-  Stethoscope,
-  Timer
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Emergency Dentist in Gedling - Fast Relief for Working Families | Pear Tree Dental",
-  description: "Emergency dentist for Gedling working families. Fast pain relief, child-friendly emergency care, and convenient appointments. Quick drive from Gedling NG4.",
+  title:
+    "Emergency Dentist in Gedling - Fast Relief for Working Families | Pear Tree Dental",
+  description:
+    "Emergency dentist for Gedling working families. Fast pain relief, child-friendly emergency care, and convenient appointments. Quick drive from Gedling NG4.",
   keywords: [
     "emergency dentist Gedling",
     "dental emergency Gedling NG4",
@@ -41,40 +35,48 @@ export const metadata: Metadata = {
     "dental pain relief Gedling",
     "family emergency dentist Gedling",
     "same day dentist Gedling",
-    "urgent dental care Gedling"
+    "urgent dental care Gedling",
   ],
   openGraph: {
-    title: "Emergency Dentist in Gedling - Fast Relief for Working Families | Pear Tree Dental",
-    description: "Emergency dentist for Gedling working families. Fast pain relief and convenient emergency care.",
-    url: "https://peartree.dental/gedling/emergency-dentist"
+    title:
+      "Emergency Dentist in Gedling - Fast Relief for Working Families | Pear Tree Dental",
+    description:
+      "Emergency dentist for Gedling working families. Fast pain relief and convenient emergency care.",
+    url: "https://peartree.dental/gedling/emergency-dentist",
   },
   alternates: {
-    canonical: "https://peartree.dental/gedling/emergency-dentist"
-  }
+    canonical: "https://peartree.dental/gedling/emergency-dentist",
+  },
 };
 
 export default function GedlingEmergencyDentistPage() {
   const gedlingEmergencyFAQs = [
     {
       question: "How quick is emergency dental care from Gedling?",
-      answer: "Pear Tree Dental is just a quick drive from Gedling. We prioritize emergency appointments and offer same-day urgent care for working families dealing with dental pain or trauma. Our convenient location makes emergency visits manageable even during busy work schedules."
+      answer:
+        "Pear Tree Dental is just a quick drive from Gedling. We prioritize emergency appointments and offer same-day urgent care for working families dealing with dental pain or trauma. Our convenient location makes emergency visits manageable even during busy work schedules.",
     },
     {
-      question: "Do you treat children's dental emergencies from Gedling families?",
-      answer: "Absolutely! We specialize in family emergency care, treating both adults and children from Gedling. Our gentle approach helps anxious children feel comfortable during emergency visits, and we understand the urgency when a child is in pain."
+      question:
+        "Do you treat children's dental emergencies from Gedling families?",
+      answer:
+        "Absolutely! We specialize in family emergency care, treating both adults and children from Gedling. Our gentle approach helps anxious children feel comfortable during emergency visits, and we understand the urgency when a child is in pain.",
     },
     {
       question: "What emergency services do you offer to Gedling patients?",
-      answer: "We provide comprehensive emergency care including severe toothache relief, broken tooth repair, lost fillings, dental trauma, abscesses, and emergency extractions. We aim to see Gedling emergency patients the same day with honest, upfront pricing."
+      answer:
+        "We provide comprehensive emergency care including severe toothache relief, broken tooth repair, lost fillings, dental trauma, abscesses, and emergency extractions. We aim to see Gedling emergency patients the same day with honest, upfront pricing.",
     },
     {
       question: "How do costs work for emergency dental care from Gedling?",
-      answer: "We believe in transparent pricing for Gedling working families. Emergency consultation fees are clearly explained upfront, and we offer flexible payment options. We'll always discuss costs before treatment and provide options that work for your family budget."
+      answer:
+        "We believe in transparent pricing for Gedling working families. Emergency consultation fees are clearly explained upfront, and we offer flexible payment options. We'll always discuss costs before treatment and provide options that work for your family budget.",
     },
     {
       question: "Can you fit emergency appointments around work schedules?",
-      answer: "Yes! We understand working families in Gedling have busy schedules. We offer emergency slots throughout the day and will do our best to accommodate urgent appointments around work commitments. Your dental emergency shouldn't wait for convenience."
-    }
+      answer:
+        "Yes! We understand working families in Gedling have busy schedules. We offer emergency slots throughout the day and will do our best to accommodate urgent appointments around work commitments. Your dental emergency shouldn't wait for convenience.",
+    },
   ];
 
   const emergencyServices = [
@@ -84,7 +86,7 @@ export default function GedlingEmergencyDentistPage() {
       urgency: "Same day treatment",
       approach: "Gentle, effective pain management",
       cost: "From £85",
-      icon: AlertTriangle
+      icon: AlertTriangle,
     },
     {
       emergency: "Broken Tooth Repair",
@@ -92,7 +94,7 @@ export default function GedlingEmergencyDentistPage() {
       urgency: "Same day consultation",
       approach: "Temporary and permanent solutions",
       cost: "From £120",
-      icon: Shield
+      icon: Shield,
     },
     {
       emergency: "Child Dental Trauma",
@@ -100,7 +102,7 @@ export default function GedlingEmergencyDentistPage() {
       urgency: "Priority appointments",
       approach: "Child-friendly, anxiety-free treatment",
       cost: "From £65",
-      icon: Baby
+      icon: Baby,
     },
     {
       emergency: "Lost Filling/Crown",
@@ -108,8 +110,8 @@ export default function GedlingEmergencyDentistPage() {
       urgency: "Same day repair",
       approach: "Quick, reliable restoration",
       cost: "From £95",
-      icon: Stethoscope
-    }
+      icon: Stethoscope,
+    },
   ];
 
   const familyBenefits = [
@@ -117,26 +119,26 @@ export default function GedlingEmergencyDentistPage() {
       benefit: "Same Day Emergency Care",
       description: "Fast appointments for urgent dental problems",
       value: "Quick pain relief",
-      icon: Timer
+      icon: Timer,
     },
     {
       benefit: "Family-Friendly Emergency Service",
       description: "Gentle care for all ages during dental emergencies",
       value: "Comfortable treatment",
-      icon: Users
+      icon: Users,
     },
     {
       benefit: "Transparent Emergency Pricing",
       description: "Clear, upfront costs with flexible payment options",
       value: "Budget-friendly care",
-      icon: CreditCard
+      icon: CreditCard,
     },
     {
       benefit: "Convenient Gedling Location",
       description: "Quick drive from Gedling for urgent appointments",
       value: "Easy access",
-      icon: Car
-    }
+      icon: Car,
+    },
   ];
 
   const emergencyScenarios = [
@@ -144,63 +146,64 @@ export default function GedlingEmergencyDentistPage() {
       scenario: "Severe Weekend Toothache",
       immediateAction: "Contact our emergency line for urgent guidance",
       treatmentApproach: "Same-day pain relief and diagnosis",
-      familyConsideration: "We understand weekend emergencies disrupt family time",
-      outcomes: "Fast pain relief and treatment planning"
+      familyConsideration:
+        "We understand weekend emergencies disrupt family time",
+      outcomes: "Fast pain relief and treatment planning",
     },
     {
       scenario: "Child's Broken Tooth at School",
       immediateAction: "Priority appointment during school hours if needed",
       treatmentApproach: "Gentle, child-friendly emergency treatment",
       familyConsideration: "Minimal disruption to parent's work schedule",
-      outcomes: "Quick repair and child comfort restored"
+      outcomes: "Quick repair and child comfort restored",
     },
     {
       scenario: "Lost Filling During Dinner",
       immediateAction: "Emergency consultation to assess and treat",
       treatmentApproach: "Same-day temporary or permanent restoration",
       familyConsideration: "Evening appointment options available",
-      outcomes: "Function and comfort restored immediately"
+      outcomes: "Function and comfort restored immediately",
     },
     {
       scenario: "Dental Abscess Pain",
       immediateAction: "Urgent antibiotic prescription and pain relief",
       treatmentApproach: "Immediate infection control and treatment",
       familyConsideration: "Quick relief to get back to normal routine",
-      outcomes: "Infection resolved, health restored"
-    }
+      outcomes: "Infection resolved, health restored",
+    },
   ];
 
   const workingFamilyFeatures = [
     {
       feature: "Flexible Emergency Scheduling",
       description: "We work around your work and family commitments",
-      benefit: "Minimal disruption to your busy schedule"
+      benefit: "Minimal disruption to your busy schedule",
     },
     {
       feature: "Child-Friendly Emergency Care",
       description: "Gentle treatment that reduces anxiety for young patients",
-      benefit: "Comfortable experience for the whole family"
+      benefit: "Comfortable experience for the whole family",
     },
     {
       feature: "Clear Emergency Pricing",
       description: "Transparent costs with payment plan options available",
-      benefit: "Budget-friendly emergency dental care"
+      benefit: "Budget-friendly emergency dental care",
     },
     {
       feature: "Same-Day Treatment Options",
       description: "Most emergency problems resolved in single visit",
-      benefit: "Quick resolution to get life back to normal"
+      benefit: "Quick resolution to get life back to normal",
     },
     {
       feature: "Family Emergency Coordination",
       description: "Can handle multiple family members' emergencies together",
-      benefit: "Convenient care for entire family when needed"
+      benefit: "Convenient care for entire family when needed",
     },
     {
       feature: "Follow-Up Care Included",
       description: "Comprehensive aftercare to ensure complete recovery",
-      benefit: "Peace of mind with ongoing support"
-    }
+      benefit: "Peace of mind with ongoing support",
+    },
   ];
 
   return (
@@ -212,34 +215,32 @@ export default function GedlingEmergencyDentistPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - Emergency Dentist in Gedling",
-            "image": "https://peartree.dental/images/emergency-dentist-gedling.jpg",
-            "url": "https://peartree.dental/gedling/emergency-dentist",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - Emergency Dentist in Gedling",
+            image:
+              "https://peartree.dental/images/emergency-dentist-gedling.jpg",
+            url: "https://peartree.dental/gedling/emergency-dentist",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Gedling, NG4"
+              name: "Gedling, NG4",
             },
-            "medicalSpecialty": "Emergency Dentistry - Family Emergency Care",
-            "geo": {
+            medicalSpecialty: "Emergency Dentistry - Family Emergency Care",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£65-£120"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£65-£120",
+          }),
         }}
       />
 
@@ -255,7 +256,8 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Emergency Dentist in <span className="text-yellow-300">Gedling</span>
+              Emergency Dentist in{" "}
+              <span className="text-yellow-300">Gedling</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -265,19 +267,27 @@ export default function GedlingEmergencyDentistPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
-                Quick drive from Gedling — Same-day emergency appointments available
+                Quick drive from Gedling — Same-day emergency appointments
+                available
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Emergency Line: 0115 931 2935
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Emergency Appointment
                 </Button>
@@ -285,7 +295,9 @@ export default function GedlingEmergencyDentistPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">🚨 Same-day emergency care for Gedling working families!</p>
+              <p className="text-lg font-semibold">
+                🚨 Same-day emergency care for Gedling working families!
+              </p>
             </div>
           </div>
         </div>
@@ -300,8 +312,10 @@ export default function GedlingEmergencyDentistPage() {
                 Emergency Dental Care for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                When dental emergencies strike, Gedling working families need fast, reliable care that fits their
-                busy schedules. Our emergency dental service provides quick relief with honest pricing and family-friendly care.
+                When dental emergencies strike, Gedling working families need
+                fast, reliable care that fits their busy schedules. Our
+                emergency dental service provides quick relief with honest
+                pricing and family-friendly care.
               </p>
             </div>
 
@@ -309,12 +323,21 @@ export default function GedlingEmergencyDentistPage() {
               {(familyBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-red-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-red-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-red-100 text-red-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-red-100 text-red-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -323,22 +346,32 @@ export default function GedlingEmergencyDentistPage() {
 
             <div className="text-center bg-red-50 rounded-lg p-8">
               <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Emergency Care Built for Busy Families</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Emergency Care Built for Busy Families
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that Gedling working families have packed schedules and budget considerations.
-                Our emergency service is designed to provide fast, effective treatment that gets you back to your routine quickly.
+                We understand that Gedling working families have packed
+                schedules and budget considerations. Our emergency service is
+                designed to provide fast, effective treatment that gets you back
+                to your routine quickly.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600 mb-2">Same day care</div>
+                  <div className="text-2xl font-bold text-red-600 mb-2">
+                    Same day care
+                  </div>
                   <p className="text-gray-600">Fast emergency appointments</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600 mb-2">Family friendly</div>
+                  <div className="text-2xl font-bold text-red-600 mb-2">
+                    Family friendly
+                  </div>
                   <p className="text-gray-600">Gentle care for all ages</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-red-600 mb-2">Quick drive</div>
+                  <div className="text-2xl font-bold text-red-600 mb-2">
+                    Quick drive
+                  </div>
                   <p className="text-gray-600">Convenient from Gedling</p>
                 </div>
               </div>
@@ -357,7 +390,8 @@ export default function GedlingEmergencyDentistPage() {
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Comprehensive emergency dental care with transparent pricing and
-                family-friendly treatment for all dental emergencies affecting Gedling working families.
+                family-friendly treatment for all dental emergencies affecting
+                Gedling working families.
               </p>
             </div>
 
@@ -365,21 +399,34 @@ export default function GedlingEmergencyDentistPage() {
               {(emergencyServices || []).map((service, index) => {
                 const IconComponent = service.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-red-400">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow border-2 border-gray-200 hover:border-red-400"
+                  >
                     <CardHeader className="text-center pb-4">
                       <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-red-600" />
                       </div>
-                      <CardTitle className="text-lg text-pear-primary">{service.emergency}</CardTitle>
-                      <p className="text-gray-600 text-sm">{service.description}</p>
+                      <CardTitle className="text-lg text-pear-primary">
+                        {service.emergency}
+                      </CardTitle>
+                      <p className="text-gray-600 text-sm">
+                        {service.description}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="text-center">
-                        <p className="text-2xl font-bold text-pear-primary mb-1">{service.cost}</p>
-                        <Badge variant="outline" className="mb-2">{service.urgency}</Badge>
+                        <p className="text-2xl font-bold text-pear-primary mb-1">
+                          {service.cost}
+                        </p>
+                        <Badge variant="outline" className="mb-2">
+                          {service.urgency}
+                        </Badge>
                       </div>
                       <div className="bg-red-50 rounded-lg p-3">
-                        <p className="text-sm text-red-700 font-medium">{service.approach}</p>
+                        <p className="text-sm text-red-700 font-medium">
+                          {service.approach}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -399,8 +446,9 @@ export default function GedlingEmergencyDentistPage() {
                 Common Emergency Scenarios for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Real emergency situations that Gedling families face and how we provide
-                fast, effective treatment that works around your busy schedule.
+                Real emergency situations that Gedling families face and how we
+                provide fast, effective treatment that works around your busy
+                schedule.
               </p>
             </div>
 
@@ -408,26 +456,42 @@ export default function GedlingEmergencyDentistPage() {
               {(emergencyScenarios || []).map((scenario, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
-                    <h3 className="font-bold text-pear-primary mb-3 text-lg">{scenario.scenario}</h3>
+                    <h3 className="font-bold text-pear-primary mb-3 text-lg">
+                      {scenario.scenario}
+                    </h3>
 
                     <div className="space-y-3">
                       <div>
-                        <h4 className="font-semibold text-red-600 text-sm mb-1">Immediate Action:</h4>
-                        <p className="text-sm text-gray-700">{scenario.immediateAction}</p>
+                        <h4 className="font-semibold text-red-600 text-sm mb-1">
+                          Immediate Action:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {scenario.immediateAction}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-red-600 text-sm mb-1">Treatment Approach:</h4>
-                        <p className="text-sm text-gray-700">{scenario.treatmentApproach}</p>
+                        <h4 className="font-semibold text-red-600 text-sm mb-1">
+                          Treatment Approach:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {scenario.treatmentApproach}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-red-600 text-sm mb-1">Family Consideration:</h4>
-                        <p className="text-sm text-gray-700">{scenario.familyConsideration}</p>
+                        <h4 className="font-semibold text-red-600 text-sm mb-1">
+                          Family Consideration:
+                        </h4>
+                        <p className="text-sm text-gray-700">
+                          {scenario.familyConsideration}
+                        </p>
                       </div>
 
                       <div className="bg-red-50 rounded-lg p-3">
-                        <p className="text-sm text-red-700 font-medium">{scenario.outcomes}</p>
+                        <p className="text-sm text-red-700 font-medium">
+                          {scenario.outcomes}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -447,8 +511,9 @@ export default function GedlingEmergencyDentistPage() {
                 Emergency Care Designed for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Our emergency dental service understands the unique needs of working families,
-                providing convenient, affordable, and family-friendly emergency care.
+                Our emergency dental service understands the unique needs of
+                working families, providing convenient, affordable, and
+                family-friendly emergency care.
               </p>
             </div>
 
@@ -461,10 +526,16 @@ export default function GedlingEmergencyDentistPage() {
                         <ThumbsUp className="w-6 h-6 text-red-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{feature.feature}</h3>
-                        <p className="text-gray-600 text-sm mb-3">{feature.description}</p>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {feature.feature}
+                        </h3>
+                        <p className="text-gray-600 text-sm mb-3">
+                          {feature.description}
+                        </p>
                         <div className="bg-red-50 rounded-lg p-3">
-                          <p className="text-sm text-red-700 font-medium">{feature.benefit}</p>
+                          <p className="text-sm text-red-700 font-medium">
+                            {feature.benefit}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -494,15 +565,21 @@ export default function GedlingEmergencyDentistPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">Same hour care</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  Same hour care
+                </div>
                 <p className="text-gray-600">Emergency seen immediately</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">Child-friendly</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  Child-friendly
+                </div>
                 <p className="text-gray-600">Gentle, anxiety-free treatment</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-red-600 mb-2">Fair pricing</div>
+                <div className="text-3xl font-bold text-red-600 mb-2">
+                  Fair pricing
+                </div>
                 <p className="text-gray-600">Transparent, budget-friendly</p>
               </div>
             </div>
@@ -518,7 +595,8 @@ export default function GedlingEmergencyDentistPage() {
               Emergency Dental Results for Gedling Families
             </h2>
             <p className="text-lg text-gray-600">
-              See how our emergency care quickly resolves dental problems for working families
+              See how our emergency care quickly resolves dental problems for
+              working families
             </p>
           </div>
 
@@ -546,7 +624,8 @@ export default function GedlingEmergencyDentistPage() {
                 Emergency Dental Questions from Gedling Families
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Gedling working families about emergency dental care
+                Common questions from Gedling working families about emergency
+                dental care
               </p>
             </div>
 
@@ -575,15 +654,21 @@ export default function GedlingEmergencyDentistPage() {
                     <p>2. Continue on the A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 miles)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Quick 15-minute drive</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Quick 15-minute drive
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-red-50 rounded-lg p-6">
                     <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-red-700 mb-2">Emergency Dental Care</h4>
-                    <p className="text-gray-600">Fast relief for working families</p>
+                    <h4 className="font-bold text-red-700 mb-2">
+                      Emergency Dental Care
+                    </h4>
+                    <p className="text-gray-600">
+                      Fast relief for working families
+                    </p>
                   </div>
                 </div>
               </div>
@@ -595,7 +680,10 @@ export default function GedlingEmergencyDentistPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Gedling
               </Button>
@@ -612,8 +700,9 @@ export default function GedlingEmergencyDentistPage() {
               Get Fast Emergency Dental Care from Gedling Today
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't let dental emergencies disrupt your family's routine. Call now for same-day emergency
-              care that's convenient, affordable, and designed for busy Gedling working families.
+              Don't let dental emergencies disrupt your family's routine. Call
+              now for same-day emergency care that's convenient, affordable, and
+              designed for busy Gedling working families.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -622,19 +711,27 @@ export default function GedlingEmergencyDentistPage() {
                 Emergency Dental Specialists
               </p>
               <p className="text-sm opacity-90">
-                Same day care • Family friendly • Transparent pricing • Quick drive from Gedling
+                Same day care • Family friendly • Transparent pricing • Quick
+                drive from Gedling
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-red-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Emergency Line: 0115 931 2935
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Emergency Appointment
                 </Button>

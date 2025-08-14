@@ -1,11 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Check, Users, Zap, Star, Heart, ArrowRight } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight, Check, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 // Define the simplified plan data including family plan
 const plans = [
@@ -19,12 +25,12 @@ const plans = [
       "2 Dental check ups a year",
       "1 Hygienist appointment a year",
       "10% discount on all treatments",
-      "Worldwide dental trauma cover"
+      "Worldwide dental trauma cover",
     ],
     perDay: "48p per day",
     sticker: null,
     description: "Perfect for maintaining basic dental health",
-    type: "individual"
+    type: "individual",
   },
   {
     id: "premium",
@@ -38,12 +44,12 @@ const plans = [
       "1 Emergency appointment included",
       "25% off Waterpik products",
       "10% discount on all treatments",
-      "Worldwide dental trauma cover"
+      "Worldwide dental trauma cover",
     ],
     perDay: "83p per day",
     sticker: "Most Popular",
     description: "Enhanced care with emergency coverage",
-    type: "individual"
+    type: "individual",
   },
   {
     id: "all-in",
@@ -57,12 +63,12 @@ const plans = [
       "50% off Waterpik products",
       "Free replacement heads for Waterpik",
       "10% discount on all treatments",
-      "Worldwide dental trauma cover"
+      "Worldwide dental trauma cover",
     ],
     perDay: "99p per day",
     sticker: "Best Value",
     description: "Complete oral health package with maximum hygiene support",
-    type: "individual"
+    type: "individual",
   },
   {
     id: "family",
@@ -76,19 +82,22 @@ const plans = [
       "One simple payment monthly",
       "10% discount on all treatments",
       "Worldwide dental trauma cover",
-      "Same address requirement"
+      "Same address requirement",
     ],
     perDay: "£1.63 per day",
     sticker: "Complete Peace of Mind",
     description: "2 adults + 3 kids with simple billing",
-    type: "family"
-  }
+    type: "family",
+  },
 ];
 
 export default function SimplifiedPlanSelector() {
   const [selectedPlan, setSelectedPlan] = useState(plans[1].id); // Default to Premium (Most Popular)
   const [scrollY, setScrollY] = useState(0);
-  const [buttonPosition, setButtonPosition] = useState({ bottom: 32, left: '50%' });
+  const [buttonPosition, setButtonPosition] = useState({
+    bottom: 32,
+    left: "50%",
+  });
 
   // Handle scroll for floating button positioning
   useEffect(() => {
@@ -98,7 +107,7 @@ export default function SimplifiedPlanSelector() {
       setScrollY(scrollPosition);
 
       // Get all sections by their common class or structure
-      const sections = document.querySelectorAll('section');
+      const sections = document.querySelectorAll("section");
       let currentSectionBottom = 0;
       let isNearSectionEnd = false;
 
@@ -109,7 +118,10 @@ export default function SimplifiedPlanSelector() {
         const sectionBottom = sectionTop + rect.height;
 
         // Check if we're currently in this section
-        if (scrollPosition >= sectionTop - 100 && scrollPosition < sectionBottom - 100) {
+        if (
+          scrollPosition >= sectionTop - 100 &&
+          scrollPosition < sectionBottom - 100
+        ) {
           const sectionProgress = (scrollPosition - sectionTop) / rect.height;
 
           // If we're more than 75% through the section, position button at section end
@@ -123,26 +135,29 @@ export default function SimplifiedPlanSelector() {
       if (isNearSectionEnd) {
         // Calculate button position relative to section end
         const sectionEndOnScreen = currentSectionBottom - scrollPosition;
-        const buttonBottom = Math.max(32, Math.min(sectionEndOnScreen - 80, windowHeight - 120));
+        const buttonBottom = Math.max(
+          32,
+          Math.min(sectionEndOnScreen - 80, windowHeight - 120),
+        );
 
         setButtonPosition({
           bottom: buttonBottom,
-          left: '50%'
+          left: "50%",
         });
       } else {
         // Normal floating position
         setButtonPosition({
           bottom: 32,
-          left: '50%'
+          left: "50%",
         });
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const selectedPlanData = plans.find(p => p.id === selectedPlan);
+  const selectedPlanData = plans.find((p) => p.id === selectedPlan);
 
   return (
     <section id="plans" className="py-12 md:py-24">
@@ -152,7 +167,8 @@ export default function SimplifiedPlanSelector() {
             <span className="text-pear-primary">Choose Your</span> Perfect Plan
           </h2>
           <p className="text-gray-600 text-lg">
-            Four simple plans designed to meet different dental care needs, from individual to family coverage.
+            Four simple plans designed to meet different dental care needs, from
+            individual to family coverage.
           </p>
         </div>
 
@@ -168,37 +184,45 @@ export default function SimplifiedPlanSelector() {
               <Card
                 className={`h-full ${
                   selectedPlan === plan.id
-                    ? 'ring-2 ring-pear-primary ring-offset-2'
-                    : 'hover:border-pear-primary/50'
+                    ? "ring-2 ring-pear-primary ring-offset-2"
+                    : "hover:border-pear-primary/50"
                 } cursor-pointer transition-all duration-200 ${
-                  plan.sticker === 'Most Popular' ? 'scale-105' : ''
+                  plan.sticker === "Most Popular" ? "scale-105" : ""
                 } ${
-                  plan.type === 'family' ? 'border-2 border-gradient-to-r from-pear-primary to-dental-green' : ''
+                  plan.type === "family"
+                    ? "border-2 border-gradient-to-r from-pear-primary to-dental-green"
+                    : ""
                 }`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
-                <CardHeader className={`${
-                  plan.type === 'family'
-                    ? 'bg-gradient-to-r from-pear-primary to-dental-green'
-                    : plan.color
-                } text-white rounded-t-xl pb-3 pt-6`}>
+                <CardHeader
+                  className={`${
+                    plan.type === "family"
+                      ? "bg-gradient-to-r from-pear-primary to-dental-green"
+                      : plan.color
+                  } text-white rounded-t-xl pb-3 pt-6`}
+                >
                   <CardTitle className="text-center text-lg flex items-center justify-center gap-2">
-                    {plan.type === 'family' && <Users className="w-5 h-5" />}
+                    {plan.type === "family" && <Users className="w-5 h-5" />}
                     {plan.name}
                   </CardTitle>
                   <div className="text-center">
                     <span className="text-3xl font-bold">{plan.price}</span>
                     <span className="text-sm font-medium"> / MONTH</span>
                   </div>
-                  {plan.type === 'family' && (
-                    <p className="text-sm text-white/90 text-center mt-1 font-medium">2 Adults + up to 3 Children</p>
+                  {plan.type === "family" && (
+                    <p className="text-sm text-white/90 text-center mt-1 font-medium">
+                      2 Adults + up to 3 Children
+                    </p>
                   )}
                 </CardHeader>
 
                 <CardContent className="pt-5 pb-6">
                   {plan.description && (
                     <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <p className="text-xs text-blue-800 font-medium text-center">{plan.description}</p>
+                      <p className="text-xs text-blue-800 font-medium text-center">
+                        {plan.description}
+                      </p>
                     </div>
                   )}
 
@@ -221,13 +245,15 @@ export default function SimplifiedPlanSelector() {
                 <CardFooter>
                   <Button
                     className={`w-full ${
-                      plan.type === 'family' && selectedPlan === plan.id
-                        ? 'bg-gradient-to-r from-pear-primary to-dental-green hover:from-pear-primary/90 hover:to-dental-green/90'
-                        : ''
+                      plan.type === "family" && selectedPlan === plan.id
+                        ? "bg-gradient-to-r from-pear-primary to-dental-green hover:from-pear-primary/90 hover:to-dental-green/90"
+                        : ""
                     }`}
                     variant={selectedPlan === plan.id ? "default" : "outline"}
                   >
-                    {selectedPlan === plan.id ? `Join ${plan.name} Now` : "Select Plan"}
+                    {selectedPlan === plan.id
+                      ? `Join ${plan.name} Now`
+                      : "Select Plan"}
                   </Button>
                 </CardFooter>
               </Card>
@@ -252,19 +278,19 @@ export default function SimplifiedPlanSelector() {
           style={{
             bottom: buttonPosition.bottom,
             left: buttonPosition.left,
-            transform: 'translateX(-50%)'
+            transform: "translateX(-50%)",
           }}
           initial={{ y: 100, opacity: 0 }}
           animate={{
             y: scrollY > 400 ? 0 : 100,
-            opacity: scrollY > 400 ? 1 : 0
+            opacity: scrollY > 400 ? 1 : 0,
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
           <a href="/membership/signup">
             <Button
               size="lg"
-              className={`rounded-full bg-gradient-to-r ${selectedPlanData?.bgColor || 'from-[#4A90A4] to-[#2d6b7a]'} hover:opacity-90 text-white px-8 py-4 text-lg font-semibold shadow-2xl border-4 border-white transition-all duration-300`}
+              className={`rounded-full bg-gradient-to-r ${selectedPlanData?.bgColor || "from-[#4A90A4] to-[#2d6b7a]"} hover:opacity-90 text-white px-8 py-4 text-lg font-semibold shadow-2xl border-4 border-white transition-all duration-300`}
             >
               Join {selectedPlanData?.name} Plan Now
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -275,8 +301,9 @@ export default function SimplifiedPlanSelector() {
         {/* Bottom Info Section */}
         <div className="border-t pt-8 text-center mb-20">
           <p className="text-sm text-gray-600 mb-6 max-w-2xl mx-auto">
-            <strong>All plans include:</strong> No hidden fees, cancel anytime, immediate benefits,
-            priority booking, and professional care from our experienced team.
+            <strong>All plans include:</strong> No hidden fees, cancel anytime,
+            immediate benefits, priority booking, and professional care from our
+            experienced team.
           </p>
 
           <p className="text-xs text-gray-500">

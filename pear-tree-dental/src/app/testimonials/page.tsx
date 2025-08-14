@@ -1,28 +1,26 @@
+import {
+  ArrowRight,
+  Award,
+  Calendar,
+  Camera,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Filter,
+  Heart,
+  Quote,
+  Shield,
+  Sparkles, 
+  Star,
+  ThumbsUp,
+  Users
+} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import {
-  Star,
-  Quote,
-  ArrowRight,
-  CheckCircle,
-  Heart,
-  Smile,
-  Calendar,
-  Filter,
-  ExternalLink,
-  Users,
-  Award,
-  ThumbsUp,
-  MessageCircle,
-  Camera,
-  Clock,
-  Shield,
-  Sparkles
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Patient Testimonials & Reviews - Real Results at Pear Tree Dental",

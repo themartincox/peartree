@@ -1,31 +1,29 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
-import ServiceHero from "@/components/ServiceHero";
-import { getServiceHeroConfig } from "@/data/serviceHeroes";
-import BeforeAfterButton from "@/components/BeforeAfterButton";
 import {
-  Zap,
-  Shield,
+  Award,
+  CalendarDays,
+  Camera, 
   CheckCircle,
   Clock,
-  Award,
   Heart,
-  ArrowRight,
-  CalendarDays,
   Phone,
-  Users,
+  Shield,
   Star,
   TrendingUp,
-  Camera
+  Users,
+  Zap
 } from "lucide-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import BeforeAfterButton from "@/components/BeforeAfterButton";
+import ServiceHero from "@/components/ServiceHero";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
 export const metadata: Metadata = {
   title: "Dental Implants Burton Joyce | Permanent Tooth Replacement | Pear Tree Dental",
@@ -51,7 +49,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function ImplantsPage() {
+export default function ImplantsPage(): React.JSX.Element {
   const implantFAQs = [
     {
       question: "How much do dental implants cost?",

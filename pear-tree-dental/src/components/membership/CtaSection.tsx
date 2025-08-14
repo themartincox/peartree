@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
+import { Heart, Shield, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Zap, Heart, Shield } from "lucide-react";
 
 export default function CtaSection() {
   return (
@@ -13,11 +13,15 @@ export default function CtaSection() {
           </h2>
 
           <p className="mb-8 text-lg text-gray-600">
-            Take control of your dental health today. Sign up in under 2 minutes and enjoy all the benefits of membership.
+            Take control of your dental health today. Sign up in under 2 minutes
+            and enjoy all the benefits of membership.
           </p>
 
           <a href="/membership/signup">
-            <Button size="lg" className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green/90 text-white">
+            <Button
+              size="lg"
+              className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green/90 text-white"
+            >
               Join Today
             </Button>
           </a>

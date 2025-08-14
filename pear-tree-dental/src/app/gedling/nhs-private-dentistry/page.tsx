@@ -1,40 +1,32 @@
+import {
+  Activity,
+  Award,
+  Car,
+  Clock,
+  DollarSign,
+  MapPin,
+  Navigation,
+  Phone,
+  Scale,
+  Shield,
+  Star,
+  Target,
+  ThumbsUp,
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
+import Link from "next/link";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
-  Award,
-  Navigation,
-  Home,
-  CreditCard,
-  Calendar,
-  ThumbsUp,
-  FileText,
-  Activity,
-  TrendingUp,
-  DollarSign,
-  Zap,
-  Target,
-  Scale
-} from "lucide-react";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "NHS & Private Dentistry in Gedling - Flexible Options for Working Families | Pear Tree Dental",
-  description: "NHS & Private dentistry for Gedling working families. Flexible treatment options, mixed care available, and honest advice about best value options. Quick drive from Gedling NG4.",
+  title:
+    "NHS & Private Dentistry in Gedling - Flexible Options for Working Families | Pear Tree Dental",
+  description:
+    "NHS & Private dentistry for Gedling working families. Flexible treatment options, mixed care available, and honest advice about best value options. Quick drive from Gedling NG4.",
   keywords: [
     "NHS dentist Gedling",
     "private dentist Gedling NG4",
@@ -42,40 +34,48 @@ export const metadata: Metadata = {
     "flexible dental options Gedling",
     "working families dentist Gedling",
     "affordable dental care Gedling",
-    "NHS private comparison Gedling"
+    "NHS private comparison Gedling",
   ],
   openGraph: {
-    title: "NHS & Private Dentistry in Gedling - Flexible Options for Working Families | Pear Tree Dental",
-    description: "NHS & Private dentistry for Gedling working families. Flexible treatment options and honest advice about best value.",
-    url: "https://peartree.dental/gedling/nhs-private-dentistry"
+    title:
+      "NHS & Private Dentistry in Gedling - Flexible Options for Working Families | Pear Tree Dental",
+    description:
+      "NHS & Private dentistry for Gedling working families. Flexible treatment options and honest advice about best value.",
+    url: "https://peartree.dental/gedling/nhs-private-dentistry",
   },
   alternates: {
-    canonical: "https://peartree.dental/gedling/nhs-private-dentistry"
-  }
+    canonical: "https://peartree.dental/gedling/nhs-private-dentistry",
+  },
 };
 
 export default function GedlingNHSPrivateDentistryPage() {
   const gedlingNHSPrivateFAQs = [
     {
       question: "How convenient is mixed NHS and private care from Gedling?",
-      answer: "Pear Tree Dental is just a quick drive from Gedling, making it easy for working families to access both NHS and private dental care. We offer honest advice about which option provides the best value for each treatment, helping you make informed decisions."
+      answer:
+        "Pear Tree Dental is just a quick drive from Gedling, making it easy for working families to access both NHS and private dental care. We offer honest advice about which option provides the best value for each treatment, helping you make informed decisions.",
     },
     {
       question: "Can I mix NHS and private treatments for my family?",
-      answer: "Yes! Many Gedling working families choose mixed care - using NHS for basic treatments and private for enhanced options. We provide clear guidance on what's available under each system and help you choose the most cost-effective combination."
+      answer:
+        "Yes! Many Gedling working families choose mixed care - using NHS for basic treatments and private for enhanced options. We provide clear guidance on what's available under each system and help you choose the most cost-effective combination.",
     },
     {
       question: "What's the difference between NHS and private dental care?",
-      answer: "NHS provides essential care with regulated pricing, while private offers enhanced materials, extended warranties, and more appointment flexibility. We explain both options honestly so Gedling families can choose what works best for their needs and budget."
+      answer:
+        "NHS provides essential care with regulated pricing, while private offers enhanced materials, extended warranties, and more appointment flexibility. We explain both options honestly so Gedling families can choose what works best for their needs and budget.",
     },
     {
-      question: "How do you help families choose between NHS and private options?",
-      answer: "We provide transparent comparisons showing treatment options, materials, warranties, and costs for both NHS and private. Our honest advice helps Gedling working families make the best choice for their situation without any pressure."
+      question:
+        "How do you help families choose between NHS and private options?",
+      answer:
+        "We provide transparent comparisons showing treatment options, materials, warranties, and costs for both NHS and private. Our honest advice helps Gedling working families make the best choice for their situation without any pressure.",
     },
     {
       question: "Are there payment options for private treatments?",
-      answer: "Yes! We offer flexible payment plans for private treatments, making enhanced care more accessible to working families. Combined with selective use of NHS options, this helps create affordable comprehensive care."
-    }
+      answer:
+        "Yes! We offer flexible payment plans for private treatments, making enhanced care more accessible to working families. Combined with selective use of NHS options, this helps create affordable comprehensive care.",
+    },
   ];
 
   const treatmentOptions = [
@@ -86,7 +86,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       nhsPrice: "NHS Band 2: £73.50",
       privatePrice: "From £120",
       recommendation: "NHS for back teeth, private for visible teeth",
-      icon: Shield
+      icon: Shield,
     },
     {
       treatment: "Dental Crowns",
@@ -95,7 +95,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       nhsPrice: "NHS Band 3: £319.10",
       privatePrice: "From £450",
       recommendation: "Private often better value for front teeth",
-      icon: Award
+      icon: Award,
     },
     {
       treatment: "Teeth Cleaning",
@@ -104,7 +104,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       nhsPrice: "NHS Band 1: £25.80",
       privatePrice: "From £65",
       recommendation: "Mix options based on individual needs",
-      icon: Activity
+      icon: Activity,
     },
     {
       treatment: "Tooth Extraction",
@@ -113,35 +113,36 @@ export default function GedlingNHSPrivateDentistryPage() {
       nhsPrice: "NHS Band 2: £73.50",
       privatePrice: "From £120",
       recommendation: "NHS adequate for most simple extractions",
-      icon: Target
-    }
+      icon: Target,
+    },
   ];
 
   const flexibilityBenefits = [
     {
       benefit: "Choice & Flexibility",
-      description: "Select NHS or private options for each treatment based on value",
+      description:
+        "Select NHS or private options for each treatment based on value",
       value: "Best of both systems",
-      icon: Scale
+      icon: Scale,
     },
     {
       benefit: "Honest Professional Advice",
       description: "Transparent guidance on which option offers best value",
       value: "Informed decisions",
-      icon: ThumbsUp
+      icon: ThumbsUp,
     },
     {
       benefit: "Budget-Friendly Solutions",
       description: "Mix options to create affordable comprehensive care",
       value: "Cost-effective treatment",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       benefit: "Working Family Convenience",
       description: "Flexible scheduling for both NHS and private appointments",
       value: "Time-saving efficiency",
-      icon: Clock
-    }
+      icon: Clock,
+    },
   ];
 
   const nhsPrivateComparison = [
@@ -149,71 +150,78 @@ export default function GedlingNHSPrivateDentistryPage() {
       aspect: "Cost Structure",
       nhs: "Fixed band pricing (£25.80, £73.50, £319.10)",
       private: "Individual treatment pricing with options",
-      guidance: "NHS offers predictable costs, private offers value flexibility"
+      guidance:
+        "NHS offers predictable costs, private offers value flexibility",
     },
     {
       aspect: "Material Quality",
       nhs: "Functional materials, limited aesthetic options",
       private: "Premium materials with enhanced aesthetics",
-      guidance: "Choose based on tooth location and personal priorities"
+      guidance: "Choose based on tooth location and personal priorities",
     },
     {
       aspect: "Treatment Time",
       nhs: "Standard appointment lengths",
       private: "Extended appointments for complex work",
-      guidance: "Private better for extensive treatments requiring more time"
+      guidance: "Private better for extensive treatments requiring more time",
     },
     {
       aspect: "Warranty Coverage",
       nhs: "12-month NHS warranty on most treatments",
       private: "Extended warranties up to 5 years available",
-      guidance: "Consider long-term value when comparing options"
+      guidance: "Consider long-term value when comparing options",
     },
     {
       aspect: "Appointment Availability",
       nhs: "Limited availability, longer waiting times",
       private: "Flexible scheduling, shorter waiting times",
-      guidance: "Private better for urgent non-emergency needs"
-    }
+      guidance: "Private better for urgent non-emergency needs",
+    },
   ];
 
   const smartChoiceStrategies = [
     {
       strategy: "Basic Preventive Care",
       approach: "Use NHS for routine check-ups and basic cleaning",
-      reasoning: "NHS provides excellent value for essential preventive services",
-      savingsOpportunity: "Significant cost savings on regular maintenance"
+      reasoning:
+        "NHS provides excellent value for essential preventive services",
+      savingsOpportunity: "Significant cost savings on regular maintenance",
     },
     {
       strategy: "Aesthetic Treatments",
       approach: "Choose private for visible tooth restorations",
       reasoning: "Better materials and appearance justify additional cost",
-      savingsOpportunity: "Long-term value through enhanced durability and appearance"
+      savingsOpportunity:
+        "Long-term value through enhanced durability and appearance",
     },
     {
       strategy: "Emergency Care",
       approach: "Start with NHS assessment, upgrade to private if needed",
       reasoning: "NHS covers urgent care, private adds comfort options",
-      savingsOpportunity: "Pay only for enhanced services you actually want"
+      savingsOpportunity: "Pay only for enhanced services you actually want",
     },
     {
       strategy: "Complex Restorations",
       approach: "Compare NHS vs private value carefully for major work",
-      reasoning: "Price difference may be smaller than expected for extensive treatment",
-      savingsOpportunity: "Sometimes private offers better value for complex cases"
+      reasoning:
+        "Price difference may be smaller than expected for extensive treatment",
+      savingsOpportunity:
+        "Sometimes private offers better value for complex cases",
     },
     {
       strategy: "Family Planning",
-      approach: "Mix NHS and private across family members based on individual needs",
-      reasoning: "Children often fine with NHS, adults may prefer private aesthetics",
-      savingsOpportunity: "Optimize family dental budget across all members"
+      approach:
+        "Mix NHS and private across family members based on individual needs",
+      reasoning:
+        "Children often fine with NHS, adults may prefer private aesthetics",
+      savingsOpportunity: "Optimize family dental budget across all members",
     },
     {
       strategy: "Payment Timing",
       approach: "Use NHS for immediate needs, plan private upgrades over time",
       reasoning: "Address urgent issues affordably, enhance as budget allows",
-      savingsOpportunity: "Spread costs while maintaining oral health"
-    }
+      savingsOpportunity: "Spread costs while maintaining oral health",
+    },
   ];
 
   return (
@@ -225,34 +233,32 @@ export default function GedlingNHSPrivateDentistryPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            "name": "Pear Tree Dental - NHS & Private Dentistry in Gedling",
-            "image": "https://peartree.dental/images/nhs-private-dentistry-gedling.jpg",
-            "url": "https://peartree.dental/gedling/nhs-private-dentistry",
-            "telephone": "+44-115-931-2935",
-            "address": {
+            name: "Pear Tree Dental - NHS & Private Dentistry in Gedling",
+            image:
+              "https://peartree.dental/images/nhs-private-dentistry-gedling.jpg",
+            url: "https://peartree.dental/gedling/nhs-private-dentistry",
+            telephone: "+44-115-931-2935",
+            address: {
               "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "UK"
+              streetAddress: "22 Nottingham Road",
+              addressLocality: "Burton Joyce",
+              addressRegion: "Nottinghamshire",
+              postalCode: "NG14 5AE",
+              addressCountry: "UK",
             },
-            "areaServed": {
+            areaServed: {
               "@type": "Place",
-              "name": "Gedling, NG4"
+              name: "Gedling, NG4",
             },
-            "medicalSpecialty": "General Dentistry - NHS & Private Care",
-            "geo": {
+            medicalSpecialty: "General Dentistry - NHS & Private Care",
+            geo: {
               "@type": "GeoCoordinates",
-              "latitude": 52.97335,
-              "longitude": -1.04211
+              latitude: 52.97335,
+              longitude: -1.04211,
             },
-            "openingHours": [
-              "Mo-Th 08:45-17:00",
-              "Fr 08:00-15:30"
-            ],
-            "priceRange": "£25.80-£450"
-          })
+            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
+            priceRange: "£25.80-£450",
+          }),
         }}
       />
 
@@ -268,7 +274,8 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              NHS & Private Dentistry in <span className="text-yellow-300">Gedling</span>
+              NHS & Private Dentistry in{" "}
+              <span className="text-yellow-300">Gedling</span>
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -278,19 +285,27 @@ export default function GedlingNHSPrivateDentistryPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
-                Quick drive from Gedling — Choose NHS, private, or mix both for best value
+                Quick drive from Gedling — Choose NHS, private, or mix both for
+                best value
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Scale className="w-5 h-5 mr-2" />
                   Book Flexible Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -298,7 +313,9 @@ export default function GedlingNHSPrivateDentistryPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">⚖️ Honest advice on NHS vs private options for Gedling families!</p>
+              <p className="text-lg font-semibold">
+                ⚖️ Honest advice on NHS vs private options for Gedling families!
+              </p>
             </div>
           </div>
         </div>
@@ -310,11 +327,14 @@ export default function GedlingNHSPrivateDentistryPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Flexible NHS & Private Dental Options for Gedling Working Families
+                Flexible NHS & Private Dental Options for Gedling Working
+                Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Working families shouldn't have to choose between quality and affordability. Our flexible approach
-                combines NHS and private options to create personalized dental care that fits your family's budget and needs.
+                Working families shouldn't have to choose between quality and
+                affordability. Our flexible approach combines NHS and private
+                options to create personalized dental care that fits your
+                family's budget and needs.
               </p>
             </div>
 
@@ -322,12 +342,21 @@ export default function GedlingNHSPrivateDentistryPage() {
               {(flexibilityBenefits || []).map((benefit, index) => {
                 const IconComponent = benefit.icon;
                 return (
-                  <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-green-200">
+                  <Card
+                    key={index}
+                    className="text-center hover:shadow-lg transition-shadow border-2 border-green-200"
+                  >
                     <CardContent className="p-6">
                       <IconComponent className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                      <h3 className="font-bold text-pear-primary mb-2">{benefit.benefit}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{benefit.description}</p>
-                      <Badge className="bg-green-100 text-green-700">{benefit.value}</Badge>
+                      <h3 className="font-bold text-pear-primary mb-2">
+                        {benefit.benefit}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">
+                        {benefit.description}
+                      </p>
+                      <Badge className="bg-green-100 text-green-700">
+                        {benefit.value}
+                      </Badge>
                     </CardContent>
                   </Card>
                 );
@@ -336,22 +365,32 @@ export default function GedlingNHSPrivateDentistryPage() {
 
             <div className="text-center bg-green-50 rounded-lg p-8">
               <Scale className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Best of Both NHS & Private Care</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Best of Both NHS & Private Care
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that Gedling working families want quality dental care that fits their budget.
-                Our honest approach helps you choose the best value option for each treatment without any pressure.
+                We understand that Gedling working families want quality dental
+                care that fits their budget. Our honest approach helps you
+                choose the best value option for each treatment without any
+                pressure.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">Honest advice</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    Honest advice
+                  </div>
                   <p className="text-gray-600">No pressure, just facts</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">Flexible options</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    Flexible options
+                  </div>
                   <p className="text-gray-600">Mix NHS and private as needed</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-green-600 mb-2">Quick drive</div>
+                  <div className="text-2xl font-bold text-green-600 mb-2">
+                    Quick drive
+                  </div>
                   <p className="text-gray-600">Convenient from Gedling</p>
                 </div>
               </div>
@@ -369,8 +408,9 @@ export default function GedlingNHSPrivateDentistryPage() {
                 NHS vs Private Treatment Options for Gedling Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding your options helps make informed decisions. Here's an honest comparison
-                of common treatments available under NHS and private care.
+                Understanding your options helps make informed decisions. Here's
+                an honest comparison of common treatments available under NHS
+                and private care.
               </p>
             </div>
 
@@ -378,31 +418,52 @@ export default function GedlingNHSPrivateDentistryPage() {
               {(treatmentOptions || []).map((option, index) => {
                 const IconComponent = option.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow"
+                  >
                     <CardHeader className="pb-4">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                           <IconComponent className="w-6 h-6 text-green-600" />
                         </div>
-                        <CardTitle className="text-xl text-pear-primary">{option.treatment}</CardTitle>
+                        <CardTitle className="text-xl text-pear-primary">
+                          {option.treatment}
+                        </CardTitle>
                       </div>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="bg-blue-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-blue-700 text-sm mb-1">NHS Option:</h4>
-                          <p className="text-sm text-gray-700 mb-2">{option.nhsOption}</p>
-                          <Badge className="bg-blue-100 text-blue-700">{option.nhsPrice}</Badge>
+                          <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                            NHS Option:
+                          </h4>
+                          <p className="text-sm text-gray-700 mb-2">
+                            {option.nhsOption}
+                          </p>
+                          <Badge className="bg-blue-100 text-blue-700">
+                            {option.nhsPrice}
+                          </Badge>
                         </div>
                         <div className="bg-purple-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-purple-700 text-sm mb-1">Private Option:</h4>
-                          <p className="text-sm text-gray-700 mb-2">{option.privateOption}</p>
-                          <Badge className="bg-purple-100 text-purple-700">{option.privatePrice}</Badge>
+                          <h4 className="font-semibold text-purple-700 text-sm mb-1">
+                            Private Option:
+                          </h4>
+                          <p className="text-sm text-gray-700 mb-2">
+                            {option.privateOption}
+                          </p>
+                          <Badge className="bg-purple-100 text-purple-700">
+                            {option.privatePrice}
+                          </Badge>
                         </div>
                       </div>
                       <div className="bg-green-50 rounded-lg p-3">
-                        <h4 className="font-semibold text-green-700 text-sm mb-1">Our Recommendation:</h4>
-                        <p className="text-sm text-green-700">{option.recommendation}</p>
+                        <h4 className="font-semibold text-green-700 text-sm mb-1">
+                          Our Recommendation:
+                        </h4>
+                        <p className="text-sm text-green-700">
+                          {option.recommendation}
+                        </p>
                       </div>
                     </CardContent>
                   </Card>
@@ -422,8 +483,9 @@ export default function GedlingNHSPrivateDentistryPage() {
                 Detailed NHS vs Private Comparison for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding the key differences helps Gedling families make the best choice
-                for their specific needs and budget considerations.
+                Understanding the key differences helps Gedling families make
+                the best choice for their specific needs and budget
+                considerations.
               </p>
             </div>
 
@@ -433,24 +495,38 @@ export default function GedlingNHSPrivateDentistryPage() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-2">{comparison.aspect}</h3>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {comparison.aspect}
+                        </h3>
                       </div>
 
                       <div className="space-y-3">
                         <div className="bg-blue-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-blue-700 text-sm mb-1">NHS:</h4>
-                          <p className="text-sm text-gray-700">{comparison.nhs}</p>
+                          <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                            NHS:
+                          </h4>
+                          <p className="text-sm text-gray-700">
+                            {comparison.nhs}
+                          </p>
                         </div>
                         <div className="bg-purple-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-purple-700 text-sm mb-1">Private:</h4>
-                          <p className="text-sm text-gray-700">{comparison.private}</p>
+                          <h4 className="font-semibold text-purple-700 text-sm mb-1">
+                            Private:
+                          </h4>
+                          <p className="text-sm text-gray-700">
+                            {comparison.private}
+                          </p>
                         </div>
                       </div>
 
                       <div>
                         <div className="bg-green-50 rounded-lg p-3">
-                          <h4 className="font-semibold text-green-700 text-sm mb-1">Guidance:</h4>
-                          <p className="text-sm text-green-700">{comparison.guidance}</p>
+                          <h4 className="font-semibold text-green-700 text-sm mb-1">
+                            Guidance:
+                          </h4>
+                          <p className="text-sm text-green-700">
+                            {comparison.guidance}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -471,8 +547,8 @@ export default function GedlingNHSPrivateDentistryPage() {
                 Smart Choice Strategies for Gedling Working Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Practical strategies for mixing NHS and private care to get the best value
-                and outcomes for your family's dental health needs.
+                Practical strategies for mixing NHS and private care to get the
+                best value and outcomes for your family's dental health needs.
               </p>
             </div>
 
@@ -485,19 +561,33 @@ export default function GedlingNHSPrivateDentistryPage() {
                         <ThumbsUp className="w-6 h-6 text-green-600" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-bold text-pear-primary mb-2">{strategy.strategy}</h3>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {strategy.strategy}
+                        </h3>
                         <div className="space-y-3">
                           <div>
-                            <h4 className="font-semibold text-green-600 text-sm mb-1">Approach:</h4>
-                            <p className="text-sm text-gray-700">{strategy.approach}</p>
+                            <h4 className="font-semibold text-green-600 text-sm mb-1">
+                              Approach:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.approach}
+                            </p>
                           </div>
                           <div>
-                            <h4 className="font-semibold text-green-600 text-sm mb-1">Reasoning:</h4>
-                            <p className="text-sm text-gray-700">{strategy.reasoning}</p>
+                            <h4 className="font-semibold text-green-600 text-sm mb-1">
+                              Reasoning:
+                            </h4>
+                            <p className="text-sm text-gray-700">
+                              {strategy.reasoning}
+                            </p>
                           </div>
                           <div className="bg-green-50 rounded-lg p-3">
-                            <h4 className="font-semibold text-green-700 text-sm mb-1">Savings Opportunity:</h4>
-                            <p className="text-sm text-green-700">{strategy.savingsOpportunity}</p>
+                            <h4 className="font-semibold text-green-700 text-sm mb-1">
+                              Savings Opportunity:
+                            </h4>
+                            <p className="text-sm text-green-700">
+                              {strategy.savingsOpportunity}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -516,7 +606,8 @@ export default function GedlingNHSPrivateDentistryPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-4">
-                What Gedling Families Say About Our Flexible NHS & Private Options
+                What Gedling Families Say About Our Flexible NHS & Private
+                Options
               </h2>
             </div>
 
@@ -528,15 +619,21 @@ export default function GedlingNHSPrivateDentistryPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">Clear guidance</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  Clear guidance
+                </div>
                 <p className="text-gray-600">No pressure, honest advice</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">Mixed approach</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  Mixed approach
+                </div>
                 <p className="text-gray-600">NHS + private combination</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-green-600 mb-2">Money saved</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  Money saved
+                </div>
                 <p className="text-gray-600">Best value for family needs</p>
               </div>
             </div>
@@ -552,7 +649,8 @@ export default function GedlingNHSPrivateDentistryPage() {
               Flexible NHS & Private Care Results for Gedling Families
             </h2>
             <p className="text-lg text-gray-600">
-              See how smart mixing of NHS and private options delivers excellent results for working families
+              See how smart mixing of NHS and private options delivers excellent
+              results for working families
             </p>
           </div>
 
@@ -580,7 +678,8 @@ export default function GedlingNHSPrivateDentistryPage() {
                 NHS & Private Dental Questions from Gedling Families
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from Gedling working families about choosing between NHS and private dental care
+                Common questions from Gedling working families about choosing
+                between NHS and private dental care
               </p>
             </div>
 
@@ -609,14 +708,18 @@ export default function GedlingNHSPrivateDentistryPage() {
                     <p>2. Continue on the A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 miles)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Quick 15-minute drive</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Quick 15-minute drive
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-green-50 rounded-lg p-6">
                     <Scale className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-green-700 mb-2">Flexible Dental Options</h4>
+                    <h4 className="font-bold text-green-700 mb-2">
+                      Flexible Dental Options
+                    </h4>
                     <p className="text-gray-600">NHS & private care choices</p>
                   </div>
                 </div>
@@ -629,7 +732,10 @@ export default function GedlingNHSPrivateDentistryPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Gedling
               </Button>
@@ -646,8 +752,9 @@ export default function GedlingNHSPrivateDentistryPage() {
               Get Honest Advice on NHS & Private Dental Options from Gedling
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Don't navigate NHS vs private choices alone. Get transparent guidance that helps your
-              family make informed decisions about dental care that fits your needs and budget.
+              Don't navigate NHS vs private choices alone. Get transparent
+              guidance that helps your family make informed decisions about
+              dental care that fits your needs and budget.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -656,19 +763,27 @@ export default function GedlingNHSPrivateDentistryPage() {
                 Flexible Dental Care Specialists
               </p>
               <p className="text-sm opacity-90">
-                Honest advice • NHS & private options • Mixed care available • Quick drive from Gedling
+                Honest advice • NHS & private options • Mixed care available •
+                Quick drive from Gedling
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-green-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Scale className="w-5 h-5 mr-2" />
                   Book Flexible Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-green-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

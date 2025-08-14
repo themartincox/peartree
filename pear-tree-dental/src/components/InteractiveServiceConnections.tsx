@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { Brain, TrendingUp, Target, Zap } from "lucide-react";
+import { Brain, Target, TrendingUp, Zap } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 interface ServiceNode {
   id: string;
@@ -19,7 +19,7 @@ const services: ServiceNode[] = [
     icon: <TrendingUp className="h-8 w-8" />,
     x: 20,
     y: 30,
-    connections: ["ai-automation", "strategy", "analytics"]
+    connections: ["ai-automation", "strategy", "analytics"],
   },
   {
     id: "ai-automation",
@@ -27,7 +27,7 @@ const services: ServiceNode[] = [
     icon: <Brain className="h-8 w-8" />,
     x: 80,
     y: 30,
-    connections: ["growth-marketing", "strategy", "analytics"]
+    connections: ["growth-marketing", "strategy", "analytics"],
   },
   {
     id: "strategy",
@@ -35,7 +35,7 @@ const services: ServiceNode[] = [
     icon: <Target className="h-8 w-8" />,
     x: 20,
     y: 70,
-    connections: ["growth-marketing", "ai-automation", "analytics"]
+    connections: ["growth-marketing", "ai-automation", "analytics"],
   },
   {
     id: "analytics",
@@ -43,8 +43,8 @@ const services: ServiceNode[] = [
     icon: <Zap className="h-8 w-8" />,
     x: 80,
     y: 70,
-    connections: ["growth-marketing", "ai-automation", "strategy"]
-  }
+    connections: ["growth-marketing", "ai-automation", "strategy"],
+  },
 ];
 
 export default function InteractiveServiceConnections() {
@@ -61,8 +61,8 @@ export default function InteractiveServiceConnections() {
     };
 
     updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    window.addEventListener("resize", updateDimensions);
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   const getConnectionPath = (from: ServiceNode, to: ServiceNode) => {
@@ -95,22 +95,30 @@ export default function InteractiveServiceConnections() {
         viewBox={`0 0 ${dimensions.width} ${dimensions.height}`}
       >
         <defs>
-          <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient
+            id="connectionGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
             <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#10B981" stopOpacity="0.6" />
           </linearGradient>
           <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
             <feMerge>
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
 
         {services.map((service) =>
           service.connections.map((connectionId) => {
-            const connectedService = services.find(s => s.id === connectionId);
+            const connectedService = services.find(
+              (s) => s.id === connectionId,
+            );
             if (!connectedService) return null;
 
             const isActive = isConnectionActive(service.id, connectionId);
@@ -129,11 +137,11 @@ export default function InteractiveServiceConnections() {
                 }`}
                 strokeDasharray={isActive ? "0" : "5,5"}
                 style={{
-                  animationDuration: isActive ? "2s" : "0s"
+                  animationDuration: isActive ? "2s" : "0s",
                 }}
               />
             );
-          })
+          }),
         )}
       </svg>
 
@@ -145,8 +153,8 @@ export default function InteractiveServiceConnections() {
             hoveredService === service.id
               ? "scale-110 z-10"
               : hoveredService && hoveredService !== service.id
-              ? "scale-95 opacity-60"
-              : "scale-100"
+                ? "scale-95 opacity-60"
+                : "scale-100"
           }`}
           style={{
             left: `${service.x}%`,
@@ -155,19 +163,24 @@ export default function InteractiveServiceConnections() {
           onMouseEnter={() => setHoveredService(service.id)}
           onMouseLeave={() => setHoveredService(null)}
         >
-          <div className={`
+          <div
+            className={`
             w-20 h-20 rounded-full flex items-center justify-center text-white transition-all duration-300
-            ${hoveredService === service.id
-              ? "bg-gradient-to-r from-blue-600 to-forest-green shadow-2xl"
-              : "bg-gradient-to-r from-midnight-blue to-blue-600 shadow-lg hover:shadow-xl"
+            ${
+              hoveredService === service.id
+                ? "bg-gradient-to-r from-blue-600 to-forest-green shadow-2xl"
+                : "bg-gradient-to-r from-midnight-blue to-blue-600 shadow-lg hover:shadow-xl"
             }
-          `}>
+          `}
+          >
             {service.icon}
           </div>
-          <div className={`
+          <div
+            className={`
             mt-2 text-center text-sm font-semibold transition-all duration-300
             ${hoveredService === service.id ? "text-midnight-blue" : "text-gray-600"}
-          `}>
+          `}
+          >
             {service.title}
           </div>
         </div>
@@ -184,7 +197,7 @@ export default function InteractiveServiceConnections() {
                 left: `${20 + Math.random() * 60}%`,
                 top: `${20 + Math.random() * 60}%`,
                 animationDelay: `${i * 0.2}s`,
-                animationDuration: "2s"
+                animationDuration: "2s",
               }}
             />
           ))}

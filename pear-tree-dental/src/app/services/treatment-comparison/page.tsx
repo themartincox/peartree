@@ -1,38 +1,25 @@
+import {
+  AlertCircle,
+  ArrowRight,
+  Calendar,
+  CheckCircle,
+  DollarSign,
+  Grid3X3,
+  Info, 
+  Star,
+  Target,
+  TrendingUp,
+  Wrench,
+  XCircle,
+  Zap
+} from "lucide-react";
 import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import Link from "next/link";
-import {
-  Crown,
-  Star,
-  ArrowRight,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Shield,
-  Sparkles,
-  Users,
-  ChevronLeft,
-  Award,
-  Heart,
-  Target,
-  Zap,
-  Layers,
-  Grid,
-  Smile,
-  Filter,
-  Grid3X3,
-  DollarSign,
-  Calendar,
-  Wrench,
-  TrendingUp,
-  AlertCircle,
-  Info
-} from "lucide-react";
-import { getTreatmentPrice } from "@/data/pricing";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Treatment Comparison Tool - Choose the Right Dental Solution | Pear Tree Dental",
@@ -357,12 +344,12 @@ export default function TreatmentComparisonPage() {
   ];
 
   const comparisonFactors = [
-    { key: "price", label: "Cost", icon: DollarSign, format: (value: any) => value },
-    { key: "duration", label: "Treatment Time", icon: Calendar, format: (value: any) => value },
-    { key: "longevity", label: "Lifespan", icon: TrendingUp, format: (value: any) => value },
-    { key: "function", label: "Function", icon: Zap, format: (value: any) => value },
-    { key: "maintenance", label: "Maintenance", icon: Wrench, format: (value: any) => value },
-    { key: "surgery", label: "Surgery Required", icon: Target, format: (value: any) => value }
+    { key: "price", label: "Cost", icon: DollarSign, format: (value: string | number) => value },
+    { key: "duration", label: "Treatment Time", icon: Calendar, format: (value: string | number) => value },
+    { key: "longevity", label: "Lifespan", icon: TrendingUp, format: (value: string | number) => value },
+    { key: "function", label: "Function", icon: Zap, format: (value: string | number) => value },
+    { key: "maintenance", label: "Maintenance", icon: Wrench, format: (value: string | number) => value },
+    { key: "surgery", label: "Surgery Required", icon: Target, format: (value: string | number) => value }
   ];
 
   const categories = [

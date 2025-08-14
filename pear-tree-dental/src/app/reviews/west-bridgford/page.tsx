@@ -1,44 +1,31 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import FAQSection from "@/components/FAQSection";
-import Link from "next/link";
 import {
-  MapPin,
-  Clock,
-  Phone,
-  Star,
-  CheckCircle,
-  Car,
-  CalendarDays,
-  Shield,
-  Heart,
-  Users,
-  Award,
-  Navigation,
-  Home,
-  CreditCard,
+  BarChart3,
   Calendar,
-  ThumbsUp,
-  FileText,
-  Activity,
-  TrendingUp,
-  Target,
-  Timer,
-  Crown,
-  Zap,
-  DollarSign,
+  Car,
   Circle,
+  DollarSign,
+  MapPin,
   MessageSquare,
+  Navigation,
+  Phone,
   Search,
-  BarChart3
+  Shield,
+  Star,
+  Zap,
 } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import FAQSection from "@/components/FAQSection";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "West Bridgford Dental Care: What Local Patients Really Value | Pear Tree Dental",
-  description: "Explore what patients in West Bridgford say about local dental care – from parking and pricing to modern facilities and appointment access. Find the right practice for you.",
+  title:
+    "West Bridgford Dental Care: What Local Patients Really Value | Pear Tree Dental",
+  description:
+    "Explore what patients in West Bridgford say about local dental care – from parking and pricing to modern facilities and appointment access. Find the right practice for you.",
   keywords: [
     "West Bridgford dental care",
     "dentist West Bridgford reviews",
@@ -46,85 +33,99 @@ export const metadata: Metadata = {
     "NG2 dental care",
     "private dentist West Bridgford",
     "dental care West Bridgford",
-    "West Bridgford dentist feedback"
+    "West Bridgford dentist feedback",
   ],
   openGraph: {
-    title: "West Bridgford Dental Care: What Local Patients Really Value | Pear Tree Dental",
-    description: "Explore what patients in West Bridgford say about local dental care – from parking and pricing to modern facilities.",
-    url: "https://peartree.dental/reviews/west-bridgford"
+    title:
+      "West Bridgford Dental Care: What Local Patients Really Value | Pear Tree Dental",
+    description:
+      "Explore what patients in West Bridgford say about local dental care – from parking and pricing to modern facilities.",
+    url: "https://peartree.dental/reviews/west-bridgford",
   },
   alternates: {
-    canonical: "https://peartree.dental/reviews/west-bridgford"
-  }
+    canonical: "https://peartree.dental/reviews/west-bridgford",
+  },
 };
 
 export default function WestBridgfordDentalCarePatientFeedbackPage() {
   const patientFeedbackFAQs = [
     {
-      question: "How does Pear Tree Dental compare to established practices in West Bridgford like Hilton Dental?",
-      answer: "Patients often compare West Bridgford practices based on parking, appointment availability, and technology. Pear Tree offers modern facilities, free parking, and transparent pricing in a relaxing setting just minutes from NG2."
+      question:
+        "How does Pear Tree Dental compare to established practices in West Bridgford like Hilton Dental?",
+      answer:
+        "Patients often compare West Bridgford practices based on parking, appointment availability, and technology. Pear Tree offers modern facilities, free parking, and transparent pricing in a relaxing setting just minutes from NG2.",
     },
     {
-      question: "What do patients say about parking at West Bridgford dental practices?",
-      answer: "Parking is a major concern for West Bridgford patients. Many established practices have limited parking, while newer practices like Pear Tree Dental offer free, convenient parking that patients consistently praise in reviews."
+      question:
+        "What do patients say about parking at West Bridgford dental practices?",
+      answer:
+        "Parking is a major concern for West Bridgford patients. Many established practices have limited parking, while newer practices like Pear Tree Dental offer free, convenient parking that patients consistently praise in reviews.",
     },
     {
       question: "How do West Bridgford dental costs compare between practices?",
-      answer: "Cost transparency varies significantly between West Bridgford practices. Patients appreciate clear pricing upfront, which is why practices with transparent fee structures tend to receive better feedback than those with hidden costs."
+      answer:
+        "Cost transparency varies significantly between West Bridgford practices. Patients appreciate clear pricing upfront, which is why practices with transparent fee structures tend to receive better feedback than those with hidden costs.",
     },
     {
-      question: "What technology do West Bridgford patients expect from modern dental practices?",
-      answer: "Patients increasingly expect digital X-rays, intraoral cameras, and modern equipment. Reviews show patients prefer practices that invest in current technology over those using older equipment and methods."
+      question:
+        "What technology do West Bridgford patients expect from modern dental practices?",
+      answer:
+        "Patients increasingly expect digital X-rays, intraoral cameras, and modern equipment. Reviews show patients prefer practices that invest in current technology over those using older equipment and methods.",
     },
     {
-      question: "How important is appointment availability to West Bridgford dental patients?",
-      answer: "Very important! Patient feedback consistently shows frustration with practices that have long waiting times. Patients value practices that can offer same-day emergency appointments and flexible scheduling."
-    }
+      question:
+        "How important is appointment availability to West Bridgford dental patients?",
+      answer:
+        "Very important! Patient feedback consistently shows frustration with practices that have long waiting times. Patients value practices that can offer same-day emergency appointments and flexible scheduling.",
+    },
   ];
 
   const patientPriorities = [
     {
       priority: "Convenient Parking",
-      description: "Free, accessible parking is consistently mentioned in patient reviews",
+      description:
+        "Free, accessible parking is consistently mentioned in patient reviews",
       patientFeedback: "Parking hassles affect visit experience significantly",
       peartreeAdvantage: "Free parking directly outside practice",
-      icon: Car
+      icon: Car,
     },
     {
       priority: "Modern Technology",
-      description: "Patients expect digital equipment and current treatment methods",
-      patientFeedback: "Outdated equipment affects confidence in treatment quality",
+      description:
+        "Patients expect digital equipment and current treatment methods",
+      patientFeedback:
+        "Outdated equipment affects confidence in treatment quality",
       peartreeAdvantage: "Latest digital technology and CEREC same-day crowns",
-      icon: Zap
+      icon: Zap,
     },
     {
       priority: "Transparent Pricing",
       description: "Clear costs upfront without hidden fees or surprises",
       patientFeedback: "Unexpected charges create trust issues with practices",
       peartreeAdvantage: "Clear pricing with no hidden costs or surprises",
-      icon: DollarSign
+      icon: DollarSign,
     },
     {
       priority: "Appointment Access",
       description: "Same-day emergencies and flexible scheduling options",
       patientFeedback: "Long waits for appointments cause frustration",
       peartreeAdvantage: "Same-day appointments and emergency access",
-      icon: Calendar
+      icon: Calendar,
     },
     {
       priority: "Professional Environment",
       description: "Clean, modern facilities that feel welcoming and calming",
       patientFeedback: "Practice environment affects anxiety levels",
       peartreeAdvantage: "Spa-like environment designed for relaxation",
-      icon: Shield
+      icon: Shield,
     },
     {
       priority: "Communication Quality",
       description: "Clear explanations of treatments and costs",
       patientFeedback: "Poor communication leads to misunderstandings",
       peartreeAdvantage: "Detailed explanations and treatment planning",
-      icon: MessageSquare
-    }
+      icon: MessageSquare,
+    },
   ];
 
   const commonConcerns = [
@@ -133,63 +134,73 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
       frequency: "Mentioned in 78% of West Bridgford dental reviews",
       impact: "Affects overall visit experience and punctuality",
       solution: "Choose practices with dedicated, free parking facilities",
-      peartreeApproach: "Free parking directly outside our Burton Joyce practice - just 8 minutes from West Bridgford"
+      peartreeApproach:
+        "Free parking directly outside our Burton Joyce practice - just 8 minutes from West Bridgford",
     },
     {
       concern: "Outdated Equipment",
       frequency: "Mentioned in 65% of traditional practice reviews",
       impact: "Affects treatment comfort and precision",
       solution: "Look for practices investing in modern digital technology",
-      peartreeApproach: "Latest CEREC technology for same-day crowns and digital imaging for precision"
+      peartreeApproach:
+        "Latest CEREC technology for same-day crowns and digital imaging for precision",
     },
     {
       concern: "Unexpected Costs",
       frequency: "Mentioned in 72% of patient complaints",
       impact: "Creates financial stress and trust issues",
       solution: "Choose practices with clear, upfront pricing",
-      peartreeApproach: "Transparent pricing with detailed treatment plans and no hidden fees"
+      peartreeApproach:
+        "Transparent pricing with detailed treatment plans and no hidden fees",
     },
     {
       concern: "Long Waiting Times",
       frequency: "Mentioned in 69% of patient frustrations",
       impact: "Disrupts work schedules and creates anxiety",
       solution: "Select practices with efficient scheduling systems",
-      peartreeApproach: "Same-day emergency appointments and efficient scheduling"
+      peartreeApproach:
+        "Same-day emergency appointments and efficient scheduling",
     },
     {
       concern: "Impersonal Service",
       frequency: "Mentioned in 58% of larger practice reviews",
       impact: "Reduces comfort and trust in treatment",
       solution: "Choose practices focused on personal, relationship-based care",
-      peartreeApproach: "Personal attention from the same experienced team every visit"
-    }
+      peartreeApproach:
+        "Personal attention from the same experienced team every visit",
+    },
   ];
 
   const researchSources = [
     {
       platform: "Google Reviews",
-      insights: "Parking and appointment availability most frequently mentioned",
+      insights:
+        "Parking and appointment availability most frequently mentioned",
       sampleSize: "180+ West Bridgford dental practice reviews analyzed",
-      keyFindings: "Modern facilities and transparent pricing highly valued"
+      keyFindings: "Modern facilities and transparent pricing highly valued",
     },
     {
       platform: "Facebook Comments",
-      insights: "Personal recommendations focus on staff friendliness and technology",
+      insights:
+        "Personal recommendations focus on staff friendliness and technology",
       sampleSize: "85+ social media posts and comments reviewed",
-      keyFindings: "Patients share experiences about communication quality"
+      keyFindings: "Patients share experiences about communication quality",
     },
     {
       platform: "Healthcare Review Sites",
       insights: "Treatment outcomes and value for money most important factors",
       sampleSize: "120+ detailed patient reviews across multiple platforms",
-      keyFindings: "Patients willing to travel for better experience and technology"
+      keyFindings:
+        "Patients willing to travel for better experience and technology",
     },
     {
       platform: "Local Community Forums",
-      insights: "Word-of-mouth recommendations emphasize convenience and results",
+      insights:
+        "Word-of-mouth recommendations emphasize convenience and results",
       sampleSize: "50+ discussion threads about West Bridgford dental care",
-      keyFindings: "Personal referrals highly influential in practice selection"
-    }
+      keyFindings:
+        "Personal referrals highly influential in practice selection",
+    },
   ];
 
   const practiceComparison = [
@@ -198,36 +209,36 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
       traditionalPractices: "Limited street parking, paid car parks",
       modernPractices: "Dedicated free parking facilities",
       patientPreference: "Strongly prefer free, convenient parking",
-      winner: "Modern"
+      winner: "Modern",
     },
     {
       factor: "Technology Level",
       traditionalPractices: "Film X-rays, traditional impressions",
       modernPractices: "Digital X-rays, CEREC, intraoral cameras",
       patientPreference: "Expect current technology for better results",
-      winner: "Modern"
+      winner: "Modern",
     },
     {
       factor: "Appointment Flexibility",
       traditionalPractices: "Standard business hours, limited emergency",
       modernPractices: "Extended hours, same-day emergency slots",
       patientPreference: "Value flexibility for work schedules",
-      winner: "Modern"
+      winner: "Modern",
     },
     {
       factor: "Pricing Transparency",
       traditionalPractices: "Quotes provided after examination",
       modernPractices: "Clear pricing guides, upfront estimates",
       patientPreference: "Want to know costs before committing",
-      winner: "Modern"
+      winner: "Modern",
     },
     {
       factor: "Treatment Approach",
       traditionalPractices: "Focus on treating problems as they arise",
       modernPractices: "Preventive care and comprehensive planning",
       patientPreference: "Prefer proactive, preventive approach",
-      winner: "Modern"
-    }
+      winner: "Modern",
+    },
   ];
 
   return (
@@ -239,25 +250,25 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
+            mainEntity: [
               {
                 "@type": "Question",
-                "name": "How does Pear Tree Dental compare to established practices in West Bridgford like Hilton Dental?",
-                "acceptedAnswer": {
+                name: "How does Pear Tree Dental compare to established practices in West Bridgford like Hilton Dental?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Patients often compare West Bridgford practices based on parking, appointment availability, and technology. Pear Tree offers modern facilities, free parking, and transparent pricing in a relaxing setting just minutes from NG2."
-                }
+                  text: "Patients often compare West Bridgford practices based on parking, appointment availability, and technology. Pear Tree offers modern facilities, free parking, and transparent pricing in a relaxing setting just minutes from NG2.",
+                },
               },
               {
                 "@type": "Question",
-                "name": "What do patients say about parking at West Bridgford dental practices?",
-                "acceptedAnswer": {
+                name: "What do patients say about parking at West Bridgford dental practices?",
+                acceptedAnswer: {
                   "@type": "Answer",
-                  "text": "Parking is a major concern for West Bridgford patients. Many established practices have limited parking, while newer practices like Pear Tree Dental offer free, convenient parking that patients consistently praise in reviews."
-                }
-              }
-            ]
-          })
+                  text: "Parking is a major concern for West Bridgford patients. Many established practices have limited parking, while newer practices like Pear Tree Dental offer free, convenient parking that patients consistently praise in reviews.",
+                },
+              },
+            ],
+          }),
         }}
       />
 
@@ -273,7 +284,9 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              What West Bridgford Patients <span className="text-yellow-300">Really Value</span> in Dental Care
+              What West Bridgford Patients{" "}
+              <span className="text-yellow-300">Really Value</span> in Dental
+              Care
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
@@ -283,19 +296,27 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Search className="inline w-5 h-5 mr-2" />
-                Analysis of 400+ patient reviews across Google, Facebook, and healthcare platforms
+                Analysis of 400+ patient reviews across Google, Facebook, and
+                healthcare platforms
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Experience Modern Dental Care
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -303,7 +324,10 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">🔍 Based on comprehensive analysis of West Bridgford dental patient feedback</p>
+              <p className="text-lg font-semibold">
+                🔍 Based on comprehensive analysis of West Bridgford dental
+                patient feedback
+              </p>
             </div>
           </div>
         </div>
@@ -318,20 +342,30 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 Our Research: Real Patient Feedback from West Bridgford
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We analyzed hundreds of patient reviews from Google, Facebook, and healthcare platforms
-                to understand what West Bridgford residents truly value in dental care.
+                We analyzed hundreds of patient reviews from Google, Facebook,
+                and healthcare platforms to understand what West Bridgford
+                residents truly value in dental care.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {(researchSources || []).map((source, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-6">
                     <BarChart3 className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h3 className="font-bold text-pear-primary mb-2">{source.platform}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{source.sampleSize}</p>
+                    <h3 className="font-bold text-pear-primary mb-2">
+                      {source.platform}
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-3">
+                      {source.sampleSize}
+                    </p>
                     <div className="bg-blue-50 rounded-lg p-3">
-                      <p className="text-xs text-blue-700 font-medium">{source.keyFindings}</p>
+                      <p className="text-xs text-blue-700 font-medium">
+                        {source.keyFindings}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -340,23 +374,32 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
 
             <div className="mt-12 text-center bg-blue-50 rounded-lg p-8">
               <MessageSquare className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">Research Methodology</h3>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">
+                Research Methodology
+              </h3>
               <p className="text-lg text-gray-600 mb-6">
-                Our analysis included patient reviews from Google Reviews, Facebook comments,
-                healthcare review websites, and local community forums to understand what
-                West Bridgford residents prioritize when choosing dental care.
+                Our analysis included patient reviews from Google Reviews,
+                Facebook comments, healthcare review websites, and local
+                community forums to understand what West Bridgford residents
+                prioritize when choosing dental care.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-2">400+</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">
+                    400+
+                  </div>
                   <p className="text-gray-600">Patient reviews analyzed</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-2">6 months</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">
+                    6 months
+                  </div>
                   <p className="text-gray-600">Research period</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-2">Multiple platforms</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-2">
+                    Multiple platforms
+                  </div>
                   <p className="text-gray-600">Comprehensive coverage</p>
                 </div>
               </div>
@@ -374,8 +417,9 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 Top 6 Priorities from West Bridgford Patient Feedback
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Based on our analysis of patient reviews and social media discussions,
-                these are the factors that matter most to West Bridgford dental patients.
+                Based on our analysis of patient reviews and social media
+                discussions, these are the factors that matter most to West
+                Bridgford dental patients.
               </p>
             </div>
 
@@ -383,24 +427,39 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
               {(patientPriorities || []).map((priority, index) => {
                 const IconComponent = priority.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="hover:shadow-lg transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
                         <div className="p-3 bg-blue-100 rounded-full">
                           <IconComponent className="w-6 h-6 text-blue-600" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-bold text-pear-primary mb-2">{priority.priority}</h3>
-                          <p className="text-sm text-gray-600 mb-3">{priority.description}</p>
+                          <h3 className="font-bold text-pear-primary mb-2">
+                            {priority.priority}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-3">
+                            {priority.description}
+                          </p>
 
                           <div className="mb-3">
-                            <h4 className="font-semibold text-red-600 text-xs mb-1">Patient Concern:</h4>
-                            <p className="text-xs text-gray-700">{priority.patientFeedback}</p>
+                            <h4 className="font-semibold text-red-600 text-xs mb-1">
+                              Patient Concern:
+                            </h4>
+                            <p className="text-xs text-gray-700">
+                              {priority.patientFeedback}
+                            </p>
                           </div>
 
                           <div className="bg-green-50 rounded-lg p-3">
-                            <h4 className="font-semibold text-green-700 text-xs mb-1">Pear Tree Advantage:</h4>
-                            <p className="text-xs text-green-700">{priority.peartreeAdvantage}</p>
+                            <h4 className="font-semibold text-green-700 text-xs mb-1">
+                              Pear Tree Advantage:
+                            </h4>
+                            <p className="text-xs text-green-700">
+                              {priority.peartreeAdvantage}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -422,7 +481,8 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 Most Common Concerns in West Bridgford Patient Reviews
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Understanding what frustrates patients helps identify what to look for when choosing a dental practice.
+                Understanding what frustrates patients helps identify what to
+                look for when choosing a dental practice.
               </p>
             </div>
 
@@ -432,23 +492,39 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                   <CardContent className="p-6">
                     <div className="grid md:grid-cols-4 gap-4 items-center">
                       <div>
-                        <h3 className="font-bold text-pear-primary mb-2">{concern.concern}</h3>
-                        <Badge className="bg-red-100 text-red-700 text-xs">{concern.frequency}</Badge>
+                        <h3 className="font-bold text-pear-primary mb-2">
+                          {concern.concern}
+                        </h3>
+                        <Badge className="bg-red-100 text-red-700 text-xs">
+                          {concern.frequency}
+                        </Badge>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-gray-700 text-sm mb-1">Impact:</h4>
-                        <p className="text-sm text-gray-600">{concern.impact}</p>
+                        <h4 className="font-semibold text-gray-700 text-sm mb-1">
+                          Impact:
+                        </h4>
+                        <p className="text-sm text-gray-600">
+                          {concern.impact}
+                        </p>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-blue-700 text-sm mb-1">Solution:</h4>
-                        <p className="text-sm text-blue-700">{concern.solution}</p>
+                        <h4 className="font-semibold text-blue-700 text-sm mb-1">
+                          Solution:
+                        </h4>
+                        <p className="text-sm text-blue-700">
+                          {concern.solution}
+                        </p>
                       </div>
 
                       <div className="bg-green-50 rounded-lg p-3">
-                        <h4 className="font-semibold text-green-700 text-sm mb-1">Our Approach:</h4>
-                        <p className="text-sm text-green-700">{concern.peartreeApproach}</p>
+                        <h4 className="font-semibold text-green-700 text-sm mb-1">
+                          Our Approach:
+                        </h4>
+                        <p className="text-sm text-green-700">
+                          {concern.peartreeApproach}
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -468,7 +544,8 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 Traditional vs Modern Dental Practices: What Patients Prefer
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Patient feedback clearly shows preferences for modern approaches to dental care delivery.
+                Patient feedback clearly shows preferences for modern approaches
+                to dental care delivery.
               </p>
             </div>
 
@@ -482,11 +559,22 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
               </div>
 
               {(practiceComparison || []).map((item, index) => (
-                <div key={index} className="grid grid-cols-5 p-4 border-b border-gray-100 hover:bg-gray-50">
-                  <div className="font-semibold text-gray-700">{item.factor}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.traditionalPractices}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.modernPractices}</div>
-                  <div className="text-center text-sm text-gray-600 px-2">{item.patientPreference}</div>
+                <div
+                  key={index}
+                  className="grid grid-cols-5 p-4 border-b border-gray-100 hover:bg-gray-50"
+                >
+                  <div className="font-semibold text-gray-700">
+                    {item.factor}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.traditionalPractices}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.modernPractices}
+                  </div>
+                  <div className="text-center text-sm text-gray-600 px-2">
+                    {item.patientPreference}
+                  </div>
                   <div className="text-center">
                     <Badge
                       className={
@@ -504,8 +592,9 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
 
             <div className="mt-8 text-center">
               <p className="text-lg text-gray-600">
-                <strong>Clear Patient Preference:</strong> Modern dental practices consistently receive better
-                feedback for convenience, technology, and patient experience.
+                <strong>Clear Patient Preference:</strong> Modern dental
+                practices consistently receive better feedback for convenience,
+                technology, and patient experience.
               </p>
             </div>
           </div>
@@ -530,15 +619,21 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-blue-600 mb-2">Free parking</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  Free parking
+                </div>
                 <p className="text-gray-600">No parking stress or fees</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-blue-600 mb-2">8 minutes</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  8 minutes
+                </div>
                 <p className="text-gray-600">Quick drive from West Bridgford</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-blue-600 mb-2">Same day</div>
+                <div className="text-3xl font-bold text-blue-600 mb-2">
+                  Same day
+                </div>
                 <p className="text-gray-600">CEREC crowns in one visit</p>
               </div>
             </div>
@@ -555,7 +650,8 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 West Bridgford Dental Care Questions
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from our research into West Bridgford patient feedback
+                Common questions from our research into West Bridgford patient
+                feedback
               </p>
             </div>
 
@@ -584,14 +680,18 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                     <p>2. Continue onto A612 towards Lowdham</p>
                     <p>3. Follow signs to Burton Joyce (8 minutes)</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">Journey: Just 8 minutes with free parking</p>
+                    <p className="text-pear-primary font-semibold">
+                      Journey: Just 8 minutes with free parking
+                    </p>
                   </div>
                 </div>
 
                 <div className="text-center">
                   <div className="bg-blue-50 rounded-lg p-6">
                     <Car className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                    <h4 className="font-bold text-blue-700 mb-2">Free Parking</h4>
+                    <h4 className="font-bold text-blue-700 mb-2">
+                      Free Parking
+                    </h4>
                     <p className="text-gray-600">No parking stress or fees</p>
                   </div>
                 </div>
@@ -604,7 +704,10 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
+              <Button
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+              >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from West Bridgford
               </Button>
@@ -621,8 +724,8 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
               Experience What West Bridgford Patients Value Most
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Free parking, modern technology, transparent pricing, and personal care -
-              all just 8 minutes from West Bridgford.
+              Free parking, modern technology, transparent pricing, and personal
+              care - all just 8 minutes from West Bridgford.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
@@ -631,19 +734,27 @@ export default function WestBridgfordDentalCarePatientFeedbackPage() {
                 Based on 400+ Patient Reviews
               </p>
               <p className="text-sm opacity-90">
-                Modern facilities • Free parking • Same-day crowns • Quick drive from NG2
+                Modern facilities • Free parking • Same-day crowns • Quick drive
+                from NG2
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-blue-800 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Circle className="w-5 h-5 mr-2" />
                   Book Your Visit
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-full"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
