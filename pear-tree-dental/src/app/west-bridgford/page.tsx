@@ -43,6 +43,13 @@ export const metadata: Metadata = {
 };
 
 export default function WestBridgfordPage() {
+  // Define area served for West Bridgford separately to avoid JSX syntax issues
+  const westBridgfordArea = [
+    "West Bridgford",
+    "Nottingham City Centre",
+    "The Park",
+    "Trent Bridge",
+  ];
   return (
     <div className="min-h-screen bg-dental-navy text-white">
       {/* JSON-LD Structured Data */}
@@ -88,6 +95,7 @@ export default function WestBridgfordPage() {
           })
         }}
       />
+      {/* patched */}
 
       {/* Enhanced Medical Practice Schema for West Bridgford */}
       <MedicalPracticeSchema
@@ -95,7 +103,8 @@ export default function WestBridgfordPage() {
         serviceName="Premium Dental Care for West Bridgford"
         serviceDescription="Comprehensive premium dental services including cosmetic dentistry, dental implants, and advanced treatments for discerning West Bridgford residents"
         procedureType="Comprehensive Dental Care"
-        areaServed={(["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
+	        // areaServed removed due to syntax error with parentheses
+	        areaServed={westBridgfordArea}
       />
 
       {/* Service Area Schema for West Bridgford Coverage */}
