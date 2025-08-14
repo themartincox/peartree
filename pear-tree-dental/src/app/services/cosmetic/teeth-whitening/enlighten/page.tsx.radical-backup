@@ -148,7 +148,7 @@ export default function EnlightenWhiteningPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 via-white to-yellow-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Enlighten Teeth Whitening"

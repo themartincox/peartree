@@ -157,7 +157,7 @@ export default function CompositeEdgeBondingPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-white to-pink-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Composite Edge Bonding"
