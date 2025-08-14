@@ -19,7 +19,7 @@ import Link from "next/link";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Smile Gallery - Before & After Results | Pear Tree Dental Burton Joyce",

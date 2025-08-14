@@ -19,7 +19,7 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "General Dentistry Burton Joyce | NHS & Private Care | Pear Tree Dental",
