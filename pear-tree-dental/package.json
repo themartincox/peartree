@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
-    "build:production": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production next build --no-lint",
-    "build:optimized": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' next build --no-lint",
+    "build:production": "bun run lint && NODE_ENV=production next build",
+    "build:optimized": "bun run lint && NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' next build",
     "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "bunx biome lint --write && bunx tsc --noEmit",
@@ -16,7 +16,7 @@
     "pre-deploy-check": "bun run validate-contacts && bun run lint",
     "sitemap:update": "node scripts/update-sitemap.js",
     "sitemap:build": "tsc src/utils/sitemap-generator.ts --outDir dist --target es2020 --module esnext --moduleResolution node --allowSyntheticDefaultImports --esModuleInterop",
-    "sitemap:stats": "npm run sitemap:build && node -e \"import('./dist/utils/sitemap-generator.js').then(m => m.getSitemapStats('./src/app').then(console.log))\"",
+    "sitemap:stats": "bun run sitemap:build && node -e \"import('./dist/utils/sitemap-generator.js').then(m => m.getSitemapStats('./src/app').then(console.log))\"",
     "sitemap:force": "FORCE_UPDATE=true node scripts/update-sitemap.js"
   },
   "dependencies": {
@@ -57,7 +57,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.3.2",
     "@types/node": "^20.17.50",
     "@types/react": "^18.3.22",
