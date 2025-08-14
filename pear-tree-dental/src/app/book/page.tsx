@@ -1,3 +1,4 @@
+import React from "react";
 import { Clock } from "lucide-react";
 import type { Metadata } from "next";
 import ContactFormCard from "@/components/ContactFormCard";

@@ -1,3 +1,4 @@
+import React from "react";
 import { Calendar, CheckCircle, Home, Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";

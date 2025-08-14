@@ -1,3 +1,4 @@
+import React from "react";
 import {
   ArrowRight,
   Calendar,
@@ -21,6 +22,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
+
+/** @jsx React.createElement */
 
 export const metadata: Metadata = {
   title: "Boutique Whitening - Professional At-Home System | Pear Tree Dental",
@@ -361,7 +364,7 @@ export default function BoutiqueWhiteningPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(features || []).map((feature) => {
               const Icon = feature.icon;
-              return (
+  return (
                 <Card
                   key={feature.title}
                   className={`text-center hover:shadow-lg transition-shadow ${
@@ -574,3 +577,4 @@ export default function BoutiqueWhiteningPage() {
     </div>
   );
 }
+

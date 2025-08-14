@@ -1,3 +1,4 @@
+import React from "react";
 import {
   ArrowRight,
   CheckCircle,
@@ -18,6 +19,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
+
+/** @jsx React.createElement */
 
 export const metadata: Metadata = {
   title: "Composite Edge Bonding - Instant Smile Enhancement | Pear Tree Dental",
@@ -324,7 +327,7 @@ export default function CompositeEdgeBondingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
-              return (
+  return (
                 <div key={benefit.title} className="text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-purple-600" />
@@ -474,3 +477,4 @@ export default function CompositeEdgeBondingPage() {
     </div>
   );
 }
+

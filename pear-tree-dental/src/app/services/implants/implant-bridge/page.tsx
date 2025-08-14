@@ -1,3 +1,4 @@
+import React from "react";
 import { ArrowRight, Calendar, Crown } from "lucide-react";
 import type { Metadata } from "next";
 import ServiceNavigation from "@/components/ServiceNavigation";

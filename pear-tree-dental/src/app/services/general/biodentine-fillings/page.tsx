@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Activity, 
   ArrowRight,
@@ -17,6 +18,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
+
+/** @jsx React.createElement */
 
 export const metadata: Metadata = {
   title: "Biodentine Fillings - Bioactive Dental Restorations | Pear Tree Dental",
@@ -338,7 +341,7 @@ export default function BiodentineFillingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
-              return (
+  return (
                 <div key={benefit.title} className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-green-600" />
@@ -411,7 +414,7 @@ export default function BiodentineFillingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(idealCases || []).map((case_) => {
               const Icon = case_.icon;
-              return (
+  return (
                 <Card key={case_.title} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -497,3 +500,4 @@ export default function BiodentineFillingPage() {
     </div>
   );
 }
+

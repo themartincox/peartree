@@ -1,3 +1,4 @@
+import React from "react";
 import ContactFormCard from "@/components/ContactFormCard";
 
 export default function TestFormPage() {

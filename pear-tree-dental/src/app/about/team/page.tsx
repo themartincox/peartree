@@ -1,3 +1,4 @@
+import React from "react";
 import { Award, Heart, Stethoscope, Users } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";

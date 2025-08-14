@@ -1,3 +1,4 @@
+import React from "react";
 export default function ThankYouPage() {
   return (
     <div style={{ padding: "4rem", textAlign: "center" }}>
