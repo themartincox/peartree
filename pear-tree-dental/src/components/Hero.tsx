@@ -19,20 +19,29 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[100svh] h-screen w-full overflow-hidden -mt-20 pt-20">
-      {/* Background image fills viewport, visible under transparent nav */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/heroes/pear-tree-home-hero-full.png"
-          alt="Pear Tree Dental practice welcoming family oriented environment"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_5%]"
-        />
-        {/* Subtle top gradient to aid nav/logo contrast and text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black to-black/0" />
-      </div>
+<section className="relative w-full overflow-hidden min-h-screen">
+  {/* Background image anchored to very top */}
+  <div className="absolute inset-0 -z-10">
+    <Image
+      src="/images/dental-practice-hero-burton-joyce.webp"
+      alt="Modern dental practice in Burton Joyce"
+      fill
+      priority
+      className="object-cover object-top"
+    />
+  </div>
+
+  {/* Hero content */}
+  <div className="flex flex-col items-center justify-center text-center min-h-screen px-4">
+    <h1 className="text-4xl font-bold text-white drop-shadow-lg">
+      Welcome to Pear Tree Dental
+    </h1>
+    <p className="mt-4 text-lg text-white max-w-2xl drop-shadow-lg">
+      Trusted family and cosmetic dental care in Nottingham.
+    </p>
+    {/* buttons... */}
+  </div>
+</section>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile/Tablet Layout: H1, Image, Text, CTAs */}
