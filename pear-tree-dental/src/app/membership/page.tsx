@@ -7,7 +7,7 @@ import ExaminationSection from "@/components/membership/ExaminationSection";
 import PlanSelector from "@/components/membership/PlanSelector";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
- Import welcoming loaders
+ // Import welcoming loaders
 import {
   DentalTeamLoader,
   DiverseSmilesLoader,
@@ -15,7 +15,7 @@ import {
   HappyPatientLoader,
 } from "@/components/WelcomingLoader";
 
- Non-critical components - loaded dynamically with loading states
+ // Non-critical components - loaded dynamically with loading states
 const PlanComparisonSlider = dynamic(
   () => import("@/components/membership/PlanComparisonSlider"),
   {

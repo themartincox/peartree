@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-   Format treatments for display
+   // Format treatments for display
   const formattedGeneralTreatments = generalTreatments.map((treatment) => ({
     name: treatment.name,
     price: treatment.price,

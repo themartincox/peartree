@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
- Critical above-the-fold components - loaded immediately
+ // Critical above-the-fold components - loaded immediately
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 

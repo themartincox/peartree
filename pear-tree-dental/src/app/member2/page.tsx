@@ -8,7 +8,7 @@ import SimplifiedPlanSelector from "@/components/membership/SimplifiedPlanSelect
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
 
- Non-critical components - loaded dynamically with loading states
+ // Non-critical components - loaded dynamically with loading states
 const BenefitsSection = dynamic(
   () => import("@/components/membership/BenefitsSection"),
   {
