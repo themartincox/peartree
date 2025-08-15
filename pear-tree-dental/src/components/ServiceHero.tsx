@@ -570,7 +570,7 @@ export default function ServiceHero({
                 >
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star
                           key={i}
                           className="h-4 w-4 text-pear-gold fill-current"

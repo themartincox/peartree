@@ -307,7 +307,7 @@ export default function CompleteDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">Complete Solution</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>

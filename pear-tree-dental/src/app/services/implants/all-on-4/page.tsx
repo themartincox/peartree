@@ -370,7 +370,7 @@ export default function AllOn4Page() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-orange-500 text-white">Revolutionary Technique</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
                       ))}
                     </div>

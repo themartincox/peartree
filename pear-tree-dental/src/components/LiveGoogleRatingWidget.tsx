@@ -34,7 +34,7 @@ const LiveGoogleRatingWidget = ({ onClick }: LiveGoogleRatingWidgetProps) => {
               {rating.toFixed(1)}
             </span>
             <div className="flex">
-              {[...Array(5)].map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
                   className={`w-3.5 h-3.5 ${i < rating ? "text-orange-400 fill-current" : "text-gray-300"}`}

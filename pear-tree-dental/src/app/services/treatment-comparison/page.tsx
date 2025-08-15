@@ -490,7 +490,7 @@ export default function TreatmentComparisonPage() {
                         {treatment.category}
                       </Badge>
                       <div className="flex space-x-1">
-                        {([...Array(5)] || []).map((_, i) => (
+                        {Array.from({ length: 5 }).map((_, i) => (
                           <Star key={i} className={`w-3 h-3 ${colors.text} fill-current`} />
                         ))}
                       </div>

@@ -296,7 +296,7 @@ export default function PartialDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-emerald-500 text-white">Preserve & Replace</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-emerald-500 fill-current" />
                       ))}
                     </div>

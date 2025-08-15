@@ -456,7 +456,7 @@ export default function SmileDesignPage() {
               <Card key={index} className="p-6 bg-white shadow-lg">
                 <div className="space-y-4">
                   <div className="flex items-center space-x-1 text-pear-gold">
-                    {([...Array(5)] || []).map((_, i) => (
+                    {Array.from({ length: 5 }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" />
                     ))}
                   </div>

@@ -366,7 +366,7 @@ export default function LowdhamPage() {
             <div className="mt-12 text-center">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
-                  {([...Array(5)] || []).map((_, i) => (
+                  {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="w-6 h-6 fill-current" />
                   ))}
                 </div>

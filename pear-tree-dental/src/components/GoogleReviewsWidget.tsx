@@ -221,7 +221,7 @@ const GoogleReviewsWidget = () => {
                     </h3>
                     <div className="flex items-center space-x-1">
                       <div className="flex">
-                        {[...Array(5)].map((_, i) => (
+                        {Array.from({ length: 5 }).map((_, i) => (
                           <Star
                             key={i}
                             className={`w-3 h-3 text-yellow-400 fill-current`}

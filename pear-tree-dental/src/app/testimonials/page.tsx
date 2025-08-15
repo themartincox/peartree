@@ -218,7 +218,7 @@ export default function TestimonialsPage() {
   const allTestimonials = testimonials.filter(t => !t.featured);
 
   const renderStars = (rating: number) => {
-    return ([...Array(5)] || []).map((_, i) => (
+    return Array.from({ length: 5 }).map((_, i) => (
       <Star
         key={i}
         className={`w-4 h-4 ${

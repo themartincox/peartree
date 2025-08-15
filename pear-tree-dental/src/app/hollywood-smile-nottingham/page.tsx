@@ -447,7 +447,7 @@ export default function HollywoodSmileNottinghamPage() {
               <Card key={index} className="border-2 border-amber-100">
                 <CardContent className="p-6">
                   <div className="flex mb-4">
-                    {([...Array(5)] || []).map((_, i) => (
+                    {Array.from({ length: 5 }).map((_, i) => (
                       <Star
                         key={i}
                         className="w-5 h-5 text-amber-500 fill-current"
