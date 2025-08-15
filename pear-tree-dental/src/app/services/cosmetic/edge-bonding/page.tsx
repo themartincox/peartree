@@ -20,10 +20,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
-
 export const metadata: Metadata = {
   title: "Composite Edge Bonding - Instant Smile Enhancement | Pear Tree Dental",
-  description: "Composite edge bonding in Burton Joyce. Fix chipped, worn, or uneven teeth edges. £150 per tooth. Same-day treatment for immediate smile improvement.",
+  description:
+    "Composite edge bonding in Burton Joyce. Fix chipped, worn, or uneven teeth edges. £150 per tooth. Same-day treatment for immediate smile improvement.",
   keywords: [
     "composite edge bonding Burton Joyce",
     "tooth edge repair Nottingham",
@@ -34,8 +34,10 @@ export const metadata: Metadata = {
     "dental bonding Burton Joyce"
   ],
   openGraph: {
-    title: "Composite Edge Bonding - Fix Chipped & Worn Teeth | Pear Tree Dental",
-    description: "Repair chipped, worn, or uneven tooth edges with composite bonding. Same-day treatment from £150 per tooth.",
+    title:
+      "Composite Edge Bonding - Fix Chipped & Worn Teeth | Pear Tree Dental",
+    description:
+      "Repair chipped, worn, or uneven tooth edges with composite bonding. Same-day treatment from £150 per tooth.",
     type: "website",
     url: "https://peartree.dental/services/cosmetic/edge-bonding"
   },
@@ -48,23 +50,28 @@ export default function CompositeEdgeBondingPage() {
   const edgeBondingFAQs = [
     {
       question: "What is composite edge bonding?",
-      answer: "Composite edge bonding is a cosmetic dental procedure that uses tooth-colored resin to repair and reshape the edges of your teeth. It's ideal for fixing chips, cracks, worn edges, or creating a more even smile line."
+      answer:
+        "Composite edge bonding is a cosmetic dental procedure that uses tooth-colored resin to repair and reshape the edges of your teeth. It's ideal for fixing chips, cracks, worn edges, or creating a more even smile line."
     },
     {
       question: "How long does composite edge bonding last?",
-      answer: "With proper care, composite edge bonding typically lasts 5-8 years. The longevity depends on your oral hygiene, habits (like nail-biting or teeth grinding), and the location of the bonding."
+      answer:
+        "With proper care, composite edge bonding typically lasts 5-8 years. The longevity depends on your oral hygiene, habits (like nail-biting or teeth grinding), and the location of the bonding."
     },
     {
       question: "Is edge bonding painful?",
-      answer: "No, composite edge bonding is typically painless as it only involves the outer surface of the tooth. No drilling or anesthesia is usually required, making it a comfortable treatment option."
+      answer:
+        "No, composite edge bonding is typically painless as it only involves the outer surface of the tooth. No drilling or anesthesia is usually required, making it a comfortable treatment option."
     },
     {
       question: "Can edge bonding be completed in one visit?",
-      answer: "Yes! One of the major advantages of composite edge bonding is that it can usually be completed in a single appointment, often in just 30-60 minutes per tooth."
+      answer:
+        "Yes! One of the major advantages of composite edge bonding is that it can usually be completed in a single appointment, often in just 30-60 minutes per tooth."
     },
     {
       question: "How do I care for my bonded teeth?",
-      answer: "Care for bonded teeth like natural teeth with regular brushing and flossing. Avoid biting hard objects, nail-biting, or using teeth as tools. Regular dental check-ups help maintain and monitor the bonding."
+      answer:
+        "Care for bonded teeth like natural teeth with regular brushing and flossing. Avoid biting hard objects, nail-biting, or using teeth as tools. Regular dental check-ups help maintain and monitor the bonding."
     }
   ];
 
@@ -72,7 +79,8 @@ export default function CompositeEdgeBondingPage() {
     {
       icon: Zap,
       title: "Instant Results",
-      description: "Immediate transformation in a single appointment with no waiting period"
+      description:
+        "Immediate transformation in a single appointment with no waiting period"
     },
     {
       icon: Shield,
@@ -82,7 +90,8 @@ export default function CompositeEdgeBondingPage() {
     {
       icon: Palette,
       title: "Natural Appearance",
-      description: "Custom color-matched to blend seamlessly with your natural teeth"
+      description:
+        "Custom color-matched to blend seamlessly with your natural teeth"
     },
     {
       icon: Clock,
@@ -166,14 +175,14 @@ export default function CompositeEdgeBondingPage() {
         duration="30-60 minutes per tooth"
         preparation="No special preparation required"
         recovery="No downtime, immediate normal function"
-        benefits={([
+        benefits={[
           "Immediate smile improvement",
           "No drilling or tooth removal",
           "Natural appearance",
           "Same-day completion",
           "Cost-effective solution"
         ]}
-        risks={([
+        risks={[
           "May chip or wear over time",
           "Requires replacement every 5-8 years",
           "Not suitable for large restorations",
@@ -194,9 +203,13 @@ export default function CompositeEdgeBondingPage() {
       <section className="pt-24 pb-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center space-x-2 text-sm text-gray-600">
-            <Link href="/services" className="hover:text-pear-primary">Services</Link>
+            <Link href="/services" className="hover:text-pear-primary">
+              Services
+            </Link>
             <span>/</span>
-            <Link href="/services/cosmetic" className="hover:text-pear-primary">Cosmetic</Link>
+            <Link href="/services/cosmetic" className="hover:text-pear-primary">
+              Cosmetic
+            </Link>
             <span>/</span>
             <span className="text-purple-600 font-medium">Edge Bonding</span>
           </nav>
@@ -208,7 +221,10 @@ export default function CompositeEdgeBondingPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <Link href="/services/cosmetic" className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium">
+              <Link
+                href="/services/cosmetic"
+                className="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium"
+              >
                 <ChevronLeft className="w-4 h-4 mr-1" />
                 Back to Cosmetic Services
               </Link>
@@ -231,12 +247,16 @@ export default function CompositeEdgeBondingPage() {
               {/* Social Proof */}
               <div className="inline-flex items-center bg-dental-teal border border-dental-teal rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-white mr-2 fill-current" />
-                <span className="text-sm font-semibold text-white">Over 500 successful edge bonding treatments</span>
+                <span className="text-sm font-semibold text-white">
+                  Over 500 successful edge bonding treatments
+                </span>
               </div>
 
               {/* Key Features */}
               <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
-                <h3 className="font-semibold text-pear-primary mb-4">Why Choose Edge Bonding?</h3>
+                <h3 className="font-semibold text-pear-primary mb-4">
+                  Why Choose Edge Bonding?
+                </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-5 h-5 text-purple-600" />
@@ -261,15 +281,24 @@ export default function CompositeEdgeBondingPage() {
               <div className="flex flex-col sm:flex-row gap-4 items-start">
                 <div className="bg-white border-2 border-purple-200 rounded-lg p-4">
                   <div className="text-sm text-gray-600">From</div>
-                  <div className="text-3xl font-bold text-purple-600">{getTreatmentPrice("Composite Edge Bonding")}</div>
+                  <div className="text-3xl font-bold text-purple-600">
+                    {getTreatmentPrice("Composite Edge Bonding")}
+                  </div>
                   <div className="text-sm text-gray-600">Per tooth</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold"
+                  >
                     Book Edge Bonding
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
-                  <Button size="lg" variant="outline" className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white"
+                  >
                     Call 0115 931 2935
                   </Button>
                 </div>
@@ -283,7 +312,7 @@ export default function CompositeEdgeBondingPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-purple-500 text-white">Same-Day Treatment</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-purple-500 fill-current" />
                       ))}
                     </div>
@@ -326,12 +355,14 @@ export default function CompositeEdgeBondingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
-  return (
+              return (
                 <div key={benefit.title} className="text-center">
                   <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-purple-600" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {benefit.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{benefit.description}</p>
                 </div>
               );
@@ -357,7 +388,9 @@ export default function CompositeEdgeBondingPage() {
             {(suitableCases || []).map((case_) => (
               <Card key={case_.issue} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold text-pear-primary mb-3">{case_.issue}</h3>
+                  <h3 className="text-xl font-semibold text-pear-primary mb-3">
+                    {case_.issue}
+                  </h3>
                   <p className="text-gray-600 mb-4">{case_.description}</p>
                   <div className="bg-purple-50 p-3 rounded-lg">
                     <span className="text-sm font-medium text-purple-700">Result: </span>
@@ -384,9 +417,14 @@ export default function CompositeEdgeBondingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(beforeAfter || []).map((transformation) => (
-              <Card key={transformation.case} className="overflow-hidden hover:shadow-lg transition-shadow">
+              <Card
+                key={transformation.case}
+                className="overflow-hidden hover:shadow-lg transition-shadow"
+              >
                 <CardHeader>
-                  <CardTitle className="text-lg text-pear-primary">{transformation.case}</CardTitle>
+                  <CardTitle className="text-lg text-pear-primary">
+                    {transformation.case}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -426,7 +464,9 @@ export default function CompositeEdgeBondingPage() {
                   <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                     {step.step}
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">{step.title}</h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-sm text-gray-600">{step.description}</p>
                 </CardContent>
                 {index < process.length - 1 && (
@@ -454,11 +494,18 @@ export default function CompositeEdgeBondingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-purple-600 hover:bg-white/90 font-semibold">
+                <Button
+                  size="lg"
+                  className="bg-white text-purple-600 hover:bg-white/90 font-semibold"
+                >
                   Book Edge Bonding
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-purple-600"
+                >
                   Explore Other Cosmetic Options
                 </Button>
               </div>
@@ -476,4 +523,3 @@ export default function CompositeEdgeBondingPage() {
     </div>
   );
 }
-
