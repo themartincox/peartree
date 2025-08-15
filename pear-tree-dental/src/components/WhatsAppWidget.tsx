@@ -88,7 +88,7 @@ export default function WhatsAppWidget({
 
   const openWhatsApp = (message: string) => {
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https:wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://a.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
     setIsOpen(false);
   };

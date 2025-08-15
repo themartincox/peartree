@@ -25,7 +25,7 @@ const principals = [
     qualifications: "MD, BDS",
     role: "Principal Dentist",
     gdc: "290378",
-    image: "https:ext.same-assets.com23564123/2131251075.jpeg",
+    image: "https://xt.same-assets.com23564123/2131251075.jpeg",
     description:
       "With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques.",
   },
@@ -34,7 +34,7 @@ const principals = [
     qualifications: "BDS, MFDS",
     role: "Principal Dentist",
     gdc: "252578",
-    image: "https:ext.same-assets.com23564123/3375693680.jpeg",
+    image: "https://xt.same-assets.com23564123/3375693680.jpeg",
     description:
       "Imrana brings specialised expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available.",
   },
@@ -46,7 +46,7 @@ const associates = [
     qualifications: "BDS LDS RCS",
     role: "Associate Dentist",
     gdc: "60861",
-    image: "https:ext.same-assets.com23564123/686632134.jpeg",
+    image: "https://xt.same-assets.com23564123/686632134.jpeg",
     description:
       "With years of experience in general and restorative dentistry, Janet provides compassionate care with a gentle approach.",
   },
@@ -55,7 +55,7 @@ const associates = [
     qualifications: "BDS",
     role: "Associate Dentist",
     gdc: "264893",
-    image: "https:ext.same-assets.com23564123/410337074.jpeg",
+    image: "https://xt.same-assets.com23564123/410337074.jpeg",
     description:
       "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health.",
   },
@@ -65,7 +65,7 @@ const supportTeam = [
   {
     name: "Kirsten Pownall",
     role: "Practice Manager",
-    image: "https:ext.same-assets.com23564123/1366642287.jpeg",
+    image: "https://xt.same-assets.com23564123/1366642287.jpeg",
     description:
       "Kirsten ensures the smooth operation of our practice and coordinates patient care to provide an exceptional experience.",
   },
@@ -73,14 +73,14 @@ const supportTeam = [
     name: "Jade Taore",
     qualifications: "BSc (Hons)",
     role: "Dental Therapist",
-    image: "https:ext.same-assets.com23564123/221362571.jpeg",
+    image: "https://xt.same-assets.com23564123/221362571.jpeg",
     description:
       "Jade specialises in preventive treatments and oral health education, working closely with our dentists to maintain your oral health.",
   },
   {
     name: "Lee-Anne Smith",
     role: "Hygienist",
-    image: "https:ext.same-assets.com23564123/3263532149.png",
+    image: "https://xt.same-assets.com23564123/3263532149.png",
     description:
       "Lee-Anne provides professional cleaning and hygiene treatments, helping you maintain healthy gums and teeth.",
   },
@@ -90,32 +90,32 @@ const nurses = [
   {
     name: "Amy Simpson",
     role: "Dental Nurse",
-    image: "https:ext.same-assets.com23564123/2699379883.jpeg",
+    image: "https://xt.same-assets.com23564123/2699379883.jpeg",
   },
   {
     name: "Madiyah Qadeer",
     role: "Dental Nurse",
-    image: "https:ext.same-assets.com23564123/2850927388.jpeg",
+    image: "https://xt.same-assets.com23564123/2850927388.jpeg",
   },
   {
     name: "Caitlin Swinscoe",
     role: "Dental Nurse",
-    image: "https:ext.same-assets.com2356412387775093.jpeg",
+    image: "https://xt.same-assets.com2356412387775093.jpeg",
   },
   {
     name: "Hannah Buckley",
     role: "Apprentice Dental Nurse",
-    image: "https:ext.same-assets.com23564123/2850927388.jpeg",
+    image: "https://xt.same-assets.com23564123/2850927388.jpeg",
   },
   {
     name: "Katy Parkes",
     role: "Apprentice Dental Nurse",
-    image: "https:ext.same-assets.com23564123/1108163630.jpeg",
+    image: "https://xt.same-assets.com23564123/1108163630.jpeg",
   },
   {
     name: "Sarah Simpson",
     role: "Apprentice Dental Nurse",
-    image: "https:ext.same-assets.com23564123/1195986396.jpeg",
+    image: "https://xt.same-assets.com23564123/1195986396.jpeg",
   },
 ];
 

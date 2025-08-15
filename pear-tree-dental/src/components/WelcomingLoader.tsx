@@ -17,31 +17,31 @@ interface WelcomingLoaderProps {
 const loaderVariants = {
   "happy-patient": {
     image:
-      "https:media.istockphoto.com/id/1388931724/photo/shot-of-a-young-woman-checking-her-results-in-the-dentists-office.jpg",
+      "https://edia.istockphoto.com/id/1388931724/photo/shot-of-a-young-woman-checking-her-results-in-the-dentists-office.jpg",
     alt: "Happy patient admiring her smile",
     message: "Loading your smile journey...",
   },
   "diverse-smiles": {
     image:
-      "https:thumbs.dreamstime.com/b/portrait-beautiful-happy-woman-white-teeth-smiling-beauty-attractive-healthy-girl-perfect-smile-blonde-hair-fresh-face-76138238.jpg",
+      "https://humbs.dreamstime.com/b/portrait-beautiful-happy-woman-white-teeth-smiling-beauty-attractive-healthy-girl-perfect-smile-blonde-hair-fresh-face-76138238.jpg",
     alt: "Beautiful woman with perfect smile",
     message: "Preparing your dental experience...",
   },
   "dental-team": {
     image:
-      "https:media.istockphoto.com/id/1370641643/photo/shot-of-a-patient-and-assistant-interacting-in-a-dentist-office.jpg",
+      "https://edia.istockphoto.com/id/1370641643/photo/shot-of-a-patient-and-assistant-interacting-in-a-dentist-office.jpg",
     alt: "Friendly dental assistant with patient",
     message: "Setting up your appointment...",
   },
   "family-care": {
     image:
-      "https:azdentist.com/wp-content/uploads24/07/AZ-Dentist-Header.png",
+      "https://zdentist.com/wp-content/uploads24/07/AZ-Dentist-Header.png",
     alt: "Happy woman with beautiful smile",
     message: "Creating your perfect smile...",
   },
   "gentle-care": {
     image:
-      "https:media.istockphoto.com/id/1719539154/photo/home-care-healthcare-professional-hugging-senior-patient.jpg",
+      "https://edia.istockphoto.com/id/1719539154/photo/home-care-healthcare-professional-hugging-senior-patient.jpg",
     alt: "Caring healthcare professional with senior patient",
     message: "Preparing your care experience...",
   },

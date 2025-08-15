@@ -282,7 +282,7 @@ export default function ComplaintsPage() {
                     <p>
                       <strong>Website:</strong>{" "}
                       <a
-                        href="https:www.ombudsman.org.uk"
+                        href="https://ww.ombudsman.org.uk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-pear-primary hover:underline"
@@ -315,7 +315,7 @@ export default function ComplaintsPage() {
                     <p>
                       <strong>Website:</strong>{" "}
                       <a
-                        href="https:www.dentalcomplaints.org.uk"
+                        href="https://ww.dentalcomplaints.org.uk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-pear-primary hover:underline"
@@ -347,7 +347,7 @@ export default function ComplaintsPage() {
                     <p>
                       <strong>Website:</strong>{" "}
                       <a
-                        href="https:www.CQC.org.uk"
+                        href="https://ww.CQC.org.uk"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-pear-primary hover:underline"

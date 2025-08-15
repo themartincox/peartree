@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import ExaminationSection from "@/components/membership/ExaminationSection";
- Critical components - loaded immediately
+ // Critical components - loaded immediately
 import SimplifiedPlanSelector from "@/components/membership/SimplifiedPlanSelector";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";

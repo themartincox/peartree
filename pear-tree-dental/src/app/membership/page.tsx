@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import ExaminationSection from "@/components/membership/ExaminationSection";
- Critical components - loaded immediately
+ // Critical components - loaded immediately
 import PlanSelector from "@/components/membership/PlanSelector";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";

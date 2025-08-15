@@ -187,7 +187,7 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
               <a
-                href="https:www.facebook.com/peartreeDental"
+                href="https://ww.facebook.com/peartreeDental"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pear-gold transition-colors"
@@ -196,7 +196,7 @@ const Footer = () => {
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
-                href="https:www.instagram.com/peartree_dental/"
+                href="https://ww.instagram.com/peartree_dental/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pear-gold transition-colors"
@@ -205,7 +205,7 @@ const Footer = () => {
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
-                href="https:twitter.com/peartreeDental"
+                href="https://witter.com/peartreeDental"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white hover:text-pear-gold transition-colors"
@@ -250,7 +250,7 @@ const Footer = () => {
             <span>
               Website delivered by{" "}
               <a
-                href="https:www.postino.cc"
+                href="https://ww.postino.cc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"

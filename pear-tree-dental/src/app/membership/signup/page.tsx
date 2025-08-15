@@ -39,7 +39,7 @@ export default function MembershipSignupPage() {
   const [showRequiredNotification, setShowRequiredNotification] = useState(false);
 
   const [formData, setFormData] = useState({
-     Personal Details
+     // Personal Details
     title: "",
     firstName: "",
     lastName: "",
@@ -1491,7 +1491,7 @@ export default function MembershipSignupPage() {
                       <div className="flex items-center space-x-3">
                         <div className="w-16 h-16 flex items-center justify-center">
                           <img
-                            src="https:ext.same-assets.com/direct-debit-logo.png"
+                            src="https://xt.same-assets.com/direct-debit-logo.png"
                             alt="Direct Debit Logo"
                             className="w-full h-auto max-w-16"
                           />

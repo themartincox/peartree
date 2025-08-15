@@ -1,3 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROJECT_ROOT="/Users/Martin_1/Desktop/pear-tree-dental"
+cd "$PROJECT_ROOT"
+echo "Working in: $(pwd)"
+
+# Detect GNU vs BSD sed
+if sed --version >/dev/null 2>&1; then
+  SED_INPLACE=(-i)
+else
+  SED_INPLACE=(-i '')
+fi
+
+comment_phrase () {
+  local pattern="$1"
+  local file="$2"
+  if [[ -f "$file" ]]; then
+    # Comment any line that starts with the phrase (allowing leading spaces)
+    sed "${SED_INPLACE[@]}" -E "s/^([[:space:]]*)(${pattern})/\\1\/\/ \\2/" "$file" && \
+      echo "Commented phrase in: $file -> $pattern"
+  fi
+}
+
+########################################
+# 1) Comment stray text lines in files #
+########################################
+
+# layout.tsx
+comment_phrase "Optimize Google Fonts loading with font-display: swap" "src/app/layout.tsx"
+
+# membership main page
+comment_phrase "Critical components - loaded immediately" "src/app/membership/page.tsx"
+
+# membership signup pages
+comment_phrase "Personal Details" "src/app/membership/signup/page.tsx"
+comment_phrase "Get membership details from URL parameters" "src/app/membership/signup/success/page.tsx"
+
+# member2 page
+comment_phrase "Critical components - loaded immediately" "src/app/member2/page.tsx"
+
+# blog slug page (if still present)
+comment_phrase "For now, return a simple blog post page" "src/app/blog/[slug]/page.tsx"
+
+# dentalhub (two variants)
+comment_phrase "Simple password check \(in production, use proper authentication\)" "src/app/dentalhub/page.tsx"
+comment_phrase "Simple password check - replace with proper auth in production" "src/app/dentalhub/page.tsx"
+
+# jobs to be done
+comment_phrase "Load jobs from localStorage on component mount" "src/app/jobstobedone/page.tsx"
+
+########################################################
+# 2) Overwrite layout.tsx with a clean, correct version
+########################################################
+mkdir -p src/app
+
+cat > src/app/layout.tsx << 'EOF'
 import React from "react";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";

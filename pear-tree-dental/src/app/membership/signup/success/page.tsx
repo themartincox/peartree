@@ -20,7 +20,7 @@ function MembershipSuccessContent() {
   const [membershipDetails, setMembershipDetails] = useState<any>(null);
 
   useEffect(() => {
-     Get membership details from URL parameters
+     // Get membership details from URL parameters
     const applicationId = searchParams.get("applicationId");
     const planName = searchParams.get("plan");
     const memberName = searchParams.get("name");

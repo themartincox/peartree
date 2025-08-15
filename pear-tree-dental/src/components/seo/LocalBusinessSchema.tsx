@@ -44,8 +44,8 @@ export default function LocalBusinessSchema({
     image: "https://peartree.dental/images/practice-exterior.jpg",
     logo: "https://peartree.dental/logo.png",
     sameAs: [
-      "https:www.facebook.com/peartreeDental",
-      "https:www.instagram.com/peartree_dental/",
+      "https://ww.facebook.com/peartreeDental",
+      "https://ww.instagram.com/peartree_dental/",
     ],
     founder: {
       "@type": "Person",

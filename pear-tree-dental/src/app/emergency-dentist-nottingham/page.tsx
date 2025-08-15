@@ -130,7 +130,7 @@ export default function EmergencyDentistNottinghamPage() {
                 id="emergency-directions"
               >
                 <Link
-                  href="https:maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
+                  href="https://aps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
                   target="_blank"
                 >
                   <MapPin className="w-6 h-6 mr-3" />

@@ -262,7 +262,7 @@ export default function LocationDetection() {
                 onClick={handleNavigation}
               >
                 <a
-                  href="https:maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
+                  href="https://aps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

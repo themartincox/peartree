@@ -242,7 +242,7 @@ export default function ServiceAreaSchema({
         latitude: "52.967",
         longitude: "-1.061",
       },
-      hasMap: "https:maps.google.com/?cid=pear-tree-dental-burton-joyce",
+      hasMap: "https://aps.google.com/?cid=pear-tree-dental-burton-joyce",
       isAccessibleForFree: false,
       maximumAttendeeCapacity: 50,
       smokingAllowed: false,

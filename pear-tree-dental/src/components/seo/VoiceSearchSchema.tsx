@@ -103,7 +103,7 @@ const VoiceSearchSchema = () => {
           worstRating: "1",
         },
         sameAs: [
-          "https:www.facebook.com/peartreeDental",
+          "https://ww.facebook.com/peartreeDental",
           "https://www.google.com/maps/place/Pear+Tree+Dental+Centre",
         ],
         speakable: {

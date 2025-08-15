@@ -288,7 +288,7 @@ export default function MedicalPracticeSchema({
       recognizedBy: {
         "@type": "Organization",
         name: "General Dental Council",
-        url: "https:www.gdc-uk.org/",
+        url: "https://ww.gdc-uk.org/",
       },
     },
   };

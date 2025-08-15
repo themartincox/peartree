@@ -63,10 +63,10 @@ export default function OrganisationSchema() {
       ...postcodes.map((pc) => ({ "@type": "DefinedRegion", postalCode: pc })),
     ],
     sameAs: [
-      "https:www.facebook.com/peartreeDental",
-      "https:www.instagram.com/peartree_dental/",
+      "https://ww.facebook.com/peartreeDental",
+      "https://ww.instagram.com/peartree_dental/",
        Add your exact Google Place URL if you have it:
-       'https:g.page/r/<google-place-id>'
+       'https://.page/r/<google-place-id>'
     ],
      Keep this consistent with your live count
     aggregateRating: {
