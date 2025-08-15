@@ -95,7 +95,7 @@ export default function EastBridgfordPage() {
       />
 
       {/* Village Premium Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dental-navy via-pear-primary/20 to-dental-navy">
+      <section className="relative py-24 bg-gradient-to-br from-dental-navy via-pear-primary to-dental-navy">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-dental-green rounded-full blur-3xl" />
@@ -150,20 +150,20 @@ export default function EastBridgfordPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Badge
                 variant="secondary"
-                className="bg-pear-primary/20 text-pear-primary border-pear-primary/30"
+                className="bg-pear-primary text-pear-primary border-pear-primary"
               >
                 <TreePine className="w-4 h-4 mr-1" />
                 Village Exclusive
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+                className="bg-dental-green text-dental-green border-dental-green"
               >
                 <Clock className="w-4 h-4 mr-1" />5 mins Away
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-white/20 text-white border-white/30"
+                className="bg-white text-white border-white"
               >
                 <Shield className="w-4 h-4 mr-1" />
                 Personal Service
@@ -189,7 +189,7 @@ export default function EastBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Village Journey</CardTitle>
@@ -207,7 +207,7 @@ export default function EastBridgfordPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Village Proximity</CardTitle>
@@ -225,7 +225,7 @@ export default function EastBridgfordPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Village Service</CardTitle>
@@ -353,7 +353,7 @@ export default function EastBridgfordPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-pear-primary/20 hover:border-pear-primary/40 transition-all hover:shadow-lg"
+                    className="p-6 border border-pear-primary hover:border-pear-primary/40 transition-all hover:shadow-lg"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -365,7 +365,7 @@ export default function EastBridgfordPage() {
                             </h3>
                             <Badge
                               variant="secondary"
-                              className="text-xs mt-1 bg-pear-primary/10 text-pear-primary"
+                              className="text-xs mt-1 bg-pear-primary text-pear-primary"
                             >
                               {service.badge}
                             </Badge>
@@ -396,7 +396,7 @@ export default function EastBridgfordPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-pear-primary/10 to-dental-green/10 rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-pear-primary to-dental-green rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">
                   Exclusive Village Membership Plans
                 </h3>
@@ -470,7 +470,7 @@ export default function EastBridgfordPage() {
               ).map((review, index) => (
                 <Card
                   key={index}
-                  className="p-6 shadow-xl border border-pear-primary/20"
+                  className="p-6 shadow-xl border border-pear-primary"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-pear-primary">
@@ -498,7 +498,7 @@ export default function EastBridgfordPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-pear-primary/10 to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-pear-primary to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-pear-primary">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -579,7 +579,7 @@ export default function EastBridgfordPage() {
                 <h2 className="text-3xl font-bold mb-8">
                   Peaceful Village Route
                 </h2>
-                <div className="bg-white p-6 rounded-lg shadow-lg border border-pear-primary/20">
+                <div className="bg-white p-6 rounded-lg shadow-lg border border-pear-primary">
                   <h3 className="font-semibold mb-4 text-pear-primary">
                     Village Route (5 minutes)
                   </h3>
@@ -614,7 +614,7 @@ export default function EastBridgfordPage() {
                       </span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-pear-primary/10 rounded">
+                  <div className="mt-4 p-3 bg-pear-primary rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Village tip:</strong> Beautiful countryside route
                       with no traffic - perfect for a peaceful journey to your

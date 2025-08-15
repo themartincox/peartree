@@ -303,7 +303,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
               Research-Based Insights from Real Patient Feedback
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Search className="inline w-5 h-5 mr-2" />
                 Analysis of 350+ patient reviews across Google, Facebook, and
@@ -344,7 +344,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
       </section>
 
       {/* Research Sources */}
-      <section className="py-16 bg-cream/30">
+      <section className="py-16 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -483,7 +483,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
       </section>
 
       {/* Common Concerns */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -613,7 +613,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
       </section>
 
       {/* Patient Testimonial */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -672,7 +672,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -741,7 +741,7 @@ export default function MapperleyDentalCarePatientFeedbackPage() {
               transparent pricing - all just 8 minutes from Mapperley.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Based on 350+ Mapperley Patient Reviews

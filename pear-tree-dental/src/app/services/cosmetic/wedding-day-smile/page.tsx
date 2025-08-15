@@ -212,7 +212,7 @@ export default function WeddingDaySmilePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-white to-pink-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-white to-pink-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Wedding Day Smile Makeover"
@@ -333,7 +333,7 @@ export default function WeddingDaySmilePage() {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
 
                 {/* Floating testimonial */}
                 <div className="absolute bottom-6 left-6 right-6">
@@ -409,8 +409,8 @@ export default function WeddingDaySmilePage() {
             {(timelineBenefits || []).map((benefit, index) => {
               const Icon = benefit.icon;
               const colorClasses = [
-                "bg-gradient-to-br from-pear-primary/20 to-pear-primary/10",
-                "bg-gradient-to-br from-pear-gold/20 to-pear-gold/10",
+                "bg-gradient-to-br from-pear-primary to-pear-primary",
+                "bg-gradient-to-br from-pear-gold to-pear-gold",
                 "bg-gradient-to-br from-rose-100 to-pink-100",
                 "bg-gradient-to-br from-pear-gold/15 to-rose-100",
               ];
@@ -467,14 +467,14 @@ export default function WeddingDaySmilePage() {
                 "bg-gradient-to-br from-rose-500 to-pink-500",
               ];
               const borderColors = [
-                "border-2 border-pear-primary/30 hover:border-pear-primary",
-                "border-2 border-pear-gold/30 hover:border-pear-gold",
+                "border-2 border-pear-primary hover:border-pear-primary",
+                "border-2 border-pear-gold hover:border-pear-gold",
                 "border-2 border-rose-300 hover:border-rose-500",
               ];
               return (
                 <Card
                   key={index}
-                  className={`overflow-hidden shadow-lg hover:shadow-xl hover:shadow-rose-200/30 hover:scale-[1.02] transition-all duration-300 group ${borderColors[index % borderColors.length]}`}
+                  className={`overflow-hidden shadow-lg hover:shadow-xl hover:shadow-rose-200 hover:scale-[1.02] transition-all duration-300 group ${borderColors[index % borderColors.length]}`}
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Treatment Info */}
@@ -756,10 +756,10 @@ export default function WeddingDaySmilePage() {
               </div>
 
               {/* Decorative hearts */}
-              <div className="absolute top-4 right-4 text-white/20">
+              <div className="absolute top-4 right-4 text-white">
                 <Heart className="w-16 h-16 fill-current" />
               </div>
-              <div className="absolute bottom-4 left-4 text-white/10">
+              <div className="absolute bottom-4 left-4 text-white">
                 <Heart className="w-12 h-12 fill-current" />
               </div>
             </CardContent>

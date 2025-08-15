@@ -31,7 +31,7 @@ const Hero = () => {
           className="object-cover object-[center_5%]"
         />
         {/* Subtle top gradient to aid nav/logo contrast and text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black to-black/0" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

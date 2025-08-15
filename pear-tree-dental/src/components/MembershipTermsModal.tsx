@@ -436,7 +436,7 @@ Email: hello@peartree.dental
             </div>
 
             {/* Practice Information */}
-            <div className="bg-pear-background/20 p-4 rounded-lg border-t-4 border-pear-primary">
+            <div className="bg-pear-background p-4 rounded-lg border-t-4 border-pear-primary">
               <h4 className="font-semibold text-pear-primary mb-2">
                 Pear Tree Dental Centre
               </h4>

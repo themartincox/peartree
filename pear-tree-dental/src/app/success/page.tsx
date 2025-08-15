@@ -50,7 +50,7 @@ export default function SuccessPage() {
 
                 <div className="space-y-6 text-left">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">1</span>
                     </div>
                     <div>
@@ -65,7 +65,7 @@ export default function SuccessPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">2</span>
                     </div>
                     <div>
@@ -80,7 +80,7 @@ export default function SuccessPage() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">3</span>
                     </div>
                     <div>
@@ -128,7 +128,7 @@ export default function SuccessPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <Calendar className="w-6 h-6 text-pear-primary" />
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">
@@ -144,7 +144,7 @@ export default function SuccessPage() {
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <Mail className="w-6 h-6 text-pear-primary" />
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">
@@ -163,7 +163,7 @@ export default function SuccessPage() {
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <Home className="w-6 h-6 text-pear-primary" />
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">

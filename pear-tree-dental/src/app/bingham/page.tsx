@@ -93,7 +93,7 @@ export default function BinghamPage() {
       />
 
       {/* Family Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-dental-navy via-dental-green/20 to-dental-navy">
+      <section className="relative py-24 bg-gradient-to-br from-dental-navy via-dental-green to-dental-navy">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-pear-gold rounded-full blur-3xl" />
@@ -147,20 +147,20 @@ export default function BinghamPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Badge
                 variant="secondary"
-                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+                className="bg-dental-green text-dental-green border-dental-green"
               >
                 <Baby className="w-4 h-4 mr-1" />
                 Children Welcome
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-pear-gold/20 text-pear-gold border-pear-gold/30"
+                className="bg-pear-gold text-pear-gold border-pear-gold"
               >
                 <Car className="w-4 h-4 mr-1" />8 mins from Bingham
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-white/20 text-white border-white/30"
+                className="bg-white text-white border-white"
               >
                 <Shield className="w-4 h-4 mr-1" />
                 Family Memberships
@@ -186,7 +186,7 @@ export default function BinghamPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Quick Journey</CardTitle>
@@ -204,7 +204,7 @@ export default function BinghamPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Family Location</CardTitle>
@@ -222,7 +222,7 @@ export default function BinghamPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Users className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Family Service</CardTitle>
@@ -348,7 +348,7 @@ export default function BinghamPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-all hover:shadow-lg"
+                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-all hover:shadow-lg"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -360,7 +360,7 @@ export default function BinghamPage() {
                             </h3>
                             <Badge
                               variant="secondary"
-                              className="text-xs mt-1 bg-dental-green/10 text-dental-green"
+                              className="text-xs mt-1 bg-dental-green text-dental-green"
                             >
                               {service.badge}
                             </Badge>
@@ -391,7 +391,7 @@ export default function BinghamPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">
                   Family Membership Plans for Bingham
                 </h3>
@@ -465,7 +465,7 @@ export default function BinghamPage() {
               ).map((review, index) => (
                 <Card
                   key={index}
-                  className="p-6 shadow-xl border border-dental-green/20"
+                  className="p-6 shadow-xl border border-dental-green"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
@@ -493,7 +493,7 @@ export default function BinghamPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-dental-green">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -574,7 +574,7 @@ export default function BinghamPage() {
                 <h2 className="text-3xl font-bold mb-8">
                   Direct Route from Bingham
                 </h2>
-                <div className="bg-white p-6 rounded-lg shadow-lg border border-dental-green/20">
+                <div className="bg-white p-6 rounded-lg shadow-lg border border-dental-green">
                   <h3 className="font-semibold mb-4 text-dental-green">
                     Quick Route (8 minutes)
                   </h3>
@@ -611,7 +611,7 @@ export default function BinghamPage() {
                       </span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-dental-green/10 rounded">
+                  <div className="mt-4 p-3 bg-dental-green rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Family tip:</strong> Easy dual carriageway journey
                       - perfect for bringing the whole family to appointments

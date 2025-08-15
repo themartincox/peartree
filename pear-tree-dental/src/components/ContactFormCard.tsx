@@ -184,7 +184,7 @@ export default function ContactFormCard({
               </div>
 
               {/* Opening Hours */}
-              <div className="border-t border-white/20 pt-4 mt-6">
+              <div className="border-t border-white pt-4 mt-6">
                 <div className="flex items-center justify-center space-x-2 mb-3 text-white">
                   <Clock className="h-5 w-5 text-pear-gold" />
                   <p className="font-medium">Opening Hours</p>

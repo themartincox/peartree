@@ -289,7 +289,7 @@ export default function PatientEducationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Patient Education Hub"
@@ -322,7 +322,7 @@ export default function PatientEducationPage() {
           <div className="text-center max-w-4xl mx-auto">
             <Badge
               variant="secondary"
-              className="mb-6 bg-pear-primary/10 text-pear-primary"
+              className="mb-6 bg-pear-primary text-pear-primary"
             >
               <BookOpen className="w-4 h-4 mr-2" />
               Educational Resources
@@ -346,10 +346,10 @@ export default function PatientEducationPage() {
                 return (
                   <Card
                     key={stat.label}
-                    className="border-2 border-pear-primary/20 bg-white/80 flex-1"
+                    className="border-2 border-pear-primary bg-white/80 flex-1"
                   >
                     <CardContent className="p-6 text-center">
-                      <div className="w-12 h-8 bg-pear-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-8 bg-pear-primary rounded-lg flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-pear-primary" />
                       </div>
                       <div className="text-2xl font-bold text-pear-primary mb-1">
@@ -405,11 +405,11 @@ export default function PatientEducationPage() {
               return (
                 <Card
                   key={item.title}
-                  className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-pear-primary/30"
+                  className="group hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-pear-primary"
                 >
                   <CardContent className="p-6 text-center">
                     <div
-                      className={`w-16 h-16 bg-${item.color}/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+                      className={`w-16 h-16 bg-${item.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
                     >
                       <Icon className={`w-8 h-8 text-${item.color}`} />
                     </div>
@@ -447,7 +447,7 @@ export default function PatientEducationPage() {
             {(featuredArticles || []).map((article) => (
               <Card
                 key={article.id}
-                className="group hover:shadow-xl transition-all duration-300 border-2 border-pear-gold/20"
+                className="group hover:shadow-xl transition-all duration-300 border-2 border-pear-gold"
               >
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">
@@ -608,15 +608,15 @@ export default function PatientEducationPage() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white rounded-full" />
             </CardContent>
           </Card>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-r from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">

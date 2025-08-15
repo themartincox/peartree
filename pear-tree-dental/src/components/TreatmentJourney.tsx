@@ -342,7 +342,7 @@ const TreatmentJourney = (): React.JSX.Element => {
                   <div
                     className={`${isReverse ? "lg:col-start-1" : "lg:col-start-2"}`}
                   >
-                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold/20 group-hover:shadow-3xl transition-all duration-300">
+                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold group-hover:shadow-3xl transition-all duration-300">
                       <div className="aspect-[4/3] relative">
                         {step.mediaType === "video" ? (
                           <>
@@ -382,7 +382,7 @@ const TreatmentJourney = (): React.JSX.Element => {
                                 {step.imageDescription}
                               </p>
                             </div>
-                            <div className="absolute inset-0 bg-gradient-to-t from-pink-400/30 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-pink-400 to-transparent" />
                           </div>
                         )}
 

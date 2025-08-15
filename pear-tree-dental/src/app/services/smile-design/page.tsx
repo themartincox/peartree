@@ -48,7 +48,7 @@ export default function SmileDesignPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-pear-gold/10 via-white to-pear-background/20 overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-pear-gold via-white to-pear-background overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-pear-gold rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-pear-primary rounded-full blur-3xl" />
@@ -128,7 +128,7 @@ export default function SmileDesignPage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border border-pear-gold/20">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border border-pear-gold">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-pear-gold rounded-xl flex items-center justify-center">
                     <Eye className="w-6 h-6 text-white" />
@@ -210,7 +210,7 @@ export default function SmileDesignPage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border-2 border-pear-gold/20 hover:border-pear-gold/40 transition-colors"
+                  className="p-6 border-2 border-pear-gold hover:border-pear-gold/40 transition-colors"
                 >
                   <div className="text-center space-y-4">
                     <div className="w-16 h-16 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-2xl flex items-center justify-center mx-auto">
@@ -237,7 +237,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-pear-gold/10 to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto border border-pear-gold/20">
+            <div className="bg-gradient-to-r from-pear-gold to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto border border-pear-gold">
               <h3 className="text-2xl font-bold text-pear-primary mb-4">
                 Total Value: £150
               </h3>
@@ -253,7 +253,7 @@ export default function SmileDesignPage() {
       </section>
 
       {/* Digital Technology */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -416,7 +416,7 @@ export default function SmileDesignPage() {
       </section>
 
       {/* Success Stories */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">

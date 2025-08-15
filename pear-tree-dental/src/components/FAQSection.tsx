@@ -467,7 +467,7 @@ const FAQSection = (): React.JSX.Element => {
         </div>
 
         {/* FAQ Container */}
-        <Card className="max-w-6xl mx-auto overflow-hidden shadow-xl border border-pear-primary/10">
+        <Card className="max-w-6xl mx-auto overflow-hidden shadow-xl border border-pear-primary">
           <div className="grid grid-cols-1 lg:grid-cols-4">
             {/* Category Tabs Sidebar */}
             <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6">
@@ -488,7 +488,7 @@ const FAQSection = (): React.JSX.Element => {
                       className={`w-full text-left p-2 sm:p-3 rounded-lg transition-all duration-300 ${
                         activeTab === key
                           ? "bg-white text-pear-primary shadow-lg"
-                          : "text-white/80 hover:text-white hover:bg-white/10"
+                          : "text-white/80 hover:text-white hover:bg-white"
                       }`}
                     >
                       <div className="flex items-center space-x-2 sm:space-x-3">
@@ -503,7 +503,7 @@ const FAQSection = (): React.JSX.Element => {
               </div>
 
               {/* Contact Info */}
-              <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
+              <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white">
                 <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
                   Still have questions?
                 </h4>
@@ -558,7 +558,7 @@ const FAQSection = (): React.JSX.Element => {
                   {currentCategory.questions.map((faq) => (
                     <div
                       key={faq.id}
-                      className="border border-gray-200 rounded-lg overflow-hidden hover:border-pear-primary/30 transition-colors"
+                      className="border border-gray-200 rounded-lg overflow-hidden hover:border-pear-primary transition-colors"
                     >
                       <button
                         onClick={() => toggleQuestion(faq.id)}

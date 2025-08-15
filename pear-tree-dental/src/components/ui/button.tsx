@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "border-2 border-pear-primary bg-background text-pear-primary shadow-md hover:bg-pear-primary hover:text-white hover:shadow-lg",
         secondary:
           "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 shadow-md hover:shadow-lg hover:from-gray-200 hover:to-gray-300",
-        ghost: "hover:bg-pear-primary/10 hover:text-pear-primary",
+        ghost: "hover:bg-pear-primary hover:text-pear-primary",
         link: "text-pear-primary underline-offset-4 hover:underline hover:text-pear-primary/80",
       },
       size: {

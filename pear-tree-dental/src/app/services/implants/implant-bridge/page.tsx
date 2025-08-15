@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function ImplantBridgePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50/30 via-white to-violet-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-violet-50">
       {/* Hero Section */}
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

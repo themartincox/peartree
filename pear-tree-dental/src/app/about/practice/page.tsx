@@ -127,7 +127,7 @@ export default function PracticePage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-white/20 rounded-full">
+              <div className="p-4 bg-white rounded-full">
                 <Building2 className="h-12 w-12" />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function PracticePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2 bg-pear-primary/10 rounded-full">
+                  <div className="p-2 bg-pear-primary rounded-full">
                     <MapPin className="h-6 w-6 text-pear-primary" />
                   </div>
                   <h2 className="heading-serif text-3xl font-bold text-pear-primary">
@@ -317,7 +317,7 @@ export default function PracticePage() {
                           </svg>
                         </div>
 
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black transition-colors duration-300"></div>
 
                         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg border border-gray-200">
                           <div className="flex items-center space-x-2">
@@ -361,7 +361,7 @@ export default function PracticePage() {
       </section>
 
       {/* Facilities Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -379,10 +379,10 @@ export default function PracticePage() {
               return (
                 <Card
                   key={facility.title}
-                  className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30"
+                  className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary"
                 >
                   <CardContent className="p-6 text-center">
-                    <div className="p-3 bg-pear-primary/10 rounded-full w-fit mx-auto mb-4 group-hover:bg-pear-primary/20 transition-colors">
+                    <div className="p-3 bg-pear-primary rounded-full w-fit mx-auto mb-4 group-hover:bg-pear-primary transition-colors">
                       <IconComponent className="h-8 w-8 text-pear-primary" />
                     </div>
                     <h3 className="heading-serif text-lg font-bold text-pear-primary mb-3">
@@ -438,7 +438,7 @@ export default function PracticePage() {
       </section>
 
       {/* Amenities Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -459,7 +459,7 @@ export default function PracticePage() {
                   className="group hover:shadow-lg transition-all duration-300"
                 >
                   <CardContent className="p-6 text-center">
-                    <div className="p-2 bg-pear-primary/10 rounded-full w-fit mx-auto mb-3 group-hover:bg-pear-primary/20 transition-colors">
+                    <div className="p-2 bg-pear-primary rounded-full w-fit mx-auto mb-3 group-hover:bg-pear-primary transition-colors">
                       <IconComponent className="h-6 w-6 text-pear-primary" />
                     </div>
                     <h3 className="heading-serif font-bold text-pear-primary mb-2">

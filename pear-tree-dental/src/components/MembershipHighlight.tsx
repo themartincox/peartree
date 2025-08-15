@@ -95,7 +95,7 @@ const NottinghamMembershipBenefits = () => {
   };
 
   return (
-    <Card className="mt-12 bg-gradient-to-r from-dental-green/5 to-pear-primary/5 border border-dental-green/20 overflow-hidden animate-in fade-in duration-1000">
+    <Card className="mt-12 bg-gradient-to-r from-dental-green/5 to-pear-primary/5 border border-dental-green overflow-hidden animate-in fade-in duration-1000">
       <CardContent className="p-8">
         <div className="text-center mb-6">
           <Badge className="bg-dental-green text-white mb-4 px-4 py-2">
@@ -153,7 +153,7 @@ const NottinghamMembershipBenefits = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-lg border border-dental-green/20 p-6 mb-6">
+        <div className="bg-white rounded-lg border border-dental-green p-6 mb-6">
           <h4 className="font-semibold text-pear-primary mb-4 text-center">
             Annual Savings Calculator for Nottingham Patients
           </h4>
@@ -176,7 +176,7 @@ const NottinghamMembershipBenefits = () => {
                 vs. private dental costs in city
               </div>
             </div>
-            <div className="border-l border-dental-green/20 pl-6 md:pl-0 md:border-l-0">
+            <div className="border-l border-dental-green pl-6 md:pl-0 md:border-l-0">
               <div className="text-3xl font-bold text-pear-gold mb-1">£580</div>
               <div className="text-sm text-gray-600 font-semibold">
                 Total saved annually
@@ -188,7 +188,7 @@ const NottinghamMembershipBenefits = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-pear-gold/10 to-dental-green/10 rounded-lg p-6 border border-pear-gold/20">
+        <div className="bg-gradient-to-r from-pear-gold to-dental-green rounded-lg p-6 border border-pear-gold">
           <div className="flex items-start space-x-4">
             <PiggyBank className="w-8 h-8 text-pear-gold flex-shrink-0 mt-1" />
             <div>
@@ -292,7 +292,7 @@ const MembershipHighlight = () => {
                 : key === "child"
                   ? "bg-white text-soft-pink shadow-lg transform scale-105"
                   : "bg-white text-pear-gold shadow-lg transform scale-105"
-              : "text-white/90 hover:text-white hover:bg-white/10"
+              : "text-white/90 hover:text-white hover:bg-white"
           }`}
         >
           <div className="flex items-center space-x-2 sm:space-x-3">
@@ -339,13 +339,13 @@ const MembershipHighlight = () => {
         </div>
 
         {/* Main Membership Card - Enhanced design */}
-        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl bg-gradient-to-br from-white via-blue-50/30 to-slate-50 border-2 border-pear-primary/20 mb-8 sm:mb-12 backdrop-blur-sm">
+        <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl bg-gradient-to-br from-white via-blue-50 to-slate-50 border-2 border-pear-primary mb-8 sm:mb-12 backdrop-blur-sm">
           <div className="grid grid-cols-1 lg:grid-cols-4">
             {/* Tabs Sidebar */}
             <div className="lg:col-span-1 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 p-4 sm:p-6 lg:p-8 relative overflow-hidden">
               {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-pear-gold/20 rounded-full translate-y-12 -translate-x-12" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-pear-gold rounded-full translate-y-12 -translate-x-12" />
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">
                 Choose Your Plan
               </h3>
@@ -360,7 +360,7 @@ const MembershipHighlight = () => {
               </div>
 
               {/* Key Benefits - Simplified */}
-              <div className="mt-8 pt-6 border-t border-white/20">
+              <div className="mt-8 pt-6 border-t border-white">
                 <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">
                   All Plans Include:
                 </h4>
@@ -417,7 +417,7 @@ const MembershipHighlight = () => {
                         {currentPlan.popular && (
                           <Badge
                             variant="secondary"
-                            className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm"
+                            className="bg-pear-gold text-pear-gold text-xs sm:text-sm"
                           >
                             Perfect for busy families
                           </Badge>
@@ -425,7 +425,7 @@ const MembershipHighlight = () => {
                         {activeTab === "planA" && (
                           <Badge
                             variant="secondary"
-                            className="bg-dental-green/10 text-dental-green text-xs sm:text-sm"
+                            className="bg-dental-green text-dental-green text-xs sm:text-sm"
                           >
                             Your Essentials Covered
                           </Badge>
@@ -461,7 +461,7 @@ const MembershipHighlight = () => {
                 </div>
 
                 {/* Savings Highlight */}
-                <div className="bg-gradient-to-r from-pear-background to-pear-background/50 rounded-2xl p-6 border border-pear-primary/10">
+                <div className="bg-gradient-to-r from-pear-background to-pear-background/50 rounded-2xl p-6 border border-pear-primary">
                   <div className="flex items-center justify-between">
                     <div className="items-center">
                       <h4 className="font-semibold text-pear-primary mb-2">

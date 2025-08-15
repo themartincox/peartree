@@ -49,12 +49,12 @@ export default function VideoHero({
       </video>
 
       {/* Video overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black"></div>
 
       {/* Video controls overlay */}
       <div className="absolute bottom-4 right-4">
         <button
-          className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors"
+          className="bg-white backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors"
           onClick={togglePlayPause}
           aria-label="Play/pause video"
         >

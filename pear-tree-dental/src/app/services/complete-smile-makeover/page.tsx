@@ -364,7 +364,7 @@ export default function CompleteSmileMakeoverPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/30 via-white to-amber-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-amber-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Complete Smile Makeover"
@@ -679,7 +679,7 @@ export default function CompleteSmileMakeoverPage() {
               return (
                 <Card
                   key={step.step}
-                  className="text-center relative hover:shadow-xl hover:shadow-pear-gold/20 hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group cursor-pointer"
+                  className="text-center relative hover:shadow-xl hover:shadow-pear-gold hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group cursor-pointer"
                 >
                   <CardContent className="p-6">
                     <div

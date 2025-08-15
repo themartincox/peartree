@@ -178,7 +178,7 @@ const GoogleReviewsWidget = () => {
             isSticky
               ? "fixed top-0 left-0 right-0 bg-white shadow-lg border-b border-gray-200"
               : isHomepage
-                ? "bg-white/10 rounded-2xl"
+                ? "bg-white rounded-2xl"
                 : "bg-white/95 rounded-2xl mx-4 mb-4 shadow-lg"
           }
         `}
@@ -248,7 +248,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white/20 text-white/70"
+                        ? "hover:bg-white text-white/70"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >
@@ -261,7 +261,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white/20 text-white/70"
+                        ? "hover:bg-white text-white/70"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >
@@ -276,7 +276,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white/20 text-white/70"
+                        ? "hover:bg-white text-white/70"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >

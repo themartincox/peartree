@@ -229,7 +229,7 @@ export default function TestimonialsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Patient Testimonials"
@@ -260,7 +260,7 @@ export default function TestimonialsPage() {
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 bg-pear-gold/10 text-pear-gold">
+            <Badge variant="secondary" className="mb-6 bg-pear-gold text-pear-gold">
               <Star className="w-4 h-4 mr-2" />
               Patient Reviews
             </Badge>
@@ -280,9 +280,9 @@ export default function TestimonialsPage() {
               {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <Card key={stat.label} className="border-2 border-pear-gold/20 bg-white/80">
+                  <Card key={stat.label} className="border-2 border-pear-gold bg-white/80">
                     <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-pear-gold/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-pear-gold" />
                       </div>
                       <div className="text-2xl font-bold text-pear-primary mb-1">{stat.value}</div>
@@ -335,7 +335,7 @@ export default function TestimonialsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(featuredTestimonials || []).map((testimonial) => (
-              <Card key={testimonial.id} className="relative hover:shadow-xl transition-all duration-300 border-2 border-pear-gold/20 bg-white/90">
+              <Card key={testimonial.id} className="relative hover:shadow-xl transition-all duration-300 border-2 border-pear-gold bg-white/90">
                 {/* Featured Badge */}
                 <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">
                   ⭐ Featured Success Story
@@ -343,7 +343,7 @@ export default function TestimonialsPage() {
 
                 <CardContent className="p-6 pt-12">
                   {/* Quote Icon */}
-                  <div className="w-12 h-12 bg-pear-gold/10 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center mb-4">
                     <Quote className="w-6 h-6 text-pear-gold" />
                   </div>
 
@@ -365,7 +365,7 @@ export default function TestimonialsPage() {
                         <div className="text-sm text-gray-600">{testimonial.location}</div>
                       </div>
                       {testimonial.verified && (
-                        <Badge variant="secondary" className="bg-dental-green/10 text-dental-green">
+                        <Badge variant="secondary" className="bg-dental-green text-dental-green">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Verified
                         </Badge>
@@ -423,7 +423,7 @@ export default function TestimonialsPage() {
                   key={category}
                   variant="outline"
                   size="sm"
-                  className="border-pear-primary/20 text-pear-primary hover:bg-pear-primary hover:text-white"
+                  className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white"
                 >
                   {category}
                 </Button>
@@ -437,7 +437,7 @@ export default function TestimonialsPage() {
               <Card key={testimonial.id} className="hover:shadow-lg transition-shadow border border-gray-200">
                 <CardContent className="p-6">
                   {/* Quote Icon */}
-                  <div className="w-10 h-10 bg-pear-primary/10 rounded-full flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 bg-pear-primary rounded-full flex items-center justify-center mb-4">
                     <Quote className="w-5 h-5 text-pear-primary" />
                   </div>
 
@@ -459,7 +459,7 @@ export default function TestimonialsPage() {
                         <div className="text-sm text-gray-600">{testimonial.location}</div>
                       </div>
                       {testimonial.verified && (
-                        <Badge variant="secondary" className="bg-dental-green/10 text-dental-green">
+                        <Badge variant="secondary" className="bg-dental-green text-dental-green">
                           <CheckCircle className="w-3 h-3 mr-1" />
                           Verified
                         </Badge>
@@ -504,7 +504,7 @@ export default function TestimonialsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-pear-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-pear-gold" />
               </div>
               <h3 className="font-semibold text-pear-primary mb-2">GDC Registered</h3>
@@ -512,7 +512,7 @@ export default function TestimonialsPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-dental-green/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-dental-green" />
               </div>
               <h3 className="font-semibold text-pear-primary mb-2">25+ Years Experience</h3>
@@ -520,7 +520,7 @@ export default function TestimonialsPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-soft-pink/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="w-8 h-8 text-soft-pink" />
               </div>
               <h3 className="font-semibold text-pear-primary mb-2">Latest Technology</h3>
@@ -528,7 +528,7 @@ export default function TestimonialsPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-pear-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Heart className="w-8 h-8 text-pear-primary" />
               </div>
               <h3 className="font-semibold text-pear-primary mb-2">Patient-Centered Care</h3>
@@ -585,8 +585,8 @@ export default function TestimonialsPage() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white rounded-full" />
             </CardContent>
           </Card>
         </div>

@@ -84,7 +84,7 @@ export default function WestBridgfordSmileDesignPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-pear-primary/20 to-dental-navy">
+      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-pear-primary to-dental-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-6">
@@ -132,21 +132,21 @@ export default function WestBridgfordSmileDesignPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Badge
                 variant="secondary"
-                className="bg-pear-gold/20 text-pear-gold border-pear-gold/30"
+                className="bg-pear-gold text-pear-gold border-pear-gold"
               >
                 <Palette className="w-4 h-4 mr-1" />
                 Digital Design Preview
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+                className="bg-dental-green text-dental-green border-dental-green"
               >
                 <Car className="w-4 h-4 mr-1" />
                 12 mins from West Bridgford
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-white/20 text-white border-white/30"
+                className="bg-white text-white border-white"
               >
                 <Crown className="w-4 h-4 mr-1" />
                 Complete Makeovers
@@ -171,7 +171,7 @@ export default function WestBridgfordSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <Palette className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">
@@ -179,7 +179,7 @@ export default function WestBridgfordSmileDesignPage() {
                   </CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-pear-gold/10 text-pear-gold"
+                    className="mt-2 bg-pear-gold text-pear-gold"
                   >
                     Preview Your New Smile
                   </Badge>
@@ -203,13 +203,13 @@ export default function WestBridgfordSmileDesignPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Complete Makeover</CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-dental-green/10 text-dental-green"
+                    className="mt-2 bg-dental-green text-dental-green"
                   >
                     Total Transformation
                   </Badge>
@@ -236,13 +236,13 @@ export default function WestBridgfordSmileDesignPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Sparkles className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Enhancement Package</CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-pear-primary/10 text-pear-primary"
+                    className="mt-2 bg-pear-primary text-pear-primary"
                   >
                     Subtle Improvements
                   </Badge>
@@ -328,7 +328,7 @@ export default function WestBridgfordSmileDesignPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 text-center border border-pear-gold/20"
+                    className="p-6 text-center border border-pear-gold"
                   >
                     <div className="w-12 h-12 bg-pear-gold text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
                       {step.step}
@@ -340,7 +340,7 @@ export default function WestBridgfordSmileDesignPage() {
                     </p>
                     <Badge
                       variant="secondary"
-                      className="bg-pear-gold/10 text-pear-gold text-xs"
+                      className="bg-pear-gold text-pear-gold text-xs"
                     >
                       {step.time}
                     </Badge>
@@ -457,7 +457,7 @@ export default function WestBridgfordSmileDesignPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-pear-gold/20 hover:border-pear-gold/40 transition-colors"
+                    className="p-6 border border-pear-gold hover:border-pear-gold/40 transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -468,7 +468,7 @@ export default function WestBridgfordSmileDesignPage() {
                           </h3>
                           <Badge
                             variant="secondary"
-                            className="text-xs mt-1 bg-pear-gold/10 text-pear-gold"
+                            className="text-xs mt-1 bg-pear-gold text-pear-gold"
                           >
                             {treatment.popular}
                           </Badge>
@@ -514,7 +514,7 @@ export default function WestBridgfordSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <div className="flex items-center space-x-3 mb-4">
                   <Car className="h-8 w-8 text-dental-green" />
                   <h3 className="text-xl font-semibold">Convenient Location</h3>
@@ -530,7 +530,7 @@ export default function WestBridgfordSmileDesignPage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20">
+              <Card className="p-6 border border-pear-gold">
                 <div className="flex items-center space-x-3 mb-4">
                   <Award className="h-8 w-8 text-pear-gold" />
                   <h3 className="text-xl font-semibold">Expert Team</h3>
@@ -546,7 +546,7 @@ export default function WestBridgfordSmileDesignPage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20">
+              <Card className="p-6 border border-pear-primary">
                 <div className="flex items-center space-x-3 mb-4">
                   <Clock className="h-8 w-8 text-pear-primary" />
                   <h3 className="text-xl font-semibold">Flexible Scheduling</h3>

@@ -162,7 +162,7 @@ export default function PlanSavingsChart() {
 
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="h-10 w-10 rounded-full bg-pear-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-pear-primary flex items-center justify-center flex-shrink-0">
                   <span className="text-pear-primary font-bold">1</span>
                 </div>
                 <div>
@@ -178,7 +178,7 @@ export default function PlanSavingsChart() {
               </div>
 
               <div className="flex gap-4">
-                <div className="h-10 w-10 rounded-full bg-pear-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-pear-primary flex items-center justify-center flex-shrink-0">
                   <span className="text-pear-primary font-bold">2</span>
                 </div>
                 <div>
@@ -194,7 +194,7 @@ export default function PlanSavingsChart() {
               </div>
 
               <div className="flex gap-4">
-                <div className="h-10 w-10 rounded-full bg-pear-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-pear-primary flex items-center justify-center flex-shrink-0">
                   <span className="text-pear-primary font-bold">3</span>
                 </div>
                 <div>
@@ -210,7 +210,7 @@ export default function PlanSavingsChart() {
               </div>
 
               <div className="flex gap-4">
-                <div className="h-10 w-10 rounded-full bg-pear-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="h-10 w-10 rounded-full bg-pear-primary flex items-center justify-center flex-shrink-0">
                   <span className="text-pear-primary font-bold">4</span>
                 </div>
                 <div>

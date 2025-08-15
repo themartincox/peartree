@@ -203,7 +203,7 @@ export default function BuccalCorridorCorrectionPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
+    <div className="min-h-screen bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Buccal Corridor Correction"
@@ -262,8 +262,8 @@ export default function BuccalCorridorCorrectionPage() {
           href: "#treatment-options",
           icon: "ArrowRight",
         }}
-        gradientFrom="soft-pink/10"
-        gradientTo="soft-lavender/10"
+        gradientFrom="soft-pink"
+        gradientTo="soft-lavender"
         textColor="pear-primary"
       />
 
@@ -357,11 +357,11 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl overflow-hidden">
+                <div className="aspect-square bg-gradient-to-br from-soft-pink to-soft-lavender rounded-3xl overflow-hidden">
                   {/* Top Image - BCC-smile optimized */}
-                  <div className="h-1/2 relative border-b border-white/20">
+                  <div className="h-1/2 relative border-b border-white">
                     <div className="h-full flex items-center justify-center p-4">
-                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
+                      <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
                         <picture className="block w-full h-full">
                           <source
                             media="(min-width: 768px)"
@@ -388,7 +388,7 @@ export default function BuccalCorridorCorrectionPage() {
                   {/* Bottom Image - BCC-before.webp */}
                   <div className="h-1/2 relative">
                     <div className="h-full flex items-center justify-center p-4">
-                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
+                      <div className="w-full h-full bg-white rounded-2xl overflow-hidden">
                         <Image
                           src="/images/before-after/BCC-before-large.webp"
                           alt="Before buccal corridor correction treatment"
@@ -500,7 +500,7 @@ export default function BuccalCorridorCorrectionPage() {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
-                  <div className="w-16 h-16 bg-soft-pink/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-soft-pink" />
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">
@@ -515,7 +515,7 @@ export default function BuccalCorridorCorrectionPage() {
       </section>
 
       {/* Before/After Results Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-soft-pink text-white">Real Results</Badge>
@@ -560,7 +560,7 @@ export default function BuccalCorridorCorrectionPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">
@@ -571,7 +571,7 @@ export default function BuccalCorridorCorrectionPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">
@@ -582,7 +582,7 @@ export default function BuccalCorridorCorrectionPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
                   <Award className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">
@@ -613,7 +613,7 @@ export default function BuccalCorridorCorrectionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             <div className="space-y-6">
               <div className="flex space-x-4">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                   <Eye className="w-6 h-6 text-pear-primary" />
                 </div>
                 <div>
@@ -630,7 +630,7 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="flex space-x-4">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                   <Award className="w-6 h-6 text-pear-primary" />
                 </div>
                 <div>
@@ -649,7 +649,7 @@ export default function BuccalCorridorCorrectionPage() {
 
             <div className="space-y-6">
               <div className="flex space-x-4">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                   <Heart className="w-6 h-6 text-pear-primary" />
                 </div>
                 <div>
@@ -666,7 +666,7 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="flex space-x-4">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                   <Users className="w-6 h-6 text-pear-primary" />
                 </div>
                 <div>
@@ -751,7 +751,7 @@ export default function BuccalCorridorCorrectionPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Award className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -769,7 +769,7 @@ export default function BuccalCorridorCorrectionPage() {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -787,7 +787,7 @@ export default function BuccalCorridorCorrectionPage() {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Heart className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -805,7 +805,7 @@ export default function BuccalCorridorCorrectionPage() {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Sparkles className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>

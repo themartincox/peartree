@@ -358,7 +358,7 @@ export default function MapperleyChildrensPreventivePage() {
               Comprehensive Family Prevention Just Down the Road
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Home className="inline w-5 h-5 mr-2" />
                 Just down the road from Mapperley — Premium prevention &
@@ -477,7 +477,7 @@ export default function MapperleyChildrensPreventivePage() {
       </section>
 
       {/* Preventive Services */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -639,7 +639,7 @@ export default function MapperleyChildrensPreventivePage() {
       </section>
 
       {/* Prevention Technologies */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -734,7 +734,7 @@ export default function MapperleyChildrensPreventivePage() {
       </section>
 
       {/* Before/After Visual Module */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -781,7 +781,7 @@ export default function MapperleyChildrensPreventivePage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -852,7 +852,7 @@ export default function MapperleyChildrensPreventivePage() {
               intervention.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Prevention Specialists

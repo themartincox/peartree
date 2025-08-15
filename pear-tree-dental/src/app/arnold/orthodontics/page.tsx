@@ -268,7 +268,7 @@ export default function ArnoldOrthodonticsPage() {
               Comprehensive Teeth Straightening Just 15 Minutes Away
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Only 15 mins from Arnold — All orthodontic options available
@@ -343,7 +343,7 @@ export default function ArnoldOrthodonticsPage() {
       </section>
 
       {/* Orthodontic Options Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -373,7 +373,7 @@ export default function ArnoldOrthodonticsPage() {
                       </div>
                     )}
                     <CardHeader className="text-center pb-4">
-                      <div className="w-16 h-16 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <div className="w-16 h-16 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
                         <IconComponent className="w-8 h-8 text-pear-primary" />
                       </div>
                       <CardTitle className="text-lg text-pear-primary">
@@ -504,7 +504,7 @@ export default function ArnoldOrthodonticsPage() {
       </section>
 
       {/* Patient Testimonial */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -572,7 +572,7 @@ export default function ArnoldOrthodonticsPage() {
       </section>
 
       {/* FAQs Specific to Arnold */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -617,7 +617,7 @@ export default function ArnoldOrthodonticsPage() {
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-pear-primary/10 rounded-lg p-6">
+                  <div className="bg-pear-primary rounded-lg p-6">
                     <Car className="w-12 h-12 text-pear-primary mx-auto mb-4" />
                     <h4 className="font-bold text-pear-primary mb-2">
                       Family-Friendly
@@ -661,7 +661,7 @@ export default function ArnoldOrthodonticsPage() {
               just 15 minutes from your doorstep.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-pear-gold" />
                 Special Offer for Arnold Families

@@ -399,7 +399,7 @@ export default function CompositeVeneersPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Card className="text-center p-8 bg-gradient-to-br from-dental-green/20 to-soft-blue/20 border-dental-green/30">
+            <Card className="text-center p-8 bg-gradient-to-br from-dental-green to-soft-blue border-dental-green">
               <div className="flex justify-center mb-6">
                 <div className="w-24 h-24 bg-dental-green rounded-full flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">1</span>
@@ -521,7 +521,7 @@ export default function CompositeVeneersPage() {
                 {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
-                    <td className="p-4 text-center bg-dental-green/10 font-semibold text-pear-primary">
+                    <td className="p-4 text-center bg-dental-green font-semibold text-pear-primary">
                       {row.composite}
                     </td>
                     <td className="p-4 text-center">{row.ultraThin}</td>

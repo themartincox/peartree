@@ -270,7 +270,7 @@ export default function UltraThinVeneersPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Card className="text-center p-8 bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 border-soft-pink/30">
+            <Card className="text-center p-8 bg-gradient-to-br from-soft-pink to-soft-lavender border-soft-pink">
               <div className="flex justify-center mb-6">
                 <div className="w-24 h-24 bg-soft-pink rounded-full flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">0.2mm</span>
@@ -361,7 +361,7 @@ export default function UltraThinVeneersPage() {
                 {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
-                    <td className="p-4 text-center bg-soft-pink/10 font-semibold text-pear-primary">
+                    <td className="p-4 text-center bg-soft-pink font-semibold text-pear-primary">
                       {row.ultraThin}
                     </td>
                     <td className="p-4 text-center">{row.porcelain}</td>

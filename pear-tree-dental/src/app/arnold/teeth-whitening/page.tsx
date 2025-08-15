@@ -139,7 +139,7 @@ export default function ArnoldTeethWhiteningPage() {
               Professional Whitening Just 15 Minutes Away
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Only 15 mins from Arnold — Free parking available
@@ -230,7 +230,7 @@ export default function ArnoldTeethWhiteningPage() {
       </section>
 
       {/* Treatment Overview Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -422,7 +422,7 @@ export default function ArnoldTeethWhiteningPage() {
       </section>
 
       {/* Before/After Visual Module */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -469,7 +469,7 @@ export default function ArnoldTeethWhiteningPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -495,7 +495,7 @@ export default function ArnoldTeethWhiteningPage() {
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-pear-primary/10 rounded-lg p-6">
+                  <div className="bg-pear-primary rounded-lg p-6">
                     <Car className="w-12 h-12 text-pear-primary mx-auto mb-4" />
                     <h4 className="font-bold text-pear-primary mb-2">
                       Free Patient Parking
@@ -539,7 +539,7 @@ export default function ArnoldTeethWhiteningPage() {
               possible just 15 minutes away.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-pear-gold" />
                 Special Offer for Arnold Patients

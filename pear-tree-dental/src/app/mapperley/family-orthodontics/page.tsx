@@ -285,7 +285,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
               Multi-Generational Teeth Straightening Just 15 Minutes Away
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Only 15 mins from Mapperley — Family appointments & sibling
@@ -401,7 +401,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
       </section>
 
       {/* Treatment Options */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -555,7 +555,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
       </section>
 
       {/* Patient Testimonial */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -623,7 +623,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
       </section>
 
       {/* FAQs Specific to Mapperley */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -714,7 +714,7 @@ export default function MapperleyFamilyOrthodonticsPage() {
               care.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Family Orthodontic Specialists

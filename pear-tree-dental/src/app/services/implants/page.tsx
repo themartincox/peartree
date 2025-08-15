@@ -165,7 +165,7 @@ export default function ImplantsPage(): React.JSX.Element {
                 buttonText: "Explore All-on-4"
               }
             ] || []).map((implant, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
+              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold">
                 {implant.image === "all-on-4" ? (
                   <div className="aspect-[4/3] relative overflow-hidden">
                     <picture>
@@ -235,7 +235,7 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Treatment Process */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -279,8 +279,8 @@ export default function ImplantsPage(): React.JSX.Element {
             ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
-                <Card key={index} className="relative overflow-hidden border-2 border-pear-primary/20 hover:border-pear-primary/40 transition-colors">
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-pear-gold/10 rounded-full flex items-center justify-center">
+                <Card key={index} className="relative overflow-hidden border-2 border-pear-primary hover:border-pear-primary/40 transition-colors">
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-pear-gold rounded-full flex items-center justify-center">
                     <span className="text-pear-gold font-bold text-sm">{step.step}</span>
                   </div>
                   <CardHeader className="pb-4">
@@ -304,7 +304,7 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Before/After Results Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-pear-primary text-white">Real Results</Badge>
@@ -334,21 +334,21 @@ export default function ImplantsPage(): React.JSX.Element {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
                 <p className="text-gray-600 text-sm">3-6 months total process</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Success Rate</h4>
                 <p className="text-gray-600 text-sm">98% long-term success</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
                   <Award className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Expert Care</h4>
@@ -393,7 +393,7 @@ export default function ImplantsPage(): React.JSX.Element {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 text-pear-primary" />
                       </div>
                       <div>
@@ -462,7 +462,7 @@ export default function ImplantsPage(): React.JSX.Element {
 
           <div className="grid grid-cols-1 gap-8 max-w-2xl mx-auto">
             {/* Standard Pricing */}
-            <Card className="border-2 border-gray-200 hover:border-pear-primary/30 transition-colors">
+            <Card className="border-2 border-gray-200 hover:border-pear-primary transition-colors">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-pear-primary">Single Implant</CardTitle>
                 <div className="text-4xl font-bold text-pear-primary mt-4">£2,500</div>
@@ -497,15 +497,15 @@ export default function ImplantsPage(): React.JSX.Element {
           <div className="mt-12 text-center">
             <p className="text-gray-600 mb-6">Make implants affordable with our payment options</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="p-6 border border-pear-primary/20">
+              <Card className="p-6 border border-pear-primary">
                 <h4 className="font-semibold text-pear-primary mb-2">Payment Plans</h4>
                 <p className="text-sm text-gray-600">Flexible payment options available</p>
               </Card>
-              <Card className="p-6 border border-pear-primary/20">
+              <Card className="p-6 border border-pear-primary">
                 <h4 className="font-semibold text-pear-primary mb-2">Monthly Payments</h4>
                 <p className="text-sm text-gray-600">0% Payment plans over the treatment length</p>
               </Card>
-              <Card className="p-6 border border-pear-primary/20">
+              <Card className="p-6 border border-pear-primary">
                 <h4 className="font-semibold text-pear-primary mb-2">Insurance</h4>
                 <p className="text-sm text-gray-600">Partial coverage may be available</p>
               </Card>

@@ -333,7 +333,7 @@ export default function PorcelainVeneersPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <Card className="text-center p-8 bg-gradient-to-br from-pear-gold/20 to-dental-green/20 border-pear-gold/30">
+            <Card className="text-center p-8 bg-gradient-to-br from-pear-gold to-dental-green border-pear-gold">
               <div className="flex justify-center mb-6">
                 <div className="w-24 h-24 bg-pear-gold rounded-full flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">20</span>
@@ -424,7 +424,7 @@ export default function PorcelainVeneersPage() {
                 {(comparisonData || []).map((row, index) => (
                   <tr key={index} className="border-b hover:bg-gray-50">
                     <td className="p-4 font-medium">{row.feature}</td>
-                    <td className="p-4 text-center bg-pear-gold/10 font-semibold text-pear-primary">
+                    <td className="p-4 text-center bg-pear-gold font-semibold text-pear-primary">
                       {row.porcelain}
                     </td>
                     <td className="p-4 text-center">{row.ultraThin}</td>

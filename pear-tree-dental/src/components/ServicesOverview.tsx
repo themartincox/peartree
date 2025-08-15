@@ -79,7 +79,7 @@ const ServiceCard = ({
       className="h-full transition-all duration-300 hover:scale-105 hover:shadow-xl"
       style={{ perspective: 1000 }}
     >
-      <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold/20 h-full relative overflow-hidden">
+      <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-gold h-full relative overflow-hidden">
         {/* Full Card Background Image */}
         {service.image && (
           <div className="absolute inset-0">
@@ -91,7 +91,7 @@ const ServiceCard = ({
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
           </div>
         )}
 

@@ -283,7 +283,7 @@ export default function GedlingNHSPrivateDentistryPage() {
               Flexible Options for Working Family Budgets
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Quick drive from Gedling — Choose NHS, private, or mix both for
@@ -401,7 +401,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       </section>
 
       {/* Treatment Options Comparison */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -540,7 +540,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       </section>
 
       {/* Smart Choice Strategies */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -643,7 +643,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       </section>
 
       {/* Before/After Visual Module */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -690,7 +690,7 @@ export default function GedlingNHSPrivateDentistryPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -758,7 +758,7 @@ export default function GedlingNHSPrivateDentistryPage() {
               dental care that fits your needs and budget.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Flexible Dental Care Specialists

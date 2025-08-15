@@ -425,7 +425,7 @@ export default function EnlightenWhiteningPage() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
                     <div className="text-center">
                       <div className="text-3xl font-bold">B1</div>
                       <div className="text-sm text-white/80">Guaranteed Shade</div>

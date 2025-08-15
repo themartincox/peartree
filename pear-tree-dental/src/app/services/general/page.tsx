@@ -106,7 +106,7 @@ export default function GeneralDentistryPage() {
         pageUrl="/services/general"
       />
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green via-white to-soft-blue overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
@@ -134,7 +134,7 @@ export default function GeneralDentistryPage() {
                 </Card>
 
                 {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -205,7 +205,7 @@ export default function GeneralDentistryPage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green">
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                     <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -280,7 +280,7 @@ export default function GeneralDentistryPage() {
             ] || []).map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green/10 border-2 border-dental-green/20 hover:border-dental-green hover:shadow-xl hover:shadow-dental-green/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
+                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green border-2 border-dental-green hover:border-dental-green hover:shadow-xl hover:shadow-dental-green hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
@@ -299,7 +299,7 @@ export default function GeneralDentistryPage() {
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-3 border-t border-dental-green/20 group-hover:border-dental-green/40 transition-colors duration-300">
+                    <div className="pt-3 border-t border-dental-green group-hover:border-dental-green/40 transition-colors duration-300">
                       <div className="text-pear-primary font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
@@ -344,7 +344,7 @@ export default function GeneralDentistryPage() {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 text-dental-green" />
                       </div>
                       <div>

@@ -99,7 +99,7 @@ export default function NG4DentalPage() {
       />
 
       {/* NG4 Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-pear-primary/20 to-dental-navy">
+      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-pear-primary to-dental-navy">
         <div className="absolute inset-0 opacity-10">
           <Building className="absolute top-20 left-20 w-32 h-32 text-pear-gold" />
           <Zap className="absolute bottom-20 right-20 w-48 h-48 text-dental-green" />
@@ -150,7 +150,7 @@ export default function NG4DentalPage() {
             </div>
 
             {/* NG4 Coverage Areas */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto">
+            <div className="bg-white backdrop-blur-sm rounded-xl p-6 max-w-4xl mx-auto">
               <h3 className="text-lg font-semibold mb-4 text-pear-gold">
                 NG4 Communities We Serve
               </h3>
@@ -194,7 +194,7 @@ export default function NG4DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <Route className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Quick NG4 Routes</CardTitle>
@@ -229,7 +229,7 @@ export default function NG4DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <Zap className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Avoid City Traffic</CardTitle>
@@ -248,7 +248,7 @@ export default function NG4DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Clock className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">NG4 Flexible Times</CardTitle>
@@ -281,7 +281,7 @@ export default function NG4DentalPage() {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                       <Building className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
@@ -297,7 +297,7 @@ export default function NG4DentalPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-pear-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-pear-gold rounded-xl flex items-center justify-center flex-shrink-0">
                       <Users className="w-6 h-6 text-pear-gold" />
                     </div>
                     <div>
@@ -313,7 +313,7 @@ export default function NG4DentalPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                       <Heart className="w-6 h-6 text-pear-primary" />
                     </div>
                     <div>
@@ -332,7 +332,7 @@ export default function NG4DentalPage() {
 
               <div className="relative">
                 <Card className="overflow-hidden shadow-xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green/10 to-pear-gold/20 flex items-center justify-center">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green to-pear-gold flex items-center justify-center">
                     <div className="text-center p-8">
                       <MapIcon className="w-16 h-16 mx-auto mb-4 text-dental-green" />
                       <h3 className="text-xl font-bold text-gray-700 mb-2">
@@ -352,14 +352,14 @@ export default function NG4DentalPage() {
                 </Card>
 
                 {/* Floating travel time cards */}
-                <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border border-dental-green/20">
+                <div className="absolute -top-4 -right-4 bg-white rounded-xl p-3 shadow-lg border border-dental-green">
                   <div className="text-center">
                     <p className="font-bold text-dental-green">Arnold</p>
                     <p className="text-sm text-gray-600">15 mins</p>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-3 shadow-lg border border-pear-gold/20">
+                <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-3 shadow-lg border border-pear-gold">
                   <div className="text-center">
                     <p className="font-bold text-pear-gold">Gedling</p>
                     <p className="text-sm text-gray-600">12 mins</p>
@@ -472,7 +472,7 @@ export default function NG4DentalPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -514,7 +514,7 @@ export default function NG4DentalPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">
                   NG4 New Patient Offer
                 </h3>

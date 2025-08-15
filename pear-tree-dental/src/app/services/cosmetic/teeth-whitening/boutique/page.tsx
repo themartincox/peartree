@@ -499,7 +499,7 @@ export default function BoutiqueWhiteningPage() {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
                     <div className="text-center">
                       <div className="text-3xl font-bold">6-8</div>
                       <div className="text-sm text-white/80">Shades Whiter</div>

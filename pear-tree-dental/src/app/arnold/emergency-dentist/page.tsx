@@ -182,7 +182,7 @@ export default function ArnoldEmergencyDentistPage() {
               Same-Day Dental Pain Relief Just 15 Minutes Away
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Emergency appointments available — Call now for immediate help
@@ -283,7 +283,7 @@ export default function ArnoldEmergencyDentistPage() {
       </section>
 
       {/* Emergency Types Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -403,7 +403,7 @@ export default function ArnoldEmergencyDentistPage() {
       </section>
 
       {/* What to Do in Emergency */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -499,7 +499,7 @@ export default function ArnoldEmergencyDentistPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -581,7 +581,7 @@ export default function ArnoldEmergencyDentistPage() {
               emergencies. Don't wait - we're here to help.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <AlertTriangle className="inline w-5 h-5 mr-2 text-yellow-300" />
                 24/7 Emergency Line Available

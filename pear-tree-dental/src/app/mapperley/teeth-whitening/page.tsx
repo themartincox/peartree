@@ -320,7 +320,7 @@ export default function MapperleyTeethWhiteningPage() {
               Safe Family Whitening Just 15 Minutes Away
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Only 15 mins from Mapperley — Family packages & teen-safe
@@ -435,7 +435,7 @@ export default function MapperleyTeethWhiteningPage() {
       </section>
 
       {/* Whitening Options */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -615,7 +615,7 @@ export default function MapperleyTeethWhiteningPage() {
       </section>
 
       {/* Patient Testimonial */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -683,7 +683,7 @@ export default function MapperleyTeethWhiteningPage() {
       </section>
 
       {/* FAQs Specific to Mapperley */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -772,7 +772,7 @@ export default function MapperleyTeethWhiteningPage() {
               options, family packages, and gentle treatments for all ages.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Family Whitening Specialists

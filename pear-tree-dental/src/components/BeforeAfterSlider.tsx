@@ -156,7 +156,7 @@ const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
           <p className="text-gray-600 text-sm mb-3">{image.description}</p>
           <Badge
             variant="secondary"
-            className="bg-soft-pink/20 text-pear-primary border-soft-pink/30"
+            className="bg-soft-pink text-pear-primary border-soft-pink"
           >
             {image.timeframe}
           </Badge>

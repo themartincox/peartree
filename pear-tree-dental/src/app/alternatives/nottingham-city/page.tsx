@@ -359,7 +359,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
               Try Pear Tree Dental - The Professional Alternative
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <ArrowRight className="inline w-5 h-5 mr-2" />
                 Executive service, free parking, and professional convenience –
@@ -470,7 +470,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
       </section>
 
       {/* Executive Advantages */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -588,7 +588,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
       </section>
 
       {/* Executive Benefits */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -686,7 +686,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
       </section>
 
       {/* Before/After Visual */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -733,7 +733,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -804,7 +804,7 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
               centre complications.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 The Executive Alternative to City Centre Dental Complications

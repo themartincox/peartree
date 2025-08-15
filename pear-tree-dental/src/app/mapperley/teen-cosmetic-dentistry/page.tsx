@@ -382,7 +382,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               Confidence-Building Treatments Just Down the Road
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Home className="inline w-5 h-5 mr-2" />
                 Just down the road from Mapperley — Teen-focused cosmetic care
@@ -498,7 +498,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       </section>
 
       {/* Teen Treatment Options */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -660,7 +660,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       </section>
 
       {/* Parental Guidance */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -781,7 +781,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       </section>
 
       {/* Patient Testimonial */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -849,7 +849,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
       </section>
 
       {/* FAQs Specific to Mapperley */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -939,7 +939,7 @@ export default function MapperleyTeenCosmeticDentistryPage() {
               with age-appropriate treatments and full parental involvement.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 Teen Cosmetic Specialists

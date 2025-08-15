@@ -339,7 +339,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
               Try Pear Tree Dental - The Time-Saving Family Alternative
             </p>
 
-            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <ArrowRight className="inline w-5 h-5 mr-2" />
                 Time-saving tech, family scheduling, and convenient access –
@@ -447,7 +447,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
       </section>
 
       {/* Efficiency Advantages */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -564,7 +564,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
       </section>
 
       {/* Family Benefits */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -663,7 +663,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
       </section>
 
       {/* Before/After Visual */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -710,7 +710,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -780,7 +780,7 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
               minutes away.
             </p>
 
-            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-yellow-300" />
                 The Time-Saving Alternative to Traditional Family Dental Care

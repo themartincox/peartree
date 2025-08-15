@@ -60,7 +60,7 @@ const faqs = [
 
 export default function FaqSection() {
   return (
-    <section className="py-12 md:py-20 bg-gradient-to-br from-pear-background/30 to-white">
+    <section className="py-12 md:py-20 bg-gradient-to-br from-pear-background to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">

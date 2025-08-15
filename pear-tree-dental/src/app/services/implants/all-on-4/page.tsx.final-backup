@@ -243,7 +243,7 @@ export default function AllOn4Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 via-white to-amber-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="All-on-4 Dental Implants"
@@ -316,7 +316,7 @@ export default function AllOn4Page() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold to-pear-gold border border-pear-gold rounded-full px-6 py-3">
+              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
                 <span className="text-sm font-semibold text-pear-gold">Revolutionary technique - millions of successful cases worldwide</span>
               </div>

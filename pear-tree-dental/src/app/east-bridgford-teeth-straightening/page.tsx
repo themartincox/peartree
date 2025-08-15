@@ -82,7 +82,7 @@ export default function EastBridgfordTeethStraighteningPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-dental-green/20 to-dental-navy">
+      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-dental-green to-dental-navy">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center space-x-2 mb-6">
@@ -133,20 +133,20 @@ export default function EastBridgfordTeethStraighteningPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Badge
                 variant="secondary"
-                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+                className="bg-dental-green text-dental-green border-dental-green"
               >
                 <Eye className="w-4 h-4 mr-1" />
                 Nearly Invisible
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-pear-primary/20 text-pear-primary border-pear-primary/30"
+                className="bg-pear-primary text-pear-primary border-pear-primary"
               >
                 <Car className="w-4 h-4 mr-1" />5 mins from Village
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-white/20 text-white border-white/30"
+                className="bg-white text-white border-white"
               >
                 <TreePine className="w-4 h-4 mr-1" />
                 Village Exclusive
@@ -172,13 +172,13 @@ export default function EastBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <Eye className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Village Invisalign</CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-dental-green/10 text-dental-green"
+                    className="mt-2 bg-dental-green text-dental-green"
                   >
                     Village Exclusive
                   </Badge>
@@ -202,13 +202,13 @@ export default function EastBridgfordTeethStraighteningPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Zap className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Village Express</CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-pear-primary/10 text-pear-primary"
+                    className="mt-2 bg-pear-primary text-pear-primary"
                   >
                     Quick Results
                   </Badge>
@@ -235,13 +235,13 @@ export default function EastBridgfordTeethStraighteningPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Village Premium</CardTitle>
                   <Badge
                     variant="secondary"
-                    className="mt-2 bg-pear-gold/10 text-pear-gold"
+                    className="mt-2 bg-pear-gold text-pear-gold"
                   >
                     Complete Solution
                   </Badge>
@@ -283,7 +283,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                       <Eye className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
@@ -299,7 +299,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
                       <Users className="w-6 h-6 text-pear-primary" />
                     </div>
                     <div>
@@ -315,7 +315,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-pear-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-pear-gold rounded-xl flex items-center justify-center flex-shrink-0">
                       <Zap className="w-6 h-6 text-pear-gold" />
                     </div>
                     <div>
@@ -332,7 +332,7 @@ export default function EastBridgfordTeethStraighteningPage() {
 
               <div className="relative">
                 <Card className="overflow-hidden shadow-xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green/10 to-pear-primary/20 flex items-center justify-center">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green to-pear-primary flex items-center justify-center">
                     <div className="text-center p-8">
                       <Eye className="w-16 h-16 mx-auto mb-4 text-dental-green" />
                       <h3 className="text-xl font-bold text-gray-700 mb-2">
@@ -410,7 +410,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 text-center border border-dental-green/20"
+                    className="p-6 text-center border border-dental-green"
                   >
                     <div className="w-12 h-12 bg-dental-green text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
                       {step.step}
@@ -422,7 +422,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                     </p>
                     <Badge
                       variant="secondary"
-                      className="bg-dental-green/10 text-dental-green text-xs"
+                      className="bg-dental-green text-dental-green text-xs"
                     >
                       {step.time}
                     </Badge>
@@ -449,7 +449,7 @@ export default function EastBridgfordTeethStraighteningPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <div className="flex items-center space-x-3 mb-4">
                   <Car className="h-8 w-8 text-dental-green" />
                   <h3 className="text-xl font-semibold">Village Access</h3>
@@ -465,7 +465,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-pear-primary/20">
+              <Card className="p-6 border border-pear-primary">
                 <div className="flex items-center space-x-3 mb-4">
                   <Clock className="h-8 w-8 text-pear-primary" />
                   <h3 className="text-xl font-semibold">Village Scheduling</h3>
@@ -481,7 +481,7 @@ export default function EastBridgfordTeethStraighteningPage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-pear-gold/20">
+              <Card className="p-6 border border-pear-gold">
                 <div className="flex items-center space-x-3 mb-4">
                   <Heart className="h-8 w-8 text-pear-gold" />
                   <h3 className="text-xl font-semibold">Expert Village Care</h3>

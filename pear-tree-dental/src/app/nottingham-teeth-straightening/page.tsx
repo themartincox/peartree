@@ -110,7 +110,7 @@ export default function NottinghamTeethStraighteningPage() {
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dental-navy via-dental-navy/95 to-dental-green/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-dental-navy via-dental-navy/95 to-dental-green"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
@@ -185,7 +185,7 @@ export default function NottinghamTeethStraighteningPage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Invisalign */}
-              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
+              <Card className="p-8 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
@@ -220,7 +220,7 @@ export default function NottinghamTeethStraighteningPage() {
                       <span>SmartTrack material for comfort</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
+                  <div className="text-center p-4 bg-dental-green rounded-lg">
                     <p className="text-2xl font-bold text-dental-green">
                       From £3,500
                     </p>
@@ -232,7 +232,7 @@ export default function NottinghamTeethStraighteningPage() {
               </Card>
 
               {/* ClearCorrect */}
-              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
+              <Card className="p-8 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-8 w-8 text-white" />
@@ -267,7 +267,7 @@ export default function NottinghamTeethStraighteningPage() {
                       <span>Professional monitoring throughout</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
+                  <div className="text-center p-4 bg-dental-green rounded-lg">
                     <p className="text-2xl font-bold text-dental-green">
                       From £2,500
                     </p>

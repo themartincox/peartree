@@ -156,7 +156,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
+    <div className="min-h-screen bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Cosmetic Dentistry Services"
@@ -213,8 +213,8 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
           href: "#services",
           icon: "ArrowRight",
         }}
-        gradientFrom="soft-pink/10"
-        gradientTo="soft-lavender/10"
+        gradientFrom="soft-pink"
+        gradientTo="soft-lavender"
         textColor="pear-primary"
       />
 
@@ -276,7 +276,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                         </div>
                       </div>
 
-                      <div className="bg-soft-pink/10 p-4 rounded-lg">
+                      <div className="bg-soft-pink p-4 rounded-lg">
                         <div className="text-center">
                           <span className="text-gray-600 text-xs uppercase tracking-wide">
                             Expected Results:
@@ -344,7 +344,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                         </div>
                       </div>
 
-                      <div className="bg-soft-pink/10 p-4 rounded-lg">
+                      <div className="bg-soft-pink p-4 rounded-lg">
                         <div className="text-center">
                           <span className="text-gray-600 text-xs uppercase tracking-wide">
                             Expected Results:
@@ -412,7 +412,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                         </div>
                       </div>
 
-                      <div className="bg-soft-pink/10 p-4 rounded-lg">
+                      <div className="bg-soft-pink p-4 rounded-lg">
                         <div className="text-center">
                           <span className="text-gray-600 text-xs uppercase tracking-wide">
                             Expected Results:
@@ -477,7 +477,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                           </div>
                         </div>
 
-                        <div className="bg-soft-pink/10 p-3 rounded-lg">
+                        <div className="bg-soft-pink p-3 rounded-lg">
                           <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-600">
                               Expected Results:
@@ -546,7 +546,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Award className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -564,7 +564,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -581,7 +581,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Shield className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>
@@ -599,7 +599,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
 
               <Card className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-pear-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-pear-primary rounded-lg flex items-center justify-center flex-shrink-0">
                     <Sparkles className="w-6 h-6 text-pear-primary" />
                   </div>
                   <div>

@@ -145,7 +145,7 @@ export default function MapperlyPage() {
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Quick Journey</CardTitle>
@@ -160,7 +160,7 @@ export default function MapperlyPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Direct Route</CardTitle>
@@ -175,7 +175,7 @@ export default function MapperlyPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Free Parking</CardTitle>
@@ -205,7 +205,7 @@ export default function MapperlyPage() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-dental-green" />
                   </div>
                   <div>
@@ -222,7 +222,7 @@ export default function MapperlyPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <Route className="w-6 h-6 text-dental-green" />
                   </div>
                   <div>
@@ -238,7 +238,7 @@ export default function MapperlyPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 w-6 text-dental-green" />
                   </div>
                   <div>
@@ -256,7 +256,7 @@ export default function MapperlyPage() {
 
               <div className="relative">
                 <Card className="overflow-hidden shadow-xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green/10 to-dental-green/20 flex items-center justify-center">
+                  <div className="aspect-[4/3] bg-gradient-to-br from-dental-green to-dental-green flex items-center justify-center">
                     <div className="text-center p-8">
                       <MapPin className="w-16 h-16 mx-auto mb-4 text-dental-green" />
                       <h3 className="text-xl font-bold text-gray-700 mb-2">
@@ -370,7 +370,7 @@ export default function MapperlyPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -534,7 +534,7 @@ export default function MapperlyPage() {
                 <h2 className="text-3xl font-bold mb-8">
                   Directions from Mapperly
                 </h2>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-dental-green/20">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-dental-green">
                   <h3 className="font-semibold mb-4 text-dental-green">
                     Direct Route (10 minutes)
                   </h3>
@@ -569,7 +569,7 @@ export default function MapperlyPage() {
                       </span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-dental-green/10 rounded">
+                  <div className="mt-4 p-3 bg-dental-green rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Alternative:</strong> Via Gedling bypass for
                       faster journey during peak hours

@@ -440,7 +440,7 @@ const Navigation = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary/10"
+                    className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary"
                     aria-label="Open mobile navigation menu"
                     aria-expanded={isMobileMenuOpen}
                   >
@@ -708,7 +708,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+                  className="text-white hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
                   aria-label="Open mobile navigation menu"
                 >
                   <Menu className="h-6 w-6" />
@@ -803,9 +803,9 @@ const Navigation = () => {
                             </p>
                           </div>
                           <div className="animate-pulse space-y-3">
-                            <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-3/4 mx-auto"></div>
-                            <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-1/2 mx-auto"></div>
-                            <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-2/3 mx-auto"></div>
+                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-3/4 mx-auto"></div>
+                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-1/2 mx-auto"></div>
+                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-2/3 mx-auto"></div>
                           </div>
                         </div>
                       }

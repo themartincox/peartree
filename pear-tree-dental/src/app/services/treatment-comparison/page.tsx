@@ -361,7 +361,7 @@ export default function TreatmentComparisonPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Treatment Comparison Tool"
@@ -836,7 +836,7 @@ export default function TreatmentComparisonPage() {
           <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <div className="absolute top-4 right-4">
-                <Info className="w-12 h-12 text-white/20" />
+                <Info className="w-12 h-12 text-white" />
               </div>
 
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">

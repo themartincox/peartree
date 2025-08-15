@@ -316,7 +316,7 @@ export default function NewPatientsPage() {
               </Link>
             </div>
 
-            <div className="mt-8 p-6 bg-white/10 rounded-2xl backdrop-blur-sm">
+            <div className="mt-8 p-6 bg-white rounded-2xl backdrop-blur-sm">
               <div className="flex items-center justify-center space-x-2 text-pear-gold mb-2">
                 <Clock className="w-5 h-5" />
                 <span className="font-semibold">Emergency Care Available</span>

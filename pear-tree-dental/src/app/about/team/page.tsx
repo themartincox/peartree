@@ -127,7 +127,7 @@ export default function TeamPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-white/20 rounded-full">
+              <div className="p-4 bg-white rounded-full">
                 <Users className="h-12 w-12" />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function TeamPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <div className="p-3 bg-pear-primary/10 rounded-full">
+              <div className="p-3 bg-pear-primary rounded-full">
                 <Award className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function TeamPage() {
             {(principals || []).map((dentist) => (
               <Card
                 key={dentist.gdc}
-                className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30"
+                className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary"
               >
                 <CardContent className="p-8">
                   <div className="text-center">
@@ -180,7 +180,7 @@ export default function TeamPage() {
                         alt={`${dentist.name} - ${dentist.role} at Pear Tree Dental`}
                         width={192}
                         height={192}
-                        className="w-full h-full object-cover rounded-full border-4 border-pear-primary/20"
+                        className="w-full h-full object-cover rounded-full border-4 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -192,7 +192,7 @@ export default function TeamPage() {
                     <div className="space-y-2 mb-4">
                       <Badge
                         variant="secondary"
-                        className="bg-pear-primary/10 text-pear-primary"
+                        className="bg-pear-primary text-pear-primary"
                       >
                         {dentist.qualifications}
                       </Badge>
@@ -215,11 +215,11 @@ export default function TeamPage() {
       </section>
 
       {/* Associate Dentists Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <div className="p-3 bg-pear-primary/10 rounded-full">
+              <div className="p-3 bg-pear-primary rounded-full">
                 <Stethoscope className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function TeamPage() {
                         alt={`${dentist.name} - ${dentist.role} at Pear Tree Dental`}
                         width={160}
                         height={160}
-                        className="w-full h-full object-cover rounded-full border-4 border-pear-primary/20"
+                        className="w-full h-full object-cover rounded-full border-4 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -258,7 +258,7 @@ export default function TeamPage() {
                     <div className="space-y-2 mb-4">
                       <Badge
                         variant="outline"
-                        className="border-pear-primary/30 text-pear-primary"
+                        className="border-pear-primary text-pear-primary"
                       >
                         {dentist.qualifications}
                       </Badge>
@@ -285,7 +285,7 @@ export default function TeamPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex justify-center mb-6">
-              <div className="p-3 bg-pear-primary/10 rounded-full">
+              <div className="p-3 bg-pear-primary rounded-full">
                 <Heart className="h-8 w-8 text-pear-primary" />
               </div>
             </div>
@@ -312,7 +312,7 @@ export default function TeamPage() {
                         alt={`${member.name} - ${member.role} at Pear Tree Dental`}
                         width={128}
                         height={128}
-                        className="w-full h-full object-cover rounded-full border-3 border-pear-primary/20"
+                        className="w-full h-full object-cover rounded-full border-3 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
@@ -325,7 +325,7 @@ export default function TeamPage() {
                       {member.qualifications && (
                         <Badge
                           variant="outline"
-                          className="border-pear-primary/30 text-pear-primary text-xs"
+                          className="border-pear-primary text-pear-primary text-xs"
                         >
                           {member.qualifications}
                         </Badge>
@@ -346,7 +346,7 @@ export default function TeamPage() {
       </section>
 
       {/* Nursing Team Section */}
-      <section className="py-20 bg-cream/30">
+      <section className="py-20 bg-cream">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -372,7 +372,7 @@ export default function TeamPage() {
                         alt={`${nurse.name} - ${nurse.role} at Pear Tree Dental`}
                         width={96}
                         height={96}
-                        className="w-full h-full object-cover rounded-full border-2 border-pear-primary/20"
+                        className="w-full h-full object-cover rounded-full border-2 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
                         blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="

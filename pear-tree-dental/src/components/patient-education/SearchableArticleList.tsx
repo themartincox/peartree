@@ -100,7 +100,7 @@ export default function SearchableArticleList({
               className={
                 selectedCategory === category
                   ? "bg-pear-primary text-white"
-                  : "border-pear-primary/20 text-pear-primary hover:bg-pear-primary hover:text-white"
+                  : "border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white"
               }
             >
               {category}

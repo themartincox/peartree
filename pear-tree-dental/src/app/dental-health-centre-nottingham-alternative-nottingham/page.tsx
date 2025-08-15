@@ -358,7 +358,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8">
-              <Card className="bg-accent-gold/10 border-accent-gold/20">
+              <Card className="bg-accent-gold border-accent-gold">
                 <CardHeader className="text-center">
                   <Shield className="h-12 w-12 mx-auto text-accent-gold mb-4" />
                   <CardTitle className="heading-serif">
@@ -379,7 +379,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-primary/5 border-primary/20">
+              <Card className="bg-primary/5 border-primary">
                 <CardHeader className="text-center">
                   <CreditCard className="h-12 w-12 mx-auto text-primary mb-4" />
                   <CardTitle className="heading-serif">
@@ -459,7 +459,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </div>
 
             <div className="mt-12 text-center">
-              <Card className="bg-primary/5 border-primary/20 p-6">
+              <Card className="bg-primary/5 border-primary p-6">
                 <h3 className="heading-serif text-xl font-semibold mb-4">
                   Ready to Break Free from NHS Restrictions?
                 </h3>

@@ -230,7 +230,7 @@ export default function SmileGalleryPage() {
   const allItems = galleryItems.filter(item => !item.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Smile Gallery"
@@ -262,7 +262,7 @@ export default function SmileGalleryPage() {
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 bg-soft-pink/10 text-soft-pink">
+            <Badge variant="secondary" className="mb-6 bg-soft-pink text-soft-pink">
               <Camera className="w-4 h-4 mr-2" />
               Before & After Gallery
             </Badge>
@@ -282,9 +282,9 @@ export default function SmileGalleryPage() {
               {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <Card key={stat.label} className="border-2 border-soft-pink/20 bg-white/80">
+                  <Card key={stat.label} className="border-2 border-soft-pink bg-white/80">
                     <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-soft-pink" />
                       </div>
                       <div className="text-2xl font-bold text-pear-primary mb-1">{stat.value}</div>
@@ -341,7 +341,7 @@ export default function SmileGalleryPage() {
                   key={category}
                   variant="outline"
                   size="sm"
-                  className="border-soft-pink/30 text-pear-primary hover:bg-soft-pink hover:text-white hover:border-soft-pink"
+                  className="border-soft-pink text-pear-primary hover:bg-soft-pink hover:text-white hover:border-soft-pink"
                 >
                   {category}
                 </Button>
@@ -365,7 +365,7 @@ export default function SmileGalleryPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {(featuredItems || []).map((item) => (
-              <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:shadow-2xl transition-all duration-300">
+              <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink hover:shadow-2xl transition-all duration-300">
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white text-center py-2 text-sm font-semibold">
                   ⭐ Featured Transformation
@@ -388,7 +388,7 @@ export default function SmileGalleryPage() {
 
                     <div className="space-y-2">
                       <div className="relative aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20">
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-soft-pink to-soft-lavender">
                           <div className="text-center">
                             <Sparkles className="w-8 h-8 text-soft-pink mx-auto mb-2" />
                             <div className="text-sm font-medium text-soft-pink">AFTER</div>
@@ -482,7 +482,7 @@ export default function SmileGalleryPage() {
                         </div>
                       </div>
                       {/* After Side */}
-                      <div className="bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 flex items-center justify-center">
+                      <div className="bg-gradient-to-br from-soft-pink to-soft-lavender flex items-center justify-center">
                         <div className="text-center">
                           <Sparkles className="w-6 h-6 text-soft-pink mx-auto mb-1" />
                           <div className="text-xs font-medium text-soft-pink">AFTER</div>
@@ -494,7 +494,7 @@ export default function SmileGalleryPage() {
                     <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10"></div>
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black transition-all duration-300 flex items-center justify-center">
                       <Button
                         variant="secondary"
                         size="sm"
@@ -576,7 +576,7 @@ export default function SmileGalleryPage() {
                 <Link key={category.name} href={`/smile-gallery?category=${category.name.toLowerCase().replace(' ', '-')}`}>
                   <Card className="group hover:shadow-lg transition-all duration-300 text-center cursor-pointer">
                     <CardContent className="p-6">
-                      <div className={`w-16 h-16 bg-${category.color}/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <div className={`w-16 h-16 bg-${category.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                         <Icon className={`w-8 h-8 text-${category.color}`} />
                       </div>
                       <h3 className="font-semibold text-pear-primary mb-2">{category.name}</h3>
@@ -638,8 +638,8 @@ export default function SmileGalleryPage() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white rounded-full" />
             </CardContent>
           </Card>
         </div>

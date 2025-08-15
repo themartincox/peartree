@@ -1161,7 +1161,7 @@ export default function MembershipSignupPage() {
 
                     {/* Main Patient Status Section */}
                     <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
-                      <div className="bg-pear-background/30 p-6 rounded-lg">
+                      <div className="bg-pear-background p-6 rounded-lg">
                         <h3 className="text-lg font-semibold text-pear-primary mb-4"></h3>
 
                         <div className="mb-6">
@@ -1213,7 +1213,7 @@ export default function MembershipSignupPage() {
                         {/* New Patient - Welcome & Gender Preference */}
                         {formData.isExistingPatient === 'no' && (
                           <div className="space-y-4">
-                            <div className="bg-pear-primary/10 p-4 rounded-lg border border-pear-primary/20">
+                            <div className="bg-pear-primary p-4 rounded-lg border border-pear-primary">
                               <h4 className="font-semibold text-pear-primary mb-2">Welcome to the Pear Tree Dental Membership Plan!</h4>
                               <p className="text-sm text-gray-700">
                                 We're delighted to have you join our practice. Our experienced team is here to provide
@@ -1271,7 +1271,7 @@ export default function MembershipSignupPage() {
                             <div className="flex items-center mb-3">
                               <User className="w-5 h-5 text-pear-primary mr-2" />
                               <h3 className="text-lg font-semibold text-pear-primary">Staff Member Information</h3>
-                              <Badge variant="secondary" className="ml-2 bg-pear-primary/10 text-pear-primary">
+                              <Badge variant="secondary" className="ml-2 bg-pear-primary text-pear-primary">
                                 Clinic Access Detected
                               </Badge>
                             </div>

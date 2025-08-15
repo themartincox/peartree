@@ -222,7 +222,7 @@ export default function DenturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50/30 via-white to-orange-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-white to-orange-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Dentures"

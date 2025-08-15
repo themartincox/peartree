@@ -178,7 +178,7 @@ export default function CompleteDenturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Complete Dentures"
@@ -253,7 +253,7 @@ export default function CompleteDenturesPage() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
+              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold to-pear-gold border border-pear-gold rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
                 <span className="text-sm font-semibold text-pear-gold">Complete smile restoration for over 40 years</span>
               </div>

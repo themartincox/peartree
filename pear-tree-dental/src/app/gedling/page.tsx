@@ -141,7 +141,7 @@ export default function GedlingPage() {
             </h2>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Easy Journey</CardTitle>
@@ -156,7 +156,7 @@ export default function GedlingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Close Distance</CardTitle>
@@ -171,7 +171,7 @@ export default function GedlingPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Free Parking</CardTitle>
@@ -276,7 +276,7 @@ export default function GedlingPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -469,7 +469,7 @@ export default function GedlingPage() {
                       </span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-dental-green/10 rounded">
+                  <div className="mt-4 p-3 bg-dental-green rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Tip:</strong> Straight shot on A612 from Gedling -
                       one of our easiest routes!

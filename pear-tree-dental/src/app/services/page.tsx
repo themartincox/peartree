@@ -183,13 +183,13 @@ const ServicesPage = (): React.JSX.Element => {
       <section className="pt-32 pb-16 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 text-white relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pear-gold/20 rounded-full translate-y-32 -translate-x-32" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-pear-gold rounded-full translate-y-32 -translate-x-32" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
             <Badge
               variant="secondary"
-              className="mb-6 bg-white/10 text-white border-white/20"
+              className="mb-6 bg-white text-white border-white"
             >
               <Heart className="w-4 h-4 mr-2" />
               Complete Dental Care
@@ -238,7 +238,7 @@ const ServicesPage = (): React.JSX.Element => {
           <div className="text-center mb-12">
             <Badge
               variant="secondary"
-              className="mb-4 bg-dental-green/10 text-dental-green"
+              className="mb-4 bg-dental-green text-dental-green"
             >
               <Shield className="w-4 h-4 mr-2" />
               Essential Care
@@ -258,7 +258,7 @@ const ServicesPage = (): React.JSX.Element => {
               return (
                 <Card
                   key={service.id}
-                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
                 >
                   {/* Background Image */}
                   {service.image && (
@@ -271,7 +271,7 @@ const ServicesPage = (): React.JSX.Element => {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {/* Dark overlay for text readability */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
                     </div>
                   )}
 
@@ -293,7 +293,7 @@ const ServicesPage = (): React.JSX.Element => {
                         {service.isCore && (
                           <Badge
                             variant="secondary"
-                            className="bg-dental-green/10 text-dental-green text-xs backdrop-blur-sm"
+                            className="bg-dental-green text-dental-green text-xs backdrop-blur-sm"
                           >
                             Essential
                           </Badge>
@@ -346,7 +346,7 @@ const ServicesPage = (): React.JSX.Element => {
           <div className="text-center mb-12">
             <Badge
               variant="secondary"
-              className="mb-4 bg-soft-pink/10 text-soft-pink"
+              className="mb-4 bg-soft-pink text-soft-pink"
             >
               <Sparkles className="w-4 h-4 mr-2" />
               Smile Enhancement
@@ -366,7 +366,7 @@ const ServicesPage = (): React.JSX.Element => {
               return (
                 <Card
                   key={service.id}
-                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink/20 bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
                 >
                   {/* Background Image */}
                   {service.image && (
@@ -379,7 +379,7 @@ const ServicesPage = (): React.JSX.Element => {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {/* Dark overlay for text readability */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
                     </div>
                   )}
 
@@ -392,7 +392,7 @@ const ServicesPage = (): React.JSX.Element => {
                         </div>
                         <Badge
                           variant="secondary"
-                          className="bg-soft-pink/10 text-soft-pink text-xs backdrop-blur-sm"
+                          className="bg-soft-pink text-soft-pink text-xs backdrop-blur-sm"
                         >
                           Cosmetic
                         </Badge>
@@ -556,7 +556,7 @@ const ServicesPage = (): React.JSX.Element => {
               </Button>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-white/20">
+            <div className="mt-8 pt-8 border-t border-white">
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-white/80">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />

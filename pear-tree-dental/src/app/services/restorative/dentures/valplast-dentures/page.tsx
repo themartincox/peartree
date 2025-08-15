@@ -182,7 +182,7 @@ export default function ValplastDenturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50/30 via-white to-rose-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Valplast Flexible Dentures"

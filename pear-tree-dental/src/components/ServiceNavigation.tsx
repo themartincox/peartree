@@ -138,7 +138,7 @@ const ServiceNavigation = () => {
 
   return (
     <motion.section
-      className="py-16 bg-gradient-to-b from-white to-pear-background/30"
+      className="py-16 bg-gradient-to-b from-white to-pear-background"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -165,11 +165,11 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-gold/20 hover:border-pear-gold/40 transition-colors duration-300">
+                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold/40 transition-colors duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-3">
                       <motion.div
-                        className="w-10 h-10 bg-pear-primary/10 rounded-full flex items-center justify-center group-hover:bg-pear-primary/20 transition-colors"
+                        className="w-10 h-10 bg-pear-primary rounded-full flex items-center justify-center group-hover:bg-pear-primary transition-colors"
                         whileHover={{ rotate: -180 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -201,7 +201,7 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-primary/20 hover:border-pear-primary/40 transition-colors duration-300 bg-gradient-to-br from-pear-primary/5 to-pear-primary/10">
+                <Card className="h-full border-2 border-pear-primary hover:border-pear-primary/40 transition-colors duration-300 bg-gradient-to-br from-pear-primary/5 to-pear-primary">
                   <CardContent className="p-6 text-center">
                     <motion.div
                       className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-pear-gold transition-colors"
@@ -230,11 +230,11 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-gold/20 hover:border-pear-gold/40 transition-colors duration-300">
+                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold/40 transition-colors duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-3">
                       <motion.div
-                        className="w-10 h-10 bg-pear-gold/10 rounded-full flex items-center justify-center group-hover:bg-pear-gold/20 transition-colors"
+                        className="w-10 h-10 bg-pear-gold rounded-full flex items-center justify-center group-hover:bg-pear-gold transition-colors"
                         whileHover={{ rotate: 180 }}
                         transition={{ duration: 0.3 }}
                       >

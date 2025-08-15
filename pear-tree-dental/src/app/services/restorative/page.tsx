@@ -308,7 +308,7 @@ export default function RestorativeDentistryPage() {
                 </picture>
 
                 {/* Overlay with content - lighter and disappears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-dental-green/60 to-soft-blue/60 group-hover:from-dental-green/20 group-hover:to-soft-blue/20 transition-all duration-500 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-dental-green/60 to-soft-blue/60 group-hover:from-dental-green group-hover:to-soft-blue transition-all duration-500 flex items-center justify-center">
                   <div className="text-center text-white p-8 max-w-md group-hover:opacity-80 transition-opacity duration-500">
                     <h3 className="text-2xl font-semibold mb-4">
                       Advanced Restoration Technology
@@ -612,7 +612,7 @@ export default function RestorativeDentistryPage() {
             {(process || []).map((step, index) => (
               <Card
                 key={step.step}
-                className="text-center relative bg-white border-dental-green/20"
+                className="text-center relative bg-white border-dental-green"
               >
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-soft-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg">
@@ -625,7 +625,7 @@ export default function RestorativeDentistryPage() {
                 </CardContent>
                 {index < process.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <ArrowRight className="w-6 h-6 text-dental-green/30" />
+                    <ArrowRight className="w-6 h-6 text-dental-green" />
                   </div>
                 )}
               </Card>
@@ -643,7 +643,7 @@ export default function RestorativeDentistryPage() {
                 <div>
                   <Badge
                     variant="secondary"
-                    className="bg-white/20 text-white border-white/30 mb-4"
+                    className="bg-white text-white border-white mb-4"
                   >
                     <Wrench className="w-4 h-4 mr-2" />
                     Restorative Benefits
@@ -686,7 +686,7 @@ export default function RestorativeDentistryPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
+                  <div className="bg-white backdrop-blur-sm rounded-2xl p-6 text-center">
                     <div className="text-sm text-white/70 mb-2">
                       Member savings example:
                     </div>
@@ -725,7 +725,7 @@ export default function RestorativeDentistryPage() {
 
               {/* Decorative elements */}
               <div className="absolute top-4 right-4 w-16 h-16 bg-white/5 rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-pear-gold/20 rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-pear-gold rounded-full" />
             </CardContent>
           </Card>
         </div>
@@ -782,8 +782,8 @@ export default function RestorativeDentistryPage() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white rounded-full" />
             </CardContent>
           </Card>
         </div>

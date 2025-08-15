@@ -35,7 +35,7 @@ const loaderVariants = {
   },
   "family-care": {
     image:
-      "https://azdentist.com/wp-content/uploads/2024/07/AZ-Dentist-Header.png",
+      "https://azdentist.com/wp-content/uploads24/07/AZ-Dentist-Header.png",
     alt: "Happy woman with beautiful smile",
     message: "Creating your perfect smile...",
   },
@@ -58,7 +58,7 @@ export default function WelcomingLoader({
 
   return (
     <div
-      className={`${height} ${className} relative overflow-hidden rounded-lg mx-4 bg-gradient-to-br from-pear-background/20 to-soft-pink/10 shadow-sm border border-gray-100`}
+      className={`${height} ${className} relative overflow-hidden rounded-lg mx-4 bg-gradient-to-br from-pear-background to-soft-pink shadow-sm border border-gray-100`}
     >
       {/* Beautiful background image of smiling people */}
       <div className="absolute inset-0 opacity-30">
@@ -73,11 +73,11 @@ export default function WelcomingLoader({
       </div>
 
       {/* Soft gradient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/40 to-white/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/40 to-white" />
 
       {/* Animated shimmer effect */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-pulse"
         style={{ animationDuration: "2s" }}
       />
 

@@ -191,7 +191,7 @@ export default function LocationDetection() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      <Card className="w-96 shadow-xl border border-dental-green/20 bg-white">
+      <Card className="w-96 shadow-xl border border-dental-green bg-white">
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -229,7 +229,7 @@ export default function LocationDetection() {
               </div>
 
               {userLocation.specialOffer && (
-                <div className="bg-pear-gold/10 rounded-lg p-3 border border-pear-gold/20">
+                <div className="bg-pear-gold rounded-lg p-3 border border-pear-gold">
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-4 h-4 text-pear-gold" />
                     <span className="text-sm font-medium text-pear-gold">

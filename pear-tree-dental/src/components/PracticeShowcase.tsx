@@ -56,7 +56,7 @@ const PracticeShowcase = () => {
             {/* Practice Features & Info */}
             <div className="space-y-4">
               {/* Location & Hours */}
-              <Card className="p-6 border-pear-primary/10 relative overflow-hidden">
+              <Card className="p-6 border-pear-primary relative overflow-hidden">
                 {/* Building Background - Full Card */}
                 <div className="absolute inset-0">
                   <picture>
@@ -136,8 +136,8 @@ const PracticeShowcase = () => {
               {/* Practice Features */}
               <div className="grid grid-cols-2 gap-4">
                 <Link href="/about/team">
-                  <Card className="p-4 text-center border-soft-blue/20 hover:border-gray-300 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <Card className="p-4 text-center border-soft-blue hover:border-gray-300 transition-colors cursor-pointer">
+                    <div className="w-12 h-12 bg-soft-blue rounded-xl flex items-center justify-center mx-auto mb-3">
                       <Users className="w-6 h-6 text-soft-blue" />
                     </div>
                     <h5 className="font-semibold text-pear-primary text-sm">
@@ -149,8 +149,8 @@ const PracticeShowcase = () => {
                   </Card>
                 </Link>
 
-                <Card className="p-4 text-center border-soft-pink/20 hover:border-gray-300 transition-colors">
-                  <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Card className="p-4 text-center border-soft-pink hover:border-gray-300 transition-colors">
+                  <div className="w-12 h-12 bg-soft-pink rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Heart className="w-6 h-6 text-soft-pink" />
                   </div>
                   <h5 className="font-semibold text-pear-primary text-sm">

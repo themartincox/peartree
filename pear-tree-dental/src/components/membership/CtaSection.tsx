@@ -28,7 +28,7 @@ export default function CtaSection() {
 
           <div className="mt-10 grid md:grid-cols-3 gap-6 text-center">
             <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
-              <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Zap className="h-6 w-6 text-dental-green" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Easy Signup</h3>
@@ -38,7 +38,7 @@ export default function CtaSection() {
             </div>
 
             <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
-              <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Heart className="h-6 w-6 text-dental-green" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Flexible Plans</h3>
@@ -48,7 +48,7 @@ export default function CtaSection() {
             </div>
 
             <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
-              <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Shield className="h-6 w-6 text-dental-green" />
               </div>
               <h3 className="text-lg font-semibold mb-2">Cancel Anytime</h3>

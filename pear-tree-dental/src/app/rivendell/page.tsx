@@ -97,7 +97,7 @@ export default function RivendellPage() {
       />
 
       {/* Welcome Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-dental-green/20 to-dental-navy">
+      <section className="relative py-20 bg-gradient-to-br from-dental-navy via-dental-green to-dental-navy">
         <div className="absolute inset-0 opacity-10">
           <TreePine className="absolute top-20 left-20 w-32 h-32 text-dental-green" />
           <Home className="absolute bottom-20 right-20 w-48 h-48 text-pear-gold" />
@@ -151,21 +151,21 @@ export default function RivendellPage() {
             <div className="flex flex-wrap justify-center gap-3">
               <Badge
                 variant="secondary"
-                className="bg-dental-green/20 text-dental-green border-dental-green/30"
+                className="bg-dental-green text-dental-green border-dental-green"
               >
                 <Baby className="w-4 h-4 mr-1" />
                 Children Welcome
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-pear-gold/20 text-pear-gold border-pear-gold/30"
+                className="bg-pear-gold text-pear-gold border-pear-gold"
               >
                 <Users className="w-4 h-4 mr-1" />
                 Family Plans
               </Badge>
               <Badge
                 variant="secondary"
-                className="bg-white/20 text-white border-white/30"
+                className="bg-white text-white border-white"
               >
                 <HeartHandshake className="w-4 h-4 mr-1" />
                 New Patient Discount
@@ -191,7 +191,7 @@ export default function RivendellPage() {
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-dental-green/10 to-dental-green/5 rounded-xl p-6">
+                <div className="bg-gradient-to-r from-dental-green to-dental-green/5 rounded-xl p-6">
                   <h3 className="text-2xl font-bold mb-6 text-dental-navy">
                     New Home Checklist
                   </h3>
@@ -213,9 +213,9 @@ export default function RivendellPage() {
                         key={index}
                         className={`flex items-center space-x-3 p-3 rounded-lg ${
                           item.highlight
-                            ? "bg-pear-gold/20 border border-pear-gold/30"
+                            ? "bg-pear-gold border border-pear-gold"
                             : item.status === "complete"
-                              ? "bg-dental-green/10"
+                              ? "bg-dental-green"
                               : "bg-gray-50"
                         }`}
                       >
@@ -256,9 +256,9 @@ export default function RivendellPage() {
               </div>
 
               <div className="space-y-6">
-                <Card className="p-6 border border-dental-green/20">
+                <Card className="p-6 border border-dental-green">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                       <Route className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
@@ -278,9 +278,9 @@ export default function RivendellPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 border border-pear-gold/20">
+                <Card className="p-6 border border-pear-gold">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-pear-gold/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-pear-gold rounded-xl flex items-center justify-center flex-shrink-0">
                       <UserPlus className="w-6 h-6 text-pear-gold" />
                     </div>
                     <div>
@@ -300,9 +300,9 @@ export default function RivendellPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 border border-dental-green/20">
+                <Card className="p-6 border border-dental-green">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                       <Baby className="w-6 h-6 text-dental-green" />
                     </div>
                     <div>
@@ -430,7 +430,7 @@ export default function RivendellPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -442,7 +442,7 @@ export default function RivendellPage() {
                             </h3>
                             <Badge
                               variant="secondary"
-                              className="text-xs mt-1 bg-dental-green/10 text-dental-green"
+                              className="text-xs mt-1 bg-dental-green text-dental-green"
                             >
                               {service.badge}
                             </Badge>
@@ -473,7 +473,7 @@ export default function RivendellPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">
                   🎉 New Rivendell Resident Offer
                 </h3>
@@ -550,7 +550,7 @@ export default function RivendellPage() {
               ).map((review, index) => (
                 <Card
                   key={index}
-                  className="p-6 shadow-lg border border-dental-green/20"
+                  className="p-6 shadow-lg border border-dental-green"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-dental-green">
@@ -578,7 +578,7 @@ export default function RivendellPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-dental-green">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -659,7 +659,7 @@ export default function RivendellPage() {
                 <h2 className="text-3xl font-bold mb-8">
                   Quick Route from Rivendell
                 </h2>
-                <div className="bg-white p-6 rounded-lg shadow-sm border border-dental-green/20">
+                <div className="bg-white p-6 rounded-lg shadow-sm border border-dental-green">
                   <h3 className="font-semibold mb-4 text-dental-green">
                     Simple Journey (6 minutes)
                   </h3>
@@ -691,7 +691,7 @@ export default function RivendellPage() {
                       </span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-dental-green/10 rounded">
+                  <div className="mt-4 p-3 bg-dental-green rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Perfect for families:</strong> Local route, no
                       traffic lights, safe parking right outside the practice!

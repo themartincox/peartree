@@ -109,7 +109,7 @@ export default function BurtonJoycePage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-dental-green/20">
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border border-dental-green">
                 <div className="flex items-center space-x-3">
                   <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center">
                     <House className="w-6 h-6 text-white" />
@@ -142,9 +142,9 @@ export default function BurtonJoycePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-dental-green" />
                   </div>
                   <div>
@@ -172,9 +172,9 @@ export default function BurtonJoycePage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <Car className="w-6 h-6 text-dental-green" />
                   </div>
                   <div>
@@ -191,9 +191,9 @@ export default function BurtonJoycePage() {
                 </div>
               </Card>
 
-              <Card className="p-6 border border-dental-green/20">
+              <Card className="p-6 border border-dental-green">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-dental-green" />
                   </div>
                   <div>
@@ -226,7 +226,7 @@ export default function BurtonJoycePage() {
             {/* Map Placeholder */}
             <div className="relative">
               <Card className="overflow-hidden shadow-xl h-full">
-                <div className="h-full min-h-[400px] bg-gradient-to-br from-dental-green/10 to-dental-green/20 flex items-center justify-center">
+                <div className="h-full min-h-[400px] bg-gradient-to-br from-dental-green to-dental-green flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-16 h-16 mx-auto mb-4 text-dental-green" />
                     <h3 className="text-xl font-bold text-gray-700 mb-2">
@@ -247,7 +247,7 @@ export default function BurtonJoycePage() {
       </section>
 
       {/* Services for Burton Joyce Residents */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -344,11 +344,11 @@ export default function BurtonJoycePage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                  className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center">
                         <Icon className="w-6 h-6 text-dental-green" />
                       </div>
                       <div>
@@ -470,7 +470,7 @@ export default function BurtonJoycePage() {
           </div>
 
           <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-dental-green/10 to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-r from-dental-green to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
                   {Array.from({ length: 5 }).map((_, i) => (

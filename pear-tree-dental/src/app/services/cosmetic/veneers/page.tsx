@@ -318,9 +318,9 @@ export default function VeneersPage() {
             {(veneerTypes || []).map((veneer, index) => {
               const IconComponent = veneer.icon;
               const colorClasses = {
-                "soft-pink": "bg-soft-pink border-soft-pink/30",
-                "pear-gold": "bg-pear-gold border-pear-gold/30",
-                "dental-green": "bg-dental-green border-dental-green/30",
+                "soft-pink": "bg-soft-pink border-soft-pink",
+                "pear-gold": "bg-pear-gold border-pear-gold",
+                "dental-green": "bg-dental-green border-dental-green",
               };
 
               return (
@@ -445,13 +445,13 @@ export default function VeneersPage() {
               <thead>
                 <tr className="bg-pear-primary text-white">
                   <th className="text-left p-4 font-semibold">Feature</th>
-                  <th className="text-center p-4 font-semibold bg-soft-pink/20">
+                  <th className="text-center p-4 font-semibold bg-soft-pink">
                     Ultra-Thin
                   </th>
-                  <th className="text-center p-4 font-semibold bg-pear-gold/20">
+                  <th className="text-center p-4 font-semibold bg-pear-gold">
                     Porcelain
                   </th>
-                  <th className="text-center p-4 font-semibold bg-dental-green/20">
+                  <th className="text-center p-4 font-semibold bg-dental-green">
                     Composite
                   </th>
                 </tr>
@@ -642,7 +642,7 @@ export default function VeneersPage() {
               <Link key={veneer.id} href={veneer.href}>
                 <Button
                   variant="ghost"
-                  className="text-white hover:bg-white/10"
+                  className="text-white hover:bg-white"
                 >
                   Learn About {veneer.name.split(" ")[0]} Veneers
                   <ArrowRight className="w-4 h-4 ml-2" />

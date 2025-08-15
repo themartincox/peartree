@@ -104,7 +104,7 @@ export default function BeforeAfterSlider({
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   !showAfter
                     ? "bg-white text-black"
-                    : "text-white hover:bg-white/20"
+                    : "text-white hover:bg-white"
                 }`}
               >
                 Before
@@ -114,7 +114,7 @@ export default function BeforeAfterSlider({
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   showAfter
                     ? "bg-white text-black"
-                    : "text-white hover:bg-white/20"
+                    : "text-white hover:bg-white"
                 }`}
               >
                 After
