@@ -20,8 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
-/** @jsx React.createElement */
-
 export const metadata: Metadata = {
   title: "Enlighten Whitening - Premium Teeth Whitening | Pear Tree Dental",
   description: "Enlighten whitening in Burton Joyce - the gold standard teeth whitening system. Guaranteed B1 shade results. £650. Book your consultation today.",
@@ -158,14 +156,14 @@ export default function EnlightenWhiteningPage() {
         duration="2 weeks home treatment + 1 hour practice visit"
         preparation="Dental examination, custom tray fitting, oral health assessment"
         recovery="No downtime, minimal sensitivity"
-        benefits={([
+        benefits={[
           "Guaranteed B1 shade result",
           "Minimal sensitivity formula",
           "Long-lasting results (3+ years)",
           "Gold standard whitening system",
           "Professional supervision throughout"
         ]}
-        risks={([
+        risks={[
           "Minimal temporary sensitivity",
           "Not suitable for pregnant/nursing women",
           "Results depend on following protocol",
@@ -271,7 +269,7 @@ export default function EnlightenWhiteningPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-orange-500 text-white">Enlighten Guarantee</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
                       ))}
                     </div>
@@ -310,7 +308,7 @@ export default function EnlightenWhiteningPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(features || []).map((feature) => {
               const Icon = feature.icon;
-  return (
+              return (
                 <Card
                   key={feature.title}
                   className={`text-center hover:shadow-lg transition-shadow ${
@@ -480,4 +478,3 @@ export default function EnlightenWhiteningPage() {
     </div>
   );
 }
-

@@ -19,8 +19,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
-/** @jsx React.createElement */
-
 export const metadata: Metadata = {
   title: "Biodentine Fillings - Bioactive Dental Restorations | Pear Tree Dental",
   description: "Biodentine fillings in Burton Joyce. Advanced bioactive material that promotes healing and regeneration. £195. Natural tooth-like properties for lasting restoration.",
@@ -69,105 +67,33 @@ export default function BiodentineFillingPage() {
   ];
 
   const benefits = [
-    {
-      icon: Leaf,
-      title: "Bioactive Properties",
-      description: "Actively promotes healing and regeneration of natural tooth structure"
-    },
-    {
-      icon: Shield,
-      title: "Superior Protection",
-      description: "Excellent sealing properties prevent bacterial infiltration and further decay"
-    },
-    {
-      icon: Heart,
-      title: "Biocompatible",
-      description: "Highly compatible with natural tissue, reducing inflammation and sensitivity"
-    },
-    {
-      icon: Activity,
-      title: "Strengthens Teeth",
-      description: "Releases beneficial minerals that strengthen surrounding tooth structure"
-    }
+    { icon: Leaf,    title: "Bioactive Properties", description: "Actively promotes healing and regeneration of natural tooth structure" },
+    { icon: Shield,  title: "Superior Protection",  description: "Excellent sealing properties prevent bacterial infiltration and further decay" },
+    { icon: Heart,   title: "Biocompatible",        description: "Highly compatible with natural tissue, reducing inflammation and sensitivity" },
+    { icon: Activity,title: "Strengthens Teeth",    description: "Releases beneficial minerals that strengthen surrounding tooth structure" }
   ];
 
   const comparisons = [
-    {
-      feature: "Bioactivity",
-      biodentine: "Active healing promotion",
-      traditional: "Inert material"
-    },
-    {
-      feature: "Bonding",
-      biodentine: "Chemical bond to tooth",
-      traditional: "Mechanical retention"
-    },
-    {
-      feature: "Sealing",
-      biodentine: "Excellent marginal seal",
-      traditional: "Good with proper technique"
-    },
-    {
-      feature: "Expansion",
-      biodentine: "Matches tooth expansion",
-      traditional: "Different expansion rate"
-    },
-    {
-      feature: "Pulp Protection",
-      biodentine: "Promotes pulp healing",
-      traditional: "Passive protection only"
-    },
-    {
-      feature: "Longevity",
-      biodentine: "10-15+ years",
-      traditional: "5-10 years typically"
-    }
+    { feature: "Bioactivity",    biodentine: "Active healing promotion", traditional: "Inert material" },
+    { feature: "Bonding",        biodentine: "Chemical bond to tooth",   traditional: "Mechanical retention" },
+    { feature: "Sealing",        biodentine: "Excellent marginal seal",  traditional: "Good with proper technique" },
+    { feature: "Expansion",      biodentine: "Matches tooth expansion",  traditional: "Different expansion rate" },
+    { feature: "Pulp Protection",biodentine: "Promotes pulp healing",    traditional: "Passive protection only" },
+    { feature: "Longevity",      biodentine: "10-15+ years",             traditional: "5-10 years typically" }
   ];
 
   const idealCases = [
-    {
-      title: "Deep Cavities",
-      description: "When decay is close to the nerve, Biodentine protects and promotes healing",
-      icon: Shield
-    },
-    {
-      title: "Root Canal Therapy",
-      description: "Excellent for sealing and protecting teeth after root canal treatment",
-      icon: Heart
-    },
-    {
-      title: "Tooth Preservation",
-      description: "When maximum tooth structure preservation is essential",
-      icon: Leaf
-    },
-    {
-      title: "Sensitive Teeth",
-      description: "Reduces post-operative sensitivity due to biocompatible properties",
-      icon: Activity
-    }
+    { title: "Deep Cavities",     description: "When decay is close to the nerve, Biodentine protects and promotes healing", icon: Shield },
+    { title: "Root Canal Therapy",description: "Excellent for sealing and protecting teeth after root canal treatment",    icon: Heart },
+    { title: "Tooth Preservation",description: "When maximum tooth structure preservation is essential",                   icon: Leaf },
+    { title: "Sensitive Teeth",   description: "Reduces post-operative sensitivity due to biocompatible properties",       icon: Activity }
   ];
 
   const process = [
-    {
-      step: "1",
-      title: "Assessment",
-      description: "Thorough examination to determine if Biodentine is the ideal choice"
-    },
-    {
-      step: "2",
-      title: "Preparation",
-      description: "Gentle removal of decay while preserving maximum healthy tooth structure"
-    },
-    {
-      step: "3",
-      title: "Placement",
-      description: "Precise application of Biodentine using specialized techniques"
-    },
-    {
-      step: "4",
-      title: "Finishing",
-      description: "Final shaping and polishing for optimal function and aesthetics"
-    }
+    { step: "1", title: "Assessment",  description: "Thorough examination to determine if Biodentine is the ideal choice" },
+    { step: "2", title: "Preparation", description: "Gentle removal of decay while preserving maximum healthy tooth structure" },
+    { step: "3", title: "Placement",   description: "Precise application of Biodentine using specialized techniques" },
+    { step: "4", title: "Finishing",   description: "Final shaping and polishing for optimal function and aesthetics" }
   ];
 
   return (
@@ -181,14 +107,14 @@ export default function BiodentineFillingPage() {
         duration="45-60 minutes"
         preparation="Local anesthesia if needed, standard cavity preparation"
         recovery="Minimal sensitivity, normal function restored immediately"
-        benefits={([
+        benefits={[
           "Bioactive healing promotion",
           "Superior sealing properties",
           "Reduced post-operative sensitivity",
           "Long-lasting restoration",
           "Strengthens surrounding tooth structure"
         ]}
-        risks={([
+        risks={[
           "Standard filling risks apply",
           "Higher cost than traditional materials",
           "Not suitable for all cases",
@@ -200,10 +126,7 @@ export default function BiodentineFillingPage() {
         procedureType="Service"
       />
 
-      <ServiceFAQSchema
-        serviceName="Biodentine Fillings"
-        faqs={biodentineFAQs}
-      />
+      <ServiceFAQSchema serviceName="Biodentine Fillings" faqs={biodentineFAQs} />
 
       {/* Breadcrumb */}
       <section className="pt-24 pb-8">
@@ -298,7 +221,7 @@ export default function BiodentineFillingPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-green-500 text-white">Bioactive Technology</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-green-500 fill-current" />
                       ))}
                     </div>
@@ -341,7 +264,7 @@ export default function BiodentineFillingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(benefits || []).map((benefit) => {
               const Icon = benefit.icon;
-  return (
+              return (
                 <div key={benefit.title} className="text-center">
                   <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-green-600" />
@@ -414,7 +337,7 @@ export default function BiodentineFillingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(idealCases || []).map((case_) => {
               const Icon = case_.icon;
-  return (
+              return (
                 <Card key={case_.title} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -500,4 +423,3 @@ export default function BiodentineFillingPage() {
     </div>
   );
 }
-

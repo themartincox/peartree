@@ -23,8 +23,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
-/** @jsx React.createElement */
-
 export const metadata: Metadata = {
   title: "Boutique Whitening - Professional At-Home System | Pear Tree Dental",
   description: "Boutique whitening in Burton Joyce - professional at-home teeth whitening system. 6-8 shades whiter from £400. Book your consultation today.",
@@ -164,31 +162,11 @@ export default function BoutiqueWhiteningPage() {
   ];
 
   const comparison = [
-    {
-      feature: "Strength",
-      boutique: "Professional grade",
-      otc: "Limited strength"
-    },
-    {
-      feature: "Fit",
-      boutique: "Custom-made trays",
-      otc: "One-size-fits-all"
-    },
-    {
-      feature: "Results",
-      boutique: "6-8 shades",
-      otc: "2-3 shades"
-    },
-    {
-      feature: "Support",
-      boutique: "Professional guidance",
-      otc: "Self-guided only"
-    },
-    {
-      feature: "Safety",
-      boutique: "Dentist supervised",
-      otc: "Unsupervised use"
-    }
+    { feature: "Strength", boutique: "Professional grade", otc: "Limited strength" },
+    { feature: "Fit", boutique: "Custom-made trays", otc: "One-size-fits-all" },
+    { feature: "Results", boutique: "6-8 shades", otc: "2-3 shades" },
+    { feature: "Support", boutique: "Professional guidance", otc: "Self-guided only" },
+    { feature: "Safety", boutique: "Dentist supervised", otc: "Unsupervised use" }
   ];
 
   return (
@@ -202,14 +180,14 @@ export default function BoutiqueWhiteningPage() {
         duration="2-3 weeks home treatment"
         preparation="Dental examination, custom tray impressions"
         recovery="No downtime, possible mild sensitivity"
-        benefits={([
+        benefits={[
           "6-8 shades whiter teeth",
           "Custom-fitted treatment trays",
           "Professional-grade whitening gel",
           "Flexible at-home schedule",
           "Professional supervision"
         ]}
-        risks={([
+        risks={[
           "Mild temporary sensitivity",
           "Requires consistent daily use",
           "Not suitable for all stain types",
@@ -221,10 +199,7 @@ export default function BoutiqueWhiteningPage() {
         procedureType="Service"
       />
 
-      <ServiceFAQSchema
-        serviceName="Boutique Teeth Whitening"
-        faqs={boutiqueFAQs}
-      />
+      <ServiceFAQSchema serviceName="Boutique Teeth Whitening" faqs={boutiqueFAQs} />
 
       {/* Breadcrumb */}
       <section className="pt-24 pb-8">
@@ -321,7 +296,7 @@ export default function BoutiqueWhiteningPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">At-Home System</Badge>
                     <div className="flex space-x-1">
-                      {([...Array(5)] || []).map((_, i) => (
+                      {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>
@@ -364,7 +339,7 @@ export default function BoutiqueWhiteningPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(features || []).map((feature) => {
               const Icon = feature.icon;
-  return (
+              return (
                 <Card
                   key={feature.title}
                   className={`text-center hover:shadow-lg transition-shadow ${
@@ -577,4 +552,3 @@ export default function BoutiqueWhiteningPage() {
     </div>
   );
 }
-
