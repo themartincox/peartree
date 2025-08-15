@@ -25,12 +25,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// TypeScript interfaces
+ TypeScript interfaces
 interface Service {
   id: string;
   title: string;
   description: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: React.ComponentType<any>;
   theme: "medical" | "cosmetic";
   treatments: string[];
@@ -91,7 +91,7 @@ const ServiceCard = ({
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
+            <div className="absolute inset-0 bg-black group-hover:bg-black transition-all duration-300"></div>
           </div>
         )}
 
@@ -99,7 +99,7 @@ const ServiceCard = ({
         <div className="relative z-10 h-full flex flex-col">
           <CardHeader className="pb-4 flex-grow">
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg bg-white/90 backdrop-blur-sm hover:scale-105 hover:rotate-1 transition-all duration-200">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg bg-white backdrop-blur-sm hover:scale-105 hover:rotate-1 transition-all duration-200">
                 <Icon
                   className={`w-6 h-6 sm:w-7 sm:h-7 ${
                     isTeal ? "text-dental-green" : "text-pear-gold"
@@ -110,7 +110,7 @@ const ServiceCard = ({
               {/* Mobile expand/collapse button */}
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="sm:hidden p-2 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white transition-colors"
+                className="sm:hidden p-2 rounded-full bg-white backdrop-blur-sm hover:bg-white transition-colors"
                 aria-label={isExpanded ? "Collapse details" : "Expand details"}
               >
                 {isExpanded ? (
@@ -126,7 +126,7 @@ const ServiceCard = ({
                 {service.title}
               </CardTitle>
             </Link>
-            <CardDescription className="text-white/90 text-sm sm:text-base drop-shadow-md">
+            <CardDescription className="text-white text-sm sm:text-base drop-shadow-md">
               {service.description}
             </CardDescription>
           </CardHeader>
@@ -140,7 +140,7 @@ const ServiceCard = ({
                 {service.treatments.map((treatment: string) => (
                   <div key={treatment} className="flex items-center space-x-2">
                     <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
-                    <span className="text-xs sm:text-sm text-white/90 drop-shadow-md">
+                    <span className="text-xs sm:text-sm text-white drop-shadow-md">
                       {treatment}
                     </span>
                   </div>
@@ -151,7 +151,7 @@ const ServiceCard = ({
               <Link href={service.href}>
                 <div className="hover:scale-105 transition-transform duration-200">
                   <Button
-                    className="w-full group/btn text-sm bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-xl"
+                    className="w-full group/btn text-sm bg-white hover:bg-white text-pear-primary hover:text-pear-gold transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-xl"
                     size="sm"
                   >
                     Explore {service.title}
@@ -168,7 +168,7 @@ const ServiceCard = ({
 };
 
 const ServicesContent = () => {
-  // Animation variants for staggered card entrance
+   Animation variants for staggered card entrance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -342,7 +342,7 @@ const ServicesContent = () => {
             <ServiceCard
               key={service.id}
               service={service}
-              index={index + 3} // Offset for bottom row animation
+              index={index + 3}  Offset for bottom row animation
               cardVariants={cardVariants}
               iconVariants={iconVariants}
             />
@@ -356,7 +356,7 @@ const ServicesContent = () => {
           <div className="hover:scale-105 transition-transform duration-200">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white font-semibold"
+              className="bg-gradient-to-r from-pear-primary to-pear-primary text-white font-semibold"
             >
               Book Now
             </Button>

@@ -91,7 +91,7 @@ const allServices: ServiceNavItem[] = [
 const ServiceNavigation = () => {
   const pathname = usePathname();
 
-  // Find current service index
+   Find current service index
   const currentIndex = allServices.findIndex(
     (service) => pathname.includes(service.id) || pathname === service.href,
   );
@@ -165,7 +165,7 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold/40 transition-colors duration-300">
+                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold transition-colors duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-3">
                       <motion.div
@@ -201,7 +201,7 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-primary hover:border-pear-primary/40 transition-colors duration-300 bg-gradient-to-br from-pear-primary/5 to-pear-primary">
+                <Card className="h-full border-2 border-pear-primary hover:border-pear-primary transition-colors duration-300 bg-gradient-to-br from-pear-primary to-pear-primary">
                   <CardContent className="p-6 text-center">
                     <motion.div
                       className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-pear-gold transition-colors"
@@ -230,7 +230,7 @@ const ServiceNavigation = () => {
                 whileHover="hover"
                 className="group cursor-pointer"
               >
-                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold/40 transition-colors duration-300">
+                <Card className="h-full border-2 border-pear-gold hover:border-pear-gold transition-colors duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3 mb-3">
                       <motion.div
@@ -268,7 +268,7 @@ const ServiceNavigation = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-pear-gold to-pear-gold/80 hover:from-pear-gold/90 hover:to-pear-gold text-white font-semibold px-8"
+                className="bg-gradient-to-r from-pear-gold to-pear-gold hover:from-pear-gold hover:to-pear-gold text-white font-semibold px-8"
               >
                 Join Our Membership Plan
               </Button>

@@ -353,11 +353,11 @@ export default function ClearCorrectPage() {
                     at a more accessible price point without compromising on quality.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-indigo-600">20-30%</div>
                       <div className="text-gray-600">More affordable</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-indigo-600">6-18</div>
                       <div className="text-gray-600">Months treatment</div>
                     </div>
@@ -581,13 +581,13 @@ export default function ClearCorrectPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Start Your Affordable Smile Transformation
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Get the straight smile you've always wanted with ClearCorrect. Effective treatment
                 at an affordable price - book your consultation today.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-indigo-600 hover:bg-white font-semibold">
                   Book ClearCorrect Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -598,7 +598,7 @@ export default function ClearCorrectPage() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £2,400 • 6-18 months treatment • 95% invisible
               </div>
             </CardContent>

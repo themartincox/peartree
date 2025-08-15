@@ -200,7 +200,7 @@ export default function UltraThinVeneersPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/50 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-soft-pink text-pear-primary">
@@ -235,7 +235,7 @@ export default function UltraThinVeneersPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-white"
+                className="bg-dental-green hover:bg-dental-green text-white"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Book Consultation

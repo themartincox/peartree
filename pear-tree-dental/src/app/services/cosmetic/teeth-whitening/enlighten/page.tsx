@@ -279,7 +279,7 @@ export default function EnlightenWhiteningPage() {
                     The only whitening system in the world that can guarantee
                     the whitest natural tooth shade - B1.
                   </p>
-                  <div className="bg-white/50 p-4 rounded-lg">
+                  <div className="bg-white p-4 rounded-lg">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-orange-600">100%</div>
                       <div className="text-sm text-gray-600">Success Rate to B1 Shade</div>
@@ -419,7 +419,7 @@ export default function EnlightenWhiteningPage() {
                   <div className="text-center">
                     <Award className="w-16 h-16 text-white mx-auto mb-4" />
                     <h3 className="text-2xl font-semibold mb-2">Gold Standard</h3>
-                    <p className="text-white/90">
+                    <p className="text-white">
                       Enlighten is the only whitening system that guarantees
                       a B1 shade result every time.
                     </p>
@@ -428,11 +428,11 @@ export default function EnlightenWhiteningPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
                     <div className="text-center">
                       <div className="text-3xl font-bold">B1</div>
-                      <div className="text-sm text-white/80">Guaranteed Shade</div>
+                      <div className="text-sm text-white">Guaranteed Shade</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold">3+</div>
-                      <div className="text-sm text-white/80">Years Results</div>
+                      <div className="text-sm text-white">Years Results</div>
                     </div>
                   </div>
                 </div>
@@ -450,13 +450,13 @@ export default function EnlightenWhiteningPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for Guaranteed Results?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Experience the only whitening system that guarantees a B1 shade.
                 Book your Enlighten consultation today and discover the difference.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-orange-600 hover:bg-white font-semibold">
                   Book Enlighten Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -465,7 +465,7 @@ export default function EnlightenWhiteningPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 Investment: {getTreatmentPrice("Enlighten Whitening")} • B1 Shade Guaranteed • 3+ Year Results
               </div>
             </CardContent>

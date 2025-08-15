@@ -143,7 +143,7 @@ export default function NottinghamDentistPage() {
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-8 text-dental-navy leading-relaxed">
               Award-winning dental care with modern facilities and expert team.
               <br className="hidden sm:block" />
               Comprehensive treatment from £10.95/month with membership plans.
@@ -153,7 +153,7 @@ export default function NottinghamDentistPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -174,7 +174,7 @@ export default function NottinghamDentistPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               <div className="flex flex-col items-center space-y-2">
                 <Star className="h-6 w-6 text-dental-green" />
-                <span className="text-2xl font-bold">4.9/5</span>
+                <span className="text-2xl font-bold">4.9</span>
                 <span className="text-sm">Patient Rating</span>
               </div>
               <div className="flex flex-col items-center space-y-2">
@@ -211,7 +211,7 @@ export default function NottinghamDentistPage() {
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Building2 className="h-6 w-6 text-white" />
@@ -250,7 +250,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="h-6 w-6 text-white" />
@@ -285,7 +285,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Heart className="h-6 w-6 text-white" />
@@ -318,7 +318,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-white" />
@@ -353,7 +353,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="h-6 w-6 text-white" />
@@ -386,7 +386,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-6 w-6 text-white" />
@@ -696,7 +696,7 @@ export default function NottinghamDentistPage() {
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-dental-green">
                     Essential Care
@@ -722,7 +722,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green bg-dental-green/5 relative">
+              <Card className="p-6 border-2 border-dental-green bg-dental-green relative">
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <span className="bg-dental-green text-white px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
@@ -753,7 +753,7 @@ export default function NottinghamDentistPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center">
                   <CardTitle className="text-2xl text-dental-green">
                     Family Plan
@@ -788,7 +788,7 @@ export default function NottinghamDentistPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-white font-semibold px-8 py-4"
               >
                 <Link href="/membership">View All Membership Plans</Link>
               </Button>

@@ -116,7 +116,7 @@ export default function MapperlyPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -370,7 +370,7 @@ export default function MapperlyPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -597,7 +597,7 @@ export default function MapperlyPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-navy hover:bg-dental-navy/90 text-white font-semibold px-8 py-4"
+                className="bg-dental-navy hover:bg-dental-navy text-white font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

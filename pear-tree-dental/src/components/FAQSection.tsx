@@ -470,7 +470,7 @@ const FAQSection = (): React.JSX.Element => {
         <Card className="max-w-6xl mx-auto overflow-hidden shadow-xl border border-pear-primary">
           <div className="grid grid-cols-1 lg:grid-cols-4">
             {/* Category Tabs Sidebar */}
-            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary/90 p-4 sm:p-6">
+            <div className="lg:col-span-1 bg-gradient-to-b from-pear-primary to-pear-primary p-4 sm:p-6">
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">
                 Choose Category
               </h3>
@@ -483,12 +483,12 @@ const FAQSection = (): React.JSX.Element => {
                       key={key}
                       onClick={() => {
                         setActiveTab(key);
-                        setOpenQuestion(null); // Close any open questions when switching tabs
+                        setOpenQuestion(null);  Close any open questions when switching tabs
                       }}
                       className={`w-full text-left p-2 sm:p-3 rounded-lg transition-all duration-300 ${
                         activeTab === key
                           ? "bg-white text-pear-primary shadow-lg"
-                          : "text-white/80 hover:text-white hover:bg-white"
+                          : "text-white hover:text-white hover:bg-white"
                       }`}
                     >
                       <div className="flex items-center space-x-2 sm:space-x-3">
@@ -507,7 +507,7 @@ const FAQSection = (): React.JSX.Element => {
                 <h4 className="text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
                   Still have questions?
                 </h4>
-                <div className="text-xs sm:text-sm text-white/90 space-y-1 sm:space-y-2">
+                <div className="text-xs sm:text-sm text-white space-y-1 sm:space-y-2">
                   <p>
                     Call us:{" "}
                     <span className="font-semibold">0115 931 2935</span>
@@ -604,7 +604,7 @@ const FAQSection = (): React.JSX.Element => {
               <Link href="/services/general">
                 <Button
                   size="lg"
-                  className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
+                  className="bg-dental-green hover:bg-dental-green text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
                 >
                   <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Book Now

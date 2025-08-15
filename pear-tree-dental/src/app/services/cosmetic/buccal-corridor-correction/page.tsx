@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     canonical:
       "https://peartree.dental/services/cosmetic/buccal-corridor-correction",
   },
-  // Add performance optimizations
+   Add performance optimizations
   other: {
     "preload-bcc-smile-thumb": "/images/buccal-corridor/BCC-smile-thumb.webp",
     "preload-bcc-before-large": "/images/before-after/BCC-before-large.webp",
@@ -402,7 +402,7 @@ export default function BuccalCorridorCorrectionPage() {
 
                   {/* Label */}
                   <div className="absolute bottom-2 left-2 right-2">
-                    <p className="text-xs text-gray-700 text-center bg-white/80 rounded-lg py-1 px-2">
+                    <p className="text-xs text-gray-700 text-center bg-white rounded-lg py-1 px-2">
                       Before & After comparison showing buccal corridor
                       reduction
                     </p>
@@ -483,7 +483,7 @@ export default function BuccalCorridorCorrectionPage() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gradient-to-r from-soft-pink/5 to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-r from-soft-pink to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -598,7 +598,7 @@ export default function BuccalCorridorCorrectionPage() {
       </section>
 
       {/* Why Choose Pear Tree Dental Section */}
-      <section className="py-16 bg-gradient-to-r from-soft-pink/5 to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-r from-soft-pink to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -702,10 +702,10 @@ export default function BuccalCorridorCorrectionPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(process || []).map((step, index) => {
               const colorClasses = [
-                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
-                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
-                "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
-                "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90",
+                "bg-gradient-to-br from-pear-primary to-pear-primary",
+                "bg-gradient-to-br from-pear-gold to-pear-gold",
+                "bg-gradient-to-br from-pear-primary to-pear-gold",
+                "bg-gradient-to-br from-pear-gold to-pear-primary",
               ];
               return (
                 <Card
@@ -725,7 +725,7 @@ export default function BuccalCorridorCorrectionPage() {
                   </CardContent>
                   {index < process.length - 1 && (
                     <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                      <ArrowRight className="w-8 h-8 text-pear-gold/60" />
+                      <ArrowRight className="w-8 h-8 text-pear-gold" />
                     </div>
                   )}
                 </Card>
@@ -833,7 +833,7 @@ export default function BuccalCorridorCorrectionPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Fall in Love with Your Smile?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Your perfect smile is waiting, and we can't wait to help you
                 discover it. At Pear Tree Dental, we don't just correct buccal
                 corridors - we unlock the full potential of your smile and
@@ -844,7 +844,7 @@ export default function BuccalCorridorCorrectionPage() {
                 <Link href="/book">
                   <Button
                     size="lg"
-                    className="bg-white text-pinky hover:bg-white/90 font-semibold"
+                    className="bg-white text-pinky hover:bg-white font-semibold"
                   >
                     Book Personal Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -853,7 +853,7 @@ export default function BuccalCorridorCorrectionPage() {
                 <a href="tel:01159312935">
                   <Button
                     size="lg"
-                    className="bg-white text-pinky hover:bg-white/90 border-2 border-white"
+                    className="bg-white text-pinky hover:bg-white border-2 border-white"
                   >
                     Call 0115 931 2935
                   </Button>
@@ -861,7 +861,7 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="text-center">
-                <p className="text-white/80 italic text-lg">
+                <p className="text-white italic text-lg">
                   "At Pear Tree Dental, we believe that everyone deserves a
                   smile that lights up their world. Let us help you discover
                   yours."

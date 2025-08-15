@@ -180,9 +180,9 @@ const ServicesPage = (): React.JSX.Element => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 text-white relative overflow-hidden">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary text-white relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-48 translate-x-48" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-pear-gold rounded-full translate-y-32 -translate-x-32" />
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -199,7 +199,7 @@ const ServicesPage = (): React.JSX.Element => {
               Comprehensive Dental Services
             </h1>
 
-            <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl sm:text-2xl text-white mb-8 leading-relaxed max-w-3xl mx-auto">
               From routine care to smile transformations, we offer the full
               spectrum of dental treatments in our state-of-the-art Burton Joyce
               practice.
@@ -209,7 +209,7 @@ const ServicesPage = (): React.JSX.Element => {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4"
+                className="bg-white text-pear-primary hover:bg-white font-semibold px-8 py-4"
               >
                 <Link href="/contact">
                   <CalendarDays className="w-5 h-5 mr-2" />
@@ -258,7 +258,7 @@ const ServicesPage = (): React.JSX.Element => {
               return (
                 <Card
                   key={service.id}
-                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-dental-green bg-white backdrop-blur-sm h-full relative overflow-hidden"
                 >
                   {/* Background Image */}
                   {service.image && (
@@ -271,7 +271,7 @@ const ServicesPage = (): React.JSX.Element => {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {/* Dark overlay for text readability */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-black group-hover:bg-black transition-all duration-300"></div>
                     </div>
                   )}
 
@@ -279,7 +279,7 @@ const ServicesPage = (): React.JSX.Element => {
                   <div className="relative z-10 h-full flex flex-col">
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
                           <ServiceIcon
                             className={`w-6 h-6 ${
                               service.color === "red-500"
@@ -304,7 +304,7 @@ const ServicesPage = (): React.JSX.Element => {
                       </h3>
                     </CardHeader>
                     <CardContent className="pt-0 flex-grow">
-                      <p className="text-white/90 mb-6 leading-relaxed drop-shadow-md">
+                      <p className="text-white mb-6 leading-relaxed drop-shadow-md">
                         {service.description}
                       </p>
 
@@ -315,7 +315,7 @@ const ServicesPage = (): React.JSX.Element => {
                             className="flex items-center space-x-2"
                           >
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
-                            <span className="text-sm text-white/90 drop-shadow-md">
+                            <span className="text-sm text-white drop-shadow-md">
                               {feature}
                             </span>
                           </div>
@@ -324,7 +324,7 @@ const ServicesPage = (): React.JSX.Element => {
 
                       <Button
                         asChild
-                        className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
+                        className="w-full bg-white hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
                       >
                         <Link href={service.href}>
                           Learn More
@@ -341,7 +341,7 @@ const ServicesPage = (): React.JSX.Element => {
       </section>
 
       {/* Cosmetic Services Section */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-br from-soft-pink to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge
@@ -366,7 +366,7 @@ const ServicesPage = (): React.JSX.Element => {
               return (
                 <Card
                   key={service.id}
-                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink bg-white/80 backdrop-blur-sm h-full relative overflow-hidden"
+                  className="group hover:shadow-2xl transition-all duration-300 border-2 hover:border-soft-pink bg-white backdrop-blur-sm h-full relative overflow-hidden"
                 >
                   {/* Background Image */}
                   {service.image && (
@@ -379,7 +379,7 @@ const ServicesPage = (): React.JSX.Element => {
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       {/* Dark overlay for text readability */}
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black transition-all duration-300"></div>
+                      <div className="absolute inset-0 bg-black group-hover:bg-black transition-all duration-300"></div>
                     </div>
                   )}
 
@@ -387,7 +387,7 @@ const ServicesPage = (): React.JSX.Element => {
                   <div className="relative z-10 h-full flex flex-col">
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
+                        <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
                           <ServiceIcon className="w-6 h-6 text-soft-pink" />
                         </div>
                         <Badge
@@ -402,7 +402,7 @@ const ServicesPage = (): React.JSX.Element => {
                       </h3>
                     </CardHeader>
                     <CardContent className="pt-0 flex-grow">
-                      <p className="text-white/90 mb-6 leading-relaxed drop-shadow-md">
+                      <p className="text-white mb-6 leading-relaxed drop-shadow-md">
                         {service.description}
                       </p>
 
@@ -413,7 +413,7 @@ const ServicesPage = (): React.JSX.Element => {
                             className="flex items-center space-x-2"
                           >
                             <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0 drop-shadow-md" />
-                            <span className="text-sm text-white/90 drop-shadow-md">
+                            <span className="text-sm text-white drop-shadow-md">
                               {feature}
                             </span>
                           </div>
@@ -422,7 +422,7 @@ const ServicesPage = (): React.JSX.Element => {
 
                       <Button
                         asChild
-                        className="w-full bg-white/90 hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
+                        className="w-full bg-white hover:bg-white text-pear-primary hover:text-pear-gold transition-colors backdrop-blur-sm shadow-lg"
                       >
                         <Link href={service.href}>
                           Learn More
@@ -457,7 +457,7 @@ const ServicesPage = (): React.JSX.Element => {
                 href="/about/team"
                 className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-gold/90 transition-all duration-300">
+                <div className="w-16 h-16 bg-pear-gold rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-gold transition-all duration-300">
                   <Users className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-gold transition-colors">
@@ -472,7 +472,7 @@ const ServicesPage = (): React.JSX.Element => {
                 href="/about/practice"
                 className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-dental-green/90 transition-all duration-300">
+                <div className="w-16 h-16 bg-dental-green rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-dental-green transition-all duration-300">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-dental-green transition-colors">
@@ -487,7 +487,7 @@ const ServicesPage = (): React.JSX.Element => {
                 href="/contact"
                 className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-soft-pink/90 transition-all duration-300">
+                <div className="w-16 h-16 bg-soft-pink rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-soft-pink transition-all duration-300">
                   <Clock className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-soft-pink transition-colors">
@@ -504,10 +504,10 @@ const ServicesPage = (): React.JSX.Element => {
                 rel="noopener noreferrer"
                 className="text-center group hover:scale-105 transition-all duration-300 cursor-pointer"
               >
-                <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-primary/90 transition-all duration-300">
+                <div className="w-16 h-16 bg-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:bg-pear-primary transition-all duration-300">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-primary/80 transition-colors">
+                <h3 className="font-semibold text-pear-primary mb-2 group-hover:text-pear-primary transition-colors">
                   5-Star Care
                 </h3>
                 <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors">
@@ -520,13 +520,13 @@ const ServicesPage = (): React.JSX.Element => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 text-white">
+      <section className="py-16 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Ready to Start Your Dental Journey?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
               Take the first step towards optimal oral health and a confident
               smile. Our team is here to provide personalized care tailored to
               your needs.
@@ -536,7 +536,7 @@ const ServicesPage = (): React.JSX.Element => {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-pear-primary hover:bg-white/90 font-semibold px-8 py-4"
+                className="bg-white text-pear-primary hover:bg-white font-semibold px-8 py-4"
               >
                 <Link href="/contact">
                   <CalendarDays className="w-5 h-5 mr-2" />
@@ -557,7 +557,7 @@ const ServicesPage = (): React.JSX.Element => {
             </div>
 
             <div className="mt-8 pt-8 border-t border-white">
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-white/80">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 text-sm text-white">
                 <div className="flex items-center space-x-2">
                   <Phone className="w-4 h-4" />
                   <span>0115 931 2935</span>

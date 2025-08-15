@@ -26,7 +26,7 @@ export default function ServiceWorkerRegistration() {
 
       setRegistration(reg);
 
-      // Check for updates
+       Check for updates
       reg.addEventListener("updatefound", () => {
         const newWorker = reg.installing;
         if (newWorker) {
@@ -42,13 +42,13 @@ export default function ServiceWorkerRegistration() {
         }
       });
 
-      // Handle controlled by service worker
+       Handle controlled by service worker
       navigator.serviceWorker.addEventListener("controllerchange", () => {
         console.log("[PWA] Controller changed, reloading page.");
         window.location.reload();
       });
 
-      // Check for waiting service worker
+       Check for waiting service worker
       if (reg.waiting) {
         setUpdateAvailable(true);
       }
@@ -65,7 +65,7 @@ export default function ServiceWorkerRegistration() {
     }
   };
 
-  // PWA Install Prompt
+   PWA Install Prompt
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
@@ -78,7 +78,7 @@ export default function ServiceWorkerRegistration() {
 
     window.addEventListener("beforeinstallprompt", handler);
 
-    // Check if app is already installed
+     Check if app is already installed
     if (window.matchMedia?.("(display-mode: standalone)").matches) {
       setShowInstallPrompt(false);
     }
@@ -89,10 +89,10 @@ export default function ServiceWorkerRegistration() {
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
 
-    // Show the install prompt
+     Show the install prompt
     (deferredPrompt as any).prompt();
 
-    // Wait for the user's response
+     Wait for the user's response
     const { outcome } = await (deferredPrompt as any).userChoice;
 
     if (outcome === "accepted") {
@@ -101,7 +101,7 @@ export default function ServiceWorkerRegistration() {
       console.log("[PWA] User dismissed the install prompt");
     }
 
-    // Clear the deferred prompt
+     Clear the deferred prompt
     setDeferredPrompt(null);
     setShowInstallPrompt(false);
   };

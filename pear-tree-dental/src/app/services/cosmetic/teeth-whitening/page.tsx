@@ -229,13 +229,13 @@ export default function TeethWhiteningPage() {
 
                 {/* Results Summary */}
                 <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                  <div className="bg-white backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
                     <div className="font-semibold text-yellow-600 text-lg">
                       Up to 8 Shades
                     </div>
                     <div className="text-gray-600">Whiter in weeks</div>
                   </div>
-                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                  <div className="bg-white backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
                     <div className="font-semibold text-yellow-600 text-lg">
                       10+ Years
                     </div>
@@ -317,13 +317,13 @@ export default function TeethWhiteningPage() {
 
               {/* Results Summary */}
               <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                <div className="bg-white backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
                   <div className="font-semibold text-yellow-600 text-lg">
                     Up to 8 Shades
                   </div>
                   <div className="text-gray-600">Whiter in weeks</div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
+                <div className="bg-white backdrop-blur-sm p-4 rounded-lg border border-yellow-200">
                   <div className="font-semibold text-yellow-600 text-lg">
                     10+ Years
                   </div>
@@ -560,7 +560,7 @@ export default function TeethWhiteningPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for a Brighter Smile?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Book your free consultation today and discover which whitening
                 system is perfect for you. Start your journey to a more
                 confident, radiant smile.
@@ -570,7 +570,7 @@ export default function TeethWhiteningPage() {
                 <Link href="/book">
                   <Button
                     size="lg"
-                    className="bg-white text-yellow-600 hover:bg-white/90 font-semibold"
+                    className="bg-white text-yellow-600 hover:bg-white font-semibold"
                   >
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />

@@ -189,7 +189,7 @@ const treatmentCategories = [
 const stats = [
   {
     icon: Star,
-    value: "4.9/5",
+    value: "4.9",
     label: "Average Rating",
     detail: "From 450+ reviews"
   },
@@ -280,7 +280,7 @@ export default function TestimonialsPage() {
               {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <Card key={stat.label} className="border-2 border-pear-gold bg-white/80">
+                  <Card key={stat.label} className="border-2 border-pear-gold bg-white">
                     <CardContent className="p-6 text-center">
                       <div className="w-12 h-12 bg-pear-gold rounded-full flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-pear-gold" />
@@ -296,7 +296,7 @@ export default function TestimonialsPage() {
 
             {/* Quick Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold">
+              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary text-white font-semibold">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Consultation
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -322,7 +322,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Featured Testimonials */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary/5 to-pear-gold/5">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-gold">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -335,9 +335,9 @@ export default function TestimonialsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(featuredTestimonials || []).map((testimonial) => (
-              <Card key={testimonial.id} className="relative hover:shadow-xl transition-all duration-300 border-2 border-pear-gold bg-white/90">
+              <Card key={testimonial.id} className="relative hover:shadow-xl transition-all duration-300 border-2 border-pear-gold bg-white">
                 {/* Featured Badge */}
-                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-pear-gold to-pear-gold text-white text-center py-2 text-sm font-semibold">
                   ⭐ Featured Success Story
                 </div>
 
@@ -494,7 +494,7 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Trust Signals Section */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary/5 to-dental-green/5">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-dental-green">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -541,18 +541,18 @@ export default function TestimonialsPage() {
       {/* CTA Section */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white overflow-hidden">
+          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Write Your Success Story?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Join thousands of satisfied patients who have transformed their smiles and lives
                 at Pear Tree Dental. Your journey to a perfect smile starts here.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white font-semibold">
                   <Calendar className="w-5 h-5 mr-2" />Book Your Consultationn
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>

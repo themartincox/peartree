@@ -346,7 +346,7 @@ export default function PatientEducationPage() {
                 return (
                   <Card
                     key={stat.label}
-                    className="border-2 border-pear-primary bg-white/80 flex-1"
+                    className="border-2 border-pear-primary bg-white flex-1"
                   >
                     <CardContent className="p-6 text-center">
                       <div className="w-12 h-8 bg-pear-primary rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -368,7 +368,7 @@ export default function PatientEducationPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold"
+                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Consultation
@@ -388,7 +388,7 @@ export default function PatientEducationPage() {
       </section>
 
       {/* Quick Access Categories */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary/5 to-pear-gold/5">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-gold">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -450,7 +450,7 @@ export default function PatientEducationPage() {
                 className="group hover:shadow-xl transition-all duration-300 border-2 border-pear-gold"
               >
                 {/* Featured Badge */}
-                <div className="bg-gradient-to-r from-pear-gold to-pear-gold/80 text-white text-center py-2 text-sm font-semibold">
+                <div className="bg-gradient-to-r from-pear-gold to-pear-gold text-white text-center py-2 text-sm font-semibold">
                   ⭐ Featured Guide
                 </div>
 
@@ -512,7 +512,7 @@ export default function PatientEducationPage() {
                     {/* Action Buttons */}
                     <div className="flex space-x-3">
                       <Button
-                        className="flex-1 bg-pear-primary hover:bg-pear-primary/90 text-white"
+                        className="flex-1 bg-pear-primary hover:bg-pear-primary text-white"
                         asChild
                       >
                         <Link href={article.href}>
@@ -567,12 +567,12 @@ export default function PatientEducationPage() {
       {/* Newsletter Signup */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white overflow-hidden">
+          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Stay Informed About Your Oral Health
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Subscribe to our monthly newsletter for the latest dental health
                 tips, treatment updates, and exclusive educational content
                 delivered to your inbox.
@@ -586,7 +586,7 @@ export default function PatientEducationPage() {
                     placeholder="Enter your email address"
                     className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
                   />
-                  <Button className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <Button className="bg-white text-pear-primary hover:bg-white font-semibold">
                     Subscribe
                   </Button>
                 </div>
@@ -631,7 +631,7 @@ export default function PatientEducationPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold"
+                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Consultation

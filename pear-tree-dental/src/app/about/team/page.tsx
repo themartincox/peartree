@@ -25,7 +25,7 @@ const principals = [
     qualifications: "MD, BDS",
     role: "Principal Dentist",
     gdc: "290378",
-    image: "https://ext.same-assets.com/523564123/2131251075.jpeg",
+    image: "https:ext.same-assets.com23564123/2131251075.jpeg",
     description:
       "With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques.",
   },
@@ -34,7 +34,7 @@ const principals = [
     qualifications: "BDS, MFDS",
     role: "Principal Dentist",
     gdc: "252578",
-    image: "https://ext.same-assets.com/523564123/3375693680.jpeg",
+    image: "https:ext.same-assets.com23564123/3375693680.jpeg",
     description:
       "Imrana brings specialised expertise in restorative and aesthetic dentistry, ensuring our patients receive the most advanced treatments available.",
   },
@@ -46,7 +46,7 @@ const associates = [
     qualifications: "BDS LDS RCS",
     role: "Associate Dentist",
     gdc: "60861",
-    image: "https://ext.same-assets.com/523564123/686632134.jpeg",
+    image: "https:ext.same-assets.com23564123/686632134.jpeg",
     description:
       "With years of experience in general and restorative dentistry, Janet provides compassionate care with a gentle approach.",
   },
@@ -55,7 +55,7 @@ const associates = [
     qualifications: "BDS",
     role: "Associate Dentist",
     gdc: "264893",
-    image: "https://ext.same-assets.com/523564123/410337074.jpeg",
+    image: "https:ext.same-assets.com23564123/410337074.jpeg",
     description:
       "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health.",
   },
@@ -65,7 +65,7 @@ const supportTeam = [
   {
     name: "Kirsten Pownall",
     role: "Practice Manager",
-    image: "https://ext.same-assets.com/523564123/1366642287.jpeg",
+    image: "https:ext.same-assets.com23564123/1366642287.jpeg",
     description:
       "Kirsten ensures the smooth operation of our practice and coordinates patient care to provide an exceptional experience.",
   },
@@ -73,14 +73,14 @@ const supportTeam = [
     name: "Jade Taore",
     qualifications: "BSc (Hons)",
     role: "Dental Therapist",
-    image: "https://ext.same-assets.com/523564123/221362571.jpeg",
+    image: "https:ext.same-assets.com23564123/221362571.jpeg",
     description:
       "Jade specialises in preventive treatments and oral health education, working closely with our dentists to maintain your oral health.",
   },
   {
     name: "Lee-Anne Smith",
     role: "Hygienist",
-    image: "https://ext.same-assets.com/523564123/3263532149.png",
+    image: "https:ext.same-assets.com23564123/3263532149.png",
     description:
       "Lee-Anne provides professional cleaning and hygiene treatments, helping you maintain healthy gums and teeth.",
   },
@@ -90,32 +90,32 @@ const nurses = [
   {
     name: "Amy Simpson",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2699379883.jpeg",
+    image: "https:ext.same-assets.com23564123/2699379883.jpeg",
   },
   {
     name: "Madiyah Qadeer",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2850927388.jpeg",
+    image: "https:ext.same-assets.com23564123/2850927388.jpeg",
   },
   {
     name: "Caitlin Swinscoe",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/4087775093.jpeg",
+    image: "https:ext.same-assets.com2356412387775093.jpeg",
   },
   {
     name: "Hannah Buckley",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2850927388.jpeg",
+    image: "https:ext.same-assets.com23564123/2850927388.jpeg",
   },
   {
     name: "Katy Parkes",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/1108163630.jpeg",
+    image: "https:ext.same-assets.com23564123/1108163630.jpeg",
   },
   {
     name: "Sarah Simpson",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/1195986396.jpeg",
+    image: "https:ext.same-assets.com23564123/1195986396.jpeg",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
+      <section className="relative py-20 bg-gradient-to-br from-pear-primary to-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="flex justify-center mb-6">
@@ -183,7 +183,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover rounded-full border-4 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R2Q=="
                       />
                     </div>
                     <h3 className="heading-serif text-2xl font-bold text-pear-primary mb-2">
@@ -249,7 +249,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover rounded-full border-4 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R2Q=="
                       />
                     </div>
                     <h3 className="heading-serif text-xl font-bold text-pear-primary mb-2">
@@ -315,7 +315,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover rounded-full border-3 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R2Q=="
                       />
                     </div>
                     <h3 className="heading-serif text-lg font-bold text-pear-primary mb-2">
@@ -375,7 +375,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover rounded-full border-2 border-pear-primary"
                         loading="lazy"
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R2Q=="
                       />
                     </div>
                     <h3 className="heading-serif text-sm font-bold text-pear-primary mb-1">
@@ -393,7 +393,7 @@ export default function TeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
+      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
@@ -412,7 +412,7 @@ export default function TeamPage() {
               </a>
               <a
                 href="/membership"
-                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold/90 transition-colors duration-300"
+                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold transition-colors duration-300"
               >
                 Join Our Practice
               </a>

@@ -93,7 +93,7 @@ export default function TreatmentComparisonPage() {
           button: 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700',
           outline: 'border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white'
         };
-      default: // gray and slate
+      default:  gray and slate
         return {
           badge: 'bg-gray-500 text-white',
           border: 'border-gray-200 hover:border-gray-300',
@@ -842,26 +842,26 @@ export default function TreatmentComparisonPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Still Unsure? Get Expert Guidance
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Every situation is unique. Book a free consultation with our dental experts
                 to get personalized recommendations based on your specific needs, budget, and goals.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                     Call 0115 931 2935
                   </Button>
                 </a>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
                 <div className="flex items-center justify-center space-x-2">
                   <CheckCircle className="w-4 h-4" />
                   <span>Expert Assessment</span>

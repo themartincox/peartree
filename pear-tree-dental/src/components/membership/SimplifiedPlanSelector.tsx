@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// Define the simplified plan data including family plan
+ Define the simplified plan data including family plan
 const plans = [
   {
     id: "essentials",
@@ -92,39 +92,39 @@ const plans = [
 ];
 
 export default function SimplifiedPlanSelector() {
-  const [selectedPlan, setSelectedPlan] = useState(plans[1].id); // Default to Premium (Most Popular)
+  const [selectedPlan, setSelectedPlan] = useState(plans[1].id);  Default to Premium (Most Popular)
   const [scrollY, setScrollY] = useState(0);
   const [buttonPosition, setButtonPosition] = useState({
     bottom: 32,
     left: "50%",
   });
 
-  // Handle scroll for floating button positioning
+   Handle scroll for floating button positioning
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       setScrollY(scrollPosition);
 
-      // Get all sections by their common class or structure
+       Get all sections by their common class or structure
       const sections = document.querySelectorAll("section");
       let currentSectionBottom = 0;
       let isNearSectionEnd = false;
 
-      // Find current section and check if we're near the end
+       Find current section and check if we're near the end
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         const sectionTop = scrollPosition + rect.top;
         const sectionBottom = sectionTop + rect.height;
 
-        // Check if we're currently in this section
+         Check if we're currently in this section
         if (
           scrollPosition >= sectionTop - 100 &&
           scrollPosition < sectionBottom - 100
         ) {
           const sectionProgress = (scrollPosition - sectionTop) / rect.height;
 
-          // If we're more than 75% through the section, position button at section end
+           If we're more than 75% through the section, position button at section end
           if (sectionProgress > 0.75) {
             isNearSectionEnd = true;
             currentSectionBottom = sectionBottom;
@@ -133,7 +133,7 @@ export default function SimplifiedPlanSelector() {
       });
 
       if (isNearSectionEnd) {
-        // Calculate button position relative to section end
+         Calculate button position relative to section end
         const sectionEndOnScreen = currentSectionBottom - scrollPosition;
         const buttonBottom = Math.max(
           32,
@@ -145,7 +145,7 @@ export default function SimplifiedPlanSelector() {
           left: "50%",
         });
       } else {
-        // Normal floating position
+         Normal floating position
         setButtonPosition({
           bottom: 32,
           left: "50%",
@@ -185,7 +185,7 @@ export default function SimplifiedPlanSelector() {
                 className={`h-full ${
                   selectedPlan === plan.id
                     ? "ring-2 ring-pear-primary ring-offset-2"
-                    : "hover:border-pear-primary/50"
+                    : "hover:border-pear-primary"
                 } cursor-pointer transition-all duration-200 ${
                   plan.sticker === "Most Popular" ? "scale-105" : ""
                 } ${
@@ -211,7 +211,7 @@ export default function SimplifiedPlanSelector() {
                     <span className="text-sm font-medium"> / MONTH</span>
                   </div>
                   {plan.type === "family" && (
-                    <p className="text-sm text-white/90 text-center mt-1 font-medium">
+                    <p className="text-sm text-white text-center mt-1 font-medium">
                       2 Adults + up to 3 Children
                     </p>
                   )}
@@ -246,7 +246,7 @@ export default function SimplifiedPlanSelector() {
                   <Button
                     className={`w-full ${
                       plan.type === "family" && selectedPlan === plan.id
-                        ? "bg-gradient-to-r from-pear-primary to-dental-green hover:from-pear-primary/90 hover:to-dental-green/90"
+                        ? "bg-gradient-to-r from-pear-primary to-dental-green hover:from-pear-primary hover:to-dental-green"
                         : ""
                     }`}
                     variant={selectedPlan === plan.id ? "default" : "outline"}

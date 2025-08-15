@@ -52,13 +52,13 @@ export default function JobsToBeDonePage() {
     priority: "medium",
   });
 
-  // Load jobs from localStorage on component mount
+   Load jobs from localStorage on component mount
   useEffect(() => {
     const savedJobs = localStorage.getItem("jobsToBeDone");
     if (savedJobs) {
       setJobs(JSON.parse(savedJobs));
     } else {
-      // Add some sample data
+       Add some sample data
       const sampleJobs: JobItem[] = [
         {
           id: "1",
@@ -86,7 +86,7 @@ export default function JobsToBeDonePage() {
     }
   }, []);
 
-  // Save jobs to localStorage whenever jobs change
+   Save jobs to localStorage whenever jobs change
   useEffect(() => {
     if (jobs.length > 0) {
       localStorage.setItem("jobsToBeDone", JSON.stringify(jobs));

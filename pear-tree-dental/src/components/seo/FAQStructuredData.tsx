@@ -25,7 +25,7 @@ export default function FAQStructuredData({
         text: faq.answer,
       },
     })),
-    // Add category-specific properties
+     Add category-specific properties
     ...(category && {
       about: {
         "@type": "MedicalProcedure",

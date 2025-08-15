@@ -2,11 +2,11 @@ import React from "react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
-// Critical above-the-fold components - loaded immediately
+ Critical above-the-fold components - loaded immediately
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
-// Import our beautiful welcoming loaders
+ Import our beautiful welcoming loaders
 import {
   DentalTeamLoader,
   DiverseSmilesLoader,
@@ -15,7 +15,7 @@ import {
   HappyPatientLoader,
 } from "@/components/WelcomingLoader";
 
-// Below-the-fold components - loaded dynamically for better performance with welcoming loaders
+ Below-the-fold components - loaded dynamically for better performance with welcoming loaders
 const ServicesOverview = dynamic(
   () => import("@/components/ServicesOverview"),
   {
@@ -63,7 +63,7 @@ import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
-// Generate metadata based on A/B test variant
+ Generate metadata based on A/B test variant
 export async function generateMetadata(): Promise<Metadata> {
   const variant = await getVariant();
   const variantMetadata = getVariantMetadata(variant);
@@ -71,7 +71,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: variantMetadata.title,
     description: variantMetadata.description,
-    // Include variant info for debugging (invisible in production)
+     Include variant info for debugging (invisible in production)
     other: {
       "x-ab-variant": variant,
     },
@@ -79,10 +79,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  // Get variant server-side for SSR
+   Get variant server-side for SSR
   const variant = await getVariant();
 
-  // Homepage FAQs - consolidated from general practice questions
+   Homepage FAQs - consolidated from general practice questions
   const homepageFAQs = [
     {
       question: "How often should I visit the dentist for a check-up?",

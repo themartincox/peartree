@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// For now, return a simple blog post page since this appears to be placeholder content
+ For now, return a simple blog post page since this appears to be placeholder content
 interface BlogPost {
   slug: string;
   title: string;
@@ -11,7 +11,7 @@ interface BlogPost {
   author: string;
 }
 
-// Mock blog posts for now
+ Mock blog posts for now
 const blogPosts: BlogPost[] = [
   {
     slug: "dental-health-tips",

@@ -530,7 +530,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
       </section>
 
       {/* Why Choose Pear Tree Section */}
-      <section className="py-16 bg-gradient-to-r from-soft-pink/5 to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-r from-soft-pink to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -627,7 +627,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Transform Your Smile?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Book your cosmetic dentistry consultation today and discover how
                 we can help you achieve the smile of your dreams.
               </p>
@@ -636,7 +636,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                 <Link href="/book">
                   <Button
                     size="lg"
-                    className="bg-white text-pinky hover:bg-white/90 font-semibold"
+                    className="bg-white text-pinky hover:bg-white font-semibold"
                   >
                     Book Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
@@ -645,7 +645,7 @@ export default function CosmeticDentistryPage(): React.JSX.Element {
                 <a href="tel:01159312935">
                   <Button
                     size="lg"
-                    className="bg-white text-pinky hover:bg-white/90 border-2 border-white"
+                    className="bg-white text-pinky hover:bg-white border-2 border-white"
                   >
                     Call 0115 931 2935
                   </Button>

@@ -44,8 +44,8 @@ export default function LocalBusinessSchema({
     image: "https://peartree.dental/images/practice-exterior.jpg",
     logo: "https://peartree.dental/logo.png",
     sameAs: [
-      "https://www.facebook.com/peartreeDental",
-      "https://www.instagram.com/peartree_dental/",
+      "https:www.facebook.com/peartreeDental",
+      "https:www.instagram.com/peartree_dental/",
     ],
     founder: {
       "@type": "Person",
@@ -252,7 +252,7 @@ export default function LocalBusinessSchema({
       },
     ],
     areaServed: [
-      // Main practice location
+       Main practice location
       {
         "@type": "City",
         name: "Burton Joyce",
@@ -261,7 +261,7 @@ export default function LocalBusinessSchema({
           name: "Nottinghamshire",
         },
       },
-      // Major cities and towns served
+       Major cities and towns served
       {
         "@type": "City",
         name: "Nottingham",
@@ -342,7 +342,7 @@ export default function LocalBusinessSchema({
           name: "Nottinghamshire",
         },
       },
-      // Postal code areas served
+       Postal code areas served
       {
         "@type": "PostalCodeArea",
         postalCode: "NG14",
@@ -430,9 +430,9 @@ export default function LocalBusinessSchema({
   };
 
   if (includeDentistSpecific) {
-    // Add comprehensive dental-specific schema
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     Add comprehensive dental-specific schema
+     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Preventive Dentistry",
@@ -450,8 +450,8 @@ export default function LocalBusinessSchema({
       "Family Dentistry",
     ];
 
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).availableService = [
       {
         "@type": "MedicalProcedure",
@@ -540,13 +540,13 @@ export default function LocalBusinessSchema({
       },
     ];
 
-    // Add medical organization specific properties
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     Add medical organization specific properties
+     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).isAcceptingNewPatients = true;
 
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).healthPlanNetworkTier = [
       "NHS",
       "Private",

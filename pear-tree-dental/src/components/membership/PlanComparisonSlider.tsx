@@ -14,7 +14,7 @@ import {
 import { Slider } from "@/components/ui/slider";
 import PriceComparisonTooltip from "../price-comparison-tooltip";
 
-// Define the plan data
+ Define the plan data
 const plans = [
   {
     id: "plan-a",
@@ -23,8 +23,8 @@ const plans = [
     color: "plan-a",
     features: ["1 Dental check up a year", "1 Scale & Polish a year"],
     perDay: 0.36,
-    savings: 118, // Annual savings compared to paying individually
-    normalPrice: 247.6, // Price without the plan
+    savings: 118,  Annual savings compared to paying individually
+    normalPrice: 247.6,  Price without the plan
   },
   {
     id: "plan-b",
@@ -83,7 +83,7 @@ export default function PlanComparisonSlider() {
   const [selectedPlan, setSelectedPlan] = useState(plans[1]);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  // Convert slider value to a plan
+   Convert slider value to a plan
   useEffect(() => {
     const planIndex = Math.min(
       Math.floor(sliderValue[0] / (100 / plans.length)),
@@ -98,12 +98,12 @@ export default function PlanComparisonSlider() {
     }
   }, [sliderValue, selectedPlan.id]);
 
-  // Format price function
+   Format price function
   const formatPrice = (price: number) => {
     return `£${price.toFixed(2)}`;
   };
 
-  // Format as pence
+   Format as pence
   const formatPence = (price: number) => {
     return `${(price * 100).toFixed(0)}p`;
   };
@@ -165,7 +165,7 @@ export default function PlanComparisonSlider() {
                         <span className="text-xl ml-1 opacity-90">/month</span>
                       </PriceComparisonTooltip>
                     </div>
-                    <div className="text-center mt-1 text-white/80 text-sm">
+                    <div className="text-center mt-1 text-white text-sm">
                       Just {formatPence(selectedPlan.perDay)} per day
                     </div>
                   </CardHeader>
@@ -202,7 +202,7 @@ export default function PlanComparisonSlider() {
 
                   <CardFooter className="px-6 pb-6 pt-2">
                     <a href="/membership/signup" className="w-full">
-                      <Button className="w-full rounded-md bg-dental-green hover:bg-dental-green/90 text-white">
+                      <Button className="w-full rounded-md bg-dental-green hover:bg-dental-green text-white">
                         Join {selectedPlan.name}
                       </Button>
                     </a>

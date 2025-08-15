@@ -129,7 +129,7 @@ export default function NG4DentalPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -194,7 +194,7 @@ export default function NG4DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Route className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Quick NG4 Routes</CardTitle>
@@ -229,7 +229,7 @@ export default function NG4DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold">
                 <CardHeader className="text-center pb-4">
                   <Zap className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Avoid City Traffic</CardTitle>
@@ -248,7 +248,7 @@ export default function NG4DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary">
                 <CardHeader className="text-center pb-4">
                   <Clock className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">NG4 Flexible Times</CardTitle>
@@ -472,7 +472,7 @@ export default function NG4DentalPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -526,7 +526,7 @@ export default function NG4DentalPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     size="lg"
-                    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
+                    className="bg-dental-green hover:bg-dental-green text-white font-semibold"
                   >
                     <UserPlus className="w-5 h-5 mr-2" />
                     Register as NG4 Patient
@@ -632,7 +632,7 @@ export default function NG4DentalPage() {
             <h2 className="text-3xl font-bold mb-6">
               Ready to Experience Convenient NG4 Dental Care?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join hundreds of NG4 families who've discovered the convenience of
               quality dental care without the city center hassle. Easy access,
               modern care, local service.
@@ -641,7 +641,7 @@ export default function NG4DentalPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
+                className="bg-white hover:bg-white text-dental-green font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

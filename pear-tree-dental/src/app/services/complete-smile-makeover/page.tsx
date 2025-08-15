@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/card";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
-// Icon mapping for benefits
+ Icon mapping for benefits
 const iconMap = {
   Star,
   Heart,
@@ -665,10 +665,10 @@ export default function CompleteSmileMakeoverPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {(process || []).map((step, index) => {
               const colorClasses = [
-                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
-                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
-                "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
-                "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90",
+                "bg-gradient-to-br from-pear-primary to-pear-primary",
+                "bg-gradient-to-br from-pear-gold to-pear-gold",
+                "bg-gradient-to-br from-pear-primary to-pear-gold",
+                "bg-gradient-to-br from-pear-gold to-pear-primary",
               ];
               const accentColors = [
                 "text-pear-primary",
@@ -679,7 +679,7 @@ export default function CompleteSmileMakeoverPage() {
               return (
                 <Card
                   key={step.step}
-                  className="text-center relative hover:shadow-xl hover:shadow-pear-gold hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 group cursor-pointer"
+                  className="text-center relative hover:shadow-xl hover:shadow-pear-gold hover:scale-105 transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50 group cursor-pointer"
                 >
                   <CardContent className="p-6">
                     <div
@@ -709,7 +709,7 @@ export default function CompleteSmileMakeoverPage() {
                   </CardContent>
                   {index < process.length - 1 && (
                     <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                      <ArrowRight className="w-8 h-8 text-pear-gold/60" />
+                      <ArrowRight className="w-8 h-8 text-pear-gold" />
                     </div>
                   )}
                 </Card>
@@ -771,7 +771,7 @@ export default function CompleteSmileMakeoverPage() {
             </Card>
 
             {/* Membership Pricing */}
-            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold/5 to-white">
+            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold to-white">
               <CardHeader className="text-center">
                 <Badge className="bg-pear-gold text-white mb-4">
                   Membership Advantage
@@ -855,7 +855,7 @@ export default function CompleteSmileMakeoverPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Transform Your Life with a New Smile
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Take the first step toward your dream smile. Book your
                 comprehensive consultation and discover how a complete smile
                 makeover can transform your confidence and life.
@@ -865,7 +865,7 @@ export default function CompleteSmileMakeoverPage() {
                 <Link href="/book">
                   <Button
                     size="lg"
-                    className="bg-white text-rose-600 hover:bg-white/90 font-semibold"
+                    className="bg-white text-rose-600 hover:bg-white font-semibold"
                   >
                     <CalendarDays className="w-5 h-5 mr-2" />
                     Book Smile Consultation
@@ -884,13 +884,13 @@ export default function CompleteSmileMakeoverPage() {
                 </a>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £2,500 • Flexible payment plans • 10% membership discount
                 available
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-8 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80">
+              <div className="mt-8 flex flex-wrap justify-center items-center gap-8 text-sm text-white">
                 <div className="flex items-center space-x-2">
                   <Users className="w-4 h-4" />
                   <span>180+ Smile Transformations</span>

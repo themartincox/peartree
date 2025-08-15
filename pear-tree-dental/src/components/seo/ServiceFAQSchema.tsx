@@ -35,7 +35,7 @@ export default function ServiceFAQSchema({
     })),
   };
 
-  // Create unique ID using pageUrl if provided, fallback to serviceName
+   Create unique ID using pageUrl if provided, fallback to serviceName
   const schemaId = pageUrl
     ? `faq-schema-${pageUrl.replace(/[^a-z0-9]/gi, "-").toLowerCase()}`
     : `faq-schema-${serviceName.replace(/\s+/g, "-").toLowerCase()}`;
@@ -51,7 +51,7 @@ export default function ServiceFAQSchema({
   );
 }
 
-// Common dental service FAQs for reuse
+ Common dental service FAQs for reuse
 export const commonDentalFAQs = {
   pricing: {
     question: "How much does this treatment cost?",

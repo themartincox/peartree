@@ -23,7 +23,7 @@ export default function BurtonJoycePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-to-br from-pear-background/50 to-white overflow-hidden">
+      <section className="relative py-24 bg-gradient-to-br from-pear-background to-white overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-dental-green rounded-full blur-3xl" />
@@ -54,7 +54,7 @@ export default function BurtonJoycePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group"
+                  className="bg-dental-green hover:bg-dental-green text-white font-semibold group"
                 >
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Appointment
@@ -344,7 +344,7 @@ export default function BurtonJoycePage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                  className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
@@ -385,7 +385,7 @@ export default function BurtonJoycePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-white"
+                className="bg-dental-green hover:bg-dental-green text-white"
               >
                 View All Services
               </Button>
@@ -470,7 +470,7 @@ export default function BurtonJoycePage() {
           </div>
 
           <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-dental-green to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-r from-dental-green to-dental-green rounded-2xl p-8 max-w-2xl mx-auto">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1 text-dental-green">
                   {Array.from({ length: 5 }).map((_, i) => (
@@ -478,7 +478,7 @@ export default function BurtonJoycePage() {
                   ))}
                 </div>
                 <span className="text-2xl font-bold text-dental-green">
-                  4.9/5
+                  4.9
                 </span>
               </div>
               <p className="text-gray-700 font-semibold">
@@ -490,13 +490,13 @@ export default function BurtonJoycePage() {
       </section>
 
       {/* Local CTA */}
-      <section className="py-16 bg-gradient-to-r from-dental-green to-dental-green/90 text-white">
+      <section className="py-16 bg-gradient-to-r from-dental-green to-dental-green text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Book Your Appointment Today
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join hundreds of Burton Joyce residents who trust us with their
               dental care. Call us today or book online for your convenience.
             </p>
@@ -504,7 +504,7 @@ export default function BurtonJoycePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 size="lg"
-                className="bg-white text-dental-green hover:bg-white/90 font-semibold"
+                className="bg-white text-dental-green hover:bg-white font-semibold"
               >
                 <CalendarDays className="w-5 h-5 mr-2" />
                 Book Online
@@ -520,7 +520,7 @@ export default function BurtonJoycePage() {
             </div>
 
             {/* Local Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
               <div className="flex items-center justify-center space-x-2">
                 <MapPin className="w-4 h-4" />
                 <span>Local Burton Joyce practice</span>

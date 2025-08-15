@@ -212,7 +212,7 @@ export default function WeddingDaySmilePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50/50 via-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-pink-50">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Wedding Day Smile Makeover"
@@ -337,7 +337,7 @@ export default function WeddingDaySmilePage() {
 
                 {/* Floating testimonial */}
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/50 backdrop-blur-sm rounded-lg p-4 shadow-lg">
+                  <div className="bg-white backdrop-blur-sm rounded-lg p-4 shadow-lg">
                     <div className="flex items-center space-x-3">
                       <div className="flex space-x-1">
                         <Star className="w-4 h-4 text-pear-gold fill-current" />
@@ -462,8 +462,8 @@ export default function WeddingDaySmilePage() {
             {(treatmentTimeline || []).map((treatment, index) => {
               const Icon = treatment.icon;
               const colorClasses = [
-                "bg-gradient-to-br from-pear-primary to-pear-primary/80",
-                "bg-gradient-to-br from-pear-gold to-pear-gold/80",
+                "bg-gradient-to-br from-pear-primary to-pear-primary",
+                "bg-gradient-to-br from-pear-gold to-pear-gold",
                 "bg-gradient-to-br from-rose-500 to-pink-500",
               ];
               const borderColors = [
@@ -707,7 +707,7 @@ export default function WeddingDaySmilePage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Your Journey to "I Do" with a Smile You'll Love
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let dental imperfections dim your inner radiance on your
                 wedding day. Contact Pear Tree Dental today to schedule a
                 consultation with our friendly team. We'll discuss your goals,
@@ -719,7 +719,7 @@ export default function WeddingDaySmilePage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
                   size="lg"
-                  className="bg-white text-rose-600 hover:bg-white/90 font-semibold"
+                  className="bg-white text-rose-600 hover:bg-white font-semibold"
                 >
                   <Heart className="w-5 h-5 mr-2" />
                   Book Your Bridal Consultation
@@ -735,7 +735,7 @@ export default function WeddingDaySmilePage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80 mb-6">
+              <div className="text-sm text-white mb-6">
                 From £400 • Timeline-based planning • Perfect day guarantee
               </div>
 

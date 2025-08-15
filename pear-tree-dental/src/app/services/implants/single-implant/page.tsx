@@ -327,11 +327,11 @@ export default function SingleImplantPage() {
                     the most natural replacement for your missing tooth.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-teal-600">98%</div>
                       <div className="text-gray-600">Success rate</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-teal-600">3-6 months</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
@@ -520,13 +520,13 @@ export default function SingleImplantPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Replace Your Missing Tooth Today
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let one missing tooth affect your confidence and oral health.
                 A single implant provides the most natural, long-lasting solution.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-teal-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-teal-600 hover:bg-white font-semibold">
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -537,7 +537,7 @@ export default function SingleImplantPage() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 £2,500 complete treatment • 98% success rate • 25+ year lifespan
               </div>
             </CardContent>

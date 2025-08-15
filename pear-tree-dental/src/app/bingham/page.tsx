@@ -123,7 +123,7 @@ export default function BinghamPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -186,7 +186,7 @@ export default function BinghamPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Quick Journey</CardTitle>
@@ -204,7 +204,7 @@ export default function BinghamPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Family Location</CardTitle>
@@ -222,7 +222,7 @@ export default function BinghamPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary">
                 <CardHeader className="text-center pb-4">
                   <Users className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Family Service</CardTitle>
@@ -348,7 +348,7 @@ export default function BinghamPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-all hover:shadow-lg"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-all hover:shadow-lg"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -403,7 +403,7 @@ export default function BinghamPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     size="lg"
-                    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
+                    className="bg-dental-green hover:bg-dental-green text-white font-semibold"
                   >
                     <Users className="w-5 h-5 mr-2" />
                     View Family Plans
@@ -493,7 +493,7 @@ export default function BinghamPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-dental-green to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-dental-green">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -631,7 +631,7 @@ export default function BinghamPage() {
             <h2 className="text-3xl font-bold mb-6">
               Ready to Care for Your Family's Smiles?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join Bingham families who trust Pear Tree Dental for
               comprehensive, gentle dental care. Book your family consultation
               and discover stress-free dentistry.
@@ -640,7 +640,7 @@ export default function BinghamPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
+                className="bg-white hover:bg-white text-dental-green font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

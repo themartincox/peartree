@@ -323,11 +323,11 @@ export default function CompositeEdgeBondingPage() {
                     your tooth edges to perfection in just one visit.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-purple-600">30-60 mins</div>
                       <div className="text-gray-600">Per tooth</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-purple-600">5-8 years</div>
                       <div className="text-gray-600">Expected lifespan</div>
                     </div>
@@ -488,7 +488,7 @@ export default function CompositeEdgeBondingPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Transform Your Smile Today
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Experience the instant confidence boost of composite edge bonding.
                 Book your same-day transformation appointment now.
               </p>
@@ -496,7 +496,7 @@ export default function CompositeEdgeBondingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
                   size="lg"
-                  className="bg-white text-purple-600 hover:bg-white/90 font-semibold"
+                  className="bg-white text-purple-600 hover:bg-white font-semibold"
                 >
                   Book Edge Bonding
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -510,7 +510,7 @@ export default function CompositeEdgeBondingPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From {getTreatmentPrice("Composite Edge Bonding")} per tooth • Same-day results • 5-8 year lifespan
               </div>
             </CardContent>

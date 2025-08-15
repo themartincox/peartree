@@ -817,7 +817,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
             >
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+                className="bg-pear-primary hover:bg-pear-primary text-white px-8 py-4"
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Arnold
@@ -839,7 +839,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
               transparent pricing - all just 10 minutes from Arnold.
             </p>
 
-            <div className="bg-white border-2 border-white/40 rounded-xl p-6 mb-8 inline-block backdrop-blur-sm shadow-xl">
+            <div className="bg-white border-2 border-white rounded-xl p-6 mb-8 inline-block backdrop-blur-sm shadow-xl">
               <p className="text-xl font-bold mb-2">
                 <Star className="inline w-6 h-6 mr-2 text-yellow-300" />
                 Based on 450+ Arnold Patient Reviews
@@ -854,7 +854,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
               <Link href="/book">
                 <Button
                   size="lg"
-                  className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all border-3 border-yellow-300 hover:shadow-yellow-300/50"
+                  className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all border-3 border-yellow-300 hover:shadow-yellow-300"
                 >
                   <Circle className="w-6 h-6 mr-3" />
                   Book Your Visit Today
@@ -864,7 +864,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-3 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all bg-white/15 backdrop-blur-sm hover:shadow-white/50"
+                  className="border-3 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all bg-white/15 backdrop-blur-sm hover:shadow-white"
                 >
                   <Phone className="w-6 h-6 mr-3" />
                   Call: 0115 931 2935

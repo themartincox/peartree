@@ -30,7 +30,7 @@ export default function ServiceAreaSchema({
       },
     },
     areaServed: [
-      // Primary service locations with detailed coverage
+       Primary service locations with detailed coverage
       {
         "@type": "AdministrativeArea",
         name: "Nottinghamshire",
@@ -144,7 +144,7 @@ export default function ServiceAreaSchema({
           },
         ],
       },
-      // Postal code coverage areas
+       Postal code coverage areas
       {
         "@type": "PostalCodeArea",
         postalCode: "NG14",
@@ -242,7 +242,7 @@ export default function ServiceAreaSchema({
         latitude: "52.967",
         longitude: "-1.061",
       },
-      hasMap: "https://maps.google.com/?cid=pear-tree-dental-burton-joyce",
+      hasMap: "https:maps.google.com/?cid=pear-tree-dental-burton-joyce",
       isAccessibleForFree: false,
       maximumAttendeeCapacity: 50,
       smokingAllowed: false,

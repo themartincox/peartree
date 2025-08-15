@@ -210,7 +210,7 @@ const stats = [
   },
   {
     icon: Star,
-    value: "4.9/5",
+    value: "4.9",
     label: "Patient Satisfaction"
   },
   {

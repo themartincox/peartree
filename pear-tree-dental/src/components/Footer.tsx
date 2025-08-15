@@ -23,12 +23,12 @@ const Footer = () => {
               <div className="brand-logo text-xl sm:text-2xl text-white">
                 PEAR TREE
               </div>
-              <div className="brand-subtitle text-xs sm:text-sm text-white/80 mt-4px">
+              <div className="brand-subtitle text-xs sm:text-sm text-white mt-4px">
                 DENTAL
               </div>
             </div>
 
-            <p className="text-white/80 text-sm leading-relaxed">
+            <p className="text-white text-sm leading-relaxed">
               Premium dental care in Burton Joyce, Nottinghamshire. Modern
               dentistry with a personal touch, serving the local community with
               excellence since our establishment.
@@ -42,7 +42,7 @@ const Footer = () => {
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
               </div>
-              <span className="text-xs sm:text-sm text-white/80">
+              <span className="text-xs sm:text-sm text-white">
                 400+ Google Reviews
               </span>
             </div>
@@ -57,7 +57,7 @@ const Footer = () => {
             <div className="space-y-3 sm:space-y-4">
               <div className="flex items-start space-x-2 sm:space-x-3">
                 <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold mt-0.5 flex-shrink-0" />
-                <div className="text-xs sm:text-sm text-white/80">
+                <div className="text-xs sm:text-sm text-white">
                   <div>22 Nottingham Road</div>
                   <div>Burton Joyce, Nottingham</div>
                   <div>UK NG14 5AE</div>
@@ -68,7 +68,7 @@ const Footer = () => {
                 <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
                 <a
                   href="tel:01159312935"
-                  className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors"
+                  className="text-xs sm:text-sm text-white hover:text-white transition-colors"
                 >
                   0115 931 2935
                 </a>
@@ -78,7 +78,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-pear-gold flex-shrink-0" />
                 <a
                   href="mailto:hello@peartree.dental"
-                  className="text-xs sm:text-sm text-white/80 hover:text-white transition-colors break-all"
+                  className="text-xs sm:text-sm text-white hover:text-white transition-colors break-all"
                 >
                   hello@peartree.dental
                 </a>
@@ -94,31 +94,31 @@ const Footer = () => {
 
             <div className="space-y-1 sm:space-y-2">
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Monday</span>
+                <span className="text-white">Monday</span>
                 <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Tuesday</span>
+                <span className="text-white">Tuesday</span>
                 <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Wednesday</span>
+                <span className="text-white">Wednesday</span>
                 <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Thursday</span>
+                <span className="text-white">Thursday</span>
                 <span className="text-white">8:45 am - 5 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Friday</span>
+                <span className="text-white">Friday</span>
                 <span className="text-white">8 am - 3:30 pm</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Saturday</span>
+                <span className="text-white">Saturday</span>
                 <span className="text-white">Closed</span>
               </div>
               <div className="flex justify-between text-xs sm:text-sm">
-                <span className="text-white/80">Sunday</span>
+                <span className="text-white">Sunday</span>
                 <span className="text-white">Closed</span>
               </div>
             </div>
@@ -160,25 +160,25 @@ const Footer = () => {
             <div className="space-y-2 sm:space-y-3">
               <Link
                 href="/new-patients"
-                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+                className="block text-xs sm:text-sm text-white hover:text-pear-gold transition-colors"
               >
                 New Patient Information
               </Link>
               <Link
                 href="/about/practice"
-                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+                className="block text-xs sm:text-sm text-white hover:text-pear-gold transition-colors"
               >
                 Our Practice
               </Link>
               <Link
                 href="/testimonials"
-                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+                className="block text-xs sm:text-sm text-white hover:text-pear-gold transition-colors"
               >
                 Patient Reviews
               </Link>
               <Link
                 href="/pricing"
-                className="block text-xs sm:text-sm text-white/80 hover:text-pear-gold transition-colors"
+                className="block text-xs sm:text-sm text-white hover:text-pear-gold transition-colors"
               >
                 Pricing
               </Link>
@@ -187,28 +187,28 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex space-x-3 sm:space-x-4">
               <a
-                href="https://www.facebook.com/peartreeDental"
+                href="https:www.facebook.com/peartreeDental"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-pear-gold transition-colors"
+                className="text-white hover:text-pear-gold transition-colors"
                 aria-label="Visit Pear Tree Dental on Facebook"
               >
                 <Facebook className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
-                href="https://www.instagram.com/peartree_dental/"
+                href="https:www.instagram.com/peartree_dental/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-pear-gold transition-colors"
+                className="text-white hover:text-pear-gold transition-colors"
                 aria-label="Visit Pear Tree Dental on Instagram"
               >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
-                href="https://twitter.com/peartreeDental"
+                href="https:twitter.com/peartreeDental"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/60 hover:text-pear-gold transition-colors"
+                className="text-white hover:text-pear-gold transition-colors"
                 aria-label="Visit Pear Tree Dental on Twitter"
               >
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -221,7 +221,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs sm:text-sm text-white/60">
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs sm:text-sm text-white">
             <span>© 2025 Pear Tree Dental. All rights reserved.</span>
             <div className="flex flex-wrap justify-center space-x-3 sm:space-x-4">
               <Link
@@ -245,12 +245,12 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-white/60">
+          <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs sm:text-sm text-white">
             <span>Regulated by the General Dental Council</span>
             <span>
               Website delivered by{" "}
               <a
-                href="https://www.postino.cc"
+                href="https:www.postino.cc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"

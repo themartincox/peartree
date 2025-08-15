@@ -143,7 +143,7 @@ const BeforeAfterSliderCard = ({ image }: BeforeAfterSliderCardProps) => {
           </div>
 
           {/* Instruction Text */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-xs">
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-3 py-1 rounded-full text-xs">
             Drag to compare
           </div>
         </div>

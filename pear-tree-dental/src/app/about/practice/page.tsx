@@ -123,7 +123,7 @@ export default function PracticePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream to-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
+      <section className="relative py-20 bg-gradient-to-br from-pear-primary to-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="flex justify-center mb-6">
@@ -515,7 +515,7 @@ export default function PracticePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90">
+      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
@@ -535,7 +535,7 @@ export default function PracticePage() {
               </a>
               <a
                 href="/about/team"
-                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold/90 transition-colors duration-300"
+                className="bg-pear-gold text-white px-8 py-4 rounded-full font-semibold hover:bg-pear-gold transition-colors duration-300"
               >
                 Meet Our Team
               </a>

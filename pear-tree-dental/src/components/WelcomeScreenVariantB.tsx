@@ -6,11 +6,11 @@ export default function WelcomeScreenVariantB() {
   const [showWelcome, setShowWelcome] = useState(true);
 
   useEffect(() => {
-    // Auto-hide after 1 second and scroll to main content
+     Auto-hide after 1 second and scroll to main content
     const timer = setTimeout(() => {
       setShowWelcome(false);
 
-      // Smooth scroll to main content
+       Smooth scroll to main content
       const mainContent = document.getElementById("main-content");
       if (mainContent) {
         mainContent.scrollIntoView({

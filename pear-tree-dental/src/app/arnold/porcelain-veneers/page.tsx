@@ -154,7 +154,7 @@ export default function ArnoldPorcelainVeneersPage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white py-20">
+      <section className="bg-gradient-to-br from-pear-primary to-pear-primary text-white py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -184,7 +184,7 @@ export default function ArnoldPorcelainVeneersPage() {
               <Link href="/book">
                 <Button
                   size="lg"
-                  className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full"
+                  className="bg-pear-gold hover:bg-pear-gold text-white px-8 py-4 text-lg font-semibold rounded-full"
                 >
                   <Crown className="w-5 h-5 mr-2" />
                   Book Free Veneers Consultation
@@ -491,7 +491,7 @@ export default function ArnoldPorcelainVeneersPage() {
             >
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+                className="bg-pear-primary hover:bg-pear-primary text-white px-8 py-4"
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Arnold
@@ -502,7 +502,7 @@ export default function ArnoldPorcelainVeneersPage() {
       </section>
 
       {/* Final Call to Action */}
-      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white">
+      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
@@ -529,7 +529,7 @@ export default function ArnoldPorcelainVeneersPage() {
               <Link href="/book">
                 <Button
                   size="lg"
-                  className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full"
+                  className="bg-pear-gold hover:bg-pear-gold text-white px-8 py-4 text-lg font-semibold rounded-full"
                 >
                   <Crown className="w-5 h-5 mr-2" />
                   Book Free Consultation

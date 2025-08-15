@@ -362,20 +362,20 @@ export default function DenturesPage() {
                     confidence.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-amber-600">
                         5 Types
                       </div>
                       <div className="text-gray-600">Denture options</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-amber-600">£600+</div>
                       <div className="text-gray-600">Starting price</div>
                     </div>
                   </div>
                   <Button
                     variant="secondary"
-                    className="bg-white text-amber-600 hover:bg-white/90"
+                    className="bg-white text-amber-600 hover:bg-white"
                   >
                     Compare Denture Types
                   </Button>
@@ -561,7 +561,7 @@ export default function DenturesPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Start Your Denture Journey Today
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let missing teeth hold you back. Book a consultation to
                 explore your denture options and take the first step towards a
                 restored smile.
@@ -570,7 +570,7 @@ export default function DenturesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Button
                   size="lg"
-                  className="bg-white text-amber-600 hover:bg-white/90 font-semibold"
+                  className="bg-white text-amber-600 hover:bg-white font-semibold"
                 >
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -584,7 +584,7 @@ export default function DenturesPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £600 • Expert fitting • Natural appearance • Comfortable
                 function
               </div>

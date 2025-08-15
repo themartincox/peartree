@@ -90,31 +90,31 @@ export default function LocationDetection() {
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
-    // Check if user has dismissed the modal this session
+     Check if user has dismissed the modal this session
     const dismissed =
       sessionStorage.getItem("locationModalDismissed") === "true";
     setIsDismissed(dismissed);
 
     if (!dismissed) {
-      // Start silent detection after a delay to be less intrusive
+       Start silent detection after a delay to be less intrusive
       setTimeout(() => {
         detectUserLocationSilently();
-      }, 8000); // Increased delay so user doesn't notice detection happening
+      }, 8000);  Increased delay so user doesn't notice detection happening
     }
   }, [detectUserLocationSilently]);
 
   const detectUserLocationSilently = async () => {
     try {
-      // Silent GPS detection only - no fallbacks to avoid any popups
+       Silent GPS detection only - no fallbacks to avoid any popups
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           async (position) => {
             const { latitude, longitude } = position.coords;
             const location = getLocationFromCoordinates(latitude, longitude);
 
-            // Only show popup if user is OUTSIDE service area and needs directions
+             Only show popup if user is OUTSIDE service area and needs directions
             if (!location && !isDismissed) {
-              // User is outside service area - show helpful directions popup
+               User is outside service area - show helpful directions popup
               setUserLocation({
                 area: "Outside Service Area",
                 postcode: "Unknown",
@@ -125,22 +125,22 @@ export default function LocationDetection() {
               });
               setIsVisible(true);
             }
-            // If user IS in service area, don't show anything - they probably know where we are
+             If user IS in service area, don't show anything - they probably know where we are
           },
           () => {
-            // GPS failed - do nothing, stay silent
-            // No IP fallback to avoid any detection indicators
+             GPS failed - do nothing, stay silent
+             No IP fallback to avoid any detection indicators
           },
           {
-            timeout: 2000, // Very short timeout
-            enableHighAccuracy: false, // Faster detection
-            maximumAge: 600000, // Use cached location for 10 minutes
+            timeout: 2000,  Very short timeout
+            enableHighAccuracy: false,  Faster detection
+            maximumAge: 600000,  Use cached location for 10 minutes
           },
         );
       }
-      // If no geolocation available, stay silent - no popups
+       If no geolocation available, stay silent - no popups
     } catch (error) {
-      // Silent failure - no indicators to user
+       Silent failure - no indicators to user
     }
   };
 
@@ -148,29 +148,29 @@ export default function LocationDetection() {
     lat: number,
     lon: number,
   ): LocationData | null => {
-    // Burton Joyce coordinates: approximately 52.9847, -1.0147
+     Burton Joyce coordinates: approximately 52.9847, -1.0147
     const burtonJoyceDistance = Math.sqrt(
       (lat - 52.9847) ** 2 + (lon - -1.0147) ** 2,
     );
 
-    // Define service area boundary (roughly 15-20 mile radius)
+     Define service area boundary (roughly 15-20 mile radius)
     if (burtonJoyceDistance < 0.3) {
-      // Within service area
-      // User is close enough - they probably know where we are
+       Within service area
+       User is close enough - they probably know where we are
       if (burtonJoyceDistance < 0.05) {
-        return LOCATION_DATA.NG14; // Very close
+        return LOCATION_DATA.NG14;  Very close
       } else if (burtonJoyceDistance < 0.1) {
-        return LOCATION_DATA.arnold; // Moderate distance
+        return LOCATION_DATA.arnold;  Moderate distance
       } else {
-        return LOCATION_DATA["west bridgford"]; // Further but still in service area
+        return LOCATION_DATA["west bridgford"];  Further but still in service area
       }
     }
 
-    // Outside service area - return null to trigger directions popup
+     Outside service area - return null to trigger directions popup
     return null;
   };
 
-  // Auto-dismiss when user navigates (except for phone calls)
+   Auto-dismiss when user navigates (except for phone calls)
   const handleNavigation = () => {
     setIsVisible(false);
     setIsDismissed(true);
@@ -180,11 +180,11 @@ export default function LocationDetection() {
   const handleDismiss = () => {
     setIsVisible(false);
     setIsDismissed(true);
-    // Remember dismissal for this session
+     Remember dismissal for this session
     sessionStorage.setItem("locationModalDismissed", "true");
   };
 
-  // Don't show anything if user has dismissed or detection isn't visible
+   Don't show anything if user has dismissed or detection isn't visible
   if (isDismissed || !isVisible || !userLocation) {
     return null;
   }
@@ -247,7 +247,7 @@ export default function LocationDetection() {
               <Button
                 asChild
                 size="sm"
-                className="flex-1 bg-dental-green hover:bg-dental-green/90 text-white"
+                className="flex-1 bg-dental-green hover:bg-dental-green text-white"
               >
                 <a href="tel:01159312935">
                   <Phone className="w-4 h-4 mr-1" />
@@ -262,7 +262,7 @@ export default function LocationDetection() {
                 onClick={handleNavigation}
               >
                 <a
-                  href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
+                  href="https:maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

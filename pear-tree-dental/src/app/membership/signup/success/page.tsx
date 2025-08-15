@@ -20,7 +20,7 @@ function MembershipSuccessContent() {
   const [membershipDetails, setMembershipDetails] = useState<any>(null);
 
   useEffect(() => {
-    // Get membership details from URL parameters
+     Get membership details from URL parameters
     const applicationId = searchParams.get("applicationId");
     const planName = searchParams.get("plan");
     const memberName = searchParams.get("name");
@@ -222,7 +222,7 @@ function MembershipSuccessContent() {
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-pear-primary hover:bg-pear-primary/90"
+                  className="bg-pear-primary hover:bg-pear-primary"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Book Appointment

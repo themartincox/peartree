@@ -210,10 +210,10 @@ export default function SmileDesignPage() {
               return (
                 <Card
                   key={index}
-                  className="p-6 border-2 border-pear-gold hover:border-pear-gold/40 transition-colors"
+                  className="p-6 border-2 border-pear-gold hover:border-pear-gold transition-colors"
                 >
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-2xl flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-gradient-to-br from-pear-gold to-pear-gold rounded-2xl flex items-center justify-center mx-auto">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <div>
@@ -237,7 +237,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="text-center mt-12">
-            <div className="bg-gradient-to-r from-pear-gold to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto border border-pear-gold">
+            <div className="bg-gradient-to-r from-pear-gold to-pear-gold rounded-2xl p-8 max-w-2xl mx-auto border border-pear-gold">
               <h3 className="text-2xl font-bold text-pear-primary mb-4">
                 Total Value: £150
               </h3>
@@ -376,7 +376,7 @@ export default function SmileDesignPage() {
             ).map((treatment, index) => (
               <Card
                 key={index}
-                className="p-6 border border-gray-200 hover:border-pear-gold/40 transition-colors"
+                className="p-6 border border-gray-200 hover:border-pear-gold transition-colors"
               >
                 <div className="space-y-4">
                   <h3 className="font-bold text-lg text-pear-primary">
@@ -407,7 +407,7 @@ export default function SmileDesignPage() {
             </p>
             <Button
               size="lg"
-              className="bg-pear-primary hover:bg-pear-primary/90 text-white"
+              className="bg-pear-primary hover:bg-pear-primary text-white"
             >
               Explore Treatment Options
             </Button>
@@ -482,13 +482,13 @@ export default function SmileDesignPage() {
       </section>
 
       {/* Booking CTA */}
-      <section className="py-16 bg-gradient-to-r from-pear-gold to-pear-gold/90 text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-gold to-pear-gold text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Ready to See Your New Smile?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Book your FREE smile design consultation today. No obligations, no
               pressure – just discover what's possible for your smile.
             </p>
@@ -496,7 +496,7 @@ export default function SmileDesignPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 size="lg"
-                className="bg-white text-pear-gold hover:bg-white/90 font-semibold"
+                className="bg-white text-pear-gold hover:bg-white font-semibold"
               >
                 <CalendarDays className="w-5 h-5 mr-2" />
                 Book FREE Consultation
@@ -512,7 +512,7 @@ export default function SmileDesignPage() {
             </div>
 
             {/* Urgency & Trust */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
               <div className="flex items-center justify-center space-x-2">
                 <Clock className="w-4 h-4" />
                 <span>Limited FREE consultations available</span>

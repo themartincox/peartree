@@ -25,10 +25,10 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
 import { cn } from "@/lib/utils";
 
-// Lazy load non-critical navigation components
+ Lazy load non-critical navigation components
 const LazyNavigationItems = lazy(() =>
   import("@/components/navigation/LazyNavigationItems").then((module) => {
-    // Performance tracking for lazy loading
+     Performance tracking for lazy loading
     if (typeof window !== "undefined" && window.performance) {
       const loadTime = performance.now();
       console.log(
@@ -47,12 +47,12 @@ const Navigation = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-  // Touch gesture handling for swipe-to-close
+   Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
   const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
 
-  // Swipe gesture detection
+   Swipe gesture detection
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -68,12 +68,12 @@ const Navigation = () => {
     const deltaX = currentX - touchStartX.current;
     const deltaY = Math.abs(currentY - touchStartY.current);
 
-    // Only consider horizontal swipes (deltaY < 50 ensures it's more horizontal than vertical)
+     Only consider horizontal swipes (deltaY < 50 ensures it's more horizontal than vertical)
     if (deltaX > 50 && deltaY < 50) {
-      // Swiping right - show visual feedback
+       Swiping right - show visual feedback
       setIsSwipeIndicatorVisible(true);
     } else if (deltaX < -20) {
-      // Swiping left - hide indicator
+       Swiping left - hide indicator
       setIsSwipeIndicatorVisible(false);
     }
   }, []);
@@ -90,13 +90,13 @@ const Navigation = () => {
     const deltaX = currentX - touchStartX.current;
     const deltaY = Math.abs(currentY - touchStartY.current);
 
-    // Swipe right to close (minimum 100px swipe, more horizontal than vertical)
+     Swipe right to close (minimum 100px swipe, more horizontal than vertical)
     if (deltaX > 100 && deltaY < 80) {
-      // Close mobile menu directly
+       Close mobile menu directly
       setIsMobileMenuOpen(false);
       setIsSwipeIndicatorVisible(false);
 
-      // Trigger escape key to close the sheet
+       Trigger escape key to close the sheet
       const escapeEvent = new KeyboardEvent("keydown", {
         key: "Escape",
         keyCode: 27,
@@ -105,26 +105,26 @@ const Navigation = () => {
       document.dispatchEvent(escapeEvent);
     }
 
-    // Reset
+     Reset
     touchStartX.current = null;
     touchStartY.current = null;
     setIsSwipeIndicatorVisible(false);
   }, []);
 
-  // Function to close mobile menu when navigation links are clicked
+   Function to close mobile menu when navigation links are clicked
   const closeMobileMenu = useCallback(() => {
-    // Add smooth close animation
+     Add smooth close animation
     const content = document.querySelector(".mobile-nav-content");
     if (content) {
       content.classList.add("exiting");
     }
 
-    // Small delay to allow animation to play
+     Small delay to allow animation to play
     setTimeout(() => {
       setIsMobileMenuOpen(false);
       setIsSwipeIndicatorVisible(false);
 
-      // Trigger escape key to close the sheet
+       Trigger escape key to close the sheet
       const escapeEvent = new KeyboardEvent("keydown", {
         key: "Escape",
         keyCode: 27,
@@ -134,16 +134,16 @@ const Navigation = () => {
     }, 150);
   }, []);
 
-  // Load secondary navigation when mobile menu is opened
+   Load secondary navigation when mobile menu is opened
   useEffect(() => {
     if (isMobileMenuOpen) {
       setShouldLoadSecondaryNav(true);
 
-      // Show swipe hint briefly when menu opens
+       Show swipe hint briefly when menu opens
       setIsSwipeIndicatorVisible(true);
       const timer = setTimeout(() => {
         setIsSwipeIndicatorVisible(false);
-      }, 3000); // Hide after 3 seconds
+      }, 3000);  Hide after 3 seconds
 
       return () => clearTimeout(timer);
     }
@@ -274,7 +274,7 @@ const Navigation = () => {
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
-                <div className="brand-subtitle text-xs text-pear-primary/90 mt-1 xl:text-center"></div>
+                <div className="brand-subtitle text-xs text-pear-primary mt-1 xl:text-center"></div>
               </div>
             </Link>
 
@@ -464,7 +464,7 @@ const Navigation = () => {
                       isSwipeIndicatorVisible && "active",
                     )}
                   >
-                    <div className="flex items-center text-pear-primary/60 text-sm">
+                    <div className="flex items-center text-pear-primary text-sm">
                       <span className="mr-1">→</span>
                       <span>Swipe</span>
                     </div>
@@ -657,7 +657,7 @@ const Navigation = () => {
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
-                <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center"></div>
+                <div className="brand-subtitle text-xs text-white mt-1 xl:text-center"></div>
               </div>
             </Link>
 
@@ -666,7 +666,7 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary/90"
+                  className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary"
                 >
                   <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />
                   Book
@@ -675,7 +675,7 @@ const Navigation = () => {
               <Link href="/membership">
                 <Button
                   size="sm"
-                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-4 py-2 h-10"
+                  className="bg-white text-pear-gold hover:bg-white font-semibold px-4 py-2 h-10"
                 >
                   Membership
                 </Button>
@@ -687,7 +687,7 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary/90"
+                  className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary"
                 >
                   Book Appointment
                 </Button>
@@ -695,7 +695,7 @@ const Navigation = () => {
               <Link href="/membership">
                 <Button
                   size="sm"
-                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs"
+                  className="bg-white text-pear-gold hover:bg-white font-semibold px-3 py-2 h-9 text-xs"
                 >
                   Explore Membership
                 </Button>
@@ -729,7 +729,7 @@ const Navigation = () => {
                     isSwipeIndicatorVisible && "active",
                   )}
                 >
-                  <div className="flex items-center text-pear-primary/60 text-sm">
+                  <div className="flex items-center text-pear-primary text-sm">
                     <span className="mr-1">→</span>
                     <span>Swipe</span>
                   </div>

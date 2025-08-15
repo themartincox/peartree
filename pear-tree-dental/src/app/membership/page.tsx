@@ -3,11 +3,11 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
 import ExaminationSection from "@/components/membership/ExaminationSection";
-// Critical components - loaded immediately
+ Critical components - loaded immediately
 import PlanSelector from "@/components/membership/PlanSelector";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import MedicalOrganizationSchema from "@/components/seo/MedicalOrganizationSchema";
-// Import welcoming loaders
+ Import welcoming loaders
 import {
   DentalTeamLoader,
   DiverseSmilesLoader,
@@ -15,7 +15,7 @@ import {
   HappyPatientLoader,
 } from "@/components/WelcomingLoader";
 
-// Non-critical components - loaded dynamically with loading states
+ Non-critical components - loaded dynamically with loading states
 const PlanComparisonSlider = dynamic(
   () => import("@/components/membership/PlanComparisonSlider"),
   {
@@ -100,7 +100,7 @@ export default function MembershipPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background/50 to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="heading-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-6">
             Simple Dental Plans

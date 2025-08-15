@@ -36,7 +36,7 @@ export default function SearchableArticleList({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
 
-  // Filter articles based on search query and category
+   Filter articles based on search query and category
   const filteredArticles = articles.filter((article) => {
     const matchesSearch =
       searchQuery === "" ||
@@ -57,7 +57,7 @@ export default function SearchableArticleList({
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    // Search is already handled by the filter effect
+     Search is already handled by the filter effect
   };
 
   return (
@@ -75,7 +75,7 @@ export default function SearchableArticleList({
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <Button
             type="submit"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-pear-primary hover:bg-pear-primary/90"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-pear-primary hover:bg-pear-primary"
           >
             Search
           </Button>
@@ -111,7 +111,7 @@ export default function SearchableArticleList({
 
       {/* Search Results Summary */}
       {(searchQuery || selectedCategory !== "All Articles") && (
-        <div className="bg-pear-primary/5 rounded-lg p-4">
+        <div className="bg-pear-primary rounded-lg p-4">
           <p className="text-pear-primary">
             {filteredArticles.length} article
             {filteredArticles.length !== 1 ? "s" : ""} found
@@ -129,7 +129,7 @@ export default function SearchableArticleList({
                 setSearchQuery("");
                 setSelectedCategory("All Articles");
               }}
-              className="mt-2 text-pear-primary hover:text-pear-primary/80"
+              className="mt-2 text-pear-primary hover:text-pear-primary"
             >
               Clear filters
             </Button>
@@ -195,7 +195,7 @@ export default function SearchableArticleList({
                   </div>
 
                   <Button
-                    className="w-full bg-pear-primary hover:bg-pear-primary/90 text-white"
+                    className="w-full bg-pear-primary hover:bg-pear-primary text-white"
                     asChild
                   >
                     <Link href={article.href}>

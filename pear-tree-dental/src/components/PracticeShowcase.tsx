@@ -24,7 +24,7 @@ const PracticeShowcase = () => {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-pear-primary/90 via-pear-primary/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-pear-primary via-pear-primary to-transparent" />
               </div>
 
               {/* Content Overlay */}
@@ -73,7 +73,7 @@ const PracticeShowcase = () => {
                     />
                   </picture>
                   {/* Subtle overlay for text readability */}
-                  <div className="absolute inset-0 bg-white/60" />
+                  <div className="absolute inset-0 bg-white" />
                 </div>
 
                 <div className="space-y-4 relative z-10">

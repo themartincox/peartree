@@ -12,7 +12,7 @@ interface WhatsAppWidgetProps {
 }
 
 export default function WhatsAppWidget({
-  phoneNumber = "447123456789", // Replace with actual practice WhatsApp number
+  phoneNumber = "447123456789",  Replace with actual practice WhatsApp number
   position = "bottom-right",
   className = "",
 }: WhatsAppWidgetProps) {
@@ -21,10 +21,10 @@ export default function WhatsAppWidget({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Get current page path for context-aware messaging
+     Get current page path for context-aware messaging
     setCurrentPage(window.location.pathname);
 
-    // Show widget after page loads
+     Show widget after page loads
     const timer = setTimeout(() => setIsVisible(true), 2000);
     return () => clearTimeout(timer);
   }, []);
@@ -58,7 +58,7 @@ export default function WhatsAppWidget({
     if (currentPage.includes("/services/")) {
       const service = currentPage
         .split("/services/")[1]
-        ?.replace(/\//g, " ")
+        ?.replace(/\g, " ")
         .replace(/-/g, " ");
       return `${baseMessage} I'd like to know more about ${service}.`;
     }
@@ -88,7 +88,7 @@ export default function WhatsAppWidget({
 
   const openWhatsApp = (message: string) => {
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https:wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
     setIsOpen(false);
   };

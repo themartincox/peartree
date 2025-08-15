@@ -307,11 +307,11 @@ export default function BoutiqueWhiteningPage() {
                     deliver results that match in-practice treatments.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">2-3 Weeks</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">6-8 Shades</div>
                       <div className="text-gray-600">Whiter teeth</div>
                     </div>
@@ -493,7 +493,7 @@ export default function BoutiqueWhiteningPage() {
                   <div className="text-center">
                     <Home className="w-16 h-16 text-white mx-auto mb-4" />
                     <h3 className="text-2xl font-semibold mb-2">At-Home Convenience</h3>
-                    <p className="text-white/90">
+                    <p className="text-white">
                       Professional results in the comfort and privacy of your own home,
                       on your own schedule.
                     </p>
@@ -502,11 +502,11 @@ export default function BoutiqueWhiteningPage() {
                   <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
                     <div className="text-center">
                       <div className="text-3xl font-bold">6-8</div>
-                      <div className="text-sm text-white/80">Shades Whiter</div>
+                      <div className="text-sm text-white">Shades Whiter</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold">2-3</div>
-                      <div className="text-sm text-white/80">Weeks Treatment</div>
+                      <div className="text-sm text-white">Weeks Treatment</div>
                     </div>
                   </div>
                 </div>
@@ -524,13 +524,13 @@ export default function BoutiqueWhiteningPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Start Your Whitening Journey
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Experience professional-grade whitening from home with Boutique.
                 Book your consultation today and discover the convenience of custom whitening.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                   Book Boutique Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -539,7 +539,7 @@ export default function BoutiqueWhiteningPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From {getTreatmentPrice("Teeth Whitening")} • 6-8 Shades Whiter • At-Home Convenience
               </div>
             </CardContent>

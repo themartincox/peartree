@@ -60,7 +60,7 @@ const Hero = () => {
 
           {/* Follow-up Text */}
           <div className="text-left mb-8">
-            <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-white leading-relaxed max-w-2xl">
               Modern dental care serving Nottingham and surrounding areas. Skip
               the NHS waiting lists with our membership plans from just
               £10.95/month.
@@ -72,7 +72,7 @@ const Hero = () => {
             <Button
               asChild
               size="lg"
-              className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold px-8 py-4 text-lg w-full"
+              className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full"
               onClick={handleBookingClick}
             >
               <Link href="/book">
@@ -126,7 +126,7 @@ const Hero = () => {
             </div>
 
             {/* Description */}
-            <p className="text-xl text-white/90 leading-relaxed max-w-lg">
+            <p className="text-xl text-white leading-relaxed max-w-lg">
               Modern dental care serving Nottingham and surrounding areas. Skip
               the NHS waiting lists with our membership plans from just
               £10.95/month.
@@ -137,7 +137,7 @@ const Hero = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
                 onClick={handleBookingClick}
               >
                 <Link href="/book">

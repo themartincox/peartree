@@ -225,7 +225,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-accent-gold hover:bg-accent-gold/90 text-primary"
+                className="bg-accent-gold hover:bg-accent-gold text-primary"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -321,7 +321,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                       {(nhsVsMembership || []).map((item, index) => (
                         <tr
                           key={index}
-                          className="border-b hover:bg-muted/50 transition-colors"
+                          className="border-b hover:bg-muted transition-colors"
                         >
                           <td className="py-4 px-4 font-medium">
                             {item.aspect}
@@ -379,7 +379,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-primary/5 border-primary">
+              <Card className="bg-primary border-primary">
                 <CardHeader className="text-center">
                   <CreditCard className="h-12 w-12 mx-auto text-primary mb-4" />
                   <CardTitle className="heading-serif">
@@ -459,7 +459,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
             </div>
 
             <div className="mt-12 text-center">
-              <Card className="bg-primary/5 border-primary p-6">
+              <Card className="bg-primary border-primary p-6">
                 <h3 className="heading-serif text-xl font-semibold mb-4">
                   Ready to Break Free from NHS Restrictions?
                 </h3>
@@ -472,7 +472,7 @@ export default function DentalHealthCentreNottinghamAlternativePage() {
                   <Button
                     asChild
                     size="lg"
-                    className="bg-accent-gold hover:bg-accent-gold/90 text-primary"
+                    className="bg-accent-gold hover:bg-accent-gold text-primary"
                   >
                     <Link href="tel:01159312935">
                       <Phone className="h-5 w-5 mr-2" />

@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 export default function OrthodonticsPage() {
-  // Consolidated FAQs including both general practice and orthodontics-specific questions
+   Consolidated FAQs including both general practice and orthodontics-specific questions
   const orthodonticsFAQs = [
     {
       question: "Where is the nearest dentist in Burton Joyce?",
@@ -156,7 +156,7 @@ export default function OrthodonticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Invisalign */}
-            <Card className="overflow-hidden shadow-xl border-2 border-soft-pink hover:border-soft-pink/40 transition-colors">
+            <Card className="overflow-hidden shadow-xl border-2 border-soft-pink hover:border-soft-pink transition-colors">
               <div className="aspect-[16] bg-gradient-to-br from-soft-pink to-soft-pink p-6 flex items-center justify-center">
                 <Image
                   src="/images/Invisalign-logo.png"
@@ -204,7 +204,7 @@ export default function OrthodonticsPage() {
             </Card>
 
             {/* ClearCorrect */}
-            <Card className="overflow-hidden shadow-xl border-2 border-soft-lavender hover:border-soft-lavender/40 transition-colors">
+            <Card className="overflow-hidden shadow-xl border-2 border-soft-lavender hover:border-soft-lavender transition-colors">
               <div className="aspect-[16] bg-gradient-to-br from-soft-lavender to-soft-lavender p-6 flex items-center justify-center">
                 <Image
                   src="/images/clearcorrect-logo.png"
@@ -244,7 +244,7 @@ export default function OrthodonticsPage() {
                   ))}
                 </ul>
                 <Link href="/services/orthodontics/clearcorrect">
-                  <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender/80 text-white">
+                  <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender text-white">
                     Learn About ClearCorrect
                   </Button>
                 </Link>
@@ -419,7 +419,7 @@ export default function OrthodonticsPage() {
               </Card>
 
               {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-pink">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-soft-pink">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-soft-pink">6-18</div>
                   <div className="text-sm text-gray-600">months average</div>
@@ -571,7 +571,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Treatment Process */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -615,7 +615,7 @@ export default function OrthodonticsPage() {
             ] || []).map((step, index) => {
               const Icon = step.icon;
               return (
-                <Card key={index} className="relative overflow-hidden border-2 border-soft-pink hover:border-soft-pink/40 transition-colors">
+                <Card key={index} className="relative overflow-hidden border-2 border-soft-pink hover:border-soft-pink transition-colors">
                   <div className="absolute top-4 right-4 w-10 h-10 bg-soft-lavender rounded-full flex items-center justify-center">
                     <span className="text-soft-lavender font-bold text-sm">{step.step}</span>
                   </div>
@@ -664,7 +664,7 @@ export default function OrthodonticsPage() {
                   { condition: "Crossbite", description: "Some upper teeth sit inside lower teeth" },
                   { condition: "Open Bite", description: "Front teeth don't meet when biting down" }
                 ] || []).map((item, index) => (
-                  <div key={index} className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-xl p-4 border border-soft-pink">
+                  <div key={index} className="bg-gradient-to-br from-soft-pink to-soft-lavender rounded-xl p-4 border border-soft-pink">
                     <h3 className="font-semibold text-pear-primary mb-2">{item.condition}</h3>
                     <p className="text-sm text-gray-600">{item.description}</p>
                   </div>
@@ -699,7 +699,7 @@ export default function OrthodonticsPage() {
 
           {/* Treatment Success Rate Stats */}
           <div className="mt-12 text-center">
-            <div className="inline-block bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-lavender">
+            <div className="inline-block bg-white rounded-2xl p-6 shadow-lg border border-soft-lavender">
               <div className="text-center">
                 <div className="text-3xl font-bold text-soft-lavender mb-2">85%</div>
                 <div className="text-sm text-gray-600">of cases treatable</div>
@@ -711,7 +711,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Pricing & Membership */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
+      <section className="py-16 bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -755,7 +755,7 @@ export default function OrthodonticsPage() {
             </Card>
 
             {/* Membership Pricing */}
-            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold/5 to-white">
+            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold to-white">
               <CardHeader className="text-center">
                 <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
                 <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
@@ -815,13 +815,13 @@ export default function OrthodonticsPage() {
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Start Your Smile Transformation
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Book your free smile assessment and discover how clear aligners can give you the confident smile you deserve.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-soft-pink hover:bg-white font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Smile Assessment
                 </Button>
@@ -835,7 +835,7 @@ export default function OrthodonticsPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80">
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white">
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>1000+ Smiles Transformed</span>

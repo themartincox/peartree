@@ -29,7 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 
-// Icon mapping to resolve string names to components
+ Icon mapping to resolve string names to components
 const iconMap = {
   ArrowRight,
   CheckCircle,
@@ -53,12 +53,12 @@ const iconMap = {
 };
 
 interface ServiceHeroProps {
-  // Basic content
+   Basic content
   title: string;
   subtitle?: string;
   description: string;
 
-  // Visual elements
+   Visual elements
   heroImage?: string;
   heroVideo?: string;
   heroVideoType?: "mp4" | "webm";
@@ -66,13 +66,13 @@ interface ServiceHeroProps {
   badgeText?: string;
   badgeIcon?: string;
 
-  // Benefits/features (up to 4)
+   Benefits/features (up to 4)
   keyBenefits?: Array<{
     text: string;
     icon?: string;
   }>;
 
-  // Call-to-action buttons
+   Call-to-action buttons
   primaryCTA?: {
     text: string;
     href?: string;
@@ -85,42 +85,42 @@ interface ServiceHeroProps {
     icon?: string;
   };
 
-  // Trust indicators
+   Trust indicators
   trustIndicators?: Array<{
     icon: string;
     text: string;
   }>;
 
-  // Stats overlay (optional)
+   Stats overlay (optional)
   stats?: {
     primary: string;
     secondary: string;
     additional?: string[];
   };
 
-  // Testimonials (optional)
+   Testimonials (optional)
   testimonials?: Array<{
     text: string;
     author: string;
   }>;
 
-  // Key points (optional)
+   Key points (optional)
   keyPoints?: string[];
 
-  // Styling options
+   Styling options
   gradientFrom?: string;
   gradientTo?: string;
   textColor?: string;
   fallbackImage?: string;
 
-  // Additional
+   Additional
   className?: string;
   layout?: string;
   theme?: string;
   priority?: "high" | "normal";
-  videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
-  mobileVideoScale?: number; // Mobile-specific video scale factor
-  hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
+  videoScale?: number;  Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  mobileVideoScale?: number;  Mobile-specific video scale factor
+  hideMembershipLink?: boolean;  Hide the membership link in secondary CTAs
 }
 
 export default function ServiceHero({
@@ -170,7 +170,7 @@ export default function ServiceHero({
     trackLocationConversion,
   } = useConversionTracking();
 
-  // Memoize service type for tracking
+   Memoize service type for tracking
   const serviceType = useMemo(() => {
     const titleLower = title.toLowerCase();
     if (titleLower.includes("emergency") || titleLower.includes("urgent"))
@@ -192,13 +192,13 @@ export default function ServiceHero({
     return "general";
   }, [title]);
 
-  // Helper function to get icon component from string
+   Helper function to get icon component from string
   const getIcon = (iconName: string | undefined) => {
     if (!iconName) return Circle;
     return iconMap[iconName as keyof typeof iconMap] || Circle;
   };
 
-  // Enhanced tracking handlers
+   Enhanced tracking handlers
   const handleServiceInterest = () => {
     trackServiceInterest(
       title,
@@ -229,15 +229,15 @@ export default function ServiceHero({
     trackLocationConversion("testimonial_engagement", "burton_joyce");
   };
 
-  // Theme classes (could be expanded for more themes)
+   Theme classes (could be expanded for more themes)
   const themeClasses = {
     background: `bg-gradient-to-br from-${gradientFrom} via-white to-${gradientTo}`,
     accent: `bg-${textColor} text-white`,
   };
 
-  // Badge icon
+   Badge icon
   const BadgeIcon = getIcon(badgeIcon);
-  // Secondary CTA icon
+   Secondary CTA icon
   const SecondaryCTAIcon = getIcon(secondaryCTA?.icon || "ArrowRight");
 
   return (
@@ -356,7 +356,7 @@ export default function ServiceHero({
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-pear-primary to-pear-primary/80 text-white font-semibold group"
+                className="bg-gradient-to-r from-pear-primary to-pear-primary text-white font-semibold group"
                 onClick={handlePhoneClick}
               >
                 <a href="tel:01159312935">
@@ -392,7 +392,7 @@ export default function ServiceHero({
                 <Button
                   asChild
                   variant="link"
-                  className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
+                  className="text-pear-primary hover:text-pear-primary underline underline-offset-4"
                   onClick={handleMembershipClick}
                 >
                   <Link href="/membership">
@@ -420,7 +420,7 @@ export default function ServiceHero({
                 <Button
                   asChild={!!secondaryCTA.href}
                   variant="link"
-                  className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
+                  className="text-pear-primary hover:text-pear-primary underline underline-offset-4"
                   onClick={secondaryCTA.onClick || handleServiceInterest}
                 >
                   {secondaryCTA.href ? (

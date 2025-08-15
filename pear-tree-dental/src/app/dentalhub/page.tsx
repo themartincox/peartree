@@ -23,9 +23,9 @@ export default function AdminDashboard() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Simple password check (in production, use proper authentication)
+   Simple password check (in production, use proper authentication)
   const handleLogin = () => {
-    // Simple password check - replace with proper auth in production
+     Simple password check - replace with proper auth in production
     if (password === "peartree2024" || password === "admin123") {
       setIsAuthenticated(true);
       setError("");

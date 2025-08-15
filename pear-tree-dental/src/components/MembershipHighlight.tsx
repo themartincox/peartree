@@ -24,7 +24,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 import { useLocationDetection } from "@/hooks/useLocationDetection";
 
-// Memoize membership data to prevent recreation on each render
+ Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   planA: {
     name: "PLAN A",
@@ -81,13 +81,13 @@ const membershipPlans = {
   },
 };
 
-// Nottingham-specific benefits component
+ Nottingham-specific benefits component
 const NottinghamMembershipBenefits = () => {
   const { isNottingham } = useLocationDetection();
   const { trackLocationConversion } = useConversionTracking();
 
-  // Only show if we've detected the user is from Nottingham
-  // No loading states - just appear seamlessly when detected
+   Only show if we've detected the user is from Nottingham
+   No loading states - just appear seamlessly when detected
   if (!isNottingham) return null;
 
   const handleCalculatorClick = () => {
@@ -95,7 +95,7 @@ const NottinghamMembershipBenefits = () => {
   };
 
   return (
-    <Card className="mt-12 bg-gradient-to-r from-dental-green/5 to-pear-primary/5 border border-dental-green overflow-hidden animate-in fade-in duration-1000">
+    <Card className="mt-12 bg-gradient-to-r from-dental-green to-pear-primary border border-dental-green overflow-hidden animate-in fade-in duration-1000">
       <CardContent className="p-8">
         <div className="text-center mb-6">
           <Badge className="bg-dental-green text-white mb-4 px-4 py-2">
@@ -214,7 +214,7 @@ const NottinghamMembershipBenefits = () => {
         <div className="text-center mt-6">
           <Button
             asChild
-            className="bg-dental-green text-white font-semibold px-6 py-3 hover:bg-dental-green/90"
+            className="bg-dental-green text-white font-semibold px-6 py-3 hover:bg-dental-green"
             onClick={handleCalculatorClick}
           >
             <Link href="/membership#plans">
@@ -236,13 +236,13 @@ const MembershipHighlight = () => {
     trackLocationConversion,
   } = useConversionTracking();
 
-  // Memoize current plan to prevent recalculation
+   Memoize current plan to prevent recalculation
   const currentPlan = useMemo(() => {
     const plan = membershipPlans[activeTab as keyof typeof membershipPlans];
     return { ...plan, Icon: plan.icon };
   }, [activeTab]);
 
-  // Handle plan selection with tracking
+   Handle plan selection with tracking
   const handlePlanSelect = (planKey: string) => {
     setActiveTab(planKey);
     const plan = membershipPlans[planKey as keyof typeof membershipPlans];
@@ -252,7 +252,7 @@ const MembershipHighlight = () => {
     );
   };
 
-  // Handle CTA clicks with tracking
+   Handle CTA clicks with tracking
   const handlePlanDetailsClick = () => {
     trackMembershipPlanSelect(
       `${currentPlan.name}_details_view`,
@@ -272,7 +272,7 @@ const MembershipHighlight = () => {
     trackBookingAttempt("membership_highlight", "booking");
   };
 
-  // Memoize tab buttons to prevent recreation
+   Memoize tab buttons to prevent recreation
   const tabButtons = useMemo(() => {
     return Object.entries(membershipPlans).map(([key, plan]) => {
       const TabIcon = plan.icon;
@@ -292,7 +292,7 @@ const MembershipHighlight = () => {
                 : key === "child"
                   ? "bg-white text-soft-pink shadow-lg transform scale-105"
                   : "bg-white text-pear-gold shadow-lg transform scale-105"
-              : "text-white/90 hover:text-white hover:bg-white"
+              : "text-white hover:text-white hover:bg-white"
           }`}
         >
           <div className="flex items-center space-x-2 sm:space-x-3">
@@ -301,7 +301,7 @@ const MembershipHighlight = () => {
               <div className="font-semibold text-sm sm:text-base">
                 {plan.name}
               </div>
-              <div className="text-xs sm:text-sm text-white/90 font-medium">
+              <div className="text-xs sm:text-sm text-white font-medium">
                 {plan.price}
                 {plan.period}
               </div>
@@ -342,9 +342,9 @@ const MembershipHighlight = () => {
         <Card className="max-w-6xl mx-auto overflow-hidden shadow-2xl bg-gradient-to-br from-white via-blue-50 to-slate-50 border-2 border-pear-primary mb-8 sm:mb-12 backdrop-blur-sm">
           <div className="grid grid-cols-1 lg:grid-cols-4">
             {/* Tabs Sidebar */}
-            <div className="lg:col-span-1 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary/90 p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+            <div className="lg:col-span-1 bg-gradient-to-br from-pear-primary via-pear-primary/95 to-pear-primary p-4 sm:p-6 lg:p-8 relative overflow-hidden">
               {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-16" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-full -translate-y-16 translate-x-16" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-pear-gold rounded-full translate-y-12 -translate-x-12" />
               <h3 className="text-white font-semibold text-base sm:text-lg mb-4 sm:mb-6">
                 Choose Your Plan
@@ -365,15 +365,15 @@ const MembershipHighlight = () => {
                   All Plans Include:
                 </h4>
                 <div className="space-y-2 text-sm">
-                  <div className="flex items-center space-x-2 text-white/90">
+                  <div className="flex items-center space-x-2 text-white">
                     <Check className="w-4 h-4 text-pear-gold" />
                     <span>Predictable monthly costs</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-white/90">
+                  <div className="flex items-center space-x-2 text-white">
                     <Check className="w-4 h-4 text-pear-gold" />
                     <span>Free child coverage options</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-white/90">
+                  <div className="flex items-center space-x-2 text-white">
                     <Check className="w-4 h-4 text-pear-gold" />
                     <span>Worldwide dental cover</span>
                   </div>
@@ -461,7 +461,7 @@ const MembershipHighlight = () => {
                 </div>
 
                 {/* Savings Highlight */}
-                <div className="bg-gradient-to-r from-pear-background to-pear-background/50 rounded-2xl p-6 border border-pear-primary">
+                <div className="bg-gradient-to-r from-pear-background to-pear-background rounded-2xl p-6 border border-pear-primary">
                   <div className="flex items-center justify-between">
                     <div className="items-center">
                       <h4 className="font-semibold text-pear-primary mb-2">

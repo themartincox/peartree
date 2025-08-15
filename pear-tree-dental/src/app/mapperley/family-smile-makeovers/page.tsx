@@ -774,7 +774,7 @@ export default function MapperleyFamilySmileMakeoversPage() {
             >
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4"
+                className="bg-pear-primary hover:bg-pear-primary text-white px-8 py-4"
               >
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Mapperley

@@ -10,9 +10,9 @@ export default function ClientSideAnalytics({
   variant,
 }: ClientSideAnalyticsProps) {
   useEffect(() => {
-    // Initialize any client-side analytics here
+     Initialize any client-side analytics here
     if (typeof window !== "undefined" && window.gtag) {
-      // Track A/B test variant if provided
+       Track A/B test variant if provided
       if (variant) {
         window.gtag("event", "ab_test_variant_view", {
           variant: variant,

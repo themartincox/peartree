@@ -98,7 +98,7 @@ export default function BeforeAfterSlider({
             </picture>
 
             {/* Before/After Toggle */}
-            <div className="absolute top-4 left-4 flex bg-black/50 rounded-lg overflow-hidden">
+            <div className="absolute top-4 left-4 flex bg-black rounded-lg overflow-hidden">
               <button
                 onClick={() => setShowAfter(false)}
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
@@ -126,14 +126,14 @@ export default function BeforeAfterSlider({
               <>
                 <button
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black hover:bg-black text-white rounded-full flex items-center justify-center transition-colors"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black hover:bg-black text-white rounded-full flex items-center justify-center transition-colors"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -154,7 +154,7 @@ export default function BeforeAfterSlider({
                     className={`w-2 h-2 rounded-full transition-colors ${
                       index === currentIndex
                         ? "bg-white"
-                        : "bg-white/50 hover:bg-white/75"
+                        : "bg-white hover:bg-white/75"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />

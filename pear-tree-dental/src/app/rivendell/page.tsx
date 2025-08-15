@@ -127,7 +127,7 @@ export default function RivendellPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -191,7 +191,7 @@ export default function RivendellPage() {
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-dental-green to-dental-green/5 rounded-xl p-6">
+                <div className="bg-gradient-to-r from-dental-green to-dental-green rounded-xl p-6">
                   <h3 className="text-2xl font-bold mb-6 text-dental-navy">
                     New Home Checklist
                   </h3>
@@ -430,7 +430,7 @@ export default function RivendellPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
@@ -485,7 +485,7 @@ export default function RivendellPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     size="lg"
-                    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
+                    className="bg-dental-green hover:bg-dental-green text-white font-semibold"
                   >
                     <UserPlus className="w-5 h-5 mr-2" />
                     Register Your Family
@@ -578,7 +578,7 @@ export default function RivendellPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-dental-green to-pear-gold/5 rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-dental-green to-pear-gold rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-dental-green">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -586,7 +586,7 @@ export default function RivendellPage() {
                     ))}
                   </div>
                   <span className="text-2xl font-bold text-dental-green">
-                    4.9/5
+                    4.9
                   </span>
                 </div>
                 <p className="text-gray-700 font-semibold">
@@ -711,7 +711,7 @@ export default function RivendellPage() {
             <h2 className="text-3xl font-bold mb-6">
               Ready to Register Your Family?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join the growing Rivendell community who trust Pear Tree Dental
               with their family's oral health. Easy registration, warm welcome,
               and dental care you can trust.
@@ -720,7 +720,7 @@ export default function RivendellPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
+                className="bg-white hover:bg-white text-dental-green font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

@@ -300,13 +300,13 @@ export default function HygieneServicesPage(): React.JSX.Element {
                     overall health.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-cyan-600">
                         Every 6 months
                       </div>
                       <div className="text-gray-600">Recommended frequency</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-cyan-600">
                         30-45 mins
                       </div>
@@ -315,7 +315,7 @@ export default function HygieneServicesPage(): React.JSX.Element {
                   </div>
                   <Button
                     variant="secondary"
-                    className="bg-white text-cyan-600 hover:bg-white/90"
+                    className="bg-white text-cyan-600 hover:bg-white"
                   >
                     Learn More About Benefits
                   </Button>
@@ -523,7 +523,7 @@ export default function HygieneServicesPage(): React.JSX.Element {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Book Your Hygiene Appointment
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Take the first step towards optimal oral health. Our expert
                 hygienists are ready to help you maintain a healthy, beautiful
                 smile.
@@ -533,7 +533,7 @@ export default function HygieneServicesPage(): React.JSX.Element {
                 <Link href="/book">
                   <Button
                     size="lg"
-                    className="bg-white text-cyan-600 hover:bg-white/90 font-semibold"
+                    className="bg-white text-cyan-600 hover:bg-white font-semibold"
                   >
                     Book Hygiene Appointment
                     <ArrowRight className="w-5 h-5 ml-2" />

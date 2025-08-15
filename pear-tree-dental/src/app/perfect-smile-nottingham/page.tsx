@@ -846,7 +846,7 @@ export default function PerfectSmileNottinghamPage() {
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Start Your Perfect Smile Journey in Nottingham Today
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Your perfect smile is waiting, and we're excited to help you
               discover it. During your personalised consultation, we'll work
               together to create your vision and plan your transformation.
@@ -906,13 +906,13 @@ export default function PerfectSmileNottinghamPage() {
               </a>
             </div>
 
-            <p className="text-white/90 text-lg font-medium italic mb-6">
+            <p className="text-white text-lg font-medium italic mb-6">
               "Take the first step towards your perfect smile today. Don't wait
               - your confidence and happiness are worth it."
             </p>
 
             <div className="text-center">
-              <p className="text-white/80 text-sm">
+              <p className="text-white text-sm">
                 Your perfect smile journey starts with a single consultation.
               </p>
             </div>

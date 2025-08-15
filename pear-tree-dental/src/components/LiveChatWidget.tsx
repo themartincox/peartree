@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
-// Avatar component not used to avoid import issues
+ Avatar component not used to avoid import issues
 
 interface Message {
   id: string;
@@ -41,7 +41,7 @@ export default function LiveChatWidget({
   useEffect(() => {
     setCurrentPage(window.location.pathname);
 
-    // Show widget after page loads
+     Show widget after page loads
     const timer = setTimeout(() => setIsVisible(true), 3000);
     return () => clearTimeout(timer);
   }, []);
@@ -87,7 +87,7 @@ export default function LiveChatWidget({
         "system",
       );
 
-      // Add context-aware quick replies based on current page
+       Add context-aware quick replies based on current page
       setTimeout(() => {
         const quickReplies = getContextualQuickReplies();
         quickReplies.forEach((reply, index) => {
@@ -148,7 +148,7 @@ export default function LiveChatWidget({
       addMessage(newMessage, "user");
       setNewMessage("");
 
-      // Simulate agent typing
+       Simulate agent typing
       setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
@@ -226,7 +226,7 @@ export default function LiveChatWidget({
 
   const positionClasses = {
     "bottom-left": "bottom-6 left-6",
-    "bottom-right": "bottom-6 right-96", // Positioned to avoid WhatsApp widget
+    "bottom-right": "bottom-6 right-96",  Positioned to avoid WhatsApp widget
   };
 
   if (!isVisible) return null;

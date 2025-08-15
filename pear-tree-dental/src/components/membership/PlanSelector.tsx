@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// Define the plan data
+ Define the plan data
 const plans = [
   {
     id: "plan-a",
@@ -74,17 +74,17 @@ const plans = [
   },
 ];
 
-// Plan color gradient classes - Using brand colors with complementary bridging
+ Plan color gradient classes - Using brand colors with complementary bridging
 const planGradientClasses = {
-  "plan-a": "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white", // Essential: Green (matches live)
-  "plan-b": "bg-gradient-to-r from-teal-400 to-teal-500 text-white", // Routine: Teal bridge (less bold, connects green to dark teal)
-  "plan-c": "bg-gradient-to-r from-slate-600 to-slate-700 text-white", // Complete: Dark teal (was Routine Care's color)
-  "plan-d": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Complete Plus: Brand gold gradient
-  "plan-e": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Periodontal: Brand gold gradient
+  "plan-a": "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white",  Essential: Green (matches live)
+  "plan-b": "bg-gradient-to-r from-teal-400 to-teal-500 text-white",  Routine: Teal bridge (less bold, connects green to dark teal)
+  "plan-c": "bg-gradient-to-r from-slate-600 to-slate-700 text-white",  Complete: Dark teal (was Routine Care's color)
+  "plan-d": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white",  Complete Plus: Brand gold gradient
+  "plan-e": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white",  Periodontal: Brand gold gradient
 };
 
 export default function PlanSelector() {
-  const [selectedPlan, setSelectedPlan] = useState(plans[2].id); // Default to Complete Care (Most Popular)
+  const [selectedPlan, setSelectedPlan] = useState(plans[2].id);  Default to Complete Care (Most Popular)
 
   return (
     <section id="plans" className="py-12 md:py-24">
@@ -112,7 +112,7 @@ export default function PlanSelector() {
                 className={`h-full flex flex-col ${
                   selectedPlan === plan.id
                     ? "ring-2 ring-pear-primary ring-offset-2"
-                    : "hover:border-pear-primary/50"
+                    : "hover:border-pear-primary"
                 } cursor-pointer transition-all duration-200`}
                 onClick={() => setSelectedPlan(plan.id)}
               >
@@ -198,7 +198,7 @@ export default function PlanSelector() {
           <a href="/membership/signup">
             <Button
               size="lg"
-              className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white"
+              className="rounded-full bg-dental-green hover:bg-dental-green text-white"
             >
               Join {plans.find((p) => p.id === selectedPlan)?.name} Now
             </Button>
@@ -225,7 +225,7 @@ export default function PlanSelector() {
                 className={`border-2 cursor-pointer transition-all duration-200 ${
                   selectedPlan === "family"
                     ? "border-pear-primary ring-2 ring-pear-primary ring-offset-2"
-                    : "border-pear-primary hover:border-pear-primary/70"
+                    : "border-pear-primary hover:border-pear-primary"
                 }`}
                 onClick={() => setSelectedPlan("family")}
               >
@@ -245,7 +245,7 @@ export default function PlanSelector() {
                         2 Adults + up to 3 Children
                       </p>
                       <div className="mt-4">
-                        <span className="inline-flex bg-white/40 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-pear-primary">
+                        <span className="inline-flex bg-white backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold text-pear-primary">
                           £1.65 per day for the whole family
                         </span>
                       </div>
@@ -299,7 +299,7 @@ export default function PlanSelector() {
                           className="inline-block"
                         >
                           <Button
-                            className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90"
+                            className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary"
                             size="lg"
                           >
                             Join Plan
@@ -307,7 +307,7 @@ export default function PlanSelector() {
                         </a>
                       ) : (
                         <Button
-                          className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary/90"
+                          className="w-full md:w-auto px-8 bg-pear-primary hover:bg-pear-primary"
                           size="lg"
                         >
                           Select Plan
@@ -341,7 +341,7 @@ export default function PlanSelector() {
           <a href={`/membership/signup?plan=${selectedPlan}`}>
             <Button
               size="lg"
-              className="rounded-full bg-dental-green hover:bg-dental-green/90 text-white"
+              className="rounded-full bg-dental-green hover:bg-dental-green text-white"
             >
               Join{" "}
               {selectedPlan === "family"

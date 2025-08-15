@@ -12,12 +12,12 @@ export default function EmergencyConversionTracking() {
   } = useConversionTracking();
 
   useEffect(() => {
-    // Track emergency page visit
+     Track emergency page visit
     trackServiceInterest("Emergency Dental Care", "emergency");
 
-    // Add click tracking to emergency CTAs
+     Add click tracking to emergency CTAs
     const setupClickTracking = () => {
-      // Primary emergency phone CTAs
+       Primary emergency phone CTAs
       const emergencyPhonePrimary = document.getElementById(
         "emergency-phone-primary",
       );
@@ -28,7 +28,7 @@ export default function EmergencyConversionTracking() {
         "emergency-phone-final",
       );
 
-      // Secondary CTAs
+       Secondary CTAs
       const emergencyDirections = document.getElementById(
         "emergency-directions",
       );
@@ -39,7 +39,7 @@ export default function EmergencyConversionTracking() {
         "emergency-membership",
       );
 
-      // Track primary phone clicks
+       Track primary phone clicks
       [
         emergencyPhonePrimary,
         emergencyPhoneConditions,
@@ -52,27 +52,27 @@ export default function EmergencyConversionTracking() {
               "0115 931 2935",
             );
 
-            // High-value emergency conversion
+             High-value emergency conversion
             trackLocationConversion("emergency_phone_click", "burton_joyce");
           });
         }
       });
 
-      // Track directions click
+       Track directions click
       if (emergencyDirections) {
         emergencyDirections.addEventListener("click", () => {
           trackLocationConversion("emergency_directions", "burton_joyce");
         });
       }
 
-      // Track online booking from emergency page
+       Track online booking from emergency page
       if (emergencyBookOnline) {
         emergencyBookOnline.addEventListener("click", () => {
           trackBookingAttempt("emergency_page", "booking");
         });
       }
 
-      // Track membership interest from emergency
+       Track membership interest from emergency
       if (emergencyMembership) {
         emergencyMembership.addEventListener("click", () => {
           trackLocationConversion(
@@ -83,7 +83,7 @@ export default function EmergencyConversionTracking() {
       }
     };
 
-    // Set up tracking after DOM is ready
+     Set up tracking after DOM is ready
     const timer = setTimeout(setupClickTracking, 100);
 
     return () => clearTimeout(timer);
@@ -94,7 +94,7 @@ export default function EmergencyConversionTracking() {
     trackLocationConversion,
   ]);
 
-  // Add emergency medical service schema
+   Add emergency medical service schema
   const emergencySchema = {
     "@context": "https://schema.org",
     "@type": ["EmergencyService", "MedicalBusiness"],

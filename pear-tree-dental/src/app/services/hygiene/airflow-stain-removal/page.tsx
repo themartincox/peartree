@@ -275,11 +275,11 @@ export default function AirFlowStainRemovalPage() {
                     to remove stains that traditional cleaning can't reach.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">30-45 mins</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">Immediate</div>
                       <div className="text-gray-600">Results visible</div>
                     </div>
@@ -398,13 +398,13 @@ export default function AirFlowStainRemovalPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Remove Stubborn Stains Today
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Experience the power of Air Flow stain removal. Book your appointment today
                 and see the immediate difference advanced hygiene technology can make.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                   Book Air Flow Treatment
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -413,7 +413,7 @@ export default function AirFlowStainRemovalPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 {getTreatmentPrice("Air Flow Stain Removal")} • 30-45 minutes • Immediate results
               </div>
             </CardContent>

@@ -39,7 +39,7 @@ export default function MembershipSignupPage() {
   const [showRequiredNotification, setShowRequiredNotification] = useState(false);
 
   const [formData, setFormData] = useState({
-    // Personal Details
+     Personal Details
     title: "",
     firstName: "",
     lastName: "",
@@ -51,7 +51,7 @@ export default function MembershipSignupPage() {
     emergencyContact: "",
     emergencyPhone: "",
 
-    // Partner Details (for family plans)
+     Partner Details (for family plans)
     partnerTitle: "",
     partnerFirstName: "",
     partnerLastName: "",
@@ -62,7 +62,7 @@ export default function MembershipSignupPage() {
     partnerPreferredDentist: "",
     partnerDentistGenderPreference: "",
 
-    // Direct Debit Details
+     Direct Debit Details
     accountHolderName: "",
     sortCode: "",
     accountNumber: "",
@@ -71,7 +71,7 @@ export default function MembershipSignupPage() {
     ddGuaranteeRead: false,
     membershipTermsRead: false,
 
-    // Patient Status & Preferences
+     Patient Status & Preferences
     isExistingPatient: "",
     preferredDentist: "",
     dentistGenderPreference: "",
@@ -80,11 +80,11 @@ export default function MembershipSignupPage() {
     marketingConsent: false,
     termsAccepted: false,
 
-    // Staff Tracking (for clinic access)
+     Staff Tracking (for clinic access)
     staffMemberName: "",
     staffMemberId: "",
 
-    // Family Members
+     Family Members
     familyMembers: [] as Array<{
       firstName: string;
       lastName: string;
@@ -102,7 +102,7 @@ export default function MembershipSignupPage() {
       dailyCost: "Just 36p per day",
       savings: "£116",
       color: "dental-green",
-      gradient: "from-dental-green to-dental-green/90",
+      gradient: "from-dental-green to-dental-green",
       features: [
         "1 Dental check up a year",
         "1 Scale & Polish a year",
@@ -117,7 +117,7 @@ export default function MembershipSignupPage() {
       dailyCost: "Just 53p per day",
       savings: "£168",
       color: "pear-primary",
-      gradient: "from-pear-primary to-pear-primary/90",
+      gradient: "from-pear-primary to-pear-primary",
       features: [
         "2 Dental check ups a year",
         "1 Scale & Polish a year",
@@ -132,7 +132,7 @@ export default function MembershipSignupPage() {
       dailyCost: "Just 66p per day",
       savings: "£177",
       color: "soft-blue",
-      gradient: "from-soft-blue to-soft-blue/90",
+      gradient: "from-soft-blue to-soft-blue",
       features: [
         "2 Dental check ups a year",
         "2 Scale & Polishes a year",
@@ -147,7 +147,7 @@ export default function MembershipSignupPage() {
       dailyCost: "Just 86p per day",
       savings: "£286",
       color: "pear-gold",
-      gradient: "from-pear-gold to-pear-gold/80",
+      gradient: "from-pear-gold to-pear-gold",
       features: [
         "2 Dental check ups a year",
         "2 Scale & Polishes a year",
@@ -164,7 +164,7 @@ export default function MembershipSignupPage() {
       dailyCost: "Just 99p per day",
       savings: "£351",
       color: "pear-gold",
-      gradient: "from-pear-gold to-pear-gold/80",
+      gradient: "from-pear-gold to-pear-gold",
       features: [
         "2 Dental check ups a year",
         "4 Scale & Polishes a year",
@@ -196,14 +196,14 @@ export default function MembershipSignupPage() {
 
   const currentPlan = selectedPlan ? plans[selectedPlan as keyof typeof plans] : plans.planB;
 
-  // Secure input handlers for financial data
+   Secure input handlers for financial data
   const handleSortCodeChange = (value: string) => {
-    // Remove all non-numeric characters except hyphens
+     Remove all non-numeric characters except hyphens
     let cleaned = value.replace(/[^0-9-]/g, '');
 
-    // Format as XX-XX-XX
+     Format as XX-XX-XX
     if (cleaned.length <= 6) {
-      cleaned = cleaned.replace(/[^0-9]/g, ''); // Remove hyphens for processing
+      cleaned = cleaned.replace(/[^0-9]/g, '');  Remove hyphens for processing
       if (cleaned.length >= 2) {
         cleaned = `${cleaned.substring(0, 2)}-${cleaned.substring(2)}`;
       }
@@ -212,28 +212,28 @@ export default function MembershipSignupPage() {
       }
     }
 
-    // Limit to 8 characters (XX-XX-XX format)
+     Limit to 8 characters (XX-XX-XX format)
     cleaned = cleaned.substring(0, 8);
     handleInputChange("sortCode", cleaned);
   };
 
   const handleAccountNumberChange = (value: string) => {
-    // Remove all non-numeric characters
+     Remove all non-numeric characters
     const cleaned = value.replace(/[^0-9]/g, '');
-    // Limit to 8 digits
+     Limit to 8 digits
     const limited = cleaned.substring(0, 8);
     handleInputChange("accountNumber", limited);
   };
 
-  // Secure input sanitizer for text fields
+   Secure input sanitizer for text fields
   const sanitizeTextInput = (value: string, fieldName: string): string => {
-    // Remove potentially dangerous characters and limit length
+     Remove potentially dangerous characters and limit length
     const sanitized = value
-      .replace(/[<>"/\\&']/g, '') // Remove HTML/script injection chars
-      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .replace(/[<>"/\\&']/g, '')  Remove HTML/script injection chars
+      .replace(/\s+/g, ' ')  Replace multiple spaces with single space
       .trim();
 
-    // Field-specific length limits
+     Field-specific length limits
     const maxLengths: { [key: string]: number } = {
       firstName: 50,
       lastName: 50,
@@ -248,7 +248,7 @@ export default function MembershipSignupPage() {
     return sanitized.substring(0, maxLength);
   };
 
-  // Base handleInputChange function
+   Base handleInputChange function
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
@@ -256,10 +256,10 @@ export default function MembershipSignupPage() {
     }));
   };
 
-  // Enhanced handleInputChange with security
+   Enhanced handleInputChange with security
   const secureHandleInputChange = (field: string, value: string | boolean) => {
     if (typeof value === 'string') {
-      // Apply sanitization to text inputs
+       Apply sanitization to text inputs
       const sanitizedValue = sanitizeTextInput(value, field);
       handleInputChange(field, sanitizedValue);
     } else {
@@ -268,7 +268,7 @@ export default function MembershipSignupPage() {
   };
 
   const nextStep = () => {
-    // Validate step 1 (Plan Selection) before proceeding
+     Validate step 1 (Plan Selection) before proceeding
     if (currentStep === 1) {
       if (!selectedPlan) {
         alert('Please select a membership plan to continue.');
@@ -276,11 +276,11 @@ export default function MembershipSignupPage() {
       }
     }
 
-    // Validate step 2 (Personal Details) before proceeding
+     Validate step 2 (Personal Details) before proceeding
     if (currentStep === 2) {
       const step2RequiredFields = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'postcode', 'address', 'isExistingPatient'];
 
-      // Add partner validation for family plans
+       Add partner validation for family plans
       if (selectedPlan === 'family') {
         step2RequiredFields.push('partnerFirstName', 'partnerLastName', 'partnerEmail', 'partnerPhone', 'partnerDateOfBirth', 'partnerIsExistingPatient');
       }
@@ -292,7 +292,7 @@ export default function MembershipSignupPage() {
         return;
       }
 
-      // Validate dentist preference based on patient status
+       Validate dentist preference based on patient status
       if (formData.isExistingPatient === 'no' && !formData.dentistGenderPreference) {
         alert('Please select your dentist gender preference.');
         return;
@@ -303,7 +303,7 @@ export default function MembershipSignupPage() {
         return;
       }
 
-      // Validate partner dentist preference for family plans
+       Validate partner dentist preference for family plans
       if (selectedPlan === 'family') {
         if (formData.partnerIsExistingPatient === 'no' && !formData.partnerDentistGenderPreference) {
           alert('Please select your partner\'s dentist gender preference.');
@@ -317,7 +317,7 @@ export default function MembershipSignupPage() {
       }
     }
 
-    // Validate step 3 (Direct Debit) before proceeding
+     Validate step 3 (Direct Debit) before proceeding
     if (currentStep === 3) {
       const ddRequiredFields = ['accountHolderName', 'sortCode', 'accountNumber'];
       const missingDDFields = ddRequiredFields.filter(field => !formData[field as keyof typeof formData]);
@@ -337,23 +337,23 @@ export default function MembershipSignupPage() {
 
   const handleSubmit = async () => {
     try {
-      // Validate required fields
+       Validate required fields
       const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'dateOfBirth', 'postcode', 'address', 'accountHolderName', 'sortCode', 'accountNumber'];
       const missingFields = requiredFields.filter(field => !formData[field as keyof typeof formData]);
 
-      // Validate direct debit confirmation
+       Validate direct debit confirmation
       if (!formData.directDebitConfirmed) {
         alert('Please confirm your Direct Debit authorization to proceed.');
         return;
       }
 
-      // Validate document acknowledgments - These are required
+       Validate document acknowledgments - These are required
       if (!formData.membershipTermsRead) {
         alert('You must read and accept all Terms & Conditions before completing your membership signup.');
         return;
       }
 
-      // Check staff member name if clinic access
+       Check staff member name if clinic access
       if (isClinicAccess && !formData.staffMemberName.trim()) {
         alert('Please enter the staff member name for clinic signups.');
         return;
@@ -366,7 +366,7 @@ export default function MembershipSignupPage() {
 
       console.log("Submitting membership signup:", formData);
 
-      // Additional frontend validation
+       Additional frontend validation
       if (!formData.firstName || !formData.lastName || !formData.email) {
         alert('Please ensure your name and email are provided.');
         return;
@@ -392,7 +392,7 @@ export default function MembershipSignupPage() {
       console.log('Response status:', response.status, response.statusText);
 
       if (!response.ok) {
-        // Try to get the actual error details from the server
+         Try to get the actual error details from the server
         console.error('❌ Response not OK:', response.status, response.statusText);
         try {
           const errorData = await response.json();
@@ -415,7 +415,7 @@ export default function MembershipSignupPage() {
         return;
       }
 
-      // Validate response structure
+       Validate response structure
       if (typeof result !== 'object' || result === null) {
         console.error('Invalid response structure:', result);
         alert('Server error: Invalid response format. Please try again or contact our office at 0115 931 2935.');
@@ -423,14 +423,14 @@ export default function MembershipSignupPage() {
       }
 
       if (result.success) {
-        // Validate success response has required fields
+         Validate success response has required fields
         if (!result.applicationId) {
           console.error('Success response missing applicationId:', result);
           alert('Application submitted successfully, but no reference number received. Please contact our office at 0115 931 2935 for your application status.');
           return;
         }
 
-        // Redirect to success page with details
+         Redirect to success page with details
         const params = new URLSearchParams({
           applicationId: result.applicationId,
           plan: currentPlan.name,
@@ -441,7 +441,7 @@ export default function MembershipSignupPage() {
         console.log('Redirecting to success page with params:', params.toString());
         window.location.href = `/membership/signup/success?${params.toString()}`;
       } else {
-        // Handle different error response formats
+         Handle different error response formats
         const errorMessage = result.error || result.message || result.details || 'Application submission failed';
         const errorDetails = result.details ? ` (${result.details})` : '';
         alert(`Signup failed: ${errorMessage}${errorDetails}`);
@@ -450,7 +450,7 @@ export default function MembershipSignupPage() {
     } catch (error) {
       console.error('Submission error:', error);
 
-      // Check if it's a network error
+       Check if it's a network error
       if (error instanceof TypeError && error.message.includes('fetch')) {
         alert('Network error: Unable to connect to the server. Please check your internet connection and try again.');
       } else if (error instanceof SyntaxError) {
@@ -474,13 +474,13 @@ export default function MembershipSignupPage() {
     }));
   };
 
-  // Handle plan selection from URL parameters
+   Handle plan selection from URL parameters
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const planParam = urlParams.get("plan");
 
     if (planParam) {
-      // Map plan IDs from membership page to signup page plan keys
+       Map plan IDs from membership page to signup page plan keys
       const planMapping = {
         "plan-a": "planA",
         "plan-b": "planB",
@@ -498,7 +498,7 @@ export default function MembershipSignupPage() {
     }
   }, []);
 
-  // Check if user is accessing from clinic IP
+   Check if user is accessing from clinic IP
   useEffect(() => {
     const checkClinicAccess = async () => {
       try {
@@ -518,9 +518,9 @@ export default function MembershipSignupPage() {
     checkClinicAccess();
   }, []);
 
-  // Scroll to top when step changes for better UX
+   Scroll to top when step changes for better UX
   useEffect(() => {
-    // Small delay to ensure DOM has updated before scrolling
+     Small delay to ensure DOM has updated before scrolling
     const scrollToTop = () => {
       window.scrollTo({
         top: 0,
@@ -528,7 +528,7 @@ export default function MembershipSignupPage() {
       });
     };
 
-    // Use requestAnimationFrame to ensure smooth scrolling after render
+     Use requestAnimationFrame to ensure smooth scrolling after render
     requestAnimationFrame(scrollToTop);
   }, []);
 
@@ -631,7 +631,7 @@ export default function MembershipSignupPage() {
                         {(selectedPlan === 'planA' || selectedPlan === 'planB' || selectedPlan === 'planC') && (
                           <div
                             onClick={() => {
-                              // Add a child to the family members list
+                               Add a child to the family members list
                               setFormData(prev => ({
                                 ...prev,
                                 familyMembers: [...prev.familyMembers, {
@@ -813,7 +813,7 @@ export default function MembershipSignupPage() {
                 </div>
 
                   <div className="flex justify-end mt-8">
-                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green/90 text-white">
+                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green text-white">
                       Continue with {currentPlan.name}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -972,7 +972,7 @@ export default function MembershipSignupPage() {
                     {/* Partner Details Section - Only for Family Plans */}
                     {selectedPlan === 'family' && (
                       <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
-                        <div className="bg-purple-50/50 p-6 rounded-lg border border-purple-200">
+                        <div className="bg-purple-50 p-6 rounded-lg border border-purple-200">
                           <div className="flex items-center mb-4">
                             <Users className="w-5 h-5 text-purple-600 mr-2" />
                             <h3 className="text-lg font-semibold text-purple-700">Partner Details</h3>
@@ -1267,7 +1267,7 @@ export default function MembershipSignupPage() {
                     {/* Staff Member Section - Only show for clinic access */}
                     {isClinicAccess && (
                       <div className="md:col-span-2 mt-6 pt-6 border-t border-gray-200">
-                          <div className="bg-pear-primary/5 p-4 rounded-lg">
+                          <div className="bg-pear-primary p-4 rounded-lg">
                             <div className="flex items-center mb-3">
                               <User className="w-5 h-5 text-pear-primary mr-2" />
                               <h3 className="text-lg font-semibold text-pear-primary">Staff Member Information</h3>
@@ -1383,7 +1383,7 @@ export default function MembershipSignupPage() {
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
-                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green/90 text-white">
+                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green text-white">
                       Continue
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -1491,7 +1491,7 @@ export default function MembershipSignupPage() {
                       <div className="flex items-center space-x-3">
                         <div className="w-16 h-16 flex items-center justify-center">
                           <img
-                            src="https://ext.same-assets.com/direct-debit-logo.png"
+                            src="https:ext.same-assets.com/direct-debit-logo.png"
                             alt="Direct Debit Logo"
                             className="w-full h-auto max-w-16"
                           />
@@ -1521,7 +1521,7 @@ export default function MembershipSignupPage() {
                       <ArrowLeft className="w-4 h-4 mr-2" />
                       Back
                     </Button>
-                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green/90 text-white">
+                    <Button onClick={nextStep} className="bg-dental-green hover:bg-dental-green text-white">
                       Continue
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -1979,7 +1979,7 @@ export default function MembershipSignupPage() {
                         handleSubmit();
                       }}
                       disabled={!formData.membershipTermsRead || !formData.directDebitConfirmed}
-                      className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8"
+                      className="bg-dental-green hover:bg-dental-green text-white font-semibold px-8"
                     >
                       <Crown className="w-4 h-4 mr-2" />
                       Complete Membership Signup

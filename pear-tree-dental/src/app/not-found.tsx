@@ -18,7 +18,7 @@ export default function NotFound(): React.JSX.Element {
               muted
               playsInline
             >
-              <source src="/videos/404-video.mp4" type="video/mp4" />
+              <source src="/videos4-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -51,7 +51,7 @@ export default function NotFound(): React.JSX.Element {
         </Link>
 
         {/* Fun dental facts */}
-        <div className="mt-12 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-pear-primary">
+        <div className="mt-12 p-6 bg-white backdrop-blur-sm rounded-2xl border border-pear-primary">
           <p className="text-sm text-gray-600">
             💡 <strong>Did you know?</strong> You should floss at least once a
             day to remove plaque and food particles between your teeth!

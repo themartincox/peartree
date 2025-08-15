@@ -130,7 +130,7 @@ export default function NG14DentalPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -195,7 +195,7 @@ export default function NG14DentalPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Building className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">New Developments</CardTitle>
@@ -213,7 +213,7 @@ export default function NG14DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Perfect Location</CardTitle>
@@ -231,7 +231,7 @@ export default function NG14DentalPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary">
                 <CardHeader className="text-center pb-4">
                   <Users className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Local Community</CardTitle>
@@ -516,7 +516,7 @@ export default function NG14DentalPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -646,7 +646,7 @@ export default function NG14DentalPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-navy hover:bg-dental-navy/90 text-white font-semibold px-8 py-4"
+                className="bg-dental-navy hover:bg-dental-navy text-white font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

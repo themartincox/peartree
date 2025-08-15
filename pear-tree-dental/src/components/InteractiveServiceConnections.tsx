@@ -71,7 +71,7 @@ export default function InteractiveServiceConnections() {
     const toX = (to.x / 100) * dimensions.width;
     const toY = (to.y / 100) * dimensions.height;
 
-    // Create a curved path for more organic feel
+     Create a curved path for more organic feel
     const midX = (fromX + toX) / 2;
     const midY = (fromY + toY) / 2;
     const controlX = midX + (Math.random() - 0.5) * 50;
@@ -87,7 +87,7 @@ export default function InteractiveServiceConnections() {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-80 bg-gradient-to-br from-midnight-blue/5 to-forest-green/5 rounded-2xl overflow-hidden"
+      className="relative w-full h-80 bg-gradient-to-br from-midnight-blue to-forest-green rounded-2xl overflow-hidden"
     >
       {/* SVG Connections */}
       <svg

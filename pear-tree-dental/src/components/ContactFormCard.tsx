@@ -1,6 +1,6 @@
 "use client";
 
-// import { useConversionTracking } from '@/hooks/useConversionTracking'; // <-- STEP 1: Commented out
+ import { useConversionTracking } from '@/hooks/useConversionTracking';  <-- STEP 1: Commented out
 import {
   AlertCircle,
   Calendar,
@@ -49,12 +49,12 @@ export default function ContactFormCard({
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // const { trackBookingAttempt, trackLocationConversion, trackServiceInterest } = useConversionTracking(); // <-- STEP 2: Commented out
+   const { trackBookingAttempt, trackLocationConversion, trackServiceInterest } = useConversionTracking();  <-- STEP 2: Commented out
 
-  // Track form interactions (functions are now empty)
+   Track form interactions (functions are now empty)
   const handleFieldFocus = (fieldName: string) => {
     setFocusedField(fieldName);
-    // trackLocationConversion('form_field_focus', 'burton_joyce'); // <-- STEP 3: Commented out
+     trackLocationConversion('form_field_focus', 'burton_joyce');  <-- STEP 3: Commented out
   };
 
   const handleFieldBlur = () => {
@@ -62,7 +62,7 @@ export default function ContactFormCard({
   };
 
   const handleServiceSelect = (_service: string) => {
-    // trackServiceInterest(service, ...); // <-- STEP 4: Commented out
+     trackServiceInterest(service, ...);  <-- STEP 4: Commented out
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -111,7 +111,7 @@ export default function ContactFormCard({
     <div className={`grid grid-cols-1 lg:grid-cols-3 gap-8 ${className}`}>
       {showContactInfo && (
         <div className="lg:col-span-1 space-y-6 order-2 lg:order-1">
-          <Card className="bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white">
+          <Card className="bg-gradient-to-br from-pear-primary to-pear-primary text-white">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <FormIcon className="h-6 w-6" />
@@ -131,7 +131,7 @@ export default function ContactFormCard({
                 <Button
                   asChild
                   size="sm"
-                  className="bg-dental-green hover:bg-dental-green/90 text-white"
+                  className="bg-dental-green hover:bg-dental-green text-white"
                 >
                   <a href="tel:01159312935">0115 931 2935</a>
                 </Button>
@@ -174,7 +174,7 @@ export default function ContactFormCard({
                   className="border-pear-gold text-pear-gold"
                 >
                   <a
-                    href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
+                    href="https:maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -189,7 +189,7 @@ export default function ContactFormCard({
                   <Clock className="h-5 w-5 text-pear-gold" />
                   <p className="font-medium">Opening Hours</p>
                 </div>
-                <div className="text-sm text-white/90 space-y-1 text-center">
+                <div className="text-sm text-white space-y-1 text-center">
                   <p>Mon-Thu: 8:45am - 5:00pm</p>
                   <p>Friday: 8:00am - 3:30pm</p>
                   <p>Sat-Sun: Closed</p>
@@ -407,7 +407,7 @@ export default function ContactFormCard({
                   <button
                     type="button"
                     onClick={() => {
-                      // trackLocationConversion('form_footer_phone_click', 'burton_joyce'); // <-- STEP 5: Commented out
+                       trackLocationConversion('form_footer_phone_click', 'burton_joyce');  <-- STEP 5: Commented out
                       window.open("tel:01159312935");
                     }}
                     className="text-pear-primary hover:underline font-medium"

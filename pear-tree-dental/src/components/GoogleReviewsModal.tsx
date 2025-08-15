@@ -17,7 +17,7 @@ interface GoogleReviewsModalProps {
 }
 
 const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
-  // Same genuine reviews as the widget
+   Same genuine reviews as the widget
   const reviews: Review[] = [
     {
       id: "1",
@@ -73,7 +73,7 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
   const averageRating =
     reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 
-  // Close modal on escape key
+   Close modal on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -144,7 +144,7 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
               className="border-b border-gray-100 pb-6 last:border-b-0"
             >
               <div className="flex items-start space-x-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-gradient-to-br from-pear-gold to-pear-gold rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-semibold text-sm">
                     {review.author.charAt(0)}
                   </span>

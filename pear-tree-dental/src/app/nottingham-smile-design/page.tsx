@@ -133,7 +133,7 @@ export default function NottinghamSmileDesignPage() {
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-8 text-dental-navy leading-relaxed">
               Transform your smile with comprehensive cosmetic dentistry.
               <br className="hidden sm:block" />
               Complete smile makeovers tailored to you - from £2,000.
@@ -143,7 +143,7 @@ export default function NottinghamSmileDesignPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -195,7 +195,7 @@ export default function NottinghamSmileDesignPage() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Porcelain Veneers */}
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Sparkles className="h-6 w-6 text-white" />
@@ -230,7 +230,7 @@ export default function NottinghamSmileDesignPage() {
               </Card>
 
               {/* Composite Bonding */}
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-white" />
@@ -265,7 +265,7 @@ export default function NottinghamSmileDesignPage() {
               </Card>
 
               {/* Teeth Whitening */}
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Star className="h-6 w-6 text-white" />
@@ -302,7 +302,7 @@ export default function NottinghamSmileDesignPage() {
               </Card>
 
               {/* Gum Contouring */}
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Heart className="h-6 w-6 text-white" />
@@ -337,7 +337,7 @@ export default function NottinghamSmileDesignPage() {
               </Card>
 
               {/* Invisalign */}
-              <Card className="p-6 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-6 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Eye className="h-6 w-6 text-white" />
@@ -374,7 +374,7 @@ export default function NottinghamSmileDesignPage() {
               </Card>
 
               {/* Complete Makeover */}
-              <Card className="p-6 border-2 border-dental-green/40 bg-dental-green/5">
+              <Card className="p-6 border-2 border-dental-green bg-dental-green">
                 <CardHeader className="text-center pb-6">
                   <div className="w-12 h-12 bg-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-6 w-6 text-white" />
@@ -613,7 +613,7 @@ export default function NottinghamSmileDesignPage() {
             <Button
               asChild
               size="lg"
-              className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold px-8 py-4"
+              className="bg-dental-green hover:bg-dental-green text-white font-semibold px-8 py-4"
             >
               <Link href="/smile-gallery">
                 <Camera className="h-5 w-5 mr-2" />

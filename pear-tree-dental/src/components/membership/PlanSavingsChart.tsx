@@ -60,7 +60,7 @@ export default function PlanSavingsChart() {
       const element = document.getElementById("savings-chart");
       if (element) {
         const elementPosition = element.getBoundingClientRect();
-        // Set isVisible to true when the element is in the viewport
+         Set isVisible to true when the element is in the viewport
         if (
           elementPosition.top < window.innerHeight &&
           elementPosition.bottom > 0
@@ -70,16 +70,16 @@ export default function PlanSavingsChart() {
       }
     };
 
-    // Add scroll event listener
+     Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-    // Initial check
+     Initial check
     handleScroll();
 
-    // Clean up
+     Clean up
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Find max savings for scaling the chart
+   Find max savings for scaling the chart
   const maxSavings = Math.max(...plans.map((plan) => plan.savings));
   const maxCost = Math.max(...plans.map((plan) => plan.normalCost));
 

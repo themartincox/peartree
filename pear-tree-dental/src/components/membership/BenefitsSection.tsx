@@ -69,7 +69,7 @@ export default function BenefitsSection() {
           {emergencyBenefits.map((benefit) => (
             <div
               key={benefit.id}
-              className="bg-gradient-to-br from-pear-background to-white p-6 rounded-xl border border-gray-200 hover:border-pear-primary hover:bg-pear-background/50 transition-all duration-200"
+              className="bg-gradient-to-br from-pear-background to-white p-6 rounded-xl border border-gray-200 hover:border-pear-primary hover:bg-pear-background transition-all duration-200"
             >
               <div className="flex flex-col gap-4">
                 <div className="rounded-full bg-pear-primary w-12 h-12 flex items-center justify-center">

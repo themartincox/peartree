@@ -146,7 +146,7 @@ export default function NewPatientsPage() {
                   className="text-center hover:shadow-lg transition-shadow"
                 >
                   <CardHeader>
-                    <div className="w-16 h-16 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-pear-primary to-pear-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <CardTitle className="text-lg text-pear-primary">
@@ -204,7 +204,7 @@ export default function NewPatientsPage() {
                     backgroundPosition: "center",
                   }}
                 >
-                  <div className="absolute inset-0 bg-pear-primary/50"></div>
+                  <div className="absolute inset-0 bg-pear-primary"></div>
                 </div>
 
                 <div className="relative z-10 p-6 space-y-4 text-white">
@@ -215,7 +215,7 @@ export default function NewPatientsPage() {
 
                   <div>
                     <h4 className="font-semibold text-white mb-2">Address</h4>
-                    <p className="text-white/90">
+                    <p className="text-white">
                       22 Nottingham Road
                       <br />
                       Burton Joyce, Nottingham
@@ -226,14 +226,14 @@ export default function NewPatientsPage() {
 
                   <div>
                     <h4 className="font-semibold text-white mb-2">Phone</h4>
-                    <p className="text-white/90">0115 931 2935</p>
+                    <p className="text-white">0115 931 2935</p>
                   </div>
 
                   <div>
                     <h4 className="font-semibold text-white mb-2">
                       Opening Hours
                     </h4>
-                    <div className="text-white/90 text-sm space-y-1">
+                    <div className="text-white text-sm space-y-1">
                       <div className="flex justify-between">
                         <span>Monday - Thursday</span>
                         <span>8:45 am - 5 pm</span>
@@ -286,13 +286,13 @@ export default function NewPatientsPage() {
       </section>
 
       {/* Membership CTA */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">
               Skip the NHS Waiting Lists
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join our membership plan from just £10.95/month for immediate
               access to dental care, no waiting lists, and significant savings
               on treatments.
@@ -308,7 +308,7 @@ export default function NewPatientsPage() {
               <Link href="/book">
                 <Button
                   size="lg"
-                  className="bg-white text-pear-primary hover:bg-white/90 font-semibold"
+                  className="bg-white text-pear-primary hover:bg-white font-semibold"
                 >
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
@@ -321,7 +321,7 @@ export default function NewPatientsPage() {
                 <Clock className="w-5 h-5" />
                 <span className="font-semibold">Emergency Care Available</span>
               </div>
-              <p className="text-white/90 text-sm">
+              <p className="text-white text-sm">
                 Out of hours emergency care by arrangement. Call for urgent
                 dental needs.
               </p>

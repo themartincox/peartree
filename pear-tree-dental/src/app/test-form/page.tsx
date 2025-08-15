@@ -10,7 +10,7 @@ export default function TestFormPage() {
       <ContactFormCard
         title="Test Form Submission"
         description="This is a test."
-        showContactInfo={false} // Hides the contact info card for a simpler layout
+        showContactInfo={false}  Hides the contact info card for a simpler layout
         formType="contact"
       />
     </main>

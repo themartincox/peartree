@@ -192,7 +192,7 @@ export default function SuccessPage() {
             <Link href="/">
               <Button
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary/90"
+                className="bg-pear-primary hover:bg-pear-primary"
               >
                 <Home className="w-5 h-5 mr-2" />
                 Back to Homepage

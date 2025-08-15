@@ -159,7 +159,7 @@ export default function MedicalPracticeSchema({
       },
     ],
     areaServed: [
-      // Comprehensive Nottinghamshire coverage
+       Comprehensive Nottinghamshire coverage
       {
         "@type": "City",
         name: "Nottingham",
@@ -252,7 +252,7 @@ export default function MedicalPracticeSchema({
           name: "Nottinghamshire",
         },
       },
-      // Include custom area served if provided
+       Include custom area served if provided
       ...areaServed.map((area) => ({
         "@type": "City",
         name: area,
@@ -288,15 +288,15 @@ export default function MedicalPracticeSchema({
       recognizedBy: {
         "@type": "Organization",
         name: "General Dental Council",
-        url: "https://www.gdc-uk.org/",
+        url: "https:www.gdc-uk.org/",
       },
     },
   };
 
-  // Add specific service schema if provided
+   Add specific service schema if provided
   if (serviceName && serviceDescription) {
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (medicalPracticeSchema as any).mainEntityOfPage = {
       "@type": "MedicalProcedure",
       name: serviceName,

@@ -193,7 +193,7 @@ export default function RestorativeDentistryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-dental-green/5 via-white to-soft-blue/5">
+    <div className="min-h-screen bg-gradient-to-br from-dental-green via-white to-soft-blue">
       {/* Hero Section - Medical Theme */}
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -308,12 +308,12 @@ export default function RestorativeDentistryPage() {
                 </picture>
 
                 {/* Overlay with content - lighter and disappears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-dental-green/60 to-soft-blue/60 group-hover:from-dental-green group-hover:to-soft-blue transition-all duration-500 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-dental-green to-soft-blue group-hover:from-dental-green group-hover:to-soft-blue transition-all duration-500 flex items-center justify-center">
                   <div className="text-center text-white p-8 max-w-md group-hover:opacity-80 transition-opacity duration-500">
                     <h3 className="text-2xl font-semibold mb-4">
                       Advanced Restoration Technology
                     </h3>
-                    <p className="text-white/90 mb-6">
+                    <p className="text-white mb-6">
                       Using the latest digital technology and premium materials
                       for natural-looking results.
                     </p>
@@ -549,7 +549,7 @@ export default function RestorativeDentistryPage() {
       </section>
 
       {/* Materials Section */}
-      <section className="py-16 bg-gradient-to-r from-dental-green/5 to-soft-blue/5">
+      <section className="py-16 bg-gradient-to-r from-dental-green to-soft-blue">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -566,7 +566,7 @@ export default function RestorativeDentistryPage() {
             {(materials || []).map((material, index) => (
               <Card
                 key={index}
-                className="bg-gradient-to-br from-green-50/50 to-teal-50/50 border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300"
+                className="bg-gradient-to-br from-green-50 to-teal-50 border border-green-100 hover:shadow-lg hover:border-green-200 transition-all duration-300"
               >
                 <CardHeader>
                   <CardTitle className="text-lg font-semibold text-pear-primary">
@@ -637,7 +637,7 @@ export default function RestorativeDentistryPage() {
       {/* Membership CTA */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white overflow-hidden">
+          <Card className="bg-gradient-to-r from-pear-primary to-pear-primary text-white overflow-hidden">
             <CardContent className="p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
@@ -651,7 +651,7 @@ export default function RestorativeDentistryPage() {
                   <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                     Save on Quality Restorations
                   </h2>
-                  <p className="text-white/90 text-lg mb-6">
+                  <p className="text-white text-lg mb-6">
                     Our membership plans include significant discounts on all
                     restorative treatments. Get the quality care you deserve at
                     affordable prices.
@@ -660,25 +660,25 @@ export default function RestorativeDentistryPage() {
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
-                      <span className="text-white/90">
+                      <span className="text-white">
                         10% discount on crowns and bridges
                       </span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
-                      <span className="text-white/90">
+                      <span className="text-white">
                         Flexible payment plans available
                       </span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
-                      <span className="text-white/90">
+                      <span className="text-white">
                         Quality guarantee on all work
                       </span>
                     </li>
                     <li className="flex items-center space-x-3">
                       <CheckCircle className="w-5 h-5 text-pear-gold flex-shrink-0" />
-                      <span className="text-white/90">
+                      <span className="text-white">
                         Priority booking for treatment
                       </span>
                     </li>
@@ -687,14 +687,14 @@ export default function RestorativeDentistryPage() {
 
                 <div className="space-y-4">
                   <div className="bg-white backdrop-blur-sm rounded-2xl p-6 text-center">
-                    <div className="text-sm text-white/70 mb-2">
+                    <div className="text-sm text-white mb-2">
                       Member savings example:
                     </div>
                     <div className="text-2xl font-bold text-pear-gold mb-1">
                       Save £45
                     </div>
-                    <div className="text-white/80 mb-2">on a £450 crown</div>
-                    <div className="text-xs text-white/60">
+                    <div className="text-white mb-2">on a £450 crown</div>
+                    <div className="text-xs text-white">
                       With 10% membership discount
                     </div>
                   </div>
@@ -717,14 +717,14 @@ export default function RestorativeDentistryPage() {
                       Book Consultation
                     </Button>
                   </Link>
-                  <p className="text-xs text-white/60 text-center">
+                  <p className="text-xs text-white text-center">
                     Free consultation • Treatment planning included
                   </p>
                 </div>
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white/5 rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
               <div className="absolute bottom-4 left-8 w-8 h-8 bg-pear-gold rounded-full" />
             </CardContent>
           </Card>
@@ -739,7 +739,7 @@ export default function RestorativeDentistryPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Restore Your Smile?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let damaged teeth affect your confidence and health. Book
                 a consultation to discuss how our expert restorative treatments
                 can help you.

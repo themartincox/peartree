@@ -697,7 +697,7 @@ export default function HollywoodSmileNottinghamPage() {
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Ready for Your Hollywood Smile Consultation in Nottingham?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Your dream smile is just a consultation away. During your
               personalised appointment, we'll discuss your goals, show you
               digital previews, and create your perfect treatment plan.
@@ -757,7 +757,7 @@ export default function HollywoodSmileNottinghamPage() {
               </a>
             </div>
 
-            <p className="text-white/90 text-lg font-medium italic">
+            <p className="text-white text-lg font-medium italic">
               Don't wait another day to start your Hollywood smile journey.
               Transform your smile, transform your life.
             </p>

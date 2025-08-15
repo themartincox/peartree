@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-  // Format treatments for display
+   Format treatments for display
   const formattedGeneralTreatments = generalTreatments.map((treatment) => ({
     name: treatment.name,
     price: treatment.price,
@@ -101,7 +101,7 @@ export default function PricingPage() {
               <Link href="/book">
                 <Button
                   size="lg"
-                  className="bg-pear-gold hover:bg-pear-gold/90 text-white font-semibold"
+                  className="bg-pear-gold hover:bg-pear-gold text-white font-semibold"
                 >
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
@@ -168,7 +168,7 @@ export default function PricingPage() {
                     ))}
                   </ul>
                   <Link href="/membership">
-                    <Button className="w-full bg-pear-primary hover:bg-pear-primary/90 text-white">
+                    <Button className="w-full bg-pear-primary hover:bg-pear-primary text-white">
                       Join Plan
                     </Button>
                   </Link>
@@ -354,12 +354,12 @@ export default function PricingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-6">
             Ready to Book Your Treatment?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-white/90">
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-white">
             Contact us today for a consultation and personalised treatment plan
             with transparent pricing.
           </p>

@@ -106,7 +106,7 @@ export default function BinghamSmileDesignPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -169,7 +169,7 @@ export default function BinghamSmileDesignPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green/5">
+              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green">
                 <CardHeader className="text-center pb-4">
                   <Palette className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">
@@ -195,13 +195,13 @@ export default function BinghamSmileDesignPage() {
                     <p>• Multiple design options</p>
                     <p>• Detailed cost breakdowns</p>
                   </div>
-                  <Button className="w-full bg-dental-green hover:bg-dental-green/90 text-white">
+                  <Button className="w-full bg-dental-green hover:bg-dental-green text-white">
                     Book Design Session
                   </Button>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold/5">
+              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold">
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Family Makeover</CardTitle>
@@ -234,7 +234,7 @@ export default function BinghamSmileDesignPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary/5">
+              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary">
                 <CardHeader className="text-center pb-4">
                   <Sparkles className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Enhancement Package</CardTitle>
@@ -453,7 +453,7 @@ export default function BinghamSmileDesignPage() {
                 return (
                   <Card
                     key={index}
-                    className="p-6 border border-dental-green hover:border-dental-green/40 transition-colors"
+                    className="p-6 border border-dental-green hover:border-dental-green transition-colors"
                   >
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
@@ -642,7 +642,7 @@ export default function BinghamSmileDesignPage() {
             <h2 className="text-3xl font-bold mb-6">
               Ready to Design Your Family's Perfect Smiles?
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Join Bingham families who've discovered the confidence that comes
               with beautifully designed smiles. Book your comprehensive family
               smile design consultation today.
@@ -651,7 +651,7 @@ export default function BinghamSmileDesignPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
+                className="bg-white hover:bg-white text-dental-green font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

@@ -15,7 +15,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-// TypeScript interfaces
+ TypeScript interfaces
 interface JourneyStep {
   number: string;
   title: string;
@@ -133,19 +133,19 @@ const TreatmentJourney = (): React.JSX.Element => {
       const containerHeight = container.offsetHeight;
       const viewportHeight = window.innerHeight;
 
-      // Check if we're in the journey section (container is visible on screen)
+       Check if we're in the journey section (container is visible on screen)
       const isVisible =
         containerRect.top < viewportHeight && containerRect.bottom > 0;
       setIsInJourneySection(isVisible);
 
-      // Calculate overall progress through the container
+       Calculate overall progress through the container
       const totalProgress = Math.max(
         0,
         Math.min(1, -containerRect.top / (containerHeight - viewportHeight)),
       );
       setScrollProgress(totalProgress);
 
-      // Calculate which step should be active
+       Calculate which step should be active
       const stepProgress = totalProgress * journeySteps.length;
       const currentStep = Math.min(
         Math.floor(stepProgress),
@@ -153,20 +153,20 @@ const TreatmentJourney = (): React.JSX.Element => {
       );
       setActiveStep(currentStep);
 
-      // Apply transforms to each step with proper sticky behavior
+       Apply transforms to each step with proper sticky behavior
       stepsRef.current.forEach((step, index) => {
         if (!step) return;
 
         const stepElement = step;
 
         if (index <= currentStep) {
-          // Current and previous steps - stick in place
+           Current and previous steps - stick in place
           stepElement.style.transform = "translateY(0px)";
           stepElement.style.zIndex = `${10 + index}`;
           stepElement.style.position = "sticky";
           stepElement.style.top = "0px";
         } else {
-          // Future steps - positioned normally below
+           Future steps - positioned normally below
           stepElement.style.transform = "translateY(0px)";
           stepElement.style.zIndex = `${10 + index}`;
           stepElement.style.position = "relative";
@@ -176,7 +176,7 @@ const TreatmentJourney = (): React.JSX.Element => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();  Initial call
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [journeySteps.length]);
@@ -189,7 +189,7 @@ const TreatmentJourney = (): React.JSX.Element => {
     const viewportHeight = window.innerHeight;
     const totalHeight = container.offsetHeight;
 
-    // Calculate scroll position for the desired step
+     Calculate scroll position for the desired step
     const targetProgress = stepIndex / journeySteps.length;
     const targetScroll =
       containerTop + targetProgress * (totalHeight - viewportHeight);
@@ -258,10 +258,10 @@ const TreatmentJourney = (): React.JSX.Element => {
           const isReverse = index % 2 === 1;
 
           const colorClasses = [
-            "bg-gradient-to-br from-pear-primary to-pear-primary/80",
-            "bg-gradient-to-br from-pear-gold to-pear-gold/80",
-            "bg-gradient-to-br from-pear-primary/90 to-pear-gold/90",
-            "bg-gradient-to-br from-pear-gold/90 to-pear-primary/90",
+            "bg-gradient-to-br from-pear-primary to-pear-primary",
+            "bg-gradient-to-br from-pear-gold to-pear-gold",
+            "bg-gradient-to-br from-pear-primary to-pear-gold",
+            "bg-gradient-to-br from-pear-gold to-pear-primary",
             "bg-gradient-to-br from-pear-primary to-pear-gold",
           ];
 
@@ -297,7 +297,7 @@ const TreatmentJourney = (): React.JSX.Element => {
                           className={`heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${
                             index % 2 === 0
                               ? "text-pear-primary group-hover:text-pear-gold"
-                              : "text-pear-primary group-hover:text-pear-primary/80"
+                              : "text-pear-primary group-hover:text-pear-primary"
                           }`}
                         >
                           {step.title}
@@ -359,7 +359,7 @@ const TreatmentJourney = (): React.JSX.Element => {
                               <source src={step.videoPath} type="video/mp4" />
                               Your browser does not support the video tag.
                             </video>
-                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary to-transparent pointer-events-none" />
                           </>
                         ) : step.imagePath ? (
                           <>
@@ -370,7 +370,7 @@ const TreatmentJourney = (): React.JSX.Element => {
                               className="object-cover"
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-pear-primary to-transparent" />
                           </>
                         ) : (
                           <div className="bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center h-full">

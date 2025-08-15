@@ -84,7 +84,7 @@ export default function EmergencyDentistNottinghamPage() {
             </h1>
 
             {/* Urgent Value Proposition */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 mb-8 border-2 border-red-200 shadow-lg">
+            <div className="bg-white backdrop-blur-sm rounded-xl p-6 mb-8 border-2 border-red-200 shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <Clock className="w-8 h-8 text-red-600 mb-2" />
@@ -130,7 +130,7 @@ export default function EmergencyDentistNottinghamPage() {
                 id="emergency-directions"
               >
                 <Link
-                  href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
+                  href="https:maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
                   target="_blank"
                 >
                   <MapPin className="w-6 h-6 mr-3" />

@@ -307,11 +307,11 @@ export default function PartialDenturesPage() {
                     while replacing missing ones at an affordable cost.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-emerald-600">2-3 weeks</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-emerald-600">5-7 years</div>
                       <div className="text-gray-600">Expected lifespan</div>
                     </div>
@@ -511,13 +511,13 @@ export default function PartialDenturesPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Restore Your Smile Today
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let missing teeth affect your confidence. Partial dentures offer
                 an affordable, effective solution to restore your smile and function.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-emerald-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-emerald-600 hover:bg-white font-semibold">
                   Book Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -526,7 +526,7 @@ export default function PartialDenturesPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From {getTreatmentPrice("Acrylic Partial Dentures")} • 2-3 weeks • Preserve natural teeth
               </div>
             </CardContent>

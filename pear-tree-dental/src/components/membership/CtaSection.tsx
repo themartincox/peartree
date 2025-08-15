@@ -20,14 +20,14 @@ export default function CtaSection() {
           <a href="/membership/signup">
             <Button
               size="lg"
-              className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green/90 text-white"
+              className="rounded-full text-lg font-medium px-8 bg-dental-green hover:bg-dental-green text-white"
             >
               Join Today
             </Button>
           </a>
 
           <div className="mt-10 grid md:grid-cols-3 gap-6 text-center">
-            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
+            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background to-white border border-gray-200">
               <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Zap className="h-6 w-6 text-dental-green" />
               </div>
@@ -37,7 +37,7 @@ export default function CtaSection() {
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
+            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background to-white border border-gray-200">
               <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Heart className="h-6 w-6 text-dental-green" />
               </div>
@@ -47,7 +47,7 @@ export default function CtaSection() {
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background/50 to-white border border-gray-200">
+            <div className="p-5 rounded-xl bg-gradient-to-br from-pear-background to-white border border-gray-200">
               <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Shield className="h-6 w-6 text-dental-green" />
               </div>
@@ -62,11 +62,11 @@ export default function CtaSection() {
 
       {/* Background elements */}
       <div
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 w-64 h-64 rounded-full bg-pear-primary/5"
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 w-64 h-64 rounded-full bg-pear-primary"
         style={{ filter: "blur(60px)" }}
       />
       <div
-        className="absolute bottom-0 left-0 transform translate-y-1/3 w-80 h-80 rounded-full bg-pear-gold/5"
+        className="absolute bottom-0 left-0 transform translate-y-1/3 w-80 h-80 rounded-full bg-pear-gold"
         style={{ filter: "blur(80px)" }}
       />
     </section>

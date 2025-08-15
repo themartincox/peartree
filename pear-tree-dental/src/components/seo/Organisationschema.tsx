@@ -13,7 +13,7 @@ export default function OrganisationSchema() {
     { name: "Arnold" },
     { name: "Colwick" },
     { name: "Gedling" },
-    { name: "Mapperley" }, // fixed spelling
+    { name: "Mapperley" },  fixed spelling
     { name: "Lowdham" },
   ];
 
@@ -57,18 +57,18 @@ export default function OrganisationSchema() {
         closes: "15:30",
       },
     ],
-    // Fold in your fuller service coverage from ServiceAreaSchema (with valid types)
+     Fold in your fuller service coverage from ServiceAreaSchema (with valid types)
     areaServed: [
       ...places.map((p) => ({ "@type": "Place", name: p.name })),
       ...postcodes.map((pc) => ({ "@type": "DefinedRegion", postalCode: pc })),
     ],
     sameAs: [
-      "https://www.facebook.com/peartreeDental",
-      "https://www.instagram.com/peartree_dental/",
-      // Add your exact Google Place URL if you have it:
-      // 'https://g.page/r/<google-place-id>'
+      "https:www.facebook.com/peartreeDental",
+      "https:www.instagram.com/peartree_dental/",
+       Add your exact Google Place URL if you have it:
+       'https:g.page/r/<google-place-id>'
     ],
-    // Keep this consistent with your live count
+     Keep this consistent with your live count
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

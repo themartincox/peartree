@@ -21,10 +21,10 @@ const GoogleReviewsWidget = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Check if we're on the homepage
+   Check if we're on the homepage
   const isHomepage = pathname === "/";
 
-  // Genuine 5-star Google Reviews
+   Genuine 5-star Google Reviews
   const reviews: Review[] = [
     {
       id: "1",
@@ -77,7 +77,7 @@ const GoogleReviewsWidget = () => {
     },
   ];
 
-  // Auto-rotate reviews with pause functionality
+   Auto-rotate reviews with pause functionality
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
@@ -87,7 +87,7 @@ const GoogleReviewsWidget = () => {
     }
   }, [isPaused]);
 
-  // Pause on hover functionality
+   Pause on hover functionality
   const handleMouseEnter = () => {
     setIsPaused(true);
   };
@@ -96,7 +96,7 @@ const GoogleReviewsWidget = () => {
     setIsPaused(false);
   };
 
-  // Keyboard navigation
+   Keyboard navigation
   const handleKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
       case "ArrowLeft":
@@ -110,13 +110,13 @@ const GoogleReviewsWidget = () => {
     }
   };
 
-  // Scroll behavior
+   Scroll behavior
   useEffect(() => {
     let handleScroll: () => void;
 
     if (isHomepage) {
-      // Homepage: Always show widget (it's positioned in PracticeShowcase)
-      // Handle sticky behavior based on scroll position
+       Homepage: Always show widget (it's positioned in PracticeShowcase)
+       Handle sticky behavior based on scroll position
       handleScroll = () => {
         const triggerElement = document.getElementById(
           "reviews-sticky-trigger",
@@ -127,7 +127,7 @@ const GoogleReviewsWidget = () => {
         }
       };
     } else {
-      // Other pages: Show widget after scrolling, then make it sticky
+       Other pages: Show widget after scrolling, then make it sticky
       handleScroll = () => {
         const scrollY = window.scrollY;
         if (scrollY > 300) {
@@ -141,7 +141,7 @@ const GoogleReviewsWidget = () => {
     }
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();  Initial call
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHomepage]);
@@ -157,7 +157,7 @@ const GoogleReviewsWidget = () => {
   const averageRating =
     reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 
-  // Don't render anything if widget shouldn't be shown (only applies to non-homepage)
+   Don't render anything if widget shouldn't be shown (only applies to non-homepage)
   if (!isHomepage && !showWidget) {
     return null;
   }
@@ -230,7 +230,7 @@ const GoogleReviewsWidget = () => {
                         ))}
                       </div>
                       <span
-                        className={`text-xs transition-all duration-500 ${isSticky ? "text-gray-600" : isHomepage ? "text-white/80" : "text-gray-600"}`}
+                        className={`text-xs transition-all duration-500 ${isSticky ? "text-gray-600" : isHomepage ? "text-white" : "text-gray-600"}`}
                       >
                         Over 400 reviews
                       </span>
@@ -248,7 +248,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white text-white/70"
+                        ? "hover:bg-white text-white"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >
@@ -261,7 +261,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white text-white/70"
+                        ? "hover:bg-white text-white"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >
@@ -276,7 +276,7 @@ const GoogleReviewsWidget = () => {
                     isSticky
                       ? "hover:bg-gray-100 text-gray-600"
                       : isHomepage
-                        ? "hover:bg-white text-white/70"
+                        ? "hover:bg-white text-white"
                         : "hover:bg-gray-100 text-gray-600"
                   }`}
                 >
@@ -291,7 +291,7 @@ const GoogleReviewsWidget = () => {
             >
               <div className="flex items-start space-x-4">
                 <div
-                  className={`w-10 h-10 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSticky ? "w-8 h-8" : ""}`}
+                  className={`w-10 h-10 bg-gradient-to-br from-pear-gold to-pear-gold rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSticky ? "w-8 h-8" : ""}`}
                 >
                   <span
                     className={`text-white font-semibold transition-all duration-500 ${isSticky ? "text-xs" : "text-sm"}`}
@@ -320,7 +320,7 @@ const GoogleReviewsWidget = () => {
                       ))}
                     </div>
                     <span
-                      className={`text-xs transition-all duration-500 ${isSticky ? "text-gray-500" : isHomepage ? "text-white/60" : "text-gray-500"}`}
+                      className={`text-xs transition-all duration-500 ${isSticky ? "text-gray-500" : isHomepage ? "text-white" : "text-gray-500"}`}
                     >
                       {reviews[currentReview].date}
                     </span>
@@ -330,7 +330,7 @@ const GoogleReviewsWidget = () => {
                       isSticky
                         ? "text-gray-600 line-clamp-3"
                         : isHomepage
-                          ? "text-white/90"
+                          ? "text-white"
                           : "text-gray-600"
                     }`}
                   >
@@ -361,7 +361,7 @@ const GoogleReviewsWidget = () => {
                           ? "bg-white"
                           : "bg-pear-primary"
                         : isHomepage
-                          ? "bg-white/40"
+                          ? "bg-white"
                           : "bg-gray-300"
                     }`}
                   />
@@ -373,7 +373,7 @@ const GoogleReviewsWidget = () => {
             {isPaused && !isSticky && (
               <div
                 className={`text-center mt-3 text-xs transition-all duration-300 ${
-                  isHomepage ? "text-white/60" : "text-gray-500"
+                  isHomepage ? "text-white" : "text-gray-500"
                 }`}
               >
                 Auto-rotation paused · Use arrow keys to navigate

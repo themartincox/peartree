@@ -123,7 +123,7 @@ export default function NottinghamTeethStraighteningPage() {
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-8 text-dental-navy leading-relaxed">
               Straighten your teeth discreetly with Invisalign & ClearCorrect.
               <br className="hidden sm:block" />
               Clear aligners for a perfect smile - from £2,500.
@@ -133,7 +133,7 @@ export default function NottinghamTeethStraighteningPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -185,9 +185,9 @@ export default function NottinghamTeethStraighteningPage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Invisalign */}
-              <Card className="p-8 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-8 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle className="text-2xl text-dental-green">
@@ -232,9 +232,9 @@ export default function NottinghamTeethStraighteningPage() {
               </Card>
 
               {/* ClearCorrect */}
-              <Card className="p-8 border-2 border-dental-green hover:border-dental-green/40 transition-colors">
+              <Card className="p-8 border-2 border-dental-green hover:border-dental-green transition-colors">
                 <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-8 w-8 text-white" />
                   </div>
                   <CardTitle className="text-2xl text-dental-green">

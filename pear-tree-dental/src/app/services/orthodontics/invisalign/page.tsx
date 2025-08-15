@@ -393,11 +393,11 @@ export default function InvisalignPage() {
                     combining cutting-edge technology with decades of research.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">14M+</div>
                       <div className="text-gray-600">Patients treated</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">20+</div>
                       <div className="text-gray-600">Years research</div>
                     </div>
@@ -670,13 +670,13 @@ export default function InvisalignPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Experience the Invisalign Difference
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Join millions of patients worldwide who have transformed their smiles with
                 Invisalign. Book your consultation and see your future smile today.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                   Book Invisalign Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -687,7 +687,7 @@ export default function InvisalignPage() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £2,800 • 6-18 months treatment • 14+ million patients treated
               </div>
             </CardContent>

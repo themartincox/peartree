@@ -24,7 +24,7 @@ export default function MedicalOrganizationSchema({
     description:
       "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £10.95/month.",
 
-    // Contact Information
+     Contact Information
     telephone: "+441159312520",
     email: "hello@peartree.dental",
     contactPoint: {
@@ -41,7 +41,7 @@ export default function MedicalOrganizationSchema({
       },
     },
 
-    // Location
+     Location
     address: {
       "@type": "PostalAddress",
       streetAddress: "22 Nottingham Road",
@@ -56,10 +56,10 @@ export default function MedicalOrganizationSchema({
       longitude: "-1.061",
     },
 
-    // Opening Hours
+     Opening Hours
     openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-14:00"],
 
-    // Medical Specialty
+     Medical Specialty
     medicalSpecialty: [
       "General Dentistry",
       "Cosmetic Dentistry",
@@ -69,7 +69,7 @@ export default function MedicalOrganizationSchema({
       "Preventive Dentistry",
     ],
 
-    // Services Offered
+     Services Offered
     availableService: [
       {
         "@type": "MedicalProcedure",
@@ -113,7 +113,7 @@ export default function MedicalOrganizationSchema({
       },
     ],
 
-    // Staff/Doctors
+     Staff/Doctors
     employee: [
       {
         "@type": "Person",
@@ -145,7 +145,7 @@ export default function MedicalOrganizationSchema({
       },
     ],
 
-    // Reviews
+     Reviews
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",
@@ -154,12 +154,12 @@ export default function MedicalOrganizationSchema({
       ratingCount: "127",
     },
 
-    // Payment Options
+     Payment Options
     paymentAccepted: ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
     currenciesAccepted: "GBP",
     priceRange: "£",
 
-    // Areas Served
+     Areas Served
     areaServed: [
       {
         "@type": "City",
@@ -183,7 +183,7 @@ export default function MedicalOrganizationSchema({
       },
     ],
 
-    // Membership Plans
+     Membership Plans
     makesOffer: [
       {
         "@type": "Offer",
@@ -216,9 +216,9 @@ export default function MedicalOrganizationSchema({
     ],
   };
 
-  // Add page-specific enhancements
+   Add page-specific enhancements
   if (page === "services" && serviceType) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (baseSchema as any).mainContentOfPage = {
       "@type": "MedicalWebPage",
       about: {
@@ -229,7 +229,7 @@ export default function MedicalOrganizationSchema({
   }
 
   if (page === "membership") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     eslint-disable-next-line @typescript-eslint/no-explicit-any
     (baseSchema as any).offers = baseSchema.makesOffer;
   }
 
