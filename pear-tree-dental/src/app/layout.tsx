@@ -12,7 +12,7 @@ import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
-// Optimize Google Fonts loading with font-display: swap
+ Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -120,8 +120,8 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* DNS Prefetch for faster font loading */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="fonts.gstatic.com" />
 
         {/* Preconnect for critical font resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

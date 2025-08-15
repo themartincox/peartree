@@ -282,7 +282,7 @@ export default function SmileGalleryPage() {
               {(stats || []).map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <Card key={stat.label} className="border-2 border-soft-pink bg-white/80">
+                  <Card key={stat.label} className="border-2 border-soft-pink bg-white">
                     <CardContent className="p-6 text-center">
                       <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-soft-pink" />
@@ -297,7 +297,7 @@ export default function SmileGalleryPage() {
 
             {/* Quick Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink/90 text-white font-semibold">
+              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink text-white font-semibold">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Consultation
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -439,7 +439,7 @@ export default function SmileGalleryPage() {
 
                     {/* Action Buttons */}
                     <div className="flex space-x-3">
-                      <Button className="flex-1 bg-soft-pink hover:bg-soft-pink/90 text-white">
+                      <Button className="flex-1 bg-soft-pink hover:bg-soft-pink text-white">
                         <Eye className="w-4 h-4 mr-2" />
                         View Full Size
                       </Button>
@@ -498,7 +498,7 @@ export default function SmileGalleryPage() {
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white hover:bg-white"
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
@@ -598,13 +598,13 @@ export default function SmileGalleryPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for Your Own Transformation?
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 These incredible results could be yours too. Book a free consultation to discuss
                 your smile goals and discover what's possible for your unique situation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-soft-pink hover:bg-white font-semibold">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />

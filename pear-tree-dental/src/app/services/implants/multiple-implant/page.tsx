@@ -6,7 +6,7 @@ import {
   ChevronLeft,
   Clock,
   Crown,
-  Grid3X3, 
+  Grid3X3,
   Layers,
   Shield,
   Sparkles,
@@ -352,11 +352,11 @@ export default function MultipleImplantPage() {
                     with each tooth operating independently for optimal performance.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">98%</div>
                       <div className="text-gray-600">Success rate each</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">25+</div>
                       <div className="text-gray-600">Years lifespan</div>
                     </div>
@@ -579,13 +579,13 @@ export default function MultipleImplantPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Restore Multiple Teeth with Confidence
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Don't let multiple missing teeth limit your life. Individual implants provide
                 the most natural, long-lasting solution for comprehensive tooth replacement.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
                   Book Multiple Implant Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -596,7 +596,7 @@ export default function MultipleImplantPage() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £6,000 • Individual function • 25+ year lifespan each
               </div>
             </CardContent>

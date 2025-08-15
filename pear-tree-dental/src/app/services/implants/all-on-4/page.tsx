@@ -8,7 +8,7 @@ import {
   Crown,
   Grid,
   Shield,
-  Smile, 
+  Smile,
   Star,
   Target,
   Zap
@@ -381,11 +381,11 @@ export default function AllOn4Page() {
                     teeth on the day of surgery with minimal implants needed.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-orange-600">4 hours</div>
                       <div className="text-gray-600">Surgery time</div>
                     </div>
-                    <div className="bg-white/50 p-3 rounded-lg">
+                    <div className="bg-white p-3 rounded-lg">
                       <div className="font-semibold text-orange-600">Same day</div>
                       <div className="text-gray-600">New teeth</div>
                     </div>
@@ -647,13 +647,13 @@ export default function AllOn4Page() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Transform Your Life in One Day
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
                 Experience the revolutionary All-on-4 solution. Walk in with failing teeth
                 or dentures, walk out with a beautiful, functional smile.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-orange-600 hover:bg-white font-semibold">
                   Book All-on-4 Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -664,7 +664,7 @@ export default function AllOn4Page() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white/80">
+              <div className="text-sm text-white">
                 From £15,000 per arch • Same day teeth • 20+ year lifespan
               </div>
             </CardContent>
