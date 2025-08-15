@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useState } from "react"
+import type React from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
 type AnswerOption = {
@@ -115,7 +116,7 @@ export default function SmileQuizClient() {
   }
 
   const calculateScore = async () => {
-    let baseScore = answers
+    const baseScore = answers
       .slice(0, questions.length - 1)
       .reduce((sum, val) => sum + (typeof val === "number" ? val : 0), 0)
 

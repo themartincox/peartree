@@ -19,8 +19,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full overflow-hidden min-h-[100svh]">
-      {/* Background image anchored to page top */}
+    <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
+      {/* Background image anchored to page top underneath navigation */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
@@ -33,16 +33,28 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
+      {/* Family Image – anchored bottom-right over the hero */}
+<div className="absolute bottom-0 right-0 z-20 pointer-events-none">
+  <Image
+    src="/images/heroes/hero-home-new-family.webp"
+    alt="Smiling family at Pear Tree Dental"
+    width={1200}        // tweak size to taste
+    height={900}
+    priority
+    className="w-[50vw] max-w-[780px] h-auto"
+  />
+</div>
+
       {/* Main container */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         {/* Mobile / Tablet Layout */}
         <div className="lg:hidden py-8 sm:py-12">
           <h1 className="heading-serif text-5xl sm:text-6xl md:text-7xl font-bold text-white drop-shadow-md leading-tight mb-6">
             Expert dental care
             <br />
-            with a <span className="text-pear-gold font-bold">personal</span>
+            with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
             <br />
-            <span className="text-pear-gold font-bold">touch</span>
+            <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-white leading-relaxed max-w-2xl mb-8">
@@ -85,19 +97,31 @@ const Hero = () => {
               Enjoy peace of mind from just 36p per day
             </Link>
           </Button>
+
+          {/* Family image for mobile/tablet - smaller and positioned differently */}
+          <div className="lg:hidden mt-8 flex justify-center">
+            <Image
+              src="/images/heroes/hero-home-new-family.webp"
+              alt="Smiling family at Pear Tree Dental"
+              width={600}
+              height={450}
+              priority
+              className="object-contain max-h-[40vh] max-w-full"
+            />
+          </div>
         </div>
 
         {/* Desktop Layout */}
-        <div className="hidden lg:grid lg:grid-cols-2 items-center min-h-[100svh]">
-          {/* LEFT: Text Content */}
-          <div className="space-y-8 self-center">
+        <div className="hidden lg:flex lg:items-center min-h-[100svh]">
+          {/* Text Content - positioned on left side with family image on right */}
+          <div className="max-w-2xl space-y-8">
             <h1 className="heading-serif text-[85px] font-bold text-white drop-shadow-md leading-tight">
               Expert dental care
               <br />
               with a{" "}
-              <span className="text-pear-gold font-bold">personal</span>
+              <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
               <br />
-              <span className="text-pear-gold font-bold">touch</span>
+              <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
             </h1>
 
             <p className="text-xl text-white leading-relaxed max-w-lg">
@@ -142,16 +166,9 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* RIGHT: Foreground Hero Image */}
-          <div className="relative flex justify-end items-end">
-            <Image
-              src="/images/heroes/hero-home-new-family.webp"
-              alt="Smiling family at Pear Tree Dental"
-              width={1600}
-              height={1200}
-              priority
-              className="object-contain object-bottom max-h-[100vh] max-w-[65vw]"
-            />
+          {/* RIGHT: Text content takes full width on desktop since family image is positioned absolutely */}
+          <div className="relative">
+            {/* Content area - family image is positioned absolutely outside this grid */}
           </div>
         </div>
       </div>
