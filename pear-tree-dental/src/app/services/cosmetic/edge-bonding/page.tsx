@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getTreatmentPrice } from "@/data/pricing";
 
-/** @jsx React.createElement */
 
 export const metadata: Metadata = {
   title: "Composite Edge Bonding - Instant Smile Enhancement | Pear Tree Dental",

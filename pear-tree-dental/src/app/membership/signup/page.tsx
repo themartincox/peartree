@@ -29,6 +29,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { downloadPDF, generateDirectDebitGuaranteePDF, generateMembershipTermsPDF } from "@/lib/generatePersonalizedPDFs";
 
+/** @jsx React.createElement */
 
 export default function MembershipSignupPage() {
   const [currentStep, setCurrentStep] = useState(1);
