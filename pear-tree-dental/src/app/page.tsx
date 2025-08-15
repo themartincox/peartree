@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
- Import our beautiful welcoming loaders
+ // Import our beautiful welcoming loaders
 import {
   DentalTeamLoader,
   DiverseSmilesLoader,

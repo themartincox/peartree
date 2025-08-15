@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     canonical:
       "https://peartree.dental/services/cosmetic/buccal-corridor-correction",
   },
-   Add performance optimizations
+   // Add performance optimizations
   other: {
     "preload-bcc-smile-thumb": "/images/buccal-corridor/BCC-smile-thumb.webp",
     "preload-bcc-before-large": "/images/before-after/BCC-before-large.webp",

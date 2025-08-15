@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/card";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
- Icon mapping for benefits
+ // Icon mapping for benefits
 const iconMap = {
   Star,
   Heart,
