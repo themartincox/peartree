@@ -1,17 +1,8 @@
 "use client";
 
-import { CalendarDays, Menu, Phone, Sparkles, Star } from "lucide-react";
-import Image from "next/image";
+import { useState, useEffect, useRef, useCallback, Suspense, lazy } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -22,21 +13,21 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
+import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
+import NavigationErrorBoundary from "@/components/navigation/NavigationErrorBoundary";
 
- Lazy load non-critical navigation components
+// Lazy load non-critical navigation components
 const LazyNavigationItems = lazy(() =>
-  import("@/components/navigation/LazyNavigationItems").then((module) => {
-     Performance tracking for lazy loading
-    if (typeof window !== "undefined" && window.performance) {
+  import("@/components/navigation/LazyNavigationItems").then(module => {
+    // Performance tracking for lazy loading
+    if (typeof window !== 'undefined' && window.performance) {
       const loadTime = performance.now();
-      console.log(
-        `[Nav Performance] Lazy navigation loaded in ${loadTime.toFixed(2)}ms`,
-      );
+      console.log(`[Nav Performance] Lazy navigation loaded in ${loadTime.toFixed(2)}ms`);
     }
     return module;
-  }),
+  })
 );
 
 const Navigation = () => {
@@ -44,15 +35,13 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const { startTiming, endTiming } = usePerformanceMonitor();
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
-//    Touch gesture handling for swipe-to-close
+  // Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
   const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
 
-//    Swipe gesture detection
+  // Swipe gesture detection
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -68,12 +57,12 @@ const Navigation = () => {
     const deltaX = currentX - touchStartX.current;
     const deltaY = Math.abs(currentY - touchStartY.current);
 
-     Only consider horizontal swipes (deltaY < 50 ensures it's more horizontal than vertical)
+    // Only consider horizontal swipes (deltaY < 50 ensures it's more horizontal than vertical)
     if (deltaX > 50 && deltaY < 50) {
-       Swiping right - show visual feedback
+      // Swiping right - show visual feedback
       setIsSwipeIndicatorVisible(true);
     } else if (deltaX < -20) {
-       Swiping left - hide indicator
+      // Swiping left - hide indicator
       setIsSwipeIndicatorVisible(false);
     }
   }, []);
@@ -90,60 +79,60 @@ const Navigation = () => {
     const deltaX = currentX - touchStartX.current;
     const deltaY = Math.abs(currentY - touchStartY.current);
 
-     Swipe right to close (minimum 100px swipe, more horizontal than vertical)
+    // Swipe right to close (minimum 100px swipe, more horizontal than vertical)
     if (deltaX > 100 && deltaY < 80) {
-       Close mobile menu directly
+      // Close mobile menu directly
       setIsMobileMenuOpen(false);
       setIsSwipeIndicatorVisible(false);
 
-       Trigger escape key to close the sheet
-      const escapeEvent = new KeyboardEvent("keydown", {
-        key: "Escape",
+      // Trigger escape key to close the sheet
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
         keyCode: 27,
-        bubbles: true,
+        bubbles: true
       });
       document.dispatchEvent(escapeEvent);
     }
 
-     Reset
+    // Reset
     touchStartX.current = null;
     touchStartY.current = null;
     setIsSwipeIndicatorVisible(false);
   }, []);
 
-//    Function to close mobile menu when navigation links are clicked
+  // Function to close mobile menu when navigation links are clicked
   const closeMobileMenu = useCallback(() => {
-     Add smooth close animation
-    const content = document.querySelector(".mobile-nav-content");
+    // Add smooth close animation
+    const content = document.querySelector('.mobile-nav-content');
     if (content) {
-      content.classList.add("exiting");
+      content.classList.add('exiting');
     }
 
-     Small delay to allow animation to play
+    // Small delay to allow animation to play
     setTimeout(() => {
       setIsMobileMenuOpen(false);
       setIsSwipeIndicatorVisible(false);
 
-       Trigger escape key to close the sheet
-      const escapeEvent = new KeyboardEvent("keydown", {
-        key: "Escape",
+      // Trigger escape key to close the sheet
+      const escapeEvent = new KeyboardEvent('keydown', {
+        key: 'Escape',
         keyCode: 27,
-        bubbles: true,
+        bubbles: true
       });
       document.dispatchEvent(escapeEvent);
     }, 150);
   }, []);
 
-//    Load secondary navigation when mobile menu is opened
+  // Load secondary navigation when mobile menu is opened
   useEffect(() => {
     if (isMobileMenuOpen) {
       setShouldLoadSecondaryNav(true);
 
-       Show swipe hint briefly when menu opens
+      // Show swipe hint briefly when menu opens
       setIsSwipeIndicatorVisible(true);
       const timer = setTimeout(() => {
         setIsSwipeIndicatorVisible(false);
-      }, 3000);  Hide after 3 seconds
+      }, 3000); // Hide after 3 seconds
 
       return () => clearTimeout(timer);
     }
@@ -162,37 +151,37 @@ const Navigation = () => {
       title: "General Dentistry",
       href: "/services/general",
       description: "Comprehensive dental care for your everyday needs",
-      theme: "medical",
+      theme: "medical"
     },
     {
       title: "Restorative Dentistry",
       href: "/services/restorative",
       description: "Repair and restore your teeth to optimal health",
-      theme: "medical",
+      theme: "medical"
     },
     {
       title: "Cosmetic Dentistry",
       href: "/services/cosmetic",
       description: "Transform your smile with aesthetic treatments",
-      theme: "cosmetic",
+      theme: "cosmetic"
     },
     {
       title: "Implant Dentistry",
       href: "/services/implants",
       description: "Permanent tooth replacement solutions",
-      theme: "cosmetic",
+      theme: "cosmetic"
     },
     {
       title: "Orthodontics",
       href: "/services/orthodontics",
       description: "Invisalign and ClearCorrect aligners",
-      theme: "cosmetic",
+      theme: "cosmetic"
     },
     {
       title: "Emergency Dentistry",
       href: "/services/emergency",
       description: "Urgent dental care when you need it most",
-      theme: "medical",
+      theme: "medical"
     },
   ];
 
@@ -200,37 +189,39 @@ const Navigation = () => {
     {
       title: "Our Team",
       href: "/about/team",
-      description: "Meet our experienced dental professionals",
+      description: "Meet our experienced dental professionals"
     },
     {
       title: "Our Practice",
       href: "/about/practice",
-      description: "State-of-the-art facilities in Burton Joyce",
+      description: "State-of-the-art facilities in Burton Joyce"
     },
     {
       title: "Patient Reviews",
       href: "/testimonials",
-      description: "Real testimonials from our satisfied patients",
+      description: "Real testimonials from our satisfied patients"
     },
     {
       title: "Smile Gallery",
       href: "/smile-gallery",
-      description: "Before & after smile transformations",
+      description: "Before & after smile transformations"
     },
     {
       title: "Dental Education",
       href: "/patient-education",
-      description: "Helpful guides and oral health resources",
+      description: "Helpful guides and oral health resources"
     },
     {
       title: "Pricing",
       href: "/pricing",
-      description: "Transparent dental treatment pricing",
+      description: "Transparent dental treatment pricing"
     },
   ];
 
   return (
     <>
+
+
       {/* Main Navigation - Full menu when not scrolled */}
       <header
         id="navigation"
@@ -239,9 +230,7 @@ const Navigation = () => {
           "sticky top-0 z-50 w-full transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform -translate-y-full opacity-0 pointer-events-none"
-            : isHome
-              ? "transform translate-y-0 opacity-100 bg-transparent"
-              : "transform translate-y-0 opacity-100 bg-white shadow-lg",
+            : "transform translate-y-0 opacity-100 bg-white shadow-lg"
         )}
         aria-label="Main navigation"
       >
@@ -260,30 +249,21 @@ const Navigation = () => {
                   width={56}
                   height={56}
                   className="w-full h-full object-contain"
-                  style={{
-                    filter:
-                      "brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1200%) hue-rotate(165deg) brightness(90%) contrast(95%)",
-                  }}
+                  style={{ filter: 'brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1200%) hue-rotate(165deg) brightness(90%) contrast(95%)' }}
                 />
               </div>
               <div className="flex flex-col">
-                <div
-                  className="brand-logo text-pear-primary xl:text-left lg:text-center"
-                  style={{ fontSize: 25, lineHeight: "1.125" }}
-                >
+                <div className="brand-logo text-pear-primary xl:text-left lg:text-center" style={{ fontSize: 25, lineHeight: '1.125' }}>
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
-                <div className="brand-subtitle text-xs text-pear-primary mt-1 xl:text-center"></div>
+                <div className="brand-subtitle text-xs text-pear-primary/90 mt-1 xl:text-center">
+                </div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <NavigationMenu
-              className="hidden lg:flex"
-              role="navigation"
-              aria-label="Main site navigation"
-            >
+            <NavigationMenu className="hidden lg:flex" role="navigation" aria-label="Main site navigation">
               <NavigationMenuList className="space-x-6">
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
@@ -293,83 +273,66 @@ const Navigation = () => {
                   >
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent
-                    role="menu"
-                    aria-label="Dental services"
-                  >
-                    <ul
-                      className="grid w-[600px] gap-3 p-4 md:grid-cols-3"
-                      role="none"
-                    >
+                  <NavigationMenuContent role="menu" aria-label="Dental services">
+                    <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-3" role="none">
                       {/* Top Row: Restorative, General, Cosmetic */}
-                      {[services[2], services[0], services[1]].map(
-                        (service) => (
-                          <li key={service.title} role="none">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={service.href}
-                                role="menuitem"
-                                className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
-                                  service.theme === "medical"
-                                    ? "border-l-4 border-dental-green"
-                                    : "border-l-4 border-soft-pink",
-                                )}
-                                aria-describedby={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
+                      {[services[2], services[0], services[1]].map((service) => (
+                        <li key={service.title} role="none">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              role="menuitem"
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
+                                service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
+                              )}
+                              aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                            >
+                              <div className="text-sm font-medium leading-none text-pear-primary">
+                                {service.title}
+                              </div>
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
                               >
-                                <div className="text-sm font-medium leading-none text-pear-primary">
-                                  {service.title}
-                                </div>
-                                <p
-                                  id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
-                                  className="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                                >
-                                  {service.description}
-                                </p>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ),
-                      )}
+                                {service.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                       {/* Bottom Row: Implants, Orthodontics, Emergency */}
-                      {[services[3], services[4], services[5]].map(
-                        (service) => (
-                          <li key={service.title} role="none">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                href={service.href}
-                                role="menuitem"
-                                className={cn(
-                                  "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
-                                  service.theme === "medical"
-                                    ? "border-l-4 border-dental-green"
-                                    : "border-l-4 border-soft-pink",
-                                )}
-                                aria-describedby={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
+                      {[services[3], services[4], services[5]].map((service) => (
+                        <li key={service.title} role="none">
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={service.href}
+                              role="menuitem"
+                              className={cn(
+                                "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
+                                service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
+                              )}
+                              aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                            >
+                              <div className="text-sm font-medium leading-none text-pear-primary">
+                                {service.title}
+                              </div>
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
                               >
-                                <div className="text-sm font-medium leading-none text-pear-primary">
-                                  {service.title}
-                                </div>
-                                <p
-                                  id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
-                                  className="line-clamp-2 text-sm leading-snug text-muted-foreground"
-                                >
-                                  {service.description}
-                                </p>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                        ),
-                      )}
+                                {service.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link
-                    href="/membership"
-                    className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm"
-                  >
+                  <Link href="/membership" className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm">
                     Membership Plan
                   </Link>
                 </NavigationMenuItem>
@@ -403,19 +366,13 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link
-                    href="/new-patients"
-                    className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm"
-                  >
+                  <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                     New Patients
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link
-                    href="/contact"
-                    className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm"
-                  >
+                  <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
                     Contact
                   </Link>
                 </NavigationMenuItem>
@@ -440,7 +397,7 @@ const Navigation = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary"
+                    className="text-pear-primary focus:outline-none focus:ring-2 focus:ring-pear-primary focus:rounded-md hover:bg-pear-primary/10"
                     aria-label="Open mobile navigation menu"
                     aria-expanded={isMobileMenuOpen}
                   >
@@ -458,23 +415,14 @@ const Navigation = () => {
                   onTouchEnd={handleTouchEnd}
                 >
                   {/* Swipe Indicator */}
-                  <div
-                    className={cn(
-                      "swipe-indicator",
-                      isSwipeIndicatorVisible && "active",
-                    )}
-                  >
-                    <div className="flex items-center text-pear-primary text-sm">
+                  <div className={cn("swipe-indicator", isSwipeIndicatorVisible && "active")}>
+                    <div className="flex items-center text-pear-primary/60 text-sm">
                       <span className="mr-1">→</span>
                       <span>Swipe</span>
                     </div>
                   </div>
 
-                  <div
-                    className="flex flex-col space-y-4 mt-2 mobile-nav-content"
-                    role="navigation"
-                    aria-label="Mobile site navigation"
-                  >
+                  <div className="flex flex-col space-y-4 mt-2 mobile-nav-content" role="navigation" aria-label="Mobile site navigation">
                     {/* Mobile Logo */}
                     <Link
                       href="/"
@@ -503,54 +451,31 @@ const Navigation = () => {
 
                     {/* Mobile CTAs */}
                     <div className="flex flex-col space-y-3">
-                      <Link
-                        href="/services/emergency"
-                        onClick={closeMobileMenu}
-                        className="nav-item-enter"
-                      >
+                      <Link href="/services/emergency" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1 nav-button">
                           🚨 Dental Pain? Call Now
                         </Button>
                       </Link>
-                      <Link
-                        href="/book"
-                        onClick={closeMobileMenu}
-                        className="nav-item-enter"
-                      >
+                      <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-10 text-sm px-4 py-1 nav-button">
                           <CalendarDays className="w-4 h-4 mr-2" />
                           Book Appointment
                         </Button>
                       </Link>
-                      <Link
-                        href="/smile-design"
-                        onClick={closeMobileMenu}
-                        className="nav-item-enter"
-                      >
+                      <Link href="/smile-design" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="pink-haze text-white w-full h-10 font-semibold text-sm px-4 py-1 nav-button">
                           <Sparkles className="w-4 h-4 mr-2" />
                           Smile Design Service
                         </Button>
                       </Link>
-                      <Link
-                        href="/membership"
-                        onClick={closeMobileMenu}
-                        className="nav-item-enter"
-                      >
+                      <Link href="/membership" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="btn-gold text-white w-full h-10 font-semibold text-sm px-4 py-1 nav-button">
                           <Star className="w-4 h-4 mr-2" />
                           Join Membership
                         </Button>
                       </Link>
-                      <a
-                        href="tel:01159312935"
-                        onClick={closeMobileMenu}
-                        className="nav-item-enter"
-                      >
-                        <Button
-                          variant="outline"
-                          className="text-pear-primary border-pear-primary w-full h-10 text-sm px-4 py-1 nav-button"
-                        >
+                      <a href="tel:01159312935" onClick={closeMobileMenu} className="nav-item-enter">
+                        <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-10 text-sm px-4 py-1 nav-button">
                           <Phone className="w-4 h-4 mr-2" />
                           0115 931 2935
                         </Button>
@@ -560,9 +485,7 @@ const Navigation = () => {
                     {/* Mobile Navigation Links */}
                     <nav className="flex flex-col space-y-3 overflow-y-auto">
                       <div className="space-y-2">
-                        <div className="text-pear-primary font-semibold">
-                          Services
-                        </div>
+                        <div className="text-pear-primary font-semibold">Services</div>
                         <div className="ml-4 space-y-1">
                           {services.map((service) => (
                             <Link
@@ -586,9 +509,7 @@ const Navigation = () => {
                       </Link>
 
                       <div className="space-y-2">
-                        <div className="text-pear-primary font-semibold">
-                          About
-                        </div>
+                        <div className="text-pear-primary font-semibold">About</div>
                         <div className="ml-4 space-y-1">
                           {about.map((item) => (
                             <Link
@@ -632,7 +553,7 @@ const Navigation = () => {
           "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
-            : "transform -translate-y-full opacity-0 pointer-events-none",
+            : "transform -translate-y-full opacity-0 pointer-events-none"
         )}
         aria-label="Simplified navigation"
       >
@@ -650,14 +571,12 @@ const Navigation = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div
-                  className="brand-logo text-2xl p-0 sm:p-1"
-                  style={{ fontSize: 25, color: "#fff" }}
-                >
+                <div className="brand-logo text-2xl p-0 sm:p-1" style={{ fontSize: 25, color: "#fff" }}>
                   <span className="block sm:inline">PEAR TREE</span>
                   <span className="block sm:inline sm:ml-2">DENTAL</span>
                 </div>
-                <div className="brand-subtitle text-xs text-white mt-1 xl:text-center"></div>
+                <div className="brand-subtitle text-xs text-white/80 mt-1 xl:text-center">
+                </div>
               </div>
             </Link>
 
@@ -666,16 +585,15 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary"
+                  className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary/90"
                 >
-                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />
-                  Book
+                  <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />Book
                 </Button>
               </Link>
               <Link href="/membership">
                 <Button
                   size="sm"
-                  className="bg-white text-pear-gold hover:bg-white font-semibold px-4 py-2 h-10"
+                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-4 py-2 h-10"
                 >
                   Membership
                 </Button>
@@ -687,7 +605,7 @@ const Navigation = () => {
               <Link href="/book">
                 <Button
                   size="sm"
-                  className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary"
+                  className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary/90"
                 >
                   Book Appointment
                 </Button>
@@ -695,7 +613,7 @@ const Navigation = () => {
               <Link href="/membership">
                 <Button
                   size="sm"
-                  className="bg-white text-pear-gold hover:bg-white font-semibold px-3 py-2 h-9 text-xs"
+                  className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs"
                 >
                   Explore Membership
                 </Button>
@@ -708,7 +626,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:bg-white focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+                  className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
                   aria-label="Open mobile navigation menu"
                 >
                   <Menu className="h-6 w-6" />
@@ -723,24 +641,15 @@ const Navigation = () => {
                 onTouchEnd={handleTouchEnd}
               >
                 {/* Swipe Indicator */}
-                <div
-                  className={cn(
-                    "swipe-indicator",
-                    isSwipeIndicatorVisible && "active",
-                  )}
-                >
-                  <div className="flex items-center text-pear-primary text-sm">
+                <div className={cn("swipe-indicator", isSwipeIndicatorVisible && "active")}>
+                  <div className="flex items-center text-pear-primary/60 text-sm">
                     <span className="mr-1">→</span>
                     <span>Swipe</span>
                   </div>
                 </div>
 
                 <div className="flex flex-col space-y-6 mt-6 mobile-nav-content">
-                  <Link
-                    href="/"
-                    className="flex items-center space-x-3"
-                    onClick={closeMobileMenu}
-                  >
+                  <Link href="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
                     <div className="w-8 h-8 text-pear-primary">
                       <Image
                         src="/images/dental-motif-logo.png"
@@ -761,25 +670,14 @@ const Navigation = () => {
                   </Link>
 
                   <div className="flex flex-col space-y-3">
-                    <Link
-                      href="/book"
-                      onClick={closeMobileMenu}
-                      className="nav-item-enter"
-                    >
+                    <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
                       <Button className="bg-soft-pink text-pear-primary w-full h-12 nav-button">
                         <CalendarDays className="w-4 h-4 mr-2" />
                         Book Appointment
                       </Button>
                     </Link>
-                    <Link
-                      href="/membership"
-                      onClick={closeMobileMenu}
-                      className="nav-item-enter"
-                    >
-                      <Button
-                        variant="outline"
-                        className="text-pear-primary border-pear-primary w-full h-12 text-sm nav-button"
-                      >
+                    <Link href="/membership" onClick={closeMobileMenu} className="nav-item-enter">
+                      <Button variant="outline" className="text-pear-primary border-pear-primary w-full h-12 text-sm nav-button">
                         <Star className="w-4 h-4 mr-2" />
                         Membership Plans
                       </Button>
@@ -788,28 +686,22 @@ const Navigation = () => {
 
                   {/* Enhanced Navigation using Welcoming Loading */}
                   {shouldLoadSecondaryNav && (
-                    <Suspense
-                      fallback={
-                        <div className="space-y-4 p-4">
-                          <div className="text-center">
-                            <div className="w-10 h-10 bg-gradient-to-br from-pear-primary to-pear-gold rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
-                              <span className="text-white text-lg">😊</span>
-                            </div>
-                            <p className="text-pear-primary font-medium text-sm">
-                              Loading navigation...
-                            </p>
-                            <p className="text-gray-600 text-xs mt-1">
-                              Finding the perfect page for you
-                            </p>
+                    <Suspense fallback={
+                      <div className="space-y-4 p-4">
+                        <div className="text-center">
+                          <div className="w-10 h-10 bg-gradient-to-br from-pear-primary to-pear-gold rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
+                            <span className="text-white text-lg">😊</span>
                           </div>
-                          <div className="animate-pulse space-y-3">
-                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-3/4 mx-auto"></div>
-                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-1/2 mx-auto"></div>
-                            <div className="h-3 bg-gradient-to-r from-pear-background to-soft-pink rounded w-2/3 mx-auto"></div>
-                          </div>
+                          <p className="text-pear-primary font-medium text-sm">Loading navigation...</p>
+                          <p className="text-gray-600 text-xs mt-1">Finding the perfect page for you</p>
                         </div>
-                      }
-                    >
+                        <div className="animate-pulse space-y-3">
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-3/4 mx-auto"></div>
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-1/2 mx-auto"></div>
+                          <div className="h-3 bg-gradient-to-r from-pear-background/30 to-soft-pink/20 rounded w-2/3 mx-auto"></div>
+                        </div>
+                      </div>
+                    }>
                       <LazyNavigationItems
                         services={services}
                         about={about}
@@ -819,18 +711,10 @@ const Navigation = () => {
                   )}
 
                   <div className="space-y-2">
-                    <Link
-                      href="/new-patients"
-                      className="text-pear-primary hover:text-pear-gold transition-colors font-medium"
-                      onClick={closeMobileMenu}
-                    >
+                    <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={closeMobileMenu}>
                       New Patients
                     </Link>
-                    <Link
-                      href="/contact"
-                      className="text-pear-primary hover:text-pear-gold transition-colors font-medium"
-                      onClick={closeMobileMenu}
-                    >
+                    <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium" onClick={closeMobileMenu}>
                       Contact
                     </Link>
                   </div>

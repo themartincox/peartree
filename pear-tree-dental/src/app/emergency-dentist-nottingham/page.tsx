@@ -1,28 +1,27 @@
-import React from "react";
-import {
-  Activity,
-  AlertTriangle,
-  Car,
-  Clock,
-  Heart,
-  MapPin,
-  Phone,
-  Shield,
-  Thermometer,
-  Zap,
-} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import EmergencyConversionTracking from "@/components/EmergencyConversionTracking";
-import NottinghamTransportSchema from "@/components/seo/NottinghamTransportSchema";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import TestimonialBanner from "@/components/TestimonialBanner";
+import NottinghamTransportSchema from "@/components/seo/NottinghamTransportSchema";
+import EmergencyConversionTracking from "@/components/EmergencyConversionTracking";
+import {
+  Phone,
+  Clock,
+  MapPin,
+  AlertTriangle,
+  Zap,
+  Shield,
+  Heart,
+  Car,
+  CheckCircle,
+  Thermometer,
+  Activity,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "Emergency Dentist Nottingham - Same Day Appointments | Pear Tree Dental",
+  title: "Emergency Dentist Nottingham - Same Day Appointments | Pear Tree Dental",
   description:
     "Emergency dental care for Nottingham patients. Same-day appointments usually available. Just 15 minutes from city centre. Call 0115 931 2935 for urgent dental pain relief.",
   keywords: [
@@ -84,21 +83,17 @@ export default function EmergencyDentistNottinghamPage() {
             </h1>
 
             {/* Urgent Value Proposition */}
-            <div className="bg-white backdrop-blur-sm rounded-xl p-6 mb-8 border-2 border-red-200 shadow-lg">
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-6 mb-8 border-2 border-red-200 shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
                 <div className="flex flex-col items-center">
                   <Clock className="w-8 h-8 text-red-600 mb-2" />
                   <h3 className="font-bold text-gray-900">15 Minutes</h3>
-                  <p className="text-sm text-gray-600">
-                    From Nottingham City Centre
-                  </p>
+                  <p className="text-sm text-gray-600">From Nottingham City Centre</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <Zap className="w-8 h-8 text-red-600 mb-2" />
                   <h3 className="font-bold text-gray-900">Same Day</h3>
-                  <p className="text-sm text-gray-600">
-                    Emergency Appointments
-                  </p>
+                  <p className="text-sm text-gray-600">Emergency Appointments</p>
                 </div>
                 <div className="flex flex-col items-center">
                   <Car className="w-8 h-8 text-red-600 mb-2" />
@@ -130,7 +125,7 @@ export default function EmergencyDentistNottinghamPage() {
                 id="emergency-directions"
               >
                 <Link
-                  href="https://aps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
+                  href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AL"
                   target="_blank"
                 >
                   <MapPin className="w-6 h-6 mr-3" />
@@ -141,15 +136,11 @@ export default function EmergencyDentistNottinghamPage() {
 
             {/* Emergency Operating Hours */}
             <div className="bg-red-100 rounded-lg p-4 mb-8">
-              <h3 className="font-bold text-red-800 mb-2">
-                Emergency Hours Today
-              </h3>
+              <h3 className="font-bold text-red-800 mb-2">Emergency Hours Today</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
                 <div className="flex items-center justify-center">
                   <Activity className="w-4 h-4 text-red-600 mr-2" />
-                  <span className="text-red-700">
-                    Monday-Thursday: 8:45am-5pm
-                  </span>
+                  <span className="text-red-700">Monday-Thursday: 8:45am-5pm</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Activity className="w-4 h-4 text-red-600 mr-2" />
@@ -172,73 +163,66 @@ export default function EmergencyDentistNottinghamPage() {
               Emergency Dental Conditions We Treat
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Don't suffer in pain. We provide immediate relief for these urgent
-              dental emergencies.
+              Don't suffer in pain. We provide immediate relief for these urgent dental emergencies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(
-              [
-                {
-                  title: "Severe Tooth Pain",
-                  description:
-                    "Unbearable throbbing or constant pain that won't respond to pain relief",
-                  urgency: "URGENT",
-                  icon: Thermometer,
-                  color: "red",
-                },
-                {
-                  title: "Knocked Out Tooth",
-                  description:
-                    "Tooth completely knocked out from accident or injury",
-                  urgency: "CRITICAL",
-                  icon: AlertTriangle,
-                  color: "red",
-                },
-                {
-                  title: "Broken/Chipped Tooth",
-                  description:
-                    "Fractured tooth causing pain or sharp edges cutting your mouth",
-                  urgency: "URGENT",
-                  icon: Activity,
-                  color: "orange",
-                },
-                {
-                  title: "Dental Abscess",
-                  description:
-                    "Swelling, pus, fever, or bad taste indicating serious infection",
-                  urgency: "CRITICAL",
-                  icon: Shield,
-                  color: "red",
-                },
-                {
-                  title: "Lost Filling/Crown",
-                  description:
-                    "Filling or crown has fallen out exposing sensitive tooth",
-                  urgency: "PRIORITY",
-                  icon: Heart,
-                  color: "orange",
-                },
-                {
-                  title: "Bleeding Gums",
-                  description:
-                    "Excessive bleeding that won't stop after injury or procedure",
-                  urgency: "URGENT",
-                  icon: Activity,
-                  color: "red",
-                },
-              ] || []
-            ).map((condition, index) => (
+            {[
+              {
+                title: "Severe Tooth Pain",
+                description:
+                  "Unbearable throbbing or constant pain that won't respond to pain relief",
+                urgency: "URGENT",
+                icon: Thermometer,
+                color: "red",
+              },
+              {
+                title: "Knocked Out Tooth",
+                description: "Tooth completely knocked out from accident or injury",
+                urgency: "CRITICAL",
+                icon: AlertTriangle,
+                color: "red",
+              },
+              {
+                title: "Broken/Chipped Tooth",
+                description:
+                  "Fractured tooth causing pain or sharp edges cutting your mouth",
+                urgency: "URGENT",
+                icon: Activity,
+                color: "orange",
+              },
+              {
+                title: "Dental Abscess",
+                description:
+                  "Swelling, pus, fever, or bad taste indicating serious infection",
+                urgency: "CRITICAL",
+                icon: Shield,
+                color: "red",
+              },
+              {
+                title: "Lost Filling/Crown",
+                description: "Filling or crown has fallen out exposing sensitive tooth",
+                urgency: "PRIORITY",
+                icon: Heart,
+                color: "orange",
+              },
+              {
+                title: "Bleeding Gums",
+                description:
+                  "Excessive bleeding that won't stop after injury or procedure",
+                urgency: "URGENT",
+                icon: Activity,
+                color: "red",
+              },
+            ].map((condition, index) => (
               <Card
                 key={index}
                 className="border-l-4 border-l-red-500 hover:shadow-lg transition-shadow"
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between mb-2">
-                    <condition.icon
-                      className={`w-6 h-6 text-${condition.color}-600`}
-                    />
+                    <condition.icon className={`w-6 h-6 text-${condition.color}-600`} />
                     <Badge
                       variant={
                         condition.urgency === "CRITICAL"
@@ -253,9 +237,7 @@ export default function EmergencyDentistNottinghamPage() {
                   <CardTitle className="text-lg">{condition.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600 text-sm">
-                    {condition.description}
-                  </p>
+                  <p className="text-gray-600 text-sm">{condition.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -268,8 +250,7 @@ export default function EmergencyDentistNottinghamPage() {
                 Experiencing Any of These?
               </h3>
               <p className="text-red-700 mb-6">
-                Don't wait - dental emergencies can worsen quickly and lead to
-                serious complications.
+                Don't wait - dental emergencies can worsen quickly and lead to serious complications.
               </p>
 
               <Button
@@ -366,8 +347,7 @@ export default function EmergencyDentistNottinghamPage() {
                 Immediate Assessment
               </h3>
               <p className="text-gray-600">
-                We assess your emergency over the phone and book you in
-                immediately
+                We assess your emergency over the phone and book you in immediately
               </p>
             </div>
             <div className="text-center">
@@ -378,8 +358,7 @@ export default function EmergencyDentistNottinghamPage() {
                 Pain Relief Priority
               </h3>
               <p className="text-gray-600">
-                First priority is stopping your pain and stabilizing the
-                emergency
+                First priority is stopping your pain and stabilizing the emergency
               </p>
             </div>
             <div className="text-center">
@@ -402,8 +381,7 @@ export default function EmergencyDentistNottinghamPage() {
                 Ready to End Your Dental Pain?
               </h3>
               <p className="text-gray-600 mb-6">
-                Every minute counts in a dental emergency. Call now for
-                immediate relief.
+                Every minute counts in a dental emergency. Call now for immediate relief.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

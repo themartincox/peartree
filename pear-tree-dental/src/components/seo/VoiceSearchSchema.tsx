@@ -7,142 +7,133 @@ const VoiceSearchSchema = () => {
       {
         "@type": "DentalClinic",
         "@id": "https://peartree.dental/#dentist",
-        name: "Pear Tree Dental Centre",
-        alternateName: ["Pear Tree Dental", "Burton Joyce Dentist"],
-        description:
-          "Modern dental practice in Burton Joyce offering comprehensive dental care, emergency appointments, and flexible membership plans from £10.95/month.",
-        telephone: "+44 115 931 2935",
-        email: "hello@peartree.dental",
-        url: "https://peartree.dental",
-        image: "https://peartree.dental/images/practice-exterior.jpg",
-        priceRange: "£10.95-£29.95 per month",
-        paymentAccepted: ["Cash", "Credit Card", "NHS", "Private Insurance"],
-        currenciesAccepted: "GBP",
-        address: {
+        "name": "Pear Tree Dental Centre",
+        "alternateName": ["Pear Tree Dental", "Burton Joyce Dentist"],
+        "description": "Modern dental practice in Burton Joyce offering comprehensive dental care, emergency appointments, and flexible membership plans from £10.95/month.",
+        "telephone": "+44 115 931 2935",
+        "email": "hello@peartree.dental",
+        "url": "https://peartree.dental",
+        "image": "https://peartree.dental/images/practice-exterior.jpg",
+        "priceRange": "£10.95-£29.95 per month",
+        "paymentAccepted": ["Cash", "Credit Card", "NHS", "Private Insurance"],
+        "currenciesAccepted": "GBP",
+        "address": {
           "@type": "PostalAddress",
-          streetAddress: "22 Nottingham Road",
-          addressLocality: "Burton Joyce",
-          addressRegion: "Nottinghamshire",
-          postalCode: "NG14 5AE",
-          addressCountry: "GB",
+          "streetAddress": "22 Nottingham Road",
+          "addressLocality": "Burton Joyce",
+          "addressRegion": "Nottinghamshire",
+          "postalCode": "NG14 5AL",
+          "addressCountry": "GB"
         },
-        geo: {
+        "geo": {
           "@type": "GeoCoordinates",
-          latitude: 52.9873,
-          longitude: -1.0454,
+          "latitude": 52.9873,
+          "longitude": -1.0454
         },
-        openingHoursSpecification: [
+        "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
-            opens: "08:45",
-            closes: "17:00",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "08:45",
+            "closes": "17:00"
           },
           {
             "@type": "OpeningHoursSpecification",
-            dayOfWeek: "Friday",
-            opens: "08:00",
-            closes: "15:30",
-          },
+            "dayOfWeek": "Friday",
+            "opens": "08:00",
+            "closes": "15:30"
+          }
         ],
-        areaServed: [
+        "areaServed": [
           {
             "@type": "City",
-            name: "Burton Joyce",
+            "name": "Burton Joyce"
           },
           {
             "@type": "City",
-            name: "Colwick",
+            "name": "Colwick"
           },
           {
             "@type": "City",
-            name: "Lowdham",
+            "name": "Lowdham"
           },
           {
             "@type": "City",
-            name: "East Bridgford",
+            "name": "East Bridgford"
           },
           {
             "@type": "AdministrativeArea",
-            name: "Nottinghamshire",
-          },
+            "name": "Nottinghamshire"
+          }
         ],
-        hasOfferCatalog: {
+        "hasOfferCatalog": {
           "@type": "OfferCatalog",
-          name: "Dental Services",
-          itemListElement: [
+          "name": "Dental Services",
+          "itemListElement": [
             {
               "@type": "Offer",
-              itemOffered: {
+              "itemOffered": {
                 "@type": "MedicalProcedure",
-                name: "Dental Checkup and Cleaning",
+                "name": "Dental Checkup and Cleaning"
               },
-              price: "25.80",
-              priceCurrency: "GBP",
-              description:
-                "NHS Band 1 treatment or included free with membership plans",
+              "price": "25.80",
+              "priceCurrency": "GBP",
+              "description": "NHS Band 1 treatment or included free with membership plans"
             },
             {
               "@type": "Offer",
-              itemOffered: {
+              "itemOffered": {
                 "@type": "MedicalProcedure",
-                name: "Dental Membership Plan",
+                "name": "Dental Membership Plan"
               },
-              price: "10.95",
-              priceCurrency: "GBP",
-              description:
-                "Monthly membership including checkups, cleaning, and 10% treatment discount",
-            },
-          ],
+              "price": "10.95",
+              "priceCurrency": "GBP",
+              "description": "Monthly membership including checkups, cleaning, and 10% treatment discount"
+            }
+          ]
         },
-        aggregateRating: {
+        "aggregateRating": {
           "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "400",
-          bestRating: "5",
-          worstRating: "1",
+          "ratingValue": "4.9",
+          "reviewCount": "400",
+          "bestRating": "5",
+          "worstRating": "1"
         },
-        sameAs: [
-          "https://ww.facebook.com/peartreeDental",
-          "https://www.google.com/maps/place/Pear+Tree+Dental+Centre",
+        "sameAs": [
+          "https://www.facebook.com/peartreeDental",
+          "https://www.google.com/maps/place/Pear+Tree+Dental+Centre"
         ],
-        speakable: {
+        "speakable": {
           "@type": "SpeakableSpecification",
-          cssSelector: [
-            ".voice-search-content",
-            ".practice-hours",
-            ".emergency-phone",
-          ],
-        },
+          "cssSelector": [".voice-search-content", ".practice-hours", ".emergency-phone"]
+        }
       },
       {
         "@type": "WebSite",
         "@id": "https://peartree.dental/#website",
-        url: "https://peartree.dental",
-        name: "Pear Tree Dental Centre",
-        description:
-          "Burton Joyce's premier dental practice offering modern dental care with membership plans from £10.95/month",
-        potentialAction: [
+        "url": "https://peartree.dental",
+        "name": "Pear Tree Dental Centre",
+        "description": "Burton Joyce's premier dental practice offering modern dental care with membership plans from £10.95/month",
+        "potentialAction": [
           {
             "@type": "SearchAction",
-            target: {
+            "target": {
               "@type": "EntryPoint",
-              urlTemplate:
-                "https://peartree.dental/search?q={search_term_string}",
+              "urlTemplate": "https://peartree.dental/search?q={search_term_string}"
             },
-            "query-input": "required name=search_term_string",
+            "query-input": "required name=search_term_string"
           },
           {
             "@type": "ReserveAction",
-            target: {
+            "target": {
               "@type": "EntryPoint",
-              urlTemplate: "https://peartree.dental/contact",
+              "urlTemplate": "https://peartree.dental/contact"
             },
-            name: "Book Dental Appointment",
-          },
-        ],
-      },
-    ],
+            "name": "Book Dental Appointment"
+          }
+        ]
+      }
+    ]
   };
 
   return (
@@ -150,7 +141,7 @@ const VoiceSearchSchema = () => {
       id="voice-search-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(voiceSearchSchema),
+        __html: JSON.stringify(voiceSearchSchema)
       }}
     />
   );

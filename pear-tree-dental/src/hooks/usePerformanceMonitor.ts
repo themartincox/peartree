@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 interface PerformanceMetrics {
   action: string;
@@ -21,16 +21,14 @@ export const usePerformanceMonitor = () => {
 
   const endTiming = (action: string) => {
     const endTime = performance.now();
-    const metric = metricsRef.current.find(
-      (m) => m.action === action && !m.endTime,
-    );
+    const metric = metricsRef.current.find(m => m.action === action && !m.endTime);
 
     if (metric) {
       metric.endTime = endTime;
       metric.duration = endTime - metric.startTime;
 
       // Log performance for debugging (only in development)
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV === 'development') {
         console.log(`[Performance] ${action}: ${metric.duration.toFixed(2)}ms`);
       }
     }

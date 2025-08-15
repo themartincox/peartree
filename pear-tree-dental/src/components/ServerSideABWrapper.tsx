@@ -1,18 +1,15 @@
 import type { Variant } from "@/lib/ab-testing";
-import ClientSideAnalytics from "./ClientSideAnalytics";
 import WelcomeScreenVariantB from "./WelcomeScreenVariantB";
 import WelcomeScreenVariantC from "./WelcomeScreenVariantC";
+import ClientSideAnalytics from "./ClientSideAnalytics";
 
 interface ServerSideABWrapperProps {
   children: React.ReactNode;
   variant: Variant;
 }
 
-export default function ServerSideABWrapper({
-  children,
-  variant,
-}: ServerSideABWrapperProps) {
-//    Add variant-specific CSS classes to the wrapper
+export default function ServerSideABWrapper({ children, variant }: ServerSideABWrapperProps) {
+  // Add variant-specific CSS classes to the wrapper
   const wrapperClass = `ab-variant-${variant.toLowerCase()}`;
 
   return (
@@ -21,10 +18,14 @@ export default function ServerSideABWrapper({
       <ClientSideAnalytics variant={variant} />
 
       {/* Variant A: Standard homepage (no modifications) */}
-      {variant === "A" && <div id="main-content">{children}</div>}
+      {variant === 'A' && (
+        <div id="main-content">
+          {children}
+        </div>
+      )}
 
       {/* Variant B: Animated welcome screen */}
-      {variant === "B" && (
+      {variant === 'B' && (
         <>
           <WelcomeScreenVariantB />
           <div id="main-content" className="ab-variant-b-content">
@@ -34,7 +35,7 @@ export default function ServerSideABWrapper({
       )}
 
       {/* Variant C: Welcome with background image */}
-      {variant === "C" && (
+      {variant === 'C' && (
         <>
           <WelcomeScreenVariantC />
           <div id="main-content" className="ab-variant-c-content">

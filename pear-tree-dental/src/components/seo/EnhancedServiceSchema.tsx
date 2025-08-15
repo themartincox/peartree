@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Script from "next/script";
+import Script from 'next/script';
 
 interface EnhancedServiceSchemaProps {
   serviceName: string;
@@ -15,7 +15,7 @@ interface EnhancedServiceSchemaProps {
   rating?: number;
   reviewCount?: number;
   url?: string;
-  procedureType?: "MedicalProcedure" | "Service";
+  procedureType?: 'MedicalProcedure' | 'Service';
 }
 
 export default function EnhancedServiceSchema({
@@ -31,131 +31,130 @@ export default function EnhancedServiceSchema({
   rating = 4.8,
   reviewCount = 127,
   url,
-  procedureType = "MedicalProcedure",
+  procedureType = 'MedicalProcedure'
 }: EnhancedServiceSchemaProps) {
   const baseData = {
     "@context": "https://schema.org",
     "@type": procedureType,
-    name: serviceName,
-    description: description,
-    category: category,
-    url:
-      url ||
-      `https://peartree.dental/services/${serviceName.toLowerCase().replace(/\s+/g, "-")}`,
-    provider: {
+    "name": serviceName,
+    "description": description,
+    "category": category,
+    "url": url || `https://peartree.dental/services/${serviceName.toLowerCase().replace(/\s+/g, '-')}`,
+    "provider": {
       "@type": "DentalClinic",
-      name: "Pear Tree Dental",
-      url: "https://peartree.dental",
-      telephone: "+44-115-931-2935",
-      email: "hello@peartree.dental",
-      priceRange: "££-£££",
-      paymentAccepted: ["Cash", "Credit Card", "Bank Transfer", "Finance"],
-      currenciesAccepted: "GBP",
-      address: {
+      "name": "Pear Tree Dental",
+      "url": "https://peartree.dental",
+      "telephone": "+44-115-931-2935",
+      "email": "hello@peartree.dental",
+      "priceRange": "££-£££",
+      "paymentAccepted": ["Cash", "Credit Card", "Bank Transfer", "Finance"],
+      "currenciesAccepted": "GBP",
+      "address": {
         "@type": "PostalAddress",
-        streetAddress: "22 Nottingham Road",
-        addressLocality: "Burton Joyce",
-        addressRegion: "Nottinghamshire",
-        postalCode: "NG14 5AE",
-        addressCountry: "GB",
+        "streetAddress": "22 Nottingham Road",
+        "addressLocality": "Burton Joyce",
+        "addressRegion": "Nottinghamshire",
+        "postalCode": "NG14 5AL",
+        "addressCountry": "GB"
       },
-      geo: {
+      "geo": {
         "@type": "GeoCoordinates",
-        latitude: "52.9617",
-        longitude: "-1.0731",
+        "latitude": "52.9617",
+        "longitude": "-1.0731"
       },
-      openingHours: ["Mo-Th 08:00-17:00", "Fr 08:00-16:00"],
-      aggregateRating: {
+      "openingHours": [
+        "Mo-Th 08:00-17:00",
+        "Fr 08:00-16:00"
+      ],
+      "aggregateRating": {
         "@type": "AggregateRating",
-        ratingValue: rating,
-        reviewCount: reviewCount,
-        bestRating: "5",
-        worstRating: "1",
+        "ratingValue": rating,
+        "reviewCount": reviewCount,
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      hasCredential: {
+      "hasCredential": {
         "@type": "EducationalOccupationalCredential",
-        credentialCategory: "Professional License",
-        recognizedBy: {
+        "credentialCategory": "Professional License",
+        "recognizedBy": {
           "@type": "Organization",
-          name: "General Dental Council",
-        },
-      },
+          "name": "General Dental Council"
+        }
+      }
     },
-    offers: {
+    "offers": {
       "@type": "Offer",
-      description: price,
-      priceCurrency: "GBP",
-      availability: "https://schema.org/InStock",
-      validFrom: new Date().toISOString(),
-      priceValidUntil: new Date(
-        Date.now() + 365 * 24 * 60 * 60 * 1000,
-      ).toISOString(),
+      "description": price,
+      "priceCurrency": "GBP",
+      "availability": "https://schema.org/InStock",
+      "validFrom": new Date().toISOString(),
+      "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
     },
-    areaServed: [
+    "areaServed": [
       {
         "@type": "Place",
-        name: "Burton Joyce",
+        "name": "Burton Joyce"
       },
       {
         "@type": "Place",
-        name: "Nottingham",
+        "name": "Nottingham"
       },
       {
         "@type": "Place",
-        name: "Nottinghamshire",
+        "name": "Nottinghamshire"
       },
       {
         "@type": "Place",
-        name: "East Bridgford",
+        "name": "East Bridgford"
       },
       {
         "@type": "Place",
-        name: "Lowdham",
+        "name": "Lowdham"
       },
       {
         "@type": "Place",
-        name: "Colwick",
-      },
-    ],
+        "name": "Colwick"
+      }
+    ]
   };
 
-//    Add medical procedure specific data
-  if (procedureType === "MedicalProcedure") {
+  // Add medical procedure specific data
+  if (procedureType === 'MedicalProcedure') {
     Object.assign(baseData, {
-      procedureType: "Dental",
-      bodyLocation: {
+      "procedureType": "Dental",
+      "bodyLocation": {
         "@type": "AnatomicalStructure",
-        name: "Teeth and Oral Cavity",
+        "name": "Teeth and Oral Cavity"
       },
-      followup: recovery || "Follow-up appointments as recommended",
-      preparation: preparation || "Consultation and examination required",
+      "followup": recovery || "Follow-up appointments as recommended",
+      "preparation": preparation || "Consultation and examination required"
     });
 
     if (duration) {
       Object.assign(baseData, {
-        estimatedDuration: duration,
+        "estimatedDuration": duration
       });
     }
 
     if (benefits.length > 0) {
       Object.assign(baseData, {
-        expectedResult: benefits.join(", "),
+        "expectedResult": benefits.join(', ')
       });
     }
 
     if (risks.length > 0) {
       Object.assign(baseData, {
-        riskFactor: risks.join(", "),
+        "riskFactor": risks.join(', ')
       });
     }
   }
 
   return (
     <Script
-      id={`enhanced-service-schema-${serviceName.replace(/\s+/g, "-").toLowerCase()}`}
+      id={`enhanced-service-schema-${serviceName.replace(/\s+/g, '-').toLowerCase()}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(baseData),
+        __html: JSON.stringify(baseData)
       }}
     />
   );

@@ -1,9 +1,9 @@
-import Head from "next/head";
+import Head from 'next/head';
 
 interface OpenGraphImageMetaProps {
   title: string;
   description: string;
-  pageType: "service" | "location" | "about" | "general";
+  pageType: 'service' | 'location' | 'about' | 'general';
   serviceName?: string;
   locationName?: string;
   url: string;
@@ -15,32 +15,32 @@ export default function OpenGraphImageMeta({
   pageType,
   serviceName,
   locationName,
-  url,
+  url
 }: OpenGraphImageMetaProps) {
-//    Generate dynamic image URL based on page type
+  // Generate dynamic image URL based on page type
   const getImageUrl = () => {
-    const baseUrl = "https://peartree.dental/api/og";
+    const baseUrl = 'https://peartree.dental/api/og';
     const params = new URLSearchParams({
       title: title,
       type: pageType,
       ...(serviceName && { service: serviceName }),
-      ...(locationName && { location: locationName }),
+      ...(locationName && { location: locationName })
     });
 
     return `${baseUrl}?${params.toString()}`;
   };
 
-//    Fallback images for different page types
+  // Fallback images for different page types
   const getFallbackImage = () => {
     switch (pageType) {
-      case "service":
-        return "https://peartree.dental/images/og/service-default.jpg";
-      case "location":
-        return "https://peartree.dental/images/og/location-default.jpg";
-      case "about":
-        return "https://peartree.dental/images/og/team-default.jpg";
+      case 'service':
+        return 'https://peartree.dental/images/og/service-default.jpg';
+      case 'location':
+        return 'https://peartree.dental/images/og/location-default.jpg';
+      case 'about':
+        return 'https://peartree.dental/images/og/team-default.jpg';
       default:
-        return "https://peartree.dental/images/og/practice-default.jpg";
+        return 'https://peartree.dental/images/og/practice-default.jpg';
     }
   };
 
@@ -58,10 +58,7 @@ export default function OpenGraphImageMeta({
 
       {/* Fallback Image */}
       <meta property="og:image" content={fallbackImageUrl} />
-      <meta
-        property="og:image:alt"
-        content={`${title} - Pear Tree Dental Burton Joyce`}
-      />
+      <meta property="og:image:alt" content={`${title} - Pear Tree Dental Burton Joyce`} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -83,41 +80,41 @@ export default function OpenGraphImageMeta({
   );
 }
 
-//  Service-specific image configurations
+// Service-specific image configurations
 export const serviceImageConfigs = {
-  "teeth-whitening": {
-    color: "#FFD700",
-    icon: "✨",
-    background: "gradient-gold",
+  'teeth-whitening': {
+    color: '#FFD700',
+    icon: '✨',
+    background: 'gradient-gold'
   },
-  "dental-implants": {
-    color: "#2C5AA0",
-    icon: "🦷",
-    background: "gradient-blue",
+  'dental-implants': {
+    color: '#2C5AA0',
+    icon: '🦷',
+    background: 'gradient-blue'
   },
-  veneers: {
-    color: "#E91E63",
-    icon: "💎",
-    background: "gradient-pink",
+  'veneers': {
+    color: '#E91E63',
+    icon: '💎',
+    background: 'gradient-pink'
   },
-  orthodontics: {
-    color: "#9C27B0",
-    icon: "😊",
-    background: "gradient-purple",
+  'orthodontics': {
+    color: '#9C27B0',
+    icon: '😊',
+    background: 'gradient-purple'
   },
-  "general-dentistry": {
-    color: "#4CAF50",
-    icon: "🏥",
-    background: "gradient-green",
+  'general-dentistry': {
+    color: '#4CAF50',
+    icon: '🏥',
+    background: 'gradient-green'
   },
-  emergency: {
-    color: "#F44336",
-    icon: "🚨",
-    background: "gradient-red",
+  'emergency': {
+    color: '#F44336',
+    icon: '🚨',
+    background: 'gradient-red'
   },
-  cosmetic: {
-    color: "#FF6B9D",
-    icon: "✨",
-    background: "gradient-pink",
-  },
+  'cosmetic': {
+    color: '#FF6B9D',
+    icon: '✨',
+    background: 'gradient-pink'
+  }
 };

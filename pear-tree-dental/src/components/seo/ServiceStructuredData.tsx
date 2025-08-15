@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Script from "next/script";
+import Script from 'next/script';
 
 interface ServiceStructuredDataProps {
   serviceName: string;
@@ -34,54 +34,54 @@ export default function ServiceStructuredData({
   category,
   provider,
   areaServed,
-  availableChannel,
+  availableChannel
 }: ServiceStructuredDataProps) {
   const serviceData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: serviceName,
-    description: description,
-    ...(category && { category: category }),
-    provider: provider || {
+    "name": serviceName,
+    "description": description,
+    ...(category && { "category": category }),
+    "provider": provider || {
       "@type": "DentalClinic",
-      name: "Pear Tree Dental",
-      url: "https://peartree.dental",
-      telephone: "+44-115-931-2935",
-      email: "hello@peartree.dental",
-      address: {
+      "name": "Pear Tree Dental",
+      "url": "https://peartree.dental",
+      "telephone": "+44-115-931-2935",
+      "email": "hello@peartree.dental",
+      "address": {
         "@type": "PostalAddress",
-        streetAddress: "22 Nottingham Road",
-        addressLocality: "Burton Joyce",
-        addressRegion: "Nottinghamshire",
-        postalCode: "NG14 5AE",
-        addressCountry: "GB",
-      },
+        "streetAddress": "22 Nottingham Road",
+        "addressLocality": "Burton Joyce",
+        "addressRegion": "Nottinghamshire",
+        "postalCode": "NG14 5AL",
+        "addressCountry": "GB"
+      }
     },
     ...(price && {
-      offers: {
+      "offers": {
         "@type": "Offer",
-        description: price,
-        priceCurrency: "GBP",
-      },
+        "description": price,
+        "priceCurrency": "GBP"
+      }
     }),
-    areaServed: areaServed?.map((area) => ({
+    "areaServed": areaServed?.map(area => ({
       "@type": "Place",
-      name: area,
+      "name": area
     })) || [
       {
         "@type": "Place",
-        name: "Burton Joyce",
+        "name": "Burton Joyce"
       },
       {
         "@type": "Place",
-        name: "Nottingham",
+        "name": "Nottingham"
       },
       {
         "@type": "Place",
-        name: "Nottinghamshire",
-      },
+        "name": "Nottinghamshire"
+      }
     ],
-    ...(availableChannel && { availableChannel: availableChannel }),
+    ...(availableChannel && { "availableChannel": availableChannel })
   };
 
   return (
@@ -89,7 +89,7 @@ export default function ServiceStructuredData({
       id="service-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(serviceData),
+        __html: JSON.stringify(serviceData)
       }}
     />
   );

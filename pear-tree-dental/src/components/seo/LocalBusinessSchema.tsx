@@ -4,435 +4,417 @@ interface LocalBusinessSchemaProps {
   includeDentistSpecific?: boolean;
 }
 
-export default function LocalBusinessSchema({
-  includeDentistSpecific = false,
-}: LocalBusinessSchemaProps) {
+export default function LocalBusinessSchema({ includeDentistSpecific = false }: LocalBusinessSchemaProps) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "DentistOffice", "MedicalOrganization"],
-    name: "Pear Tree Dental Centre",
-    alternateName: ["Pear Tree Dental", "Private Dentist Nottingham"],
-    description:
-      "Private dental practice serving Nottinghamshire offering comprehensive family and cosmetic dental care including general dentistry, cosmetic treatments, dental implants, Invisalign, and emergency care. Trusted by families across Nottingham, Burton Joyce, West Bridgford, Bingham, and East Bridgford.",
-    url: "https://peartree.dental",
-    telephone: "+441159312520",
-    email: "hello@peartree.dental",
-    address: {
+    "name": "Pear Tree Dental Centre",
+    "alternateName": ["Pear Tree Dental", "Private Dentist Nottingham"],
+    "description": "Private dental practice serving Nottinghamshire offering comprehensive family and cosmetic dental care including general dentistry, cosmetic treatments, dental implants, Invisalign, and emergency care. Trusted by families across Nottingham, Burton Joyce, West Bridgford, Bingham, and East Bridgford.",
+    "url": "https://peartree.dental",
+    "telephone": "+441159312520",
+    "email": "hello@peartree.dental",
+    "address": {
       "@type": "PostalAddress",
-      streetAddress: "22 Nottingham Road",
-      addressLocality: "Burton Joyce",
-      addressRegion: "Nottinghamshire",
-      postalCode: "NG14 5AE",
-      addressCountry: "GB",
+      "streetAddress": "22 Nottingham Road",
+      "addressLocality": "Burton Joyce",
+      "addressRegion": "Nottinghamshire",
+      "postalCode": "NG14 5AE",
+      "addressCountry": "GB"
     },
-    geo: {
+    "geo": {
       "@type": "GeoCoordinates",
-      latitude: "52.967",
-      longitude: "-1.061",
+      "latitude": "52.967",
+      "longitude": "-1.061"
     },
-    openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-14:00"],
-    paymentAccepted: [
-      "Cash",
-      "Credit Card",
-      "Debit Card",
-      "Bank Transfer",
-      "NHS",
-      "Private Insurance",
+    "openingHours": [
+      "Mo-Fr 08:00-18:00",
+      "Sa 08:00-14:00"
     ],
-    currenciesAccepted: "GBP",
-    priceRange: "££",
-    image: "https://peartree.dental/images/practice-exterior.jpg",
-    logo: "https://peartree.dental/logo.png",
-    sameAs: [
-      "https://ww.facebook.com/peartreeDental",
-      "https://ww.instagram.com/peartree_dental/",
+    "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer", "NHS", "Private Insurance"],
+    "currenciesAccepted": "GBP",
+    "priceRange": "££",
+    "image": "https://peartree.dental/images/practice-exterior.jpg",
+    "logo": "https://peartree.dental/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/peartreeDental",
+      "https://www.instagram.com/peartree_dental/"
     ],
-    founder: {
+    "founder": {
       "@type": "Person",
-      name: "Javaad Mirza",
-      jobTitle: "Principal Dentist",
-      hasCredential: {
+      "name": "Javaad Mirza",
+      "jobTitle": "Principal Dentist",
+      "hasCredential": {
         "@type": "EducationalOccupationalCredential",
-        credentialCategory: "Medical Degree",
-        recognizedBy: {
+        "credentialCategory": "Medical Degree",
+        "recognizedBy": {
           "@type": "Organization",
-          name: "General Dental Council",
-          identifier: "290378",
-        },
-      },
+          "name": "General Dental Council",
+          "identifier": "290378"
+        }
+      }
     },
-    employee: [
+    "employee": [
       {
         "@type": "Person",
-        name: "Javaad Mirza",
-        jobTitle: "Principal Dentist",
-        hasCredential: {
+        "name": "Javaad Mirza",
+        "jobTitle": "Principal Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "MD, BDS",
-          recognizedBy: {
+          "credentialCategory": "MD, BDS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "290378",
-          },
-        },
+            "name": "General Dental Council",
+            "identifier": "290378"
+          }
+        }
       },
       {
         "@type": "Person",
-        name: "Imrana Ishaque",
-        jobTitle: "Principal Dentist",
-        hasCredential: {
+        "name": "Imrana Ishaque",
+        "jobTitle": "Principal Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "BDS, MFDS",
-          recognizedBy: {
+          "credentialCategory": "BDS, MFDS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "252578",
-          },
-        },
+            "name": "General Dental Council",
+            "identifier": "252578"
+          }
+        }
       },
       {
         "@type": "Person",
-        name: "Janet Kerr",
-        jobTitle: "Associate Dentist",
-        hasCredential: {
+        "name": "Janet Kerr",
+        "jobTitle": "Associate Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "BDS LDS RCS",
-          recognizedBy: {
+          "credentialCategory": "BDS LDS RCS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "60861",
-          },
-        },
+            "name": "General Dental Council",
+            "identifier": "60861"
+          }
+        }
       },
       {
         "@type": "Person",
-        name: "Gavin Goh",
-        jobTitle: "Associate Dentist",
-        hasCredential: {
+        "name": "Gavin Goh",
+        "jobTitle": "Associate Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "BDS",
-          recognizedBy: {
+          "credentialCategory": "BDS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "264893",
-          },
-        },
-      },
+            "name": "General Dental Council",
+            "identifier": "264893"
+          }
+        }
+      }
     ],
-    hasOfferCatalog: {
+    "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      name: "Comprehensive Dental Services",
-      itemListElement: [
+      "name": "Comprehensive Dental Services",
+      "itemListElement": [
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "General Dentistry",
-            description:
-              "Comprehensive dental examinations, cleanings, fillings, and preventive care for all ages",
-            provider: {
+            "name": "General Dentistry",
+            "description": "Comprehensive dental examinations, cleanings, fillings, and preventive care for all ages",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Cosmetic Dentistry",
-            description:
-              "Teeth whitening, veneers, composite bonding, and smile design treatments",
-            provider: {
+            "name": "Cosmetic Dentistry",
+            "description": "Teeth whitening, veneers, composite bonding, and smile design treatments",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Restorative Dentistry",
-            description:
-              "Crowns, bridges, dentures, and comprehensive dental restoration services",
-            provider: {
+            "name": "Restorative Dentistry",
+            "description": "Crowns, bridges, dentures, and comprehensive dental restoration services",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Emergency Dentistry",
-            description:
-              "Same-day emergency dental care, urgent treatments, and pain relief",
-            provider: {
+            "name": "Emergency Dentistry",
+            "description": "Same-day emergency dental care, urgent treatments, and pain relief",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Orthodontics",
-            description:
-              "Invisalign, ClearCorrect, and modern teeth straightening treatments for all ages",
-            provider: {
+            "name": "Orthodontics",
+            "description": "Invisalign, ClearCorrect, and modern teeth straightening treatments for all ages",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Dental Implants",
-            description:
-              "Single implants, multiple implants, and All-on-4 permanent tooth replacement solutions",
-            provider: {
+            "name": "Dental Implants",
+            "description": "Single implants, multiple implants, and All-on-4 permanent tooth replacement solutions",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Dental Hygiene",
-            description:
-              "Professional teeth cleaning, gum disease treatment, and preventive oral health care",
-            provider: {
+            "name": "Dental Hygiene",
+            "description": "Professional teeth cleaning, gum disease treatment, and preventive oral health care",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
+              "name": "Pear Tree Dental"
+            }
+          }
         },
         {
           "@type": "Offer",
-          itemOffered: {
+          "itemOffered": {
             "@type": "Service",
-            name: "Family Dentistry",
-            description:
-              "Comprehensive dental care for patients of all ages from children to seniors",
-            provider: {
+            "name": "Family Dentistry",
+            "description": "Comprehensive dental care for patients of all ages from children to seniors",
+            "provider": {
               "@type": "DentistOffice",
-              name: "Pear Tree Dental",
-            },
-          },
-        },
-      ],
+              "name": "Pear Tree Dental"
+            }
+          }
+        }
+      ]
     },
-    makesOffer: [
+    "makesOffer": [
       {
         "@type": "Offer",
-        name: "Dental Membership Plan",
-        description:
-          "Affordable monthly payment plan for dental care starting from £10.95/month",
-        url: "https://peartree.dental/membership",
-        priceSpecification: {
+        "name": "Dental Membership Plan",
+        "description": "Affordable monthly payment plan for dental care starting from £10.95/month",
+        "url": "https://peartree.dental/membership",
+        "priceSpecification": {
           "@type": "PriceSpecification",
-          price: "10.95",
-          priceCurrency: "GBP",
-          unitText: "MONTH",
-        },
+          "price": "10.95",
+          "priceCurrency": "GBP",
+          "unitText": "MONTH"
+        }
       },
       {
         "@type": "Offer",
-        name: "New Patient Consultation",
-        description:
-          "Comprehensive dental examination and treatment planning for new patients",
-        url: "https://peartree.dental/new-patients",
-      },
+        "name": "New Patient Consultation",
+        "description": "Comprehensive dental examination and treatment planning for new patients",
+        "url": "https://peartree.dental/new-patients"
+      }
     ],
-    areaServed: [
-       Main practice location
+    "areaServed": [
+      // Main practice location
       {
         "@type": "City",
-        name: "Burton Joyce",
-        containedInPlace: {
+        "name": "Burton Joyce",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
-       Major cities and towns served
+      // Major cities and towns served
       {
         "@type": "City",
-        name: "Nottingham",
-        containedInPlace: {
+        "name": "Nottingham",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
-      },
-      {
-        "@type": "City",
-        name: "West Bridgford",
-        containedInPlace: {
-          "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Bingham",
-        containedInPlace: {
+        "name": "West Bridgford",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "East Bridgford",
-        containedInPlace: {
+        "name": "Bingham",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Arnold",
-        containedInPlace: {
+        "name": "East Bridgford",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Colwick",
-        containedInPlace: {
+        "name": "Arnold",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Gedling",
-        containedInPlace: {
+        "name": "Colwick",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Mapperly",
-        containedInPlace: {
+        "name": "Gedling",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Lowdham",
-        containedInPlace: {
+        "name": "Mapperly",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "City",
-        name: "Rivendell",
-        containedInPlace: {
+        "name": "Lowdham",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
-       Postal code areas served
+      {
+        "@type": "City",
+        "name": "Rivendell",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      },
+      // Postal code areas served
       {
         "@type": "PostalCodeArea",
-        postalCode: "NG14",
-        addressCountry: "GB",
-        containedInPlace: {
+        "postalCode": "NG14",
+        "addressCountry": "GB",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
-      },
-      {
-        "@type": "PostalCodeArea",
-        postalCode: "NG4",
-        addressCountry: "GB",
-        containedInPlace: {
-          "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "PostalCodeArea",
-        postalCode: "NG13",
-        addressCountry: "GB",
-        containedInPlace: {
+        "postalCode": "NG4",
+        "addressCountry": "GB",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "PostalCodeArea",
-        postalCode: "NG2",
-        addressCountry: "GB",
-        containedInPlace: {
+        "postalCode": "NG13",
+        "addressCountry": "GB",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
       {
         "@type": "PostalCodeArea",
-        postalCode: "NG1",
-        addressCountry: "GB",
-        containedInPlace: {
+        "postalCode": "NG2",
+        "addressCountry": "GB",
+        "containedInPlace": {
           "@type": "AdministrativeArea",
-          name: "Nottinghamshire",
-        },
+          "name": "Nottinghamshire"
+        }
       },
+      {
+        "@type": "PostalCodeArea",
+        "postalCode": "NG1",
+        "addressCountry": "GB",
+        "containedInPlace": {
+          "@type": "AdministrativeArea",
+          "name": "Nottinghamshire"
+        }
+      }
     ],
-    serviceArea: {
+    "serviceArea": {
       "@type": "GeoCircle",
-      geoMidpoint: {
+      "geoMidpoint": {
         "@type": "GeoCoordinates",
-        latitude: "52.967",
-        longitude: "-1.061",
+        "latitude": "52.967",
+        "longitude": "-1.061"
       },
-      geoRadius: "25000",
+      "geoRadius": "25000"
     },
-    aggregateRating: {
+    "aggregateRating": {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "127",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "127"
     },
-    review: [
+    "review": [
       {
         "@type": "Review",
-        itemReviewed: {
+        "itemReviewed": {
           "@type": "LocalBusiness",
           "@id": "https://peartree.dental/#organization",
-          name: "Pear Tree Dental Centre",
+          "name": "Pear Tree Dental Centre"
         },
-        author: {
+        "author": {
           "@type": "Person",
-          name: "Sarah M.",
+          "name": "Sarah M."
         },
-        reviewRating: {
+        "reviewRating": {
           "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
+          "ratingValue": "5",
+          "bestRating": "5"
         },
-        reviewBody:
-          "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean.",
-        datePublished: "2024-06-15",
-      },
-    ],
+        "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean.",
+        "datePublished": "2024-06-15"
+      }
+    ]
   };
 
   if (includeDentistSpecific) {
-     Add comprehensive dental-specific schema
-     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // Add comprehensive dental-specific schema
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).medicalSpecialty = [
       "General Dentistry",
       "Preventive Dentistry",
@@ -447,111 +429,106 @@ export default function LocalBusinessSchema({
       "Pediatric Dentistry",
       "Implant Dentistry",
       "Aesthetic Dentistry",
-      "Family Dentistry",
+      "Family Dentistry"
     ];
 
-     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).availableService = [
       {
         "@type": "MedicalProcedure",
-        name: "Dental Examination",
-        procedureType: "Diagnostic",
-        bodyLocation: "Mouth",
-        preparation: "No special preparation required",
+        "name": "Dental Examination",
+        "procedureType": "Diagnostic",
+        "bodyLocation": "Mouth",
+        "preparation": "No special preparation required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Professional Dental Cleaning",
-        procedureType: "Preventive",
-        bodyLocation: "Teeth and Gums",
-        preparation: "Regular dental hygiene recommended",
+        "name": "Professional Dental Cleaning",
+        "procedureType": "Preventive",
+        "bodyLocation": "Teeth and Gums",
+        "preparation": "Regular dental hygiene recommended"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Teeth Whitening",
-        procedureType: "Cosmetic",
-        bodyLocation: "Teeth",
-        preparation: "Dental examination recommended prior to treatment",
+        "name": "Teeth Whitening",
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Teeth",
+        "preparation": "Dental examination recommended prior to treatment"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Fillings",
-        procedureType: "Restorative",
-        bodyLocation: "Teeth",
-        preparation: "Local anesthesia may be required",
+        "name": "Dental Fillings",
+        "procedureType": "Restorative",
+        "bodyLocation": "Teeth",
+        "preparation": "Local anesthesia may be required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Crown",
-        procedureType: "Restorative",
-        bodyLocation: "Teeth",
-        preparation: "Multiple appointments typically required",
+        "name": "Dental Crown",
+        "procedureType": "Restorative",
+        "bodyLocation": "Teeth",
+        "preparation": "Multiple appointments typically required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Implant",
-        procedureType: "Oral Surgery",
-        bodyLocation: "Jawbone and Teeth",
-        preparation: "Comprehensive consultation and planning required",
+        "name": "Dental Implant",
+        "procedureType": "Oral Surgery",
+        "bodyLocation": "Jawbone and Teeth",
+        "preparation": "Comprehensive consultation and planning required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Invisalign Treatment",
-        procedureType: "Orthodontic",
-        bodyLocation: "Teeth",
-        preparation: "3D scanning and treatment planning required",
+        "name": "Invisalign Treatment",
+        "procedureType": "Orthodontic",
+        "bodyLocation": "Teeth",
+        "preparation": "3D scanning and treatment planning required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Root Canal Treatment",
-        procedureType: "Endodontic",
-        bodyLocation: "Tooth Root",
-        preparation:
-          "Local anesthesia and multiple appointments may be required",
+        "name": "Root Canal Treatment",
+        "procedureType": "Endodontic",
+        "bodyLocation": "Tooth Root",
+        "preparation": "Local anesthesia and multiple appointments may be required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Veneers",
-        procedureType: "Cosmetic",
-        bodyLocation: "Front Teeth",
-        preparation: "Consultation and color matching required",
+        "name": "Dental Veneers",
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Front Teeth",
+        "preparation": "Consultation and color matching required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Emergency Dental Care",
-        procedureType: "Emergency",
-        bodyLocation: "Mouth",
-        preparation: "Same-day appointments available",
+        "name": "Emergency Dental Care",
+        "procedureType": "Emergency",
+        "bodyLocation": "Mouth",
+        "preparation": "Same-day appointments available"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Gum Disease Treatment",
-        procedureType: "Periodontic",
-        bodyLocation: "Gums",
-        preparation: "Professional assessment and ongoing care required",
+        "name": "Gum Disease Treatment",
+        "procedureType": "Periodontic",
+        "bodyLocation": "Gums",
+        "preparation": "Professional assessment and ongoing care required"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Complete Smile Makeover",
-        procedureType: "Cosmetic",
-        bodyLocation: "Full Mouth",
-        preparation: "Comprehensive consultation and digital smile design",
-      },
+        "name": "Complete Smile Makeover",
+        "procedureType": "Cosmetic",
+        "bodyLocation": "Full Mouth",
+        "preparation": "Comprehensive consultation and digital smile design"
+      }
     ];
 
-     Add medical organization specific properties
-     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // Add medical organization specific properties
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (localBusinessSchema as any).isAcceptingNewPatients = true;
 
-     biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (localBusinessSchema as any).healthPlanNetworkTier = [
-      "NHS",
-      "Private",
-      "Insurance Accepted",
-    ];
+    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (localBusinessSchema as any).healthPlanNetworkTier = ["NHS", "Private", "Insurance Accepted"];
   }
 
   return (
@@ -559,7 +536,7 @@ export default function LocalBusinessSchema({
       id="local-business-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(localBusinessSchema),
+        __html: JSON.stringify(localBusinessSchema)
       }}
     />
   );

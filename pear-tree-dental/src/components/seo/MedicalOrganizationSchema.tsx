@@ -1,235 +1,236 @@
 import Script from "next/script";
 
 interface MedicalOrganizationSchemaProps {
-  page?: "home" | "services" | "about" | "contact" | "membership";
+  page?: 'home' | 'services' | 'about' | 'contact' | 'membership';
   serviceType?: string;
 }
 
 export default function MedicalOrganizationSchema({
-  page = "home",
-  serviceType,
+  page = 'home',
+  serviceType
 }: MedicalOrganizationSchemaProps) {
+
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": ["DentistOffice", "MedicalOrganization", "LocalBusiness"],
-    name: "Pear Tree Dental Centre",
-    alternateName: "Pear Tree Dental",
-    url: "https://peartree.dental",
-    logo: "https://peartree.dental/logo.png",
-    image: [
+    "name": "Pear Tree Dental Centre",
+    "alternateName": "Pear Tree Dental",
+    "url": "https://peartree.dental",
+    "logo": "https://peartree.dental/logo.png",
+    "image": [
       "https://peartree.dental/images/practice-exterior.jpg",
       "https://peartree.dental/images/practice-interior.jpg",
-      "https://peartree.dental/images/dental-team.jpg",
+      "https://peartree.dental/images/dental-team.jpg"
     ],
-    description:
-      "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £10.95/month.",
+    "description": "Modern dental practice in Burton Joyce offering comprehensive dental care including general dentistry, cosmetic treatments, orthodontics, and emergency care. Membership plans available from £10.95/month.",
 
-     Contact Information
-    telephone: "+441159312520",
-    email: "hello@peartree.dental",
-    contactPoint: {
+    // Contact Information
+    "telephone": "+441159312520",
+    "email": "hello@peartree.dental",
+    "contactPoint": {
       "@type": "ContactPoint",
-      telephone: "+441159312520",
-      contactType: "customer service",
-      areaServed: ["GB-NTT", "Nottinghamshire"],
-      availableLanguage: ["English"],
-      hoursAvailable: {
+      "telephone": "+441159312520",
+      "contactType": "customer service",
+      "areaServed": ["GB-NTT", "Nottinghamshire"],
+      "availableLanguage": ["English"],
+      "hoursAvailable": {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00",
-      },
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
     },
 
-     Location
-    address: {
+    // Location
+    "address": {
       "@type": "PostalAddress",
-      streetAddress: "22 Nottingham Road",
-      addressLocality: "Burton Joyce",
-      addressRegion: "Nottinghamshire",
-      postalCode: "NG14 5AE",
-      addressCountry: "GB",
+      "streetAddress": "22 Nottingham Road",
+      "addressLocality": "Burton Joyce",
+      "addressRegion": "Nottinghamshire",
+      "postalCode": "NG14 5AL",
+      "addressCountry": "GB"
     },
-    geo: {
+    "geo": {
       "@type": "GeoCoordinates",
-      latitude: "52.967",
-      longitude: "-1.061",
+      "latitude": "52.967",
+      "longitude": "-1.061"
     },
 
-     Opening Hours
-    openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-14:00"],
+    // Opening Hours
+    "openingHours": [
+      "Mo-Fr 08:00-18:00",
+      "Sa 08:00-14:00"
+    ],
 
-     Medical Specialty
-    medicalSpecialty: [
+    // Medical Specialty
+    "medicalSpecialty": [
       "General Dentistry",
       "Cosmetic Dentistry",
       "Restorative Dentistry",
       "Emergency Dentistry",
       "Orthodontics",
-      "Preventive Dentistry",
+      "Preventive Dentistry"
     ],
 
-     Services Offered
-    availableService: [
+    // Services Offered
+    "availableService": [
       {
         "@type": "MedicalProcedure",
-        name: "Dental Examination",
-        procedureType: "Diagnostic",
+        "name": "Dental Examination",
+        "procedureType": "Diagnostic"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Cleaning",
-        procedureType: "Preventive",
+        "name": "Dental Cleaning",
+        "procedureType": "Preventive"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Fillings",
-        procedureType: "Restorative",
+        "name": "Dental Fillings",
+        "procedureType": "Restorative"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Teeth Whitening",
-        procedureType: "Cosmetic",
+        "name": "Teeth Whitening",
+        "procedureType": "Cosmetic"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Veneers",
-        procedureType: "Cosmetic",
+        "name": "Dental Veneers",
+        "procedureType": "Cosmetic"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Orthodontic Treatment",
-        procedureType: "Orthodontic",
+        "name": "Orthodontic Treatment",
+        "procedureType": "Orthodontic"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Dental Implants",
-        procedureType: "Restorative",
+        "name": "Dental Implants",
+        "procedureType": "Restorative"
       },
       {
         "@type": "MedicalProcedure",
-        name: "Emergency Dental Care",
-        procedureType: "Emergency",
-      },
+        "name": "Emergency Dental Care",
+        "procedureType": "Emergency"
+      }
     ],
 
-     Staff/Doctors
-    employee: [
+    // Staff/Doctors
+    "employee": [
       {
         "@type": "Person",
-        name: "Javaad Mirza",
-        jobTitle: "Principal Dentist",
-        hasCredential: {
+        "name": "Javaad Mirza",
+        "jobTitle": "Principal Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "MD, BDS",
-          recognizedBy: {
+          "credentialCategory": "MD, BDS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "290378",
-          },
-        },
+            "name": "General Dental Council",
+            "identifier": "290378"
+          }
+        }
       },
       {
         "@type": "Person",
-        name: "Imrana Ishaque",
-        jobTitle: "Principal Dentist",
-        hasCredential: {
+        "name": "Imrana Ishaque",
+        "jobTitle": "Principal Dentist",
+        "hasCredential": {
           "@type": "EducationalOccupationalCredential",
-          credentialCategory: "BDS, MFDS",
-          recognizedBy: {
+          "credentialCategory": "BDS, MFDS",
+          "recognizedBy": {
             "@type": "Organization",
-            name: "General Dental Council",
-            identifier: "252578",
-          },
-        },
-      },
+            "name": "General Dental Council",
+            "identifier": "252578"
+          }
+        }
+      }
     ],
 
-     Reviews
-    aggregateRating: {
+    // Reviews
+    "aggregateRating": {
       "@type": "AggregateRating",
-      ratingValue: "4.9",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "127",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "127"
     },
 
-     Payment Options
-    paymentAccepted: ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
-    currenciesAccepted: "GBP",
-    priceRange: "£",
+    // Payment Options
+    "paymentAccepted": ["Cash", "Credit Card", "Debit Card", "Bank Transfer"],
+    "currenciesAccepted": "GBP",
+    "priceRange": "£",
 
-     Areas Served
-    areaServed: [
+    // Areas Served
+    "areaServed": [
       {
         "@type": "City",
-        name: "Burton Joyce",
+        "name": "Burton Joyce"
       },
       {
         "@type": "City",
-        name: "Nottingham",
+        "name": "Nottingham"
       },
       {
         "@type": "City",
-        name: "Colwick",
+        "name": "Colwick"
       },
       {
         "@type": "City",
-        name: "East Bridgford",
+        "name": "East Bridgford"
       },
       {
         "@type": "City",
-        name: "Lowdham",
-      },
+        "name": "Lowdham"
+      }
     ],
 
-     Membership Plans
-    makesOffer: [
+    // Membership Plans
+    "makesOffer": [
       {
         "@type": "Offer",
-        name: "Adult Dental Membership Plan",
-        description:
-          "Comprehensive dental care for adults with 2 check-ups per year, 2 hygiene appointments, and 10% discount on treatments",
-        price: "14.99",
-        priceCurrency: "GBP",
-        priceSpecification: {
+        "name": "Adult Dental Membership Plan",
+        "description": "Comprehensive dental care for adults with 2 check-ups per year, 2 hygiene appointments, and 10% discount on treatments",
+        "price": "14.99",
+        "priceCurrency": "GBP",
+        "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          price: "14.99",
-          priceCurrency: "GBP",
-          unitText: "MONTH",
-        },
+          "price": "14.99",
+          "priceCurrency": "GBP",
+          "unitText": "MONTH"
+        }
       },
       {
         "@type": "Offer",
-        name: "Child Dental Membership Plan",
-        description:
-          "Specialised dental care for children with preventive focus and most treatments included",
-        price: "8.99",
-        priceCurrency: "GBP",
-        priceSpecification: {
+        "name": "Child Dental Membership Plan",
+        "description": "Specialised dental care for children with preventive focus and most treatments included",
+        "price": "8.99",
+        "priceCurrency": "GBP",
+        "priceSpecification": {
           "@type": "UnitPriceSpecification",
-          price: "8.99",
-          priceCurrency: "GBP",
-          unitText: "MONTH",
-        },
-      },
-    ],
+          "price": "8.99",
+          "priceCurrency": "GBP",
+          "unitText": "MONTH"
+        }
+      }
+    ]
   };
 
-//    Add page-specific enhancements
-  if (page === "services" && serviceType) {
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // Add page-specific enhancements
+  if (page === 'services' && serviceType) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (baseSchema as any).mainContentOfPage = {
       "@type": "MedicalWebPage",
-      about: {
+      "about": {
         "@type": "MedicalProcedure",
-        name: serviceType,
-      },
+        "name": serviceType
+      }
     };
   }
 
-  if (page === "membership") {
-     eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (page === 'membership') {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (baseSchema as any).offers = baseSchema.makesOffer;
   }
 
@@ -238,7 +239,7 @@ export default function MedicalOrganizationSchema({
       id="medical-organization-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(baseSchema),
+        __html: JSON.stringify(baseSchema)
       }}
     />
   );

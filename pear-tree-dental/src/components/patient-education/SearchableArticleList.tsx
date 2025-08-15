@@ -1,11 +1,16 @@
 "use client";
 
-import { BookOpen, Clock, Filter, Search } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  BookOpen,
+  Clock,
+  Filter,
+  Search
+} from "lucide-react";
 
 interface EducationArticle {
   id: string;
@@ -29,35 +34,30 @@ interface SearchableArticleListProps {
   categories: string[];
 }
 
-export default function SearchableArticleList({
-  articles,
-  categories,
-}: SearchableArticleListProps) {
+export default function SearchableArticleList({ articles, categories }: SearchableArticleListProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
 
-//    Filter articles based on search query and category
-  const filteredArticles = articles.filter((article) => {
-    const matchesSearch =
-      searchQuery === "" ||
+  // Filter articles based on search query and category
+  const filteredArticles = articles.filter(article => {
+    const matchesSearch = searchQuery === "" ||
       article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.tags.some((tag) =>
-        tag.toLowerCase().includes(searchQuery.toLowerCase()),
-      ) ||
+      article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
       article.author.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesCategory =
-      selectedCategory === "All Articles" ||
+    const matchesCategory = selectedCategory === "All Articles" ||
       article.category === selectedCategory;
 
     return matchesSearch && matchesCategory;
   });
 
+
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-     Search is already handled by the filter effect
+    // Search is already handled by the filter effect
   };
 
   return (
@@ -75,7 +75,7 @@ export default function SearchableArticleList({
           <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <Button
             type="submit"
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-pear-primary hover:bg-pear-primary"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-pear-primary hover:bg-pear-primary/90"
           >
             Search
           </Button>
@@ -86,9 +86,7 @@ export default function SearchableArticleList({
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center space-x-4 mb-4">
           <Filter className="w-5 h-5 text-pear-primary" />
-          <h3 className="font-semibold text-pear-primary">
-            Filter by Category
-          </h3>
+          <h3 className="font-semibold text-pear-primary">Filter by Category</h3>
         </div>
         <div className="flex flex-wrap gap-2">
           {categories.map((category) => (
@@ -97,10 +95,9 @@ export default function SearchableArticleList({
               variant={selectedCategory === category ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory(category)}
-              className={
-                selectedCategory === category
-                  ? "bg-pear-primary text-white"
-                  : "border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white"
+              className={selectedCategory === category
+                ? "bg-pear-primary text-white"
+                : "border-pear-primary/20 text-pear-primary hover:bg-pear-primary hover:text-white"
               }
             >
               {category}
@@ -111,15 +108,12 @@ export default function SearchableArticleList({
 
       {/* Search Results Summary */}
       {(searchQuery || selectedCategory !== "All Articles") && (
-        <div className="bg-pear-primary rounded-lg p-4">
+        <div className="bg-pear-primary/5 rounded-lg p-4">
           <p className="text-pear-primary">
-            {filteredArticles.length} article
-            {filteredArticles.length !== 1 ? "s" : ""} found
+            {filteredArticles.length} article{filteredArticles.length !== 1 ? 's' : ''} found
             {searchQuery && ` for "${searchQuery}"`}
             {selectedCategory !== "All Articles" && ` in "${selectedCategory}"`}
-            {searchQuery &&
-              selectedCategory !== "All Articles" &&
-              ` in "${selectedCategory}"`}
+            {searchQuery && selectedCategory !== "All Articles" && ` in "${selectedCategory}"`}
           </p>
           {(searchQuery || selectedCategory !== "All Articles") && (
             <Button
@@ -129,7 +123,7 @@ export default function SearchableArticleList({
                 setSearchQuery("");
                 setSelectedCategory("All Articles");
               }}
-              className="mt-2 text-pear-primary hover:text-pear-primary"
+              className="mt-2 text-pear-primary hover:text-pear-primary/80"
             >
               Clear filters
             </Button>
@@ -141,10 +135,7 @@ export default function SearchableArticleList({
       {filteredArticles.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredArticles.map((article) => (
-            <Card
-              key={article.id}
-              className="group hover:shadow-lg transition-all duration-300 h-full"
-            >
+            <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 h-full">
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Article Header */}
                 <div className="flex items-start justify-between mb-4">
@@ -177,11 +168,7 @@ export default function SearchableArticleList({
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 mb-4">
                   {article.tags.slice(0, 3).map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="text-xs bg-gray-100"
-                    >
+                    <Badge key={tag} variant="secondary" className="text-xs bg-gray-100">
                       {tag}
                     </Badge>
                   ))}
@@ -194,10 +181,7 @@ export default function SearchableArticleList({
                     <span>{article.readTime}</span>
                   </div>
 
-                  <Button
-                    className="w-full bg-pear-primary hover:bg-pear-primary text-white"
-                    asChild
-                  >
+                  <Button className="w-full bg-pear-primary hover:bg-pear-primary/90 text-white" asChild>
                     <Link href={article.href}>
                       <BookOpen className="w-4 h-4 mr-2" />
                       Read Article
@@ -213,12 +197,9 @@ export default function SearchableArticleList({
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-400" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            No articles found
-          </h3>
+          <h3 className="text-lg font-semibold text-gray-900 mb-2">No articles found</h3>
           <p className="text-gray-600 mb-4">
-            Try adjusting your search terms or removing filters to see more
-            results.
+            Try adjusting your search terms or removing filters to see more results.
           </p>
           <Button
             variant="outline"
@@ -236,11 +217,7 @@ export default function SearchableArticleList({
       {/* Load More Button */}
       {filteredArticles.length >= 9 && (
         <div className="text-center mt-12">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white"
-          >
+          <Button variant="outline" size="lg" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
             <BookOpen className="w-5 h-5 mr-2" />
             Load More Articles
           </Button>

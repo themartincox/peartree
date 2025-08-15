@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useRef } from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 
 interface Particle {
   x: number;
@@ -13,18 +13,15 @@ interface Particle {
 export default function ParticleNetwork() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-   Optimized particle configuration
-  const config = useMemo(
-    () => ({
-      particleCount: 30,  Further reduced for more subtle effect
-      maxDistance: 120,
-      speed: 0.3,
-      particleSize: 1.5,
-      lineOpacity: 0.08,  Much more subtle lines
-      particleOpacity: 0.25,  Much more subtle particles
-    }),
-    [],
-  );
+  // Optimized particle configuration
+  const config = useMemo(() => ({
+    particleCount: 30, // Further reduced for more subtle effect
+    maxDistance: 120,
+    speed: 0.3,
+    particleSize: 1.5,
+    lineOpacity: 0.08, // Much more subtle lines
+    particleOpacity: 0.25, // Much more subtle particles
+  }), []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,8 +38,8 @@ export default function ParticleNetwork() {
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
+      canvas.style.width = rect.width + "px";
+      canvas.style.height = rect.height + "px";
     };
 
     const createParticles = () => {
@@ -68,18 +65,18 @@ export default function ParticleNetwork() {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-         Boundary checks with gentle bounce
+        // Boundary checks with gentle bounce
         if (particle.x <= 0 || particle.x >= rect.width) particle.vx *= -1;
         if (particle.y <= 0 || particle.y >= rect.height) particle.vy *= -1;
 
-         Keep particles in bounds
+        // Keep particles in bounds
         particle.x = Math.max(0, Math.min(rect.width, particle.x));
         particle.y = Math.max(0, Math.min(rect.height, particle.y));
       });
     };
 
     const drawConnections = () => {
-       Optimized connection drawing with reduced calculations
+      // Optimized connection drawing with reduced calculations
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -87,8 +84,7 @@ export default function ParticleNetwork() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < config.maxDistance) {
-            const opacity =
-              (1 - distance / config.maxDistance) * config.lineOpacity;
+            const opacity = (1 - distance / config.maxDistance) * config.lineOpacity;
 
             ctx.strokeStyle = `rgba(255, 255, 255, ${opacity})`;
             ctx.lineWidth = 0.5;
@@ -126,12 +122,12 @@ export default function ParticleNetwork() {
       createParticles();
     };
 
-     Initialize
+    // Initialize
     resizeCanvas();
     createParticles();
     animate();
 
-     Event listeners
+    // Event listeners
     window.addEventListener("resize", handleResize);
 
     return () => {

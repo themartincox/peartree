@@ -3,19 +3,19 @@
 declare global {
   interface Window {
     gtag?: (
-      command: "config" | "event" | "js" | "set",
+      command: 'config' | 'event' | 'js' | 'set',
       targetId: string | Date,
-      config?: Record<string, unknown>,
-    ) => void;
+      config?: Record<string, unknown>
+    ) => void
   }
 
   interface Navigator {
     connection?: {
-      effectiveType?: string;
-      downlink?: number;
-      rtt?: number;
-      saveData?: boolean;
-    };
+      effectiveType?: string
+      downlink?: number
+      rtt?: number
+      saveData?: boolean
+    }
   }
 }
 

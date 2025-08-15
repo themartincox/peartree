@@ -1,46 +1,46 @@
-import React from "react";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
-  Award,
-  CheckCircle,
-  Eye,
   MapPin,
+  Clock,
   Phone,
+  Star,
+  CheckCircle,
+  Car,
+  CalendarDays,
   Shield,
   Smile,
-  Timer,
-  Users,
   Zap,
-} from "lucide-react";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+  Award,
+  Users,
+  Eye,
+  Timer
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title:
-    "Teeth Straightening Nottingham - Invisalign & ClearCorrect | Pear Tree Dental",
-  description:
-    "Professional teeth straightening in Nottingham. Invisalign and ClearCorrect clear aligners. Discreet, comfortable orthodontic treatment from £2,500.",
+  title: 'Teeth Straightening Nottingham - Invisalign & ClearCorrect | Pear Tree Dental',
+  description: 'Professional teeth straightening in Nottingham. Invisalign and ClearCorrect clear aligners. Discreet, comfortable orthodontic treatment from £2,500.',
   keywords: [
-    "teeth straightening Nottingham",
-    "Invisalign Nottingham",
-    "ClearCorrect Nottingham",
-    "clear aligners Nottingham",
-    "orthodontics Nottingham",
-    "invisible braces Nottingham",
-    "adult braces Nottingham",
-    "cosmetic orthodontics Nottingham",
+    'teeth straightening Nottingham',
+    'Invisalign Nottingham',
+    'ClearCorrect Nottingham',
+    'clear aligners Nottingham',
+    'orthodontics Nottingham',
+    'invisible braces Nottingham',
+    'adult braces Nottingham',
+    'cosmetic orthodontics Nottingham'
   ],
   openGraph: {
-    title:
-      "Teeth Straightening Nottingham - Invisalign & ClearCorrect | Pear Tree Dental",
-    description:
-      "Straighten your teeth discreetly with Invisalign and ClearCorrect in Nottingham. Professional orthodontic care with invisible aligners.",
-    url: "https://peartree.dental/nottingham-teeth-straightening",
+    title: 'Teeth Straightening Nottingham - Invisalign & ClearCorrect | Pear Tree Dental',
+    description: 'Straighten your teeth discreetly with Invisalign and ClearCorrect in Nottingham. Professional orthodontic care with invisible aligners.',
+    url: 'https://peartree.dental/nottingham-teeth-straightening'
   },
   alternates: {
-    canonical: "https://peartree.dental/nottingham-teeth-straightening",
-  },
+    canonical: 'https://peartree.dental/nottingham-teeth-straightening'
+  }
 };
 
 export default function NottinghamTeethStraighteningPage() {
@@ -54,63 +54,62 @@ export default function NottinghamTeethStraighteningPage() {
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
             "@id": "https://peartree.dental/nottingham-teeth-straightening",
-            name: "Pear Tree Dental - Teeth Straightening Nottingham",
-            image:
-              "https://peartree.dental/images/teeth-straightening-nottingham.jpg",
-            description:
-              "Professional teeth straightening treatment in Nottingham. Invisalign and ClearCorrect clear aligners for discreet orthodontic care.",
-            url: "https://peartree.dental/nottingham-teeth-straightening",
-            telephone: "+441159312520",
-            address: {
+            "name": "Pear Tree Dental - Teeth Straightening Nottingham",
+            "image": "https://peartree.dental/images/teeth-straightening-nottingham.jpg",
+            "description": "Professional teeth straightening treatment in Nottingham. Invisalign and ClearCorrect clear aligners for discreet orthodontic care.",
+            "url": "https://peartree.dental/nottingham-teeth-straightening",
+            "telephone": "+441159312520",
+            "address": {
               "@type": "PostalAddress",
-              streetAddress: "22 Nottingham Road",
-              addressLocality: "Burton Joyce",
-              addressRegion: "Nottinghamshire",
-              postalCode: "NG14 5AE",
-              addressCountry: "GB",
+              "streetAddress": "22 Nottingham Road",
+              "addressLocality": "Burton Joyce",
+              "addressRegion": "Nottinghamshire",
+              "postalCode": "NG14 5AL",
+              "addressCountry": "GB"
             },
-            geo: {
+            "geo": {
               "@type": "GeoCoordinates",
-              latitude: 52.9833,
-              longitude: -1.0833,
+              "latitude": 52.9833,
+              "longitude": -1.0833
             },
-            openingHours: ["Mo-Fr 08:30-17:30", "Sa 08:30-14:00"],
-            medicalSpecialty: "Orthodontics",
-            serviceArea: {
+            "openingHours": [
+              "Mo-Fr 08:30-17:30",
+              "Sa 08:30-14:00"
+            ],
+            "medicalSpecialty": "Orthodontics",
+            "serviceArea": {
               "@type": "City",
-              name: "Nottingham",
+              "name": "Nottingham"
             },
-            hasOfferCatalog: {
+            "hasOfferCatalog": {
               "@type": "OfferCatalog",
-              name: "Teeth Straightening Services",
-              itemListElement: [
+              "name": "Teeth Straightening Services",
+              "itemListElement": [
                 {
                   "@type": "Offer",
-                  itemOffered: {
+                  "itemOffered": {
                     "@type": "MedicalProcedure",
-                    name: "Invisalign Treatment",
-                    description:
-                      "Clear aligners for discreet teeth straightening",
-                  },
+                    "name": "Invisalign Treatment",
+                    "description": "Clear aligners for discreet teeth straightening"
+                  }
                 },
                 {
                   "@type": "Offer",
-                  itemOffered: {
+                  "itemOffered": {
                     "@type": "MedicalProcedure",
-                    name: "ClearCorrect Treatment",
-                    description:
-                      "Affordable clear aligner orthodontic treatment",
-                  },
-                },
-              ],
-            },
-          }),
+                    "name": "ClearCorrect Treatment",
+                    "description": "Affordable clear aligner orthodontic treatment"
+                  }
+                }
+              ]
+            }
+          })
         }}
       />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dental-navy via-dental-navy/95 to-dental-green"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-dental-navy via-dental-navy/95 to-dental-green/20"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
@@ -119,11 +118,11 @@ export default function NottinghamTeethStraighteningPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Teeth Straightening in{" "}
+              Teeth Straightening in{' '}
               <span className="text-dental-green">Nottingham</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl mb-8 text-dental-navy leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
               Straighten your teeth discreetly with Invisalign & ClearCorrect.
               <br className="hidden sm:block" />
               Clear aligners for a perfect smile - from £2,500.
@@ -133,7 +132,7 @@ export default function NottinghamTeethStraighteningPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green text-dental-navy font-semibold px-8 py-4"
+                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -179,23 +178,18 @@ export default function NottinghamTeethStraighteningPage() {
               Clear Aligner Systems Available in Nottingham
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              We offer the leading clear aligner systems for discreet,
-              comfortable teeth straightening.
+              We offer the leading clear aligner systems for discreet, comfortable teeth straightening.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Invisalign */}
-              <Card className="p-8 border-2 border-dental-green hover:border-dental-green transition-colors">
+              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">
-                    Invisalign
-                  </CardTitle>
-                  <p className="text-gray-600">
-                    The world's most advanced clear aligner system
-                  </p>
+                  <CardTitle className="text-2xl text-dental-green">Invisalign</CardTitle>
+                  <p className="text-gray-600">The world's most advanced clear aligner system</p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 mb-6">
@@ -220,29 +214,21 @@ export default function NottinghamTeethStraighteningPage() {
                       <span>SmartTrack material for comfort</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">
-                      From £3,500
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      Complete treatment including retainers
-                    </p>
+                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
+                    <p className="text-2xl font-bold text-dental-green">From £3,500</p>
+                    <p className="text-sm text-gray-600">Complete treatment including retainers</p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* ClearCorrect */}
-              <Card className="p-8 border-2 border-dental-green hover:border-dental-green transition-colors">
+              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
                 <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">
-                    ClearCorrect
-                  </CardTitle>
-                  <p className="text-gray-600">
-                    Professional clear aligners with excellent value
-                  </p>
+                  <CardTitle className="text-2xl text-dental-green">ClearCorrect</CardTitle>
+                  <p className="text-gray-600">Professional clear aligners with excellent value</p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 mb-6">
@@ -267,13 +253,9 @@ export default function NottinghamTeethStraighteningPage() {
                       <span>Professional monitoring throughout</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">
-                      From £2,500
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      Complete treatment including retainers
-                    </p>
+                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
+                    <p className="text-2xl font-bold text-dental-green">From £2,500</p>
+                    <p className="text-sm text-gray-600">Complete treatment including retainers</p>
                   </div>
                 </CardContent>
               </Card>
@@ -299,10 +281,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Nearly Invisible</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Clear aligners are virtually invisible, so you can
-                    straighten your teeth without anyone noticing
-                  </p>
+                  <p className="text-gray-600">Clear aligners are virtually invisible, so you can straighten your teeth without anyone noticing</p>
                 </CardContent>
               </Card>
 
@@ -314,10 +293,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Removable</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Take them out for eating, brushing, and special occasions -
-                    no dietary restrictions
-                  </p>
+                  <p className="text-gray-600">Take them out for eating, brushing, and special occasions - no dietary restrictions</p>
                 </CardContent>
               </Card>
 
@@ -329,10 +305,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Comfortable</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Smooth plastic aligners with no metal brackets or wires to
-                    irritate your mouth
-                  </p>
+                  <p className="text-gray-600">Smooth plastic aligners with no metal brackets or wires to irritate your mouth</p>
                 </CardContent>
               </Card>
 
@@ -344,10 +317,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Faster Treatment</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Many cases complete in 6-18 months, faster than traditional
-                    braces
-                  </p>
+                  <p className="text-gray-600">Many cases complete in 6-18 months, faster than traditional braces</p>
                 </CardContent>
               </Card>
 
@@ -359,10 +329,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Adult-Friendly</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Perfect for working professionals who want to improve their
-                    smile discreetly
-                  </p>
+                  <p className="text-gray-600">Perfect for working professionals who want to improve their smile discreetly</p>
                 </CardContent>
               </Card>
 
@@ -374,10 +341,7 @@ export default function NottinghamTeethStraighteningPage() {
                   <CardTitle className="text-lg">Predictable Results</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    3D treatment planning shows you exactly how your smile will
-                    look before you start
-                  </p>
+                  <p className="text-gray-600">3D treatment planning shows you exactly how your smile will look before you start</p>
                 </CardContent>
               </Card>
             </div>
@@ -399,13 +363,10 @@ export default function NottinghamTeethStraighteningPage() {
                   1
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    Initial Consultation
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Initial Consultation</h3>
                   <p className="text-gray-600">
-                    Comprehensive examination and 3D digital scan of your teeth.
-                    We'll discuss your goals and determine if clear aligners are
-                    right for you.
+                    Comprehensive examination and 3D digital scan of your teeth. We'll discuss your goals
+                    and determine if clear aligners are right for you.
                   </p>
                 </div>
               </div>
@@ -415,13 +376,10 @@ export default function NottinghamTeethStraighteningPage() {
                   2
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    Treatment Planning
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Treatment Planning</h3>
                   <p className="text-gray-600">
-                    Advanced 3D software creates your personalised treatment
-                    plan, showing you exactly how your teeth will move and your
-                    final result.
+                    Advanced 3D software creates your personalised treatment plan, showing you exactly
+                    how your teeth will move and your final result.
                   </p>
                 </div>
               </div>
@@ -431,13 +389,10 @@ export default function NottinghamTeethStraighteningPage() {
                   3
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    Receive Your Aligners
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Receive Your Aligners</h3>
                   <p className="text-gray-600">
-                    Your custom aligners are manufactured and delivered to our
-                    practice. We'll show you how to use and care for them
-                    properly.
+                    Your custom aligners are manufactured and delivered to our practice. We'll show you
+                    how to use and care for them properly.
                   </p>
                 </div>
               </div>
@@ -447,12 +402,10 @@ export default function NottinghamTeethStraighteningPage() {
                   4
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    Progress Monitoring
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Progress Monitoring</h3>
                   <p className="text-gray-600">
-                    Regular check-ups to monitor progress and provide new
-                    aligners. Most patients change aligners every 1-2 weeks.
+                    Regular check-ups to monitor progress and provide new aligners. Most patients
+                    change aligners every 1-2 weeks.
                   </p>
                 </div>
               </div>
@@ -462,12 +415,10 @@ export default function NottinghamTeethStraighteningPage() {
                   5
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">
-                    Retention Phase
-                  </h3>
+                  <h3 className="text-xl font-semibold mb-2">Retention Phase</h3>
                   <p className="text-gray-600">
-                    Once treatment is complete, we'll provide retainers to
-                    maintain your beautiful new smile for years to come.
+                    Once treatment is complete, we'll provide retainers to maintain your beautiful
+                    new smile for years to come.
                   </p>
                 </div>
               </div>
@@ -487,80 +438,55 @@ export default function NottinghamTeethStraighteningPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Crowded Teeth
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Crowded Teeth</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    When there isn't enough space for all teeth to align
-                    properly
-                  </p>
+                  <p className="text-gray-600">When there isn't enough space for all teeth to align properly</p>
                 </CardContent>
               </Card>
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Gaps Between Teeth
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Gaps Between Teeth</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Spaces between teeth that affect appearance and function
-                  </p>
+                  <p className="text-gray-600">Spaces between teeth that affect appearance and function</p>
                 </CardContent>
               </Card>
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Overbite
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Overbite</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Upper teeth extend too far over the lower teeth
-                  </p>
+                  <p className="text-gray-600">Upper teeth extend too far over the lower teeth</p>
                 </CardContent>
               </Card>
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Underbite
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Underbite</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Lower teeth protrude past the upper teeth
-                  </p>
+                  <p className="text-gray-600">Lower teeth protrude past the upper teeth</p>
                 </CardContent>
               </Card>
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Crossbite
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Crossbite</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Upper and lower teeth don't align properly when biting
-                  </p>
+                  <p className="text-gray-600">Upper and lower teeth don't align properly when biting</p>
                 </CardContent>
               </Card>
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">
-                    Open Bite
-                  </CardTitle>
+                  <CardTitle className="text-lg text-dental-green">Open Bite</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    Upper and lower teeth don't touch when the mouth is closed
-                  </p>
+                  <p className="text-gray-600">Upper and lower teeth don't touch when the mouth is closed</p>
                 </CardContent>
               </Card>
             </div>
@@ -576,8 +502,8 @@ export default function NottinghamTeethStraighteningPage() {
               Start Your Journey to Straighter Teeth Today
             </h2>
             <p className="text-xl mb-8">
-              Book your clear aligner consultation and discover how discreet
-              orthodontic treatment can transform your smile and confidence.
+              Book your clear aligner consultation and discover how discreet orthodontic treatment
+              can transform your smile and confidence.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -597,18 +523,18 @@ export default function NottinghamTeethStraighteningPage() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-dental-green px-8 py-4"
               >
-                <Link href="/contact">Book Online Consultation</Link>
+                <Link href="/contact">
+                  Book Online Consultation
+                </Link>
               </Button>
             </div>
 
             <div className="mt-8 text-sm opacity-90">
               <p>
                 <MapPin className="h-4 w-4 inline mr-1" />
-                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AE
+                22 Nottingham Road, Burton Joyce, Nottinghamshire NG14 5AL
               </p>
-              <p className="mt-2">
-                Convenient access from Nottingham city centre
-              </p>
+              <p className="mt-2">Convenient access from Nottingham city centre</p>
             </div>
           </div>
         </div>

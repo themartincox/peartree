@@ -1,12 +1,24 @@
-import React from "react";
 import type { Metadata } from "next";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ContactFormCard from "@/components/ContactFormCard";
+import { practiceInfo } from "@/data/practiceInfo";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Car,
+  Bus,
+  CalendarDays,
+  MessageSquare,
+  Shield,
+  Heart,
+  AlertCircle
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title:
-    "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
-  description:
-    "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2935 or use our contact form.",
+  title: "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
+  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2935 or use our contact form.",
   keywords: [
     "contact Pear Tree Dental",
     "book appointment Burton Joyce",
@@ -14,18 +26,17 @@ export const metadata: Metadata = {
     "emergency dental Burton Joyce",
     "dental practice Nottinghamshire",
     "dentist contact details",
-    "Burton Joyce dental clinic",
+    "Burton Joyce dental clinic"
   ],
   openGraph: {
     title: "Contact Us | Pear Tree Dental",
-    description:
-      "Get in touch with our friendly dental team in Burton Joyce. Book appointments or ask questions about our services.",
+    description: "Get in touch with our friendly dental team in Burton Joyce. Book appointments or ask questions about our services.",
     type: "website",
-    url: "https://peartree.dental/contact",
+    url: "https://peartree.dental/contact"
   },
   alternates: {
-    canonical: "https://peartree.dental/contact",
-  },
+    canonical: "https://peartree.dental/contact"
+  }
 };
 
 export default function ContactPage() {
@@ -39,26 +50,25 @@ export default function ContactPage() {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             "@id": "https://peartree.dental/contact",
-            name: "Contact Pear Tree Dental Centre",
-            description:
-              "Get in touch with Pear Tree Dental Centre in Burton Joyce. Contact us for appointments, dental emergencies, or general inquiries.",
-            url: "https://peartree.dental/contact",
-            mainEntity: {
+            "name": "Contact Pear Tree Dental Centre",
+            "description": "Get in touch with Pear Tree Dental Centre in Burton Joyce. Contact us for appointments, dental emergencies, or general inquiries.",
+            "url": "https://peartree.dental/contact",
+            "mainEntity": {
               "@type": "LocalBusiness",
-              name: "Pear Tree Dental Centre",
-              url: "https://peartree.dental",
-              telephone: "+441159312935",
-              email: "hello@peartree.dental",
-              address: {
+              "name": "Pear Tree Dental Centre",
+              "url": "https://peartree.dental",
+              "telephone": "+441159312935",
+              "email": "hello@peartree.dental",
+              "address": {
                 "@type": "PostalAddress",
-                streetAddress: "22 Nottingham Road",
-                addressLocality: "Burton Joyce",
-                addressRegion: "Nottinghamshire",
-                postalCode: "NG14 5AE",
-                addressCountry: "GB",
-              },
-            },
-          }),
+                "streetAddress": "22 Nottingham Road",
+                "addressLocality": "Burton Joyce",
+                "addressRegion": "Nottinghamshire",
+                "postalCode": "NG14 5AL",
+                "addressCountry": "GB"
+              }
+            }
+          })
         }}
       />
 
@@ -69,8 +79,8 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get in touch with our friendly team. We're here to help with any
-              questions about our services, appointments, or dental care.
+              Get in touch with our friendly team. We're here to help with any questions about our services,
+              appointments, or dental care.
             </p>
           </div>
 

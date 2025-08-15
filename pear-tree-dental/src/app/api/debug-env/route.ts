@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    console.log("🔍 Debugging email environment variables...");
+    console.log('🔍 Debugging email environment variables...');
 
     // Check all environment variables that might be email-related
     const emailEnvVars = {
@@ -34,23 +34,24 @@ export async function GET() {
       // Email lengths (for configured ones)
       EMAIL_USER_LENGTH: process.env.EMAIL_USER?.length || 0,
       EMAIL_PASS_LENGTH: process.env.EMAIL_PASS?.length || 0,
-      SMTP_HOST_VALUE: process.env.SMTP_HOST || "not set",
-      FROM_EMAIL_VALUE: process.env.FROM_EMAIL || "not set",
-      PRACTICE_EMAIL_VALUE: process.env.PRACTICE_EMAIL || "not set",
+      SMTP_HOST_VALUE: process.env.SMTP_HOST || 'not set',
+      FROM_EMAIL_VALUE: process.env.FROM_EMAIL || 'not set',
+      PRACTICE_EMAIL_VALUE: process.env.PRACTICE_EMAIL || 'not set'
     };
 
-    console.log("📧 Email environment variables:", emailEnvVars);
+    console.log('📧 Email environment variables:', emailEnvVars);
 
     return NextResponse.json({
-      message: "Email environment debug",
+      message: 'Email environment debug',
       timestamp: new Date().toISOString(),
-      emailConfig: emailEnvVars,
+      emailConfig: emailEnvVars
     });
+
   } catch (error) {
-    console.error("❌ Debug env error:", error);
+    console.error('❌ Debug env error:', error);
     return NextResponse.json({
       success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
+      error: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 }

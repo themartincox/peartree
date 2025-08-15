@@ -1,18 +1,16 @@
-import React from "react";
-import { Calendar, CheckCircle, Home, Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { CheckCircle, Calendar, Phone, Mail, Home } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Thank You | Pear Tree Dental - Message Received",
-  description:
-    "Thank you for contacting Pear Tree Dental. We've received your message and will get back to you within 24 hours.",
+  description: "Thank you for contacting Pear Tree Dental. We've received your message and will get back to you within 24 hours.",
   robots: {
     index: false,
-    follow: false,
-  },
+    follow: false
+  }
 };
 
 export default function SuccessPage() {
@@ -31,8 +29,7 @@ export default function SuccessPage() {
               Thank You!
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              We've received your message and will get back to you within 24
-              hours during business days.
+              We've received your message and will get back to you within 24 hours during business days.
             </p>
           </div>
         </div>
@@ -50,46 +47,37 @@ export default function SuccessPage() {
 
                 <div className="space-y-6 text-left">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">1</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">
-                        Message Received
-                      </h3>
+                      <h3 className="font-semibold text-gray-800 mb-2">Message Received</h3>
                       <p className="text-gray-600 text-sm">
-                        Your enquiry has been successfully sent to our team at
-                        Pear Tree Dental.
+                        Your enquiry has been successfully sent to our team at Pear Tree Dental.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">2</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">
-                        Quick Response
-                      </h3>
+                      <h3 className="font-semibold text-gray-800 mb-2">Quick Response</h3>
                       <p className="text-gray-600 text-sm">
-                        We'll review your message and respond within 24 hours
-                        during business days.
+                        We'll review your message and respond within 24 hours during business days.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 bg-pear-primary rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-8 h-8 bg-pear-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                       <span className="text-pear-primary font-bold">3</span>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">
-                        Appointment Booking
-                      </h3>
+                      <h3 className="font-semibold text-gray-800 mb-2">Appointment Booking</h3>
                       <p className="text-gray-600 text-sm">
-                        If you've requested an appointment, we'll contact you to
-                        arrange a suitable time.
+                        If you've requested an appointment, we'll contact you to arrange a suitable time.
                       </p>
                     </div>
                   </div>
@@ -101,8 +89,7 @@ export default function SuccessPage() {
                     Need Urgent Care?
                   </h3>
                   <p className="text-red-700 text-sm mb-3">
-                    For dental emergencies that can't wait, please call us
-                    directly:
+                    For dental emergencies that can't wait, please call us directly:
                   </p>
                   <a
                     href="tel:01159312935"
@@ -128,12 +115,10 @@ export default function SuccessPage() {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Calendar className="w-6 h-6 text-pear-primary" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">
-                    Opening Hours
-                  </h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">Opening Hours</h3>
                   <div className="text-sm text-gray-600 space-y-1">
                     <p>Mon-Thu: 8:45AM-5:00PM</p>
                     <p>Fri: 8:00AM-3:30PM</p>
@@ -144,12 +129,10 @@ export default function SuccessPage() {
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Mail className="w-6 h-6 text-pear-primary" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">
-                    Our Services
-                  </h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">Our Services</h3>
                   <p className="text-sm text-gray-600 mb-3">
                     Learn more about our dental treatments and membership plans.
                   </p>
@@ -163,15 +146,12 @@ export default function SuccessPage() {
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Home className="w-6 h-6 text-pear-primary" />
                   </div>
-                  <h3 className="font-semibold text-pear-primary mb-2">
-                    Our Practice
-                  </h3>
+                  <h3 className="font-semibold text-pear-primary mb-2">Our Practice</h3>
                   <p className="text-sm text-gray-600 mb-3">
-                    Located in Burton Joyce with free parking and modern
-                    facilities.
+                    Located in Burton Joyce with free parking and modern facilities.
                   </p>
                   <Link href="/about">
                     <Button variant="outline" size="sm">
@@ -190,10 +170,7 @@ export default function SuccessPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Link href="/">
-              <Button
-                size="lg"
-                className="bg-pear-primary hover:bg-pear-primary"
-              >
+              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90">
                 <Home className="w-5 h-5 mr-2" />
                 Back to Homepage
               </Button>

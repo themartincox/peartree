@@ -1,30 +1,31 @@
-import React from "react";
-import {
-  Award,
-  CalendarDays,
-  Camera, 
-  CheckCircle,
-  Clock,
-  Heart,
-  Phone,
-  Shield,
-  Star,
-  TrendingUp,
-  Users,
-  Zap
-} from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import BeforeAfterButton from "@/components/BeforeAfterButton";
-import ServiceHero from "@/components/ServiceHero";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
+import BeforeAfterButton from "@/components/BeforeAfterButton";
+import {
+  Zap,
+  Shield,
+  CheckCircle,
+  Clock,
+  Award,
+  Heart,
+  ArrowRight,
+  CalendarDays,
+  Phone,
+  Users,
+  Star,
+  TrendingUp,
+  Camera
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dental Implants Burton Joyce | Permanent Tooth Replacement | Pear Tree Dental",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   }
 };
 
-export default function ImplantsPage(): React.JSX.Element {
+export default function ImplantsPage() {
   const implantFAQs = [
     {
       question: "How much do dental implants cost?",
@@ -127,7 +128,7 @@ export default function ImplantsPage(): React.JSX.Element {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {([
+            {[
               {
                 title: "Single Implant",
                 description: "Replace one missing tooth with a natural-looking implant crown",
@@ -164,8 +165,8 @@ export default function ImplantsPage(): React.JSX.Element {
                 url: "/services/implants/all-on-4",
                 buttonText: "Explore All-on-4"
               }
-            ] || []).map((implant, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold">
+            ].map((implant, index) => (
+              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
                 {implant.image === "all-on-4" ? (
                   <div className="aspect-[4/3] relative overflow-hidden">
                     <picture>
@@ -210,7 +211,7 @@ export default function ImplantsPage(): React.JSX.Element {
                     </div>
 
                     <ul className="space-y-2">
-                      {(implant.features || []).map((feature, idx) => (
+                      {implant.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                           <span className="text-sm text-gray-700">{feature}</span>
@@ -219,7 +220,7 @@ export default function ImplantsPage(): React.JSX.Element {
                     </ul>
 
                     <Link href={implant.url}>
-                      <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary text-white">
+                      <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
                         <span className="hidden sm:inline">
                           {implant.buttonText}
                         </span>
@@ -235,7 +236,7 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Treatment Process */}
-      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -247,7 +248,7 @@ export default function ImplantsPage(): React.JSX.Element {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {([
+            {[
               {
                 step: "01",
                 title: "Consultation & Planning",
@@ -276,15 +277,15 @@ export default function ImplantsPage(): React.JSX.Element {
                 icon: Award,
                 duration: "2-3 weeks"
               }
-            ] || []).map((step, index) => {
+            ].map((step, index) => {
               const Icon = step.icon;
               return (
-                <Card key={index} className="relative overflow-hidden border-2 border-pear-primary hover:border-pear-primary transition-colors">
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-pear-gold rounded-full flex items-center justify-center">
+                <Card key={index} className="relative overflow-hidden border-2 border-pear-primary/20 hover:border-pear-primary/40 transition-colors">
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-pear-gold/10 rounded-full flex items-center justify-center">
                     <span className="text-pear-gold font-bold text-sm">{step.step}</span>
                   </div>
                   <CardHeader className="pb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-pear-primary to-pear-primary rounded-2xl flex items-center justify-center mb-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-2xl flex items-center justify-center mb-4">
                       <Icon className="w-7 h-7 text-white" />
                     </div>
                     <CardTitle className="text-lg text-pear-primary">{step.title}</CardTitle>
@@ -304,7 +305,7 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Before/After Results Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-pear-primary text-white">Real Results</Badge>
@@ -319,7 +320,7 @@ export default function ImplantsPage(): React.JSX.Element {
 
           <div className="max-w-4xl mx-auto mb-8">
             <BeforeAfterButton
-              images={([
+              images={[
                 {
                   beforeSrc: "/images/before-after/implants-before.png",
                   afterSrc: "/images/before-after/implants-after.png",
@@ -334,21 +335,21 @@ export default function ImplantsPage(): React.JSX.Element {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
                 <p className="text-gray-600 text-sm">3-6 months total process</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Success Rate</h4>
                 <p className="text-gray-600 text-sm">98% long-term success</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-pear-primary rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Award className="w-6 h-6 text-pear-primary" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Expert Care</h4>
@@ -368,7 +369,7 @@ export default function ImplantsPage(): React.JSX.Element {
                 Why Choose Dental Implants?
               </h2>
               <div className="space-y-6">
-                {([
+                {[
                   {
                     icon: Shield,
                     title: "Permanent Solution",
@@ -389,11 +390,11 @@ export default function ImplantsPage(): React.JSX.Element {
                     title: "Protect Adjacent Teeth",
                     description: "Unlike bridges, implants don't require altering healthy adjacent teeth for support."
                   }
-                ] || []).map((benefit, index) => {
+                ].map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-pear-primary rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 text-pear-primary" />
                       </div>
                       <div>
@@ -409,7 +410,7 @@ export default function ImplantsPage(): React.JSX.Element {
             {/* Comparison Table */}
             <div>
               <Card className="overflow-hidden shadow-xl">
-                <CardHeader className="bg-gradient-to-r from-pear-primary to-pear-primary text-white">
+                <CardHeader className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
                   <CardTitle className="text-xl">Treatment Comparison</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
@@ -424,13 +425,13 @@ export default function ImplantsPage(): React.JSX.Element {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-200">
-                        {([
+                        {[
                           { feature: "Lifespan", implant: "25+ years", bridge: "10-15 years", denture: "5-7 years" },
                           { feature: "Bone Preservation", implant: "✓", bridge: "✗", denture: "✗" },
                           { feature: "Adjacent Teeth", implant: "Preserved", bridge: "Altered", denture: "Preserved" },
                           { feature: "Cleaning", implant: "Brush & Floss", bridge: "Special Tools", denture: "Remove Daily" },
                           { feature: "Eating Ability", implant: "100%", bridge: "90%", denture: "60%" }
-                        ] || []).map((row, index) => (
+                        ].map((row, index) => (
                           <tr key={index} className="hover:bg-gray-50">
                             <td className="px-4 py-3 text-sm font-medium text-gray-700">{row.feature}</td>
                             <td className="px-4 py-3 text-sm text-center text-pear-primary font-semibold">{row.implant}</td>
@@ -449,7 +450,7 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Pricing & Financing */}
-      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background/50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -462,7 +463,7 @@ export default function ImplantsPage(): React.JSX.Element {
 
           <div className="grid grid-cols-1 gap-8 max-w-2xl mx-auto">
             {/* Standard Pricing */}
-            <Card className="border-2 border-gray-200 hover:border-pear-primary transition-colors">
+            <Card className="border-2 border-gray-200 hover:border-pear-primary/30 transition-colors">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-pear-primary">Single Implant</CardTitle>
                 <div className="text-4xl font-bold text-pear-primary mt-4">£2,500</div>
@@ -470,14 +471,14 @@ export default function ImplantsPage(): React.JSX.Element {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {([
+                  {[
                     "Premium titanium implant",
                     "Surgical placement",
                     "Healing abutment",
                     "Custom crown",
                     "All follow-up care",
                     "10-year guarantee"
-                  ] || []).map((feature, index) => (
+                  ].map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-pear-primary flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -485,7 +486,7 @@ export default function ImplantsPage(): React.JSX.Element {
                   ))}
                 </ul>
                 <Link href="/book">
-                  <Button className="w-full mt-6 bg-gradient-to-r from-pear-primary to-pear-primary text-white">
+                  <Button className="w-full mt-6 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
                     Get Quote
                   </Button>
                 </Link>
@@ -497,15 +498,15 @@ export default function ImplantsPage(): React.JSX.Element {
           <div className="mt-12 text-center">
             <p className="text-gray-600 mb-6">Make implants affordable with our payment options</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="p-6 border border-pear-primary">
+              <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Payment Plans</h4>
                 <p className="text-sm text-gray-600">Flexible payment options available</p>
               </Card>
-              <Card className="p-6 border border-pear-primary">
+              <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Monthly Payments</h4>
                 <p className="text-sm text-gray-600">0% Payment plans over the treatment length</p>
               </Card>
-              <Card className="p-6 border border-pear-primary">
+              <Card className="p-6 border border-pear-primary/20">
                 <h4 className="font-semibold text-pear-primary mb-2">Insurance</h4>
                 <p className="text-sm text-gray-600">Partial coverage may be available</p>
               </Card>
@@ -515,19 +516,19 @@ export default function ImplantsPage(): React.JSX.Element {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Restore Your Confidence Today
             </h2>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-8 text-white/90">
               Stop living with missing teeth. Book your implant consultation and discover how we can restore your smile permanently.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Consultation
                 </Button>
@@ -546,7 +547,7 @@ export default function ImplantsPage(): React.JSX.Element {
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white">
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80">
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>1000+ Implants Placed</span>

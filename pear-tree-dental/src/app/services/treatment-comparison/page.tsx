@@ -1,26 +1,38 @@
-import React from "react";
-import {
-  AlertCircle,
-  ArrowRight,
-  Calendar,
-  CheckCircle,
-  DollarSign,
-  Grid3X3,
-  Info, 
-  Star,
-  Target,
-  TrendingUp,
-  Wrench,
-  XCircle,
-  Zap
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import Link from "next/link";
+import {
+  Crown,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  XCircle,
+  Clock,
+  Shield,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Award,
+  Heart,
+  Target,
+  Zap,
+  Layers,
+  Grid,
+  Smile,
+  Filter,
+  Grid3X3,
+  DollarSign,
+  Calendar,
+  Wrench,
+  TrendingUp,
+  AlertCircle,
+  Info
+} from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Treatment Comparison Tool - Choose the Right Dental Solution | Pear Tree Dental",
@@ -93,7 +105,7 @@ export default function TreatmentComparisonPage() {
           button: 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white hover:from-emerald-600 hover:to-emerald-700',
           outline: 'border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white'
         };
-      default:  gray and slate
+      default: // gray and slate
         return {
           badge: 'bg-gray-500 text-white',
           border: 'border-gray-200 hover:border-gray-300',
@@ -345,12 +357,12 @@ export default function TreatmentComparisonPage() {
   ];
 
   const comparisonFactors = [
-    { key: "price", label: "Cost", icon: DollarSign, format: (value: string | number) => value },
-    { key: "duration", label: "Treatment Time", icon: Calendar, format: (value: string | number) => value },
-    { key: "longevity", label: "Lifespan", icon: TrendingUp, format: (value: string | number) => value },
-    { key: "function", label: "Function", icon: Zap, format: (value: string | number) => value },
-    { key: "maintenance", label: "Maintenance", icon: Wrench, format: (value: string | number) => value },
-    { key: "surgery", label: "Surgery Required", icon: Target, format: (value: string | number) => value }
+    { key: "price", label: "Cost", icon: DollarSign, format: (value: any) => value },
+    { key: "duration", label: "Treatment Time", icon: Calendar, format: (value: any) => value },
+    { key: "longevity", label: "Lifespan", icon: TrendingUp, format: (value: any) => value },
+    { key: "function", label: "Function", icon: Zap, format: (value: any) => value },
+    { key: "maintenance", label: "Maintenance", icon: Wrench, format: (value: any) => value },
+    { key: "surgery", label: "Surgery Required", icon: Target, format: (value: any) => value }
   ];
 
   const categories = [
@@ -361,7 +373,7 @@ export default function TreatmentComparisonPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Treatment Comparison Tool"
@@ -465,7 +477,7 @@ export default function TreatmentComparisonPage() {
 
           {/* Category Filter */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {(categories || []).map((category) => {
+            {categories.map((category) => {
               const categoryColors = getColorClasses(category.color);
               return (
                 <Badge
@@ -480,7 +492,7 @@ export default function TreatmentComparisonPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {(treatments || []).map((treatment) => {
+            {treatments.map((treatment) => {
               const colors = getColorClasses(treatment.color);
               return (
                 <Card key={treatment.id} className={`hover:shadow-lg transition-all duration-300 border-2 ${colors.border}`}>
@@ -490,7 +502,7 @@ export default function TreatmentComparisonPage() {
                         {treatment.category}
                       </Badge>
                       <div className="flex space-x-1">
-                        {Array.from({ length: 5 }).map((_, i) => (
+                        {[...Array(5)].map((_, i) => (
                           <Star key={i} className={`w-3 h-3 ${colors.text} fill-current`} />
                         ))}
                       </div>
@@ -572,7 +584,7 @@ export default function TreatmentComparisonPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {(treatments || []).map((treatment, index) => (
+                    {treatments.map((treatment, index) => (
                       <tr key={treatment.id} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                         <td className="py-4 px-6">
                           <div className="flex items-center space-x-3">
@@ -641,7 +653,7 @@ export default function TreatmentComparisonPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {(treatments || []).map((treatment) => {
+            {treatments.map((treatment) => {
               const colors = getColorClasses(treatment.color);
               return (
                 <Card key={treatment.id} className="h-full flex flex-col">
@@ -662,7 +674,7 @@ export default function TreatmentComparisonPage() {
                         Advantages
                       </h4>
                       <ul className="space-y-2">
-                        {(treatment.pros || []).map((pro, index) => (
+                        {treatment.pros.map((pro, index) => (
                           <li key={index} className="flex items-start space-x-2">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{pro}</span>
@@ -678,7 +690,7 @@ export default function TreatmentComparisonPage() {
                         Considerations
                       </h4>
                       <ul className="space-y-2 mb-4">
-                        {(treatment.cons || []).map((con, index) => (
+                        {treatment.cons.map((con, index) => (
                           <li key={index} className="flex items-start space-x-2">
                             <div className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{con}</span>
@@ -836,32 +848,32 @@ export default function TreatmentComparisonPage() {
           <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <div className="absolute top-4 right-4">
-                <Info className="w-12 h-12 text-white" />
+                <Info className="w-12 h-12 text-white/20" />
               </div>
 
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Still Unsure? Get Expert Guidance
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Every situation is unique. Book a free consultation with our dental experts
                 to get personalized recommendations based on your specific needs, budget, and goals.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
                     Call 0115 931 2935
                   </Button>
                 </a>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
                 <div className="flex items-center justify-center space-x-2">
                   <CheckCircle className="w-4 h-4" />
                   <span>Expert Assessment</span>

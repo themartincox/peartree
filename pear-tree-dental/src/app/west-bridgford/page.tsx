@@ -1,25 +1,27 @@
-import React from "react";
-import {
-  Award,
-  CalendarDays,
-  Car,
-  CheckCircle,
-  Clock,
-  Crown,
-  Heart,
-  MapPin,
-  Phone,
-  Shield,
-  Sparkles, 
-  Star,
-} from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import MedicalPracticeSchema from '@/components/seo/MedicalPracticeSchema';
 import ServiceAreaSchema from '@/components/seo/ServiceAreaSchema';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  MapPin,
+  Clock,
+  Phone,
+  Star,
+  CheckCircle,
+  Car,
+  CalendarDays,
+  Shield,
+  Heart,
+  Navigation,
+  Route,
+  Users,
+  Award,
+  Crown,
+  Sparkles
+} from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Premium Dentist in West Bridgford - Pear Tree Dental | Quality Dental Care',
@@ -96,7 +98,7 @@ export default function WestBridgfordPage() {
         serviceName="Premium Dental Care for West Bridgford"
         serviceDescription="Comprehensive premium dental services including cosmetic dentistry, dental implants, and advanced treatments for discerning West Bridgford residents"
         procedureType="Comprehensive Dental Care"
-        areaServed={(["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
+        areaServed={["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
       />
 
       {/* Service Area Schema for West Bridgford Coverage */}
@@ -133,7 +135,7 @@ export default function WestBridgfordPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-pear-gold hover:bg-pear-gold text-dental-navy font-semibold px-8 py-4"
+                className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -155,15 +157,15 @@ export default function WestBridgfordPage() {
 
             {/* Premium Badges */}
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge variant="secondary" className="bg-pear-gold text-pear-gold border-pear-gold">
+              <Badge variant="secondary" className="bg-pear-gold/20 text-pear-gold border-pear-gold/30">
                 <Award className="w-4 h-4 mr-1" />
                 Premium Care
               </Badge>
-              <Badge variant="secondary" className="bg-dental-green text-dental-green border-dental-green">
+              <Badge variant="secondary" className="bg-dental-green/20 text-dental-green border-dental-green/30">
                 <Clock className="w-4 h-4 mr-1" />
                 Same-Day Service
               </Badge>
-              <Badge variant="secondary" className="bg-white text-white border-white">
+              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
                 <Shield className="w-4 h-4 mr-1" />
                 Advanced Technology
               </Badge>
@@ -184,7 +186,7 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 border border-pear-gold bg-gradient-to-br from-white to-pear-gold">
+              <Card className="p-6 border border-pear-gold/20 bg-gradient-to-br from-white to-pear-gold/5">
                 <CardHeader className="text-center pb-4">
                   <Car className="h-12 w-12 mx-auto text-pear-gold mb-4" />
                   <CardTitle className="text-xl">Easy Journey</CardTitle>
@@ -196,7 +198,7 @@ export default function WestBridgfordPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-dental-green bg-gradient-to-br from-white to-dental-green">
+              <Card className="p-6 border border-dental-green/20 bg-gradient-to-br from-white to-dental-green/5">
                 <CardHeader className="text-center pb-4">
                   <MapPin className="h-12 w-12 mx-auto text-dental-green mb-4" />
                   <CardTitle className="text-xl">Premium Location</CardTitle>
@@ -208,7 +210,7 @@ export default function WestBridgfordPage() {
                 </CardContent>
               </Card>
 
-              <Card className="p-6 border border-pear-primary bg-gradient-to-br from-white to-pear-primary">
+              <Card className="p-6 border border-pear-primary/20 bg-gradient-to-br from-white to-pear-primary/5">
                 <CardHeader className="text-center pb-4">
                   <Crown className="h-12 w-12 mx-auto text-pear-primary mb-4" />
                   <CardTitle className="text-xl">Premium Service</CardTitle>
@@ -236,7 +238,7 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {([
+              {[
                 {
                   title: "Cosmetic Excellence",
                   description: "Transform your smile with premium aesthetic treatments",
@@ -285,17 +287,17 @@ export default function WestBridgfordPage() {
                   price: "From £95",
                   badge: "Peace of Mind"
                 }
-              ] || []).map((service, index) => {
+              ].map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <Card key={index} className="p-6 border border-pear-gold hover:border-pear-gold transition-all hover:shadow-lg">
+                  <Card key={index} className="p-6 border border-pear-gold/20 hover:border-pear-gold/40 transition-all hover:shadow-lg">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <Icon className="h-8 w-8 text-pear-gold flex-shrink-0" />
                           <div>
                             <h3 className="text-xl font-semibold">{service.title}</h3>
-                            <Badge variant="secondary" className="text-xs mt-1 bg-pear-gold text-pear-gold">
+                            <Badge variant="secondary" className="text-xs mt-1 bg-pear-gold/10 text-pear-gold">
                               {service.badge}
                             </Badge>
                           </div>
@@ -306,7 +308,7 @@ export default function WestBridgfordPage() {
                       </div>
                       <p className="text-gray-600">{service.description}</p>
                       <ul className="space-y-1">
-                        {(service.features || []).map((feature, idx) => (
+                        {service.features.map((feature, idx) => (
                           <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                             <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0" />
                             <span>{feature}</span>
@@ -320,14 +322,14 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="text-center mt-12">
-              <div className="bg-gradient-to-r from-pear-gold to-dental-green rounded-2xl p-8 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-r from-pear-gold/10 to-dental-green/10 rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">Membership Plans for West Bridgford Residents</h3>
                 <p className="text-gray-700 mb-6">
                   Save up to 15% on all treatments with our comprehensive membership plans. Includes priority booking,
                   member benefits, and complimentary services.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-pear-gold hover:bg-pear-gold text-dental-navy font-semibold">
+                  <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold">
                     <Crown className="w-5 h-5 mr-2" />
                     Explore Membership Plans
                   </Button>
@@ -354,7 +356,7 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {([
+              {[
                 {
                   name: "Dr. Margaret Thompson",
                   location: "West Bridgford",
@@ -379,11 +381,11 @@ export default function WestBridgfordPage() {
                   rating: 5,
                   service: "Dental Implants"
                 }
-              ] || []).map((review, index) => (
-                <Card key={index} className="p-6 shadow-xl border border-pear-gold">
+              ].map((review, index) => (
+                <Card key={index} className="p-6 shadow-xl border border-pear-gold/20">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-1 text-pear-gold">
-                      {([...Array(review.rating)] || []).map((_, i) => (
+                      {[...Array(review.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
@@ -401,10 +403,10 @@ export default function WestBridgfordPage() {
             </div>
 
             <div className="mt-12 text-center">
-              <div className="bg-gradient-to-r from-pear-gold to-dental-green rounded-2xl p-8 max-w-2xl mx-auto">
+              <div className="bg-gradient-to-r from-pear-gold/10 to-dental-green/5 rounded-2xl p-8 max-w-2xl mx-auto">
                 <div className="flex items-center justify-center space-x-4 mb-4">
                   <div className="flex items-center space-x-1 text-pear-gold">
-                    {Array.from({ length: 5 }).map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-6 h-6 fill-current" />
                     ))}
                   </div>
@@ -467,7 +469,7 @@ export default function WestBridgfordPage() {
 
               <div>
                 <h2 className="text-3xl font-bold mb-8">Direct Route from West Bridgford</h2>
-                <div className="bg-white p-6 rounded-lg shadow-lg border border-pear-gold">
+                <div className="bg-white p-6 rounded-lg shadow-lg border border-pear-gold/20">
                   <h3 className="font-semibold mb-4 text-pear-gold">Direct Route (12 minutes)</h3>
                   <ol className="space-y-2 text-gray-700">
                     <li className="flex items-start space-x-2">
@@ -487,7 +489,7 @@ export default function WestBridgfordPage() {
                       <span>Follow A612 into Burton Joyce, turn right on Main Street</span>
                     </li>
                   </ol>
-                  <div className="mt-4 p-3 bg-pear-gold rounded">
+                  <div className="mt-4 p-3 bg-pear-gold/10 rounded">
                     <p className="text-sm text-dental-navy">
                       <strong>Travel tip:</strong> Scenic countryside route with minimal traffic - perfect for a relaxing journey to your appointment
                     </p>
@@ -506,7 +508,7 @@ export default function WestBridgfordPage() {
             <h2 className="text-3xl font-bold mb-6">
               Experience Quality Dental Care Today
             </h2>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-8 text-white/90">
               Join West Bridgford residents who choose excellence in dental care.
               Book your consultation and discover the difference quality makes.
             </p>
@@ -514,7 +516,7 @@ export default function WestBridgfordPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white text-pear-gold font-semibold px-8 py-4"
+                className="bg-white hover:bg-white/90 text-pear-gold font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />

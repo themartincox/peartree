@@ -1,23 +1,22 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
     // Get client IP address
-    const forwarded = request.headers.get("x-forwarded-for");
-    const ip =
-      forwarded?.split(",")[0] ||
-      request.headers.get("x-real-ip") ||
-      "127.0.0.1";
+    const forwarded = request.headers.get('x-forwarded-for');
+    const ip = forwarded?.split(',')[0] ||
+               request.headers.get('x-real-ip') ||
+               '127.0.0.1';
 
     // For development/localhost, return a default Nottingham response
-    if (ip === "127.0.0.1" || ip === "::1" || ip?.includes("localhost")) {
+    if (ip === '127.0.0.1' || ip === '::1' || ip?.includes('localhost')) {
       return NextResponse.json({
-        city: "Nottingham",
-        region: "Nottinghamshire",
-        country: "United Kingdom",
-        area: "Nottingham",
-        postcode: "NG1",
-        isLocal: true,
+        city: 'Nottingham',
+        region: 'Nottinghamshire',
+        country: 'United Kingdom',
+        area: 'Nottingham',
+        postcode: 'NG1',
+        isLocal: true
       });
     }
 
@@ -27,21 +26,21 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(locationData);
   } catch (error) {
-    console.error("Location detection error:", error);
+    console.error('Location detection error:', error);
 
     // Return safe fallback
     return NextResponse.json({
-      city: "Unknown",
-      region: "Unknown",
-      country: "United Kingdom",
-      area: "Unknown",
-      postcode: "Unknown",
-      isLocal: false,
+      city: 'Unknown',
+      region: 'Unknown',
+      country: 'United Kingdom',
+      area: 'Unknown',
+      postcode: 'Unknown',
+      isLocal: false
     });
   }
 }
 
-async function getLocationFromIP(_ip: string) {
+async function getLocationFromIP(ip: string) {
   try {
     // For this implementation, we'll use a simple approach
     // In production, you might want to use a service like ipapi.co or similar
@@ -51,23 +50,24 @@ async function getLocationFromIP(_ip: string) {
 
     // Default response for UK users
     return {
-      city: "Unknown UK Location",
-      region: "United Kingdom",
-      country: "United Kingdom",
-      area: "UK",
-      postcode: "Unknown",
-      isLocal: false,
+      city: 'Unknown UK Location',
+      region: 'United Kingdom',
+      country: 'United Kingdom',
+      area: 'UK',
+      postcode: 'Unknown',
+      isLocal: false
     };
+
   } catch (error) {
-    console.error("IP geolocation failed:", error);
+    console.error('IP geolocation failed:', error);
 
     return {
-      city: "Unknown",
-      region: "Unknown",
-      country: "Unknown",
-      area: "Unknown",
-      postcode: "Unknown",
-      isLocal: false,
+      city: 'Unknown',
+      region: 'Unknown',
+      country: 'Unknown',
+      area: 'Unknown',
+      postcode: 'Unknown',
+      isLocal: false
     };
   }
 }

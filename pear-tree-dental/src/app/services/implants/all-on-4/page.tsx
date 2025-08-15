@@ -1,26 +1,29 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  CheckCircle,
-  ChevronLeft,
-  Clock,
-  Crown,
-  Grid,
-  Shield,
-  Smile,
-  Star,
-  Target,
-  Zap
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Crown,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Award,
+  Heart,
+  Target,
+  Zap,
+  Layers,
+  Grid,
+  Smile
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "All-on-4 Dental Implants - Full Arch Restoration | Pear Tree Dental",
@@ -243,7 +246,7 @@ export default function AllOn4Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 via-white to-amber-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="All-on-4 Dental Implants"
@@ -316,7 +319,7 @@ export default function AllOn4Page() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold to-pear-gold border border-pear-gold rounded-full px-6 py-3">
+              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
                 <span className="text-sm font-semibold text-pear-gold">Revolutionary technique - millions of successful cases worldwide</span>
               </div>
@@ -370,7 +373,7 @@ export default function AllOn4Page() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-orange-500 text-white">Revolutionary Technique</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
                       ))}
                     </div>
@@ -381,11 +384,11 @@ export default function AllOn4Page() {
                     teeth on the day of surgery with minimal implants needed.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-orange-600">4 hours</div>
                       <div className="text-gray-600">Surgery time</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-orange-600">Same day</div>
                       <div className="text-gray-600">New teeth</div>
                     </div>
@@ -411,7 +414,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(benefits || []).map((benefit) => {
+            {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -441,7 +444,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {(technology || []).map((tech) => (
+            {technology.map((tech) => (
               <Card key={tech.aspect} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{tech.aspect}</CardTitle>
@@ -473,7 +476,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(candidates || []).map((candidate) => {
+            {candidates.map((candidate) => {
               const Icon = candidate.icon;
               return (
                 <Card key={candidate.condition} className="text-center hover:shadow-lg transition-shadow">
@@ -508,7 +511,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {(advantages || []).map((advantage, index) => (
+            {advantages.map((advantage, index) => (
               <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
                 <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0" />
                 <span className="text-gray-700">{advantage}</span>
@@ -543,7 +546,7 @@ export default function AllOn4Page() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(comparison || []).map((item, index) => (
+                  {comparison.map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -577,7 +580,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(timeline || []).map((phase, _index) => (
+            {timeline.map((phase, index) => (
               <Card key={phase.phase} className="hover:shadow-lg transition-shadow h-full">
                 <CardHeader>
                   <CardTitle className="text-lg text-pear-primary">{phase.phase}</CardTitle>
@@ -587,7 +590,7 @@ export default function AllOn4Page() {
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
-                    {(phase.activities || []).map((activity, idx) => (
+                    {phase.activities.map((activity, idx) => (
                       <li key={idx} className="flex items-start space-x-2">
                         <CheckCircle className="w-4 h-4 text-orange-600 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-700">{activity}</span>
@@ -615,7 +618,7 @@ export default function AllOn4Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(process || []).map((step, index) => (
+            {process.map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -647,13 +650,13 @@ export default function AllOn4Page() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Transform Your Life in One Day
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Experience the revolutionary All-on-4 solution. Walk in with failing teeth
                 or dentures, walk out with a beautiful, functional smile.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
                   Book All-on-4 Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -664,7 +667,7 @@ export default function AllOn4Page() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 From £15,000 per arch • Same day teeth • 20+ year lifespan
               </div>
             </CardContent>

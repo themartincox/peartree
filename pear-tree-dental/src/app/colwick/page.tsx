@@ -1,24 +1,21 @@
-import React from "react";
-import { CalendarDays, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CalendarDays, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dentist Colwick | Pear Tree Dental | Expert Local Care",
-  description:
-    "Professional dental care serving Colwick and surrounding areas. Comprehensive dental services with convenient access from Colwick. Book your appointment today.",
+  description: "Professional dental care serving Colwick and surrounding areas. Comprehensive dental services with convenient access from Colwick. Book your appointment today.",
   openGraph: {
     title: "Dentist Colwick | Pear Tree Dental",
-    description:
-      "Professional dental care serving Colwick and surrounding areas",
+    description: "Professional dental care serving Colwick and surrounding areas",
     type: "website",
-    url: "https://peartree.dental/colwick",
+    url: "https://peartree.dental/colwick"
   },
   alternates: {
-    canonical: "https://peartree.dental/colwick",
-  },
+    canonical: "https://peartree.dental/colwick"
+  }
 };
 
 export default function ColwickPage() {

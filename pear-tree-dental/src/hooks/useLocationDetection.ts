@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react';
 
 interface LocationInfo {
   isNottingham: boolean;
@@ -12,36 +12,33 @@ interface LocationInfo {
 export const useLocationDetection = (): LocationInfo => {
   const [locationInfo, setLocationInfo] = useState<LocationInfo>({
     isNottingham: false,
-    isDetected: false,
+    isDetected: false
   });
 
   useEffect(() => {
     // Start detection immediately and silently
     detectUserLocationSilently();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    // Start detection immediately and silently
-    detectUserLocationSilently,
-  ]);
+  }, []);
 
   const detectUserLocationSilently = async () => {
     try {
       // Method 1: Check URL parameters for Nottingham-specific pages (instant)
       const currentPath = window.location.pathname;
       const nottinghamPaths = [
-        "/nottingham-dentist",
-        "/emergency-dentist-nottingham",
-        "/nottingham-teeth-whitening",
-        "/nottingham-smile-design",
-        "/nottingham-teeth-straightening",
+        '/nottingham-dentist',
+        '/emergency-dentist-nottingham',
+        '/nottingham-teeth-whitening',
+        '/nottingham-smile-design',
+        '/nottingham-teeth-straightening'
       ];
 
-      if (nottinghamPaths.some((path) => currentPath.includes(path))) {
+      if (nottinghamPaths.some(path => currentPath.includes(path))) {
         setLocationInfo({
           isNottingham: true,
           isDetected: true,
-          area: "Nottingham",
-          postcode: "NG1-NG17",
+          area: 'Nottingham',
+          postcode: 'NG1-NG17'
         });
         return;
       }
@@ -51,16 +48,13 @@ export const useLocationDetection = (): LocationInfo => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            const isNottinghamArea = checkIfNottinghamCoordinates(
-              latitude,
-              longitude,
-            );
+            const isNottinghamArea = checkIfNottinghamCoordinates(latitude, longitude);
 
             setLocationInfo({
               isNottingham: isNottinghamArea,
               isDetected: true,
-              area: isNottinghamArea ? "Nottingham Area" : "Outside Nottingham",
-              postcode: isNottinghamArea ? "NG Area" : "Other",
+              area: isNottinghamArea ? 'Nottingham Area' : 'Outside Nottingham',
+              postcode: isNottinghamArea ? 'NG Area' : 'Other'
             });
           },
           () => {
@@ -70,8 +64,8 @@ export const useLocationDetection = (): LocationInfo => {
           {
             timeout: 3000, // Shorter timeout for faster fallback
             enableHighAccuracy: false, // Faster, less battery usage
-            maximumAge: 300000, // Use cached location for 5 minutes
-          },
+            maximumAge: 300000 // Use cached location for 5 minutes
+          }
         );
       } else {
         // No geolocation - try IP detection
@@ -81,7 +75,7 @@ export const useLocationDetection = (): LocationInfo => {
       // Silent failure - just mark as not Nottingham
       setLocationInfo({
         isNottingham: false,
-        isDetected: true,
+        isDetected: true
       });
     }
   };
@@ -94,7 +88,7 @@ export const useLocationDetection = (): LocationInfo => {
     const radius = 0.2; // Approximately 15-20 mile radius
 
     const distance = Math.sqrt(
-      (lat - nottinghamLat) ** 2 + (lon - nottinghamLon) ** 2,
+      Math.pow(lat - nottinghamLat, 2) + Math.pow(lon - nottinghamLon, 2)
     );
 
     return distance <= radius;
@@ -106,41 +100,40 @@ export const useLocationDetection = (): LocationInfo => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
 
-      const response = await fetch("/api/location-detect", {
-        method: "GET",
+      const response = await fetch('/api/location-detect', {
+        method: 'GET',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        signal: controller.signal,
+        signal: controller.signal
       });
 
       clearTimeout(timeoutId);
 
       if (response.ok) {
         const data = await response.json();
-        const isNottingham =
-          data.city?.toLowerCase().includes("nottingham") ||
-          data.region?.toLowerCase().includes("nottingham") ||
-          data.area?.toLowerCase().includes("nottingham");
+        const isNottingham = data.city?.toLowerCase().includes('nottingham') ||
+                            data.region?.toLowerCase().includes('nottingham') ||
+                            data.area?.toLowerCase().includes('nottingham');
 
         setLocationInfo({
           isNottingham,
           isDetected: true,
-          area: isNottingham ? "Nottingham" : data.city || "Unknown",
-          postcode: data.postcode || "Unknown",
+          area: isNottingham ? 'Nottingham' : data.city || 'Unknown',
+          postcode: data.postcode || 'Unknown'
         });
       } else {
         // Fallback - assume not Nottingham
         setLocationInfo({
           isNottingham: false,
-          isDetected: true,
+          isDetected: true
         });
       }
     } catch (error) {
       // Silent failure - just mark as not Nottingham
       setLocationInfo({
         isNottingham: false,
-        isDetected: true,
+        isDetected: true
       });
     }
   };

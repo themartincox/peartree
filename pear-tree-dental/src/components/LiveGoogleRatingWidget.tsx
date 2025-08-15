@@ -7,7 +7,7 @@ interface LiveGoogleRatingWidgetProps {
 }
 
 const LiveGoogleRatingWidget = ({ onClick }: LiveGoogleRatingWidgetProps) => {
-//    Using the actual rating from Google
+  // Using the actual rating from Google
   const rating = 4.9;
   const reviewCount = "over 415";
 
@@ -24,20 +24,16 @@ const LiveGoogleRatingWidget = ({ onClick }: LiveGoogleRatingWidgetProps) => {
 
         {/* Content */}
         <div className="flex items-center space-x-2">
-          <span className="text-gray-700 font-medium text-sm">
-            Google Rated
-          </span>
+          <span className="text-gray-700 font-medium text-sm">Google Rated</span>
 
           {/* Rating and Stars */}
           <div className="flex items-center space-x-1">
-            <span className="text-gray-900 font-semibold text-sm">
-              {rating.toFixed(1)}
-            </span>
+            <span className="text-gray-900 font-semibold text-sm">{rating.toFixed(1)}</span>
             <div className="flex">
-              {Array.from({ length: 5 }).map((_, i) => (
+              {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className={`w-3.5 h-3.5 ${i < rating ? "text-orange-400 fill-current" : "text-gray-300"}`}
+                  className={`w-3.5 h-3.5 ${i < rating ? 'text-orange-400 fill-current' : 'text-gray-300'}`}
                 />
               ))}
             </div>

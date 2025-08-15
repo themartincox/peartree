@@ -1,26 +1,28 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  CheckCircle,
-  ChevronLeft,
-  Clock,
-  Crown,
-  Grid3X3,
-  Layers,
-  Shield,
-  Sparkles,
-  Star,
-  Target,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Crown,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Award,
+  Heart,
+  Target,
+  Zap,
+  Layers,
+  Grid3X3
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Multiple Dental Implants - Replace Several Missing Teeth | Pear Tree Dental",
@@ -214,7 +216,7 @@ export default function MultipleImplantPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-indigo-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Multiple Dental Implants"
@@ -287,7 +289,7 @@ export default function MultipleImplantPage() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold to-pear-gold border border-pear-gold rounded-full px-6 py-3">
+              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
                 <span className="text-sm font-semibold text-pear-gold">Individual implants provide superior long-term success</span>
               </div>
@@ -341,7 +343,7 @@ export default function MultipleImplantPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">Individual Solutions</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>
@@ -352,11 +354,11 @@ export default function MultipleImplantPage() {
                     with each tooth operating independently for optimal performance.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">98%</div>
                       <div className="text-gray-600">Success rate each</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">25+</div>
                       <div className="text-gray-600">Years lifespan</div>
                     </div>
@@ -382,7 +384,7 @@ export default function MultipleImplantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(benefits || []).map((benefit) => {
+            {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -412,7 +414,7 @@ export default function MultipleImplantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(scenarios || []).map((scenario) => {
+            {scenarios.map((scenario) => {
               const Icon = scenario.icon;
               return (
                 <Card key={scenario.situation} className="text-center hover:shadow-lg transition-shadow">
@@ -447,7 +449,7 @@ export default function MultipleImplantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {(advantages || []).map((advantage, index) => (
+            {advantages.map((advantage, index) => (
               <div key={index} className="flex items-center space-x-3 bg-blue-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
                 <span className="text-gray-700">{advantage}</span>
@@ -471,7 +473,7 @@ export default function MultipleImplantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {(considerations || []).map((consideration) => (
+            {considerations.map((consideration) => (
               <Card key={consideration.factor} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{consideration.factor}</CardTitle>
@@ -513,7 +515,7 @@ export default function MultipleImplantPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(comparison || []).map((item, index) => (
+                  {comparison.map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -547,7 +549,7 @@ export default function MultipleImplantPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(process || []).map((step, index) => (
+            {process.map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -579,13 +581,13 @@ export default function MultipleImplantPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Restore Multiple Teeth with Confidence
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Don't let multiple missing teeth limit your life. Individual implants provide
                 the most natural, long-lasting solution for comprehensive tooth replacement.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
                   Book Multiple Implant Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -596,7 +598,7 @@ export default function MultipleImplantPage() {
                 </Link>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 From £6,000 • Individual function • 25+ year lifespan each
               </div>
             </CardContent>

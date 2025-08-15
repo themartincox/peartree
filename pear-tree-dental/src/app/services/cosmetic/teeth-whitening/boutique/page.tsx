@@ -1,26 +1,25 @@
-import React from "react";
-import {
-  ArrowRight,
-  Calendar,
-  CheckCircle,
-  ChevronLeft,
-  Clock,
-  Heart,
-  Home,
-  Moon,
-  Shield,
-  Sparkles, 
-  Star,
-//   Users
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Home,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Users,
+  ChevronLeft,
+  Moon,
+  Calendar,
+  Heart,
+  Sparkles
+} from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
@@ -162,15 +161,35 @@ export default function BoutiqueWhiteningPage() {
   ];
 
   const comparison = [
-    { feature: "Strength", boutique: "Professional grade", otc: "Limited strength" },
-    { feature: "Fit", boutique: "Custom-made trays", otc: "One-size-fits-all" },
-    { feature: "Results", boutique: "6-8 shades", otc: "2-3 shades" },
-    { feature: "Support", boutique: "Professional guidance", otc: "Self-guided only" },
-    { feature: "Safety", boutique: "Dentist supervised", otc: "Unsupervised use" }
+    {
+      feature: "Strength",
+      boutique: "Professional grade",
+      otc: "Limited strength"
+    },
+    {
+      feature: "Fit",
+      boutique: "Custom-made trays",
+      otc: "One-size-fits-all"
+    },
+    {
+      feature: "Results",
+      boutique: "6-8 shades",
+      otc: "2-3 shades"
+    },
+    {
+      feature: "Support",
+      boutique: "Professional guidance",
+      otc: "Self-guided only"
+    },
+    {
+      feature: "Safety",
+      boutique: "Dentist supervised",
+      otc: "Unsupervised use"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/30 via-white to-purple-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Boutique Teeth Whitening"
@@ -199,7 +218,10 @@ export default function BoutiqueWhiteningPage() {
         procedureType="Service"
       />
 
-      <ServiceFAQSchema serviceName="Boutique Teeth Whitening" faqs={boutiqueFAQs} />
+      <ServiceFAQSchema
+        serviceName="Boutique Teeth Whitening"
+        faqs={boutiqueFAQs}
+      />
 
       {/* Breadcrumb */}
       <section className="pt-24 pb-8">
@@ -296,7 +318,7 @@ export default function BoutiqueWhiteningPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-blue-500 text-white">At-Home System</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-blue-500 fill-current" />
                       ))}
                     </div>
@@ -307,11 +329,11 @@ export default function BoutiqueWhiteningPage() {
                     deliver results that match in-practice treatments.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">2-3 Weeks</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-blue-600">6-8 Shades</div>
                       <div className="text-gray-600">Whiter teeth</div>
                     </div>
@@ -337,7 +359,7 @@ export default function BoutiqueWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(features || []).map((feature) => {
+            {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <Card
@@ -386,7 +408,7 @@ export default function BoutiqueWhiteningPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(comparison || []).map((item, index) => (
+                  {comparison.map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -419,7 +441,7 @@ export default function BoutiqueWhiteningPage() {
           </div>
 
           <div className="space-y-8 max-w-5xl mx-auto">
-            {(process || []).map((phase, index) => (
+            {process.map((phase, index) => (
               <Card key={phase.phase} className="overflow-hidden">
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -437,7 +459,7 @@ export default function BoutiqueWhiteningPage() {
                     </div>
                     <div className="lg:col-span-2">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {(phase.details || []).map((detail, idx) => (
+                        {phase.details.map((detail, idx) => (
                           <div key={idx} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{detail}</span>
@@ -467,7 +489,7 @@ export default function BoutiqueWhiteningPage() {
               </p>
 
               <div className="space-y-4">
-                {(benefits || []).map((benefit, index) => (
+                {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{benefit}</span>
@@ -493,20 +515,20 @@ export default function BoutiqueWhiteningPage() {
                   <div className="text-center">
                     <Home className="w-16 h-16 text-white mx-auto mb-4" />
                     <h3 className="text-2xl font-semibold mb-2">At-Home Convenience</h3>
-                    <p className="text-white">
+                    <p className="text-white/90">
                       Professional results in the comfort and privacy of your own home,
                       on your own schedule.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20">
                     <div className="text-center">
                       <div className="text-3xl font-bold">6-8</div>
-                      <div className="text-sm text-white">Shades Whiter</div>
+                      <div className="text-sm text-white/80">Shades Whiter</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold">2-3</div>
-                      <div className="text-sm text-white">Weeks Treatment</div>
+                      <div className="text-sm text-white/80">Weeks Treatment</div>
                     </div>
                   </div>
                 </div>
@@ -524,13 +546,13 @@ export default function BoutiqueWhiteningPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Start Your Whitening Journey
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Experience professional-grade whitening from home with Boutique.
                 Book your consultation today and discover the convenience of custom whitening.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
                   Book Boutique Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -539,7 +561,7 @@ export default function BoutiqueWhiteningPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 From {getTreatmentPrice("Teeth Whitening")} • 6-8 Shades Whiter • At-Home Convenience
               </div>
             </CardContent>
@@ -551,3 +573,4 @@ export default function BoutiqueWhiteningPage() {
       <ServiceNavigation />
     </div>
   );
+}

@@ -1,25 +1,26 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  CheckCircle,
-  ChevronLeft,
-  Clock,
-  Crown,
-  Heart,
-  Shield,
-  Smile,
-  Star,
-  Target, 
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Crown,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Award,
+  Smile,
+  Heart,
+  Target
+} from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
@@ -167,7 +168,7 @@ export default function PartialDenturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50/30 via-white to-teal-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Partial Dentures"
@@ -242,7 +243,7 @@ export default function PartialDenturesPage() {
               </p>
 
               {/* Social Proof */}
-              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold to-pear-gold border border-pear-gold rounded-full px-6 py-3">
+              <div className="inline-flex items-center bg-gradient-to-r from-pear-gold/20 to-pear-gold/10 border border-pear-gold/30 rounded-full px-6 py-3">
                 <Star className="w-5 h-5 text-pear-gold mr-2 fill-current" />
                 <span className="text-sm font-semibold text-pear-gold">Most popular denture option for partial tooth loss</span>
               </div>
@@ -296,7 +297,7 @@ export default function PartialDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-emerald-500 text-white">Preserve & Replace</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-emerald-500 fill-current" />
                       ))}
                     </div>
@@ -307,11 +308,11 @@ export default function PartialDenturesPage() {
                     while replacing missing ones at an affordable cost.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-emerald-600">2-3 weeks</div>
                       <div className="text-gray-600">Treatment time</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-emerald-600">5-7 years</div>
                       <div className="text-gray-600">Expected lifespan</div>
                     </div>
@@ -337,7 +338,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(benefits || []).map((benefit) => {
+            {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -367,7 +368,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {(types || []).map((type) => (
+            {types.map((type) => (
               <Card key={type.type} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="text-xl text-pear-primary">{type.type}</CardTitle>
@@ -382,7 +383,7 @@ export default function PartialDenturesPage() {
                   <div>
                     <h4 className="font-semibold text-green-700 mb-2">Advantages:</h4>
                     <div className="space-y-1">
-                      {(type.pros || []).map((pro, index) => (
+                      {type.pros.map((pro, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{pro}</span>
@@ -393,7 +394,7 @@ export default function PartialDenturesPage() {
                   <div>
                     <h4 className="font-semibold text-amber-700 mb-2">Considerations:</h4>
                     <div className="space-y-1">
-                      {(type.cons || []).map((con, index) => (
+                      {type.cons.map((con, index) => (
                         <div key={index} className="flex items-center space-x-2">
                           <Clock className="w-4 h-4 text-amber-600 flex-shrink-0" />
                           <span className="text-sm text-gray-700">{con}</span>
@@ -427,7 +428,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {(features || []).map((feature, index) => (
+            {features.map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 bg-emerald-50 p-4 rounded-lg">
                 <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                 <span className="text-gray-700">{feature}</span>
@@ -451,7 +452,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(candidateFactors || []).map((factor) => {
+            {candidateFactors.map((factor) => {
               const Icon = factor.icon;
               return (
                 <Card key={factor.situation} className="text-center hover:shadow-lg transition-shadow">
@@ -483,7 +484,7 @@ export default function PartialDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(process || []).map((step, index) => (
+            {process.map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -511,13 +512,13 @@ export default function PartialDenturesPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Restore Your Smile Today
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Don't let missing teeth affect your confidence. Partial dentures offer
                 an affordable, effective solution to restore your smile and function.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-emerald-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-emerald-600 hover:bg-white/90 font-semibold">
                   Book Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -526,7 +527,7 @@ export default function PartialDenturesPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 From {getTreatmentPrice("Acrylic Partial Dentures")} • 2-3 weeks • Preserve natural teeth
               </div>
             </CardContent>

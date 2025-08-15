@@ -1,26 +1,29 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  Calendar,
-  Camera,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Eye,
-  Filter,
-  Heart,
-  Shield,
-  Sparkles,
-  Star,
-  Users,
-} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import {
+  Camera,
+  ArrowRight,
+  Filter,
+  Eye,
+  Star,
+  Calendar,
+  CheckCircle,
+  Sparkles,
+  Shield,
+  Heart,
+  Zap,
+  Award,
+  Users,
+  Clock,
+  PlayCircle,
+  ExternalLink,
+  Download
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Smile Gallery - Before & After Results | Pear Tree Dental Burton Joyce",
@@ -210,7 +213,7 @@ const stats = [
   },
   {
     icon: Star,
-    value: "4.9",
+    value: "4.9/5",
     label: "Patient Satisfaction"
   },
   {
@@ -230,7 +233,7 @@ export default function SmileGalleryPage() {
   const allItems = galleryItems.filter(item => !item.featured);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
+    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Smile Gallery"
@@ -262,7 +265,7 @@ export default function SmileGalleryPage() {
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="secondary" className="mb-6 bg-soft-pink text-soft-pink">
+            <Badge variant="secondary" className="mb-6 bg-soft-pink/10 text-soft-pink">
               <Camera className="w-4 h-4 mr-2" />
               Before & After Gallery
             </Badge>
@@ -279,12 +282,12 @@ export default function SmileGalleryPage() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {(stats || []).map((stat) => {
+              {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
-                  <Card key={stat.label} className="border-2 border-soft-pink bg-white">
+                  <Card key={stat.label} className="border-2 border-soft-pink/20 bg-white/80">
                     <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
+                      <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
                         <Icon className="w-6 h-6 text-soft-pink" />
                       </div>
                       <div className="text-2xl font-bold text-pear-primary mb-1">{stat.value}</div>
@@ -297,7 +300,7 @@ export default function SmileGalleryPage() {
 
             {/* Quick Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink text-white font-semibold">
+              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink/90 text-white font-semibold">
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Your Consultation
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -336,12 +339,12 @@ export default function SmileGalleryPage() {
               <h3 className="font-semibold text-pear-primary">Filter by Treatment Type</h3>
             </div>
             <div className="flex flex-wrap gap-2">
-              {(categories || []).map((category) => (
+              {categories.map((category) => (
                 <Button
                   key={category}
                   variant="outline"
                   size="sm"
-                  className="border-soft-pink text-pear-primary hover:bg-soft-pink hover:text-white hover:border-soft-pink"
+                  className="border-soft-pink/30 text-pear-primary hover:bg-soft-pink hover:text-white hover:border-soft-pink"
                 >
                   {category}
                 </Button>
@@ -364,8 +367,8 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {(featuredItems || []).map((item) => (
-              <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink hover:shadow-2xl transition-all duration-300">
+            {featuredItems.map((item) => (
+              <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:shadow-2xl transition-all duration-300">
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white text-center py-2 text-sm font-semibold">
                   ⭐ Featured Transformation
@@ -388,7 +391,7 @@ export default function SmileGalleryPage() {
 
                     <div className="space-y-2">
                       <div className="relative aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-soft-pink to-soft-lavender">
+                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20">
                           <div className="text-center">
                             <Sparkles className="w-8 h-8 text-soft-pink mx-auto mb-2" />
                             <div className="text-sm font-medium text-soft-pink">AFTER</div>
@@ -408,7 +411,7 @@ export default function SmileGalleryPage() {
 
                     {/* Treatment Tags */}
                     <div className="flex flex-wrap gap-2">
-                      {(item.treatment || []).map((treatment) => (
+                      {item.treatment.map((treatment) => (
                         <Badge key={treatment} variant="outline" className="text-soft-pink border-soft-pink">
                           {treatment}
                         </Badge>
@@ -439,7 +442,7 @@ export default function SmileGalleryPage() {
 
                     {/* Action Buttons */}
                     <div className="flex space-x-3">
-                      <Button className="flex-1 bg-soft-pink hover:bg-soft-pink text-white">
+                      <Button className="flex-1 bg-soft-pink hover:bg-soft-pink/90 text-white">
                         <Eye className="w-4 h-4 mr-2" />
                         View Full Size
                       </Button>
@@ -468,7 +471,7 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(allItems || []).map((item) => (
+            {allItems.map((item) => (
               <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
                 <div className="relative">
                   {/* Before/After Split Image */}
@@ -482,7 +485,7 @@ export default function SmileGalleryPage() {
                         </div>
                       </div>
                       {/* After Side */}
-                      <div className="bg-gradient-to-br from-soft-pink to-soft-lavender flex items-center justify-center">
+                      <div className="bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 flex items-center justify-center">
                         <div className="text-center">
                           <Sparkles className="w-6 h-6 text-soft-pink mx-auto mb-1" />
                           <div className="text-xs font-medium text-soft-pink">AFTER</div>
@@ -494,11 +497,11 @@ export default function SmileGalleryPage() {
                     <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10"></div>
 
                     {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
                       <Button
                         variant="secondary"
                         size="sm"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white hover:bg-white"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white"
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         View Details
@@ -519,7 +522,7 @@ export default function SmileGalleryPage() {
 
                   {/* Treatment Tags */}
                   <div className="flex flex-wrap gap-1 mb-3">
-                    {(item.treatment || []).map((treatment) => (
+                    {item.treatment.map((treatment) => (
                       <Badge key={treatment} variant="outline" className="text-xs">
                         {treatment}
                       </Badge>
@@ -565,18 +568,18 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {([
+            {[
               { name: "Teeth Whitening", icon: Sparkles, count: "150+", color: "pear-gold" },
               { name: "Dental Veneers", icon: Shield, count: "85+", color: "soft-pink" },
               { name: "Dental Implants", icon: Award, count: "200+", color: "dental-green" },
               { name: "Smile Makeovers", icon: Heart, count: "65+", color: "pear-primary" }
-            ] || []).map((category) => {
+            ].map((category) => {
               const Icon = category.icon;
               return (
                 <Link key={category.name} href={`/smile-gallery?category=${category.name.toLowerCase().replace(' ', '-')}`}>
                   <Card className="group hover:shadow-lg transition-all duration-300 text-center cursor-pointer">
                     <CardContent className="p-6">
-                      <div className={`w-16 h-16 bg-${category.color} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                      <div className={`w-16 h-16 bg-${category.color}/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                         <Icon className={`w-8 h-8 text-${category.color}`} />
                       </div>
                       <h3 className="font-semibold text-pear-primary mb-2">{category.name}</h3>
@@ -598,13 +601,13 @@ export default function SmileGalleryPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for Your Own Transformation?
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 These incredible results could be yours too. Book a free consultation to discuss
                 your smile goals and discover what's possible for your unique situation.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -638,8 +641,8 @@ export default function SmileGalleryPage() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-white rounded-full" />
-              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white rounded-full" />
+              <div className="absolute top-4 right-4 w-16 h-16 bg-white/10 rounded-full" />
+              <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
             </CardContent>
           </Card>
         </div>

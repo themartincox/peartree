@@ -1,22 +1,26 @@
-import React from "react";
-import {
-  Activity,
-  ArrowRight,
-  CheckCircle,
-  ChevronLeft,
-  Heart,
-  Leaf,
-  Shield,
-  Star,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Shield,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Heart,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Zap,
+  Leaf,
+  Award,
+  Activity
+} from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
@@ -67,37 +71,109 @@ export default function BiodentineFillingPage() {
   ];
 
   const benefits = [
-    { icon: Leaf,    title: "Bioactive Properties", description: "Actively promotes healing and regeneration of natural tooth structure" },
-    { icon: Shield,  title: "Superior Protection",  description: "Excellent sealing properties prevent bacterial infiltration and further decay" },
-    { icon: Heart,   title: "Biocompatible",        description: "Highly compatible with natural tissue, reducing inflammation and sensitivity" },
-    { icon: Activity,title: "Strengthens Teeth",    description: "Releases beneficial minerals that strengthen surrounding tooth structure" }
+    {
+      icon: Leaf,
+      title: "Bioactive Properties",
+      description: "Actively promotes healing and regeneration of natural tooth structure"
+    },
+    {
+      icon: Shield,
+      title: "Superior Protection",
+      description: "Excellent sealing properties prevent bacterial infiltration and further decay"
+    },
+    {
+      icon: Heart,
+      title: "Biocompatible",
+      description: "Highly compatible with natural tissue, reducing inflammation and sensitivity"
+    },
+    {
+      icon: Activity,
+      title: "Strengthens Teeth",
+      description: "Releases beneficial minerals that strengthen surrounding tooth structure"
+    }
   ];
 
   const comparisons = [
-    { feature: "Bioactivity",    biodentine: "Active healing promotion", traditional: "Inert material" },
-    { feature: "Bonding",        biodentine: "Chemical bond to tooth",   traditional: "Mechanical retention" },
-    { feature: "Sealing",        biodentine: "Excellent marginal seal",  traditional: "Good with proper technique" },
-    { feature: "Expansion",      biodentine: "Matches tooth expansion",  traditional: "Different expansion rate" },
-    { feature: "Pulp Protection",biodentine: "Promotes pulp healing",    traditional: "Passive protection only" },
-    { feature: "Longevity",      biodentine: "10-15+ years",             traditional: "5-10 years typically" }
+    {
+      feature: "Bioactivity",
+      biodentine: "Active healing promotion",
+      traditional: "Inert material"
+    },
+    {
+      feature: "Bonding",
+      biodentine: "Chemical bond to tooth",
+      traditional: "Mechanical retention"
+    },
+    {
+      feature: "Sealing",
+      biodentine: "Excellent marginal seal",
+      traditional: "Good with proper technique"
+    },
+    {
+      feature: "Expansion",
+      biodentine: "Matches tooth expansion",
+      traditional: "Different expansion rate"
+    },
+    {
+      feature: "Pulp Protection",
+      biodentine: "Promotes pulp healing",
+      traditional: "Passive protection only"
+    },
+    {
+      feature: "Longevity",
+      biodentine: "10-15+ years",
+      traditional: "5-10 years typically"
+    }
   ];
 
   const idealCases = [
-    { title: "Deep Cavities",     description: "When decay is close to the nerve, Biodentine protects and promotes healing", icon: Shield },
-    { title: "Root Canal Therapy",description: "Excellent for sealing and protecting teeth after root canal treatment",    icon: Heart },
-    { title: "Tooth Preservation",description: "When maximum tooth structure preservation is essential",                   icon: Leaf },
-    { title: "Sensitive Teeth",   description: "Reduces post-operative sensitivity due to biocompatible properties",       icon: Activity }
+    {
+      title: "Deep Cavities",
+      description: "When decay is close to the nerve, Biodentine protects and promotes healing",
+      icon: Shield
+    },
+    {
+      title: "Root Canal Therapy",
+      description: "Excellent for sealing and protecting teeth after root canal treatment",
+      icon: Heart
+    },
+    {
+      title: "Tooth Preservation",
+      description: "When maximum tooth structure preservation is essential",
+      icon: Leaf
+    },
+    {
+      title: "Sensitive Teeth",
+      description: "Reduces post-operative sensitivity due to biocompatible properties",
+      icon: Activity
+    }
   ];
 
   const process = [
-    { step: "1", title: "Assessment",  description: "Thorough examination to determine if Biodentine is the ideal choice" },
-    { step: "2", title: "Preparation", description: "Gentle removal of decay while preserving maximum healthy tooth structure" },
-    { step: "3", title: "Placement",   description: "Precise application of Biodentine using specialized techniques" },
-    { step: "4", title: "Finishing",   description: "Final shaping and polishing for optimal function and aesthetics" }
+    {
+      step: "1",
+      title: "Assessment",
+      description: "Thorough examination to determine if Biodentine is the ideal choice"
+    },
+    {
+      step: "2",
+      title: "Preparation",
+      description: "Gentle removal of decay while preserving maximum healthy tooth structure"
+    },
+    {
+      step: "3",
+      title: "Placement",
+      description: "Precise application of Biodentine using specialized techniques"
+    },
+    {
+      step: "4",
+      title: "Finishing",
+      description: "Final shaping and polishing for optimal function and aesthetics"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50/30 via-white to-teal-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Biodentine Fillings"
@@ -126,7 +202,10 @@ export default function BiodentineFillingPage() {
         procedureType="Service"
       />
 
-      <ServiceFAQSchema serviceName="Biodentine Fillings" faqs={biodentineFAQs} />
+      <ServiceFAQSchema
+        serviceName="Biodentine Fillings"
+        faqs={biodentineFAQs}
+      />
 
       {/* Breadcrumb */}
       <section className="pt-24 pb-8">
@@ -221,7 +300,7 @@ export default function BiodentineFillingPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-green-500 text-white">Bioactive Technology</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-green-500 fill-current" />
                       ))}
                     </div>
@@ -232,11 +311,11 @@ export default function BiodentineFillingPage() {
                     healing and strengthens the surrounding natural tooth structure.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-green-600">Bioactive</div>
                       <div className="text-gray-600">Healing promotion</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-green-600">10-15+ years</div>
                       <div className="text-gray-600">Expected lifespan</div>
                     </div>
@@ -262,7 +341,7 @@ export default function BiodentineFillingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(benefits || []).map((benefit) => {
+            {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -302,7 +381,7 @@ export default function BiodentineFillingPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(comparisons || []).map((item, index) => (
+                  {comparisons.map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -335,7 +414,7 @@ export default function BiodentineFillingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(idealCases || []).map((case_) => {
+            {idealCases.map((case_) => {
               const Icon = case_.icon;
               return (
                 <Card key={case_.title} className="text-center hover:shadow-lg transition-shadow">
@@ -367,7 +446,7 @@ export default function BiodentineFillingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(process || []).map((step, index) => (
+            {process.map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -395,13 +474,13 @@ export default function BiodentineFillingPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Experience Advanced Dental Care
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Invest in the future of dental restorations with Biodentine. Book your
                 consultation today and discover how bioactive technology can heal your teeth.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-green-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-green-600 hover:bg-white/90 font-semibold">
                   Book Biodentine Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -410,7 +489,7 @@ export default function BiodentineFillingPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 {getTreatmentPrice("Biodentine Filling")} • Bioactive healing • 10-15+ year lifespan
               </div>
             </CardContent>

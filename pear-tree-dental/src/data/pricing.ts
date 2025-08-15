@@ -32,9 +32,9 @@ export const membershipPlans: MembershipPlan[] = [
       "2 hygienist visits",
       "X-rays included",
       "10% discount on treatments",
-      "Emergency care priority",
+      "Emergency care priority"
     ],
-    popular: true,
+    popular: true
   },
   {
     name: "Child Plan",
@@ -46,8 +46,8 @@ export const membershipPlans: MembershipPlan[] = [
       "Fluoride treatments",
       "X-rays included",
       "10% discount on treatments",
-      "Emergency care priority",
-    ],
+      "Emergency care priority"
+    ]
   },
   {
     name: "Family Plan",
@@ -59,9 +59,9 @@ export const membershipPlans: MembershipPlan[] = [
       "All check-ups included",
       "All hygienist visits",
       "10% discount on treatments",
-      "Emergency care priority",
-    ],
-  },
+      "Emergency care priority"
+    ]
+  }
 ];
 
 // Examination & Hygiene Fees
@@ -70,17 +70,9 @@ export const examinationPrices: TreatmentPrice[] = [
   { name: "Routine Exam", price: "£60", category: "examination" },
   { name: "Emergency Appointment", price: "£50", category: "examination" },
   { name: "Under 16 Examination", price: "£30", category: "examination" },
-  {
-    name: "Scale and Polish (Hygienist)",
-    price: "From £70",
-    category: "hygiene",
-  },
-  {
-    name: "Scale and Polish (Dentist)",
-    price: "From £80",
-    category: "hygiene",
-  },
-  { name: "Air Flow Stain Removal", price: "From £150", category: "hygiene" },
+  { name: "Scale and Polish (Hygienist)", price: "From £70", category: "hygiene" },
+  { name: "Scale and Polish (Dentist)", price: "From £80", category: "hygiene" },
+  { name: "Air Flow Stain Removal", price: "From £150", category: "hygiene" }
 ];
 
 // General Dentistry
@@ -90,112 +82,48 @@ export const generalTreatments: TreatmentPrice[] = [
   { name: "Amalgam Metal Filling", price: "From £150", category: "general" },
   { name: "White Fillings", price: "From £200", category: "general" },
   { name: "Biodentine Filling", price: "From £195", category: "general" },
-  {
-    name: "Root Canal (Single Canal)",
-    price: "From £300",
-    category: "general",
-  },
+  { name: "Root Canal (Single Canal)", price: "From £300", category: "general" },
   { name: "Root Canal (2 Canals)", price: "From £350", category: "general" },
   { name: "Root Canal (Molar)", price: "From £450", category: "general" },
   { name: "Routine Extraction", price: "From £180", category: "general" },
-  { name: "Surgical Extraction", price: "From £300", category: "general" },
+  { name: "Surgical Extraction", price: "From £300", category: "general" }
 ];
 
 // Cosmetic Dentistry
 export const cosmeticTreatments: TreatmentPrice[] = [
-  {
-    name: "Teeth Whitening",
-    price: "From £400",
-    popular: true,
-    category: "cosmetic",
-  },
+  { name: "Teeth Whitening", price: "From £400", popular: true, category: "cosmetic" },
   { name: "Enlighten Whitening", price: "£650", category: "cosmetic" },
-  {
-    name: "Composite Veneers",
-    price: "From £200 per tooth",
-    category: "cosmetic",
-  },
-  {
-    name: "Porcelain Veneers",
-    price: "From £750 per tooth",
-    category: "cosmetic",
-  },
-  {
-    name: "Composite Edge Bonding",
-    price: "From £150 per tooth",
-    category: "cosmetic",
-  },
+  { name: "Composite Veneers", price: "From £200 per tooth", category: "cosmetic" },
+  { name: "Porcelain Veneers", price: "From £750 per tooth", category: "cosmetic" },
+  { name: "Composite Edge Bonding", price: "From £150 per tooth", category: "cosmetic" },
   { name: "Wedding Day Smile", price: "From £995", category: "cosmetic" },
-  {
-    name: "Buccal Corridor Correction",
-    price: "From £2,500",
-    category: "cosmetic",
-  },
-  { name: "Smile Makeover", price: "From £2,500", category: "cosmetic" },
+  { name: "Buccal Corridor Correction", price: "From £2,500", category: "cosmetic" },
+  { name: "Smile Makeover", price: "From £2,500", category: "cosmetic" }
 ];
 
 // Restorative Dentistry
 export const restorativeTreatments: TreatmentPrice[] = [
   { name: "Dental Crowns", price: "From £750", category: "restorative" },
-  {
-    name: "Ceramic Bridge",
-    price: "From £710 per unit",
-    category: "restorative",
-  },
-  {
-    name: "Acrylic Partial Dentures",
-    price: "From £750 per arch",
-    category: "restorative",
-  },
-  {
-    name: "Complete Acrylic Dentures",
-    price: "From £850 per arch",
-    category: "restorative",
-  },
-  {
-    name: "Valplast Dentures",
-    price: "From £1,100 per arch",
-    category: "restorative",
-  },
-  {
-    name: "Cobalt Chrome Dentures",
-    price: "From £1,100",
-    category: "restorative",
-  },
-  { name: "Hybrid Dentures", price: "From £1,800", category: "restorative" },
+  { name: "Ceramic Bridge", price: "From £710 per unit", category: "restorative" },
+  { name: "Acrylic Partial Dentures", price: "From £750 per arch", category: "restorative" },
+  { name: "Complete Acrylic Dentures", price: "From £850 per arch", category: "restorative" },
+  { name: "Valplast Dentures", price: "From £1,100 per arch", category: "restorative" },
+  { name: "Cobalt Chrome Dentures", price: "From £1,100", category: "restorative" },
+  { name: "Hybrid Dentures", price: "From £1,800", category: "restorative" }
 ];
 
 // Orthodontic Treatments
 export const orthodonticTreatments: TreatmentPrice[] = [
-  {
-    name: "ClearCorrect Clear Aligners",
-    price: "From £2,000",
-    category: "orthodontic",
-  },
-  {
-    name: "Invisalign",
-    price: "From £2,100",
-    popular: true,
-    category: "orthodontic",
-  },
-  { name: "Retainers", price: "From £150 per arch", category: "orthodontic" },
+  { name: "ClearCorrect Clear Aligners", price: "From £2,000", category: "orthodontic" },
+  { name: "Invisalign", price: "From £2,100", popular: true, category: "orthodontic" },
+  { name: "Retainers", price: "From £150 per arch", category: "orthodontic" }
 ];
 
 // Implant Dentistry
 export const implantTreatments: TreatmentPrice[] = [
-  {
-    name: "Single Dental Implant",
-    price: "From £3,000",
-    popular: true,
-    category: "implant",
-  },
+  { name: "Single Dental Implant", price: "From £3,000", popular: true, category: "implant" },
   { name: "Implant Bridge", price: "From £8,000", category: "implant" },
-  {
-    name: "All-on-4 Implants",
-    price: "POA",
-    description: "Price on Application",
-    category: "implant",
-  },
+  { name: "All-on-4 Implants", price: "POA", description: "Price on Application", category: "implant" }
 ];
 
 // Helper functions to get specific treatments
@@ -206,13 +134,12 @@ export const getTreatmentPrice = (treatmentName: string): string => {
     ...cosmeticTreatments,
     ...restorativeTreatments,
     ...orthodonticTreatments,
-    ...implantTreatments,
+    ...implantTreatments
   ];
 
-  const treatment = allTreatments.find(
-    (t) =>
-      t.name.toLowerCase().includes(treatmentName.toLowerCase()) ||
-      treatmentName.toLowerCase().includes(t.name.toLowerCase()),
+  const treatment = allTreatments.find(t =>
+    t.name.toLowerCase().includes(treatmentName.toLowerCase()) ||
+    treatmentName.toLowerCase().includes(t.name.toLowerCase())
   );
 
   return treatment?.price || "POA";
@@ -225,10 +152,10 @@ export const getTreatmentsByCategory = (category: string): TreatmentPrice[] => {
     ...cosmeticTreatments,
     ...restorativeTreatments,
     ...orthodonticTreatments,
-    ...implantTreatments,
+    ...implantTreatments
   ];
 
-  return allTreatments.filter((t) => t.category === category);
+  return allTreatments.filter(t => t.category === category);
 };
 
 // Legacy price mappings for backward compatibility
@@ -242,5 +169,5 @@ export const LEGACY_PRICES = {
   DENTAL_CROWNS: "From £750",
   ROOT_CANAL: "From £300",
   ROUTINE_EXAM: "£60",
-  EMERGENCY_APPOINTMENT: "£50",
+  EMERGENCY_APPOINTMENT: "£50"
 };

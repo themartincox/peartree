@@ -1,4 +1,4 @@
-import type { PortableTextBlock, SanityImage } from "./sanity-client";
+import type { SanityImage, PortableTextBlock } from './sanity-client'
 
 export interface BlogPost {
   _id: string;

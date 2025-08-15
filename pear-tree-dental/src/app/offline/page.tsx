@@ -1,7 +1,6 @@
-"use client";
-import React from "react";
+'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function OfflinePage() {
   return (
@@ -22,16 +21,13 @@ export default function OfflinePage() {
 
         {/* Description */}
         <p className="text-pear-text-secondary mb-6 leading-relaxed">
-          It looks like you're not connected to the internet. Don't worry - you
-          can still access previously visited pages once your connection is
-          restored.
+          It looks like you're not connected to the internet. Don't worry - you can still
+          access previously visited pages once your connection is restored.
         </p>
 
         {/* Connection Tips */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-8 text-left">
-          <h2 className="font-semibold text-pear-primary mb-3">
-            Try these steps:
-          </h2>
+          <h2 className="font-semibold text-pear-primary mb-3">Try these steps:</h2>
           <ul className="space-y-2 text-sm text-pear-text-secondary">
             <li className="flex items-center">
               <span className="w-2 h-2 bg-pear-gold rounded-full mr-3"></span>
@@ -71,9 +67,7 @@ export default function OfflinePage() {
 
         {/* Emergency Contact Info */}
         <div className="mt-8 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <h3 className="font-semibold text-red-800 mb-2">
-            Emergency Dental Care
-          </h3>
+          <h3 className="font-semibold text-red-800 mb-2">Emergency Dental Care</h3>
           <p className="text-sm text-red-700 mb-2">
             If you have a dental emergency, please call us directly:
           </p>
@@ -81,12 +75,8 @@ export default function OfflinePage() {
             href="tel:+441159312520"
             className="inline-flex items-center text-red-800 font-semibold hover:text-red-900 transition-colors"
           >
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+            <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
             </svg>
             0115 931 2935
           </a>
@@ -94,8 +84,7 @@ export default function OfflinePage() {
 
         {/* Footer Note */}
         <p className="text-xs text-pear-text-muted mt-6">
-          This page is available offline thanks to our Progressive Web App
-          technology
+          This page is available offline thanks to our Progressive Web App technology
         </p>
       </div>
     </div>

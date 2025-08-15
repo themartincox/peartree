@@ -3,6 +3,7 @@
 
 [build]
   command = "bun install && bun run build:optimized"
+  publish = ".next"
 
 [build.environment]
 

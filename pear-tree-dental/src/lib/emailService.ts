@@ -1,9 +1,9 @@
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
 // Email service configuration for Gmail SMTP
 const createTransporter = () => {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER, // hello@peartree.dental
       pass: process.env.GMAIL_APP_PASSWORD, // App password
@@ -35,47 +35,43 @@ export interface MembershipConfirmationData {
   staffMemberName?: string;
 }
 
-export const sendMembershipConfirmationEmail = async (
-  data: MembershipConfirmationData,
-) => {
+export const sendMembershipConfirmationEmail = async (data: MembershipConfirmationData) => {
   try {
-    console.log("📧 Email service called with data:", {
+    console.log('📧 Email service called with data:', {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email,
       planName: data.planName,
-      applicationId: data.applicationId,
+      applicationId: data.applicationId
     });
 
     // Check environment variables first
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.GMAIL_APP_PASSWORD;
 
-    console.log("📧 Environment check:", {
+    console.log('📧 Environment check:', {
       emailUserConfigured: !!emailUser,
       emailPassConfigured: !!emailPass,
       emailUserLength: emailUser ? emailUser.length : 0,
-      emailPassLength: emailPass ? emailPass.length : 0,
+      emailPassLength: emailPass ? emailPass.length : 0
     });
 
     if (!emailUser || !emailPass) {
-      throw new Error(
-        "Email configuration missing: EMAIL_USER or GMAIL_APP_PASSWORD not configured",
-      );
+      throw new Error('Email configuration missing: EMAIL_USER or GMAIL_APP_PASSWORD not configured');
     }
 
     const transporter = createTransporter();
-    console.log("📧 Transporter created successfully");
+    console.log('📧 Transporter created successfully');
 
-    console.log("📧 Generating email HTML content...");
+    console.log('📧 Generating email HTML content...');
     const htmlContent = generateConfirmationEmailHTML(data);
-    console.log("📧 HTML content generated, length:", htmlContent.length);
+    console.log('📧 HTML content generated, length:', htmlContent.length);
 
     // Try with simplified email first (no attachments)
     const simpleMailOptions = {
       from: {
-        name: "Pear Tree Dental Centre",
-        address: process.env.EMAIL_USER || "hello@peartree.dental",
+        name: 'Pear Tree Dental Centre',
+        address: process.env.EMAIL_USER || 'hello@peartree.dental'
       },
       to: data.email,
       subject: `Welcome to Pear Tree Dental! Your ${data.planName} membership is confirmed`,
@@ -93,49 +89,43 @@ export const sendMembershipConfirmationEmail = async (
         <p>We'll contact you within 2 working days to confirm your membership setup.</p>
         <p>Contact us: 0115 931 2935 | hello@peartree.dental</p>
         <p>Best regards,<br>Pear Tree Dental Centre Team</p>
-      `,
+      `
     };
 
     const mailOptions = {
       from: {
-        name: "Pear Tree Dental Centre",
-        address: process.env.EMAIL_USER || "hello@peartree.dental",
+        name: 'Pear Tree Dental Centre',
+        address: process.env.EMAIL_USER || 'hello@peartree.dental'
       },
       to: data.email,
       subject: `Welcome to Pear Tree Dental! Your ${data.planName} membership is confirmed`,
-      html: htmlContent,
+      html: htmlContent
       // Temporarily removed attachments due to broken URLs - will be restored once proper logos are uploaded
     };
 
     // Practice emails will be sent individually (see loop below)
 
     // Try sending simple email first to test basic functionality
-    console.log("📧 Attempting to send simplified patient email...");
+    console.log('📧 Attempting to send simplified patient email...');
     let patientResult;
 
     try {
       patientResult = await transporter.sendMail(simpleMailOptions);
-      console.log(
-        "✅ Simple patient email sent successfully:",
-        patientResult.messageId,
-      );
+      console.log('✅ Simple patient email sent successfully:', patientResult.messageId);
     } catch (simpleError) {
-      console.error(
-        "❌ Simple email failed, trying complex version:",
-        simpleError,
-      );
-      console.log("📧 Attempting complex email with attachments...");
+      console.error('❌ Simple email failed, trying complex version:', simpleError);
+      console.log('📧 Attempting complex email with attachments...');
       patientResult = await transporter.sendMail(mailOptions);
-      console.log("✅ Complex patient email sent:", patientResult.messageId);
+      console.log('✅ Complex patient email sent:', patientResult.messageId);
     }
 
-    console.log("📧 About to send practice notification...");
+    console.log('📧 About to send practice notification...');
 
     // Send practice notifications individually with detailed logging
     // Note: membership@peartree.dental is an alias of hello@peartree.dental
     // Google blocks emails sent from hello@ to membership@ (alias loop protection)
     // Since both go to the same inbox, we only send to hello@ to avoid delivery issues
-    const practiceEmails = ["hello@peartree.dental", "Javaad.mirza@gmail.com"];
+    const practiceEmails = ['hello@peartree.dental', 'Javaad.mirza@gmail.com'];
     const practiceResults = [];
 
     for (const practiceEmail of practiceEmails) {
@@ -144,53 +134,42 @@ export const sendMembershipConfirmationEmail = async (
 
         const practiceMailOptions = {
           from: {
-            name: "Pear Tree Dental Centre",
-            address: process.env.EMAIL_USER || "hello@peartree.dental",
+            name: 'Pear Tree Dental Centre',
+            address: process.env.EMAIL_USER || 'hello@peartree.dental'
           },
-          replyTo: "hello@peartree.dental", // Still reply to hello@
+          replyTo: 'hello@peartree.dental', // Still reply to hello@
           to: practiceEmail, // Single recipient
           subject: `New Membership Signup: ${data.firstName} ${data.lastName} - ${data.planName} (${data.applicationId})`,
-          html: generateInternalNotificationHTML(data),
+          html: generateInternalNotificationHTML(data)
           // Removed attachments temporarily due to broken URLs
         };
 
         const result = await transporter.sendMail(practiceMailOptions);
-        console.log(
-          `✅ Practice email sent successfully to ${practiceEmail}:`,
-          result.messageId,
-        );
+        console.log(`✅ Practice email sent successfully to ${practiceEmail}:`, result.messageId);
 
         practiceResults.push({
           email: practiceEmail,
           success: true,
-          messageId: result.messageId,
+          messageId: result.messageId
         });
+
       } catch (practiceError) {
-        console.error(
-          `❌ Practice email failed for ${practiceEmail}:`,
-          practiceError,
-        );
+        console.error(`❌ Practice email failed for ${practiceEmail}:`, practiceError);
         practiceResults.push({
           email: practiceEmail,
           success: false,
-          error:
-            practiceError instanceof Error
-              ? practiceError.message
-              : "Unknown error",
+          error: practiceError instanceof Error ? practiceError.message : 'Unknown error'
         });
       }
     }
 
-    console.log("📧 Practice email results:", practiceResults);
+    console.log('📧 Practice email results:', practiceResults);
 
-    console.log(
-      "Confirmation email sent successfully:",
-      patientResult.messageId,
-    );
-    console.log("Practice notification results:", practiceResults);
+    console.log('Confirmation email sent successfully:', patientResult.messageId);
+    console.log('Practice notification results:', practiceResults);
 
-    const successfulPracticeEmails = practiceResults.filter((r) => r.success);
-    const failedPracticeEmails = practiceResults.filter((r) => !r.success);
+    const successfulPracticeEmails = practiceResults.filter(r => r.success);
+    const failedPracticeEmails = practiceResults.filter(r => !r.success);
 
     return {
       success: true,
@@ -198,68 +177,46 @@ export const sendMembershipConfirmationEmail = async (
       practiceResults: practiceResults,
       practiceEmailsSent: successfulPracticeEmails.length,
       practiceEmailsFailed: failedPracticeEmails.length,
-      practiceRecipients: [
-        "hello@peartree.dental",
-        "membership@peartree.dental",
-        "Javaad.mirza@gmail.com",
-      ],
+      practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
+
   } catch (error) {
-    console.error("❌ Error sending confirmation email:", error);
-    console.error("❌ Error type:", typeof error);
-    console.error(
-      "❌ Error message:",
-      error instanceof Error ? error.message : "Unknown error",
-    );
-    console.error(
-      "❌ Error stack:",
-      error instanceof Error ? error.stack : "No stack trace",
-    );
+    console.error('❌ Error sending confirmation email:', error);
+    console.error('❌ Error type:', typeof error);
+    console.error('❌ Error message:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('❌ Error stack:', error instanceof Error ? error.stack : 'No stack trace');
 
     // Check for common email errors
     if (error instanceof Error) {
-      if (error.message.includes("Invalid login")) {
-        console.error(
-          "❌ Email authentication failed - check EMAIL_USER and GMAIL_APP_PASSWORD",
-        );
-      } else if (error.message.includes("getaddrinfo ENOTFOUND")) {
-        console.error("❌ Network error - cannot reach email server");
-      } else if (error.message.includes("configuration missing")) {
-        console.error("❌ Email environment variables not configured");
+      if (error.message.includes('Invalid login')) {
+        console.error('❌ Email authentication failed - check EMAIL_USER and GMAIL_APP_PASSWORD');
+      } else if (error.message.includes('getaddrinfo ENOTFOUND')) {
+        console.error('❌ Network error - cannot reach email server');
+      } else if (error.message.includes('configuration missing')) {
+        console.error('❌ Email environment variables not configured');
       }
     }
 
     // Don't throw error - let the membership submission continue even if email fails
-    console.log(
-      "⚠️ Email service unavailable - membership submission will continue",
-    );
+    console.log('⚠️ Email service unavailable - membership submission will continue');
     return {
       success: false,
-      error:
-        error instanceof Error
-          ? error.message
-          : "Email service unavailable - confirmation will be sent later",
+      error: error instanceof Error ? error.message : 'Email service unavailable - confirmation will be sent later',
       practiceResults: [],
       practiceEmailsSent: 0,
       practiceEmailsFailed: 0,
-      practiceRecipients: [
-        "hello@peartree.dental",
-        "membership@peartree.dental",
-        "Javaad.mirza@gmail.com",
-      ],
+      practiceRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com']
     };
   }
 };
 
 // Generate HTML email template for patient confirmation
-const generateConfirmationEmailHTML = (
-  data: MembershipConfirmationData,
-): string => {
-  const currentDate = new Date().toLocaleDateString("en-GB", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+const generateConfirmationEmailHTML = (data: MembershipConfirmationData): string => {
+  const currentDate = new Date().toLocaleDateString('en-GB', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 
   return `
@@ -314,41 +271,29 @@ const generateConfirmationEmailHTML = (
         <h3>Your ${data.planName} includes:</h3>
         ${getPlanFeatures(data.planName)}
 
-        ${
-          data.isFamily
-            ? `
+        ${data.isFamily ? `
         <div class="family-members">
           <h4>👨‍👩‍👧‍👦 Family Plan Members:</h4>
           <p><strong>Main Account Holder:</strong> ${data.firstName} ${data.lastName}</p>
-          ${data.partnerFirstName ? `<p><strong>Partner:</strong> ${data.partnerFirstName} ${data.partnerLastName}</p>` : ""}
-          ${
-            data.familyMembers && data.familyMembers.length > 0
-              ? `
+          ${data.partnerFirstName ? `<p><strong>Partner:</strong> ${data.partnerFirstName} ${data.partnerLastName}</p>` : ''}
+          ${data.familyMembers && data.familyMembers.length > 0 ? `
             <p><strong>Additional Family Members:</strong></p>
             <ul>
-              ${data.familyMembers.map((member) => `<li>${member.firstName} ${member.lastName} (${member.relationship})</li>`).join("")}
+              ${data.familyMembers.map(member => `<li>${member.firstName} ${member.lastName} (${member.relationship})</li>`).join('')}
             </ul>
-          `
-              : ""
-          }
+          ` : ''}
         </div>
-        `
-            : ""
-        }
+        ` : ''}
       </div>
 
       <!-- Dentist Information -->
-      ${
-        data.dentistName
-          ? `
+      ${data.dentistName ? `
       <div class="highlight-box">
         <h3>👨‍⚕️ Your Dental Team</h3>
         <p><strong>Your Dentist:</strong> ${data.dentistName}</p>
-        ${data.isFamily && data.partnerDentistName ? `<p><strong>Partner's Dentist:</strong> ${data.partnerDentistName}</p>` : ""}
+        ${data.isFamily && data.partnerDentistName ? `<p><strong>Partner's Dentist:</strong> ${data.partnerDentistName}</p>` : ''}
       </div>
-      `
-          : ""
-      }
+      ` : ''}
 
       <!-- Payment Information -->
       <div class="highlight-box">
@@ -399,15 +344,11 @@ const generateConfirmationEmailHTML = (
       <p>Warm regards,<br>
       <strong>The Team at Pear Tree Dental Centre</strong></p>
 
-      ${
-        data.isClinicSignup && data.staffMemberName
-          ? `
+      ${data.isClinicSignup && data.staffMemberName ? `
       <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px; font-size: 14px; color: #666;">
         <p><em>This membership was set up in-practice with the assistance of ${data.staffMemberName}.</em></p>
       </div>
-      `
-          : ""
-      }
+      ` : ''}
     </div>
 
     <!-- Footer -->
@@ -426,10 +367,8 @@ const generateConfirmationEmailHTML = (
 };
 
 // Generate HTML email template for internal practice notification
-const generateInternalNotificationHTML = (
-  data: MembershipConfirmationData,
-): string => {
-  const currentDate = new Date().toLocaleString("en-GB");
+const generateInternalNotificationHTML = (data: MembershipConfirmationData): string => {
+  const currentDate = new Date().toLocaleString('en-GB');
 
   return `
 <!DOCTYPE html>
@@ -463,7 +402,7 @@ const generateInternalNotificationHTML = (
           <li>Set up patient record in practice management system</li>
           <li>Confirm Direct Debit setup with Membership Plans Ltd</li>
           <li>Schedule welcome appointment if requested</li>
-          ${data.dentistName ? `<li>Notify ${data.dentistName} of new patient assignment</li>` : "<li>Assign dentist based on patient preferences</li>"}
+          ${data.dentistName ? `<li>Notify ${data.dentistName} of new patient assignment</li>` : '<li>Assign dentist based on patient preferences</li>'}
         </ul>
       </div>
 
@@ -475,43 +414,31 @@ const generateInternalNotificationHTML = (
         <tr><th>Application ID</th><td>${data.applicationId}</td></tr>
         <tr><th>Signup Date</th><td>${currentDate}</td></tr>
         <tr><th>Account Holder</th><td>${data.accountHolderName}</td></tr>
-        ${data.dentistName ? `<tr><th>Assigned Dentist</th><td>${data.dentistName}</td></tr>` : ""}
+        ${data.dentistName ? `<tr><th>Assigned Dentist</th><td>${data.dentistName}</td></tr>` : ''}
       </table>
 
-      ${
-        data.isFamily
-          ? `
+      ${data.isFamily ? `
       <h3>👨‍👩‍👧‍👦 Family Plan Details</h3>
       <table>
-        <tr><th>Partner</th><td>${data.partnerFirstName || ""} ${data.partnerLastName || ""}</td></tr>
-        ${data.partnerDentistName ? `<tr><th>Partner's Dentist</th><td>${data.partnerDentistName}</td></tr>` : ""}
-        ${
-          data.familyMembers && data.familyMembers.length > 0
-            ? `
+        <tr><th>Partner</th><td>${data.partnerFirstName || ''} ${data.partnerLastName || ''}</td></tr>
+        ${data.partnerDentistName ? `<tr><th>Partner's Dentist</th><td>${data.partnerDentistName}</td></tr>` : ''}
+        ${data.familyMembers && data.familyMembers.length > 0 ? `
         <tr><th>Additional Members</th><td>
           <ul>
-            ${data.familyMembers.map((member) => `<li>${member.firstName} ${member.lastName} (${member.relationship})</li>`).join("")}
+            ${data.familyMembers.map(member => `<li>${member.firstName} ${member.lastName} (${member.relationship})</li>`).join('')}
           </ul>
         </td></tr>
-        `
-            : ""
-        }
+        ` : ''}
       </table>
-      `
-          : ""
-      }
+      ` : ''}
 
-      ${
-        data.isClinicSignup
-          ? `
+      ${data.isClinicSignup ? `
       <div class="detail-box">
         <h4>🏥 In-Practice Signup</h4>
-        <p><strong>Staff Member:</strong> ${data.staffMemberName || "Not specified"}</p>
+        <p><strong>Staff Member:</strong> ${data.staffMemberName || 'Not specified'}</p>
         <p><em>This patient signed up during their visit to the practice.</em></p>
       </div>
-      `
-          : ""
-      }
+      ` : ''}
 
       <div class="detail-box">
         <h4>📋 Next Steps Checklist</h4>
@@ -536,50 +463,50 @@ const generateInternalNotificationHTML = (
 // Helper function to get plan features for email template
 const getPlanFeatures = (planName: string): string => {
   const planFeatures: { [key: string]: string[] } = {
-    "ESSENTIAL MAINTENANCE": [
-      "1 Dental check up per year",
-      "1 Scale & Polish per year",
-      "Worldwide dental accident & emergency cover",
+    'ESSENTIAL MAINTENANCE': [
+      '1 Dental check up per year',
+      '1 Scale & Polish per year',
+      'Worldwide dental accident & emergency cover'
     ],
-    "ROUTINE CARE": [
-      "2 Dental check ups per year",
-      "1 Scale & Polish per year",
-      "Worldwide dental accident & emergency cover",
+    'ROUTINE CARE': [
+      '2 Dental check ups per year',
+      '1 Scale & Polish per year',
+      'Worldwide dental accident & emergency cover'
     ],
-    "COMPLETE CARE": [
-      "2 Dental check ups per year",
-      "2 Scale & Polishes per year",
-      "Worldwide dental accident & emergency cover",
+    'COMPLETE CARE': [
+      '2 Dental check ups per year',
+      '2 Scale & Polishes per year',
+      'Worldwide dental accident & emergency cover'
     ],
-    "COMPLETE CARE PLUS": [
-      "2 Dental check ups per year",
-      "2 Scale & Polishes per year",
-      "1 Free emergency appointment per year",
-      "50% off stain removal treatments",
-      "Worldwide dental accident & emergency cover",
+    'COMPLETE CARE PLUS': [
+      '2 Dental check ups per year',
+      '2 Scale & Polishes per year',
+      '1 Free emergency appointment per year',
+      '50% off stain removal treatments',
+      'Worldwide dental accident & emergency cover'
     ],
-    "PERIODONTAL HEALTH": [
-      "2 Dental check ups per year",
-      "4 Scale & Polishes per year (every 3 months)",
-      "1 Free emergency appointment per year",
-      "50% off stain removal treatments",
-      "Worldwide dental accident & emergency cover",
+    'PERIODONTAL HEALTH': [
+      '2 Dental check ups per year',
+      '4 Scale & Polishes per year (every 3 months)',
+      '1 Free emergency appointment per year',
+      '50% off stain removal treatments',
+      'Worldwide dental accident & emergency cover'
     ],
-    "FAMILY PLAN": [
-      "All adults receive Complete Care Plus benefits",
-      "Children under 18 included at no extra cost",
-      "Same address requirement",
-      "10% discount on all additional treatments",
-      "Simplified billing for whole family",
-      "Priority family appointment booking",
-      "Worldwide dental accident & emergency cover",
-    ],
+    'FAMILY PLAN': [
+      'All adults receive Complete Care Plus benefits',
+      'Children under 18 included at no extra cost',
+      'Same address requirement',
+      '10% discount on all additional treatments',
+      'Simplified billing for whole family',
+      'Priority family appointment booking',
+      'Worldwide dental accident & emergency cover'
+    ]
   };
 
   const features = planFeatures[planName] || [];
   return `
     <ul>
-      ${features.map((feature) => `<li>${feature}</li>`).join("")}
+      ${features.map(feature => `<li>${feature}</li>`).join('')}
     </ul>
   `;
 };

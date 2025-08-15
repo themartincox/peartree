@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
 export async function GET() {
-  console.log("🧪 Email configuration test requested");
+  console.log('🧪 Email configuration test requested');
 
   const emailUser = process.env.EMAIL_USER;
   const emailPass = process.env.EMAIL_PASS;
@@ -14,14 +14,14 @@ export async function GET() {
     nodeEnv: process.env.NODE_ENV,
     netlifyEnv: !!process.env.NETLIFY,
     vercelEnv: !!process.env.VERCEL,
-    awsLambda: !!process.env.AWS_LAMBDA_FUNCTION_NAME,
+    awsLambda: !!process.env.AWS_LAMBDA_FUNCTION_NAME
   };
 
-  console.log("📧 Email configuration status:", config);
+  console.log('📧 Email configuration status:', config);
 
   return NextResponse.json({
-    message: "Email configuration test",
+    message: 'Email configuration test',
     timestamp: new Date().toISOString(),
-    config,
+    config
   });
 }

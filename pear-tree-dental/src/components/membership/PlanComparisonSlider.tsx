@@ -1,37 +1,37 @@
-"use client";
+'use client';
 
-import { AnimatePresence, motion } from "framer-motion";
-import { AlertCircle, Check, Info } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Slider } from "@/components/ui/slider";
-import PriceComparisonTooltip from "../price-comparison-tooltip";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Slider } from '@/components/ui/slider';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Check, AlertCircle, Info } from 'lucide-react';
+import PriceComparisonTooltip from '../price-comparison-tooltip';
 
- Define the plan data
+// Define the plan data
 const plans = [
   {
     id: "plan-a",
     name: "PLAN A",
     price: 10.95,
     color: "plan-a",
-    features: ["1 Dental check up a year", "1 Scale & Polish a year"],
+    features: [
+      "1 Dental check up a year",
+      "1 Scale & Polish a year",
+    ],
     perDay: 0.36,
-    savings: 118,  Annual savings compared to paying individually
-    normalPrice: 247.6,  Price without the plan
+    savings: 118, // Annual savings compared to paying individually
+    normalPrice: 247.60, // Price without the plan
   },
   {
     id: "plan-b",
     name: "PLAN B",
     price: 15.95,
     color: "plan-b",
-    features: ["2 Dental check ups a year", "1 Scale & Polish a year"],
+    features: [
+      "2 Dental check ups a year",
+      "1 Scale & Polish a year",
+    ],
     perDay: 0.53,
     savings: 180,
     normalPrice: 359.88,
@@ -41,10 +41,13 @@ const plans = [
     name: "PLAN C",
     price: 19.95,
     color: "plan-c",
-    features: ["2 Dental check ups a year", "2 Scale & Polishes a year"],
+    features: [
+      "2 Dental check ups a year",
+      "2 Scale & Polishes a year",
+    ],
     perDay: 0.66,
     savings: 205,
-    normalPrice: 416.2,
+    normalPrice: 416.20,
   },
   {
     id: "plan-d",
@@ -59,7 +62,7 @@ const plans = [
     ],
     perDay: 0.86,
     savings: 290,
-    normalPrice: 597.2,
+    normalPrice: 597.20,
   },
   {
     id: "plan-e",
@@ -74,7 +77,7 @@ const plans = [
     ],
     perDay: 0.99,
     savings: 350,
-    normalPrice: 710.4,
+    normalPrice: 710.40,
   },
 ];
 
@@ -83,12 +86,9 @@ export default function PlanComparisonSlider() {
   const [selectedPlan, setSelectedPlan] = useState(plans[1]);
   const [isAnimating, setIsAnimating] = useState(false);
 
-//    Convert slider value to a plan
+  // Convert slider value to a plan
   useEffect(() => {
-    const planIndex = Math.min(
-      Math.floor(sliderValue[0] / (100 / plans.length)),
-      plans.length - 1,
-    );
+    const planIndex = Math.min(Math.floor(sliderValue[0] / (100 / plans.length)), plans.length - 1);
     if (selectedPlan.id !== plans[planIndex].id) {
       setIsAnimating(true);
       setTimeout(() => {
@@ -98,26 +98,25 @@ export default function PlanComparisonSlider() {
     }
   }, [sliderValue, selectedPlan.id]);
 
-   Format price function
+  // Format price function
   const formatPrice = (price: number) => {
     return `£${price.toFixed(2)}`;
   };
 
-//    Format as pence
+  // Format as pence
   const formatPence = (price: number) => {
     return `${(price * 100).toFixed(0)}p`;
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-pear-background to-white">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-pear-background/30 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-4">
             Compare Our <span className="text-pear-primary">Dental Plans</span>
           </h2>
           <p className="text-gray-600 text-lg mb-8">
-            Slide to compare different plans and find the one that suits your
-            needs best
+            Slide to compare different plans and find the one that suits your needs best
           </p>
 
           <div className="w-full max-w-xl mx-auto mb-16 px-4">
@@ -146,9 +145,7 @@ export default function PlanComparisonSlider() {
                 className="w-full max-w-md"
               >
                 <Card className="shadow-lg overflow-hidden plan-card">
-                  <CardHeader
-                    className={`${selectedPlan.id} text-white rounded-t-xl pt-6 pb-4`}
-                  >
+                  <CardHeader className={`${selectedPlan.id} text-white rounded-t-xl pt-6 pb-4`}>
                     <CardTitle className="text-center text-lg">
                       {selectedPlan.name}
                     </CardTitle>
@@ -159,13 +156,11 @@ export default function PlanComparisonSlider() {
                         savings={selectedPlan.savings}
                         planName={selectedPlan.name}
                       >
-                        <span className="text-3xl font-bold">
-                          {formatPrice(selectedPlan.price)}
-                        </span>
+                        <span className="text-3xl font-bold">{formatPrice(selectedPlan.price)}</span>
                         <span className="text-xl ml-1 opacity-90">/month</span>
                       </PriceComparisonTooltip>
                     </div>
-                    <div className="text-center mt-1 text-white text-sm">
+                    <div className="text-center mt-1 text-white/80 text-sm">
                       Just {formatPence(selectedPlan.perDay)} per day
                     </div>
                   </CardHeader>
@@ -181,9 +176,7 @@ export default function PlanComparisonSlider() {
                       </div>
                     </div>
 
-                    <h3 className="font-medium mb-3 text-gray-700">
-                      What's Included:
-                    </h3>
+                    <h3 className="font-medium mb-3 text-gray-700">What's Included:</h3>
                     <ul className="space-y-3">
                       {selectedPlan.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
@@ -193,16 +186,14 @@ export default function PlanComparisonSlider() {
                       ))}
                       <li className="flex items-start gap-3">
                         <Check className="h-5 w-5 text-pear-primary mt-0.5 flex-shrink-0" />
-                        <span className="xl:text-left">
-                          Worldwide dental accident & emergency cover
-                        </span>
+                        <span className="xl:text-left">Worldwide dental accident & emergency cover</span>
                       </li>
                     </ul>
                   </CardContent>
 
                   <CardFooter className="px-6 pb-6 pt-2">
                     <a href="/membership/signup" className="w-full">
-                      <Button className="w-full rounded-md bg-dental-green hover:bg-dental-green text-white">
+                      <Button className="w-full rounded-md bg-dental-green hover:bg-dental-green/90 text-white">
                         Join {selectedPlan.name}
                       </Button>
                     </a>

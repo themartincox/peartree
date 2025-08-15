@@ -1,26 +1,27 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  Baby,
-  CalendarDays,
-  CheckCircle,
-  Clock,
-  Heart,
-  Phone,
-  Shield,
-  Stethoscope,
-  UserCheck, 
-//   Users
-} from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import {
+  Heart,
+  Shield,
+  CheckCircle,
+  Clock,
+  Users,
+  Phone,
+  ArrowRight,
+  CalendarDays,
+  Star,
+  Award,
+  Stethoscope,
+  Baby,
+  UserCheck
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "General Dentistry Burton Joyce | NHS & Private Care | Pear Tree Dental",
@@ -106,7 +107,7 @@ export default function GeneralDentistryPage() {
         pageUrl="/services/general"
       />
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green via-white to-soft-blue overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
@@ -134,7 +135,7 @@ export default function GeneralDentistryPage() {
                 </Card>
 
                 {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green">
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -162,7 +163,7 @@ export default function GeneralDentistryPage() {
               {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-dental-green hover:bg-dental-green text-white font-semibold group w-full sm:w-auto">
+                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto">
                     <CalendarDays className="w-5 h-5 mr-2" />
                     Book Check-up
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -205,7 +206,7 @@ export default function GeneralDentistryPage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                     <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -234,7 +235,7 @@ export default function GeneralDentistryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {([
+            {[
               {
                 title: "Dental Check-ups",
                 description: "Comprehensive examinations to detect issues early",
@@ -277,29 +278,29 @@ export default function GeneralDentistryPage() {
                 price: "From £150",
                 icon: Users
               }
-            ] || []).map((service, index) => {
+            ].map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green to-dental-green border-2 border-dental-green hover:border-dental-green hover:shadow-xl hover:shadow-dental-green hover:scale-105 transition-all duration-300 group cursor-pointer">
+                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green/10 border-2 border-dental-green/20 hover:border-dental-green hover:shadow-xl hover:shadow-dental-green/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                         <Icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-pear-primary transition-colors duration-300">{service.title}</h3>
+                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-pear-primary/80 transition-colors duration-300">{service.title}</h3>
                       </div>
                     </div>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{service.description}</p>
                     <ul className="space-y-1">
-                      {(service.features || []).map((feature, idx) => (
+                      {service.features.map((feature, idx) => (
                         <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
                           <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-3 border-t border-dental-green group-hover:border-dental-green transition-colors duration-300">
+                    <div className="pt-3 border-t border-dental-green/20 group-hover:border-dental-green/40 transition-colors duration-300">
                       <div className="text-pear-primary font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
@@ -324,7 +325,7 @@ export default function GeneralDentistryPage() {
               </p>
 
               <div className="space-y-6">
-                {([
+                {[
                   {
                     icon: Shield,
                     title: "Early Detection",
@@ -340,12 +341,12 @@ export default function GeneralDentistryPage() {
                     title: "Whole Health Connection",
                     description: "Good oral health is linked to overall health. We help protect your general wellbeing too."
                   }
-                ] || []).map((benefit, index) => {
+                ].map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-6 h-6 text-dental-green" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
@@ -374,26 +375,31 @@ export default function GeneralDentistryPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Book Your Check-up Today
             </h2>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-8 text-white/90">
               Regular dental check-ups are the foundation of good oral health.
               Book your appointment today and take the first step toward a healthier smile.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/book">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                  <CalendarDays className="w-5 h-5 mr-2" />Book Appointment
+                </Button>
+              </Link>
+              <Link href="/book">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Appointment
+                  Book Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
                 </Button>
@@ -401,7 +407,7 @@ export default function GeneralDentistryPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
               <div className="flex items-center justify-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>Family-friendly practice</span>

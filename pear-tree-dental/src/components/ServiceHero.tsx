@@ -1,35 +1,35 @@
 "use client";
 
+import { useState, useMemo } from 'react';
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowRight,
-  Award,
-  Calendar,
-  Camera,
   CheckCircle,
-  ChevronDown,
-  Circle,
   Clock,
-  Heart,
-  MessageCircle,
-  Phone,
-  Shield,
-  Smile,
-  Sparkles,
   Star,
+  Shield,
+  Camera,
+  Phone,
+  Calendar,
+  Sparkles,
   Stethoscope,
-  Users,
   Wrench,
+  Smile,
   Zap,
+  Heart,
+  Circle,
+  Award,
+  Users,
+  MessageCircle,
+  ChevronDown
 } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { useMemo, useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { useConversionTracking } from "@/hooks/useConversionTracking";
+import { useConversionTracking } from '@/hooks/useConversionTracking';
 
-//  Icon mapping to resolve string names to components
+// Icon mapping to resolve string names to components
 const iconMap = {
   ArrowRight,
   CheckCircle,
@@ -49,16 +49,16 @@ const iconMap = {
   Award,
   Users,
   MessageCircle,
-  ChevronDown,
+  ChevronDown
 };
 
 interface ServiceHeroProps {
-//    Basic content
+  // Basic content
   title: string;
   subtitle?: string;
   description: string;
 
-//    Visual elements
+  // Visual elements
   heroImage?: string;
   heroVideo?: string;
   heroVideoType?: "mp4" | "webm";
@@ -66,13 +66,13 @@ interface ServiceHeroProps {
   badgeText?: string;
   badgeIcon?: string;
 
-   Benefits/features (up to 4)
+  // Benefits/features (up to 4)
   keyBenefits?: Array<{
     text: string;
     icon?: string;
   }>;
 
-   Call-to-action buttons
+  // Call-to-action buttons
   primaryCTA?: {
     text: string;
     href?: string;
@@ -85,42 +85,42 @@ interface ServiceHeroProps {
     icon?: string;
   };
 
-//    Trust indicators
+  // Trust indicators
   trustIndicators?: Array<{
     icon: string;
     text: string;
   }>;
 
-   Stats overlay (optional)
+  // Stats overlay (optional)
   stats?: {
     primary: string;
     secondary: string;
     additional?: string[];
   };
 
-   Testimonials (optional)
+  // Testimonials (optional)
   testimonials?: Array<{
     text: string;
     author: string;
   }>;
 
-   Key points (optional)
+  // Key points (optional)
   keyPoints?: string[];
 
-   Styling options
+  // Styling options
   gradientFrom?: string;
   gradientTo?: string;
   textColor?: string;
   fallbackImage?: string;
 
-   Additional
+  // Additional
   className?: string;
   layout?: string;
   theme?: string;
   priority?: "high" | "normal";
-  videoScale?: number;  Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
-  mobileVideoScale?: number;  Mobile-specific video scale factor
-  hideMembershipLink?: boolean;  Hide the membership link in secondary CTAs
+  videoScale?: number; // Scale factor for video size (1.0 = normal, 1.15 = 15% larger)
+  mobileVideoScale?: number; // Mobile-specific video scale factor
+  hideMembershipLink?: boolean; // Hide the membership link in secondary CTAs
 }
 
 export default function ServiceHero({
@@ -136,22 +136,22 @@ export default function ServiceHero({
   keyBenefits = [],
   primaryCTA = {
     text: "Book Consultation",
-    href: "/book",
+    href: "/book"
   },
   secondaryCTA = {
     text: "",
-    href: "",
+    href: ""
   },
-  trustIndicators = [
+    trustIndicators = [
     { icon: "Star", text: "5-star rated" },
     { icon: "Shield", text: "GDC registered" },
-    { icon: "Clock", text: "20+ years experience" },
+    { icon: "Clock", text: "20+ years experience" }
   ],
   stats,
   testimonials = [],
   keyPoints = [],
-  gradientFrom = "soft-pink",
-  gradientTo = "soft-lavender",
+  gradientFrom = "soft-pink/10",
+  gradientTo = "soft-lavender/10",
   textColor = "pear-primary",
   fallbackImage = "/images/dental-practice-hero-burton-joyce.webp",
   className = "",
@@ -160,99 +160,75 @@ export default function ServiceHero({
   priority = "high",
   videoScale = 1.0,
   mobileVideoScale,
-  hideMembershipLink = false,
+  hideMembershipLink = false
 }: ServiceHeroProps) {
   const [expandedStats, setExpandedStats] = useState(false);
-  const {
-    trackServiceInterest,
-    trackPhoneClick,
-    trackBookingAttempt,
-    trackLocationConversion,
-  } = useConversionTracking();
+  const { trackServiceInterest, trackPhoneClick, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
 
-//    Memoize service type for tracking
+  // Memoize service type for tracking
   const serviceType = useMemo(() => {
     const titleLower = title.toLowerCase();
-    if (titleLower.includes("emergency") || titleLower.includes("urgent"))
-      return "emergency";
-    if (
-      titleLower.includes("whitening") ||
-      titleLower.includes("veneers") ||
-      titleLower.includes("cosmetic") ||
-      titleLower.includes("smile")
-    )
-      return "cosmetic";
-    if (
-      titleLower.includes("orthodontics") ||
-      titleLower.includes("invisalign") ||
-      titleLower.includes("straighten")
-    )
-      return "orthodontics";
-    if (titleLower.includes("implant")) return "implants";
-    return "general";
+    if (titleLower.includes('emergency') || titleLower.includes('urgent')) return 'emergency';
+    if (titleLower.includes('whitening') || titleLower.includes('veneers') || titleLower.includes('cosmetic') || titleLower.includes('smile')) return 'cosmetic';
+    if (titleLower.includes('orthodontics') || titleLower.includes('invisalign') || titleLower.includes('straighten')) return 'orthodontics';
+    if (titleLower.includes('implant')) return 'implants';
+    return 'general';
   }, [title]);
 
-//    Helper function to get icon component from string
+  // Helper function to get icon component from string
   const getIcon = (iconName: string | undefined) => {
     if (!iconName) return Circle;
     return iconMap[iconName as keyof typeof iconMap] || Circle;
   };
 
-   Enhanced tracking handlers
+  // Enhanced tracking handlers
   const handleServiceInterest = () => {
-    trackServiceInterest(
-      title,
-      serviceType as "emergency" | "cosmetic" | "general" | "orthodontics",
-    );
+    trackServiceInterest(title, serviceType as 'emergency' | 'cosmetic' | 'general' | 'orthodontics');
   };
 
   const handlePhoneClick = () => {
-    trackPhoneClick("service_hero", "0115 931 2935");
+    trackPhoneClick('service_hero', '0115 931 2935');
     handleServiceInterest();
   };
 
   const handleBookingClick = () => {
-    trackBookingAttempt("service_hero", "booking");
+    trackBookingAttempt('service_hero', 'booking');
     handleServiceInterest();
   };
 
   const handleMembershipClick = () => {
-    trackLocationConversion("membership_interest_from_service", "burton_joyce");
+    trackLocationConversion('membership_interest_from_service', 'burton_joyce');
   };
 
   const handleStatsExpand = () => {
     setExpandedStats(!expandedStats);
-    trackLocationConversion("stats_engagement", "burton_joyce");
+    trackLocationConversion('stats_engagement', 'burton_joyce');
   };
 
   const handleTestimonialClick = () => {
-    trackLocationConversion("testimonial_engagement", "burton_joyce");
+    trackLocationConversion('testimonial_engagement', 'burton_joyce');
   };
 
-   Theme classes (could be expanded for more themes)
+  // Theme classes (could be expanded for more themes)
   const themeClasses = {
     background: `bg-gradient-to-br from-${gradientFrom} via-white to-${gradientTo}`,
-    accent: `bg-${textColor} text-white`,
+    accent: `bg-${textColor} text-white`
   };
 
-   Badge icon
+  // Badge icon
   const BadgeIcon = getIcon(badgeIcon);
-   Secondary CTA icon
+  // Secondary CTA icon
   const SecondaryCTAIcon = getIcon(secondaryCTA?.icon || "ArrowRight");
 
   return (
-    <section
-      className={`pt-12 sm:pt-32 pb-16 ${themeClasses.background} ${className}`}
-    >
+    <section className={`pt-12 sm:pt-32 pb-16 ${themeClasses.background} ${className}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Content Column - Mobile First Layout */}
           <div className="lg:col-span-7 order-2 lg:order-1">
             {/* H1 Title - First for immediate page identification */}
             <div className="space-y-4">
-              <h1
-                className={`heading-serif text-[40px] sm:text-6xl font-bold text-${textColor} leading-tight`}
-              >
+              <h1 className={`heading-serif text-[40px] sm:text-6xl font-bold text-${textColor} leading-tight`}>
                 {title}
                 {subtitle && (
                   <span className="text-soft-pink block">{subtitle}</span>
@@ -265,9 +241,7 @@ export default function ServiceHero({
               {heroVideo ? (
                 <div
                   className="relative aspect-[4/3] overflow-hidden"
-                  style={{
-                    transform: `scale(${mobileVideoScale || videoScale})`,
-                  }}
+                  style={{ transform: `scale(${mobileVideoScale || videoScale})` }}
                 >
                   <video
                     className="w-full h-full object-cover"
@@ -289,9 +263,7 @@ export default function ServiceHero({
               ) : (
                 <div
                   className="relative aspect-[4/3] overflow-hidden"
-                  style={{
-                    transform: `scale(${mobileVideoScale || videoScale})`,
-                  }}
+                  style={{ transform: `scale(${mobileVideoScale || videoScale})` }}
                 >
                   <Image
                     src={heroImage || fallbackImage}
@@ -307,10 +279,7 @@ export default function ServiceHero({
 
             {/* Badge - Third for context */}
             {badgeText && (
-              <Badge
-                variant="secondary"
-                className={`mb-4 sm:mb-6 ${themeClasses.accent}`}
-              >
+              <Badge variant="secondary" className={`mb-4 sm:mb-6 ${themeClasses.accent}`}>
                 <BadgeIcon className="w-4 h-4 mr-2" />
                 {badgeText}
               </Badge>
@@ -342,9 +311,7 @@ export default function ServiceHero({
                   return (
                     <div key={index} className="flex items-center space-x-2">
                       <BenefitIcon className={`w-5 h-5 text-${textColor}`} />
-                      <span className="text-sm font-medium">
-                        {benefit.text}
-                      </span>
+                      <span className="text-sm font-medium">{benefit.text}</span>
                     </div>
                   );
                 })}
@@ -356,7 +323,7 @@ export default function ServiceHero({
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-pear-primary to-pear-primary text-white font-semibold group"
+                className="bg-gradient-to-r from-pear-primary to-pear-primary/80 text-white font-semibold group"
                 onClick={handlePhoneClick}
               >
                 <a href="tel:01159312935">
@@ -392,7 +359,7 @@ export default function ServiceHero({
                 <Button
                   asChild
                   variant="link"
-                  className="text-pear-primary hover:text-pear-primary underline underline-offset-4"
+                  className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
                   onClick={handleMembershipClick}
                 >
                   <Link href="/membership">
@@ -416,11 +383,11 @@ export default function ServiceHero({
                 </Button>
               )}
 
-              {secondaryCTA?.text && (
+              {secondaryCTA && secondaryCTA.text && (
                 <Button
                   asChild={!!secondaryCTA.href}
                   variant="link"
-                  className="text-pear-primary hover:text-pear-primary underline underline-offset-4"
+                  className="text-pear-primary hover:text-pear-primary/80 underline underline-offset-4"
                   onClick={secondaryCTA.onClick || handleServiceInterest}
                 >
                   {secondaryCTA.href ? (
@@ -478,6 +445,7 @@ export default function ServiceHero({
                       className="w-full h-full object-cover"
                     />
                   </video>
+
                 </div>
               ) : (
                 <div
@@ -507,28 +475,17 @@ export default function ServiceHero({
                         <Award className="h-5 w-5 text-pear-primary" />
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-dental-navy">
-                          {stats.primary}
-                        </div>
-                        <div className="text-xs text-gray-600">
-                          {stats.secondary}
-                        </div>
+                        <div className="text-sm font-semibold text-dental-navy">{stats.primary}</div>
+                        <div className="text-xs text-gray-600">{stats.secondary}</div>
                       </div>
-                      <ChevronDown
-                        className={`h-4 w-4 text-gray-400 transition-transform ${expandedStats ? "rotate-180" : ""}`}
-                      />
+                      <ChevronDown className={`h-4 w-4 text-gray-400 transition-transform ${expandedStats ? 'rotate-180' : ''}`} />
                     </button>
                     {expandedStats && stats.additional && (
                       <div className="mt-3 pt-3 border-t border-gray-200 space-y-2">
                         {stats.additional.map((stat, index) => (
-                          <div
-                            key={index}
-                            className="flex items-center space-x-2"
-                          >
+                          <div key={index} className="flex items-center space-x-2">
                             <Star className="h-3 w-3 text-pear-gold" />
-                            <span className="text-xs text-gray-600">
-                              {stat}
-                            </span>
+                            <span className="text-xs text-gray-600">{stat}</span>
                           </div>
                         ))}
                       </div>
@@ -555,26 +512,16 @@ export default function ServiceHero({
         {testimonials.length > 0 && (
           <div className="mt-16 pt-16 border-t border-gray-200">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-pear-primary mb-4">
-                What Our Patients Say
-              </h3>
-              <p className="text-gray-600">
-                Real experiences from {serviceType} treatment patients
-              </p>
+              <h3 className="text-2xl font-bold text-pear-primary mb-4">What Our Patients Say</h3>
+              <p className="text-gray-600">Real experiences from {serviceType} treatment patients</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {testimonials.slice(0, 3).map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="bg-white border border-gray-200 hover:shadow-lg transition-shadow"
-                >
+                <Card key={index} className="bg-white border border-gray-200 hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-1 mb-4">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className="h-4 w-4 text-pear-gold fill-current"
-                        />
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 text-pear-gold fill-current" />
                       ))}
                     </div>
                     <blockquote className="text-gray-700 mb-4 italic">

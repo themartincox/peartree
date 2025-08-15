@@ -1,30 +1,31 @@
-import React from "react";
-import {
-  CalendarDays,
-  Car,
-  CheckCircle,
-  Clock,
-  Crown,
-  Heart,
-  MapPin,
-  Navigation,
-  Phone,
-  Shield,
-  Star,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import TestimonialBanner from "@/components/TestimonialBanner";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import FAQSection from "@/components/FAQSection";
-import TestimonialBanner from "@/components/TestimonialBanner";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  MapPin,
+  Clock,
+  Phone,
+  Star,
+  CheckCircle,
+  Car,
+  CalendarDays,
+  Shield,
+  Heart,
+  Smile,
+  Eye,
+  Crown,
+  Navigation,
+  ArrowRight
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Invisalign in Arnold - Clear Aligners Near You | Pear Tree Dental",
-  description:
-    "Invisalign clear aligners for Arnold residents. Only 15 minutes to Pear Tree Dental in Burton Joyce. Premium invisible braces from £2,800. Free parking available.",
+  description: "Invisalign clear aligners for Arnold residents. Only 15 minutes to Pear Tree Dental in Burton Joyce. Premium invisible braces from £2,800. Free parking available.",
   keywords: [
     "Invisalign Arnold",
     "clear aligners Arnold",
@@ -32,49 +33,40 @@ export const metadata: Metadata = {
     "teeth straightening Arnold",
     "orthodontics Arnold NG5",
     "Invisalign near Arnold",
-    "dentist Arnold Nottingham",
+    "dentist Arnold Nottingham"
   ],
   openGraph: {
     title: "Invisalign in Arnold - Clear Aligners Near You | Pear Tree Dental",
-    description:
-      "Premium Invisalign treatment for Arnold residents. Just 15 minutes away with free parking. Advanced clear aligner technology.",
-    url: "https://peartree.dental/arnold/invisalign",
+    description: "Premium Invisalign treatment for Arnold residents. Just 15 minutes away with free parking. Advanced clear aligner technology.",
+    url: "https://peartree.dental/arnold/invisalign"
   },
   alternates: {
-    canonical: "https://peartree.dental/arnold/invisalign",
-  },
+    canonical: "https://peartree.dental/arnold/invisalign"
+  }
 };
 
 export default function ArnoldInvisalignPage() {
   const arnoldInvisalignFAQs = [
     {
       question: "How far is Pear Tree Dental from Arnold town centre?",
-      answer:
-        "We're just 15 minutes from Arnold town centre via the A6097. Our practice in Burton Joyce is easily accessible with free parking available for all patients.",
+      answer: "We're just 15 minutes from Arnold town centre via the A6097. Our practice in Burton Joyce is easily accessible with free parking available for all patients."
     },
     {
       question: "Is Invisalign available privately for adults in Arnold?",
-      answer:
-        "Yes, we offer comprehensive Invisalign treatment for adults and teens. Treatment typically ranges from £2,800-£4,500 depending on complexity, with flexible payment plans available.",
+      answer: "Yes, we offer comprehensive Invisalign treatment for adults and teens. Treatment typically ranges from £2,800-£4,500 depending on complexity, with flexible payment plans available."
     },
     {
-      question:
-        "Do you offer same-day Invisalign consultations for Arnold patients?",
-      answer:
-        "Absolutely! We often have same-day consultation availability. During your visit, we'll conduct a thorough assessment and can start your Invisalign journey immediately if suitable.",
+      question: "Do you offer same-day Invisalign consultations for Arnold patients?",
+      answer: "Absolutely! We often have same-day consultation availability. During your visit, we'll conduct a thorough assessment and can start your Invisalign journey immediately if suitable."
     },
     {
-      question:
-        "Can I get Invisalign if I live in Arnold but work in Nottingham city centre?",
-      answer:
-        "Perfect! Our location in Burton Joyce is convenient for Arnold residents working in the city. We offer flexible appointment times including early morning and evening slots.",
+      question: "Can I get Invisalign if I live in Arnold but work in Nottingham city centre?",
+      answer: "Perfect! Our location in Burton Joyce is convenient for Arnold residents working in the city. We offer flexible appointment times including early morning and evening slots."
     },
     {
-      question:
-        "What makes Pear Tree Dental different for Arnold patients seeking Invisalign?",
-      answer:
-        "We're Arnold's closest premium Invisalign provider, offering advanced SmartTrack technology, 3D treatment planning, and a personal care approach that busy Arnold professionals appreciate.",
-    },
+      question: "What makes Pear Tree Dental different for Arnold patients seeking Invisalign?",
+      answer: "We're Arnold's closest premium Invisalign provider, offering advanced SmartTrack technology, 3D treatment planning, and a personal care approach that busy Arnold professionals appreciate."
+    }
   ];
 
   return (
@@ -86,36 +78,39 @@ export default function ArnoldInvisalignPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "MedicalBusiness",
-            name: "Pear Tree Dental - Invisalign in Arnold",
-            image: "https://peartree.dental/images/invisalign-arnold.jpg",
-            url: "https://peartree.dental/arnold/invisalign",
-            telephone: "+44-115-931-2935",
-            address: {
+            "name": "Pear Tree Dental - Invisalign in Arnold",
+            "image": "https://peartree.dental/images/invisalign-arnold.jpg",
+            "url": "https://peartree.dental/arnold/invisalign",
+            "telephone": "+44-115-931-2935",
+            "address": {
               "@type": "PostalAddress",
-              streetAddress: "22 Nottingham Road",
-              addressLocality: "Burton Joyce",
-              addressRegion: "Nottinghamshire",
-              postalCode: "NG14 5AE",
-              addressCountry: "UK",
+              "streetAddress": "22 Nottingham Road",
+              "addressLocality": "Burton Joyce",
+              "addressRegion": "Nottinghamshire",
+              "postalCode": "NG14 5AE",
+              "addressCountry": "UK"
             },
-            areaServed: {
+            "areaServed": {
               "@type": "Place",
-              name: "Arnold, NG5",
+              "name": "Arnold, NG5"
             },
-            medicalSpecialty: "Orthodontics - Invisalign Clear Aligners",
-            geo: {
+            "medicalSpecialty": "Orthodontics - Invisalign Clear Aligners",
+            "geo": {
               "@type": "GeoCoordinates",
-              latitude: 52.97335,
-              longitude: -1.04211,
+              "latitude": 52.97335,
+              "longitude": -1.04211
             },
-            openingHours: ["Mo-Th 08:45-17:00", "Fr 08:00-15:30"],
-            priceRange: "£2800-£4500",
-          }),
+            "openingHours": [
+              "Mo-Th 08:45-17:00",
+              "Fr 08:00-15:30"
+            ],
+            "priceRange": "£2800-£4500"
+          })
         }}
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-pear-primary to-pear-primary text-white py-20">
+      <section className="bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
@@ -133,7 +128,7 @@ export default function ArnoldInvisalignPage() {
               Premium Clear Aligners Just 15 Minutes Away
             </p>
 
-            <div className="bg-white rounded-lg p-4 mb-8 inline-block">
+            <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
               <p className="text-lg font-medium">
                 <Car className="inline w-5 h-5 mr-2" />
                 Only 15 mins from Arnold — Free parking available
@@ -142,20 +137,13 @@ export default function ArnoldInvisalignPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button
-                  size="lg"
-                  className="bg-pear-gold hover:bg-pear-gold text-white px-8 py-4 text-lg font-semibold rounded-full"
-                >
+                <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Free Invisalign Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full"
-                >
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full">
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>
@@ -174,11 +162,9 @@ export default function ArnoldInvisalignPage() {
                 Why Arnold Residents Choose Pear Tree Dental for Invisalign
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Arnold's busy professionals and families trust us for premium
-                Invisalign treatment. Located just off the A6097 in Burton
-                Joyce, we're perfectly positioned for Arnold residents seeking
-                discreet teeth straightening without the hassle of city centre
-                appointments.
+                Arnold's busy professionals and families trust us for premium Invisalign treatment.
+                Located just off the A6097 in Burton Joyce, we're perfectly positioned for Arnold residents
+                seeking discreet teeth straightening without the hassle of city centre appointments.
               </p>
             </div>
 
@@ -186,37 +172,24 @@ export default function ArnoldInvisalignPage() {
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <MapPin className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">
-                    Perfect Location
-                  </h3>
-                  <p className="text-gray-600">
-                    15 minutes from Arnold via A6097, avoiding city traffic
-                  </p>
+                  <h3 className="font-bold text-pear-primary mb-2">Perfect Location</h3>
+                  <p className="text-gray-600">15 minutes from Arnold via A6097, avoiding city traffic</p>
                 </CardContent>
               </Card>
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Car className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">
-                    Free Parking
-                  </h3>
-                  <p className="text-gray-600">
-                    No parking fees or stress - dedicated patient parking
-                  </p>
+                  <h3 className="font-bold text-pear-primary mb-2">Free Parking</h3>
+                  <p className="text-gray-600">No parking fees or stress - dedicated patient parking</p>
                 </CardContent>
               </Card>
 
               <Card className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <Clock className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                  <h3 className="font-bold text-pear-primary mb-2">
-                    Flexible Hours
-                  </h3>
-                  <p className="text-gray-600">
-                    Early morning and evening appointments for working
-                    professionals
-                  </p>
+                  <h3 className="font-bold text-pear-primary mb-2">Flexible Hours</h3>
+                  <p className="text-gray-600">Early morning and evening appointments for working professionals</p>
                 </CardContent>
               </Card>
             </div>
@@ -225,7 +198,7 @@ export default function ArnoldInvisalignPage() {
       </section>
 
       {/* Treatment Overview Section */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
@@ -233,10 +206,9 @@ export default function ArnoldInvisalignPage() {
                 Premium Invisalign Treatment for Arnold Patients
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                For patients in Arnold looking to straighten their teeth
-                discreetly, Invisalign offers the perfect solution. Our advanced
-                clear aligner technology transforms smiles while fitting
-                seamlessly into busy Arnold lifestyles.
+                For patients in Arnold looking to straighten their teeth discreetly, Invisalign offers
+                the perfect solution. Our advanced clear aligner technology transforms smiles while
+                fitting seamlessly into busy Arnold lifestyles.
               </p>
             </div>
 
@@ -249,49 +221,29 @@ export default function ArnoldInvisalignPage() {
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-pear-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">
-                        Virtually Invisible
-                      </h4>
-                      <p className="text-gray-600">
-                        Perfect for Arnold's business professionals who need to
-                        maintain their professional image
-                      </p>
+                      <h4 className="font-semibold text-gray-800">Virtually Invisible</h4>
+                      <p className="text-gray-600">Perfect for Arnold's business professionals who need to maintain their professional image</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-pear-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">
-                        Removable Convenience
-                      </h4>
-                      <p className="text-gray-600">
-                        Remove for important meetings, meals at Arnold's
-                        restaurants, or social events
-                      </p>
+                      <h4 className="font-semibold text-gray-800">Removable Convenience</h4>
+                      <p className="text-gray-600">Remove for important meetings, meals at Arnold's restaurants, or social events</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-pear-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">
-                        Predictable Results
-                      </h4>
-                      <p className="text-gray-600">
-                        3D treatment planning shows your future smile before
-                        treatment begins
-                      </p>
+                      <h4 className="font-semibold text-gray-800">Predictable Results</h4>
+                      <p className="text-gray-600">3D treatment planning shows your future smile before treatment begins</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-pear-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-gray-800">
-                        Faster Treatment
-                      </h4>
-                      <p className="text-gray-600">
-                        Most cases complete in 6-18 months with minimal
-                        lifestyle disruption
-                      </p>
+                      <h4 className="font-semibold text-gray-800">Faster Treatment</h4>
+                      <p className="text-gray-600">Most cases complete in 6-18 months with minimal lifestyle disruption</p>
                     </div>
                   </div>
                 </div>
@@ -302,14 +254,9 @@ export default function ArnoldInvisalignPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <Crown className="w-6 h-6 text-pear-gold" />
-                      <h4 className="font-bold text-pear-primary">
-                        Premium Technology
-                      </h4>
+                      <h4 className="font-bold text-pear-primary">Premium Technology</h4>
                     </div>
-                    <p className="text-gray-600">
-                      SmartTrack material and SmartForce attachments for
-                      superior tooth movement
-                    </p>
+                    <p className="text-gray-600">SmartTrack material and SmartForce attachments for superior tooth movement</p>
                   </CardContent>
                 </Card>
 
@@ -317,14 +264,9 @@ export default function ArnoldInvisalignPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <Shield className="w-6 h-6 text-dental-green" />
-                      <h4 className="font-bold text-pear-primary">
-                        Expert Care
-                      </h4>
+                      <h4 className="font-bold text-pear-primary">Expert Care</h4>
                     </div>
-                    <p className="text-gray-600">
-                      Experienced Invisalign providers with hundreds of
-                      successful cases
-                    </p>
+                    <p className="text-gray-600">Experienced Invisalign providers with hundreds of successful cases</p>
                   </CardContent>
                 </Card>
 
@@ -332,13 +274,9 @@ export default function ArnoldInvisalignPage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">
                       <Heart className="w-6 h-6 text-soft-pink" />
-                      <h4 className="font-bold text-pear-primary">
-                        Personal Service
-                      </h4>
+                      <h4 className="font-bold text-pear-primary">Personal Service</h4>
                     </div>
-                    <p className="text-gray-600">
-                      Dedicated support throughout your Invisalign journey
-                    </p>
+                    <p className="text-gray-600">Dedicated support throughout your Invisalign journey</p>
                   </CardContent>
                 </Card>
               </div>
@@ -365,21 +303,15 @@ export default function ArnoldInvisalignPage() {
 
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">
-                  15 mins
-                </div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">15 mins</div>
                 <p className="text-gray-600">Average travel time from Arnold</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">
-                  6-18 months
-                </div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">6-18 months</div>
                 <p className="text-gray-600">Typical treatment duration</p>
               </div>
               <div className="p-6">
-                <div className="text-3xl font-bold text-pear-primary mb-2">
-                  99%
-                </div>
+                <div className="text-3xl font-bold text-pear-primary mb-2">99%</div>
                 <p className="text-gray-600">Patient satisfaction rate</p>
               </div>
             </div>
@@ -388,15 +320,14 @@ export default function ArnoldInvisalignPage() {
       </section>
 
       {/* Before/After Visual Module */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
               Real Invisalign Results from Local Patients
             </h2>
             <p className="text-lg text-gray-600">
-              See the amazing transformations achieved with our premium
-              Invisalign treatment
+              See the amazing transformations achieved with our premium Invisalign treatment
             </p>
           </div>
 
@@ -424,8 +355,7 @@ export default function ArnoldInvisalignPage() {
                 Invisalign Questions from Arnold Patients
               </h2>
               <p className="text-lg text-gray-600">
-                Common questions from our Arnold patients about Invisalign
-                treatment
+                Common questions from our Arnold patients about Invisalign treatment
               </p>
             </div>
 
@@ -435,7 +365,7 @@ export default function ArnoldInvisalignPage() {
       </section>
 
       {/* Driving Directions */}
-      <section className="py-20 bg-cream">
+      <section className="py-20 bg-cream/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl font-bold text-pear-primary mb-6">
@@ -454,21 +384,15 @@ export default function ArnoldInvisalignPage() {
                     <p>2. Continue for 8 miles through Gedling</p>
                     <p>3. Turn right into Burton Joyce</p>
                     <p>4. We're at 22 Nottingham Road (NG14 5AE)</p>
-                    <p className="text-pear-primary font-semibold">
-                      Journey time: 15 minutes
-                    </p>
+                    <p className="text-pear-primary font-semibold">Journey time: 15 minutes</p>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-pear-primary rounded-lg p-6">
+                  <div className="bg-pear-primary/10 rounded-lg p-6">
                     <Car className="w-12 h-12 text-pear-primary mx-auto mb-4" />
-                    <h4 className="font-bold text-pear-primary mb-2">
-                      Free Patient Parking
-                    </h4>
-                    <p className="text-gray-600">
-                      Dedicated parking spaces right outside our practice
-                    </p>
+                    <h4 className="font-bold text-pear-primary mb-2">Free Patient Parking</h4>
+                    <p className="text-gray-600">Dedicated parking spaces right outside our practice</p>
                   </div>
                 </div>
               </div>
@@ -480,10 +404,7 @@ export default function ArnoldInvisalignPage() {
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button
-                size="lg"
-                className="bg-pear-primary hover:bg-pear-primary text-white px-8 py-4"
-              >
+              <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white px-8 py-4">
                 <MapPin className="w-5 h-5 mr-2" />
                 Get Directions from Arnold
               </Button>
@@ -493,45 +414,36 @@ export default function ArnoldInvisalignPage() {
       </section>
 
       {/* Final Call to Action */}
-      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary text-white">
+      <section className="py-20 bg-gradient-to-br from-pear-primary to-pear-primary/90 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Start Your Invisalign Journey from Arnold Today
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
-              Book your Invisalign consultation from Arnold — no waiting list,
-              no delays. Just premium clear aligner treatment 15 minutes from
-              your doorstep.
+              Book your Invisalign consultation from Arnold — no waiting list, no delays.
+              Just premium clear aligner treatment 15 minutes from your doorstep.
             </p>
 
-            <div className="bg-white rounded-lg p-6 mb-8 inline-block">
+            <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
               <p className="text-lg font-medium mb-2">
                 <Star className="inline w-5 h-5 mr-2 text-pear-gold" />
                 Special Offer for Arnold Patients
               </p>
               <p className="text-sm opacity-90">
-                Free Invisalign consultation worth £150 • 0% interest payment
-                plans available
+                Free Invisalign consultation worth £150 • 0% interest payment plans available
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button
-                  size="lg"
-                  className="bg-pear-gold hover:bg-pear-gold text-white px-8 py-4 text-lg font-semibold rounded-full"
-                >
+                <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-white px-8 py-4 text-lg font-semibold rounded-full">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Free Consultation
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full"
-                >
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4 text-lg font-semibold rounded-full">
                   <Phone className="w-5 h-5 mr-2" />
                   Call Now: 0115 931 2935
                 </Button>

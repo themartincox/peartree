@@ -6,15 +6,9 @@ interface TestimonialBannerProps {
   className?: string;
 }
 
-const TestimonialBanner = ({
-  text,
-  author,
-  className = "",
-}: TestimonialBannerProps) => {
+const TestimonialBanner = ({ text, author, className = "" }: TestimonialBannerProps) => {
   return (
-    <div
-      className={`bg-white border border-gray-200 rounded-2xl p-6 shadow-sm ${className}`}
-    >
+    <div className={`bg-white border border-gray-200 rounded-2xl p-6 shadow-sm ${className}`}>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-3">
           {/* Google G Logo */}
@@ -26,7 +20,7 @@ const TestimonialBanner = ({
 
         {/* 5 Stars */}
         <div className="flex space-x-1">
-          {Array.from({ length: 5 }).map((_, i) => (
+          {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
           ))}
         </div>

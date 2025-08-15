@@ -1,9 +1,8 @@
-import React from "react";
-import { Home } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
 
-export default function NotFound(): React.JSX.Element {
+export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background via-white to-pear-background flex items-center justify-center px-4">
       <div className="max-w-2xl mx-auto text-center">
@@ -18,7 +17,7 @@ export default function NotFound(): React.JSX.Element {
               muted
               playsInline
             >
-              <source src="/videos4-video.mp4" type="video/mp4" />
+              <source src="/videos/404-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -33,9 +32,8 @@ export default function NotFound(): React.JSX.Element {
             but remember to floss!
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            The page you're looking for seems to have wandered off like a loose
-            tooth. Let's get you back to our homepage for some proper dental
-            care!
+            The page you're looking for seems to have wandered off like a loose tooth.
+            Let's get you back to our homepage for some proper dental care!
           </p>
         </div>
 
@@ -51,10 +49,9 @@ export default function NotFound(): React.JSX.Element {
         </Link>
 
         {/* Fun dental facts */}
-        <div className="mt-12 p-6 bg-white backdrop-blur-sm rounded-2xl border border-pear-primary">
+        <div className="mt-12 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-pear-primary/10">
           <p className="text-sm text-gray-600">
-            💡 <strong>Did you know?</strong> You should floss at least once a
-            day to remove plaque and food particles between your teeth!
+            💡 <strong>Did you know?</strong> You should floss at least once a day to remove plaque and food particles between your teeth!
           </p>
         </div>
       </div>

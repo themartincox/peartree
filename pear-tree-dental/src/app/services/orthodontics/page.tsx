@@ -1,31 +1,33 @@
-import React from "react";
-import {
-  Award,
-  CalendarDays,
-  CheckCircle,
-  Clock,
-  Eye,
-  Heart,
-  Phone,
-  Shield,
-  Smile,
-  Sparkles,
-  Star,
-  TrendingUp, 
-//   Users
-} from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
-import ServiceHero from "@/components/ServiceHero";
-import ServiceNavigation from "@/components/ServiceNavigation";
-import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import ServiceNavigation from "@/components/ServiceNavigation";
+import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
+import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
+import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
+
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import {
+  Smile,
+  Star,
+  CheckCircle,
+  Clock,
+  Shield,
+  Eye,
+  ArrowRight,
+  CalendarDays,
+  Phone,
+  Users,
+  Award,
+  Heart,
+  Sparkles,
+  TrendingUp
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Orthodontics Burton Joyce | Invisalign & Clear Aligners | Pear Tree Dental",
@@ -56,11 +58,11 @@ export const metadata: Metadata = {
 };
 
 export default function OrthodonticsPage() {
-//    Consolidated FAQs including both general practice and orthodontics-specific questions
+  // Consolidated FAQs including both general practice and orthodontics-specific questions
   const orthodonticsFAQs = [
     {
       question: "Where is the nearest dentist in Burton Joyce?",
-      answer: "Pear Tree Dental is located at 22 Nottingham Road, Burton Joyce, NG14 5AE. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
+      answer: "Pear Tree Dental is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
     },
     {
       question: "What time does the dentist open?",
@@ -156,8 +158,8 @@ export default function OrthodonticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Invisalign */}
-            <Card className="overflow-hidden shadow-xl border-2 border-soft-pink hover:border-soft-pink transition-colors">
-              <div className="aspect-[16] bg-gradient-to-br from-soft-pink to-soft-pink p-6 flex items-center justify-center">
+            <Card className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:border-soft-pink/40 transition-colors">
+              <div className="aspect-[16/10] bg-gradient-to-br from-soft-pink/20 to-soft-pink/10 p-6 flex items-center justify-center">
                 <Image
                   src="/images/Invisalign-logo.png"
                   alt="Invisalign logo and clear aligners treatment system"
@@ -181,14 +183,14 @@ export default function OrthodonticsPage() {
                   The world's most advanced clear aligner system with proven results for mild to complex cases.
                 </p>
                 <ul className="space-y-3 mb-6">
-                  {([
+                  {[
                     "SmartTrack material for comfort",
                     "Precision attachments when needed",
                     "Virtual treatment planning",
                     "Compliance indicators",
                     "Proven track record",
                     "Comprehensive case coverage"
-                  ] || []).map((feature, index) => (
+                  ].map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                       <span className="text-sm text-gray-700">{feature}</span>
@@ -204,8 +206,8 @@ export default function OrthodonticsPage() {
             </Card>
 
             {/* ClearCorrect */}
-            <Card className="overflow-hidden shadow-xl border-2 border-soft-lavender hover:border-soft-lavender transition-colors">
-              <div className="aspect-[16] bg-gradient-to-br from-soft-lavender to-soft-lavender p-6 flex items-center justify-center">
+            <Card className="overflow-hidden shadow-xl border-2 border-soft-lavender/20 hover:border-soft-lavender/40 transition-colors">
+              <div className="aspect-[16/10] bg-gradient-to-br from-soft-lavender/20 to-soft-lavender/10 p-6 flex items-center justify-center">
                 <Image
                   src="/images/clearcorrect-logo.png"
                   alt="ClearCorrect logo and clear aligner treatment system"
@@ -229,14 +231,14 @@ export default function OrthodonticsPage() {
                   Premium clear aligners offering excellent value with effective treatment for most orthodontic cases.
                 </p>
                 <ul className="space-y-3 mb-6">
-                  {([
+                  {[
                     "ClearQuartz material",
                     "Excellent value for money",
                     "Effective for most cases",
                     "Comfortable fit",
                     "Digital treatment planning",
                     "Regular progress monitoring"
-                  ] || []).map((feature, index) => (
+                  ].map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-lavender flex-shrink-0" />
                       <span className="text-sm text-gray-700">{feature}</span>
@@ -244,7 +246,7 @@ export default function OrthodonticsPage() {
                   ))}
                 </ul>
                 <Link href="/services/orthodontics/clearcorrect">
-                  <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender text-white">
+                  <Button className="w-full bg-gradient-to-r from-soft-lavender to-soft-lavender/80 text-white">
                     Learn About ClearCorrect
                   </Button>
                 </Link>
@@ -269,7 +271,7 @@ export default function OrthodonticsPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
-                      {([
+                      {[
                         { feature: "Visibility", aligners: "Nearly invisible", braces: "Highly visible metal" },
                         { feature: "Comfort", aligners: "Smooth plastic", braces: "Metal brackets/wires" },
                         { feature: "Eating", aligners: "Remove for meals", braces: "Food restrictions" },
@@ -277,7 +279,7 @@ export default function OrthodonticsPage() {
                         { feature: "Treatment Time", aligners: "6-18 months", braces: "18-36 months" },
                         { feature: "Office Visits", aligners: "Every 6-8 weeks", braces: "Every 4-6 weeks" },
                         { feature: "Emergency Visits", aligners: "Rare", braces: "Common (broken brackets)" }
-                      ] || []).map((row, index) => (
+                      ].map((row, index) => (
                         <tr key={index} className="hover:bg-gray-50">
                           <td className="px-6 py-4 text-sm font-medium text-gray-700">{row.feature}</td>
                           <td className="px-6 py-4 text-sm text-center text-soft-pink font-semibold">{row.aligners}</td>
@@ -294,50 +296,50 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Before/After Results Section */}
-      <section className="py-16 bg-gradient-to-br from-pear-background to-white">
+      <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <BeforeAfterSliderPair
-              sectionTitle="Teeth Straightening Results"
-              sectionDescription="Life-changing transformations with our orthodontic treatments."
-              primarySlider={{
-                beforeImage: "/images/before-after/BCC-before.png",
-                afterImage: "/images/before-after/BCC-after.png",
-                beforeAlt: "Before orthodontic treatment - buccal corridor correction",
-                afterAlt: "After orthodontic treatment - improved buccal corridor",
-                title: "Orthodontic Transformation",
-                description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
-                treatmentType: "Clear Aligners"
-              }}
-              secondarySlider={{
-                beforeImage: "/images/before-after/BCC-before.png",
-                afterImage: "/images/before-after/BCC-after.png",
-                beforeAlt: "Before orthodontic treatment - crowding correction case",
-                afterAlt: "After orthodontic treatment - aligned teeth and improved spacing",
-                title: "Crowding Correction",
-                description: "Effective treatment of severe crowding using advanced clear aligner technology",
-                treatmentType: "Invisalign"
-              }}
-              className="mb-12"
+          <div className="text-center mb-12">
+             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Teeth Straightening Results
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Life-changing transformations with our orthodontic treatments.
+                          </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <BeforeAfterSlider
+              images={[
+                {
+                  beforeSrc: "/images/before-after/BCC-before.png",
+                  afterSrc: "/images/before-after/BCC-after.png",
+                  beforeAlt: "Before orthodontic treatment - buccal corridor correction",
+                  afterAlt: "After orthodontic treatment - improved buccal corridor",
+                  title: "Orthodontic Transformation",
+                  description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
+                  treatment: "Clear Aligners"
+                }
+              ]}
+              className="mb-8"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Clock className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Treatment Duration</h4>
                 <p className="text-gray-600 text-sm">12-18 months for optimal results</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Star className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Patient Satisfaction</h4>
                 <p className="text-gray-600 text-sm">98% would recommend treatment</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-soft-pink rounded-full flex items-center justify-center mx-auto mb-3">
+                <div className="w-12 h-12 bg-soft-pink/10 rounded-full flex items-center justify-center mx-auto mb-3">
                   <Award className="w-6 h-6 text-soft-pink" />
                 </div>
                 <h4 className="font-semibold text-pear-primary mb-2">Professional Results</h4>
@@ -366,7 +368,7 @@ export default function OrthodonticsPage() {
                 Why Choose Clear Aligners?
               </h3>
               <div className="space-y-6">
-                {([
+                {[
                   {
                     icon: Eye,
                     title: "Nearly Invisible Treatment",
@@ -387,11 +389,11 @@ export default function OrthodonticsPage() {
                     title: "Faster Treatment Time",
                     description: "Average treatment time of 6-18 months compared to 18-36 months with traditional braces, getting you results sooner."
                   }
-                ] || []).map((benefit, index) => {
+                ].map((benefit, index) => {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-soft-pink rounded-xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 text-soft-pink" />
                       </div>
                       <div>
@@ -406,7 +408,7 @@ export default function OrthodonticsPage() {
 
             <div className="relative">
               <Card className="overflow-hidden shadow-xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-soft-pink to-soft-lavender p-6 flex items-center justify-center">
+                <div className="aspect-[4/3] bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10 p-6 flex items-center justify-center">
                   <Image
                     src="/images/Aligner-smile.png"
                     alt="Happy patient showing clear aligner benefits with beautiful smile"
@@ -419,7 +421,7 @@ export default function OrthodonticsPage() {
               </Card>
 
               {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-lg border border-soft-pink">
+              <div className="absolute -bottom-6 -right-6 bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-pink/20">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-soft-pink">6-18</div>
                   <div className="text-sm text-gray-600">months average</div>
@@ -444,7 +446,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {([
+            {[
               {
                 icon: Smile,
                 title: "Eat Anything",
@@ -481,17 +483,17 @@ export default function OrthodonticsPage() {
                 description: "Continue playing sports and musical instruments without worry. No risk of cuts from broken brackets.",
                 benefit: "Active lifestyle maintained"
               }
-            ] || []).map((advantage, index) => {
+            ].map((advantage, index) => {
               const Icon = advantage.icon;
               return (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink bg-white">
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow border-2 border-transparent hover:border-soft-pink/20 bg-white">
                   <CardContent className="p-6">
                     <div className="w-16 h-16 bg-gradient-to-br from-soft-pink to-soft-lavender rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="font-semibold text-pear-primary mb-3">{advantage.title}</h3>
                     <p className="text-gray-600 text-sm mb-3">{advantage.description}</p>
-                    <div className="bg-soft-pink rounded-lg p-2">
+                    <div className="bg-soft-pink/10 rounded-lg p-2">
                       <span className="text-xs font-medium text-soft-pink">{advantage.benefit}</span>
                     </div>
                   </CardContent>
@@ -503,7 +505,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Clinical Features */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
+      <section className="py-16 bg-gradient-to-br from-soft-pink/10 via-white to-soft-lavender/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -515,7 +517,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {([
+            {[
               {
                 title: "3D Digital Planning",
                 description: "Advanced computer modeling creates a precise treatment plan showing exactly how your teeth will move at each stage.",
@@ -540,7 +542,7 @@ export default function OrthodonticsPage() {
                 features: ["Biocompatible materials", "Stain-resistant plastic", "Optimal flexibility", "Durable construction"],
                 icon: Shield
               }
-            ] || []).map((feature, index) => {
+            ].map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -555,7 +557,7 @@ export default function OrthodonticsPage() {
                   <CardContent>
                     <p className="text-gray-600 mb-4">{feature.description}</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {(feature.features || []).map((item, idx) => (
+                      {feature.features.map((item, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                           <span className="text-sm text-gray-700">{item}</span>
@@ -571,7 +573,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Treatment Process */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
+      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -583,7 +585,7 @@ export default function OrthodonticsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {([
+            {[
               {
                 step: "01",
                 title: "Smile Assessment",
@@ -612,11 +614,11 @@ export default function OrthodonticsPage() {
                 icon: TrendingUp,
                 features: ["Progress monitoring", "New aligners", "Adjustments if needed"]
               }
-            ] || []).map((step, index) => {
+            ].map((step, index) => {
               const Icon = step.icon;
               return (
-                <Card key={index} className="relative overflow-hidden border-2 border-soft-pink hover:border-soft-pink transition-colors">
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-soft-lavender rounded-full flex items-center justify-center">
+                <Card key={index} className="relative overflow-hidden border-2 border-soft-pink/20 hover:border-soft-pink/40 transition-colors">
+                  <div className="absolute top-4 right-4 w-10 h-10 bg-soft-lavender/10 rounded-full flex items-center justify-center">
                     <span className="text-soft-lavender font-bold text-sm">{step.step}</span>
                   </div>
                   <CardHeader className="pb-4">
@@ -628,7 +630,7 @@ export default function OrthodonticsPage() {
                   <CardContent>
                     <p className="text-gray-600 mb-4">{step.description}</p>
                     <ul className="space-y-2">
-                      {(step.features || []).map((feature, idx) => (
+                      {step.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                           <span className="text-sm text-gray-700">{feature}</span>
@@ -656,15 +658,15 @@ export default function OrthodonticsPage() {
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {([
+                {[
                   { condition: "Crowded Teeth", description: "Insufficient space causing overlapping" },
                   { condition: "Gaps & Spacing", description: "Unwanted spaces between teeth" },
                   { condition: "Overbite", description: "Upper teeth overlap lower teeth too much" },
                   { condition: "Underbite", description: "Lower teeth extend past upper teeth" },
                   { condition: "Crossbite", description: "Some upper teeth sit inside lower teeth" },
                   { condition: "Open Bite", description: "Front teeth don't meet when biting down" }
-                ] || []).map((item, index) => (
-                  <div key={index} className="bg-gradient-to-br from-soft-pink to-soft-lavender rounded-xl p-4 border border-soft-pink">
+                ].map((item, index) => (
+                  <div key={index} className="bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5 rounded-xl p-4 border border-soft-pink/20">
                     <h3 className="font-semibold text-pear-primary mb-2">{item.condition}</h3>
                     <p className="text-sm text-gray-600">{item.description}</p>
                   </div>
@@ -673,25 +675,14 @@ export default function OrthodonticsPage() {
             </div>
 
             <div>
-              <BeforeAfterSliderPair
-                primarySlider={{
-                  beforeImage: "/images/before-after/BCC-before.png",
-                  afterImage: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Patient's smile before orthodontic enhancement showing alignment and spacing concerns",
-                  afterAlt: "Patient's smile after orthodontic treatment showing improved alignment and spacing",
-                  title: "Orthodontic Smile Enhancement",
-                  description: "See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments",
-                  treatmentType: "Clear Aligner Treatment"
-                }}
-                secondarySlider={{
-                  beforeImage: "/images/before-after/BCC-before.png",
-                  afterImage: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Before orthodontic treatment showing overbite and misalignment",
-                  afterAlt: "After orthodontic treatment with corrected bite and straight teeth",
-                  title: "Bite Correction Case",
-                  description: "Comprehensive orthodontic treatment addressing both alignment and bite issues",
-                  treatmentType: "ClearCorrect"
-                }}
+              <BeforeAfterSlider
+                beforeImage="/images/before-after/BCC-before.png"
+                afterImage="/images/before-after/BCC-after.png"
+                beforeAlt="Patient's smile before orthodontic enhancement showing alignment and spacing concerns"
+                afterAlt="Patient's smile after orthodontic treatment showing improved alignment and spacing"
+                title="Orthodontic Smile Enhancement"
+                description="See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments"
+                treatmentType="Clear Aligner Treatment"
                 className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6"
               />
             </div>
@@ -699,7 +690,7 @@ export default function OrthodonticsPage() {
 
           {/* Treatment Success Rate Stats */}
           <div className="mt-12 text-center">
-            <div className="inline-block bg-white rounded-2xl p-6 shadow-lg border border-soft-lavender">
+            <div className="inline-block bg-white/70 rounded-2xl p-6 shadow-lg border border-soft-lavender/20">
               <div className="text-center">
                 <div className="text-3xl font-bold text-soft-lavender mb-2">85%</div>
                 <div className="text-sm text-gray-600">of cases treatable</div>
@@ -711,7 +702,7 @@ export default function OrthodonticsPage() {
       </section>
 
       {/* Pricing & Membership */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink via-white to-soft-lavender">
+      <section className="py-16 bg-gradient-to-br from-soft-pink/5 via-white to-soft-lavender/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
@@ -724,7 +715,7 @@ export default function OrthodonticsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Standard Pricing */}
-            <Card className="border-2 border-gray-200 hover:border-soft-pink transition-colors">
+            <Card className="border-2 border-gray-200 hover:border-soft-pink/30 transition-colors">
               <CardHeader className="text-center">
                 <CardTitle className="text-2xl text-pear-primary">Clear Aligners</CardTitle>
                 <div className="text-4xl font-bold text-soft-pink mt-4">£2,400 - £4,500</div>
@@ -732,14 +723,14 @@ export default function OrthodonticsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {([
+                  {[
                     "Comprehensive assessment",
                     "Digital treatment planning",
                     "Custom aligner sets",
                     "Regular monitoring visits",
                     "Retainers included",
                     "2-year guarantee"
-                  ] || []).map((feature, index) => (
+                  ].map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-soft-pink flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -755,7 +746,7 @@ export default function OrthodonticsPage() {
             </Card>
 
             {/* Membership Pricing */}
-            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold to-white">
+            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold/5 to-white">
               <CardHeader className="text-center">
                 <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
                 <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
@@ -764,14 +755,14 @@ export default function OrthodonticsPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
-                  {([
+                  {[
                     "10% discount on all treatments",
                     "Free initial consultation",
                     "Priority appointment booking",
                     "Extended warranty options",
                     "Flexible payment plans",
                     "Ongoing dental care included"
-                  ] || []).map((feature, index) => (
+                  ].map((feature, index) => (
                     <li key={index} className="flex items-center space-x-2">
                       <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
                       <span className="text-gray-700">{feature}</span>
@@ -791,15 +782,15 @@ export default function OrthodonticsPage() {
           <div className="mt-12 text-center">
             <p className="text-gray-600 mb-6">Make treatment affordable with flexible payment options</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="p-6 border border-soft-pink">
+              <Card className="p-6 border border-soft-pink/20">
                 <h4 className="font-semibold text-soft-pink mb-2">Payment Plans</h4>
                 <p className="text-sm text-gray-600">Flexible payment options available</p>
               </Card>
-              <Card className="p-6 border border-soft-pink">
+              <Card className="p-6 border border-soft-pink/20">
                 <h4 className="font-semibold text-soft-pink mb-2">Monthly Payments</h4>
                 <p className="text-sm text-gray-600">From £100/month over 2-3 years</p>
               </Card>
-              <Card className="p-6 border border-soft-pink">
+              <Card className="p-6 border border-soft-pink/20">
                 <h4 className="font-semibold text-soft-pink mb-2">Insurance</h4>
                 <p className="text-sm text-gray-600">Orthodontic coverage may apply</p>
               </Card>
@@ -815,13 +806,13 @@ export default function OrthodonticsPage() {
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Start Your Smile Transformation
             </h2>
-            <p className="text-xl mb-8 text-white">
+            <p className="text-xl mb-8 text-white/90">
               Book your free smile assessment and discover how clear aligners can give you the confident smile you deserve.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
                   Book Smile Assessment
                 </Button>
@@ -835,7 +826,7 @@ export default function OrthodonticsPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white">
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm text-white/80">
               <div className="flex items-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>1000+ Smiles Transformed</span>

@@ -1,24 +1,26 @@
-import React from "react";
-import {
-  ArrowRight,
-  CheckCircle,
-  ChevronLeft,
-  Heart,
-  Shield,
-  Smile,
-  Sparkles,
-  Star,
-  Waves,
-  Zap
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Waves,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Sparkles,
+  Users,
+  ChevronLeft,
+  Heart,
+  Smile,
+  Award,
+  Zap
+} from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
@@ -182,7 +184,7 @@ export default function ValplastDenturesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-white to-rose-50">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50/30 via-white to-rose-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Valplast Flexible Dentures"
@@ -311,7 +313,7 @@ export default function ValplastDenturesPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-pink-500 text-white">Flexible Technology</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-pink-500 fill-current" />
                       ))}
                     </div>
@@ -322,11 +324,11 @@ export default function ValplastDenturesPage() {
                     providing comfort and confidence without visible metal clasps.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-pink-600">Metal-Free</div>
                       <div className="text-gray-600">100% biocompatible</div>
                     </div>
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-white/50 p-3 rounded-lg">
                       <div className="font-semibold text-pink-600">5-8 years</div>
                       <div className="text-gray-600">Expected lifespan</div>
                     </div>
@@ -352,7 +354,7 @@ export default function ValplastDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(benefits || []).map((benefit) => {
+            {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
@@ -382,7 +384,7 @@ export default function ValplastDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {(features || []).map((feature, index) => (
+            {features.map((feature, index) => (
               <div key={index} className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
                 <CheckCircle className="w-5 h-5 text-pink-600 flex-shrink-0" />
                 <span className="text-gray-700">{feature}</span>
@@ -416,7 +418,7 @@ export default function ValplastDenturesPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(comparisons || []).map((item, index) => (
+                  {comparisons.map((item, index) => (
                     <tr key={item.feature} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
                       <td className="py-4 px-6 font-medium text-pear-primary">{item.feature}</td>
                       <td className="py-4 px-6 text-center">
@@ -449,7 +451,7 @@ export default function ValplastDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(suitableCases || []).map((case_) => {
+            {suitableCases.map((case_) => {
               const Icon = case_.icon;
               return (
                 <Card key={case_.title} className="text-center hover:shadow-lg transition-shadow">
@@ -481,7 +483,7 @@ export default function ValplastDenturesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {(process || []).map((step, index) => (
+            {process.map((step, index) => (
               <Card key={step.step} className="text-center relative">
                 <CardContent className="p-6">
                   <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
@@ -509,13 +511,13 @@ export default function ValplastDenturesPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Experience Flexible Comfort
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Discover the difference Valplast flexible dentures can make to your comfort
                 and confidence. Book your consultation today for a personalized assessment.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-pink-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-pink-600 hover:bg-white/90 font-semibold">
                   Book Valplast Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -524,7 +526,7 @@ export default function ValplastDenturesPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 {getTreatmentPrice("Valplast Dentures")} per arch • Metal-free • Virtually invisible
               </div>
             </CardContent>

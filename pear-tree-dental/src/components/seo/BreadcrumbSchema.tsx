@@ -1,6 +1,6 @@
-import { ChevronRight, House } from "lucide-react";
-import Link from "next/link";
 import Script from "next/script";
+import Link from "next/link";
+import { ChevronRight, House } from "lucide-react";
 
 interface BreadcrumbItem {
   name: string;
@@ -12,20 +12,17 @@ interface BreadcrumbSchemaProps {
   className?: string;
 }
 
-export default function BreadcrumbSchema({
-  items,
-  className = "",
-}: BreadcrumbSchemaProps) {
-//    Create breadcrumb list schema
+export default function BreadcrumbSchema({ items, className = "" }: BreadcrumbSchemaProps) {
+  // Create breadcrumb list schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
+    "itemListElement": items.map((item, index) => ({
       "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      ...(item.url && { item: `https://peartree.dental${item.url}` }),
-    })),
+      "position": index + 1,
+      "name": item.name,
+      ...(item.url && { "item": `https://peartree.dental${item.url}` })
+    }))
   };
 
   return (
@@ -35,7 +32,7 @@ export default function BreadcrumbSchema({
         id="breadcrumb-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
+          __html: JSON.stringify(breadcrumbSchema)
         }}
       />
 
@@ -59,10 +56,7 @@ export default function BreadcrumbSchema({
 
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
-              <ChevronRight
-                className="w-4 h-4 mx-2 text-gray-400"
-                aria-hidden="true"
-              />
+              <ChevronRight className="w-4 h-4 mx-2 text-gray-400" aria-hidden="true" />
               {item.url && index < items.length - 1 ? (
                 <Link
                   href={item.url}
@@ -72,7 +66,7 @@ export default function BreadcrumbSchema({
                 </Link>
               ) : (
                 <span
-                  className={`${index === items.length - 1 ? "text-pear-primary font-medium" : "text-gray-600"}`}
+                  className={`${index === items.length - 1 ? 'text-pear-primary font-medium' : 'text-gray-600'}`}
                   aria-current={index === items.length - 1 ? "page" : undefined}
                 >
                   {item.name}

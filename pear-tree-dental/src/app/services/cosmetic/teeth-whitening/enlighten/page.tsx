@@ -1,23 +1,24 @@
-import React from "react";
-import {
-  ArrowRight,
-  Award,
-  CheckCircle,
-  ChevronLeft,
-  Clock,
-  Heart, 
-  Shield,
-  Star,
-  Target,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import {
+  Award,
+  Star,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Shield,
+  Zap,
+  Users,
+  ChevronLeft,
+  Target,
+  Heart
+} from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
@@ -146,7 +147,7 @@ export default function EnlightenWhiteningPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50/30 via-white to-yellow-50/30">
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Enlighten Teeth Whitening"
@@ -269,7 +270,7 @@ export default function EnlightenWhiteningPage() {
                   <div className="flex items-center justify-between">
                     <Badge className="bg-orange-500 text-white">Enlighten Guarantee</Badge>
                     <div className="flex space-x-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 text-orange-500 fill-current" />
                       ))}
                     </div>
@@ -279,7 +280,7 @@ export default function EnlightenWhiteningPage() {
                     The only whitening system in the world that can guarantee
                     the whitest natural tooth shade - B1.
                   </p>
-                  <div className="bg-white p-4 rounded-lg">
+                  <div className="bg-white/50 p-4 rounded-lg">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-orange-600">100%</div>
                       <div className="text-sm text-gray-600">Success Rate to B1 Shade</div>
@@ -306,7 +307,7 @@ export default function EnlightenWhiteningPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(features || []).map((feature) => {
+            {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <Card
@@ -345,7 +346,7 @@ export default function EnlightenWhiteningPage() {
           </div>
 
           <div className="space-y-8 max-w-4xl mx-auto">
-            {(process || []).map((phase, index) => (
+            {process.map((phase, index) => (
               <Card key={phase.phase} className="overflow-hidden">
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -363,7 +364,7 @@ export default function EnlightenWhiteningPage() {
                     </div>
                     <div className="lg:col-span-2">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {(phase.details || []).map((detail, idx) => (
+                        {phase.details.map((detail, idx) => (
                           <div key={idx} className="flex items-center space-x-2">
                             <CheckCircle className="w-4 h-4 text-orange-600 flex-shrink-0" />
                             <span className="text-sm text-gray-700">{detail}</span>
@@ -393,7 +394,7 @@ export default function EnlightenWhiteningPage() {
               </p>
 
               <div className="space-y-4">
-                {(benefits || []).map((benefit, index) => (
+                {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <CheckCircle className="w-5 h-5 text-orange-600 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{benefit}</span>
@@ -419,20 +420,20 @@ export default function EnlightenWhiteningPage() {
                   <div className="text-center">
                     <Award className="w-16 h-16 text-white mx-auto mb-4" />
                     <h3 className="text-2xl font-semibold mb-2">Gold Standard</h3>
-                    <p className="text-white">
+                    <p className="text-white/90">
                       Enlighten is the only whitening system that guarantees
                       a B1 shade result every time.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white">
+                  <div className="grid grid-cols-2 gap-4 pt-6 border-t border-white/20">
                     <div className="text-center">
                       <div className="text-3xl font-bold">B1</div>
-                      <div className="text-sm text-white">Guaranteed Shade</div>
+                      <div className="text-sm text-white/80">Guaranteed Shade</div>
                     </div>
                     <div className="text-center">
                       <div className="text-3xl font-bold">3+</div>
-                      <div className="text-sm text-white">Years Results</div>
+                      <div className="text-sm text-white/80">Years Results</div>
                     </div>
                   </div>
                 </div>
@@ -450,13 +451,13 @@ export default function EnlightenWhiteningPage() {
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready for Guaranteed Results?
               </h2>
-              <p className="text-white text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
                 Experience the only whitening system that guarantees a B1 shade.
                 Book your Enlighten consultation today and discover the difference.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white font-semibold">
+                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
                   Book Enlighten Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
@@ -465,7 +466,7 @@ export default function EnlightenWhiteningPage() {
                 </Button>
               </div>
 
-              <div className="text-sm text-white">
+              <div className="text-sm text-white/80">
                 Investment: {getTreatmentPrice("Enlighten Whitening")} • B1 Shade Guaranteed • 3+ Year Results
               </div>
             </CardContent>

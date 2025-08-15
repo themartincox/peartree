@@ -1,4 +1,4 @@
-import type React from "react";
+import type React from 'react';
 
 interface PriceComparisonTooltipProps {
   planPrice: number;
@@ -13,7 +13,7 @@ export default function PriceComparisonTooltip({
   normalPrice,
   savings,
   planName,
-  children,
+  children
 }: PriceComparisonTooltipProps) {
   return (
     <div className="group relative inline-block">
