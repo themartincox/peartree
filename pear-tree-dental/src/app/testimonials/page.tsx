@@ -239,14 +239,14 @@ export default function TestimonialsPage() {
         duration="Read at your own pace"
         preparation="Browse by treatment type or read all reviews"
         recovery="Immediate confidence boost from reading success stories"
-        benefits={([
+        benefits={[
           "See real patient results",
           "Build confidence in treatment decisions",
           "Learn from other patient experiences",
           "Understand treatment outcomes",
           "Find similar cases to yours"
         ]}
-        risks={([
+        risks={[
           "Individual results may vary",
           "Not all treatments suitable for everyone"
         ]}

@@ -178,14 +178,14 @@ export default function HybridDenturesPage() {
         duration="4-5 appointments over 4-6 weeks"
         preparation="Comprehensive assessment, advanced planning, multiple impressions"
         recovery="Immediate wear, optimization period 2-4 weeks"
-        benefits={([
+        benefits={[
           "Superior strength and durability",
           "Exceptional comfort and fit",
           "Premium aesthetic appearance",
           "Advanced multi-material construction",
           "Customized to individual needs"
         ]}
-        risks={([
+        risks={[
           "Higher investment required",
           "Complex manufacturing process",
           "Requires expert craftsmanship",

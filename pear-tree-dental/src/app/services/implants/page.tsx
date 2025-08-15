@@ -86,14 +86,14 @@ export default function ImplantsPage(): React.JSX.Element {
         duration="3-6 months total treatment time"
         preparation="Comprehensive assessment, 3D imaging, treatment planning"
         recovery="3-6 months healing period for osseointegration"
-        benefits={([
+        benefits={[
           "98% success rate",
           "25+ year lifespan",
           "Preserves jawbone",
           "Natural function and appearance",
           "No impact on adjacent teeth"
         ]}
-        risks={([
+        risks={[
           "Infection (rare with proper care)",
           "Implant rejection (very rare)",
           "Sinus problems (upper jaw only)",

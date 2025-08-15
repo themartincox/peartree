@@ -240,14 +240,14 @@ export default function SmileGalleryPage() {
         duration="Browse at your own pace"
         preparation="Filter by treatment type to find results similar to your needs"
         recovery="Immediate inspiration for your own smile journey"
-        benefits={([
+        benefits={[
           "See real patient results",
           "Visualize potential outcomes",
           "Build confidence in treatments",
           "Find similar cases to yours",
           "Understand treatment possibilities"
         ]}
-        risks={([
+        risks={[
           "Individual results may vary",
           "Not all outcomes are typical",
           "Consultation required for personalized assessment"

@@ -177,14 +177,14 @@ export default function PartialDenturesPage() {
         duration="2-3 appointments over 2-3 weeks"
         preparation="Dental examination, impressions, bite registration"
         recovery="Adjustment period 1-2 weeks"
-        benefits={([
+        benefits={[
           "Preserves remaining natural teeth",
           "Restores chewing and speaking function",
           "Prevents teeth shifting",
           "Affordable tooth replacement",
           "Improves facial support"
         ]}
-        risks={([
+        risks={[
           "Initial adjustment period",
           "May need periodic adjustments",
           "Clasps may be visible",

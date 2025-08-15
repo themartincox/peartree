@@ -82,14 +82,14 @@ export default function GeneralDentistryPage() {
         duration="30-60 minutes per appointment"
         preparation="No special preparation required for routine check-ups"
         recovery="No recovery time needed for check-ups and cleanings"
-        benefits={([
+        benefits={[
           "Early problem detection",
           "Prevent serious dental issues",
           "Maintain oral health",
           "NHS and private options",
           "Family-friendly care"
         ]}
-        risks={([
+        risks={[
           "Minimal risks for routine care",
           "Slight sensitivity after cleaning",
           "Very rare allergic reactions to materials"

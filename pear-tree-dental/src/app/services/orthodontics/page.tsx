@@ -115,14 +115,14 @@ export default function OrthodonticsPage() {
         duration="6-18 months treatment time"
         preparation="Digital impressions, treatment planning, aligner fabrication"
         recovery="No recovery needed - continue normal activities"
-        benefits={([
+        benefits={[
           "95% invisible treatment",
           "Removable for eating and cleaning",
           "No food restrictions",
           "Comfortable smooth plastic",
           "Shorter treatment time than braces"
         ]}
-        risks={([
+        risks={[
           "Temporary speech changes initially",
           "Mild discomfort with new aligners",
           "Requires patient compliance",
