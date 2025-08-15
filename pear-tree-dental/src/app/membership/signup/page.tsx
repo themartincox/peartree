@@ -739,12 +739,12 @@ export default function MembershipSignupPage() {
                               <div className="text-xs opacity-70 mt-1">Best value for families</div>
                             </div>
                             <div className="space-y-2">
-                              {plans.(family.features || []).map((feature, index) => (
-                                <div key={index} className="flex items-start space-x-2">
-                                  <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-white" />
-                                  <span className="text-sm text-white">{feature}</span>
-                                </div>
-                              ))}
+{ (plans.family.features || []).map((feature, index) => (
+  <div key={index} className="flex items-start space-x-2">
+    <CheckCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-white" />
+    <span className="text-sm text-white">{feature}</span>
+  </div>
+)) }
                             </div>
                           </div>
                         )}
