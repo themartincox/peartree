@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
+
 import Footer from "@/components/Footer";
 import LocationDetection from "@/components/LocationDetection";
 import Navigation from "@/components/Navigation";
@@ -12,19 +13,17 @@ import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
- Optimize Google Fonts loading with font-display: swap
+// Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
   display: "swap",
   variable: "--font-cormorant",
 });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
   variable: "--font-montserrat",
 });
@@ -120,67 +119,28 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* DNS Prefetch for faster font loading */}
-        <link rel="dns-prefetch" href="fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
         {/* Preconnect for critical font resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Preload critical images for LCP optimization */}
-        <link
-          rel="preload"
-          as="image"
-          href="/images/dental-practice-hero-burton-joyce.webp"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/general-dental-checkup.webp"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="/images/cosmetic-dentistry-services.webp"
-        />
+        <link rel="preload" as="image" href="/images/dental-practice-hero-burton-joyce.webp" />
+        <link rel="preload" as="image" href="/images/general-dental-checkup.webp" />
+        <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
 
         <link rel="canonical" href="https://peartree.dental" />
 
-        {/* Favicon Links - Complete Suite */}
+        {/* Favicons */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/android-chrome-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="512x512"
-          href="/android-chrome-512x512.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
         <meta name="theme-color" content="#09394d" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -200,10 +160,7 @@ export default function RootLayout({
           name="business-hours"
           content="Monday-Thursday: 8:45AM-5:00PM, Friday: 8:00AM-3:30PM, Saturday-Sunday: Closed"
         />
-        <meta
-          name="payment-accepted"
-          content="Cash, Credit Card, NHS, Private Insurance"
-        />
+        <meta name="payment-accepted" content="Cash, Credit Card, NHS, Private Insurance" />
         <meta name="rating" content="4.9" />
         <meta name="review-count" content="460" />
         <meta
@@ -212,23 +169,15 @@ export default function RootLayout({
         />
 
         {/* Medical Practice Meta Tags */}
-        <meta
-          name="medical-specialty"
-          content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery"
-        />
-        <meta
-          name="healthcare-provider"
-          content="NHS and Private Dental Practice"
-        />
+        <meta name="medical-specialty" content="General Dentistry, Cosmetic Dentistry, Orthodontics, Oral Surgery" />
+        <meta name="healthcare-provider" content="NHS and Private Dental Practice" />
         <meta name="emergency-services" content="Available" />
 
         <LocalBusinessSchema includeDentistSpecific={true} />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
-        <ServiceAreaSchema
-          primaryLocation="Nottingham"
-          specialization="Dental Care"
-        />
+        <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
+
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
@@ -256,21 +205,8 @@ export default function RootLayout({
         <main id="main-content" className="min-h-screen" role="main">
           <PageTransition>{children}</PageTransition>
         </main>
+
         <Footer />
-
-        {/* Communication Widgets - Currently Deactivated */}
-        {/*
-        <LiveChatWidget
-          position="bottom-left"
-        />
-
-        <WhatsAppWidget
-          phoneNumber="447525114953"
-          position="bottom-right"
-        />
-        */}
-
-        {/* Location Detection Widget */}
         <LocationDetection />
       </body>
     </html>

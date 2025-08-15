@@ -162,7 +162,7 @@ export default function GeneralDentistryPage() {
               {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto">
+                  <Button size="lg" className="bg-dental-green hover:bg-dental-green text-white font-semibold group w-full sm:w-auto">
                     <CalendarDays className="w-5 h-5 mr-2" />
                     Book Check-up
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -280,14 +280,14 @@ export default function GeneralDentistryPage() {
             ] || []).map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green border-2 border-dental-green hover:border-dental-green hover:shadow-xl hover:shadow-dental-green hover:scale-105 transition-all duration-300 group cursor-pointer">
+                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green to-dental-green border-2 border-dental-green hover:border-dental-green hover:shadow-xl hover:shadow-dental-green hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                         <Icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-pear-primary/80 transition-colors duration-300">{service.title}</h3>
+                        <h3 className="font-bold text-lg text-pear-primary group-hover:text-pear-primary transition-colors duration-300">{service.title}</h3>
                       </div>
                     </div>
                     <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{service.description}</p>
@@ -299,7 +299,7 @@ export default function GeneralDentistryPage() {
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-3 border-t border-dental-green group-hover:border-dental-green/40 transition-colors duration-300">
+                    <div className="pt-3 border-t border-dental-green group-hover:border-dental-green transition-colors duration-300">
                       <div className="text-pear-primary font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
@@ -345,7 +345,7 @@ export default function GeneralDentistryPage() {
                   return (
                     <div key={index} className="flex space-x-4">
                       <div className="w-12 h-12 bg-dental-green rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-6 h-6 text-dental-green" />
+                        <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
@@ -374,31 +374,26 @@ export default function GeneralDentistryPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
+      <section className="py-16 bg-gradient-to-r from-pear-primary to-pear-primary text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
               Book Your Check-up Today
             </h2>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 text-white">
               Regular dental check-ups are the foundation of good oral health.
               Book your appointment today and take the first step toward a healthier smile.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/book">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
-                  <CalendarDays className="w-5 h-5 mr-2" />Book Appointment
-                </Button>
-              </Link>
-              <Link href="/book">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-pear-primary hover:bg-white font-semibold">
                   <CalendarDays className="w-5 h-5 mr-2" />
-                  Book Consultation
+                  Book Appointment
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" className="bg-white text-pear-primary hover:bg-white/90 font-semibold">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
                 </Button>
@@ -406,7 +401,7 @@ export default function GeneralDentistryPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white/80">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-white">
               <div className="flex items-center justify-center space-x-2">
                 <Users className="w-4 h-4" />
                 <span>Family-friendly practice</span>
