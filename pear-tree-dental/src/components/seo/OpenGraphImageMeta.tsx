@@ -17,7 +17,7 @@ export default function OpenGraphImageMeta({
   locationName,
   url,
 }: OpenGraphImageMetaProps) {
-   Generate dynamic image URL based on page type
+//    Generate dynamic image URL based on page type
   const getImageUrl = () => {
     const baseUrl = "https://peartree.dental/api/og";
     const params = new URLSearchParams({
@@ -30,7 +30,7 @@ export default function OpenGraphImageMeta({
     return `${baseUrl}?${params.toString()}`;
   };
 
-   Fallback images for different page types
+//    Fallback images for different page types
   const getFallbackImage = () => {
     switch (pageType) {
       case "service":
@@ -83,7 +83,7 @@ export default function OpenGraphImageMeta({
   );
 }
 
- Service-specific image configurations
+//  Service-specific image configurations
 export const serviceImageConfigs = {
   "teeth-whitening": {
     color: "#FFD700",

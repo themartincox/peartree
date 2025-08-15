@@ -21,14 +21,14 @@ DIRECT DEBIT GUARANTEE
 
 Originator's Identification Number: 575171
 
-Instructions to your Bank or Building Society
+// Instructions to your Bank or Building Society
 Please pay Membership Plans Limited Direct Debits from account detailed in this instruction subject to the safeguards assumed by the Direct Debit Guarantee. I understand that this instruction may remain with Membership Plans Limited and, if so, details will be passed electronically to my Bank/Building Society.
 
-Banks and Building Societies may not accept Direct Debit Instructions for some types of account.
+// Banks and Building Societies may not accept Direct Debit Instructions for some types of account.
 
 DD15 The Direct Debit Guarantee
 
-• This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.
+// • This Guarantee is offered by all Banks and Building Societies that accept instructions to pay Direct Debits.
 
 • If there are any changes to the amount, date or frequency of your Direct Debit, Membership Plans Limited will notify you 10 working days in advance of your account being debited or as otherwise agreed. If you request Membership Plans Limited to collect a payment, confirmation of the amount and date will be given at the time of the request.
 
@@ -36,7 +36,7 @@ DD15 The Direct Debit Guarantee
 
 • If you receive a refund you are not entitled to, you must pay it back when Membership Plans Limited asks you to.
 
-• You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please notify us.
+// • You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please notify us.
 
 Membership Plans Ltd trading as Lloyd & Whyte Flexiplan is registered in England No 06322047. Registered Office: Affinity House, Bindon Road, Taunton, TA2 6AA.
     `;

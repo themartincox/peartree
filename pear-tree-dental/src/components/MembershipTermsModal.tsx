@@ -20,15 +20,15 @@ export default function MembershipTermsModal({
 MEMBERSHIP TERMS AND CONDITIONS
 Pear Tree Dental Centre
 
-1. Fees payable by the Patient
+// 1. Fees payable by the Patient
 
-1.1 The Patient will pay the Practice a Monthly Fee as stated overleaf for the Services listed in 2.2 below.
+// 1.1 The Patient will pay the Practice a Monthly Fee as stated overleaf for the Services listed in 2.2 below.
 
 1.2 Payments will be taken by Direct Debit, through Membership Plans Limited, part of Lloyd & Whyte Group Ltd (MP), who administer the Direct Debit facility on behalf of the Practice.
 
 1.3 The first payment may be taken up to 2 months after the date of this Agreement due to administrative reasons and will consist of a "double payment" to include payment for the first and second month.
 
-2. Services provided by the Practice
+// 2. Services provided by the Practice
 
 2.1 In consideration of the Fees outlined in 1.1 above, the Practice agrees to provide the Services described in 2.2 below either through the Dentist or by a suitably qualified partner, member of staff, deputy or locum.
 
@@ -38,46 +38,46 @@ Adult Plans:
 
 Plan A
 1 Exam
-1 Scale & Polish
+// 1 Scale & Polish
 £10.95 per month
 
 Plan B
 2 Exams
-1 Scale & Polish
+// 1 Scale & Polish
 £15.95 per month
 
 Plan C
 2 Exams
-2 Scale & Polish
+// 2 Scale & Polish
 £19.95 per month
 
 Plan D
-2 Dental check ups a year
-2 Scale & Polishes a year
+// 2 Dental check ups a year
+// 2 Scale & Polishes a year
 1 Free emergency appt a year
-50% off stain removal
+// 50% off stain removal
 £25.95 per month
 
 Plan E
-2 Dental check ups a year
-4 Scale & Polishes a year
+// 2 Dental check ups a year
+// 4 Scale & Polishes a year
 1 Free emergency appt a year
-50% off stain removal
+// 50% off stain removal
 £29.95 per month
 
 2.3 For the purpose of clause 2.2, 12 months will run from the Date of Commencement and each anniversary of that date.
 
-2.4 The Fees paid under this Agreement do not cover the costs associated with treatment which has been specifically agreed to be excluded between you and the Practice. This would be charged separately.
+// 2.4 The Fees paid under this Agreement do not cover the costs associated with treatment which has been specifically agreed to be excluded between you and the Practice. This would be charged separately.
 
-3. Responsibilities of the Patient
+// 3. Responsibilities of the Patient
 
 3.1 You must pay the Monthly Fee. If the Direct Debit cannot be taken, then all benefits under the Plan will cease from the date it was due to be taken.
 
 3.2 You are responsible for ensuring that you make appointments with the Practice. There will be no refunds for any "unused" Services, nor can they be carried forward from one year to another.
 
-3.3 You must keep appointments made with the Practice or pay the appropriate missed appointment fee.
+// 3.3 You must keep appointments made with the Practice or pay the appropriate missed appointment fee.
 
-4. Administration
+// 4. Administration
 
 4.1 Administration of this scheme is undertaken (on behalf of the Practice) by L&W. By signing this Agreement you consent to these companies using the data you provide in order to complete such administration, but your personal details will not be used by them for any other reason.
 
@@ -85,22 +85,22 @@ Plan E
 
 5. Complaints
 
-5.1 Any complaints should be made in writing to the Practice. Such complaints will be treated fairly and promptly.
+// 5.1 Any complaints should be made in writing to the Practice. Such complaints will be treated fairly and promptly.
 
-6. Changes to the Plan
+// 6. Changes to the Plan
 
 6.1 The Practice may change the Fees payable or extent of Services provided under this Agreement at any time. The Patient will always be given as least one month's Notice of such changes. Under normal circumstances Fees would only be changed once each year.
 
-6.2 Any Notice will be deemed to be valid if sent to your last known preferred method of contact.
+// 6.2 Any Notice will be deemed to be valid if sent to your last known preferred method of contact.
 
-7. Termination of this Agreement
+// 7. Termination of this Agreement
 
 7.1 Either the Practice or Patient can terminate the Agreement at any time, with one month's Notice.
 
 7.2 If Direct Debits cannot be taken from the Patient, then the Patient will be deemed to have terminated this Agreement.
 
 7.3 On termination of this Agreement:
-• All Services will cease immediately.
+// • All Services will cease immediately.
 • If less than 12 months have passed since the commencement of this Agreement, and termination is by the Patient rather than the Practice, then the Patient will be responsible for paying any difference between the amount of Fees paid and the Practice's standard costs for Services used.
 • There will be no refund for any "unused" Services.
 
@@ -110,9 +110,9 @@ Plan E
 
 8.1 If the Patient moves to a different Practice, then this Agreement will terminate. This Agreement is not transferable.
 
-9. Governing Law & Jurisdiction
+// 9. Governing Law & Jurisdiction
 
-9.1 This Agreement is governed by and constructed in accordance with English Law and the parties hereby irrevocably submit to the exclusive jurisdiction of the English Courts.
+// 9.1 This Agreement is governed by and constructed in accordance with English Law and the parties hereby irrevocably submit to the exclusive jurisdiction of the English Courts.
 
 10. Data Protection
 

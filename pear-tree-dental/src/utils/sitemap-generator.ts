@@ -215,7 +215,7 @@ const ROUTE_CONFIGS: RouteConfig[] = [
 ];
 
 /**
- * Scans the app directory to find all routes
+//  * Scans the app directory to find all routes
  */
 export async function scanAppDirectory(appDir: string): Promise<string[]> {
   const routes: string[] = [];
@@ -250,7 +250,7 @@ export async function scanAppDirectory(appDir: string): Promise<string[]> {
 }
 
 /**
- * Gets route configuration for a given route
+//  * Gets route configuration for a given route
  */
 function getRouteConfig(route: string): RouteConfig {
   // Find exact match first
@@ -271,7 +271,7 @@ function getRouteConfig(route: string): RouteConfig {
 }
 
 /**
- * Gets the last modified date for a route
+//  * Gets the last modified date for a route
  */
 async function getLastModDate(route: string, appDir: string): Promise<string> {
   try {
@@ -288,7 +288,7 @@ async function getLastModDate(route: string, appDir: string): Promise<string> {
 }
 
 /**
- * Generates sitemap URLs from routes
+//  * Generates sitemap URLs from routes
  */
 export async function generateSitemapUrls(
   routes: string[],
@@ -317,7 +317,7 @@ export async function generateSitemapUrls(
 }
 
 /**
- * Generates XML sitemap content
+//  * Generates XML sitemap content
  */
 export function generateSitemapXML(urls: SitemapUrl[]): string {
   const xmlHeader = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -340,7 +340,7 @@ export function generateSitemapXML(urls: SitemapUrl[]): string {
 }
 
 /**
- * Reads existing sitemap content
+//  * Reads existing sitemap content
  */
 export async function readExistingSitemap(
   sitemapPath: string,
@@ -353,7 +353,7 @@ export async function readExistingSitemap(
 }
 
 /**
- * Writes sitemap to file
+//  * Writes sitemap to file
  */
 export async function writeSitemap(
   sitemapPath: string,
@@ -363,7 +363,7 @@ export async function writeSitemap(
 }
 
 /**
- * Main function to update sitemap if changes detected
+//  * Main function to update sitemap if changes detected
  */
 export async function updateSitemapIfChanged(
   appDir: string,
@@ -414,7 +414,7 @@ export async function updateSitemapIfChanged(
 }
 
 /**
- * Get sitemap statistics
+//  * Get sitemap statistics
  */
 export async function getSitemapStats(appDir: string): Promise<{
   totalRoutes: number;

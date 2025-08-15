@@ -293,7 +293,7 @@ export default function MedicalPracticeSchema({
     },
   };
 
-   Add specific service schema if provided
+//    Add specific service schema if provided
   if (serviceName && serviceDescription) {
      biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
      eslint-disable-next-line @typescript-eslint/no-explicit-any

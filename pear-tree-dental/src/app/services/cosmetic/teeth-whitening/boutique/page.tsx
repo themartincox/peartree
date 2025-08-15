@@ -11,7 +11,7 @@ import {
   Shield,
   Sparkles, 
   Star,
-  Users
+//   Users
 } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -551,4 +551,3 @@ export default function BoutiqueWhiteningPage() {
       <ServiceNavigation />
     </div>
   );
-}

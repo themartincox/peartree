@@ -126,7 +126,7 @@ export default function WelcomingLoader({
   );
 }
 
- Export specific variants for easy use
+//  Export specific variants for easy use
 export const HappyPatientLoader = (
   props: Omit<WelcomingLoaderProps, "variant">,
 ) => <WelcomingLoader {...props} variant="happy-patient" />;

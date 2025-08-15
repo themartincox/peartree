@@ -125,7 +125,7 @@ export default function NottinghamTransportSchema({
     },
   };
 
-   Nottingham specific journey data
+//    Nottingham specific journey data
   const nottinghamJourneySchema = {
     "@context": "https://schema.org",
     "@type": "Guide",

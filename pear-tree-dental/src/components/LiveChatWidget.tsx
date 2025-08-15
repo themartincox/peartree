@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 
- Avatar component not used to avoid import issues
+//  Avatar component not used to avoid import issues
 
 interface Message {
   id: string;

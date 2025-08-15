@@ -2,8 +2,8 @@
 export type Variant = "A" | "B" | "C";
 
 /**
- * Get the current A/B test variant from server-side headers
- * This function works in Server Components and API routes
+//  * Get the current A/B test variant from server-side headers
+//  * This function works in Server Components and API routes
  */
 export async function getVariant(): Promise<Variant> {
   try {
@@ -26,7 +26,7 @@ export async function getVariant(): Promise<Variant> {
 
 /**
  * Get variant from cookies (client-side compatible)
- * Used for client components and browser environments
+//  * Used for client components and browser environments
  */
 export function getVariantFromCookies(): Variant | null {
   if (typeof document === "undefined") return null;
@@ -42,8 +42,8 @@ export function getVariantFromCookies(): Variant | null {
 }
 
 /**
- * Track A/B test variant assignment
- * Works in both server and client environments
+//  * Track A/B test variant assignment
+//  * Works in both server and client environments
  */
 export function trackVariantAssignment(variant: Variant, isServerSide = false) {
   const data = {
@@ -84,7 +84,7 @@ export function trackVariantAssignment(variant: Variant, isServerSide = false) {
 }
 
 /**
- * Variant-specific metadata for SEO optimization
+//  * Variant-specific metadata for SEO optimization
  */
 export function getVariantMetadata(variant: Variant) {
   const baseMetadata = {
@@ -129,14 +129,14 @@ export function getVariantMetadata(variant: Variant) {
 }
 
 /**
- * Check if variant should show welcome screen
+//  * Check if variant should show welcome screen
  */
 export function shouldShowWelcomeScreen(variant: Variant): boolean {
   return variant === "B" || variant === "C";
 }
 
 /**
- * Get variant-specific CSS classes
+//  * Get variant-specific CSS classes
  */
 export function getVariantClasses(variant: Variant): string {
   return `ab-variant-${variant.toLowerCase()}`;
@@ -151,7 +151,7 @@ interface TrackingData {
 }
 
 /**
- * Server-side analytics tracking for API routes
+//  * Server-side analytics tracking for API routes
  */
 export async function trackServerSideEvent(
   event: string,

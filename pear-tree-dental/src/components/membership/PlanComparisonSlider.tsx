@@ -83,7 +83,7 @@ export default function PlanComparisonSlider() {
   const [selectedPlan, setSelectedPlan] = useState(plans[1]);
   const [isAnimating, setIsAnimating] = useState(false);
 
-   Convert slider value to a plan
+//    Convert slider value to a plan
   useEffect(() => {
     const planIndex = Math.min(
       Math.floor(sliderValue[0] / (100 / plans.length)),
@@ -103,7 +103,7 @@ export default function PlanComparisonSlider() {
     return `£${price.toFixed(2)}`;
   };
 
-   Format as pence
+//    Format as pence
   const formatPence = (price: number) => {
     return `${(price * 100).toFixed(0)}p`;
   };

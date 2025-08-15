@@ -119,7 +119,7 @@ export default function EnhancedServiceSchema({
     ],
   };
 
-   Add medical procedure specific data
+//    Add medical procedure specific data
   if (procedureType === "MedicalProcedure") {
     Object.assign(baseData, {
       procedureType: "Dental",

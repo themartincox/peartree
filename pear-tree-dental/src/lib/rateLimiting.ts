@@ -1,6 +1,6 @@
 /**
  * Rate Limiting Utilities
- * Prevents abuse and spam submissions
+//  * Prevents abuse and spam submissions
  */
 
 interface RateLimitEntry {
@@ -26,7 +26,7 @@ const RATE_LIMITS = {
 };
 
 /**
- * Get client IP from request
+//  * Get client IP from request
  */
 export function getClientIP(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -38,7 +38,7 @@ export function getClientIP(request: Request): string {
 }
 
 /**
- * Check if request is rate limited
+//  * Check if request is rate limited
  */
 export function isRateLimited(
   identifier: string,
@@ -82,7 +82,7 @@ export function isRateLimited(
 }
 
 /**
- * Security headers for API responses
+//  * Security headers for API responses
  */
 export function getSecurityHeaders(): { [key: string]: string } {
   return {
@@ -96,7 +96,7 @@ export function getSecurityHeaders(): { [key: string]: string } {
 }
 
 /**
- * Validate request origin and method
+//  * Validate request origin and method
  */
 export function validateRequest(request: Request): {
   valid: boolean;
@@ -131,7 +131,7 @@ export function validateRequest(request: Request): {
 }
 
 /**
- * Enhanced request validation for membership submissions
+//  * Enhanced request validation for membership submissions
  */
 export function validateMembershipRequest(request: Request): {
   valid: boolean;

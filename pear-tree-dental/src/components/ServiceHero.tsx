@@ -29,7 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 
- Icon mapping to resolve string names to components
+//  Icon mapping to resolve string names to components
 const iconMap = {
   ArrowRight,
   CheckCircle,
@@ -53,12 +53,12 @@ const iconMap = {
 };
 
 interface ServiceHeroProps {
-   Basic content
+//    Basic content
   title: string;
   subtitle?: string;
   description: string;
 
-   Visual elements
+//    Visual elements
   heroImage?: string;
   heroVideo?: string;
   heroVideoType?: "mp4" | "webm";
@@ -85,7 +85,7 @@ interface ServiceHeroProps {
     icon?: string;
   };
 
-   Trust indicators
+//    Trust indicators
   trustIndicators?: Array<{
     icon: string;
     text: string;
@@ -170,7 +170,7 @@ export default function ServiceHero({
     trackLocationConversion,
   } = useConversionTracking();
 
-   Memoize service type for tracking
+//    Memoize service type for tracking
   const serviceType = useMemo(() => {
     const titleLower = title.toLowerCase();
     if (titleLower.includes("emergency") || titleLower.includes("urgent"))
@@ -192,7 +192,7 @@ export default function ServiceHero({
     return "general";
   }, [title]);
 
-   Helper function to get icon component from string
+//    Helper function to get icon component from string
   const getIcon = (iconName: string | undefined) => {
     if (!iconName) return Circle;
     return iconMap[iconName as keyof typeof iconMap] || Circle;

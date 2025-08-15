@@ -7,7 +7,7 @@ interface LiveGoogleRatingWidgetProps {
 }
 
 const LiveGoogleRatingWidget = ({ onClick }: LiveGoogleRatingWidgetProps) => {
-   Using the actual rating from Google
+//    Using the actual rating from Google
   const rating = 4.9;
   const reviewCount = "over 415";
 

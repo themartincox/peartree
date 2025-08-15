@@ -12,7 +12,7 @@ import {
   Sparkles,
   Star,
   TrendingUp, 
-  Users
+//   Users
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
 };
 
 export default function OrthodonticsPage() {
-   Consolidated FAQs including both general practice and orthodontics-specific questions
+//    Consolidated FAQs including both general practice and orthodontics-specific questions
   const orthodonticsFAQs = [
     {
       question: "Where is the nearest dentist in Burton Joyce?",

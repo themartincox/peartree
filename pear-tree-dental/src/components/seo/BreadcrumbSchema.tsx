@@ -16,7 +16,7 @@ export default function BreadcrumbSchema({
   items,
   className = "",
 }: BreadcrumbSchemaProps) {
-   Create breadcrumb list schema
+//    Create breadcrumb list schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

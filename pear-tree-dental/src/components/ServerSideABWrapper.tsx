@@ -12,7 +12,7 @@ export default function ServerSideABWrapper({
   children,
   variant,
 }: ServerSideABWrapperProps) {
-   Add variant-specific CSS classes to the wrapper
+//    Add variant-specific CSS classes to the wrapper
   const wrapperClass = `ab-variant-${variant.toLowerCase()}`;
 
   return (

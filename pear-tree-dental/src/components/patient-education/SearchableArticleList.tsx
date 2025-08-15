@@ -36,7 +36,7 @@ export default function SearchableArticleList({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
 
-   Filter articles based on search query and category
+//    Filter articles based on search query and category
   const filteredArticles = articles.filter((article) => {
     const matchesSearch =
       searchQuery === "" ||

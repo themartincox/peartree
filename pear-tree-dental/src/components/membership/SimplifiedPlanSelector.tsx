@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
- Define the simplified plan data including family plan
+//  Define the simplified plan data including family plan
 const plans = [
   {
     id: "essentials",
@@ -99,7 +99,7 @@ export default function SimplifiedPlanSelector() {
     left: "50%",
   });
 
-   Handle scroll for floating button positioning
+//    Handle scroll for floating button positioning
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;

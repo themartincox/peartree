@@ -74,7 +74,7 @@ const plans = [
   },
 ];
 
- Plan color gradient classes - Using brand colors with complementary bridging
+//  Plan color gradient classes - Using brand colors with complementary bridging
 const planGradientClasses = {
   "plan-a": "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white",  Essential: Green (matches live)
   "plan-b": "bg-gradient-to-r from-teal-400 to-teal-500 text-white",  Routine: Teal bridge (less bold, connects green to dark teal)

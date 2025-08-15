@@ -51,7 +51,7 @@ export default function ServiceFAQSchema({
   );
 }
 
- Common dental service FAQs for reuse
+//  Common dental service FAQs for reuse
 export const commonDentalFAQs = {
   pricing: {
     question: "How much does this treatment cost?",

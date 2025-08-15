@@ -79,7 +79,7 @@ export default function PlanSavingsChart() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-   Find max savings for scaling the chart
+//    Find max savings for scaling the chart
   const maxSavings = Math.max(...plans.map((plan) => plan.savings));
   const maxCost = Math.max(...plans.map((plan) => plan.normalCost));
 

@@ -196,7 +196,7 @@ export default function MembershipSignupPage() {
 
   const currentPlan = selectedPlan ? plans[selectedPlan as keyof typeof plans] : plans.planB;
 
-   Secure input handlers for financial data
+//    Secure input handlers for financial data
   const handleSortCodeChange = (value: string) => {
      Remove all non-numeric characters except hyphens
     let cleaned = value.replace(/[^0-9-]/g, '');
@@ -225,7 +225,7 @@ export default function MembershipSignupPage() {
     handleInputChange("accountNumber", limited);
   };
 
-   Secure input sanitizer for text fields
+//    Secure input sanitizer for text fields
   const sanitizeTextInput = (value: string, fieldName: string): string => {
      Remove potentially dangerous characters and limit length
     const sanitized = value
@@ -248,7 +248,7 @@ export default function MembershipSignupPage() {
     return sanitized.substring(0, maxLength);
   };
 
-   Base handleInputChange function
+//    Base handleInputChange function
   const handleInputChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({
       ...prev,
@@ -256,7 +256,7 @@ export default function MembershipSignupPage() {
     }));
   };
 
-   Enhanced handleInputChange with security
+//    Enhanced handleInputChange with security
   const secureHandleInputChange = (field: string, value: string | boolean) => {
     if (typeof value === 'string') {
        Apply sanitization to text inputs
@@ -474,7 +474,7 @@ export default function MembershipSignupPage() {
     }));
   };
 
-   Handle plan selection from URL parameters
+//    Handle plan selection from URL parameters
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const planParam = urlParams.get("plan");
@@ -498,7 +498,7 @@ export default function MembershipSignupPage() {
     }
   }, []);
 
-   Check if user is accessing from clinic IP
+//    Check if user is accessing from clinic IP
   useEffect(() => {
     const checkClinicAccess = async () => {
       try {
@@ -518,7 +518,7 @@ export default function MembershipSignupPage() {
     checkClinicAccess();
   }, []);
 
-   Scroll to top when step changes for better UX
+//    Scroll to top when step changes for better UX
   useEffect(() => {
      Small delay to ensure DOM has updated before scrolling
     const scrollToTop = () => {

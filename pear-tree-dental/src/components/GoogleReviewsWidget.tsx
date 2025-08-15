@@ -24,7 +24,7 @@ const GoogleReviewsWidget = () => {
    Check if we're on the homepage
   const isHomepage = pathname === "/";
 
-   Genuine 5-star Google Reviews
+//    Genuine 5-star Google Reviews
   const reviews: Review[] = [
     {
       id: "1",
@@ -77,7 +77,7 @@ const GoogleReviewsWidget = () => {
     },
   ];
 
-   Auto-rotate reviews with pause functionality
+//    Auto-rotate reviews with pause functionality
   useEffect(() => {
     if (!isPaused) {
       const interval = setInterval(() => {
@@ -87,7 +87,7 @@ const GoogleReviewsWidget = () => {
     }
   }, [isPaused]);
 
-   Pause on hover functionality
+//    Pause on hover functionality
   const handleMouseEnter = () => {
     setIsPaused(true);
   };

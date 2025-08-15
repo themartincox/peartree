@@ -1,5 +1,5 @@
 /**
- * Comprehensive Input Security and Validation Utilities
+//  * Comprehensive Input Security and Validation Utilities
  * Protects against SQL injection, XSS, CSRF, and other injection attacks
  */
 
@@ -21,7 +21,7 @@ const SORT_CODE_REGEX = /^[0-9]{2}-[0-9]{2}-[0-9]{2}$/;
 const ACCOUNT_NUMBER_REGEX = /^[0-9]{6,8}$/;
 
 /**
- * Sanitizes text input to prevent XSS and injection attacks
+//  * Sanitizes text input to prevent XSS and injection attacks
  */
 export function sanitizeTextInput(input: string): string {
   if (typeof input !== "string") return "";
@@ -42,7 +42,7 @@ export function sanitizeTextInput(input: string): string {
 }
 
 /**
- * Validates and sanitizes email addresses
+//  * Validates and sanitizes email addresses
  */
 export function validateAndSanitizeEmail(email: string): {
   isValid: boolean;
@@ -67,7 +67,7 @@ export function validateAndSanitizeEmail(email: string): {
 }
 
 /**
- * Validates and sanitizes UK phone numbers
+//  * Validates and sanitizes UK phone numbers
  */
 export function validateAndSanitizePhone(phone: string): {
   isValid: boolean;
@@ -98,7 +98,7 @@ export function validateAndSanitizePhone(phone: string): {
 }
 
 /**
- * Validates and sanitizes UK postcodes
+//  * Validates and sanitizes UK postcodes
  */
 export function validateAndSanitizePostcode(postcode: string): {
   isValid: boolean;
@@ -123,7 +123,7 @@ export function validateAndSanitizePostcode(postcode: string): {
 }
 
 /**
- * Validates and sanitizes UK sort codes
+//  * Validates and sanitizes UK sort codes
  */
 export function validateAndSanitizeSortCode(sortCode: string): {
   isValid: boolean;
@@ -154,7 +154,7 @@ export function validateAndSanitizeSortCode(sortCode: string): {
 }
 
 /**
- * Validates and sanitizes UK account numbers
+//  * Validates and sanitizes UK account numbers
  */
 export function validateAndSanitizeAccountNumber(accountNumber: string): {
   isValid: boolean;
@@ -221,7 +221,7 @@ export function validateAndSanitizeName(
 }
 
 /**
- * Comprehensive membership form validation
+//  * Comprehensive membership form validation
  */
 export interface MembershipFormData {
   firstName: string;
@@ -246,7 +246,7 @@ export interface ValidationResult {
 }
 
 /**
- * Validates entire membership form
+//  * Validates entire membership form
  */
 export function validateMembershipForm(
   data: Record<string, unknown>,

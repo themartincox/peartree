@@ -91,7 +91,7 @@ const allServices: ServiceNavItem[] = [
 const ServiceNavigation = () => {
   const pathname = usePathname();
 
-   Find current service index
+//    Find current service index
   const currentIndex = allServices.findIndex(
     (service) => pathname.includes(service.id) || pathname === service.href,
   );

@@ -24,7 +24,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 import { useLocationDetection } from "@/hooks/useLocationDetection";
 
- Memoize membership data to prevent recreation on each render
+//  Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   planA: {
     name: "PLAN A",
@@ -81,13 +81,13 @@ const membershipPlans = {
   },
 };
 
- Nottingham-specific benefits component
+//  Nottingham-specific benefits component
 const NottinghamMembershipBenefits = () => {
   const { isNottingham } = useLocationDetection();
   const { trackLocationConversion } = useConversionTracking();
 
    Only show if we've detected the user is from Nottingham
-   No loading states - just appear seamlessly when detected
+//    No loading states - just appear seamlessly when detected
   if (!isNottingham) return null;
 
   const handleCalculatorClick = () => {
@@ -242,7 +242,7 @@ const MembershipHighlight = () => {
     return { ...plan, Icon: plan.icon };
   }, [activeTab]);
 
-   Handle plan selection with tracking
+//    Handle plan selection with tracking
   const handlePlanSelect = (planKey: string) => {
     setActiveTab(planKey);
     const plan = membershipPlans[planKey as keyof typeof membershipPlans];
@@ -252,7 +252,7 @@ const MembershipHighlight = () => {
     );
   };
 
-   Handle CTA clicks with tracking
+//    Handle CTA clicks with tracking
   const handlePlanDetailsClick = () => {
     trackMembershipPlanSelect(
       `${currentPlan.name}_details_view`,
@@ -272,7 +272,7 @@ const MembershipHighlight = () => {
     trackBookingAttempt("membership_highlight", "booking");
   };
 
-   Memoize tab buttons to prevent recreation
+//    Memoize tab buttons to prevent recreation
   const tabButtons = useMemo(() => {
     return Object.entries(membershipPlans).map(([key, plan]) => {
       const TabIcon = plan.icon;

@@ -47,12 +47,12 @@ const Navigation = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
-   Touch gesture handling for swipe-to-close
+//    Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
   const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
 
-   Swipe gesture detection
+//    Swipe gesture detection
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -111,7 +111,7 @@ const Navigation = () => {
     setIsSwipeIndicatorVisible(false);
   }, []);
 
-   Function to close mobile menu when navigation links are clicked
+//    Function to close mobile menu when navigation links are clicked
   const closeMobileMenu = useCallback(() => {
      Add smooth close animation
     const content = document.querySelector(".mobile-nav-content");
@@ -134,7 +134,7 @@ const Navigation = () => {
     }, 150);
   }, []);
 
-   Load secondary navigation when mobile menu is opened
+//    Load secondary navigation when mobile menu is opened
   useEffect(() => {
     if (isMobileMenuOpen) {
       setShouldLoadSecondaryNav(true);

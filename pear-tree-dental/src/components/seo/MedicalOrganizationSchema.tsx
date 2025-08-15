@@ -216,7 +216,7 @@ export default function MedicalOrganizationSchema({
     ],
   };
 
-   Add page-specific enhancements
+//    Add page-specific enhancements
   if (page === "services" && serviceType) {
      eslint-disable-next-line @typescript-eslint/no-explicit-any
     (baseSchema as any).mainContentOfPage = {

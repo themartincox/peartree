@@ -94,7 +94,7 @@ export default function EmergencyConversionTracking() {
     trackLocationConversion,
   ]);
 
-   Add emergency medical service schema
+//    Add emergency medical service schema
   const emergencySchema = {
     "@context": "https://schema.org",
     "@type": ["EmergencyService", "MedicalBusiness"],

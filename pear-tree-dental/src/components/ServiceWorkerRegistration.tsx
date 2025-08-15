@@ -65,7 +65,7 @@ export default function ServiceWorkerRegistration() {
     }
   };
 
-   PWA Install Prompt
+//    PWA Install Prompt
   const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
 
