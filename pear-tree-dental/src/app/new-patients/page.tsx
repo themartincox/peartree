@@ -186,7 +186,7 @@ export default function NewPatientsPage() {
                     <p className="text-gray-600">
                       22 Nottingham Road<br />
                       Burton Joyce, Nottingham<br />
-                      UK NG14 5AL
+                      UK NG14 5AE
                     </p>
                   </div>
 

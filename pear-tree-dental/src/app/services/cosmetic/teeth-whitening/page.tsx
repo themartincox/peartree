@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import Link from "next/link";
 import VideoHero from "@/components/VideoHero";
 import {
@@ -421,15 +421,26 @@ export default function TeethWhiteningPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl lg:max-w-6xl mx-auto">
-            <BeforeAfterSlider
-              beforeImage="/images/before-after/whitening-composite-edge-bonding-before.JPG"
-              afterImage="/images/before-after/whitening-composite-edge-bonding-after.JPG"
-              beforeAlt="Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections"
-              afterAlt="Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment"
-              title="Professional Whitening & Edge Bonding Results"
-              description="Real patient transformation achieved with our professional whitening system and composite edge bonding"
-              treatmentType="Professional Whitening & Edge Bonding"
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
+                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
+                beforeAlt: "Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections",
+                afterAlt: "Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment",
+                title: "Professional Whitening & Edge Bonding",
+                description: "Real patient transformation achieved with our professional whitening system and composite edge bonding",
+                treatmentType: "Professional Whitening & Edge Bonding"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
+                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
+                beforeAlt: "Before teeth whitening showing stained and discolored teeth",
+                afterAlt: "After professional whitening treatment with brilliant white smile",
+                title: "Enlighten Whitening Results",
+                description: "Guaranteed shade B1 whitening achieved with our premium Enlighten system",
+                treatmentType: "Enlighten Whitening"
+              }}
               className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6"
             />
           </div>

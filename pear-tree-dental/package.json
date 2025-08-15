@@ -13,7 +13,11 @@
     "format": "bunx biome format --write",
     "type-check": "bunx tsc --noEmit",
     "validate-contacts": "node .same/contact-validation-script.js",
-    "pre-deploy-check": "bun run validate-contacts && bun run lint"
+    "pre-deploy-check": "bun run validate-contacts && bun run lint",
+    "sitemap:update": "node scripts/update-sitemap.js",
+    "sitemap:build": "tsc src/utils/sitemap-generator.ts --outDir dist --target es2020 --module esnext --moduleResolution node --allowSyntheticDefaultImports --esModuleInterop",
+    "sitemap:stats": "npm run sitemap:build && node -e \"import('./dist/utils/sitemap-generator.js').then(m => m.getSitemapStats('./src/app').then(console.log))\"",
+    "sitemap:force": "FORCE_UPDATE=true node scripts/update-sitemap.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

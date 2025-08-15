@@ -11,7 +11,7 @@ import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQS
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import {
   Smile,
   Star,
@@ -62,7 +62,7 @@ export default function OrthodonticsPage() {
   const orthodonticsFAQs = [
     {
       question: "Where is the nearest dentist in Burton Joyce?",
-      answer: "Pear Tree Dental is located at 22 Nottingham Road, Burton Joyce, NG14 5AL. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
+      answer: "Pear Tree Dental is located at 22 Nottingham Road, Burton Joyce, NG14 5AE. We're the closest dental practice to Burton Joyce village center, just 2 minutes from the main shops."
     },
     {
       question: "What time does the dentist open?",
@@ -298,29 +298,29 @@ export default function OrthodonticsPage() {
       {/* Before/After Results Section */}
       <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Teeth Straightening Results
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Life-changing transformations with our orthodontic treatments.
-                          </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <BeforeAfterSlider
-              images={[
-                {
-                  beforeSrc: "/images/before-after/BCC-before.png",
-                  afterSrc: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Before orthodontic treatment - buccal corridor correction",
-                  afterAlt: "After orthodontic treatment - improved buccal corridor",
-                  title: "Orthodontic Transformation",
-                  description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
-                  treatment: "Clear Aligners"
-                }
-              ]}
-              className="mb-8"
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              sectionTitle="Teeth Straightening Results"
+              sectionDescription="Life-changing transformations with our orthodontic treatments."
+              primarySlider={{
+                beforeImage: "/images/before-after/BCC-before.png",
+                afterImage: "/images/before-after/BCC-after.png",
+                beforeAlt: "Before orthodontic treatment - buccal corridor correction",
+                afterAlt: "After orthodontic treatment - improved buccal corridor",
+                title: "Orthodontic Transformation",
+                description: "Complete smile transformation showing improved buccal corridor and overall smile aesthetics",
+                treatmentType: "Clear Aligners"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.png",
+                afterImage: "/images/before-after/BCC-after.png",
+                beforeAlt: "Before orthodontic treatment - crowding correction case",
+                afterAlt: "After orthodontic treatment - aligned teeth and improved spacing",
+                title: "Crowding Correction",
+                description: "Effective treatment of severe crowding using advanced clear aligner technology",
+                treatmentType: "Invisalign"
+              }}
+              className="mb-12"
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -675,14 +675,25 @@ export default function OrthodonticsPage() {
             </div>
 
             <div>
-              <BeforeAfterSlider
-                beforeImage="/images/before-after/BCC-before.png"
-                afterImage="/images/before-after/BCC-after.png"
-                beforeAlt="Patient's smile before orthodontic enhancement showing alignment and spacing concerns"
-                afterAlt="Patient's smile after orthodontic treatment showing improved alignment and spacing"
-                title="Orthodontic Smile Enhancement"
-                description="See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments"
-                treatmentType="Clear Aligner Treatment"
+              <BeforeAfterSliderPair
+                primarySlider={{
+                  beforeImage: "/images/before-after/BCC-before.png",
+                  afterImage: "/images/before-after/BCC-after.png",
+                  beforeAlt: "Patient's smile before orthodontic enhancement showing alignment and spacing concerns",
+                  afterAlt: "Patient's smile after orthodontic treatment showing improved alignment and spacing",
+                  title: "Orthodontic Smile Enhancement",
+                  description: "See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments",
+                  treatmentType: "Clear Aligner Treatment"
+                }}
+                secondarySlider={{
+                  beforeImage: "/images/before-after/BCC-before.png",
+                  afterImage: "/images/before-after/BCC-after.png",
+                  beforeAlt: "Before orthodontic treatment showing overbite and misalignment",
+                  afterAlt: "After orthodontic treatment with corrected bite and straight teeth",
+                  title: "Bite Correction Case",
+                  description: "Comprehensive orthodontic treatment addressing both alignment and bite issues",
+                  treatmentType: "ClearCorrect"
+                }}
                 className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6"
               />
             </div>

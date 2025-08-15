@@ -26,7 +26,7 @@ export default function ServiceAreaSchema({
         "streetAddress": "22 Nottingham Road",
         "addressLocality": "Burton Joyce",
         "addressRegion": "Nottinghamshire",
-        "postalCode": "NG14 5AL",
+        "postalCode": "NG14 5AE",
         "addressCountry": "GB"
       }
     },
@@ -226,7 +226,7 @@ export default function ServiceAreaSchema({
         "streetAddress": "22 Nottingham Road",
         "addressLocality": "Burton Joyce",
         "addressRegion": "Nottinghamshire",
-        "postalCode": "NG14 5AL",
+        "postalCode": "NG14 5AE",
         "addressCountry": "GB"
       },
       "geo": {

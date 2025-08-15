@@ -38,7 +38,7 @@ const FAQSection = () => {
         {
           id: "loc1",
           question: "Where is the nearest dentist to me?",
-          answer: "Pear Tree Dental Centre is conveniently located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We're in the heart of Burton Joyce village, just 2 minutes from the main shops and easily accessible from Colwick, Lowdham, and East Bridgford. Free parking available, 5 minutes from A612, with bus routes 100 and 200 nearby."
+          answer: "Pear Tree Dental Centre is conveniently located at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We're in the heart of Burton Joyce village, just 2 minutes from the main shops and easily accessible from Colwick, Lowdham, and East Bridgford. Free parking available, 5 minutes from A612, with bus routes 100 and 200 nearby."
         },
         {
           id: "loc2",
@@ -370,7 +370,7 @@ const FAQSection = () => {
         {
           id: "about11",
           question: "How can I contact the practice?",
-          answer: "You can call us at 0115 931 2935, email hello@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL. We also offer online booking for your convenience."
+          answer: "You can call us at 0115 931 2935, email hello@peartree.dental, or visit us at 22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE. We also offer online booking for your convenience."
         }
       ]
     }

@@ -144,7 +144,7 @@ export default function BeforeAfterSlider({
       <div className="relative">
         <div
           ref={containerRef}
-          className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
+          className="relative aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
@@ -154,8 +154,8 @@ export default function BeforeAfterSlider({
               src={beforeImage}
               alt={beforeAlt}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
               priority
             />
             {/* Before Label */}

@@ -166,12 +166,15 @@ export default function CosmeticDentistryPage() {
       />
 
       {/* Hero Section */}
+      {/* Hero Section with Video and Optimized Placeholder */}
+      {/* Note: heroImage serves as poster/placeholder while video loads for better UX */}
       <ServiceHero
         title="Transform Your"
         subtitle="Smile"
         description="Discover the confidence that comes with a beautiful smile. Our expert cosmetic dentistry treatments combine artistry with advanced techniques to create naturally stunning results."
         heroVideo="/videos/heroes/cosmetic-dentistry-hero.mp4"
         heroVideoType="mp4"
+        heroImage="/images/heroes/cosmetic/cosmetic-dentistry-hero-placeholder.webp"
         heroImageAlt="Cosmetic dentistry transformation results"
         badgeText="Cosmetic Dentistry"
         badgeIcon="Sparkles"

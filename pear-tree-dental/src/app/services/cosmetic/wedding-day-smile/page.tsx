@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import {
   Heart,
   ArrowRight,
@@ -533,31 +533,27 @@ export default function WeddingDaySmilePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Wedding Whitening Example */}
-            <BeforeAfterSlider
-              beforeImage="/images/before-after/whitening-composite-edge-bonding-before.JPG"
-              afterImage="/images/before-after/whitening-composite-edge-bonding-after.JPG"
-              beforeAlt="Bride's teeth before professional whitening treatment showing natural discoloration"
-              afterAlt="Bride's teeth after professional whitening treatment - dramatically whiter smile perfect for wedding photos"
-              title="Wedding Day Whitening"
-              description="Professional whitening transformation creating the perfect bright smile for your special day"
-              treatmentType="Wedding Whitening"
-              className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6"
-            />
-
-            {/* Complete Smile Enhancement Example */}
-            <BeforeAfterSlider
-              beforeImage="/images/before-after/BCC-before.png"
-              afterImage="/images/before-after/BCC-after.png"
-              beforeAlt="Bride's smile before buccal corridor correction showing narrow smile"
-              afterAlt="Bride's smile after buccal corridor correction showing wider, more photogenic smile"
-              title="Complete Bridal Smile Enhancement"
-              description="Comprehensive smile enhancement creating a wider, more confident smile perfect for wedding photography"
-              treatmentType="Bridal Smile Makeover"
-              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6"
-            />
-              className="bg-white rounded-2xl p-6 shadow-lg"
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
+                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
+                beforeAlt: "Bride's teeth before professional whitening treatment showing natural discoloration",
+                afterAlt: "Bride's teeth after professional whitening treatment - dramatically whiter smile perfect for wedding photos",
+                title: "Wedding Day Whitening",
+                description: "Professional whitening transformation creating the perfect bright smile for your special day",
+                treatmentType: "Wedding Whitening"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.png",
+                afterImage: "/images/before-after/BCC-after.png",
+                beforeAlt: "Bride's smile before buccal corridor correction showing narrow smile",
+                afterAlt: "Bride's smile after buccal corridor correction showing wider, more photogenic smile",
+                title: "Complete Bridal Smile Enhancement",
+                description: "Comprehensive smile enhancement creating a wider, more confident smile perfect for wedding photography",
+                treatmentType: "Bridal Smile Makeover"
+              }}
+              className="bg-gradient-to-br from-pink-50 via-purple-50 to-rose-50 rounded-2xl p-6"
             />
           </div>
 

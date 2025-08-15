@@ -5,8 +5,8 @@ export const practiceInfo = {
     street: "22 Nottingham Road",
     city: "Burton Joyce",
     county: "Nottingham",
-    postcode: "NG14 5AL",
-    full: "22 Nottingham Road, Burton Joyce, Nottingham NG14 5AL"
+    postcode: "NG14 5AE",
+    full: "22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE"
   },
   contact: {
     phone: "0115 931 2935",

@@ -6,7 +6,7 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -439,15 +439,26 @@ export default function BuccalCorridorCorrectionPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto mb-8">
-            <BeforeAfterSlider
-              beforeImage="/images/before-after/BCC-before.png"
-              afterImage="/images/before-after/BCC-after.png"
-              beforeAlt="Patient's smile before buccal corridor correction showing narrow smile with visible dark spaces on the sides"
-              afterAlt="Patient's smile after buccal corridor correction showing wider, fuller smile with eliminated dark spaces"
-              title="Buccal Corridor Correction Transformation"
-              description="Complete smile enhancement eliminating dark buccal corridors for a wider, more confident smile"
-              treatmentType="Buccal Corridor Correction"
+          <div className="max-w-7xl mx-auto mb-8">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/BCC-before.png",
+                afterImage: "/images/before-after/BCC-after.png",
+                beforeAlt: "Patient's smile before buccal corridor correction showing narrow smile with visible dark spaces on the sides",
+                afterAlt: "Patient's smile after buccal corridor correction showing wider, fuller smile with eliminated dark spaces",
+                title: "Buccal Corridor Correction Transformation",
+                description: "Complete smile enhancement eliminating dark buccal corridors for a wider, more confident smile",
+                treatmentType: "Buccal Corridor Correction"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.png",
+                afterImage: "/images/before-after/BCC-after.png",
+                beforeAlt: "Before treatment showing severe buccal corridor shadows affecting smile width",
+                afterAlt: "After treatment with dramatically improved smile width and natural appearance",
+                title: "Advanced BCC Treatment",
+                description: "Comprehensive approach combining orthodontics and cosmetic dentistry for optimal results",
+                treatmentType: "Combined Treatment"
+              }}
               className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6"
             />
 
