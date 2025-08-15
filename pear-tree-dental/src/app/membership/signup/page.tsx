@@ -39,7 +39,7 @@ export default function MembershipSignupPage() {
   const [showRequiredNotification, setShowRequiredNotification] = useState(false);
 
   const [formData, setFormData] = useState({
-     // Personal Details
+    // Personal Details
     title: "",
     firstName: "",
     lastName: "",
@@ -51,7 +51,7 @@ export default function MembershipSignupPage() {
     emergencyContact: "",
     emergencyPhone: "",
 
-     Partner Details (for family plans)
+    // Partner Details (for family plans)
     partnerTitle: "",
     partnerFirstName: "",
     partnerLastName: "",
@@ -62,7 +62,7 @@ export default function MembershipSignupPage() {
     partnerPreferredDentist: "",
     partnerDentistGenderPreference: "",
 
-     Direct Debit Details
+    // Direct Debit Details
     accountHolderName: "",
     sortCode: "",
     accountNumber: "",
@@ -71,7 +71,7 @@ export default function MembershipSignupPage() {
     ddGuaranteeRead: false,
     membershipTermsRead: false,
 
-     Patient Status & Preferences
+    // Patient Status & Preferences
     isExistingPatient: "",
     preferredDentist: "",
     dentistGenderPreference: "",
@@ -80,11 +80,11 @@ export default function MembershipSignupPage() {
     marketingConsent: false,
     termsAccepted: false,
 
-     Staff Tracking (for clinic access)
+    // Staff Tracking (for clinic access)
     staffMemberName: "",
     staffMemberId: "",
 
-     Family Members
+    // Family Members
     familyMembers: [] as Array<{
       firstName: string;
       lastName: string;
