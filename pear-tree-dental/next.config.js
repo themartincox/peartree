@@ -76,10 +76,12 @@ const nextConfig = {
     return config;
   },
 
-  // Image optimization - OPTIMIZED FOR PERFORMANCE
+  // Image optimization - ENHANCED FOR RESPONSIVE SCALING
   images: {
     unoptimized: false, // Enable Next.js image optimization
     formats: ['image/webp', 'image/avif'], // Modern formats first
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840], // Enhanced responsive breakpoints
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 500, 600, 700, 800], // Optimized size variants
     domains: [
       "source.unsplash.com",
       "images.unsplash.com",

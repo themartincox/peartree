@@ -20,8 +20,8 @@ const Hero = () => {
 
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
-      {/* Background image anchored to page top underneath navigation */}
-      <div className="absolute inset-0 -z-10">
+      {/* Background image anchored to page top underneath navigation - reduced height by 10% */}
+      <div className="absolute top-0 left-0 right-0 h-[90%] -z-10">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
           alt="Pear Tree Dental modern practice background"
@@ -33,15 +33,16 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      {/* Family Image – anchored bottom-right over the hero */}
-<div className="absolute bottom-0 right-0 z-20 pointer-events-none">
+      {/* Family Image – optimized responsive scaling anchored to bottom of background */}
+<div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
   <Image
     src="/images/heroes/hero-home-new-family.webp"
     alt="Smiling family at Pear Tree Dental"
-    width={1200}        // tweak size to taste
+    width={1200}
     height={900}
     priority
-    className="w-[50vw] max-w-[780px] h-auto"
+    sizes="(min-width: 1536px) 800px, (min-width: 1280px) 700px, (min-width: 1024px) 600px, 500px"
+    className="w-[35vw] min-w-[400px] max-w-[800px] xl:w-[40vw] 2xl:w-[45vw] h-auto object-contain"
   />
 </div>
 
@@ -62,7 +63,7 @@ const Hero = () => {
             the NHS waiting lists with our membership plans from just £10.95/month.
           </p>
 
-          <div className="space-y-4">
+          <div className="flex flex-col space-y-4 w-full max-w-md">
             <Button
               asChild
               size="lg"
@@ -98,7 +99,7 @@ const Hero = () => {
             </Link>
           </Button>
 
-          {/* Family image for mobile/tablet - smaller and positioned differently */}
+          {/* Family image for mobile/tablet - optimized responsive scaling */}
           <div className="lg:hidden mt-8 flex justify-center">
             <Image
               src="/images/heroes/hero-home-new-family.webp"
@@ -106,7 +107,8 @@ const Hero = () => {
               width={600}
               height={450}
               priority
-              className="object-contain max-h-[40vh] max-w-full"
+              sizes="(min-width: 768px) 500px, (min-width: 640px) 400px, 350px"
+              className="object-contain w-[80vw] max-w-[500px] sm:w-[70vw] md:w-[60vw] h-auto max-h-[35vh] sm:max-h-[40vh]"
             />
           </div>
         </div>
@@ -129,11 +131,11 @@ const Hero = () => {
               the NHS waiting lists with our membership plans from just £10.95/month.
             </p>
 
-            <div className="space-y-4">
+            <div className="flex flex-col space-y-4 max-w-md">
               <Button
                 asChild
                 size="lg"
-                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full"
                 onClick={handleBookingClick}
               >
                 <Link href="/book">
@@ -146,7 +148,7 @@ const Hero = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full sm:w-auto"
+                className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
                 onClick={handleMembershipClick}
               >
                 <Link href="/membership">View Membership Plans →</Link>
