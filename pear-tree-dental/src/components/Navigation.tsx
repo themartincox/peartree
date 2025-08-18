@@ -557,9 +557,7 @@ const Navigation = () => {
         className={cn(
           "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
-            ? isHomePage
-              ? "transform translate-y-0 opacity-100 bg-black/20 backdrop-blur-md"
-              : "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
+            ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
             : "transform -translate-y-full opacity-0 pointer-events-none"
         )}
         aria-label="Simplified navigation"
