@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import Link from "next/link";
 import {
   Home,
@@ -384,8 +385,47 @@ export default function BoutiqueWhiteningPage() {
         </div>
       </section>
 
-      {/* Comparison Section */}
+      {/* Before/After Results Section */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Boutique Whitening Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the professional-grade results achieved with our Boutique whitening system -
+              bringing the power of custom whitening to your home.
+            </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/teeth-whitening-before.JPG",
+                afterImage: "/images/before-after/teeth-whitening-after.JPG",
+                beforeAlt: "Patient's teeth before Boutique whitening treatment showing discoloration and staining",
+                afterAlt: "Patient's teeth after Boutique whitening treatment - significantly whiter and brighter smile",
+                title: "Boutique Whitening Transformation",
+                description: "Professional-grade at-home whitening delivering 6-8 shades improvement with custom-fitted trays",
+                treatmentType: "Boutique Whitening System"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Patient's teeth before comprehensive treatment including orthodontics, Invisalign, Boutique whitening and composite bonding",
+                afterAlt: "Patient's teeth after comprehensive treatment - perfectly aligned, brilliant white smile with composite bonding refinements",
+                title: "Complete Smile Makeover",
+                description: "Comprehensive treatment combining Invisalign orthodontics, Boutique whitening, and precision composite bonding",
+                treatmentType: "Orthodontics, Invisalign, Boutique Whitening & Composite Bonding"
+              }}
+              className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">

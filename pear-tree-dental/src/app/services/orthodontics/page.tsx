@@ -12,6 +12,7 @@ import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
 
 import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Smile,
   Star,
@@ -52,8 +53,8 @@ export const metadata: Metadata = {
     canonical: "https://peartree.dental/services/orthodontics"
   },
   other: {
-    'preload-before-large': '/images/before-after/BCC-before-large.webp',
-    'preload-after-large': '/images/before-after/BCC-after-large.webp'
+    'preload-before-large': '/images/before-after/BCC-before.webp',
+    'preload-after-large': '/images/before-after/BCC-after.webp'
   }
 };
 
@@ -303,8 +304,8 @@ export default function OrthodonticsPage() {
               sectionTitle="Teeth Straightening Results"
               sectionDescription="Life-changing transformations with our orthodontic treatments."
               primarySlider={{
-                beforeImage: "/images/before-after/BCC-before.png",
-                afterImage: "/images/before-after/BCC-after.png",
+                beforeImage: "/images/before-after/BCC-before.webp",
+                afterImage: "/images/before-after/BCC-after.webp",
                 beforeAlt: "Before orthodontic treatment - buccal corridor correction",
                 afterAlt: "After orthodontic treatment - improved buccal corridor",
                 title: "Orthodontic Transformation",
@@ -312,13 +313,13 @@ export default function OrthodonticsPage() {
                 treatmentType: "Clear Aligners"
               }}
               secondarySlider={{
-                beforeImage: "/images/before-after/BCC-before.png",
-                afterImage: "/images/before-after/BCC-after.png",
-                beforeAlt: "Before orthodontic treatment - crowding correction case",
-                afterAlt: "After orthodontic treatment - aligned teeth and improved spacing",
-                title: "Crowding Correction",
-                description: "Effective treatment of severe crowding using advanced clear aligner technology",
-                treatmentType: "Invisalign"
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Patient's teeth before comprehensive orthodontic treatment including Invisalign, whitening and composite bonding",
+                afterAlt: "Patient's teeth after comprehensive orthodontic treatment - perfectly aligned, bright white smile with refined bonding",
+                title: "Complete Smile Transformation",
+                description: "Comprehensive orthodontic treatment combining Invisalign clear aligners, professional whitening, and precision composite bonding",
+                treatmentType: "Orthodontics, Invisalign, Whitening & Composite Bonding"
               }}
               className="mb-12"
             />
@@ -346,6 +347,55 @@ export default function OrthodonticsPage() {
                 <p className="text-gray-600 text-sm">Expert orthodontic care delivered</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Smile Assessment CTA */}
+      <section className="py-16 bg-gradient-to-r from-soft-pink/10 to-soft-lavender/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <Card className="border-2 border-soft-pink/20 shadow-xl bg-white/80 backdrop-blur-sm">
+              <CardContent className="p-8 sm:p-12">
+                <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+                  Ready to Transform Your Smile?
+                </h2>
+                <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+                  Discover if clear aligners are right for you with a comprehensive smile assessment.
+                  Our expert team will evaluate your teeth and create a personalized treatment plan.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white font-semibold hover:shadow-lg transition-all duration-300 px-8">
+                      <CalendarDays className="w-5 h-5 mr-2" />
+                      Book Smile Assessment
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white font-semibold">
+                      <Phone className="w-5 h-5 mr-2" />
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                  <div className="flex items-center justify-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-soft-pink" />
+                    <span>Free consultation</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-soft-pink" />
+                    <span>Digital smile preview</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-soft-pink" />
+                    <span>No obligation assessment</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -675,25 +725,14 @@ export default function OrthodonticsPage() {
             </div>
 
             <div>
-              <BeforeAfterSliderPair
-                primarySlider={{
-                  beforeImage: "/images/before-after/BCC-before.png",
-                  afterImage: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Patient's smile before orthodontic enhancement showing alignment and spacing concerns",
-                  afterAlt: "Patient's smile after orthodontic treatment showing improved alignment and spacing",
-                  title: "Orthodontic Smile Enhancement",
-                  description: "See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments",
-                  treatmentType: "Clear Aligner Treatment"
-                }}
-                secondarySlider={{
-                  beforeImage: "/images/before-after/BCC-before.png",
-                  afterImage: "/images/before-after/BCC-after.png",
-                  beforeAlt: "Before orthodontic treatment showing overbite and misalignment",
-                  afterAlt: "After orthodontic treatment with corrected bite and straight teeth",
-                  title: "Bite Correction Case",
-                  description: "Comprehensive orthodontic treatment addressing both alignment and bite issues",
-                  treatmentType: "ClearCorrect"
-                }}
+              <BeforeAfterSlider
+                beforeImage="/images/before-after/BCC-before.webp"
+                afterImage="/images/before-after/BCC-after.webp"
+                beforeAlt="Patient's smile before orthodontic enhancement showing alignment and spacing concerns"
+                afterAlt="Patient's smile after orthodontic treatment showing improved alignment and spacing"
+                title="Orthodontic Smile Enhancement"
+                description="See the incredible improvement in smile aesthetics achieved with our advanced orthodontic treatments"
+                treatmentType="Clear Aligner Treatment"
                 className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-6"
               />
             </div>
@@ -720,17 +759,17 @@ export default function OrthodonticsPage() {
               Clear Aligner Investment
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Flexible payment options and membership discounts make your perfect smile affordable
+              Flexible payment options make your perfect smile affordable
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Standard Pricing */}
-            <Card className="border-2 border-gray-200 hover:border-soft-pink/30 transition-colors">
+          <div className="max-w-lg mx-auto">
+            {/* Clear Aligner Pricing */}
+            <Card className="border-2 border-soft-pink/30 hover:border-soft-pink/50 transition-colors shadow-lg">
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl text-pear-primary">Clear Aligners</CardTitle>
+                <CardTitle className="text-2xl text-pear-primary">Clear Aligner Treatment</CardTitle>
                 <div className="text-4xl font-bold text-soft-pink mt-4">£2,400 - £4,500</div>
-                <p className="text-gray-600">Complete treatment</p>
+                <p className="text-gray-600">Complete treatment package</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
@@ -750,39 +789,7 @@ export default function OrthodonticsPage() {
                 </ul>
                 <Link href="/book">
                   <Button className="w-full mt-6 bg-gradient-to-r from-soft-pink to-soft-lavender text-white">
-                    Get Quote
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            {/* Membership Pricing */}
-            <Card className="border-2 border-pear-gold bg-gradient-to-br from-pear-gold/5 to-white">
-              <CardHeader className="text-center">
-                <Badge className="bg-pear-gold text-white mb-4">Membership Discount</Badge>
-                <CardTitle className="text-2xl text-pear-primary">With Membership</CardTitle>
-                <div className="text-4xl font-bold text-pear-gold mt-4">£2,160 - £4,050</div>
-                <p className="text-gray-600">Complete treatment (10% off)</p>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {[
-                    "10% discount on all treatments",
-                    "Free initial consultation",
-                    "Priority appointment booking",
-                    "Extended warranty options",
-                    "Flexible payment plans",
-                    "Ongoing dental care included"
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/membership">
-                  <Button className="w-full mt-6 btn-gold text-white">
-                    Join Membership
+                    Book Free Consultation
                   </Button>
                 </Link>
               </CardContent>

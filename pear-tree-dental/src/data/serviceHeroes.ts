@@ -116,8 +116,8 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   "/services/implants": {
     heroVideo: "/videos/heroes/implant-hero-video.mp4",
     heroVideoType: "mp4",
-    heroImage: "/images/dental-practice-hero-burton-joyce.webp", // Poster frame while video loads
-    heroImageAlt: "Dental implant procedure showing before and after results",
+    heroImage: "/images/heroes/implant-hero.webp", // Poster frame while video loads
+    heroImageAlt: "Advanced dental implant procedure showing precision placement for permanent tooth replacement",
     badgeText: "Dental Implants",
     badgeIcon: "Circle",
     title: "Replace Missing",

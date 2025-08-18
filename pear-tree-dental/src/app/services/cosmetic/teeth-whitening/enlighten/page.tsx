@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import Link from "next/link";
 import {
   Award,
@@ -59,11 +60,11 @@ export default function EnlightenWhiteningPage() {
     },
     {
       question: "Will I experience sensitivity with Enlighten?",
-      answer: "Enlighten is specifically designed to minimize sensitivity. The gradual home treatment followed by the professional boost significantly reduces discomfort compared to other systems."
+      answer: "Enlighten is specifically designed to minimise sensitivity. The gradual home treatment followed by the professional boost significantly reduces discomfort compared to other systems."
     },
     {
       question: "How long do Enlighten results last?",
-      answer: "With proper maintenance, Enlighten results can last 3+ years. We provide guidance on maintaining your new smile and offer top-up treatments when needed."
+      answer: "With proper maintenance, Enlighten results can last 10+ years. We provide guidance on maintaining your new smile and offer top-up treatments when needed."
     }
   ];
 
@@ -77,12 +78,12 @@ export default function EnlightenWhiteningPage() {
     {
       icon: Award,
       title: "Gold Standard System",
-      description: "Recognized worldwide as the most effective whitening treatment available"
+      description: "Recognised worldwide as the most effective whitening treatment available"
     },
     {
       icon: Shield,
       title: "Minimal Sensitivity",
-      description: "Advanced formula designed to minimize discomfort during and after treatment"
+      description: "Advanced formula designed to minimise discomfort during and after treatment"
     },
     {
       icon: Clock,
@@ -92,7 +93,7 @@ export default function EnlightenWhiteningPage() {
     {
       icon: Star,
       title: "Long-lasting Results",
-      description: "Results can last 3+ years with proper maintenance and care"
+      description: "Results can last 10+ years with proper maintenance and care"
     },
     {
       icon: Heart,
@@ -140,7 +141,7 @@ export default function EnlightenWhiteningPage() {
   const benefits = [
     "Guaranteed B1 shade - the whitest natural tooth shade",
     "Minimal to no sensitivity during treatment",
-    "Long-lasting results (3+ years with maintenance)",
+    "Long-lasting results (10+ years with maintenance)",
     "Combines home convenience with professional results",
     "Clinically proven and dentist-supervised",
     "Comprehensive aftercare and maintenance plan"
@@ -160,7 +161,7 @@ export default function EnlightenWhiteningPage() {
         benefits={[
           "Guaranteed B1 shade result",
           "Minimal sensitivity formula",
-          "Long-lasting results (3+ years)",
+          "Long-lasting results (10+ years)",
           "Gold standard whitening system",
           "Professional supervision throughout"
         ]}
@@ -235,7 +236,7 @@ export default function EnlightenWhiteningPage() {
                   </div>
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-5 h-5 text-orange-600" />
-                    <span className="text-sm">3+ year results</span>
+                    <span className="text-sm">10+ year results</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <CheckCircle className="w-5 h-5 text-orange-600" />
@@ -301,7 +302,7 @@ export default function EnlightenWhiteningPage() {
               The Enlighten Advantage
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover why Enlighten is recognized as the world's most effective
+              Discover why Enlighten is recognised as the world's most effective
               teeth whitening system.
             </p>
           </div>
@@ -332,8 +333,47 @@ export default function EnlightenWhiteningPage() {
         </div>
       </section>
 
-      {/* Treatment Process */}
+      {/* Before/After Results Section */}
       <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Enlighten Transformation Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the dramatic results achieved with our premium Enlighten whitening system -
+              the only treatment that guarantees a B1 shade.
+            </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp",
+                afterImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp",
+                beforeAlt: "Patient's teeth before Orthodontics, Invisalign treatment and Enlighten whitening showing crooked alignment and discoloration",
+                afterAlt: "Patient's teeth after Orthodontics, Invisalign treatment and Enlighten whitening - perfectly aligned, brilliant white B1 shade",
+                title: "Complete Smile Transformation",
+                description: "Comprehensive treatment combining Invisalign orthodontics with our premium Enlighten whitening system for the ultimate smile makeover",
+                treatmentType: "Orthodontics, Invisalign & Enlighten Whitening"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp",
+                afterImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp",
+                beforeAlt: "Patient's teeth before Enlighten whitening and composite edge bonding showing discoloration and minor imperfections",
+                afterAlt: "Patient's teeth after Enlighten whitening and composite edge bonding - brilliant white B1 shade with perfect edge alignment",
+                title: "Enlighten Whitening & Edge Bonding",
+                description: "Guaranteed B1 shade whitening combined with precision composite edge bonding for the perfect finish",
+                treatmentType: "Enlighten Whitening & Composite Bonding"
+              }}
+              className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Treatment Process */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -432,7 +472,7 @@ export default function EnlightenWhiteningPage() {
                       <div className="text-sm text-white/80">Guaranteed Shade</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-3xl font-bold">3+</div>
+                      <div className="text-3xl font-bold">10+</div>
                       <div className="text-sm text-white/80">Years Results</div>
                     </div>
                   </div>

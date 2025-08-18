@@ -424,13 +424,13 @@ export default function TeethWhiteningPage() {
           <div className="max-w-7xl mx-auto">
             <BeforeAfterSliderPair
               primarySlider={{
-                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",
-                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.JPG",
-                beforeAlt: "Patient's teeth before professional whitening and edge bonding treatment showing natural discoloration and minor imperfections",
-                afterAlt: "Patient's teeth after professional whitening and edge bonding - dramatically whiter smile with perfect edge alignment",
+                beforeImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp",
+                afterImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp",
+                beforeAlt: "Patient's teeth before Orthodontics, Invisalign treatment and Enlighten whitening showing crooked alignment and discoloration",
+                afterAlt: "Patient's teeth after Orthodontics, Invisalign treatment and Enlighten whitening - perfectly aligned, brilliant white smile",
                 title: "Professional Whitening & Edge Bonding",
-                description: "Real patient transformation achieved with our professional whitening system and composite edge bonding",
-                treatmentType: "Professional Whitening & Edge Bonding"
+                description: "Complete smile transformation combining Invisalign orthodontics with our premium Enlighten whitening system",
+                treatmentType: "Orthodontics, Invisalign & Enlighten Whitening"
               }}
               secondarySlider={{
                 beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.JPG",

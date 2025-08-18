@@ -115,6 +115,8 @@ export default function ImplantsPage() {
       {/* Hero Section */}
       <ServiceHero {...getServiceHeroConfig("/services/implants")} />
 
+
+
       {/* Implant Types */}
       <section id="implant-types" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
