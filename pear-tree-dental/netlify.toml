@@ -2,17 +2,23 @@
   remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
 
 [build]
-  command = "bun install && bun run build:optimized"
+  command = "bun install && bun run build"
   publish = ".next"
 
 [build.environment]
-
   DISABLE_ESLINT_PLUGIN = "true"
   SKIP_ENV_VALIDATION = "true"
   NEXT_TELEMETRY_DISABLED = "1"
+  NODE_ENV = "production"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Ensure static assets are properly served
+[[redirects]]
+  from = "/images/*"
+  to = "/images/:splat"
+  status = 200
 
 # Security and caching headers - compression handled automatically by Netlify
 [[headers]]

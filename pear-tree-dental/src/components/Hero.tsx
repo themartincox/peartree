@@ -21,15 +21,28 @@ const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
       {/* Background image anchored to page top underneath navigation - reduced height by 10% */}
-      <div className="absolute top-0 left-0 right-0 h-[90%] -z-10">
+      <div
+        className="absolute top-0 left-0 right-0 h-[90%] -z-10 bg-gradient-to-b from-gray-100 to-gray-200"
+        style={{
+          backgroundImage: "url('/images/heroes/pear-tree-home-hero-full.webp')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'top center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
           alt="Pear Tree Dental modern practice background"
           fill
           priority
-          unoptimized={false}
+          unoptimized={true}
           quality={85}
           className="object-cover object-top"
+          onError={(e) => {
+            console.error('Background image failed to load:', e);
+            // Fallback to CSS background image which is already set
+            e.currentTarget.style.display = 'none';
+          }}
         />
         {/* Optional overlay for contrast */}
         <div className="absolute inset-0 bg-black/25" />
@@ -43,10 +56,15 @@ const Hero = () => {
     width={1200}
     height={900}
     priority
-    unoptimized={false}
+    unoptimized={true}
     quality={85}
     sizes="(min-width: 1536px) 1200px, (min-width: 1280px) 1050px, (min-width: 1024px) 900px, 750px"
     className="w-[52vw] min-w-[600px] max-w-[1200px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"
+    onError={(e) => {
+      console.error('Family image failed to load:', e);
+      // Hide the image if it fails to load
+      e.currentTarget.style.display = 'none';
+    }}
   />
 </div>
 
