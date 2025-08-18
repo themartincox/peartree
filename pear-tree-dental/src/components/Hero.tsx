@@ -23,7 +23,7 @@ const Hero = () => {
       {/* Background image anchored to page top underneath navigation - reduced height by 10% */}
       <div className="absolute top-0 left-0 right-0 h-[90%] -z-10">
         <Image
-          src="/images/heroes/pear-tree-home-hero-full.webp"
+          src="public/images/heroes/pear-tree-home-hero-full.webp"
           alt="Pear Tree Dental modern practice background"
           fill
           priority
@@ -37,7 +37,7 @@ const Hero = () => {
       {/* Family Image – enlarged by 50% with optimized responsive scaling */}
 <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
   <Image
-    src="/images/heroes/hero-home-new-family.webp"
+    src="public/images/heroes/hero-home-new-family.webp"
     alt="Smiling family at Pear Tree Dental"
     width={1200}
     height={900}
