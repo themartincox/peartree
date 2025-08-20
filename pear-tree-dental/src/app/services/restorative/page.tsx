@@ -347,13 +347,13 @@ export default function RestorativeDentistryPage() {
                 treatmentType: "Flexible Dentures"
               }}
               secondarySlider={{
-                beforeImage: "/images/before-after/flexible-denture-removable-bridge-before.png",
-                afterImage: "/images/before-after/flexible-denture-removable-bridge-after.png",
-                beforeAlt: "Before dental crown treatment showing damaged and discolored tooth",
-                afterAlt: "After dental crown treatment with natural-looking porcelain crown restoration",
-                title: "Dental Crown Restoration",
-                description: "High-quality porcelain crown providing long-lasting protection and natural aesthetics",
-                treatmentType: "Porcelain Crown"
+                beforeImage: "/images/before-after/airflow-composite-bond-polish-hygienist-before.webp",
+                afterImage: "/images/before-after/airflow-composite-bond-polish-hygienist-after.webp",
+                beforeAlt: "Patient's teeth before composite bonding treatment showing worn and discolored areas",
+                afterAlt: "Patient's teeth after airflow polish and composite bonding showing natural, restored appearance",
+                title: "Composite Bonding Transformation",
+                description: "Advanced airflow polishing combined with composite bonding to restore natural tooth shape and color with seamless results",
+                treatmentType: "Composite Bonding + Airflow Polish"
               }}
               className="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6"
             />
@@ -438,42 +438,54 @@ export default function RestorativeDentistryPage() {
         </div>
       </section>
 
-      {/* Flexible Denture Before & After */}
-      <section className="py-16 bg-white">
+      {/* Restorative Transformations - Side by Side */}
+      <section className="pt-16 pb-0 bg-gradient-to-b from-white to-green-50/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Flexible Denture Results
+              Restorative Transformations
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the comfortable, natural-looking results achieved with our
-              flexible denture solutions.
+              See the remarkable results achieved with our expert restorative treatments,
+              showcasing precise composite bonding and comprehensive dental restorations.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto mb-16">
-            <div className="overflow-hidden" style={{ margin: '-10px 0', padding: '10px 0' }}>
-              <BeforeAfterButton
-                images={[
-                  {
-                    beforeSrc: "/images/before-after/repair-restore-before.JPG",
-                    afterSrc: "/images/before-after/repair-restore-after.JPG",
-                    beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
-                    afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
-                    title: "Dental Implant Restoration",
-                    description: "Complete tooth replacement with dental implant providing natural appearance and full functionality like your own teeth",
-                    treatment: "Single Tooth Implant"
-                  }
-                ]}
-                className="[&>div]:aspect-[16/8] [&_img]:object-cover [&_img]:object-center"
-              />
-            </div>
+          {/* Composite Bonding Focus */}
+          <div className="max-w-6xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/dental-composite-bond-before.webp",
+                afterImage: "/images/before-after/dental-composite-bond-after.webp",
+                beforeAlt: "Patient's teeth before composite bonding showing chips and wear",
+                afterAlt: "Patient's teeth after composite bonding with restored natural shape and color",
+                title: "Dental Composite Bonding",
+                description: "Precise composite bonding technique to repair chips, gaps, and reshape teeth for a natural, seamless appearance",
+                treatmentType: "Composite Bonding"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/repair-restore-before.JPG",
+                afterImage: "/images/before-after/repair-restore-after.JPG",
+                beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
+                afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
+                title: "Dental Implant Restoration",
+                description: "Complete tooth replacement with dental implant providing natural appearance and full functionality like your own teeth",
+                treatmentType: "Single Tooth Implant"
+              }}
+              className="[&>div]:aspect-[16/8] [&_img]:object-cover [&_img]:object-center"
+            />
           </div>
         </div>
       </section>
 
+      {/* Subtle Visual Transition */}
+      <div className="relative h-12 bg-gradient-to-b from-white via-dental-green/2 to-dental-green/5">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-dental-green/10 to-soft-blue/10 opacity-50" />
+        <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-dental-green/20 to-transparent" />
+      </div>
+
       {/* Materials Section */}
-      <section className="py-16 bg-gradient-to-r from-dental-green/5 to-soft-blue/5">
+      <section className="pt-12 pb-16 bg-gradient-to-r from-dental-green/5 to-soft-blue/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -513,7 +525,7 @@ export default function RestorativeDentistryPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-green-50/20 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -547,7 +559,7 @@ export default function RestorativeDentistryPage() {
       </section>
 
       {/* Membership CTA */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gradient-to-b from-white to-green-50/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white overflow-hidden">
             <CardContent className="p-12">
@@ -619,7 +631,7 @@ export default function RestorativeDentistryPage() {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-green-50/10 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="bg-gradient-to-r from-dental-green to-soft-blue text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
