@@ -123,14 +123,31 @@ export default function GeneralDentistryPage() {
                 <span className="block text-dental-green">General Dentistry</span>
               </h1>
 
-              {/* Hero Image - Second on mobile, appears above other content */}
+              {/* Hero Video - Second on mobile, appears above other content */}
               <div className="relative mt-8 lg:mt-0 lg:hidden">
                 <Card className="overflow-hidden shadow-2xl">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <div className="text-center">
-                      <h3 className="text-base sm:text-xl font-bold text-gray-700 mb-2">GENERAL DENTISTRY IMAGE</h3>
-                      <p className="text-gray-600 text-xs sm:text-base">Family receiving dental check-ups</p>
-                    </div>
+                  <div className="aspect-[4/3] relative">
+                    <video
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster="/images/heroes/pear-tree-general-dentistry-hero.webp"
+                    >
+                      <source
+                        src="/videos/pear-tree-dental-general-dentistry-hero.mp4"
+                        type="video/mp4"
+                      />
+                      {/* Fallback for browsers that don't support video */}
+                      <div className="w-full h-full bg-gradient-to-br from-dental-green/20 to-soft-blue/20 flex items-center justify-center">
+                        <div className="text-center">
+                          <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
+                          <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
+                        </div>
+                      </div>
+                    </video>
                   </div>
                 </Card>
 
@@ -194,14 +211,31 @@ export default function GeneralDentistryPage() {
               </div>
             </div>
 
-            {/* Hero Image - Desktop only (hidden on mobile since it appears inline above) */}
+            {/* Hero Video - Desktop only (hidden on mobile since it appears inline above) */}
             <div className="relative mt-8 lg:mt-0 order-2 lg:order-2 hidden lg:block">
               <Card className="overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-base sm:text-xl font-bold text-gray-700 mb-2">GENERAL DENTISTRY IMAGE</h3>
-                    <p className="text-gray-600 text-xs sm:text-base">Family receiving dental check-ups</p>
-                  </div>
+                <div className="aspect-[4/3] relative">
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    poster="/images/general-dental-checkup.webp"
+                  >
+                    <source
+                      src="/videos/pear-tree-dental-general-dentistry-hero.mp4"
+                      type="video/mp4"
+                    />
+                    {/* Fallback for browsers that don't support video */}
+                    <div className="w-full h-full bg-gradient-to-br from-dental-green/20 to-soft-blue/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
+                        <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
+                      </div>
+                    </div>
+                  </video>
                 </div>
               </Card>
 

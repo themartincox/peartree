@@ -3,13 +3,31 @@ import type { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://peartree.dental'
 
-  // Main pages
+  // Main pages - Highest priority core business pages
   const mainPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 1,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/book`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/membership`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/about/practice`,
@@ -24,28 +42,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/pricing`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/membership`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/book`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
@@ -85,15 +85,54 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Service pages
-  const servicePages = [
-    // Cosmetic services
+  // Service category pages - High priority main service areas
+  const serviceCategoryPages = [
     {
       url: `${baseUrl}/services/cosmetic`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/services/orthodontics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/implants`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/restorative`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/general`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/hygiene`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/services/emergency`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+  ]
+
+  // Popular cosmetic services - High priority revenue drivers
+  const cosmeticServices = [
     {
       url: `${baseUrl}/services/cosmetic/teeth-whitening`,
       lastModified: new Date(),
@@ -160,20 +199,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/services/smile-design`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
+  ]
 
-    // Orthodontics
-    {
-      url: `${baseUrl}/services/orthodontics`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
+  // Orthodontics services - High priority growth area
+  const orthodonticsServices = [
     {
       url: `${baseUrl}/services/orthodontics/invisalign`,
       lastModified: new Date(),
@@ -186,14 +215,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+  ]
 
-    // Implants
-    {
-      url: `${baseUrl}/services/implants`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
+  // Implant services - High value treatments
+  const implantServices = [
     {
       url: `${baseUrl}/services/implants/single-implant`,
       lastModified: new Date(),
@@ -218,13 +243,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+  ]
 
-    // Restorative
+  // Restorative services
+  const restorativeServices = [
     {
-      url: `${baseUrl}/services/restorative`,
+      url: `${baseUrl}/services/restorative/smile-design`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/services/restorative/dentures`,
@@ -262,14 +289,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
+  ]
 
-    // General services
-    {
-      url: `${baseUrl}/services/general`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
+  // General and hygiene services
+  const generalServices = [
     {
       url: `${baseUrl}/services/general/biodentine-fillings`,
       lastModified: new Date(),
@@ -277,22 +300,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
-      url: `${baseUrl}/services/hygiene`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/services/hygiene/airflow-stain-removal`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/services/emergency`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
     },
     {
       url: `${baseUrl}/services/emergency-repairs`,
@@ -308,13 +319,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Location pages
-  const locationPages = [
+  // Main location pages - Primary catchment areas
+  const mainLocationPages = [
     {
       url: `${baseUrl}/arnold`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/bingham`,
@@ -372,7 +383,347 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Stealth SEO review pages - HIGH PRIORITY
+  // Arnold location-specific services
+  const arnoldServices = [
+    {
+      url: `${baseUrl}/arnold/complete-smile-makeover`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/porcelain-veneers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/dental-implants`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/invisalign`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/orthodontics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/arnold/composite-bonding`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/arnold/dental-crowns`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/arnold/dental-bridges`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/arnold/dentures`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/arnold/root-canal-treatment`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/arnold/emergency-dentist`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ]
+
+  // Gedling location-specific services - Family focus
+  const gedlingServices = [
+    {
+      url: `${baseUrl}/gedling/family-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/family-orthodontics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/complete-smile-makeovers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/family-dental-implants`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/affordable-teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/childrens-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/family-preventive-care`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gedling/composite-bonding`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gedling/dental-crowns`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gedling/emergency-dentist`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/gedling/flexible-payment-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/gedling/nhs-private-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+  ]
+
+  // Mapperley location-specific services - Family focus
+  const mapperleyServices = [
+    {
+      url: `${baseUrl}/mapperley/family-smile-makeovers`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/family-orthodontics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/advanced-family-orthodontics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/family-dental-implants`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/teen-cosmetic-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/childrens-dentistry`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/mapperley/childrens-preventive-care`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/mapperley/family-cosmetic-surgery`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/mapperley/family-dental-crowns`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/mapperley/multi-generational-rehabilitation`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/mapperley/emergency-dentist`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ]
+
+  // Specialty pages - Targeted SEO
+  const specialtyPages = [
+    {
+      url: `${baseUrl}/emergency-dentist-nottingham`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/hollywood-smile-nottingham`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/perfect-smile-nottingham`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/nottingham-dentist`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ng14-dental`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ng4-dental`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/nottingham-smile-design`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bingham-smile-design`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/east-bridgford-smile-design`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/west-bridgford-smile-design`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/nottingham-teeth-straightening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bingham-teeth-straightening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/east-bridgford-teeth-straightening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/west-bridgford-teeth-straightening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/nottingham-teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/bingham-teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/east-bridgford-teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/west-bridgford-teeth-whitening`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+  ]
+
+  // Review pages - HIGH PRIORITY for local SEO
   const reviewPages = [
     {
       url: `${baseUrl}/reviews/arnold`,
@@ -436,7 +787,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Stealth SEO alternative pages - HIGH PRIORITY
+  // Alternative pages - HIGH PRIORITY for competitive SEO
   const alternativePages = [
     {
       url: `${baseUrl}/alternatives/arnold`,
@@ -500,47 +851,67 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // Emergency and specialty pages
-  const specialtyPages = [
+  // Membership and admin pages
+  const membershipPages = [
     {
-      url: `${baseUrl}/emergency-dentist-nottingham`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/hollywood-smile-nottingham`,
+      url: `${baseUrl}/membership/signup`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/perfect-smile-nottingham`,
+      url: `${baseUrl}/membership/signup/success`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/nottingham-dentist`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/ng14-dental`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/ng4-dental`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
     },
   ]
 
-  // Keep one safe alternative page that doesn't mention competitors
+  // Utility and success pages
+  const utilityPages = [
+    {
+      url: `${baseUrl}/smile-design-quiz`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/thank-you`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/success`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/offline`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.1,
+    },
+  ]
+
+  // Professional admin pages (lower priority)
+  const adminPages = [
+    {
+      url: `${baseUrl}/dentalhub`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/dentalhub/membership-applications`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.3,
+    },
+  ]
+
+  // Safe alternative page that doesn't mention competitors
   const safeAlternativePages = [
     {
       url: `${baseUrl}/dental-health-centre-nottingham-alternative-nottingham`,
@@ -550,13 +921,53 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Testing and member pages (very low priority)
+  const testPages = [
+    {
+      url: `${baseUrl}/test-form`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.1,
+    },
+    {
+      url: `${baseUrl}/member2`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.1,
+    },
+    {
+      url: `${baseUrl}/rivendell`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.1,
+    },
+    {
+      url: `${baseUrl}/jobstobedone`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.1,
+    },
+  ]
+
   return [
     ...mainPages,
-    ...servicePages,
-    ...locationPages,
+    ...serviceCategoryPages,
+    ...cosmeticServices,
+    ...orthodonticsServices,
+    ...implantServices,
+    ...restorativeServices,
+    ...generalServices,
+    ...mainLocationPages,
+    ...arnoldServices,
+    ...gedlingServices,
+    ...mapperleyServices,
+    ...specialtyPages,
     ...reviewPages,
     ...alternativePages,
-    ...specialtyPages,
+    ...membershipPages,
+    ...utilityPages,
+    ...adminPages,
     ...safeAlternativePages,
+    ...testPages,
   ]
 }

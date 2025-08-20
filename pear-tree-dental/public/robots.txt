@@ -80,8 +80,9 @@ Disallow: /500
 # Disallow membership success pages (no need for search indexing)
 Disallow: /membership/signup/success
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://peartree.dental/sitemap.xml
+Sitemap: https://peartree.dental/sitemap-index.xml
 
 # Crawl delay for politeness
 Crawl-delay: 1
