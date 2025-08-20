@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 
 const Hero = () => {
-  const { trackBookingAttempt, trackLocationConversion } = useConversionTracking();
+  const { trackBookingAttempt, trackLocationConversion } =
+    useConversionTracking();
 
   const handleBookingClick = () => {
     trackBookingAttempt("hero_primary", "booking");
@@ -19,7 +20,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
-      {/* BACKGROUND: practice image under nav, with contrast overlay */}
+      {/* Background image anchored to page top underneath navigation - reduced height by 10% */}
       <div className="absolute top-0 left-0 right-0 h-[90%] -z-10">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
@@ -29,51 +30,28 @@ const Hero = () => {
           quality={85}
           className="object-cover object-top"
         />
+        {/* Optional overlay for contrast */}
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
-      {/* MOBILE-ONLY: right-anchored slice (wider so shoulder isn't cut) */}
-      <div
-        className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[66vh]
-                   w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]"
-        aria-hidden="true"
-        style={{
-          WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-          maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-        }}
-      >
-        <div className="relative h-full w-full overflow-hidden">
-          <Image
-            src="/images/heroes/hero-home-new-family.webp"
-            alt=""
-            fill
-            priority
-            quality={85}
-            sizes="100vw"
-            className="object-cover opacity-50 object-[12%_center]"
-            // ↑ Nudge focal point 8–15% as needed. Use `object-left` for no nudge.
-          />
-        </div>
-      </div>
+      {/* Family Image – enlarged by 50% with optimized responsive scaling */}
+<div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
+  <Image
+    src="/images/heroes/hero-home-new-family.webp"
+    alt="Smiling family at Pear Tree Dental"
+    width={1200}
+    height={900}
+    priority
+    quality={85}
+    sizes="(min-width: 1536px) 1200px, (min-width: 1280px) 1050px, (min-width: 1024px) 900px, 750px"
+    className="w-[52vw] min-w-[600px] max-w-[1200px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"
+  />
+</div>
 
-      {/* DESKTOP: family image absolutely positioned on the right */}
-      <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
-        <Image
-          src="/images/heroes/hero-home-new-family.webp"
-          alt="Smiling family at Pear Tree Dental"
-          width={1200}
-          height={900}
-          priority
-          quality={85}
-          sizes="(min-width: 1536px) 1200px, (min-width: 1280px) 1050px, (min-width: 1024px) 900px, 750px"
-          className="w-[52vw] min-w-[600px] max-w-[1200px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"
-        />
-      </div>
-
-      {/* MAIN CONTAINER */}
+      {/* Main container */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* MOBILE / TABLET LAYOUT */}
-        <div className="lg:hidden py-8 sm:py-12 relative">
+        {/* Mobile / Tablet Layout */}
+        <div className="lg:hidden py-8 sm:py-12">
           <h1 className="heading-serif text-5xl sm:text-6xl md:text-7xl font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
             Expert dental care
             <br />
@@ -122,10 +100,26 @@ const Hero = () => {
               </Link>
             </Button>
           </div>
+
+          {/* Family image for mobile/tablet - enlarged by 50% with optimized responsive scaling */}
+          <div className="lg:hidden mt-8 flex justify-center">
+            <Image
+              src="/images/heroes/hero-home-new-family.webp"
+              alt="Smiling family at Pear Tree Dental"
+              width={600}
+              height={450}
+              priority
+              unoptimized={false}
+              quality={85}
+              sizes="(min-width: 768px) 750px, (min-width: 640px) 600px, 525px"
+              className="object-contain w-[95vw] max-w-[750px] sm:w-[90vw] md:w-[90vw] h-auto max-h-[50vh] sm:max-h-[60vh]"
+            />
+          </div>
         </div>
 
-        {/* DESKTOP LAYOUT */}
+        {/* Desktop Layout */}
         <div className="hidden lg:flex lg:items-center min-h-[100svh]">
+          {/* Text Content - positioned on left side with family image on right */}
           <div className="max-w-2xl space-y-8">
             <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight">
               Expert dental care
@@ -169,6 +163,7 @@ const Hero = () => {
                 variant="outline"
                 size="lg"
                 className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-6 py-4 text-base sm:text-lg w-full animate-fade-in min-h-[60px] sm:min-h-[56px]"
+                onClick={handleMembershipClick}
               >
                 <Link href="/membership" className="text-center leading-tight">
                   Enjoy peace of mind from just 36p per day
@@ -177,7 +172,10 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative">{/* Desktop right-side area */}</div>
+          {/* RIGHT: Text content takes full width on desktop since family image is positioned absolutely */}
+          <div className="relative">
+            {/* Content area - family image is positioned absolutely outside this grid */}
+          </div>
         </div>
       </div>
     </section>
