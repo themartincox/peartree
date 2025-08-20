@@ -34,11 +34,12 @@ export const metadata: Metadata = {
     "tooth fillings Burton Joyce",
     "dental extractions Burton Joyce",
     "family dentist Nottinghamshire",
+    "family dentist Nottingham",
     "preventive dental care Nottingham"
   ],
   openGraph: {
     title: "General Dentistry | Pear Tree Dental",
-    description: "Comprehensive dental care for the whole family in Burton Joyce",
+    description: "Comprehensive dental care for the whole family in Nottingham and Burton Joyce",
     type: "website",
     url: "https://peartree.dental/services/general"
   },
@@ -51,11 +52,11 @@ export default function GeneralDentistryPage() {
   const generalDentistryFAQs = [
     {
       question: "What's included in a dental check-up?",
-      answer: "A comprehensive dental check-up includes oral examination, digital X-rays when needed, oral cancer screening, gum health assessment, and personalized treatment planning. We also provide oral hygiene advice and preventive care recommendations."
+      answer: "A comprehensive dental check-up includes oral examination, digital X-rays when needed, oral cancer screening, gum health assessment, and personalised treatment planning. We also provide oral hygiene advice and preventive care recommendations."
     },
     {
       question: "How often should I visit the dentist?",
-      answer: "We recommend dental check-ups every 6 months for most patients. However, some patients may need more frequent visits based on their oral health needs. We'll create a personalized schedule that's right for you."
+      answer: "We recommend dental check-ups every 6 months for most patients. However, some patients may need more frequent visits based on their oral health needs. We'll create a personalised schedule that's right for you."
     },
     {
       question: "Do you accept NHS patients?",
@@ -152,7 +153,7 @@ export default function GeneralDentistryPage() {
                 </Card>
 
                 {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-90">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -222,7 +223,7 @@ export default function GeneralDentistryPage() {
                     loop
                     playsInline
                     preload="metadata"
-                    poster="/images/general-dental-checkup.webp"
+                    poster="/images/heroes/pear-tree-general-dentistry-hero.webp"
                   >
                     <source
                       src="/videos/pear-tree-dental-general-dentistry-hero.mp4"
@@ -240,7 +241,7 @@ export default function GeneralDentistryPage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-75">
                 <div className="flex items-center space-x-2 sm:space-x-3">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                     <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
