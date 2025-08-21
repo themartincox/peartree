@@ -130,11 +130,11 @@ export default function TestimonialsPage() {
                 />
                 Google Reviews
               </Badge>
-                         </div>
+             
+            </div>
 
             <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary mb-6">
-              Our 5-Star
-              <span className="text-blue-600 block">Google Reviews</span>
+                            <span className="text-blue-600 block">Google Reviews</span>
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -170,21 +170,7 @@ export default function TestimonialsPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                asChild
-              >
-                <a
-                  href="https://g.page/r/peartreedentalburtonjoyce/review"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  Leave a Google Review
-                </a>
-              </Button>
+              
             </div>
           </div>
         </div>
