@@ -35,7 +35,7 @@ import { LEGACY_PRICES } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Wedding Day Smile - Perfect Smile for Your Special Day | Pear Tree Dental",
-  description: "Get the perfect wedding smile in Burton Joyce. Professional teeth whitening, veneers, and smile makeovers for your special day. Timeline-based treatments for brides and grooms.",
+  description: "Get the perfect wedding smile in Nottingham. Professional teeth whitening, veneers, and smile makeovers for your special day. Timeline-based treatments for brides and grooms.",
   keywords: [
     "wedding day smile Burton Joyce",
     "bridal smile makeover",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Perfect Wedding Day Smile - Bridal Smile Makeover | Pear Tree Dental",
-    description: "Ensure your smile is picture-perfect for your wedding day with our specialized bridal smile treatments",
+    description: "Ensure your smile is picture-perfect for your wedding day with our specialised bridal smile treatments",
     type: "website",
     url: "https://peartree.dental/services/cosmetic/wedding-day-smile"
   },
@@ -94,18 +94,20 @@ export default function WeddingDaySmilePage() {
       icon: Sparkles,
       description: "Quick and effective, often completed in just one or two appointments. For optimal results, we recommend scheduling your whitening treatment 2-4 weeks before your wedding.",
       difference: "Whilst at-home whitening kits can offer limited and often disappointing results, our professional-grade whitening treatments are safe, effective, and can lighten your teeth by several shades. This is the perfect, quick boost for a brighter, more youthful smile.",
-      benefits: ["Several shades brighter", "Safe and professional", "Quick results", "Long-lasting brightness"]
+      benefits: ["Several shades brighter", "Safe and professional", "Quick results", "Long-lasting brightness"],
+      href: "/services/cosmetic/teeth-whitening"
     },
     {
       concern: "Chipped, Cracked, or Uneven Teeth",
-      treatment: "Porcelain Veneers or Composite Bonding",
-      timeline: "1-2 months for veneers, 1 month for bonding",
-      appointments: "Few appointments for veneers, single visit for bonding",
+      treatment: "Ultra-thin Contact Lens Veneers",
+      timeline: "1-2 months",
+      appointments: "Few appointments",
       price: LEGACY_PRICES.PORCELAIN_VENEERS,
       icon: Crown,
-      description: "Porcelain veneers typically require a few appointments over one to two months. Composite bonding can often be completed in a single visit.",
-      difference: "Veneers offer a durable, long-lasting solution to transform your smile's shape, colour, and alignment, creating a stunningly uniform and natural look. Composite bonding is a fantastic and affordable option for repairing minor imperfections.",
-      benefits: ["Natural-looking results", "Durable solution", "Uniform appearance", "Immediate transformation"]
+      description: "Ultra-thin contact lens veneers provide a minimally invasive way to refine shape, colour and symmetry with stunningly natural results.",
+      difference: "These veneers require minimal preparation and can dramatically enhance your smile's harmony while preserving natural tooth structure.",
+      benefits: ["Natural-looking results", "Minimally invasive", "Uniform appearance", "Durable solution"],
+      href: "/services/cosmetic/veneers/ultra-thin"
     },
     {
       concern: "Gaps or Crooked Teeth",
@@ -116,7 +118,8 @@ export default function WeddingDaySmilePage() {
       icon: Eye,
       description: "Whilst the average treatment time is around a year, many patients see significant results much sooner. We recommend a consultation as early as possible.",
       difference: "Invisalign® offers a discreet and comfortable way to straighten your teeth without the look of traditional braces. The clear aligners are virtually invisible and can be removed for eating and special occasions.",
-      benefits: ["Virtually invisible", "Removable for special events", "Comfortable treatment", "Perfect for engagement photos"]
+      benefits: ["Virtually invisible", "Removable for special events", "Comfortable treatment", "Perfect for engagement photos"],
+      href: "/services/orthodontics/invisalign"
     }
   ];
 
@@ -175,7 +178,7 @@ export default function WeddingDaySmilePage() {
       {/* Enhanced SEO Schema */}
       <EnhancedServiceSchema
         serviceName="Wedding Day Smile Makeover"
-        description="Specialized cosmetic dental treatments for brides and grooms to achieve the perfect smile for their wedding day"
+        description="Specialised cosmetic dental treatments for brides and grooms to achieve the perfect smile for their wedding day"
         price="From £400"
         category="Bridal Cosmetic Dentistry"
         duration="2 weeks to 6 months depending on treatment"
@@ -238,18 +241,20 @@ export default function WeddingDaySmilePage() {
                 </p>
               </div>
 
-
-
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold group">
-                  Book Your Bridal Consultation
-                  <Heart className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-rose-500 text-rose-600 hover:bg-rose-500 hover:text-white">
-                  <Camera className="w-5 h-5 mr-2" />
-                  View Wedding Smiles
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold group">
+                    Book Your Bridal Consultation
+                    <Heart className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform" />
+                  </Button>
+                </Link>
+                <Link href="/smile-gallery">
+                  <Button size="lg" variant="outline" className="border-rose-500 text-rose-600 hover:bg-rose-500 hover:text-white">
+                    <Camera className="w-5 h-5 mr-2" />
+                    View Wedding Smiles
+                  </Button>
+                </Link>
               </div>
 
               {/* Trust Indicators */}
@@ -456,9 +461,11 @@ export default function WeddingDaySmilePage() {
                           </li>
                         ))}
                       </ul>
-                      <Button className="w-full mt-6 bg-rose-500 hover:bg-rose-600 text-white">
-                        Learn More About {treatment.treatment}
-                      </Button>
+                      <Link href={treatment.href}>
+                        <Button className="w-full mt-6 bg-rose-500 hover:bg-rose-600 text-white">
+                          Learn More About {treatment.treatment}
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Card>
@@ -510,9 +517,11 @@ export default function WeddingDaySmilePage() {
                       ))}
                     </ul>
                   </div>
-                  <Button className={`w-full ${index === 1 ? 'bg-rose-500 hover:bg-rose-600' : 'bg-gray-600 hover:bg-gray-700'} text-white`}>
-                    Choose This Package
-                  </Button>
+                  <Link href="/book">
+                    <Button className={`w-full ${index === 1 ? 'bg-rose-500 hover:bg-rose-600' : 'bg-gray-600 hover:bg-gray-700'} text-white`}>
+                      Choose This Package
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
@@ -593,15 +602,19 @@ export default function WeddingDaySmilePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-rose-600 hover:bg-white/90 font-semibold">
-                  <Heart className="w-5 h-5 mr-2" />
-                  Book Your Bridal Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-rose-600 hover:bg-white/90 font-semibold">
+                    <Heart className="w-5 h-5 mr-2" />
+                    Book Your Bridal Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <a href="tel:01159312935">
+                  <Button size="lg" variant="outline" className="border-white text-rose-600 hover:bg-white hover:text-rose-600">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </Button>
+                </a>
               </div>
 
               <div className="text-sm text-white/80 mb-6">
