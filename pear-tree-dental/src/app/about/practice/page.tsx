@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const facilities = [
   {
     icon: Shield,
-    title: "Advanced Sterilization",
+    title: "Advanced Sterilisation",
     description: "Hospital-grade sterilisation protocols ensuring the highest levels of safety and hygiene for all patients."
   },
   {
@@ -116,7 +116,7 @@ export default function PracticePage() {
               State-of-the-Art Facilities in Burton Joyce
             </p>
             <p className="text-lg leading-relaxed opacity-80 max-w-3xl mx-auto">
-              Located in the heart of Burton Joyce, our practice combines cutting-edge dental technology
+              Located on the edge of Nottingham, nestled in Burton Joyce, our practice combines cutting-edge dental technology
               with a warm, welcoming environment to provide exceptional dental care for the whole family.
             </p>
           </div>
@@ -540,7 +540,7 @@ export default function PracticePage() {
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
               Book your appointment today and discover the difference that advanced technology
-              and personalized care can make to your dental health
+              and personalised care can make to your dental health
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
