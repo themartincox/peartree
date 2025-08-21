@@ -114,6 +114,8 @@ export default function GeneralDentistryPage() {
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
         </div>
 
+
+
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
@@ -153,7 +155,7 @@ export default function GeneralDentistryPage() {
                 </Card>
 
                 {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-90">
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-75">
                   <div className="flex items-center space-x-2 sm:space-x-3">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceHero from "@/components/ServiceHero";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import {
   Sparkles,
   Star,
@@ -423,59 +424,40 @@ export default function CosmeticDentistryPage() {
         </div>
       </section>
 
-      {/* Before & After Section */}
-      <section className="py-16">
+      {/* Real Patient Transformations */}
+      <section className="py-16 bg-gradient-to-b from-white to-soft-pink/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
               Real Patient Transformations
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See the remarkable results achieved by our patients through expert cosmetic dentistry
+              See the remarkable results achieved by our patients through expert cosmetic dentistry treatments
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {beforeAfterCases.map((case_study, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  {index === 0 ? (
-                    // Special styling for teeth whitening with BCC-smile image
-                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 shadow-md">
-                      <picture>
-                        <source media="(min-width: 768px)" srcSet="/images/buccal-corridor/BCC-smile-medium.webp" type="image/webp" />
-                        <source media="(min-width: 480px)" srcSet="/images/buccal-corridor/BCC-smile-small.webp" type="image/webp" />
-                        <source srcSet="/images/buccal-corridor/BCC-smile-thumb.webp" type="image/webp" />
-                        <img
-                          src="/images/buccal-corridor/BCC-smile.png"
-                          alt="Teeth whitening transformation showing improved smile"
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                        />
-                      </picture>
-                    </div>
-                  ) : index === 2 ? (
-                    // Special styling for smile makeover with teeth-whitening-after image
-                    <div className="aspect-square rounded-2xl overflow-hidden mb-4 shadow-md">
-                      <img
-                        src="/images/teeth-whitening-after.webp"
-                        alt="Complete smile makeover transformation result"
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                  ) : (
-                    // Placeholder for other cases
-                    <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-2xl flex items-center justify-center mb-4">
-                      <Smile className="w-16 h-16 text-soft-pink" />
-                    </div>
-                  )}
-                  <h3 className="font-semibold text-pear-primary mb-2">{case_study.title}</h3>
-                  <p className="text-gray-600 text-sm mb-3">{case_study.description}</p>
-                  <Badge variant="secondary">{case_study.timeframe}</Badge>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.webp",
+                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.webp",
+                beforeAlt: "Patient's teeth before whitening and composite edge bonding showing discoloration and uneven edges",
+                afterAlt: "Patient's teeth after professional whitening and composite edge bonding with bright, even, natural appearance",
+                title: "Whitening & Composite Edge Bonding",
+                description: "Professional teeth whitening combined with precision composite edge bonding to create a bright, uniform smile with perfect tooth proportions",
+                treatmentType: "Whitening + Edge Bonding"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.webp",
+                afterImage: "/images/before-after/BCC-after.webp",
+                beforeAlt: "Patient with narrow smile showing buccal corridors and limited tooth display",
+                afterAlt: "Patient after buccal corridor correction treatment with fuller, wider smile and improved tooth display",
+                title: "Buccal Corridor Correction",
+                description: "Advanced smile design to widen the smile and reduce dark spaces in the corners of the mouth for a more youthful, vibrant appearance",
+                treatmentType: "Buccal Corridor Correction"
+              }}
+              className="bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10 rounded-2xl p-6"
+            />
           </div>
         </div>
       </section>
