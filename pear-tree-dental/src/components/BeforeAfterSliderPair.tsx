@@ -77,10 +77,7 @@ export default function BeforeAfterSliderPair({
         </div>
       </div>
 
-      {/* Additional Information */}
-      <div className="text-center text-sm text-gray-600 mt-8">
-        <p>Compare real patient results - drag sliders to see transformations</p>
-      </div>
+
     </div>
   );
 }
