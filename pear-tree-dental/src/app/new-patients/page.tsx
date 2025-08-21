@@ -51,7 +51,6 @@ export default function NewPatientsPage() {
     "Previous dental records or X-rays if available",
     "List of current medications",
     "Insurance details or membership information",
-    "Completed new patient forms (download below)"
   ];
 
   const policies = [
@@ -160,17 +159,7 @@ export default function NewPatientsPage() {
                 ))}
               </ul>
 
-              <div className="mt-8 p-6 bg-pear-primary/5 rounded-2xl border border-pear-primary/10">
-                <h3 className="font-semibold text-pear-primary mb-2">Download New Patient Forms</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  Save time by completing your forms before your visit.
-                </p>
-                <Button className="bg-pear-primary text-white hover:bg-pear-primary/90">
-                  <FileText className="w-4 h-4 mr-2" />
-                  Download Forms
-                </Button>
-              </div>
-            </div>
+                         </div>
 
             <div className="lg:pl-8">
               <Card className="shadow-2xl">

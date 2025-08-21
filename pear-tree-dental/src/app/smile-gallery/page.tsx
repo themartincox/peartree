@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import {
   Camera,
   ArrowRight,
@@ -228,9 +229,70 @@ const stats = [
   }
 ];
 
+const featuredTransformations = [
+  {
+    id: "featured-1",
+    title: "Complete Smile Makeover with Orthodontics",
+    treatment: ["Invisalign", "Teeth Whitening", "Composite Bonding"],
+    category: "Smile Makeover",
+    beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+    afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+    description: "Comprehensive smile transformation combining orthodontics, professional whitening, and precision composite bonding for a perfectly aligned and radiant smile",
+    duration: "18 months",
+    patientAge: "28",
+    concern: "Crooked teeth with gaps and discoloration affecting confidence",
+    result: "Perfectly aligned, bright white smile with natural proportions",
+    beforeDescription: "Crowded, misaligned teeth with visible staining",
+    afterDescription: "Beautifully aligned, bright white smile"
+  },
+  {
+    id: "featured-2",
+    title: "Dental Implant Restoration",
+    treatment: ["Dental Implants", "Crown Restoration"],
+    category: "Implants",
+    beforeImage: "/images/before-after/implants-before.webp",
+    afterImage: "/images/before-after/implants-after.webp",
+    description: "Life-changing implant restoration replacing missing teeth with natural-looking, permanently fixed solutions",
+    duration: "6 months",
+    patientAge: "52",
+    concern: "Missing teeth affecting eating, speech and confidence",
+    result: "Full function restored with natural-looking permanent teeth",
+    beforeDescription: "Multiple missing teeth with gaps",
+    afterDescription: "Complete restoration with implant-supported teeth"
+  },
+  {
+    id: "featured-3",
+    title: "Buccal Corridor Correction",
+    treatment: ["Smile Design", "Restorative Work"],
+    category: "Cosmetic Enhancement",
+    beforeImage: "/images/before-after/BCC-before.webp",
+    afterImage: "/images/before-after/BCC-after.webp",
+    description: "Advanced smile design to eliminate dark spaces and create a fuller, more youthful smile appearance",
+    duration: "15 months",
+    patientAge: "25",
+    concern: "Narrow smile with dark corridors making smile appear aged",
+    result: "Fuller, wider smile with enhanced youthful appearance",
+    beforeDescription: "Narrow smile showing buccal corridors",
+    afterDescription: "Fuller smile with improved proportions"
+  },
+  {
+    id: "featured-4",
+    title: "Professional Teeth Whitening & Bonding",
+    treatment: ["Professional Whitening", "Composite Bonding"],
+    category: "Cosmetic Dentistry",
+    beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.webp",
+    afterImage: "/images/before-after/whitening-composite-edge-bonding-after.webp",
+    description: "Professional whitening combined with precision edge bonding to create uniform, brilliant white teeth",
+    duration: "2 sessions",
+    patientAge: "24",
+    concern: "Stained teeth with uneven edges and minor gaps",
+    result: "Brilliant white smile with perfect tooth uniformity",
+    beforeDescription: "Discolored teeth with irregular edges",
+    afterDescription: "Bright, uniform smile with perfect proportions"
+  }
+];
+
 export default function SmileGalleryPage() {
-  const featuredItems = galleryItems.filter(item => item.featured);
-  const allItems = galleryItems.filter(item => !item.featured);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
@@ -245,7 +307,7 @@ export default function SmileGalleryPage() {
         recovery="Immediate inspiration for your own smile journey"
         benefits={[
           "See real patient results",
-          "Visualize potential outcomes",
+          "Visualise potential outcomes",
           "Build confidence in treatments",
           "Find similar cases to yours",
           "Understand treatment possibilities"
@@ -253,7 +315,7 @@ export default function SmileGalleryPage() {
         risks={[
           "Individual results may vary",
           "Not all outcomes are typical",
-          "Consultation required for personalized assessment"
+          "Consultation required for personalised assessment"
         ]}
         rating={4.9}
         reviewCount={450}
@@ -300,11 +362,13 @@ export default function SmileGalleryPage() {
 
             {/* Quick Actions */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink/90 text-white font-semibold">
-                <Calendar className="w-5 h-5 mr-2" />
-                Book Your Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="/book">
+                <Button size="lg" className="bg-soft-pink hover:bg-soft-pink/90 text-white font-semibold">
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Book Your Consultation
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"
@@ -330,7 +394,8 @@ export default function SmileGalleryPage() {
         </div>
       </section>
 
-      {/* Filter Section */}
+      {/* Filter Section - Commented out for later use when more content is added */}
+      {/*
       <section className="py-8 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-50 rounded-xl p-6">
@@ -353,6 +418,7 @@ export default function SmileGalleryPage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Featured Transformations */}
       <section className="py-16">
@@ -367,7 +433,7 @@ export default function SmileGalleryPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {featuredItems.map((item) => (
+            {featuredTransformations.map((item) => (
               <Card key={item.id} className="overflow-hidden shadow-xl border-2 border-soft-pink/20 hover:shadow-2xl transition-all duration-300">
                 {/* Featured Badge */}
                 <div className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white text-center py-2 text-sm font-semibold">
@@ -379,11 +445,15 @@ export default function SmileGalleryPage() {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="space-y-2">
                       <div className="relative aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
-                          <div className="text-center">
-                            <Camera className="w-8 h-8 text-gray-500 mx-auto mb-2" />
-                            <div className="text-sm font-medium text-gray-700">BEFORE</div>
-                          </div>
+                        <Image
+                          src={item.beforeImage}
+                          alt={`Before: ${item.beforeDescription}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                        <div className="absolute bottom-2 left-2">
+                          <Badge className="bg-black/70 text-white text-xs">BEFORE</Badge>
                         </div>
                       </div>
                       <p className="text-xs text-gray-600 text-center">{item.beforeDescription}</p>
@@ -391,11 +461,15 @@ export default function SmileGalleryPage() {
 
                     <div className="space-y-2">
                       <div className="relative aspect-[4/3] bg-gray-100 rounded-lg overflow-hidden">
-                        <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20">
-                          <div className="text-center">
-                            <Sparkles className="w-8 h-8 text-soft-pink mx-auto mb-2" />
-                            <div className="text-sm font-medium text-soft-pink">AFTER</div>
-                          </div>
+                        <Image
+                          src={item.afterImage}
+                          alt={`After: ${item.afterDescription}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                        <div className="absolute bottom-2 left-2">
+                          <Badge className="bg-soft-pink text-white text-xs">AFTER</Badge>
                         </div>
                       </div>
                       <p className="text-xs text-gray-600 text-center">{item.afterDescription}</p>
@@ -440,117 +514,19 @@ export default function SmileGalleryPage() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex space-x-3">
-                      <Button className="flex-1 bg-soft-pink hover:bg-soft-pink/90 text-white">
-                        <Eye className="w-4 h-4 mr-2" />
-                        View Full Size
-                      </Button>
-                      <Button variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                        <ExternalLink className="w-4 h-4" />
-                      </Button>
+                    {/* Action Button */}
+                    <div className="flex justify-center">
+                      <Link href="/book">
+                        <Button className="bg-soft-pink hover:bg-soft-pink/90 text-white">
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Book Similar Treatment
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* All Results Gallery */}
-      <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-              Complete Results Gallery
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Browse through our extensive collection of smile transformations across all treatment types
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allItems.map((item) => (
-              <Card key={item.id} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                <div className="relative">
-                  {/* Before/After Split Image */}
-                  <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
-                    <div className="absolute inset-0 grid grid-cols-2">
-                      {/* Before Side */}
-                      <div className="bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                        <div className="text-center">
-                          <Camera className="w-6 h-6 text-gray-500 mx-auto mb-1" />
-                          <div className="text-xs font-medium text-gray-700">BEFORE</div>
-                        </div>
-                      </div>
-                      {/* After Side */}
-                      <div className="bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 flex items-center justify-center">
-                        <div className="text-center">
-                          <Sparkles className="w-6 h-6 text-soft-pink mx-auto mb-1" />
-                          <div className="text-xs font-medium text-soft-pink">AFTER</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Divider Line */}
-                    <div className="absolute top-0 bottom-0 left-1/2 w-0.5 bg-white z-10"></div>
-
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white"
-                      >
-                        <Eye className="w-4 h-4 mr-2" />
-                        View Details
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="absolute top-2 left-2">
-                    <Badge className="bg-soft-pink text-white">
-                      {item.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                <CardContent className="p-4">
-                  <h3 className="font-semibold text-pear-primary mb-2 line-clamp-2">{item.title}</h3>
-
-                  {/* Treatment Tags */}
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {item.treatment.map((treatment) => (
-                      <Badge key={treatment} variant="outline" className="text-xs">
-                        {treatment}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {/* Quick Info */}
-                  <div className="grid grid-cols-2 gap-2 text-xs text-gray-600 mb-3">
-                    <div>
-                      <span className="font-medium">Age:</span> {item.patientAge}
-                    </div>
-                    <div>
-                      <span className="font-medium">Duration:</span> {item.duration}
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Load More Button */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-soft-pink text-soft-pink hover:bg-soft-pink hover:text-white">
-              <Camera className="w-5 h-5 mr-2" />
-              Load More Results
-            </Button>
           </div>
         </div>
       </section>
@@ -569,14 +545,14 @@ export default function SmileGalleryPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { name: "Teeth Whitening", icon: Sparkles, count: "150+", color: "pear-gold" },
-              { name: "Dental Veneers", icon: Shield, count: "85+", color: "soft-pink" },
-              { name: "Dental Implants", icon: Award, count: "200+", color: "dental-green" },
-              { name: "Smile Makeovers", icon: Heart, count: "65+", color: "pear-primary" }
+              { name: "Teeth Whitening", icon: Sparkles, count: "150+", color: "pear-gold", href: "/services/cosmetic/teeth-whitening" },
+              { name: "Dental Veneers", icon: Shield, count: "85+", color: "soft-pink", href: "/services/cosmetic/veneers" },
+              { name: "Dental Implants", icon: Award, count: "200+", color: "dental-green", href: "/services/implants" },
+              { name: "Smile Makeovers", icon: Heart, count: "65+", color: "pear-primary", href: "/services/complete-smile-makeover" }
             ].map((category) => {
               const Icon = category.icon;
               return (
-                <Link key={category.name} href={`/smile-gallery?category=${category.name.toLowerCase().replace(' ', '-')}`}>
+                <Link key={category.name} href={category.href}>
                   <Card className="group hover:shadow-lg transition-all duration-300 text-center cursor-pointer">
                     <CardContent className="p-6">
                       <div className={`w-16 h-16 bg-${category.color}/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
@@ -607,22 +583,23 @@ export default function SmileGalleryPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Book Free Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-soft-pink"
-                  asChild
-                >
-                  <Link href="/testimonials">
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/testimonials">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-soft-pink hover:bg-white hover:text-soft-pink"
+                  >
                     <Star className="w-5 h-5 mr-2" />
                     Read Patient Stories
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
@@ -645,6 +622,133 @@ export default function SmileGalleryPage() {
               <div className="absolute bottom-4 left-8 w-8 h-8 bg-white/20 rounded-full" />
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Interactive Results Gallery */}
+      <section className="py-16 bg-gradient-to-r from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Interactive Results Gallery
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Drag the sliders to see dramatic before and after transformations. Experience the full impact of our treatments.
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {/* First Row: Orthodontics & Whitening */}
+            <div className="max-w-7xl mx-auto">
+              <BeforeAfterSliderPair
+                primarySlider={{
+                  beforeImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp",
+                  afterImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp",
+                  beforeAlt: "Patient's smile before Invisalign orthodontics and Enlighten whitening showing misaligned and discolored teeth",
+                  afterAlt: "Patient's transformed smile after Invisalign treatment and professional whitening with perfectly aligned, bright white teeth",
+                  title: "Invisalign + Professional Whitening",
+                  description: "Complete smile transformation combining clear aligners for perfect tooth positioning with professional whitening for a radiant finish",
+                  treatmentType: "Orthodontics + Whitening"
+                }}
+                secondarySlider={{
+                  beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
+                  afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
+                  beforeAlt: "Patient with crowded, misaligned teeth before ClearCorrect treatment",
+                  afterAlt: "Patient's beautifully aligned smile after ClearCorrect clear aligner treatment",
+                  title: "ClearCorrect Orthodontic Treatment",
+                  description: "Dramatic alignment correction using ClearCorrect clear aligners for a confident, straight smile",
+                  treatmentType: "Clear Aligners"
+                }}
+                className="bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10 rounded-2xl p-6"
+              />
+            </div>
+
+            {/* Second Row: Composite Bonding & Restorative */}
+            <div className="max-w-7xl mx-auto">
+              <BeforeAfterSliderPair
+                primarySlider={{
+                  beforeImage: "/images/before-after/dental-composite-bond-before.webp",
+                  afterImage: "/images/before-after/dental-composite-bond-after.webp",
+                  beforeAlt: "Patient's teeth before composite bonding showing gaps, chips, and uneven shapes",
+                  afterAlt: "Patient's smile after composite bonding treatment with perfectly shaped, gap-free teeth",
+                  title: "Composite Bonding Transformation",
+                  description: "Same-day smile enhancement using advanced composite bonding to close gaps, repair chips, and create uniform tooth shapes",
+                  treatmentType: "Composite Bonding"
+                }}
+                secondarySlider={{
+                  beforeImage: "/images/before-after/repair-restore-before.webp",
+                  afterImage: "/images/before-after/repair-restore-after.webp",
+                  beforeAlt: "Damaged teeth requiring restorative treatment with visible decay and structural issues",
+                  afterAlt: "Fully restored teeth with natural appearance and complete function",
+                  title: "Restorative Dental Treatment",
+                  description: "Comprehensive restoration bringing damaged teeth back to full health and natural beauty",
+                  treatmentType: "Restorative Dentistry"
+                }}
+                className="bg-gradient-to-br from-dental-green/10 to-pear-primary/10 rounded-2xl p-6"
+              />
+            </div>
+
+            {/* Third Row: Hygiene & Aesthetic Enhancement */}
+            <div className="max-w-7xl mx-auto">
+              <BeforeAfterSliderPair
+                primarySlider={{
+                  beforeImage: "/images/before-after/airflow-composite-bond-polish-hygienist-before.webp",
+                  afterImage: "/images/before-after/airflow-composite-bond-polish-hygienist-after.webp",
+                  beforeAlt: "Patient's teeth before airflow polish and hygienist treatment showing staining and buildup",
+                  afterAlt: "Patient's clean, polished teeth after professional airflow treatment and composite enhancement",
+                  title: "Airflow Polish & Hygiene Treatment",
+                  description: "Professional airflow cleaning combined with expert hygiene care to reveal naturally bright, healthy teeth",
+                  treatmentType: "Hygiene + Enhancement"
+                }}
+                secondarySlider={{
+                  beforeImage: "/images/before-after/dental-hygienist-airflow-stain-removal-before.webp",
+                  afterImage: "/images/before-after/dental-hygienist-airflow-stain-removal-after.webp",
+                  beforeAlt: "Heavily stained teeth before professional airflow stain removal treatment",
+                  afterAlt: "Bright, clean teeth after professional airflow stain removal showing dramatic improvement",
+                  title: "Professional Stain Removal",
+                  description: "Advanced airflow technology removes stubborn stains and plaque for dramatically cleaner, brighter teeth",
+                  treatmentType: "Stain Removal"
+                }}
+                className="bg-gradient-to-br from-pear-gold/10 to-soft-pink/10 rounded-2xl p-6"
+              />
+            </div>
+
+            {/* Fourth Row: Advanced Treatments */}
+            <div className="max-w-7xl mx-auto">
+              <BeforeAfterSliderPair
+                primarySlider={{
+                  beforeImage: "/images/before-after/dental-denture-before.webp",
+                  afterImage: "/images/before-after/dental-denture-after.webp",
+                  beforeAlt: "Patient with missing teeth requiring denture replacement treatment",
+                  afterAlt: "Patient's restored smile with natural-looking dentures providing full function",
+                  title: "Complete Denture Restoration",
+                  description: "Life-changing denture treatment restoring full function and confidence with natural-looking results",
+                  treatmentType: "Denture Treatment"
+                }}
+                secondarySlider={{
+                  beforeImage: "/images/before-after/flexible-denture-removable-bridge-before.webp",
+                  afterImage: "/images/before-after/flexible-denture-removable-bridge-after.webp",
+                  beforeAlt: "Patient requiring flexible denture and bridge treatment for multiple missing teeth",
+                  afterAlt: "Patient's restored smile with flexible denture and bridge providing natural appearance",
+                  title: "Flexible Denture & Bridge",
+                  description: "Modern flexible denture and bridge solutions providing comfortable, natural-looking tooth replacement",
+                  treatmentType: "Flexible Prosthetics"
+                }}
+                className="bg-gradient-to-br from-soft-lavender/10 to-dental-green/10 rounded-2xl p-6"
+              />
+            </div>
+          </div>
+
+          {/* Gallery Navigation */}
+          <div className="text-center mt-12">
+            <Link href="/book">
+              <Button size="lg" className="bg-soft-pink hover:bg-soft-pink/90 text-white">
+                <Calendar className="w-5 h-5 mr-2" />
+                Talk to us about your transformation
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
