@@ -130,11 +130,7 @@ export default function TestimonialsPage() {
                 />
                 Google Reviews
               </Badge>
-              <Badge variant="secondary" className="bg-yellow-50 text-yellow-600 border-yellow-200">
-                <Star className="w-4 h-4 mr-2 fill-current" />
-                5-Star Reviews Only
-              </Badge>
-            </div>
+                         </div>
 
             <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary mb-6">
               Our 5-Star
