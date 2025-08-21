@@ -601,7 +601,7 @@ export default function CompleteSmileMakeoverPage() {
                 </ul>
                 <Link href="/book">
                   <Button className="w-full mt-6 bg-gradient-to-r from-rose-500 to-amber-500 text-white">
-                    Get Personalized Quote
+                    Get Personalised Quote
                   </Button>
                 </Link>
               </CardContent>
@@ -618,7 +618,7 @@ export default function CompleteSmileMakeoverPage() {
               <CardContent>
                 <ul className="space-y-3">
                   {[
-                    "10% discount on all treatments",
+                    "10% discount on treatments",
                     "Priority appointment scheduling",
                     "Extended warranty options",
                     "Flexible payment plans",

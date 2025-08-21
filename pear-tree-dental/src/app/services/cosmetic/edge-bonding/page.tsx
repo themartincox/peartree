@@ -22,6 +22,8 @@ import {
   Award
 } from "lucide-react";
 import { getTreatmentPrice } from "@/data/pricing";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Composite Edge Bonding - Instant Smile Enhancement | Pear Tree Dental",
@@ -267,13 +269,17 @@ export default function CompositeEdgeBondingPage() {
                   <div className="text-sm text-gray-600">Per tooth</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold">
-                    Book Edge Bonding
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold">
+                      Book Edge Bonding
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-purple-500 text-purple-600 hover:bg-purple-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -372,6 +378,35 @@ export default function CompositeEdgeBondingPage() {
         </div>
       </section>
 
+      {/* Featured Before/After Sliders (Pre-Transformations) */}
+      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Before Invisalign, Boutique whitening and composite bonding",
+                afterAlt: "After Invisalign, Boutique whitening and composite bonding with refined edges",
+                title: "Alignment + Whitening + Bonding",
+                description: "Comprehensive transformation combining alignment, whitening and edge bonding for a refined finish",
+                treatmentType: "Invisalign • Boutique Whitening • Edge Bonding"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp",
+                afterImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp",
+                beforeAlt: "Before Enlighten whitening and edge bonding",
+                afterAlt: "After Enlighten whitening and edge bonding with brighter, smoother edges",
+                title: "Whitening + Edge Bonding",
+                description: "Enlighten professional whitening followed by precision edge bonding",
+                treatmentType: "Enlighten Whitening • Edge Bonding"
+              }}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Before & After Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -442,6 +477,35 @@ export default function CompositeEdgeBondingPage() {
         </div>
       </section>
 
+      {/* Featured Before/After Sliders (Post-Transformations) */}
+      <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/airflow-composite-bond-polish-hygienist-before.webp",
+                afterImage: "/images/before-after/airflow-composite-bond-polish-hygienist-after.webp",
+                beforeAlt: "Before airflow stain removal and composite bond polish",
+                afterAlt: "After airflow stain removal and polished composite bonds",
+                title: "Airflow + Composite Polish",
+                description: "Stain removal with airflow and polished composite edges for a refreshed smile",
+                treatmentType: "Airflow Hygiene • Composite Polish"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/dental-composite-bond-before.webp",
+                afterImage: "/images/before-after/dental-composite-bond-after.webp",
+                beforeAlt: "Before composite bonding",
+                afterAlt: "After composite bonding with improved edge contour",
+                title: "Composite Edge Bonding",
+                description: "Targeted edge bonding to repair chips and refine the smile line",
+                treatmentType: "Edge Bonding"
+              }}
+              className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -456,13 +520,17 @@ export default function CompositeEdgeBondingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-purple-600 hover:bg-white/90 font-semibold">
-                  Book Edge Bonding
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600">
-                  Explore Other Cosmetic Options
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-purple-600 hover:bg-white/90 font-semibold">
+                    Book Edge Bonding
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/services/cosmetic">
+                  <Button size="lg" variant="outline" className="border-white text-purple-600 hover:bg-white hover:text-purple-600">
+                    Explore Other Cosmetic Options
+                  </Button>
+                </Link>
               </div>
 
               <div className="text-sm text-white/80">

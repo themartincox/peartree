@@ -6,6 +6,8 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import Link from "next/link";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
+import React from "react";
 import {
   Star,
   ArrowRight,
@@ -367,13 +369,17 @@ export default function InvisalignPage() {
                   <div className="text-sm text-gray-600">Complete treatment</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold">
-                    Book Invisalign Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold">
+                      Book Invisalign Consultation
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -522,7 +528,43 @@ export default function InvisalignPage() {
           </div>
         </div>
       </section>
+{/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Invisalign Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See comprehensive before and after results combining Invisalign with whitening and bonding.
+            </p>
+          </div>
 
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp",
+                afterImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp",
+                beforeAlt: "Before Invisalign and Enlighten whitening",
+                afterAlt: "After Invisalign and Enlighten whitening with brighter alignment",
+                title: "Invisalign + Enlighten Whitening",
+                description: "Orthodontic alignment combined with professional whitening for a brighter, straighter smile",
+                treatmentType: "Invisalign + Whitening"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Before Invisalign, Boutique whitening and composite bonding",
+                afterAlt: "After Invisalign, Boutique whitening and composite bonding with refined edges",
+                title: "Invisalign + Boutique Whitening + Bonding",
+                description: "Comprehensive transformation combining alignment, whitening and edge refinement",
+                treatmentType: "Invisalign + Whitening + Bonding"
+              }}
+              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
       {/* Suitability Section */}
       <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -695,6 +737,44 @@ export default function InvisalignPage() {
               </div>
             </CardContent>
           </Card>
+        </div>
+      </section>
+
+      {/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Invisalign Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See comprehensive before and after results combining Invisalign with whitening and bonding.
+            </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp",
+                afterImage: "/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp",
+                beforeAlt: "Before Invisalign and Enlighten whitening",
+                afterAlt: "After Invisalign and Enlighten whitening with brighter alignment",
+                title: "Invisalign + Enlighten Whitening",
+                description: "Orthodontic alignment combined with professional whitening for a brighter, straighter smile",
+                treatmentType: "Invisalign + Whitening"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Before Invisalign, Boutique whitening and composite bonding",
+                afterAlt: "After Invisalign, Boutique whitening and composite bonding with refined edges",
+                title: "Invisalign + Boutique Whitening + Bonding",
+                description: "Comprehensive transformation combining alignment, whitening and edge refinement",
+                treatmentType: "Invisalign + Whitening + Bonding"
+              }}
+              className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6"
+            />
+          </div>
         </div>
       </section>
 
