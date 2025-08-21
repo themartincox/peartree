@@ -85,8 +85,8 @@ export default function CompositeVeneersPage() {
     },
     {
       icon: Paintbrush2,
-      title: "Artistic Customization",
-      description: "Sculpted directly on your teeth, allowing for real-time adjustments and personalized shaping."
+      title: "Artistic Customisation",
+      description: "Sculpted directly on your teeth, allowing for real-time adjustments and personalised shaping."
     },
     {
       icon: RotateCcw,
@@ -183,7 +183,7 @@ export default function CompositeVeneersPage() {
   const sameDayProcess = [
     {
       time: "30 Minutes",
-      title: "Consultation & color matching",
+      title: "Consultation & colour matching",
       icon: Clock
     },
     {
