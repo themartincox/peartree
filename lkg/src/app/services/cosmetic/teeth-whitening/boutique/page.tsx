@@ -401,13 +401,13 @@ export default function BoutiqueWhiteningPage() {
           <div className="max-w-7xl mx-auto">
             <BeforeAfterSliderPair
               primarySlider={{
-                beforeImage: "/images/before-after/teeth-whitening-before.JPG",
-                afterImage: "/images/before-after/teeth-whitening-after.JPG",
-                beforeAlt: "Patient's teeth before Boutique whitening treatment showing discoloration and staining",
-                afterAlt: "Patient's teeth after Boutique whitening treatment - significantly whiter and brighter smile",
-                title: "Boutique Whitening Transformation",
-                description: "Professional-grade at-home whitening delivering 6-8 shades improvement with custom-fitted trays",
-                treatmentType: "Boutique Whitening System"
+                beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
+                afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
+                beforeAlt: "Patient before Boutique Whitening and ClearCorrect orthodontic treatment",
+                afterAlt: "Patient after Boutique Whitening and ClearCorrect orthodontic treatment showing improved alignment",
+                title: "Boutique Whitening",
+                description: "Teeth whitening using Boutique Whitening and ClearCorrect orthodontics for complete smile transformation",
+                treatmentType: "Boutique Whitening"
               }}
               secondarySlider={{
                 beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
@@ -415,8 +415,8 @@ export default function BoutiqueWhiteningPage() {
                 beforeAlt: "Patient's teeth before comprehensive treatment including orthodontics, Invisalign, Boutique whitening and composite bonding",
                 afterAlt: "Patient's teeth after comprehensive treatment - perfectly aligned, brilliant white smile with composite bonding refinements",
                 title: "Complete Smile Makeover",
-                description: "Comprehensive treatment combining Invisalign orthodontics, Boutique whitening, and precision composite bonding",
-                treatmentType: "Orthodontics, Invisalign, Boutique Whitening & Composite Bonding"
+                description: "Comprehensive treatment combining Boutique whitening, Invisalign orthodontics, and precision composite bonding",
+                treatmentType: "Boutique Whitening, Orthodontics, Invisalign, & Composite Bonding"
               }}
               className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6"
             />

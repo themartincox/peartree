@@ -36,7 +36,6 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 
 // Icon mapping for benefits
 const iconMap = {
@@ -178,6 +177,33 @@ export default function CompleteSmileMakeoverPage() {
       ideal: "Comprehensive oral health restoration",
       treatments: ["Implants", "Full mouth reconstruction", "Bite correction", "Comprehensive care"],
       description: "Total oral health and aesthetic restoration for complex cases"
+    }
+  ];
+
+  const beforeAfterCases = [
+    {
+      case: "Crowded & Stained Teeth",
+      before: "Severely crowded, yellowed teeth with gaps",
+      after: "Straight, white, perfectly aligned smile",
+      treatments: ["Invisalign", "Whitening", "4 veneers"],
+      duration: "8 months",
+      satisfaction: "Life-changing confidence boost"
+    },
+    {
+      case: "Missing & Damaged Teeth",
+      before: "Missing front teeth, chipped and discolored",
+      after: "Complete, natural-looking smile",
+      treatments: ["2 implants", "6 veneers", "Whitening"],
+      duration: "6 months",
+      satisfaction: "Can smile freely again"
+    },
+    {
+      case: "Worn & Aged Smile",
+      before: "Worn, short teeth with poor proportions",
+      after: "Youthful, full, bright smile",
+      treatments: ["8 crowns", "Gum contouring", "Whitening"],
+      duration: "3 months",
+      satisfaction: "Look 10 years younger"
     }
   ];
 
@@ -373,35 +399,6 @@ export default function CompleteSmileMakeoverPage() {
         </div>
       </section>
 
-      {/* Before/After Slider Pair 1 */}
-      <section className="py-16 bg-gradient-to-r from-rose-50 to-amber-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <BeforeAfterSliderPair
-              primarySlider={{
-                beforeImage: "/images/before-after/BCC-before.webp",
-                afterImage: "/images/before-after/BCC-after.webp",
-                beforeAlt: "Before buccal corridor correction",
-                afterAlt: "After buccal corridor correction with fuller smile",
-                title: "Buccal Corridor Correction",
-                description: "Reduce dark corridors for a broader, fuller smile",
-                treatmentType: "Orthodontic Aesthetics"
-              }}
-              secondarySlider={{
-                beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
-                afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
-                beforeAlt: "Before ClearCorrect treatment",
-                afterAlt: "After ClearCorrect with improved alignment",
-                title: "ClearCorrect Aligners",
-                description: "Discreet aligners to straighten and widen the smile",
-                treatmentType: "ClearCorrect"
-              }}
-              className="bg-gradient-to-br from-rose-50 to-amber-50 rounded-2xl p-6"
-            />
-          </div>
-        </div>
-      </section>
-
       {/* Makeover Packages */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -451,31 +448,60 @@ export default function CompleteSmileMakeoverPage() {
         </div>
       </section>
 
-      {/* Before/After Slider Pair 2 (replaces Smile Transformation Results section) */}
+      {/* Before/After Cases */}
       <section className="py-16 bg-gradient-to-r from-rose-50 to-amber-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <BeforeAfterSliderPair
-              primarySlider={{
-                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
-                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
-                beforeAlt: "Before Invisalign, Boutique whitening and composite bonding",
-                afterAlt: "After Invisalign, Boutique whitening and composite bonding",
-                title: "Invisalign + Boutique Whitening + Bonding",
-                description: "Comprehensive transformation combining alignment, whitening and edge refinement",
-                treatmentType: "Invisalign • Whitening • Bonding"
-              }}
-              secondarySlider={{
-                beforeImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp",
-                afterImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp",
-                beforeAlt: "Before Enlighten whitening and edge bonding",
-                afterAlt: "After Enlighten whitening and edge bonding",
-                title: "Enlighten Whitening + Edge Bonding",
-                description: "Brighter teeth finished with precise edge bonding",
-                treatmentType: "Whitening • Edge Bonding"
-              }}
-              className="bg-gradient-to-br from-rose-50 to-amber-50 rounded-2xl p-6"
-            />
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Smile Transformation Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real patient transformations showcasing the dramatic improvements
+              possible with comprehensive smile makeover treatment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {beforeAfterCases.map((caseStudy, index) => (
+              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="text-center">
+                    <Camera className="w-12 h-12 text-gray-500 mx-auto mb-2" />
+                    <h4 className="font-bold text-gray-700">BEFORE/AFTER</h4>
+                    <p className="text-sm text-gray-600">{caseStudy.case}</p>
+                  </div>
+                </div>
+                <CardContent className="p-6">
+                  <h3 className="font-semibold text-pear-primary mb-3">{caseStudy.case}</h3>
+
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <span className="font-medium text-red-600">Before: </span>
+                      <span className="text-gray-600">{caseStudy.before}</span>
+                    </div>
+                    <div>
+                      <span className="font-medium text-green-600">After: </span>
+                      <span className="text-gray-600">{caseStudy.after}</span>
+                    </div>
+                    <div>
+                      <span className="font-medium text-rose-600">Treatments: </span>
+                      <span className="text-gray-600">{caseStudy.treatments.join(", ")}</span>
+                    </div>
+                    <div>
+                      <span className="font-medium text-blue-600">Timeline: </span>
+                      <span className="text-gray-600">{caseStudy.duration}</span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 bg-rose-50 p-3 rounded-lg">
+                    <div className="flex items-center space-x-2">
+                      <Heart className="w-4 h-4 text-rose-600" />
+                      <span className="text-sm font-medium text-rose-700">"{caseStudy.satisfaction}"</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

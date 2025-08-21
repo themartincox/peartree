@@ -6,6 +6,8 @@ import ServiceNavigation from "@/components/ServiceNavigation";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import Link from "next/link";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
+import React from "react";
 import {
   Star,
   ArrowRight,
@@ -327,13 +329,17 @@ export default function ClearCorrectPage() {
                   <div className="text-sm text-gray-600">Complete treatment</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold">
-                    Book ClearCorrect Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-indigo-500 text-indigo-600 hover:bg-indigo-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-semibold">
+                      Book ClearCorrect Consultation
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-indigo-500 text-indigo-600 hover:bg-indigo-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -433,7 +439,43 @@ export default function ClearCorrectPage() {
           </div>
         </div>
       </section>
+{/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              ClearCorrect Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See real before and after transformations achieved with ClearCorrect aligners.
+            </p>
+          </div>
 
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
+                afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
+                beforeAlt: "Patient before ClearCorrect orthodontic treatment",
+                afterAlt: "Patient after ClearCorrect orthodontic treatment showing improved alignment",
+                title: "Orthodontics - ClearCorrect",
+                description: "Clear aligner orthodontics with ClearCorrect to straighten teeth and improve smile alignment",
+                treatmentType: "ClearCorrect Aligners"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.webp",
+                afterImage: "/images/before-after/BCC-after.webp",
+                beforeAlt: "Before buccal corridor correction",
+                afterAlt: "After buccal corridor correction with fuller smile",
+                title: "Buccal Corridor Correction",
+                description: "Treatment to reduce dark corridors and create a broader, fuller smile",
+                treatmentType: "Orthodontic Aesthetics"
+              }}
+              className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
       {/* Suitability Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -576,6 +618,44 @@ export default function ClearCorrectPage() {
         </div>
       </section>
 
+      {/* Before/After Results Section */}
+      <section className="py-16 bg-gradient-to-r from-indigo-50 to-purple-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              ClearCorrect Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See real before and after transformations achieved with ClearCorrect aligners.
+            </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/orthodontics-clearcorrect-before.webp",
+                afterImage: "/images/before-after/orthodontics-clearcorrect-after.webp",
+                beforeAlt: "Patient before ClearCorrect orthodontic treatment",
+                afterAlt: "Patient after ClearCorrect orthodontic treatment showing improved alignment",
+                title: "Orthodontics - ClearCorrect",
+                description: "Clear aligner orthodontics with ClearCorrect to straighten teeth and improve smile alignment",
+                treatmentType: "ClearCorrect Aligners"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/BCC-before.webp",
+                afterImage: "/images/before-after/BCC-after.webp",
+                beforeAlt: "Before buccal corridor correction",
+                afterAlt: "After buccal corridor correction with fuller smile",
+                title: "Buccal Corridor Correction",
+                description: "Treatment to reduce dark corridors and create a broader, fuller smile",
+                treatmentType: "Orthodontic Aesthetics"
+              }}
+              className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -590,12 +670,14 @@ export default function ClearCorrectPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-indigo-600 hover:bg-white/90 font-semibold">
-                  Book ClearCorrect Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-indigo-600 hover:bg-white/90 font-semibold">
+                    Book ClearCorrect Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
                 <Link href="/services/treatment-comparison">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-indigo-600">
+                  <Button size="lg" variant="outline" className="border-white text-indigo-600 hover:bg-white hover:text-indigo-600">
                     Compare Orthodontic Options
                   </Button>
                 </Link>

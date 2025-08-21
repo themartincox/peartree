@@ -444,20 +444,20 @@ export default function BuccalCorridorCorrectionPage() {
               primarySlider={{
                 beforeImage: "/images/before-after/BCC-before.png",
                 afterImage: "/images/before-after/BCC-after.png",
-                beforeAlt: "Patient's smile before buccal corridor correction showing narrow smile with visible dark spaces on the sides",
-                afterAlt: "Patient's smile after buccal corridor correction showing wider, fuller smile with eliminated dark spaces",
-                title: "Buccal Corridor Correction Transformation",
-                description: "Complete smile enhancement eliminating dark buccal corridors for a wider, more confident smile",
+                beforeAlt: "Narrow smile with pronounced buccal corridors (dark spaces at the corners)",
+                afterAlt: "Wider, fuller smile after buccal corridor correction with reduced dark spaces",
+                title: "Buccal Corridor Correction – Smile Widening",
+                description: "Orthodontic and aesthetic techniques to reduce dark corridors and create a broader, more photogenic smile",
                 treatmentType: "Buccal Corridor Correction"
               }}
               secondarySlider={{
-                beforeImage: "/images/before-after/BCC-before.png",
-                afterImage: "/images/before-after/BCC-after.png",
-                beforeAlt: "Before treatment showing severe buccal corridor shadows affecting smile width",
-                afterAlt: "After treatment with dramatically improved smile width and natural appearance",
-                title: "Advanced BCC Treatment",
-                description: "Comprehensive approach combining orthodontics and cosmetic dentistry for optimal results",
-                treatmentType: "Combined Treatment"
+                beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+                afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+                beforeAlt: "Crooked, uneven tooth edges before Invisalign, Boutique Whitening, and composite edge bonding",
+                afterAlt: "Aligned, brighter teeth with refined edges after Invisalign, Boutique Whitening, and composite bonding",
+                title: "Invisalign • Boutique Whitening • Edge Bonding",
+                description: "Sequential alignment and shade improvement followed by precise edge refinement for a complete smile upgrade",
+                treatmentType: "Invisalign • Whitening • Bonding"
               }}
               className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-6"
             />

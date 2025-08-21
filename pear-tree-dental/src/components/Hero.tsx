@@ -110,6 +110,7 @@ const Hero = () => {
               <Link href="/membership">View Membership Plans →</Link>
             </Button>
 
+            {/*
             <Button
               asChild
               variant="outline"
@@ -121,6 +122,7 @@ const Hero = () => {
                 Enjoy peace of mind from just 36p per day
               </Link>
             </Button>
+            */}
           </div>
         </div>
 
@@ -164,6 +166,7 @@ const Hero = () => {
                 <Link href="/membership">View Membership Plans →</Link>
               </Button>
 
+              {/*
               <Button
                 asChild
                 variant="outline"
@@ -174,6 +177,7 @@ const Hero = () => {
                   Enjoy peace of mind from just 36p per day
                 </Link>
               </Button>
+              */}
             </div>
           </div>
 
