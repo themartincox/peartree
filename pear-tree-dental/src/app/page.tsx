@@ -6,6 +6,11 @@ import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
+// Add ClientGoogleReviews wrapper with 'use client' directive
+const ClientGoogleReviews = dynamic(() => import('@/components/ClientGoogleReviews'), {
+  ssr: true // This will still be client-side hydrated but pre-rendered on server
+});
+
 // Import our beautiful welcoming loaders
 import {
   DentalTeamLoader,
@@ -124,6 +129,9 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         faqs={homepageFAQs}
         pageUrl="/"
       />
+
+      {/* Google Reviews Widget - Floating with scroll adjustment */}
+      <ClientGoogleReviews />
 
       <Hero />
       <PracticeShowcase />

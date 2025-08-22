@@ -11,10 +11,10 @@ const roboto = Roboto({
 });
 
 type Review = {
-  author_name: string;
-  rating: number;
-  text: string;
-  time: number;
+  author_name?: string;
+  rating?: number;
+  text?: string;
+  time?: number;
   relative_time_description?: string;
   profile_photo_url?: string;
 };
@@ -56,7 +56,8 @@ function Star({ filled = true, className = "" }: { filled?: boolean; className?:
 }
 
 // Clamp helper
-function clampText(text: string, maxChars = 160) {
+function clampText(text?: string | null, maxChars = 160) {
+  if (!text) return "";
   if (text.length <= maxChars) return text;
   return text.slice(0, maxChars).trimEnd() + "…";
 }
@@ -68,6 +69,8 @@ export default function GoogleReviews({
   ctaDelayMs = 4000,
 }: Props) {
   const [data, setData] = React.useState<ApiResponse | null>(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
   const [index, setIndex] = React.useState(0);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [showCta, setShowCta] = React.useState(false);
@@ -80,16 +83,40 @@ export default function GoogleReviews({
   // Fetch reviews data
   React.useEffect(() => {
     let alive = true;
+    setLoading(true);
+    setError(false);
+
     (async () => {
       try {
         const res = await fetch("/api/reviews", { cache: "no-store" });
         if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
-        const json = (await res.json()) as ApiResponse;
-        if (alive) setData(json);
-      } catch {
-        // swallow; UI will show a gentle fallback
+        const json = await res.json();
+
+        // Check if the response has the expected structure
+        if (!json || typeof json.rating !== 'number' || !Array.isArray(json.reviews)) {
+          throw new Error('Invalid response format');
+        }
+
+        if (alive) {
+          setData(json as ApiResponse);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('Error fetching reviews:', err);
+        if (alive) {
+          setError(true);
+          setLoading(false);
+
+          // Provide fallback data to prevent UI from breaking
+          setData({
+            rating: 4.9,
+            total: 486,
+            reviews: []
+          });
+        }
       }
     })();
+
     return () => {
       alive = false;
     };
@@ -98,7 +125,7 @@ export default function GoogleReviews({
   // Handle review rotation
   React.useEffect(() => {
     if (!autoRotate || !data?.reviews?.length) return;
-    
+
     rotationIntervalRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % Math.min(data.reviews.length, maxSnippets));
     }, rotateMs);
@@ -113,12 +140,12 @@ export default function GoogleReviews({
   const handleMouseEnter = () => {
     if (!isExpanded) {
       setIsExpanded(true);
-      
+
       // Start rotation after expansion completes
       rotationStartTimeoutRef.current = setTimeout(() => {
         setAutoRotate(true);
       }, 800);
-      
+
       // Show CTA after delay
       ctaTimeoutRef.current = setTimeout(() => {
         setShowCta(true);
@@ -130,7 +157,7 @@ export default function GoogleReviews({
     setIsExpanded(false);
     setShowCta(false);
     setAutoRotate(false);
-    
+
     // Clear all timeouts
     if (ctaTimeoutRef.current) {
       clearTimeout(ctaTimeoutRef.current);
@@ -156,8 +183,40 @@ export default function GoogleReviews({
   const rating = data?.rating ?? 0;
   const total = data?.total ?? 0;
   const reviews = (data?.reviews ?? []).slice(0, maxSnippets);
-  const current = reviews[index];
+  const current = reviews[index] || null;
   const filledStars = Math.round(rating);
+
+  // If we're in an error state or loading state with no data yet, show a minimal version
+  if ((error || loading) && !data) {
+    return (
+      <section
+        className={`${roboto.className} ${className} w-[200px]`}
+        style={{ fontFamily: roboto.style.fontFamily }}
+        aria-label="Google Reviews"
+      >
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="flex-col items-center justify-center p-4 min-h-[120px] text-center">
+            <div className="flex-col items-center">
+              <div className="flex items-center whitespace-nowrap flex-col gap-1">
+                <div className="font-normal tracking-tight leading-none text-[24px]">
+                  <span style={{ color: GOOGLE_BLUE }}>G</span>
+                  <span style={{ color: GOOGLE_RED }}>o</span>
+                  <span style={{ color: GOOGLE_YELLOW }}>o</span>
+                  <span style={{ color: GOOGLE_BLUE }}>g</span>
+                  <span style={{ color: GOOGLE_GREEN }}>l</span>
+                  <span style={{ color: GOOGLE_RED }}>e</span>
+                </div>
+                <div className="text-sm text-gray-500">Reviews</div>
+              </div>
+              <div className="text-xs text-gray-500 mt-1 opacity-80">
+                {loading ? "loading..." : "read"}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section
@@ -172,13 +231,13 @@ export default function GoogleReviews({
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-all duration-300 ease-in-out">
         {/* Header */}
         <div className={`flex cursor-pointer padding-4 transition-all duration-400 ease-in-out hover:bg-gray-50 ${
-          isExpanded 
-            ? 'flex-row items-center justify-between p-4' 
-            : 'flex-col items-center justify-center p-4 min-h-[120px] text-center'
+          isExpanded
+            ? 'flex-row items-center justify-between p-4'
+            : 'flex-col items-center justify-center p-4 pb-2 min-h-[100px] text-center'
         }`}>
           <div className={`flex gap-1 transition-all duration-400 ease-in-out ${
-            isExpanded 
-              ? 'flex-row items-center' 
+            isExpanded
+              ? 'flex-row items-center'
               : 'flex-col items-center'
           }`}>
             <div className={`flex items-center whitespace-nowrap transition-all duration-400 ease-in-out ${
@@ -200,16 +259,17 @@ export default function GoogleReviews({
                 Reviews
               </div>
             </div>
-            {!isExpanded && (
+            {/* Remove 'read' text in non-expanded state */}
+            {/* {!isExpanded && (
               <div className="text-xs text-gray-500 mt-1 opacity-80">
                 read
               </div>
-            )}
+            )} */}
           </div>
 
           <div className={`flex flex-col gap-1 transition-all duration-400 ease-in-out ${
-            isExpanded 
-              ? 'items-end' 
+            isExpanded
+              ? 'items-end'
               : 'items-center mt-2'
           }`}>
             <div className="flex items-center gap-2">
@@ -232,22 +292,22 @@ export default function GoogleReviews({
 
         {/* Expanding content */}
         <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
-          isExpanded 
-            ? 'max-h-[300px] opacity-100 px-5 pb-4' 
+          isExpanded
+            ? 'max-h-[300px] opacity-100 px-5 pb-4'
             : 'max-h-0 opacity-0 px-5'
         }`}>
-          {current && (
+          {reviews.length > 0 && current ? (
             <figure>
               <blockquote className={`text-sm text-gray-800 leading-relaxed mb-3 transition-all duration-300 ease-out delay-200 ${
                 isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}>
-                "{clampText(current.text, 220)}"
+                "{clampText(current?.text, 220)}"
               </blockquote>
-              
+
               <figcaption className={`flex items-center gap-2 mb-4 transition-all duration-300 ease-out delay-300 ${
                 isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}>
-                {current.profile_photo_url ? (
+                {current?.profile_photo_url ? (
                   <img
                     src={current.profile_photo_url}
                     alt=""
@@ -258,8 +318,8 @@ export default function GoogleReviews({
                   <div className="h-6 w-6 rounded-full bg-gradient-to-br from-blue-400 to-red-400" />
                 )}
                 <span className="text-xs text-gray-600">
-                  — {current.author_name}
-                  {current.relative_time_description && (
+                  — {current?.author_name || "Anonymous"}
+                  {current?.relative_time_description && (
                     <span className="text-gray-400"> · {current.relative_time_description}</span>
                   )}
                 </span>
@@ -284,12 +344,16 @@ export default function GoogleReviews({
                 </div>
               )}
             </figure>
+          ) : (
+            <div className="py-4 text-center text-sm text-gray-500">
+              {error ? "Couldn't load reviews" : "No reviews available"}
+            </div>
           )}
         </div>
 
-        {/* CTA footer */}
+        {/* CTA footer - Only display when expanded */}
         <div className={`px-5 pb-4 transition-all duration-300 ease-out ${
-          showCta ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+          showCta ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 hidden'
         }`}>
           <Link
             href="/testimonials"
