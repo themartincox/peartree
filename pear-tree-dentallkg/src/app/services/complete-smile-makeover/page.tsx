@@ -51,19 +51,19 @@ const iconMap = {
 
 export const metadata: Metadata = {
   title: "Complete Smile Makeover Nottingham | Total Smile Transformation | Pear Tree Dental",
-  description: "Complete smile makeover in Nottingham. Transform your smile with veneers, whitening, crowns, and orthodontics. Comprehensive Nottingham smile transformation from £2,500.",
+  description: "Complete smile makeover in Nottingham. Transform your smile with veneers, whitening, crowns, and orthodontics. Comprehensive smile transformation from £2,500.",
   keywords: [
-    "complete smile makeover Nottingham",
+    "complete smile makeover Burton Joyce",
     "smile transformation Nottingham",
-    "total smile makeover Nottingham",
-    "cosmetic dentistry makeover Nottingham",
+    "total smile makeover Burton Joyce",
+    "cosmetic dentistry makeover",
     "smile design Nottingham",
     "full mouth makeover Nottingham",
-    "comprehensive smile transformation Nottingham"
+    "comprehensive smile transformation"
   ],
   openGraph: {
-    title: "Complete Smile Makeover Nottingham - Total Smile Transformation | Pear Tree Dental",
-    description: "Transform your smile completely with our comprehensive makeover treatments in Nottingham",
+    title: "Complete Smile Makeover - Total Smile Transformation | Pear Tree Dental",
+    description: "Transform your smile completely with our comprehensive makeover treatments",
     type: "website",
     url: "https://peartree.dental/services/complete-smile-makeover"
   },

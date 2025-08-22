@@ -34,20 +34,20 @@ import {
 import { LEGACY_PRICES } from "@/data/pricing";
 
 export const metadata: Metadata = {
-  title: "Wedding Day Smile - Perfect Smile for Your Special Day in Nottingham | Pear Tree Dental",
-  description: "Get the perfect wedding smile in Nottingham. Professional teeth whitening, veneers, and smile makeovers for your special day. Timeline-based treatments for Nottingham brides and grooms.",
+  title: "Wedding Day Smile - Perfect Smile for Your Special Day | Pear Tree Dental",
+  description: "Get the perfect wedding smile in Nottingham. Professional teeth whitening, veneers, and smile makeovers for your special day. Timeline-based treatments for brides and grooms.",
   keywords: [
-    "wedding day smile Nottingham",
-    "bridal smile makeover Nottingham",
-    "wedding teeth whitening Nottingham",
+    "wedding day smile Burton Joyce",
+    "bridal smile makeover",
+    "wedding teeth whitening",
     "bride smile transformation",
     "wedding day dentist Nottingham",
-    "perfect wedding smile Nottingham",
+    "perfect wedding smile",
     "bridal cosmetic dentistry"
   ],
   openGraph: {
-    title: "Perfect Wedding Day Smile - Bridal Smile Makeover Nottingham | Pear Tree Dental",
-    description: "Ensure your smile is picture-perfect for your wedding day with our specialised bridal smile treatments in Nottingham",
+    title: "Perfect Wedding Day Smile - Bridal Smile Makeover | Pear Tree Dental",
+    description: "Ensure your smile is picture-perfect for your wedding day with our specialised bridal smile treatments",
     type: "website",
     url: "https://peartree.dental/services/cosmetic/wedding-day-smile"
   },

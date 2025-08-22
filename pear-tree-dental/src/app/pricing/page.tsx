@@ -26,20 +26,20 @@ import {
 } from "@/data/pricing";
 
 export const metadata: Metadata = {
-  title: "Dental Treatment Prices | Pear Tree Dental Burton Joyce",
-  description: "Transparent dental pricing in Burton Joyce. View our competitive treatment costs, membership plans, and payment options. No hidden fees, clear pricing.",
+  title: "Dental Prices in Nottingham | Pear Tree Dental",
+  description: "Transparent dental pricing in Nottingham. View our competitive treatment costs, membership plans, and payment options for patients across Nottingham. No hidden fees, clear pricing.",
   keywords: [
-    "dental prices Burton Joyce",
+    "dental prices Nottingham",
     "dentist costs Nottingham",
-    "dental treatment prices",
-    "affordable dentistry Burton Joyce",
+    "dental treatment prices Nottingham",
+    "affordable dentistry Nottingham",
     "dental fees Nottinghamshire",
-    "dental membership plans",
-    "payment plans dentist"
+    "dental membership plans Nottingham",
+    "payment plans dentist Nottingham"
   ],
   openGraph: {
-    title: "Dental Treatment Prices | Pear Tree Dental",
-    description: "Transparent dental pricing with competitive treatment costs and flexible payment options",
+    title: "Dental Prices in Nottingham | Pear Tree Dental",
+    description: "Transparent dental pricing in Nottingham with competitive treatment costs and flexible payment options for all Nottingham patients",
     type: "website",
     url: "https://peartree.dental/pricing"
   },

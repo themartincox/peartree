@@ -23,13 +23,17 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dental Services - Comprehensive Care at Pear Tree Dental Burton Joyce",
-  description: "Discover our full range of dental services including general dentistry, cosmetic treatments, implants, orthodontics, and emergency care. Quality dental care in Burton Joyce, Nottingham.",
-  keywords: "dental services, dentist Burton Joyce, cosmetic dentistry, dental implants, orthodontics, emergency dentist, general dentistry, restorative dentistry, Nottingham",
+  title: "Dental Services in Nottingham | Pear Tree Dental",
+  description: "Comprehensive dental services in Nottingham including cosmetic, orthodontics, implants, and general dentistry. High-quality care from experienced Nottingham dentists.",
+  keywords: "dental services Nottingham, dentist Nottingham, cosmetic dentistry Nottingham, dental implants Nottingham, orthodontics Nottingham, emergency dentist Nottingham, general dentistry, restorative dentistry, Nottingham",
   openGraph: {
-    title: "Complete Dental Services - Pear Tree Dental Burton Joyce",
-    description: "From routine check-ups to smile makeovers, discover our comprehensive dental services designed to keep your smile healthy and beautiful.",
+    title: "Dental Services in Nottingham | Pear Tree Dental",
+    description: "From routine check-ups to smile makeovers, discover our comprehensive dental services in Nottingham designed to keep your smile healthy and beautiful.",
     type: "website",
+    url: "https://peartree.dental/services"
+  },
+  alternates: {
+    canonical: "https://peartree.dental/services"
   }
 };
 
@@ -151,7 +155,7 @@ const ServicesPage = () => {
 
             <p className="text-xl sm:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
               From routine care to smile transformations, we offer the full spectrum of dental treatments
-              in our state-of-the-art Burton Joyce practice.
+              for patients across Nottingham in our state-of-the-art practice.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

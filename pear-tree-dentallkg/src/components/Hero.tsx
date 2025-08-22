@@ -83,8 +83,8 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg sm:text-xl text-white leading-relaxed max-w-2xl mb-8">
-            Modern dental care serving all of Nottingham and surrounding areas. Skip
-            the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+            Modern dental care serving Nottingham and surrounding areas. Skip
+            the NHS waiting lists with our membership plans from just £10.95/month.
           </p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md">
@@ -139,8 +139,8 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl text-white leading-relaxed max-w-lg">
-              Modern dental care serving all of Nottingham and surrounding areas. Skip
-              the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+              Modern dental care serving Nottingham and surrounding areas. Skip
+              the NHS waiting lists with our membership plans from just £10.95/month.
             </p>
 
             <div className="flex flex-col space-y-4 max-w-md">

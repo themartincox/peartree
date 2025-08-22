@@ -17,20 +17,20 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Pear Tree Dental - Book Your Appointment in Burton Joyce",
-  description: "Contact Pear Tree Dental in Burton Joyce, Nottingham. Book appointments, ask questions, or visit our modern practice. Call 0115 931 2935 or use our contact form.",
+  title: "Contact Us | Pear Tree Dental - Book Your Appointment in Nottingham",
+  description: "Contact Pear Tree Dental in Nottingham. Book appointments, ask questions, or visit our modern practice in Burton Joyce. Call 0115 931 2935 or use our contact form.",
   keywords: [
     "contact Pear Tree Dental",
-    "book appointment Burton Joyce",
+    "book appointment Nottingham",
     "dental enquiries Nottingham",
-    "emergency dental Burton Joyce",
+    "emergency dental Nottingham",
     "dental practice Nottinghamshire",
     "dentist contact details",
-    "Burton Joyce dental clinic"
+    "Nottingham dental clinic"
   ],
   openGraph: {
-    title: "Contact Us | Pear Tree Dental",
-    description: "Get in touch with our friendly dental team in Burton Joyce. Book appointments or ask questions about our services.",
+    title: "Contact Us | Pear Tree Dental Nottingham",
+    description: "Get in touch with our friendly dental team serving Nottingham. Book appointments or ask questions about our services.",
     type: "website",
     url: "https://peartree.dental/contact"
   },
@@ -51,7 +51,7 @@ export default function ContactPage() {
             "@type": "ContactPage",
             "@id": "https://peartree.dental/contact",
             "name": "Contact Pear Tree Dental Centre",
-            "description": "Get in touch with Pear Tree Dental Centre in Burton Joyce. Contact us for appointments, dental emergencies, or general inquiries.",
+            "description": "Get in touch with Pear Tree Dental Centre in Nottingham. Contact us for appointments, dental emergencies, or general inquiries.",
             "url": "https://peartree.dental/contact",
             "mainEntity": {
               "@type": "LocalBusiness",
@@ -59,6 +59,10 @@ export default function ContactPage() {
               "url": "https://peartree.dental",
               "telephone": "+441159312935",
               "email": "hello@peartree.dental",
+              "areaServed": {
+                "@type": "City",
+                "name": "Nottingham"
+              },
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "22 Nottingham Road",
@@ -79,8 +83,8 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Get in touch with our friendly team. We're here to help with any questions about our services,
-              appointments, or dental care.
+              Get in touch with our friendly Nottingham dental team. We're here to help with any questions about our services,
+              appointments, or dental care throughout Nottingham and surrounding areas.
             </p>
           </div>
 

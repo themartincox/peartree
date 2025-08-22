@@ -27,20 +27,20 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Buccal Corridor Correction Nottingham - Unlock the Full Beauty of Your Smile | Pear Tree Dental",
-  description: "Transform your smile with buccal corridor correction in Nottingham. Get the Hollywood smile, boost confidence, and discover a fuller, more radiant smile. From £2,500. Life-changing results for Nottingham patients.",
+  title: "Buccal Corridor Correction - Unlock the Full Beauty of Your Smile | Pear Tree Dental",
+  description: "Transform your smile with buccal corridor correction in Nottingham. Get the Hollywood smile, boost confidence, and discover a fuller, more radiant smile. From £2,500. Life-changing results.",
   keywords: [
-    "buccal corridor correction Nottingham",
+    "buccal corridor correction Burton Joyce",
     "smile widening Nottingham",
-    "dark spaces smile correction Nottingham",
-    "narrow smile treatment Nottingham",
+    "dark spaces smile correction",
+    "narrow smile treatment Burton Joyce",
     "orthodontic expansion Nottinghamshire",
-    "smile transformation Nottingham",
+    "smile transformation Burton Joyce",
     "cosmetic dentistry Nottingham"
   ],
   openGraph: {
-    title: "Buccal Corridor Correction Nottingham | Pear Tree Dental",
-    description: "Get the Hollywood Smile in Nottingham by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
+    title: "Buccal Corridor Correction | Pear Tree Dental Burton Joyce",
+    description: "Get the Hollywood Smile by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
     type: "website",
     url: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
   },

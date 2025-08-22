@@ -7,14 +7,18 @@ import ReviewBox from "@/components/ReviewBox";
 import { teamReviews } from "@/data/teamReviews";
 
 export const metadata: Metadata = {
-  title: "Our Dental Team Burton Joyce | Expert Professionals | Pear Tree",
-  description: "Meet our experienced team of dental professionals at Pear Tree Dental. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated team provides exceptional dental care.",
-  keywords: "dental team, dentists Burton Joyce, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham",
+  title: "Meet Our Nottingham Dentists | Pear Tree Dental",
+  description: "Meet our experienced team of dental professionals serving Nottingham. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated Nottingham team provides exceptional dental care.",
+  keywords: "dental team Nottingham, dentists Nottingham, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham, Nottingham dentist, dental experts Nottingham",
   openGraph: {
-    title: "Our Team | Pear Tree Dental",
-    description: "Meet our experienced team of dental professionals dedicated to providing exceptional care.",
+    title: "Meet Our Nottingham Dentists | Pear Tree Dental",
+    description: "Meet our experienced team of Nottingham dental professionals dedicated to providing exceptional care and treatment to patients throughout Nottingham.",
     type: "website",
+    url: "https://peartree.dental/about/team"
   },
+  alternates: {
+    canonical: "https://peartree.dental/about/team"
+  }
 };
 
 const principals = [

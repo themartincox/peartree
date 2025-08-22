@@ -6,20 +6,20 @@ import Image from "next/image";
 import { practiceInfo } from "@/data/practiceInfo";
 
 export const metadata: Metadata = {
-  title: "Our Practice | Pear Tree Dental - State-of-the-Art Dental Facilities in Burton Joyce",
-  description: "Discover our modern dental practice in Burton Joyce, Nottingham. State-of-the-art facilities, advanced technology, and a patient-centered approach to dental care.",
+  title: "About Our Nottingham Dental Practice | Pear Tree Dental",
+  description: "Discover our modern Nottingham dental practice with state-of-the-art facilities, advanced technology, and a patient-centered approach to dental care serving all of Nottingham.",
   keywords: [
-    "dental practice Burton Joyce",
+    "dental practice Nottingham",
     "modern dental clinic Nottingham",
-    "dental facilities Nottinghamshire",
-    "advanced dental technology",
-    "state-of-the-art dentistry",
-    "patient-centered dental care",
-    "dental clinic Burton Joyce"
+    "dental facilities Nottingham",
+    "advanced dental technology Nottingham",
+    "state-of-the-art dentistry Nottingham",
+    "patient-centered dental care Nottingham",
+    "dental clinic Nottingham"
   ],
   openGraph: {
-    title: "Our Practice | Pear Tree Dental",
-    description: "State-of-the-art dental facilities with a patient-centered approach in Burton Joyce, Nottingham.",
+    title: "About Our Nottingham Dental Practice | Pear Tree Dental",
+    description: "State-of-the-art dental facilities with a patient-centered approach serving Nottingham and surrounding areas from our conveniently located practice.",
     type: "website",
     url: "https://peartree.dental/about/practice"
   },

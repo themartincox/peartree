@@ -5,15 +5,24 @@ import ContactFormCard from "@/components/ContactFormCard";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Book Your Appointment | Pear Tree Dental Burton Joyce",
-  description: "Book your dental appointment online at Pear Tree Dental. Quick and easy appointment booking for all dental services. Call 0115 931 2935 for urgent appointments.",
+  title: "Book a Dentist in Nottingham | Pear Tree Dental",
+  description: "Book your dental appointment with our Nottingham dental practice. Quick and easy online booking for all dental services in Nottingham. Call 0115 931 2935 for urgent appointments.",
   keywords: [
-    "book dental appointment Burton Joyce",
-    "online dental booking",
+    "book dental appointment Nottingham",
+    "online dental booking Nottingham",
     "dental appointment Nottingham",
-    "emergency dental booking",
-    "dentist appointment Burton Joyce"
-  ]
+    "emergency dental booking Nottingham",
+    "dentist appointment Nottingham"
+  ],
+  openGraph: {
+    title: "Book a Dentist in Nottingham | Pear Tree Dental",
+    description: "Book your dental appointment with our Nottingham dental practice. Easy online booking for all Nottingham dental services.",
+    type: "website",
+    url: "https://peartree.dental/book"
+  },
+  alternates: {
+    canonical: "https://peartree.dental/book"
+  }
 };
 
 export default function BookPage() {
@@ -25,15 +34,13 @@ export default function BookPage() {
             Book Your Appointment
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to take care of your dental health? Fill out the form below and we'll contact you to confirm your appointment time.
-            For urgent dental emergencies, please call us directly at{' '}
+            Ready to take care of your dental health in Nottingham? Fill out the form below and we'll contact you to confirm your appointment time at our Nottingham practice.
+            For urgent dental emergencies throughout Nottingham, please call us directly at{' '}
             <a href="tel:01159312935" className="text-pear-primary font-semibold hover:underline">
               0115 931 2935
             </a>
           </p>
         </div>
-
-
 
         {/* Booking Form */}
         <div className="max-w-6xl mx-auto">

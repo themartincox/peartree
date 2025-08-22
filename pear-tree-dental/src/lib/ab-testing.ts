@@ -87,8 +87,8 @@ export function trackVariantAssignment(variant: Variant, isServerSide = false) {
  */
 export function getVariantMetadata(variant: Variant) {
   const baseMetadata = {
-    title: "Dentist Burton Joyce | Pear Tree Dental - Premium Dental Care Nottinghamshire",
-    description: "Leading dentist in Burton Joyce, Nottinghamshire offering comprehensive dental care. NHS & private treatments, emergency dentist, dental membership plans from £8.99/month. Book online.",
+    title: "Dentist in Nottingham | Pear Tree Dental - Premium Dental Care",
+    description: "Leading private dentist in Nottingham offering comprehensive dental care. Specialist in Invisalign, implants, and cosmetic dentistry. Book your consultation online today.",
   };
 
   // Variant-specific optimizations for A/B testing
@@ -96,22 +96,22 @@ export function getVariantMetadata(variant: Variant) {
     case 'A':
       return {
         ...baseMetadata,
-        title: "Dentist Burton Joyce | Pear Tree Dental - Premium Dental Care Nottinghamshire",
-        description: "Leading dentist in Burton Joyce, Nottinghamshire offering comprehensive dental care. NHS & private treatments, emergency dentist, dental membership plans from £8.99/month. Book online.",
+        title: "Dentist in Nottingham | Pear Tree Dental Practice",
+        description: "Your trusted private dentist in Nottingham for Invisalign, dental implants, and smile makeovers. Book a consultation at our modern Nottingham practice.",
       };
 
     case 'B':
       return {
         ...baseMetadata,
-        title: "Welcome to Pear Tree Dental | Burton Joyce Dentist | Nottinghamshire",
-        description: "Welcome to Burton Joyce's premier dental practice. Comprehensive dental care, cosmetic dentistry, emergency appointments. Serving Nottinghamshire families since 2008.",
+        title: "Welcome to Pear Tree Dental | Private Dentist in Nottingham",
+        description: "Welcome to Nottingham's premier private dental practice. We offer comprehensive dental care including cosmetic dentistry and emergency appointments across Nottingham.",
       };
 
     case 'C':
       return {
         ...baseMetadata,
-        title: "Pear Tree Dental Practice | Burton Joyce Dentist | Family Dental Care",
-        description: "Your local Burton Joyce dental practice providing family-friendly dental care. Modern treatments, experienced dentists, flexible appointment times. Call 0115 931 2935.",
+        title: "Pear Tree Dental | Nottingham's Family & Cosmetic Dentist",
+        description: "Your local Nottingham dentist providing family-friendly and cosmetic dental care throughout Nottingham. Modern treatments, experienced dentists, and flexible appointments. Book online.",
       };
 
     default:

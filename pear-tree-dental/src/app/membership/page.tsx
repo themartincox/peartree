@@ -54,23 +54,23 @@ const PlanSavingsChart = dynamic(() => import("@/components/membership/PlanSavin
 });
 
 export const metadata: Metadata = {
-  title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-  description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money. Adult, child & family plans available.",
+  title: "Dental Membership in Nottingham | Pear Tree Dental",
+  description: "Join our affordable Nottingham dental membership from £10.95/month. Skip waiting lists, get premium care and save money. Adult, child & family plans available for Nottingham residents.",
   keywords: [
     "dental membership plans Nottingham",
-    "dental plan Burton Joyce",
-    "private dental care Nottinghamshire",
-    "NHS alternative dental care",
-    "affordable dental membership",
-    "family dental plans",
-    "child dental membership",
-    "dental check-ups included",
-    "dental hygienist appointments",
-    "dental treatment discounts"
+    "dental plan Nottingham",
+    "private dental care Nottingham",
+    "NHS alternative dental care Nottingham",
+    "affordable dental membership Nottingham",
+    "family dental plans Nottingham",
+    "child dental membership Nottingham",
+    "dental check-ups Nottingham",
+    "dental hygienist appointments Nottingham",
+    "dental treatment discounts Nottingham"
   ],
   openGraph: {
-    title: "Dental Membership Plans from £10.95/month | Pear Tree Dental",
-    description: "Join our affordable dental membership plans in Burton Joyce from £10.95/month. Skip NHS waiting lists, get premium care, save money.",
+    title: "Dental Membership in Nottingham | Pear Tree Dental",
+    description: "Join our affordable Nottingham dental membership from £10.95/month. Skip waiting lists, get premium care and save money on treatments throughout Nottingham.",
     type: "website",
     url: "https://peartree.dental/membership"
   },
