@@ -76,10 +76,28 @@ export default function GoogleReviews({
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [showCta, setShowCta] = React.useState(false);
   const [autoRotate, setAutoRotate] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   const rotationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
   const ctaTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const rotationStartTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  // Check if the device is mobile
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Check on resize
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   // Add functions to navigate to previous and next reviews
   const goToPreviousReview = () => {
@@ -231,7 +249,7 @@ export default function GoogleReviews({
                 <div className="text-sm text-gray-500">Reviews</div>
               </div>
               <div className="text-xs text-gray-500 mt-1 opacity-80">
-                {loading ? "loading..." : "read"}
+                {loading ? "loading..." : ""}
               </div>
             </div>
           </div>
@@ -240,6 +258,51 @@ export default function GoogleReviews({
     );
   }
 
+  // Render the mobile version of the widget when on mobile and not expanded
+  if (isMobile && !isExpanded) {
+    return (
+      <section
+        className={`${roboto.className} ${className} w-[150px]`}
+        style={{ fontFamily: roboto.style.fontFamily }}
+        aria-label="Google Reviews"
+        onMouseEnter={handleMouseEnter}
+        onTouchStart={handleMouseEnter}
+      >
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="flex flex-col items-center justify-center py-2 px-3 text-center">
+            {/* Google Logo */}
+            <div className="font-normal tracking-tight leading-none text-[20px] mb-0.5">
+              <span style={{ color: GOOGLE_BLUE }}>G</span>
+              <span style={{ color: GOOGLE_RED }}>o</span>
+              <span style={{ color: GOOGLE_YELLOW }}>o</span>
+              <span style={{ color: GOOGLE_BLUE }}>g</span>
+              <span style={{ color: GOOGLE_GREEN }}>l</span>
+              <span style={{ color: GOOGLE_RED }}>e</span>
+            </div>
+
+            {/* Stars and Rating */}
+            <div className="flex items-center gap-1 mb-0.5">
+              <div className="flex items-center" aria-label={`${rating.toFixed(1)} out of 5`}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} filled={i < filledStars} className="h-[14px] w-[14px]" />
+                ))}
+              </div>
+              <span className="text-sm font-medium text-gray-800">
+                {rating ? rating.toFixed(1) : "—"}
+              </span>
+            </div>
+
+            {/* Review Count */}
+            <span className="text-xs text-gray-500">
+              ({total?.toLocaleString?.() ?? "—"})
+            </span>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Regular/desktop version
   return (
     <section
       className={`${roboto.className} ${className} transition-all duration-400 ease-in-out ${
@@ -249,6 +312,7 @@ export default function GoogleReviews({
       aria-label="Google Reviews"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onTouchStart={handleMouseEnter}
     >
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-all duration-300 ease-in-out">
         {/* Header */}

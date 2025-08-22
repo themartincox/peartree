@@ -4,8 +4,26 @@ import { useEffect, useState, useRef } from "react";
 import GoogleReviews from "./GoogleReviews";
 
 export default function ClientGoogleReviews() {
-  const [topPosition, setTopPosition] = useState(120); // Increased default position
+  const [topPosition, setTopPosition] = useState(120); // Default position in pixels
+  const [isMobile, setIsMobile] = useState(false);
   const initialPositionRef = useRef<number | null>(null);
+
+  // Check if the device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Check on resize
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     // Function to calculate the position
@@ -14,6 +32,10 @@ export default function ClientGoogleReviews() {
       const navElements = document.querySelectorAll("nav");
       const headerElements = document.querySelectorAll("header");
       const secondaryNavElements = document.querySelectorAll(".secondary-nav, .secondary-navigation, header > div:nth-child(2)");
+
+      if (isMobile) {
+        console.log("Mobile device detected - using mobile positioning");
+      }
 
       // Debug information
       console.log("Found nav elements:", navElements.length);
@@ -65,9 +87,11 @@ export default function ClientGoogleReviews() {
       console.log("Lowest navigation bottom detected:", lowestBottom);
 
       if (lowestBottom > 0) {
-        // Use a larger gap (30px) to ensure we're safely below all navigation
-        const desiredPosition = lowestBottom + 30;
-        console.log("Desired position:", desiredPosition);
+        // Use appropriate gaps based on device type
+        // Mobile needs less space due to smaller screen real estate
+        const gap = isMobile ? 15 : 30;
+        const desiredPosition = lowestBottom + gap;
+        console.log(`Desired position (${isMobile ? 'mobile' : 'desktop'}):`, desiredPosition);
 
         // First render - set initial position
         if (initialPositionRef.current === null) {
@@ -90,8 +114,10 @@ export default function ClientGoogleReviews() {
         // Fallback - if we can't find any navigation, use a safe default
         console.log("No navigation elements found, using safe default position");
         if (initialPositionRef.current === null) {
-          initialPositionRef.current = 120;
-          setTopPosition(120);
+          // Different default positions for mobile and desktop
+          const defaultPosition = isMobile ? 80 : 120;
+          initialPositionRef.current = defaultPosition;
+          setTopPosition(defaultPosition);
         }
       }
     };
@@ -127,11 +153,15 @@ export default function ClientGoogleReviews() {
       window.removeEventListener("scroll", updatePosition);
       window.removeEventListener("resize", updatePosition);
     };
-  }, []);
+  }, [isMobile]); // Include isMobile in dependencies to recalculate when it changes
 
   return (
     <div
-      className="fixed right-6 z-50 opacity-80 hover:opacity-100 transition-opacity duration-300 shadow-md hover:shadow-lg reviews-widget-wrapper"
+      className={`fixed z-50 transition-opacity duration-300 shadow-md hover:shadow-lg reviews-widget-wrapper ${
+        isMobile
+          ? 'right-2 opacity-80 hover:opacity-100'
+          : 'right-6 opacity-80 hover:opacity-100'
+      }`}
       style={{ top: `${topPosition}px` }}
       data-testid="googlereviews-widget"
     >
