@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { Roboto } from "next/font/google";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -80,27 +79,6 @@ export default function GoogleReviews({
   const rotationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
   const ctaTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
   const rotationStartTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-
-  // Add functions to navigate to previous and next reviews
-  const goToPreviousReview = () => {
-    if (!data?.reviews?.length) return;
-    setIndex((i) => (i - 1 + Math.min(data.reviews.length, maxSnippets)) % Math.min(data.reviews.length, maxSnippets));
-    // Stop auto-rotation when user manually navigates
-    setAutoRotate(false);
-    if (rotationIntervalRef.current) {
-      clearInterval(rotationIntervalRef.current);
-    }
-  };
-
-  const goToNextReview = () => {
-    if (!data?.reviews?.length) return;
-    setIndex((i) => (i + 1) % Math.min(data.reviews.length, maxSnippets));
-    // Stop auto-rotation when user manually navigates
-    setAutoRotate(false);
-    if (rotationIntervalRef.current) {
-      clearInterval(rotationIntervalRef.current);
-    }
-  };
 
   // Fetch reviews data
   React.useEffect(() => {
@@ -281,6 +259,12 @@ export default function GoogleReviews({
                 Reviews
               </div>
             </div>
+            {/* Remove 'read' text in non-expanded state */}
+            {/* {!isExpanded && (
+              <div className="text-xs text-gray-500 mt-1 opacity-80">
+                read
+              </div>
+            )} */}
           </div>
 
           <div className={`flex flex-col gap-1 transition-all duration-400 ease-in-out ${
@@ -307,33 +291,13 @@ export default function GoogleReviews({
         </div>
 
         {/* Expanding content */}
-        <div className={`overflow-hidden transition-all duration-500 ease-in-out relative ${
+        <div className={`overflow-hidden transition-all duration-500 ease-in-out ${
           isExpanded
             ? 'max-h-[300px] opacity-100 px-5 pb-4'
             : 'max-h-0 opacity-0 px-5'
         }`}>
           {reviews.length > 0 && current ? (
-            <figure className="relative">
-              {/* Navigation arrows - only show when expanded and have multiple reviews */}
-              {isExpanded && reviews.length > 1 && (
-                <>
-                  <button
-                    onClick={goToPreviousReview}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-1 shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                    aria-label="Previous review"
-                  >
-                    <ChevronLeft size={16} />
-                  </button>
-                  <button
-                    onClick={goToNextReview}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-1 shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                    aria-label="Next review"
-                  >
-                    <ChevronRight size={16} />
-                  </button>
-                </>
-              )}
-
+            <figure>
               <blockquote className={`text-sm text-gray-800 leading-relaxed mb-3 transition-all duration-300 ease-out delay-200 ${
                 isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
               }`}>
@@ -361,14 +325,22 @@ export default function GoogleReviews({
                 </span>
               </figcaption>
 
-              {/* Review counter - replace navigation dots with a simple counter */}
+              {/* Navigation dots */}
               {reviews.length > 1 && (
-                <div className={`flex justify-center items-center mb-4 transition-all duration-300 ease-out delay-400 ${
+                <div className={`flex items-center gap-1 mb-4 transition-all duration-300 ease-out delay-400 ${
                   isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-                }`}>
-                  <span className="text-xs text-gray-500">
-                    Review {index + 1} of {reviews.length}
-                  </span>
+                }`} aria-hidden="true">
+                  {reviews.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => showReview(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === index ? 'w-4' : 'w-2'
+                      }`}
+                      style={{ backgroundColor: i === index ? GOOGLE_BLUE : "#E5E7EB" }}
+                      aria-label={`Show review ${i + 1}`}
+                    />
+                  ))}
                 </div>
               )}
             </figure>
