@@ -7,6 +7,7 @@ export default function ClientGoogleReviews() {
   const [topPosition, setTopPosition] = useState(120); // Default position in pixels
   const [isMobile, setIsMobile] = useState(false);
   const initialPositionRef = useRef<number | null>(null);
+  const hasInitialPositionRef = useRef(false); // Track if we've set initial position
 
   // Check if the device is mobile
   useEffect(() => {
@@ -26,16 +27,55 @@ export default function ClientGoogleReviews() {
   }, []);
 
   useEffect(() => {
-    // Function to calculate the position
+    // Set initial position based on hamburger menu
+    const setInitialPosition = () => {
+      if (isMobile && !hasInitialPositionRef.current) {
+        console.log("Setting initial mobile position based on hamburger menu");
+
+        // For mobile, find the hamburger menu or top-right navigation element
+        const hamburgerMenu = document.querySelector('.hamburger, .mobile-menu, header button, .menu-toggle');
+        if (hamburgerMenu) {
+          const rect = hamburgerMenu.getBoundingClientRect();
+          console.log("Found hamburger menu at:", rect.top, rect.right);
+
+          // Position slightly below the hamburger
+          const mobileTopPosition = rect.bottom + 10;
+          setTopPosition(mobileTopPosition);
+          initialPositionRef.current = mobileTopPosition;
+          hasInitialPositionRef.current = true;
+
+          console.log("Initial mobile position set relative to hamburger:", mobileTopPosition);
+        } else {
+          // Fallback if no hamburger found
+          const defaultPosition = 60;
+          setTopPosition(defaultPosition);
+          initialPositionRef.current = defaultPosition;
+          hasInitialPositionRef.current = true;
+        }
+      } else if (!hasInitialPositionRef.current) {
+        // Default desktop initial position
+        const defaultPosition = 120;
+        setTopPosition(defaultPosition);
+        initialPositionRef.current = defaultPosition;
+        hasInitialPositionRef.current = true;
+      }
+    };
+
+    // Run once to set initial position
+    setInitialPosition();
+
+    // Function to calculate the position after initial positioning is set
     const updatePosition = () => {
+      // If we haven't set initial position yet, do that first
+      if (!hasInitialPositionRef.current) {
+        setInitialPosition();
+        return;
+      }
+
       // Try multiple selector strategies to find all possible navigation elements
       const navElements = document.querySelectorAll("nav");
       const headerElements = document.querySelectorAll("header");
       const secondaryNavElements = document.querySelectorAll(".secondary-nav, .secondary-navigation, header > div:nth-child(2)");
-
-      if (isMobile) {
-        console.log("Mobile device detected - using mobile positioning");
-      }
 
       // Debug information
       console.log("Found nav elements:", navElements.length);
@@ -89,18 +129,12 @@ export default function ClientGoogleReviews() {
       if (lowestBottom > 0) {
         // Use appropriate gaps based on device type
         // Mobile needs less space due to smaller screen real estate
-        const gap = isMobile ? 15 : 30;
+        const gap = isMobile ? 10 : 30;
         const desiredPosition = lowestBottom + gap;
         console.log(`Desired position (${isMobile ? 'mobile' : 'desktop'}):`, desiredPosition);
 
-        // First render - set initial position
-        if (initialPositionRef.current === null) {
-          initialPositionRef.current = desiredPosition;
-          setTopPosition(desiredPosition);
-          console.log("Initial widget position set to:", desiredPosition);
-        }
-        // Subsequent renders - respect the initial position as a minimum
-        else {
+        // When scrolling, use initial position as minimum
+        if (initialPositionRef.current !== null) {
           const newPosition = Math.max(initialPositionRef.current, desiredPosition);
           setTopPosition(newPosition);
 
@@ -110,21 +144,11 @@ export default function ClientGoogleReviews() {
             console.log("Widget position updated to:", newPosition);
           }
         }
-      } else {
-        // Fallback - if we can't find any navigation, use a safe default
-        console.log("No navigation elements found, using safe default position");
-        if (initialPositionRef.current === null) {
-          // Different default positions for mobile and desktop
-          const defaultPosition = isMobile ? 80 : 120;
-          initialPositionRef.current = defaultPosition;
-          setTopPosition(defaultPosition);
-        }
       }
     };
 
     // Perform multiple position updates to catch late-loading elements
-    updatePosition(); // Immediate
-
+    // Skip immediate update as we've already set initial position
     const initialTimeout1 = setTimeout(updatePosition, 200);
     const initialTimeout2 = setTimeout(updatePosition, 500);
     const initialTimeout3 = setTimeout(updatePosition, 1000);
@@ -140,6 +164,7 @@ export default function ClientGoogleReviews() {
       }
     }, 1500);
 
+    // Only add scroll listener after initial position is set
     window.addEventListener("scroll", updatePosition);
     window.addEventListener("resize", updatePosition);
 
@@ -157,15 +182,15 @@ export default function ClientGoogleReviews() {
 
   return (
     <div
-      className={`fixed z-50 transition-opacity duration-300 shadow-md hover:shadow-lg reviews-widget-wrapper ${
+      className={`fixed z-50 shadow-md hover:shadow-lg reviews-widget-wrapper ${
         isMobile
-          ? 'right-2 opacity-80 hover:opacity-100'
-          : 'right-6 opacity-80 hover:opacity-100'
-      }`}
+          ? 'right-1 bg-opacity-25 hover:bg-opacity-100'
+          : 'right-6 bg-opacity-80 hover:bg-opacity-100'
+      } bg-white rounded-xl border border-gray-200 transition-all duration-300`}
       style={{ top: `${topPosition}px` }}
       data-testid="googlereviews-widget"
     >
-      <GoogleReviews />
+      <GoogleReviews className="opacity-80 hover:opacity-100 transition-opacity duration-300" />
     </div>
   );
 }

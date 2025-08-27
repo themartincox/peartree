@@ -50,6 +50,7 @@ function Star({ filled = true, className = "" }: { filled?: boolean; className?:
       fill={filled ? GOOGLE_YELLOW : "none"}
       stroke={filled ? GOOGLE_YELLOW : "#E5E7EB"}
       strokeWidth="1"
+      focusable="false"
     >
       <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.46,13.97L5.82,21L12,17.27Z" />
     </svg>
@@ -234,7 +235,7 @@ export default function GoogleReviews({
         style={{ fontFamily: roboto.style.fontFamily }}
         aria-label="Google Reviews"
       >
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="overflow-hidden">
           <div className="flex-col items-center justify-center p-4 min-h-[120px] text-center">
             <div className="flex-col items-center">
               <div className="flex items-center whitespace-nowrap flex-col gap-1">
@@ -268,7 +269,7 @@ export default function GoogleReviews({
         onMouseEnter={handleMouseEnter}
         onTouchStart={handleMouseEnter}
       >
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div className="overflow-hidden">
           <div className="flex flex-col items-center justify-center py-2 px-3 text-center">
             {/* Google Logo */}
             <div className="font-normal tracking-tight leading-none text-[20px] mb-0.5">
@@ -282,18 +283,22 @@ export default function GoogleReviews({
 
             {/* Stars and Rating */}
             <div className="flex items-center gap-1 mb-0.5">
-              <div className="flex items-center" aria-label={`${rating.toFixed(1)} out of 5`}>
+              <span
+                role="img"
+                aria-label={`Google rating: ${rating.toFixed(1)} out of 5 stars`}
+                className="flex items-center"
+              >
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} filled={i < filledStars} className="h-[14px] w-[14px]" />
                 ))}
-              </div>
-              <span className="text-sm font-medium text-gray-800">
-                {rating ? rating.toFixed(1) : "—"}
+                <span className="text-sm font-medium text-gray-800 ml-1">
+                  {rating ? rating.toFixed(1) : "—"}
+                </span>
               </span>
             </div>
 
             {/* Review Count */}
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-gray-700">
               ({total?.toLocaleString?.() ?? "—"})
             </span>
           </div>
@@ -314,7 +319,7 @@ export default function GoogleReviews({
       onMouseLeave={handleMouseLeave}
       onTouchStart={handleMouseEnter}
     >
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden transition-all duration-300 ease-in-out">
+      <div className="overflow-hidden transition-all duration-300 ease-in-out">
         {/* Header */}
         <div className={`flex cursor-pointer padding-4 transition-all duration-400 ease-in-out hover:bg-gray-50 ${
           isExpanded
@@ -339,7 +344,7 @@ export default function GoogleReviews({
                 <span style={{ color: GOOGLE_GREEN }}>l</span>
                 <span style={{ color: GOOGLE_RED }}>e</span>
               </div>
-              <div className={`text-gray-500 font-normal transition-all duration-400 ease-in-out ${
+              <div className={`text-gray-700 font-normal transition-all duration-400 ease-in-out ${
                 isExpanded ? 'text-lg mt-0.5' : 'text-sm'
               }`}>
                 Reviews
@@ -352,17 +357,21 @@ export default function GoogleReviews({
               ? 'items-end'
               : 'items-center mt-2'
           }`}>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-0.5" aria-label={`${rating.toFixed(1)} out of 5`}>
+            <span
+              role="img"
+              aria-label={`Google rating: ${rating.toFixed(1)} out of 5 stars`}
+              className="flex items-center gap-2"
+            >
+              <span className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} filled={i < filledStars} className="h-[18px] w-[18px]" />
                 ))}
-              </div>
+              </span>
               <span className="text-base font-medium text-gray-800">
                 {rating ? rating.toFixed(1) : "—"}
               </span>
-            </div>
-            <span className={`text-xs text-gray-500 transition-all duration-400 ease-in-out ${
+            </span>
+            <span className={`text-xs text-gray-700 transition-all duration-400 ease-in-out ${
               isExpanded ? 'text-right' : 'text-center'
             }`}>
               ({total?.toLocaleString?.() ?? "—"} reviews)
@@ -383,17 +392,19 @@ export default function GoogleReviews({
                 <>
                   <button
                     onClick={goToPreviousReview}
-                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-1 shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-11 w-11 p-0 flex items-center justify-center shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     aria-label="Previous review"
+                    style={{ minWidth: 44, minHeight: 44 }}
                   >
-                    <ChevronLeft size={16} />
+                    <ChevronLeft size={20} />
                   </button>
                   <button
                     onClick={goToNextReview}
-                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full p-1 shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 rounded-full h-11 w-11 p-0 flex items-center justify-center shadow-sm border border-gray-200 text-gray-600 hover:text-gray-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                     aria-label="Next review"
+                    style={{ minWidth: 44, minHeight: 44 }}
                   >
-                    <ChevronRight size={16} />
+                    <ChevronRight size={20} />
                   </button>
                 </>
               )}
@@ -417,10 +428,10 @@ export default function GoogleReviews({
                 ) : (
                   <div className="h-6 w-6 rounded-full bg-gradient-to-br from-blue-400 to-red-400" />
                 )}
-                <span className="text-xs text-gray-600">
+                <span className="text-xs text-gray-700">
                   — {current?.author_name || "Anonymous"}
                   {current?.relative_time_description && (
-                    <span className="text-gray-400"> · {current.relative_time_description}</span>
+                    <span className="text-gray-500"> · {current.relative_time_description}</span>
                   )}
                 </span>
               </figcaption>
@@ -430,14 +441,14 @@ export default function GoogleReviews({
                 <div className={`flex justify-center items-center mb-4 transition-all duration-300 ease-out delay-400 ${
                   isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                 }`}>
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-gray-700">
                     Review {index + 1} of {reviews.length}
                   </span>
                 </div>
               )}
             </figure>
           ) : (
-            <div className="py-4 text-center text-sm text-gray-500">
+            <div className="py-4 text-center text-sm text-gray-700">
               {error ? "Couldn't load reviews" : "No reviews available"}
             </div>
           )}
