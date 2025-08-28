@@ -117,6 +117,46 @@ const nextConfig = {
 
   // PWA and Service Worker Headers
   async headers() {
+    // Build CSP based on environment
+    const isDev = process.env.NODE_ENV !== 'production';
+    
+    // CSP directives
+    const cspDirectives = [
+      "default-src 'self'",
+      // Script policy - Next.js requires 'unsafe-eval' in dev, 'unsafe-inline' for inline scripts
+      isDev 
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'" 
+        : "script-src 'self' 'unsafe-inline'",
+      // Style policy - Next.js requires 'unsafe-inline' for styled-jsx
+      "style-src 'self' 'unsafe-inline'",
+      // Image policy - restrict to specific domains instead of all HTTPS
+      "img-src 'self' data: blob: https://source.unsplash.com https://images.unsplash.com https://ext.same-assets.com https://ugc.same-assets.com",
+      // Font policy
+      "font-src 'self' data:",
+      // Connect policy for API calls and analytics
+      "connect-src 'self' https://cdn.sanity.io https://*.sanity.io https://vitals.vercel-insights.com ws://localhost:* wss://localhost:*",
+      // Media policy
+      "media-src 'self'",
+      // Object policy - block plugins
+      "object-src 'none'",
+      // Frame ancestors - prevent clickjacking
+      "frame-ancestors 'none'",
+      // Frame policy
+      "frame-src 'none'",
+      // Form action policy
+      "form-action 'self'",
+      // Base URI policy
+      "base-uri 'self'",
+      // Upgrade insecure requests
+      "upgrade-insecure-requests",
+      // Worker policy (for service workers)
+      "worker-src 'self'",
+      // Manifest policy
+      "manifest-src 'self'",
+    ];
+
+    const cspHeader = cspDirectives.join('; ');
+
     return [
       {
         source: '/sw.js',
@@ -143,6 +183,12 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
+          // MAIN CSP HEADER - This is what Google PageSpeed is looking for
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader
+          },
+          // Additional security headers
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff'
@@ -161,7 +207,12 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(self)'
+            value: 'camera=(), microphone=(), geolocation=(self), interest-cohort=()'
+          },
+          // Strict Transport Security (HSTS)
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
           }
         ]
       }
@@ -223,8 +274,6 @@ const nextConfig = {
       },
     ]
   },
-
-
 };
 
 module.exports = nextConfig;
