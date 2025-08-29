@@ -1,14 +1,20 @@
 import nodemailer from 'nodemailer';
 
-// Email service configuration for Gmail SMTP
-const createTransporter = () => {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER, // hello@peartree.dental
-      pass: process.env.GMAIL_APP_PASSWORD, // App password
-    },
-  });
+// Reuse a single transporter instance for better performance
+let cachedTransporter: nodemailer.Transporter | null = null;
+
+ // Email service configuration for Gmail SMTP
+const getTransporter = () => {
+  if (!cachedTransporter) {
+    cachedTransporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER, // hello@peartree.dental
+        pass: process.env.GMAIL_APP_PASSWORD, // App password
+      },
+    });
+  }
+  return cachedTransporter;
 
   return transporter;
 };
@@ -45,22 +51,25 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
       applicationId: data.applicationId
     });
 
-    // Check environment variables first
+       // Check environment variables first
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.GMAIL_APP_PASSWORD;
 
+    // Only log whether credentials are present to avoid leaking information
     console.log('📧 Environment check:', {
       emailUserConfigured: !!emailUser,
       emailPassConfigured: !!emailPass,
       emailUserLength: emailUser ? emailUser.length : 0,
       emailPassLength: emailPass ? emailPass.length : 0
+      emailUserConfigured: Boolean(emailUser),
+      emailPassConfigured: Boolean(emailPass)
     });
 
     if (!emailUser || !emailPass) {
       throw new Error('Email configuration missing: EMAIL_USER or GMAIL_APP_PASSWORD not configured');
     }
 
-    const transporter = createTransporter();
+    const transporter = getTransporter();
     console.log('📧 Transporter created successfully');
 
     console.log('📧 Generating email HTML content...');

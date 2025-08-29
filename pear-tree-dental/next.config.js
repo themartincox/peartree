@@ -115,7 +115,7 @@ const nextConfig = {
   // Output optimization - COMMENTED OUT FOR STANDARD HOSTING
   // output: 'standalone', // Only use for Docker deployments
 
-  // PWA and Service Worker Headers - Security headers moved to middleware
+  // PWA and Service Worker Headers
   async headers() {
     return [
       {
@@ -140,8 +140,31 @@ const nextConfig = {
           }
         ]
       },
-      // Security headers are now handled in middleware.ts for better control
-      // and to support CSP nonces
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(self)'
+          }
+        ]
+      }
     ];
   },
 
@@ -200,6 +223,8 @@ const nextConfig = {
       },
     ]
   },
+
+
 };
 
 module.exports = nextConfig;

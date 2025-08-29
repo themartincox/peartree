@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -86,20 +86,7 @@ export default function LocationDetection() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
-  useEffect(() => {
-    // Check if user has dismissed the modal this session
-    const dismissed = sessionStorage.getItem('locationModalDismissed') === 'true';
-    setIsDismissed(dismissed);
-
-    if (!dismissed) {
-      // Start silent detection after a delay to be less intrusive
-      setTimeout(() => {
-        detectUserLocationSilently();
-      }, 8000); // Increased delay so user doesn't notice detection happening
-    }
-  }, []);
-
-  const detectUserLocationSilently = async () => {
+  const detectUserLocationSilently = useCallback(async () => {
     try {
       // Silent GPS detection only - no fallbacks to avoid any popups
       if (navigator.geolocation) {
@@ -137,7 +124,20 @@ export default function LocationDetection() {
     } catch (error) {
       // Silent failure - no indicators to user
     }
-  };
+    }, [isDismissed]);
+
+  useEffect(() => {
+    // Check if user has dismissed the modal this session
+    const dismissed = sessionStorage.getItem('locationModalDismissed') === 'true';
+    setIsDismissed(dismissed);
+
+    if (!dismissed) {
+      // Start silent detection after a delay to be less intrusive
+      setTimeout(() => {
+        detectUserLocationSilently();
+      }, 8000); // Increased delay so user doesn't notice detection happening
+    }
+  }, [detectUserLocationSilently]);
 
   const getLocationFromCoordinates = (lat: number, lon: number): LocationData | null => {
     // Burton Joyce coordinates: approximately 52.9847, -1.0147

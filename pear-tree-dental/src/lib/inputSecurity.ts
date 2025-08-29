@@ -74,7 +74,8 @@ export function validateAndSanitizePhone(phone: string): { isValid: boolean; san
     sanitized = '+44' + sanitized.substring(1);
   }
 
-  if (!UK_PHONE_REGEX.test(phone)) {
+   // Validate the sanitized number to prevent bypass via formatting characters
+  if (!UK_PHONE_REGEX.test(sanitized)) {
     return { isValid: false, sanitized: '', error: 'Invalid UK phone number format' };
   }
 
