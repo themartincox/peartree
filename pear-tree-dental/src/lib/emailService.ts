@@ -55,15 +55,11 @@ export const sendMembershipConfirmationEmail = async (data: MembershipConfirmati
     const emailUser = process.env.EMAIL_USER;
     const emailPass = process.env.GMAIL_APP_PASSWORD;
 
-    // Only log whether credentials are present to avoid leaking information
-    console.log('📧 Environment check:', {
-      emailUserConfigured: !!emailUser,
-      emailPassConfigured: !!emailPass,
-      emailUserLength: emailUser ? emailUser.length : 0,
-      emailPassLength: emailPass ? emailPass.length : 0
-      emailUserConfigured: Boolean(emailUser),
-      emailPassConfigured: Boolean(emailPass)
-    });
+  // Only log whether credentials are present to avoid leaking information
+   console.log('📧 Environment check:', {
+  emailUserConfigured: Boolean(emailUser),
+  emailPassConfigured: Boolean(emailPass)
+});
 
     if (!emailUser || !emailPass) {
       throw new Error('Email configuration missing: EMAIL_USER or GMAIL_APP_PASSWORD not configured');
