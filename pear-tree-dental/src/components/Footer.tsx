@@ -12,10 +12,7 @@ const Footer = () => {
           <div className="space-y-4 sm:space-y-6 sm:col-span-2 lg:col-span-1">
             <div>
               <div className="brand-logo text-xl sm:text-2xl text-white">
-                PEAR TREE
-              </div>
-              <div className="brand-subtitle text-xs sm:text-sm text-white/80 mt-4px">
-                DENTAL
+                PEAR TREE DENTAL
               </div>
             </div>
 
@@ -33,7 +30,7 @@ const Footer = () => {
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
               </div>
-              <span className="text-xs sm:text-sm text-white/80">400+ Google Reviews</span>
+              <span className="text-xs sm:text-sm text-white/80">500+ Google Reviews</span>
             </div>
           </div>
 
