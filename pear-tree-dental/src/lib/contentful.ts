@@ -1,8 +1,7 @@
-// /lib/contentful.ts
 import 'server-only';
 
 import type { BlogTemplate, LocationData, ServiceData } from '@/types/contentful';
-import { SERVICE_TYPE, LOCATION_TYPE, TEMPLATE_TYPE } from '@/lib/contentTypes'
+import { SERVICE_TYPE, LOCATION_TYPE, TEMPLATE_TYPE } from '@/lib/contentTypes';
 
 /**
  * ENV
@@ -269,8 +268,8 @@ export function replacePlaceholdersInRichText(doc: any, values: {
   contactUrl?: string
   bookingUrl?: string
 }) {
-  if (!doc || typeof doc !== 'object') return doc
-  const clone = JSON.parse(JSON.stringify(doc))
+  if (!doc || typeof doc !== 'object') return doc;
+  const clone = JSON.parse(JSON.stringify(doc));
 
   const replacer = (s: string) =>
     s
@@ -281,19 +280,19 @@ export function replacePlaceholdersInRichText(doc: any, values: {
       .replace(/\{\{\s*reviewsRating\s*\}\}/gi, values.reviewsRating ? String(values.reviewsRating) : '5')
       .replace(/\{\{\s*membershipUrl\s*\}\}/gi, values.membershipUrl || '/membership')
       .replace(/\{\{\s*contactUrl\s*\}\}/gi, values.contactUrl || '/contact')
-      .replace(/\{\{\s*bookingUrl\s*\}\}/gi, values.bookingUrl || '/book')
+      .replace(/\{\{\s*bookingUrl\s*\}\}/gi, values.bookingUrl || '/book');
 
   const walk = (node: any) => {
-    if (!node) return
+    if (!node) return;
     if (node.nodeType === 'text' && typeof node.value === 'string') {
-      node.value = replacer(node.value)
+      node.value = replacer(node.value);
     }
-    const content: any[] = Array.isArray(node.content) ? node.content : []
-    content.forEach(walk)
-  }
+    const content: any[] = Array.isArray(node.content) ? node.content : [];
+    content.forEach(walk);
+  };
 
-  walk(clone)
-  return clone
+  walk(clone);
+  return clone;
 }
 
 /** Ping the API for sanity */
@@ -316,4 +315,37 @@ export async function fetchMultipleByType<T>(contentType: string, limit = 1000):
     console.error(`Failed to fetch ${contentType}:`, error);
     return [];
   }
+}
+
+/* ================================================================
+ * Blog post helpers – these are needed for dynamic blog pages
+ * ================================================================ */
+
+/**
+ * Content type ID for blog posts. Adjust this to match your Contentful
+ * content model API ID. If you haven’t defined one in your .env,
+ * it defaults to 'blogPost'.
+ */
+export const BLOG_POST_TYPE =
+  process.env.CONTENTFUL_BLOG_POST_TYPE_ID || 'blogPost';
+
+/**
+ * Fetch a single blog post by slug. Uses the generic fetchEntryBySlug
+ * helper above.
+ */
+export async function getBlogPost(slug: string) {
+  return fetchEntryBySlug<any>(BLOG_POST_TYPE, slug);
+}
+
+/**
+ * Fetch all blog post slugs. Useful for generateStaticParams().
+ * It uses getEntriesAll() with a very lightweight select to avoid
+ * downloading full posts.
+ */
+export async function getAllBlogSlugs(): Promise<string[]> {
+  const items = await getEntriesAll<any>({
+    content_type: BLOG_POST_TYPE,
+    select: ['fields.slug'],
+  });
+  return items.map((it) => (it.fields as any).slug);
 }
