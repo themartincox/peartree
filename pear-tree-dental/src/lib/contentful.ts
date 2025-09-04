@@ -15,7 +15,7 @@ import { SERVICE_TYPE, LOCATION_TYPE, TEMPLATE_TYPE } from '@/lib/contentTypes';
 
 const SPACE_ID = process.env.CONTENTFUL_SPACE_ID!;
 const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || 'master';
-const DELIVERY_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN || process.env.CONTENTFUL_DELIVERY_TOKEN!;
+const DELIVERY_TOKEN = process.env.CONTENTFUL_DELIVERY_TOKEN!;
 const PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN;
 const USE_PREVIEW = (process.env.CONTENTFUL_USE_PREVIEW || 'false').toLowerCase() === 'true';
 const LOCALE = process.env.CONTENTFUL_LOCALE; // e.g., "en-GB"
