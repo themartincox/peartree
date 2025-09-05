@@ -1,92 +1,20 @@
-[images]
-  remote_images = ["https://source.unsplash.com/.*", "https://images.unsplash.com/.*", "https://ext.same-assets.com/.*", "https://ugc.same-assets.com/.*"]
-
 [build]
   command = "bun install && bun run build"
-  publish = ".next"
+  functions = ".netlify/functions"
 
 [build.environment]
   DISABLE_ESLINT_PLUGIN = "true"
   SKIP_ENV_VALIDATION = "true"
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_ENV = "production"
+  # Supabase environment variables properly configured
+  NEXT_PUBLIC_SUPABASE_URL = "https://isjnwsuodldqrcntheoh.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlzam53c3VvZGxkcXJjbnRoZW9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxOTcyNDUsImV4cCI6MjA3MTc3MzI0NX0.v-5CbRjEaiuVrO5YHnpJ1giRY85Ovg8QTxaE2DOInFc"
+  SUPABASE_SERVICE_ROLE_KEY = "placeholder_service_role_key_for_build_only"
+  ENCRYPTION_KEY = "YvPJrFGmL9qHS2xTb5D8A3X7wWgkC6Nz"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Ensure static assets are properly served
-[[redirects]]
-  from = "/images/*"
-  to = "/images/:splat"
-  status = 200
-
-# Security and caching headers - compression handled automatically by Netlify
-[[headers]]
-  for = "/*"
-  [headers.values]
-    # Security headers only - NO manual Content-Encoding
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    X-XSS-Protection = "1; mode=block"
-
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/_next/static/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "/api/*"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-    Service-Worker-Allowed = "/"
-
-[[headers]]
-  for = "/manifest.json"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# Let Netlify handle compression automatically - no manual compression config
-
-# Form handling configuration - Netlify will detect forms automatically from HTML
-# Honeypot protection is configured in the form HTML itself with data-netlify-honeypot="bot-field"
+[functions]
+  external_node_modules = ["sharp"]

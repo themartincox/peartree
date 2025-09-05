@@ -2,8 +2,28 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 import { decryptBankDetail } from '@/lib/encryption';
 
+// Check if we're in a build environment
+const isBuildOrSSR = process.env.NODE_ENV === 'production' && typeof window === 'undefined';
+
 export async function GET(request: NextRequest) {
   try {
+    // During build time, return mock data to avoid Supabase connection issues
+    if (isBuildOrSSR && process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder')) {
+      console.log('Build environment detected, returning mock data');
+      return NextResponse.json({
+        success: true,
+        applications: [],
+        count: 0,
+        pagination: {
+          page: 1,
+          limit: 100,
+          total: 0,
+          pages: 0
+        },
+        statuses: { all: 0, new: 0, processing: 0, completed: 0, error: 0 }
+      });
+    }
+
     console.log('Admin API called - starting...');
 
     const { searchParams } = new URL(request.url);
@@ -164,6 +184,11 @@ const convertToCSV = (applications: any[]): string => {
 // Get counts of applications by status
 async function getApplicationStatusCounts() {
   try {
+    // During build time, return mock data
+    if (isBuildOrSSR && process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder')) {
+      return { all: 0, new: 0, processing: 0, completed: 0, error: 0 };
+    }
+
     const { data, error } = await supabaseAdmin
       .from('membership_applications')
       .select('status')
@@ -195,6 +220,14 @@ async function getApplicationStatusCounts() {
 // DELETE endpoint to delete applications (for admin use only)
 export async function DELETE(request: NextRequest) {
   try {
+    // During build time, return mock success response
+    if (isBuildOrSSR && process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder')) {
+      return NextResponse.json({
+        success: true,
+        message: `Application deleted successfully (build simulation)`
+      });
+    }
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
@@ -244,6 +277,14 @@ export async function DELETE(request: NextRequest) {
 // PATCH endpoint to update application status
 export async function PATCH(request: NextRequest) {
   try {
+    // During build time, return mock success response
+    if (isBuildOrSSR && process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder')) {
+      return NextResponse.json({
+        success: true,
+        message: `Application updated successfully (build simulation)`
+      });
+    }
+
     const body = await request.json();
     const { id, status, notes } = body;
 

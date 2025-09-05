@@ -1,5 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
 
+// Check if we're in a build environment
+const isBuildOrSSR = process.env.NODE_ENV === 'production' && typeof window === 'undefined';
+
+// Get the Supabase URL and keys, providing fallbacks for build time
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+
 // Types for membership applications
 export interface MembershipApplication {
   id: string
@@ -61,14 +69,14 @@ export interface MembershipApplication {
 
 // For client-side operations (public API functions only)
 export const supabaseClient = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+  supabaseUrl,
+  supabaseAnonKey
 )
 
 // For server-side operations (admin level access)
 export const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+  supabaseUrl,
+  supabaseServiceKey,
   {
     auth: {
       autoRefreshToken: false,
