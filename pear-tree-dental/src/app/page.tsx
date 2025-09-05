@@ -1,5 +1,3 @@
-// Force this page to be server-side rendered
-// This solves the build error by explicitly telling Next.js not to statically generate this page
 export const dynamic = 'force-dynamic';
 
 import type React from "react";
