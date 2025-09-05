@@ -2,6 +2,47 @@
 
 import { useEffect, useState, useRef } from "react";
 import GoogleReviews from "./GoogleReviews";
+import { Star } from "lucide-react";
+
+// New component for single-line review display
+function SingleLineGoogleReviews() {
+  const GOOGLE_BLUE = "#4285F4";
+  const GOOGLE_RED = "#EA4335";
+  const GOOGLE_YELLOW = "#FBBC05";
+  const GOOGLE_GREEN = "#34A853";
+
+  return (
+    <div className="w-full bg-white shadow-md border-b border-gray-200 py-2 px-4 flex items-center justify-between">
+      <div className="flex items-center">
+        <span className="text-dental-green font-medium mr-2 text-sm whitespace-nowrap">See our 500+</span>
+        <div className="flex mr-1">
+          {Array(5).fill(0).map((_, i) => (
+            <Star
+              key={i}
+              size={14}
+              className="text-yellow-400 fill-current"
+            />
+          ))}
+        </div>
+        <span className="text-dental-green font-medium mr-2 text-sm">reviews on</span>
+        <div className="font-normal tracking-tight leading-none text-[14px] whitespace-nowrap">
+          <span style={{ color: GOOGLE_BLUE }}>G</span>
+          <span style={{ color: GOOGLE_RED }}>o</span>
+          <span style={{ color: GOOGLE_YELLOW }}>o</span>
+          <span style={{ color: GOOGLE_BLUE }}>g</span>
+          <span style={{ color: GOOGLE_GREEN }}>l</span>
+          <span style={{ color: GOOGLE_RED }}>e</span>
+        </div>
+      </div>
+      <a
+        href="/testimonials"
+        className="ml-1 bg-dental-green hover:bg-dental-green/90 px-2 py-1 rounded text-white text-xs whitespace-nowrap transition-colors"
+      >
+        View reviews
+      </a>
+    </div>
+  );
+}
 
 export default function MobileGoogleReviews() {
   const [isSticky, setIsSticky] = useState(false);
@@ -66,18 +107,13 @@ export default function MobileGoogleReviews() {
         </div>
       )}
 
-      {/* Sticky rendering when scrolled past threshold */}
+      {/* Sticky rendering as single line when scrolled past threshold */}
       {isSticky && (
         <div
-          className="fixed left-0 right-0 z-50 px-4"
-          style={{ top: `${headerHeight + 8}px` }}
+          className="fixed left-0 right-0 z-50"
+          style={{ top: `${headerHeight}px` }}
         >
-          <div
-            className="mx-auto rounded-xl border border-gray-200 bg-white shadow-md"
-            style={{ width: 'fit-content', maxWidth: '100%' }}
-          >
-            <GoogleReviews className="w-full h-full" maxWidth="100%" />
-          </div>
+          <SingleLineGoogleReviews />
         </div>
       )}
     </div>

@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import GoogleReviews from "./GoogleReviews";
 import { usePathname } from "next/navigation";
+import { useReviewWidgetEvent, REVIEW_WIDGET_EVENTS } from "@/lib/reviewsWidgetState";
 
 export default function ClientGoogleReviews() {
   const [isMobile, setIsMobile] = useState(false);
@@ -11,6 +12,8 @@ export default function ClientGoogleReviews() {
 
   // Sticky state for mobile homepage inline widget
   const [isSticky, setIsSticky] = useState(false);
+  // New state to track if floating widget should be hidden (desktop only)
+  const [isHidden, setIsHidden] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const triggerRef = useRef<HTMLDivElement | null>(null);
 
@@ -21,6 +24,32 @@ export default function ClientGoogleReviews() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Listen for showcase widget sticky events (desktop only)
+  useEffect(() => {
+    if (isMobile || !isHomepage) return;
+
+    // When showcase widget becomes sticky, hide this floating widget
+    const cleanupSticky = useReviewWidgetEvent(
+      REVIEW_WIDGET_EVENTS.SHOWCASE_WIDGET_STICKY,
+      () => {
+        setIsHidden(true);
+      }
+    );
+
+    // When showcase widget becomes unsticky, show this floating widget
+    const cleanupUnsticky = useReviewWidgetEvent(
+      REVIEW_WIDGET_EVENTS.SHOWCASE_WIDGET_UNSTICKY,
+      () => {
+        setIsHidden(false);
+      }
+    );
+
+    return () => {
+      cleanupSticky();
+      cleanupUnsticky();
+    };
+  }, [isMobile, isHomepage]);
 
   // Measure header height dynamically (for floating widget positioning)
   useEffect(() => {
@@ -57,7 +86,9 @@ export default function ClientGoogleReviews() {
   // This will be a floating widget that follows as you scroll
   return (
     <div
-      className="fixed z-50 shadow-md hover:shadow-lg reviews-widget-wrapper right-6 bg-opacity-80 hover:bg-opacity-100 bg-white rounded-xl border border-gray-200 transition-all duration-300"
+      className={`fixed z-50 shadow-md hover:shadow-lg reviews-widget-wrapper right-6 bg-opacity-80 hover:bg-opacity-100 bg-white rounded-xl border border-gray-200 transition-all duration-500 transform ${
+        isHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+      }`}
       style={{ top: headerHeight ? `${headerHeight + 10}px` : '100px' }}
       data-testid="googlereviews-widget"
     >

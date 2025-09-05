@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { emitReviewWidgetEvent, REVIEW_WIDGET_EVENTS } from "@/lib/reviewsWidgetState";
 
 interface Review {
   id: string;
@@ -126,6 +127,8 @@ const GoogleReviewsWidget = () => {
   useEffect(() => {
     let handleScroll: () => void;
     let updateNavHeight: () => void;
+    // We need to check for mobile view on every scroll/resize, so define a function
+    const isMobileView = () => window.innerWidth < 768;
 
     if (isHomepage) {
       // Measure the secondary nav height
@@ -143,18 +146,41 @@ const GoogleReviewsWidget = () => {
       updateNavHeight();
       window.addEventListener('resize', updateNavHeight);
 
-      // Homepage: Always show widget (it's positioned in PracticeShowcase)
-      // Handle sticky behavior based on scroll position
+      // Homepage: Handle sticky behavior based on scroll position (desktop only)
       handleScroll = () => {
+        // On mobile, don't make widget sticky in PracticeShowcase (it will just scroll)
+        if (isMobileView()) {
+          setIsSticky(false);
+          return;
+        }
+
+        // Desktop behavior - make sticky based on trigger position
         const triggerElement = document.getElementById('reviews-sticky-trigger');
         if (triggerElement) {
           const rect = triggerElement.getBoundingClientRect();
-          setIsSticky(rect.top <= navHeight); // Account for nav height
+          const shouldBeSticky = rect.top <= navHeight;
+
+          // Only emit event when state changes
+          if (shouldBeSticky !== isSticky) {
+            // Emit event when sticky state changes (desktop only)
+            if (shouldBeSticky) {
+              emitReviewWidgetEvent(REVIEW_WIDGET_EVENTS.SHOWCASE_WIDGET_STICKY);
+            } else {
+              emitReviewWidgetEvent(REVIEW_WIDGET_EVENTS.SHOWCASE_WIDGET_UNSTICKY);
+            }
+          }
+
+          setIsSticky(shouldBeSticky); // Account for nav height
         }
       };
     } else {
-      // Other pages: Show widget after scrolling, then make it sticky
+      // Other pages: Show widget after scrolling, then make it sticky (desktop only)
       handleScroll = () => {
+        if (isMobileView()) {
+          setShowWidget(false);
+          setIsSticky(false);
+          return;
+        }
         const scrollY = window.scrollY;
         if (scrollY > 300) {
           setShowWidget(true);
@@ -175,7 +201,7 @@ const GoogleReviewsWidget = () => {
         window.removeEventListener('resize', updateNavHeight);
       }
     };
-  }, [isHomepage, navHeight]);
+  }, [isHomepage, navHeight, isSticky]);
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev + 1) % reviews.length);
@@ -192,7 +218,6 @@ const GoogleReviewsWidget = () => {
 
   return (
     <>
-      {/* Improved placeholder to maintain space when widget becomes sticky (homepage only) */}
       {isHomepage && isSticky && (
         <div
           className="transition-all duration-500"
@@ -200,7 +225,6 @@ const GoogleReviewsWidget = () => {
         />
       )}
 
-      {/* The actual widget */}
       <div
         ref={widgetRef}
         className={`
@@ -216,14 +240,10 @@ const GoogleReviewsWidget = () => {
       >
         <div className={`${isSticky ? 'container mx-auto px-4' : ''}`}>
           <div className={`${isSticky ? 'py-3' : 'p-4'} transition-all duration-500`}>
-            {/* Combined Header with Reviewer Info */}
             <div className="flex items-center space-x-2 mb-2">
-              {/* Google logo */}
               <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-sm flex-shrink-0">
                 <span className="text-blue-600 font-bold text-sm">G</span>
               </div>
-
-              {/* Reviewer info combined with Google branding */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center flex-wrap gap-x-2">
                   <h5 className={`font-medium transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
@@ -244,8 +264,6 @@ const GoogleReviewsWidget = () => {
                   </span>
                 </div>
               </div>
-
-              {/* Navigation controls */}
               <div className="flex items-center space-x-1">
                 <button
                   onClick={prevReview}
@@ -302,8 +320,6 @@ const GoogleReviewsWidget = () => {
                 </a>
               </div>
             </div>
-
-            {/* Review Text */}
             <div className={`transition-all duration-500 ${isSticky ? 'max-h-12 overflow-hidden' : ''}`}>
               <p
                 className={`text-sm leading-relaxed transition-all duration-500 ${
@@ -322,8 +338,6 @@ const GoogleReviewsWidget = () => {
                 "{reviews[currentReview].text}"
               </p>
             </div>
-
-            {/* Review indicators - only show when not sticky */}
             {!isSticky && (
               <div className="flex justify-center space-x-1 mt-2">
                 {reviews.map((_, index) => (
