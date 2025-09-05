@@ -31,7 +31,6 @@ type Props = {
   maxSnippets?: number; // how many snippets to rotate through (default 10)
   rotateMs?: number;    // milliseconds per rotation (default 2000)
   ctaDelayMs?: number;  // delay before showing CTA (default 4000)
-  maxWidth?: string;    // maximum width for the widget (default auto)
 };
 
 const GOOGLE_BLUE = "#4285F4";
@@ -45,7 +44,7 @@ function Star({ filled = true, className = "" }: { filled?: boolean; className?:
     <svg
       aria-hidden="true"
       viewBox="0 0 24 24"
-      className={`${className} transition-transform`}
+      className={className}
       width="18"
       height="18"
       fill={filled ? GOOGLE_YELLOW : "none"}
@@ -70,7 +69,6 @@ export default function GoogleReviews({
   maxSnippets = 10,
   rotateMs = 2000,
   ctaDelayMs = 4000,
-  maxWidth = "auto",
 }: Props) {
   const [data, setData] = React.useState<ApiResponse | null>(null);
   const [loading, setLoading] = React.useState(true);
@@ -153,7 +151,7 @@ export default function GoogleReviews({
           // Provide fallback data to prevent UI from breaking
           setData({
             rating: 4.9,
-            total: 600,
+            total: 486,
             reviews: []
           });
         }
@@ -234,7 +232,7 @@ export default function GoogleReviews({
     return (
       <section
         className={`${roboto.className} ${className} w-[200px]`}
-        style={{ fontFamily: roboto.style.fontFamily, maxWidth }}
+        style={{ fontFamily: roboto.style.fontFamily }}
         aria-label="Google Reviews"
       >
         <div className="overflow-hidden">
@@ -265,43 +263,44 @@ export default function GoogleReviews({
   if (isMobile && !isExpanded) {
     return (
       <section
-        className={`${roboto.className} ${className} w-auto max-w-[280px] reviews-hover-effect transform transition-all duration-300 hover:shadow-md rounded-xl`}
-        style={{ fontFamily: roboto.style.fontFamily, maxWidth }}
+        className={`${roboto.className} ${className} w-[150px]`}
+        style={{ fontFamily: roboto.style.fontFamily }}
         aria-label="Google Reviews"
         onMouseEnter={handleMouseEnter}
         onTouchStart={handleMouseEnter}
       >
         <div className="overflow-hidden">
           <div className="flex flex-col items-center justify-center py-2 px-3 text-center">
-            {/* First line with text and stars inline */}
-            <div className="flex items-center justify-center mb-1 flex-wrap">
-              <p className="text-base font-semibold text-dental-green inline">
-                See why we have over 500
-              </p>
+            {/* Google Logo */}
+            <div className="font-normal tracking-tight leading-none text-[20px] mb-0.5">
+              <span style={{ color: GOOGLE_BLUE }}>G</span>
+              <span style={{ color: GOOGLE_RED }}>o</span>
+              <span style={{ color: GOOGLE_YELLOW }}>o</span>
+              <span style={{ color: GOOGLE_BLUE }}>g</span>
+              <span style={{ color: GOOGLE_GREEN }}>l</span>
+              <span style={{ color: GOOGLE_RED }}>e</span>
+            </div>
+
+            {/* Stars and Rating */}
+            <div className="flex items-center gap-1 mb-0.5">
               <span
                 role="img"
-                aria-label={`5 out of 5 stars on Google`}
-                className="flex items-center mx-1 star-container"
+                aria-label={`Google rating: ${rating.toFixed(1)} out of 5 stars`}
+                className="flex items-center"
               >
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} filled={true} className={`h-[14px] w-[14px]`} />
+                  <Star key={i} filled={i < filledStars} className="h-[14px] w-[14px]" />
                 ))}
+                <span className="text-sm font-medium text-gray-800 ml-1">
+                  {rating ? rating.toFixed(1) : "—"}
+                </span>
               </span>
             </div>
 
-            {/* Second line with "reviews on Google?" */}
-            <div className="flex items-center gap-1">
-              <span className="text-base font-semibold text-dental-green">reviews on</span>
-              <div className="font-normal tracking-tight leading-none text-[16px] transform transition-all duration-300 hover:scale-110">
-                <span style={{ color: GOOGLE_BLUE }}>G</span>
-                <span style={{ color: GOOGLE_RED }}>o</span>
-                <span style={{ color: GOOGLE_YELLOW }}>o</span>
-                <span style={{ color: GOOGLE_BLUE }}>g</span>
-                <span style={{ color: GOOGLE_GREEN }}>l</span>
-                <span style={{ color: GOOGLE_RED }}>e</span>
-              </div>
-              <span className="text-base font-semibold text-dental-green">?</span>
-            </div>
+            {/* Review Count */}
+            <span className="text-xs text-gray-700">
+              ({total?.toLocaleString?.() ?? "—"})
+            </span>
           </div>
         </div>
       </section>
@@ -311,10 +310,10 @@ export default function GoogleReviews({
   // Regular/desktop version
   return (
     <section
-      className={`${roboto.className} ${className} transition-all duration-400 ease-in-out transform hover:shadow-lg ${
-        isExpanded ? 'w-[400px] hover:scale-[1.01]' : 'w-[200px] hover:scale-[1.02]'
+      className={`${roboto.className} ${className} transition-all duration-400 ease-in-out ${
+        isExpanded ? 'w-[400px]' : 'w-[200px]'
       }`}
-      style={{ fontFamily: roboto.style.fontFamily, maxWidth }}
+      style={{ fontFamily: roboto.style.fontFamily }}
       aria-label="Google Reviews"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -335,7 +334,7 @@ export default function GoogleReviews({
             <div className={`flex items-center whitespace-nowrap transition-all duration-400 ease-in-out ${
               isExpanded ? 'flex-row gap-2' : 'flex-col gap-1'
             }`}>
-              <div className={`font-normal tracking-tight leading-none transition-all duration-400 ease-in-out transform hover:scale-110 ${
+              <div className={`font-normal tracking-tight leading-none transition-all duration-400 ease-in-out ${
                 isExpanded ? 'text-[32px]' : 'text-[24px]'
               }`}>
                 <span style={{ color: GOOGLE_BLUE }}>G</span>
@@ -363,7 +362,7 @@ export default function GoogleReviews({
               aria-label={`Google rating: ${rating.toFixed(1)} out of 5 stars`}
               className="flex items-center gap-2"
             >
-              <span className="flex items-center gap-0.5 star-container">
+              <span className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} filled={i < filledStars} className="h-[18px] w-[18px]" />
                 ))}
@@ -375,7 +374,7 @@ export default function GoogleReviews({
             <span className={`text-xs text-gray-700 transition-all duration-400 ease-in-out ${
               isExpanded ? 'text-right' : 'text-center'
             }`}>
-              (over 500+ reviews)
+              ({total?.toLocaleString?.() ?? "—"} reviews)
             </span>
           </div>
         </div>
@@ -465,7 +464,7 @@ export default function GoogleReviews({
             style={{ color: GOOGLE_BLUE }}
             aria-label="Read more reviews on the testimonials page"
           >
-            read more on our testimonials page!
+            read more on our testimonials
             <svg
               className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
               viewBox="0 0 20 20"

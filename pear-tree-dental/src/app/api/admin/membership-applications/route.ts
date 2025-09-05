@@ -1,66 +1,102 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { supabaseAdmin } from '@/lib/supabase';
+import { decryptBankDetail } from '@/lib/encryption';
 
-interface MembershipSubmission {
-  id: string;
-  timestamp: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  planName: string;
-  planPrice: string;
-  dentistName?: string;
-  isExistingPatient: string;
-  [key: string]: unknown;
+export async function GET(request: NextRequest) {
+  try {
+    console.log('Admin API called - starting...');
+
+    const { searchParams } = new URL(request.url);
+    const format = searchParams.get('format');
+    const download = searchParams.get('download') === 'true';
+    const status = searchParams.get('status') || 'all'; // Filter by status
+    const page = Number.parseInt(searchParams.get('page') || '1', 10);
+    const limit = Number.parseInt(searchParams.get('limit') || '100', 10);
+
+    console.log('Request parameters:', { format, download, status, page, limit });
+
+    // Calculate offset for pagination
+    const offset = (page - 1) * limit;
+
+    // Fetch applications from Supabase with pagination
+    let query = supabaseAdmin
+      .from('membership_applications')
+      .select('*', { count: 'exact' })
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
+
+    // Apply status filter if provided
+    if (status && status !== 'all') {
+      query = query.eq('status', status);
+    }
+
+    const { data: applications, error, count } = await query;
+
+    if (error) {
+      console.error('Error fetching applications:', error);
+      throw error;
+    }
+
+    console.log(`Retrieved ${applications?.length || 0} applications, total: ${count || 'unknown'}`);
+
+    // Process applications (always decrypt bank details for admin use)
+    const processedApplications = applications?.map(app => {
+      // Always decrypt bank details for staff to use in payment systems
+      const appWithDecryptedBank = {
+        ...app,
+        sort_code: decryptBankDetail(app.sort_code_encrypted),
+        account_number: decryptBankDetail(app.account_number_encrypted),
+      };
+
+      // Remove encrypted versions from response
+      delete appWithDecryptedBank.sort_code_encrypted;
+      delete appWithDecryptedBank.account_number_encrypted;
+
+      return appWithDecryptedBank;
+    }) || [];
+
+    // Return CSV if requested
+    if (format === 'csv') {
+      const csvContent = convertToCSV(processedApplications);
+      const filename = `membership-applications-${new Date().toISOString().split('T')[0]}.csv`;
+
+      return new NextResponse(csvContent, {
+        headers: {
+          'Content-Type': 'text/csv',
+          'Content-Disposition': download ? `attachment; filename="${filename}"` : 'inline',
+        },
+      });
+    }
+
+    // Return standard JSON response
+    return NextResponse.json({
+      success: true,
+      applications: processedApplications,
+      count: count || processedApplications.length,
+      pagination: {
+        page,
+        limit,
+        total: count || processedApplications.length,
+        pages: count ? Math.ceil(count / limit) : 1
+      },
+      statuses: await getApplicationStatusCounts()
+    });
+
+  } catch (error) {
+    console.error('Error in admin applications API:', error);
+
+    // Return a detailed error response
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to retrieve applications',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      timestamp: new Date().toISOString()
+    }, { status: 500 });
+  }
 }
 
-const APPLICATIONS_FILE = path.join(process.cwd(), '.applications', 'membership-applications.json');
-
-// Ensure applications directory exists
-const ensureApplicationsDir = () => {
-  try {
-    const dir = path.dirname(APPLICATIONS_FILE);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-    }
-    return true;
-  } catch (error) {
-    console.error('Failed to create applications directory:', error);
-    return false;
-  }
-};
-
-// Load applications from file with better error handling
-const loadApplicationsFromFile = (): MembershipSubmission[] => {
-  try {
-    console.log('Loading applications from:', APPLICATIONS_FILE);
-
-    if (!fs.existsSync(APPLICATIONS_FILE)) {
-      console.log('Applications file does not exist, returning empty array');
-      return [];
-    }
-
-    const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
-    console.log('File content length:', fileContent.length);
-
-    if (!fileContent.trim()) {
-      console.log('File is empty, returning empty array');
-      return [];
-    }
-
-    const applications = JSON.parse(fileContent);
-    console.log('Loaded applications count:', Array.isArray(applications) ? applications.length : 'not an array');
-
-    return Array.isArray(applications) ? applications : [];
-  } catch (error) {
-    console.error('Failed to load applications from file:', error);
-    return [];
-  }
-};
-
 // Convert applications to CSV format
-const convertToCSV = (applications: MembershipSubmission[]): string => {
+const convertToCSV = (applications: any[]): string => {
   if (applications.length === 0) return 'No applications found';
 
   // Define CSV headers
@@ -85,184 +121,160 @@ const convertToCSV = (applications: MembershipSubmission[]): string => {
     'Partner First Name',
     'Partner Last Name',
     'Partner Email',
-    'Staff Member Name',
-    'Family Members Count'
+    'Status',
+    'Email Sent',
+    'Staff Member Name'
   ];
 
   // Convert data to CSV rows
   const rows = applications.map(app => [
-    app.id || '',
-    new Date(app.timestamp).toLocaleString() || '',
-    app.firstName || '',
-    app.lastName || '',
+    app.application_id || '',
+    new Date(app.created_at).toLocaleString() || '',
+    app.first_name || '',
+    app.last_name || '',
     app.email || '',
-    (app as any).phone || '',
-    app.planName || '',
-    app.planPrice || '',
-    (app as any).dateOfBirth || '',
-    (app as any).address || '',
-    (app as any).postcode || '',
-    app.isExistingPatient || '',
-    (app as any).preferredDentist || '',
-    app.dentistGenderPreference || '',
-    (app as any).accountHolderName || '',
-    (app as any).sortCode || '',
-    (app as any).accountNumber ? '****' + ((app as any).accountNumber).slice(-4) : '',
-    (app as any).partnerFirstName || '',
-    (app as any).partnerLastName || '',
-    (app as any).partnerEmail || '',
-    (app as any).staffMemberName || '',
-    (app as any).familyMembers ? JSON.stringify((app as any).familyMembers).length : '0'
+    app.phone || '',
+    app.plan_name || '',
+    app.plan_price || '',
+    app.date_of_birth || '',
+    app.address || '',
+    app.postcode || '',
+    app.is_existing_patient || '',
+    app.preferred_dentist || '',
+    app.dentist_gender_preference || '',
+    app.account_holder_name || '',
+    app.sort_code || '',
+    app.account_number || '',
+    app.partner_first_name || '',
+    app.partner_last_name || '',
+    app.partner_email || '',
+    app.status || '',
+    app.email_sent ? 'Yes' : 'No',
+    app.staff_member_name || ''
   ]);
 
   // Combine headers and rows
   const csvContent = [headers, ...rows]
-    .map(row => row.map(field => `"${field}"`).join(','))
+    .map(row => row.map(field => `"${String(field).replace(/"/g, '""')}"`).join(','))
     .join('\n');
 
   return csvContent;
 };
 
-export async function GET(request: NextRequest) {
+// Get counts of applications by status
+async function getApplicationStatusCounts() {
   try {
-    console.log('Admin API called - starting...');
+    const { data, error } = await supabaseAdmin
+      .from('membership_applications')
+      .select('status')
+      .is('deleted_at', null);
 
-    const { searchParams } = new URL(request.url);
-    const format = searchParams.get('format');
-    const download = searchParams.get('download') === 'true';
+    if (error) throw error;
 
-    console.log('Request parameters:', { format, download });
-
-    // Check if we're in a serverless environment where file storage isn't available
-    const isServerless = !!(process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
-
-    if (isServerless) {
-      console.log('🌐 Serverless environment detected - file storage not available');
-
-      const serverlessNotice = {
-        success: true,
-        isServerless: true,
-        applications: [],
-        count: 0,
-        timestamp: new Date().toISOString(),
-        environment: 'Serverless (Netlify/Vercel)',
-        notice: 'Applications are sent via email instead of file storage',
-        emailRecipients: ['hello@peartree.dental', 'membership@peartree.dental', 'Javaad.mirza@gmail.com'],
-        instructions: [
-          'Check your email inbox for membership applications',
-          'Search for subject line containing: "NEW MEMBERSHIP APPLICATION"',
-          'Each email contains complete application details including Application ID',
-          'Recent submission: Application ID PTDC-1751982576071 for "fitz malloy"'
-        ],
-        troubleshooting: [
-          'If emails are not arriving, check spam/junk folders',
-          'Verify Gmail app password is configured in environment variables',
-          'Contact technical support if email delivery issues persist'
-        ]
-      };
-
-      if (format === 'csv') {
-        const csvNotice = [
-          'Notice,Serverless Environment - Applications Sent Via Email',
-          'Email Recipients,"hello@peartree.dental, membership@peartree.dental, Javaad.mirza@gmail.com"',
-          'Instructions,Check email inbox for applications with subject "NEW MEMBERSHIP APPLICATION"',
-          'Recent Application,ID: PTDC-1751982576071 - fitz malloy',
-          'Contact,0115 931 2935 for support'
-        ].join('\n');
-
-        return new NextResponse(csvNotice, {
-          headers: {
-            'Content-Type': 'text/csv',
-            'Content-Disposition': download ? `attachment; filename="serverless-notice-${new Date().toISOString().split('T')[0]}.csv"` : 'inline',
-          },
-        });
-      }
-
-      return NextResponse.json(serverlessNotice);
-    }
-
-    // Ensure directory exists (for non-serverless environments)
-    const dirCreated = ensureApplicationsDir();
-    if (!dirCreated) {
-      throw new Error('Failed to create applications directory');
-    }
-
-    // Load applications from file
-    const applications = loadApplicationsFromFile();
-    console.log('Final applications count:', applications.length);
-
-    if (format === 'csv') {
-      const csvContent = convertToCSV(applications);
-      const filename = `membership-applications-${new Date().toISOString().split('T')[0]}.csv`;
-
-      return new NextResponse(csvContent, {
-        headers: {
-          'Content-Type': 'text/csv',
-          'Content-Disposition': download ? `attachment; filename="${filename}"` : 'inline',
-        },
-      });
-    }
-
-    // Return JSON by default
-    const response = {
-      success: true,
-      applications: applications.sort((a, b) =>
-        new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
-      ),
-      count: applications.length,
-      lastUpdated: applications.length > 0 ? applications[0].timestamp : null,
-      filePath: APPLICATIONS_FILE,
-      fileExists: fs.existsSync(APPLICATIONS_FILE)
+    const statusCounts: Record<string, number> = {
+      all: data.length,
+      new: 0,
+      processing: 0,
+      completed: 0,
+      error: 0
     };
 
-    console.log('Returning response with count:', response.count);
-    return NextResponse.json(response);
+    // Count applications by status
+    data.forEach(item => {
+      const status = item.status || 'unknown';
+      statusCounts[status] = (statusCounts[status] || 0) + 1;
+    });
 
+    return statusCounts;
   } catch (error) {
-    console.error('Error in admin applications API:', error);
-
-    // Return a detailed error response
-    const errorResponse = {
-      success: false,
-      error: 'Failed to retrieve applications',
-      details: error instanceof Error ? error.message : 'Unknown error',
-      stack: error instanceof Error ? error.stack : undefined,
-      filePath: APPLICATIONS_FILE,
-      fileExists: fs.existsSync(APPLICATIONS_FILE),
-      timestamp: new Date().toISOString()
-    };
-
-    return NextResponse.json(errorResponse, { status: 500 });
+    console.error('Error getting status counts:', error);
+    return { all: 0, new: 0, processing: 0, completed: 0, error: 0 };
   }
 }
 
-// DELETE endpoint to clear applications (admin only)
-export async function DELETE() {
+// DELETE endpoint to delete applications (for admin use only)
+export async function DELETE(request: NextRequest) {
   try {
-    console.log('DELETE called - clearing applications');
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
 
-    if (fs.existsSync(APPLICATIONS_FILE)) {
-      fs.unlinkSync(APPLICATIONS_FILE);
-      console.log('Applications file deleted');
+    if (id) {
+      // Delete a specific application (soft delete)
+      const { error } = await supabaseAdmin
+        .from('membership_applications')
+        .update({
+          deleted_at: new Date().toISOString(),
+          status: 'deleted'
+        })
+        .eq('application_id', id);
+
+      if (error) throw error;
+
+      return NextResponse.json({
+        success: true,
+        message: `Application ${id} deleted successfully`
+      });
     } else {
-      console.log('Applications file did not exist');
+      // Delete all applications (soft delete all)
+      const { error } = await supabaseAdmin
+        .from('membership_applications')
+        .update({
+          deleted_at: new Date().toISOString(),
+          status: 'deleted'
+        })
+        .is('deleted_at', null);
+
+      if (error) throw error;
+
+      return NextResponse.json({
+        success: true,
+        message: 'All applications deleted successfully'
+      });
     }
+  } catch (error) {
+    console.error('Error deleting applications:', error);
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to delete applications',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
+  }
+}
+
+// PATCH endpoint to update application status
+export async function PATCH(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { id, status, notes } = body;
+
+    if (!id || !status) {
+      return NextResponse.json({
+        success: false,
+        error: 'Missing required fields'
+      }, { status: 400 });
+    }
+
+    const { error } = await supabaseAdmin
+      .from('membership_applications')
+      .update({
+        status,
+        admin_notes: notes,
+        processed_at: status === 'completed' ? new Date().toISOString() : null
+      })
+      .eq('application_id', id);
+
+    if (error) throw error;
 
     return NextResponse.json({
       success: true,
-      message: 'All applications cleared',
-      timestamp: new Date().toISOString()
+      message: `Application ${id} updated successfully`
     });
-
   } catch (error) {
-    console.error('Error clearing applications:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to clear applications',
-        details: error instanceof Error ? error.message : 'Unknown error'
-      },
-      { status: 500 }
-    );
+    console.error('Error updating application:', error);
+    return NextResponse.json({
+      success: false,
+      error: 'Failed to update application',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 }

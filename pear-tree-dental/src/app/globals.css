@@ -961,3 +961,69 @@ input:valid {
 [data-radix-portal] .fixed.inset-y-0.right-0 {
   z-index: 100 !important;
 }
+
+/* Add this to the end of the file */
+
+/* Star pulse animations with staggered delays */
+@keyframes starPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(251, 191, 36, 0.7));
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.9));
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(251, 191, 36, 0.7));
+    opacity: 1;
+  }
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+}
+
+.star-container svg {
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), filter 0.2s cubic-bezier(0.4,0,0.2,1);
+  animation: starPulse 1.2s infinite;
+}
+
+.star-container svg:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.7));
+}
+
+/* Custom animations with proper delays */
+.animate-star-pulse-1 {
+  animation-delay: 0s;
+}
+.animate-star-pulse-2 {
+  animation-delay: 0.2s;
+}
+.animate-star-pulse-3 {
+  animation-delay: 0.4s;
+}
+.animate-star-pulse-4 {
+  animation-delay: 0.6s;
+}
+.animate-star-pulse-5 {
+  animation-delay: 0.8s;
+}
+
+/* Mobile Google Reviews widget animations */
+@media (max-width: 767px) {
+  .reviews-hover-effect {
+    transition: all 0.3s ease;
+  }
+
+  .reviews-hover-effect:hover,
+  .reviews-hover-effect:active {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}

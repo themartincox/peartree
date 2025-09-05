@@ -2,8 +2,8 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { sendMembershipConfirmationEmail } from '@/lib/emailService';
 import { validateMembershipForm } from '@/lib/inputSecurity';
 import { validateMembershipRequest, getSecurityHeaders } from '@/lib/rateLimiting';
-import fs from 'fs';
-import path from 'path';
+import { supabaseAdmin } from '@/lib/supabase';
+import { encryptBankDetail } from '@/lib/encryption';
 
 // Define proper interface for membership submissions
 interface MembershipSubmission {
@@ -20,111 +20,113 @@ interface MembershipSubmission {
   [key: string]: unknown // Allow for additional fields
 }
 
-const membershipSubmissions: MembershipSubmission[] = [];
-
-// File path for storing applications (in production, use a proper database)
-const APPLICATIONS_FILE = path.join(process.cwd(), '.applications', 'membership-applications.json');
-
-// Ensure applications directory exists
-const ensureApplicationsDir = () => {
+// Helper function to save application to Supabase
+const saveApplicationToSupabase = async (formData: Record<string, unknown>, applicationId: string, planName: string, planPrice: string, dentistName: string, request: NextRequest) => {
   try {
-    const dir = path.dirname(APPLICATIONS_FILE);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
-      console.log('Created applications directory:', dir);
+    console.log('💾 Saving application to Supabase:', applicationId);
+
+    // Encrypt sensitive bank details
+    const sortCodeEncrypted = encryptBankDetail(String(formData.sortCode || ''));
+    const accountNumberEncrypted = encryptBankDetail(String(formData.accountNumber || ''));
+
+    // Get client IP and user agent for audit
+    const ip = request.headers.get('x-forwarded-for') ||
+               request.headers.get('x-real-ip') ||
+               'unknown';
+
+    const userAgent = request.headers.get('user-agent') || 'unknown';
+
+    // Map form data to database schema
+    const applicationData = {
+      application_id: applicationId,
+
+      // Personal info
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      email: formData.email,
+      phone: formData.phone || null,
+      date_of_birth: formData.dateOfBirth || null,
+      address: formData.address || null,
+      postcode: formData.postcode || null,
+
+      // Bank details (encrypted)
+      account_holder_name: formData.accountHolderName,
+      sort_code_encrypted: sortCodeEncrypted,
+      account_number_encrypted: accountNumberEncrypted,
+
+      // Plan info
+      selected_plan: formData.selectedPlan,
+      plan_name: planName,
+      plan_price: planPrice,
+
+      // Patient preferences
+      is_existing_patient: formData.isExistingPatient,
+      preferred_dentist: formData.preferredDentist || null,
+      dentist_gender_preference: formData.dentistGenderPreference || null,
+      dentist_name: dentistName,
+
+      // Partner info (if family plan)
+      partner_first_name: formData.partnerFirstName || null,
+      partner_last_name: formData.partnerLastName || null,
+      partner_email: formData.partnerEmail || null,
+      partner_is_existing_patient: formData.partnerIsExistingPatient || null,
+      partner_preferred_dentist: formData.partnerPreferredDentist || null,
+      partner_dentist_gender_preference: formData.partnerDentistGenderPreference || null,
+
+      // Staff info
+      is_clinic_signup: formData.isClinicSignup || false,
+      staff_member_name: formData.staffMemberName || null,
+
+      // Family members
+      family_members: formData.familyMembers || [],
+
+      // Status tracking
+      status: 'new',
+      email_sent: false,
+
+      // Audit trail
+      ip_address: ip,
+      user_agent: userAgent,
+      submission_source: 'website'
+    };
+
+    // Insert into Supabase
+    const { data, error } = await supabaseAdmin
+      .from('membership_applications')
+      .insert(applicationData)
+      .select('id')
+      .single();
+
+    if (error) {
+      console.error('❌ Supabase insert error:', error);
+      throw error;
     }
-    return true;
+
+    console.log('✅ Application saved to Supabase, ID:', data.id);
+    return { success: true, id: data.id };
   } catch (error) {
-    console.error('Failed to create applications directory:', error);
-    return false;
+    console.error('❌ Failed to save application to Supabase:', error);
+    return { success: false, error };
   }
 };
 
-// Save application to file as backup (best effort - may fail on serverless)
-const saveApplicationToFile = async (submission: MembershipSubmission) => {
+// Helper function to update email status in Supabase
+const updateEmailStatus = async (applicationId: string, emailSent: boolean, emailError?: string) => {
   try {
-    // Check if we're in a serverless environment where file writing may not work
-    if (process.env.NETLIFY || process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
-      console.log('🌐 Serverless environment detected - file saving may not be available');
+    const { error } = await supabaseAdmin
+      .from('membership_applications')
+      .update({
+        email_sent: emailSent,
+        email_error: emailError || null
+      })
+      .eq('application_id', applicationId);
+
+    if (error) {
+      console.error('❌ Failed to update email status:', error);
     }
-
-    console.log('Saving application to file for:', submission.firstName, submission.lastName);
-
-    ensureApplicationsDir();
-
-    let applications: MembershipSubmission[] = [];
-
-    // Read existing applications if file exists
-    if (fs.existsSync(APPLICATIONS_FILE)) {
-      try {
-        const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
-        if (fileContent.trim()) {
-          applications = JSON.parse(fileContent);
-          console.log('Existing applications loaded:', applications.length);
-        }
-      } catch (parseError) {
-        console.error('Error parsing existing applications file:', parseError);
-        // Start with empty array if file is corrupted
-        applications = [];
-      }
-    }
-
-    // Add new application
-    applications.push(submission);
-    console.log('Total applications after adding new one:', applications.length);
-
-    // Write back to file
-    fs.writeFileSync(APPLICATIONS_FILE, JSON.stringify(applications, null, 2));
-    console.log(`✅ Application saved to backup file: ${submission.id}`);
-
-    // Verify the file was written correctly
-    if (fs.existsSync(APPLICATIONS_FILE)) {
-      const verifyContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
-      const verifyApplications = JSON.parse(verifyContent);
-      console.log('✅ File verification successful, applications count:', verifyApplications.length);
-    }
-
-    return true;
-  } catch (error) {
-    console.warn('⚠️ Failed to save application to file (expected on serverless):', error instanceof Error ? error.message : 'Unknown error');
-
-    // Log for debugging but don't treat as critical error
-    if (process.env.NODE_ENV === 'development') {
-      console.error('❌ Development mode - file save details:');
-      console.error('❌ File path:', APPLICATIONS_FILE);
-      console.error('❌ Directory exists:', fs.existsSync(path.dirname(APPLICATIONS_FILE)));
-      console.error('❌ File exists:', fs.existsSync(APPLICATIONS_FILE));
-    }
-
-    return false;
+  } catch (err) {
+    console.error('❌ Error updating email status:', err);
   }
-};
-
-// Load applications from file
-const loadApplicationsFromFile = (): MembershipSubmission[] => {
-  try {
-    if (fs.existsSync(APPLICATIONS_FILE)) {
-      const fileContent = fs.readFileSync(APPLICATIONS_FILE, 'utf-8');
-      return JSON.parse(fileContent);
-    }
-    return [];
-  } catch (error) {
-    console.error('Failed to load applications from file:', error);
-    return [];
-  }
-};
-
-// Helper function to get plan price from plan name
-const getPlanPrice = (planName: string): string => {
-  const planPrices: { [key: string]: string } = {
-    'ESSENTIAL MAINTENANCE': '£10.95',
-    'ROUTINE CARE': '£15.95',
-    'COMPLETE CARE': '£19.95',
-    'COMPLETE CARE PLUS': '£25.95',
-    'PERIODONTAL HEALTH': '£29.95',
-    'FAMILY PLAN': '£49.50'
-  };
-  return planPrices[planName] || '£0.00';
 };
 
 // Helper function to get plan name from selected plan key
@@ -138,6 +140,19 @@ const getPlanName = (selectedPlan: string): string => {
     'family': 'FAMILY PLAN'
   };
   return planNames[selectedPlan] || selectedPlan;
+};
+
+// Helper function to get plan price from plan name
+const getPlanPrice = (planName: string): string => {
+  const planPrices: { [key: string]: string } = {
+    'ESSENTIAL MAINTENANCE': '£10.95',
+    'ROUTINE CARE': '£15.95',
+    'COMPLETE CARE': '£19.95',
+    'COMPLETE CARE PLUS': '£25.95',
+    'PERIODONTAL HEALTH': '£29.95',
+    'FAMILY PLAN': '£49.50'
+  };
+  return planPrices[planName] || '£0.00';
 };
 
 // Helper function to get dentist name
@@ -244,27 +259,27 @@ export async function POST(request: NextRequest) {
 
     console.log('📋 Plan details:', { planName, planPrice, dentistName, applicationId });
 
-    // Create submission record with sanitized data
-    const submission: MembershipSubmission = {
-      id: applicationId,
-      timestamp: new Date().toISOString(),
-      firstName: sanitizedData.firstName,
-      lastName: sanitizedData.lastName,
-      email: sanitizedData.email,
-      planName: planName,
-      planPrice: planPrice,
-      dentistName: dentistName,
-      isExistingPatient: sanitizedData.isExistingPatient,
-      dentistGenderPreference: sanitizedData.dentistGenderPreference,
-      ...sanitizedData // Include all sanitized fields
-    };
+    // 🛠️ SAVE APPLICATION TO SUPABASE
+    console.log('💾 About to save submission to Supabase...');
+    const saveResult = await saveApplicationToSupabase(
+      sanitizedData,
+      applicationId,
+      planName,
+      planPrice,
+      dentistName,
+      request
+    );
 
-    // 🛠️ SAVE APPLICATION FIRST (before trying email)
-    console.log('📁 About to save submission to memory and file...');
-    membershipSubmissions.push(submission);
-    console.log('✅ Added to memory array, now saving to file...');
-    await saveApplicationToFile(submission);
-    console.log('✅ Saved submission to file - ID:', applicationId);
+    if (!saveResult.success) {
+      console.error('❌ Failed to save to Supabase:', saveResult.error);
+      return NextResponse.json({
+        success: false,
+        error: 'Failed to save application',
+        details: 'An error occurred while saving your application'
+      }, { status: 500 });
+    }
+
+    console.log('✅ Saved submission to Supabase - ID:', applicationId);
 
     // Prepare email data using sanitized inputs
     const emailData = {
@@ -320,6 +335,9 @@ export async function POST(request: NextRequest) {
       // Continue - application is already saved
     }
 
+    // Update email status in Supabase
+    await updateEmailStatus(applicationId, emailSent, emailError);
+
     // Always return success if we got this far (application is saved)
     const response = {
       success: true,
@@ -327,7 +345,7 @@ export async function POST(request: NextRequest) {
       message: 'Membership application submitted successfully',
       emailSent,
       emailError,
-      submissionId: submission.id
+      submissionId: applicationId
     };
 
     console.log('✅ Submission complete:', { success: true, applicationId, emailSent });
@@ -360,48 +378,5 @@ export async function POST(request: NextRequest) {
     });
 
     return errorResponse;
-  }
-}
-
-export async function GET() {
-  try {
-    console.log('📊 GET request - retrieving submissions');
-
-    // Return list of submissions (for admin purposes) - combine memory and file
-    const fileApplications = loadApplicationsFromFile();
-    const allApplications = [...membershipSubmissions, ...fileApplications];
-
-    // Remove duplicates based on ID
-    const uniqueApplications = allApplications.filter((app, index, self) =>
-      index === self.findIndex(a => a.id === app.id)
-    );
-
-    // Sort by timestamp (newest first)
-    uniqueApplications.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-
-    console.log('📈 Returning submissions:', {
-      memory: membershipSubmissions.length,
-      file: fileApplications.length,
-      unique: uniqueApplications.length
-    });
-
-    return NextResponse.json({
-      submissions: uniqueApplications,
-      count: uniqueApplications.length,
-      sources: {
-        memory: membershipSubmissions.length,
-        file: fileApplications.length,
-        total: uniqueApplications.length
-      }
-    });
-  } catch (error) {
-    console.error('❌ Error in GET submissions:', error);
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to retrieve submissions'
-      },
-      { status: 500 }
-    );
   }
 }

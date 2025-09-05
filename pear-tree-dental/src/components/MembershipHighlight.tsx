@@ -31,20 +31,37 @@ import {
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   planA: {
-    name: "PLAN A",
-    price: "£10.95",
+    name: "COMPLETE CARE",
+    price: "£19.95",
     period: "/month",
-    dailyCost: "Just 36p per day",
-    savings: "116",
-    description: "Our most affordable plan with essential dental care and comprehensive coverage.",
+    dailyCost: "Just 67p per day",
+    savings: "177",
+    description: "Our most popular plan with twice yearly dental care and comprehensive coverage.",
     keyFeatures: [
-      "1 Dental check up a year",
-      "1 Scale & Polish a year",
+      "2 Dental check up a year",
+      "2 Scale & Polish a year",
       "Worldwide dental accident & emergency cover"
     ],
     icon: User,
-    color: "dental-green",
-    popular: false
+    color: "pink-haze",
+    popular: true
+  },
+  family: {
+    name: "FAMILY PLAN",
+    price: "£49.50",
+    period: "/month",
+    dailyCost: "Just £1.65 per day",
+    savings: "400+",
+    description: "Coverage and Peace of Mind for 2 adults and up to 3 children with significant family savings.",
+    keyFeatures: [
+      "2 Adults + up to 3 children covered",
+      "All adults get Plan D benefits",
+      "Children under 18 included free",
+      "Simplified billing for whole family"
+    ],
+    icon: Users,
+    color: "pear-gold",
+    popular: true
   },
   child: {
     name: "CHILD PLAN",
@@ -63,23 +80,6 @@ const membershipPlans = {
     color: "soft-pink",
     popular: false
   },
-  family: {
-    name: "FAMILY PLAN",
-    price: "£49.50",
-    period: "/month",
-    dailyCost: "Just £1.65 per day",
-    savings: "400+",
-    description: "Complete coverage for 2 adults and up to 3 children with significant family savings.",
-    keyFeatures: [
-      "2 Adults + up to 3 children covered",
-      "All adults get Plan D benefits",
-      "Children under 18 included free",
-      "Simplified billing for whole family"
-    ],
-    icon: Users,
-    color: "pear-gold",
-    popular: true
-  }
 };
 
 // Nottingham-specific benefits component
@@ -342,10 +342,6 @@ const MembershipHighlight = () => {
                           <Badge variant="secondary" className="bg-pear-gold/10 text-pear-gold text-xs sm:text-sm">Perfect for busy families
                           </Badge>
                         )}
-                        {activeTab === 'planA' && (
-                          <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs sm:text-sm">Your Essentials Covered
-                          </Badge>
-                        )}
                       </div>
                       <div className="text-sm text-gray-500 mt-1">{currentPlan.dailyCost}</div>
                     </div>
@@ -441,7 +437,7 @@ const MembershipHighlight = () => {
 
         {/* Bottom CTA - Simplified */}
         <div className="text-center">
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care..
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Join thousands of satisfied patients who've made the switch from NHS waiting lists to immediate dental care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

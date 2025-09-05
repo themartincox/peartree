@@ -1,33 +1,80 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@supabase/supabase-js'
 
-/**
- * Initialize the Supabase client. We first try to read the URL and key
- * from environment variables (NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY).
- * If those aren’t set, we fall back to SUPABASE_URL / SUPABASE_ANON_KEY,
- * and finally to the hard-coded values you provided.
- * In production, please keep your keys in environment variables.
- */
-const supabaseUrl =
-  process.env.NEXT_PUBLIC_SUPABASE_URL ||
-  process.env.SUPABASE_URL ||
-  'https://isjnwsuodldqrcntheoh.supabase.co';
-const supabaseAnonKey =
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-  process.env.SUPABASE_ANON_KEY ||
-  // Provided anon key 
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlzam53c3VvZGxkcXJjbnRoZW9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxOTcyNDUsImV4cCI6MjA3MTc3MzI0NX0.v-5CbRjEaiuVrO5YHnpJ1giRY85Ovg8QTxaE2DOInFc';
+// Types for membership applications
+export interface MembershipApplication {
+  id: string
+  application_id: string
+  created_at: string
+  updated_at: string
+  processed_at: string | null
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  // Personal info
+  first_name: string
+  last_name: string
+  email: string
+  phone?: string
+  date_of_birth?: string
+  address?: string
+  postcode?: string
 
-/**
- * Retrieve all active blog pairs from the `blog_pairs` table.
- * If the query returns an error, it will be thrown.
- */
-export async function getActiveBlogPairs() {
-  const { data, error } = await supabase
-    .from('blog_pairs')
-    .select('*')
-    .eq('is_active', true);
-  if (error) throw error;
-  return data || [];
+  // Plan info
+  selected_plan: string
+  plan_name: string
+  plan_price: string
+
+  // Bank details (encrypted)
+  account_holder_name: string
+  sort_code_encrypted: string
+  account_number_encrypted: string
+
+  // Patient preferences
+  is_existing_patient: string
+  preferred_dentist?: string
+  dentist_gender_preference?: string
+  dentist_name?: string
+
+  // Partner info (for family plans)
+  partner_first_name?: string
+  partner_last_name?: string
+  partner_email?: string
+  partner_is_existing_patient?: string
+  partner_preferred_dentist?: string
+  partner_dentist_gender_preference?: string
+
+  // Staff info
+  is_clinic_signup?: boolean
+  staff_member_name?: string
+
+  // Family members
+  family_members?: any[] // JSONB in database
+
+  // Status and tracking
+  status: 'new' | 'processing' | 'completed' | 'error'
+  email_sent: boolean
+  email_error?: string
+
+  // Audit trail
+  ip_address?: string
+  user_agent?: string
+  submission_source?: string
 }
+
+// For client-side operations (public API functions only)
+export const supabaseClient = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+)
+
+// For server-side operations (admin level access)
+export const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+  process.env.SUPABASE_SERVICE_ROLE_KEY || '',
+  {
+    auth: {
+      autoRefreshToken: false,
+      persistSession: false
+    }
+  }
+)
+
+export default supabaseClient

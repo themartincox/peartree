@@ -554,8 +554,9 @@ const Navigation = () => {
 
       {/* Simplified Navigation - Shows on scroll */}
       <header
+        id="secondary-nav"
         className={cn(
-          "fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
+          "secondary-nav fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
           isScrolled
             ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
             : "transform -translate-y-full opacity-0 pointer-events-none"

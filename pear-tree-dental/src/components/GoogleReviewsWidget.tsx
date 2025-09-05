@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Review {
@@ -19,8 +17,45 @@ const GoogleReviewsWidget = () => {
   const [currentReview, setCurrentReview] = useState(0);
   const [isSticky, setIsSticky] = useState(false);
   const [showWidget, setShowWidget] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
   const widgetRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  // Improved placeholder: track widget height
+  const [widgetHeight, setWidgetHeight] = useState(0);
+
+  // Add useCallback for measuring the widget height
+  const measureWidgetHeight = useCallback(() => {
+    return widgetRef.current?.offsetHeight || 0;
+  }, []);
+
+  // Add effect to track widget height
+  useEffect(() => {
+    const updateWidgetHeight = () => {
+      if (widgetRef.current) {
+        setWidgetHeight(widgetRef.current.offsetHeight);
+      }
+    };
+
+    updateWidgetHeight();
+    window.addEventListener('resize', updateWidgetHeight);
+
+    // Set up a mutation observer to detect content changes
+    let observer: MutationObserver | null = null;
+    if (widgetRef.current) {
+      observer = new MutationObserver(updateWidgetHeight);
+      observer.observe(widgetRef.current, {
+        childList: true,
+        subtree: true,
+        attributes: true
+      });
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener('resize', updateWidgetHeight);
+    };
+  }, []);
 
   // Check if we're on the homepage
   const isHomepage = pathname === '/';
@@ -87,18 +122,34 @@ const GoogleReviewsWidget = () => {
     return () => clearInterval(interval);
   }, [reviews.length]);
 
-  // Scroll behavior
+  // Scroll behavior and nav height measurement
   useEffect(() => {
     let handleScroll: () => void;
+    let updateNavHeight: () => void;
 
     if (isHomepage) {
+      // Measure the secondary nav height
+      updateNavHeight = () => {
+        const navElement = document.getElementById('secondary-nav');
+        if (navElement) {
+          const navRect = navElement.getBoundingClientRect();
+          setNavHeight(navRect.height);
+        } else {
+          setNavHeight(0);
+        }
+      };
+
+      // Call it immediately and on resize
+      updateNavHeight();
+      window.addEventListener('resize', updateNavHeight);
+
       // Homepage: Always show widget (it's positioned in PracticeShowcase)
       // Handle sticky behavior based on scroll position
       handleScroll = () => {
         const triggerElement = document.getElementById('reviews-sticky-trigger');
         if (triggerElement) {
           const rect = triggerElement.getBoundingClientRect();
-          setIsSticky(rect.top <= 0);
+          setIsSticky(rect.top <= navHeight); // Account for nav height
         }
       };
     } else {
@@ -118,8 +169,13 @@ const GoogleReviewsWidget = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomepage]);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (isHomepage && updateNavHeight) {
+        window.removeEventListener('resize', updateNavHeight);
+      }
+    };
+  }, [isHomepage, navHeight]);
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev + 1) % reviews.length);
@@ -129,8 +185,6 @@ const GoogleReviewsWidget = () => {
     setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length);
   };
 
-  const averageRating = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
-
   // Don't render anything if widget shouldn't be shown (only applies to non-homepage)
   if (!isHomepage && !showWidget) {
     return null;
@@ -138,9 +192,12 @@ const GoogleReviewsWidget = () => {
 
   return (
     <>
-      {/* Placeholder to maintain space when widget becomes sticky (homepage only) */}
+      {/* Improved placeholder to maintain space when widget becomes sticky (homepage only) */}
       {isHomepage && isSticky && (
-        <div className="h-20 transition-all duration-500" />
+        <div
+          className="transition-all duration-500"
+          style={{ height: widgetHeight || 80 }}
+        />
       )}
 
       {/* The actual widget */}
@@ -149,45 +206,47 @@ const GoogleReviewsWidget = () => {
         className={`
           transition-all duration-500 ease-in-out z-50
           ${isSticky
-            ? 'fixed top-0 left-0 right-0 bg-white shadow-lg border-b border-gray-200'
+            ? 'fixed left-0 right-0 bg-white shadow-lg border-b border-gray-200'
             : isHomepage
               ? 'bg-white/10 rounded-2xl'
               : 'bg-white/95 rounded-2xl mx-4 mb-4 shadow-lg'
           }
         `}
+        style={isSticky && isHomepage ? { top: navHeight } : isSticky ? { top: 0 } : {}}
       >
         <div className={`${isSticky ? 'container mx-auto px-4' : ''}`}>
-          <div className={`${isSticky ? 'py-3' : 'p-6'} transition-all duration-500`}>
-            {/* Header */}
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
-                    <span className="text-blue-600 font-bold text-sm">G</span>
-                  </div>
-                  <div>
-                    <h3 className={`font-semibold transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
-                      Google Reviews
-                    </h3>
-                    <div className="flex items-center space-x-1">
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-3 h-3 text-yellow-400 fill-current`}
-                          />
-                        ))}
-                      </div>
-                      <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-600' : isHomepage ? 'text-white/80' : 'text-gray-600'}`}>
-                        Over 400 reviews
-                      </span>
+          <div className={`${isSticky ? 'py-3' : 'p-4'} transition-all duration-500`}>
+            {/* Combined Header with Reviewer Info */}
+            <div className="flex items-center space-x-2 mb-2">
+              {/* Google logo */}
+              <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center shadow-sm flex-shrink-0">
+                <span className="text-blue-600 font-bold text-sm">G</span>
+              </div>
+
+              {/* Reviewer info combined with Google branding */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center flex-wrap gap-x-2">
+                  <h5 className={`font-medium transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
+                    {reviews[currentReview].author}
+                  </h5>
+                  <div className="flex items-center space-x-1">
+                    <div className="flex">
+                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
+                      ))}
                     </div>
                   </div>
+                  <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-500' : isHomepage ? 'text-white/60' : 'text-gray-500'}`}>
+                    {reviews[currentReview].date}
+                  </span>
+                  <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-500' : isHomepage ? 'text-white/60' : 'text-gray-500'}`}>
+                    from Google
+                  </span>
                 </div>
               </div>
 
               {/* Navigation controls */}
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-1">
                 <button
                   onClick={prevReview}
                   aria-label="Previous review"
@@ -244,58 +303,36 @@ const GoogleReviewsWidget = () => {
               </div>
             </div>
 
-            {/* Current Review */}
-            <div className={`transition-all duration-500 ${isSticky ? 'max-h-16 overflow-hidden' : ''}`}>
-              <div className="flex items-start space-x-3">
-                <div className={`w-8 h-8 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-500 ${isSticky ? 'w-6 h-6' : ''}`}>
-                  <span className={`text-white font-semibold transition-all duration-500 ${isSticky ? 'text-xs' : 'text-sm'}`}>
-                    {reviews[currentReview].author.charAt(0)}
-                  </span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center space-x-2 mb-1">
-                    <h5 className={`font-medium transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
-                      {reviews[currentReview].author}
-                    </h5>
-                    <div className="flex">
-                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                        <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    <span className={`text-xs transition-all duration-500 ${isSticky ? 'text-gray-500' : isHomepage ? 'text-white/60' : 'text-gray-500'}`}>
-                      {reviews[currentReview].date}
-                    </span>
-                  </div>
-                  <p
-                    className={`text-sm leading-relaxed transition-all duration-500 ${
-                      isSticky
-                        ? 'text-gray-600 overflow-hidden'
-                        : isHomepage
-                          ? 'text-white/90'
-                          : 'text-gray-600'
-                    }`}
-                    style={isSticky ? {
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical'
-                    } : {}}
-                  >
-                    "{reviews[currentReview].text}"
-                  </p>
-                </div>
-              </div>
+            {/* Review Text */}
+            <div className={`transition-all duration-500 ${isSticky ? 'max-h-12 overflow-hidden' : ''}`}>
+              <p
+                className={`text-sm leading-relaxed transition-all duration-500 ${
+                  isSticky
+                    ? 'text-gray-600 overflow-hidden'
+                    : isHomepage
+                      ? 'text-white/90'
+                      : 'text-gray-600'
+                }`}
+                style={isSticky ? {
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical'
+                } : {}}
+              >
+                "{reviews[currentReview].text}"
+              </p>
             </div>
 
-            {/* Review indicators */}
+            {/* Review indicators - only show when not sticky */}
             {!isSticky && (
-              <div className="flex justify-center space-x-1 mt-4">
+              <div className="flex justify-center space-x-1 mt-2">
                 {reviews.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentReview(index)}
                     aria-label={`Go to review ${index + 1} of ${reviews.length}`}
                     aria-current={index === currentReview ? 'true' : 'false'}
-                    className={`w-2 h-2 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 ${
                       index === currentReview
                         ? isHomepage ? 'bg-white' : 'bg-pear-primary'
                         : isHomepage ? 'bg-white/40' : 'bg-gray-300'

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Building2, MapPin, Clock, Wifi, Car, Shield, Sparkles, Heart, Award, Users, Play } from "lucide-react";
+import { Building2, MapPin, Clock, Wifi, Car, Shield, Sparkles, Heart, Award, Users } from "lucide-react";
 import Image from "next/image";
 import { practiceInfo } from "@/data/practiceInfo";
+import PracticeVideo from "./practiceVideo.client";
 
 export const metadata: Metadata = {
   title: "About Our Nottingham Dental Practice | Pear Tree Dental",
@@ -180,34 +181,20 @@ export default function PracticePage() {
                       className="block relative group cursor-pointer"
                     >
                       <div className="aspect-video bg-gradient-to-br from-green-100 via-blue-50 to-green-50 relative overflow-hidden">
-                        {/* Map-style background with roads and location indicator */}
                         <div className="absolute inset-0">
                           <svg viewBox="0 0 600 400" className="w-full h-full">
-                            {/* Background */}
                             <rect width="600" height="400" fill="#f8fdf8" />
-
-                            {/* Roads */}
                             <path d="M0 200 L600 200" stroke="#e2e8f0" strokeWidth="8" />
                             <path d="M300 0 L300 400" stroke="#e2e8f0" strokeWidth="6" />
                             <path d="M150 100 L450 100" stroke="#f1f5f9" strokeWidth="4" />
                             <path d="M150 300 L450 300" stroke="#f1f5f9" strokeWidth="4" />
-
-                            {/* Main Road Label */}
                             <text x="350" y="195" fontSize="12" fill="#64748b" fontFamily="Arial">Nottingham Road</text>
-
-                            {/* Location Pin */}
                             <circle cx="320" cy="180" r="8" fill="#ef4444" />
                             <path d="M320 170 L320 190" stroke="#dc2626" strokeWidth="2" />
-
-                            {/* Practice Building */}
                             <rect x="310" y="185" width="20" height="15" fill="#09394d" rx="2" />
-
-                            {/* Surrounding area indicators */}
                             <circle cx="200" cy="150" r="3" fill="#10b981" opacity="0.6" />
                             <circle cx="450" cy="250" r="3" fill="#10b981" opacity="0.6" />
                             <circle cx="150" cy="300" r="3" fill="#10b981" opacity="0.6" />
-
-                            {/* Burton Joyce label */}
                             <text x="350" y="150" fontSize="14" fill="#09394d" fontWeight="bold" fontFamily="Arial">Burton Joyce</text>
                           </svg>
                         </div>
@@ -237,7 +224,6 @@ export default function PracticePage() {
                           </p>
                         </div>
 
-                        {/* Hover effect indicator */}
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="bg-pear-primary text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                             Open in Google Maps
@@ -288,34 +274,6 @@ export default function PracticePage() {
         </div>
       </section>
 
-      {/* Video Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            "name": "Pear Tree Dental Practice Tour",
-            "description": "Take a virtual tour of our modern dental practice in Burton Joyce, Nottingham. See our state-of-the-art facilities and welcoming environment.",
-            "thumbnailUrl": "https://peartree.dental/images/heroes/pear-tree-home-hero-full.webp",
-            "uploadDate": "2024-01-01",
-            "duration": "PT2M30S",
-            "contentUrl": "https://peartree.dental/videos/pear-tree-dental-video-walk-through.mp4",
-            "embedUrl": "https://peartree.dental/about/practice",
-            "publisher": {
-              "@type": "Organization",
-              "name": "Pear Tree Dental",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://peartree.dental/images/logo.png"
-              }
-            },
-            "inLanguage": "en-GB",
-            "keywords": "dental practice tour, Burton Joyce dentist, modern dental facilities, Nottingham dental clinic"
-          })
-        }}
-      />
-
       {/* Practice Video Tour */}
       <section className="py-20 bg-gradient-to-br from-cream/50 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -329,105 +287,10 @@ export default function PracticePage() {
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <Card className="overflow-hidden shadow-2xl">
-              <CardContent className="p-0">
-                <div className="aspect-video relative group">
-                  {/* Custom Play Button Overlay */}
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-10 group-hover:bg-black/30 transition-all duration-300 cursor-pointer practice-video-overlay">
-                    <div className="bg-white/95 backdrop-blur-sm rounded-full p-6 shadow-2xl transform transition-all duration-300 hover:scale-110 hover:bg-white group-hover:shadow-3xl">
-                      <Play className="w-12 h-12 text-pear-primary ml-1" fill="currentColor" />
-                    </div>
-                    <div className="absolute bottom-6 left-6 right-6 text-white">
-                      <h3 className="text-xl font-bold mb-2 drop-shadow-lg">Practice Walkthrough</h3>
-                      <p className="text-sm opacity-90 drop-shadow">Discover our modern facilities and welcoming environment</p>
-                    </div>
-                  </div>
-
-                  <video
-                    className="w-full h-full object-cover practice-video"
-                    preload="none"
-                    playsInline
-                    poster="/images/heroes/pear-tree-home-hero-full.webp"
-                  >
-                    {/* Optimized sources for different devices */}
-                    <source
-                      src="/videos/pear-tree-dental-video-walk-through.webm"
-                      type="video/webm"
-                      media="(max-width: 768px)"
-                    />
-                    <source
-                      src="/videos/pear-tree-dental-video-walk-through.mp4"
-                      type="video/mp4"
-                    />
-                    <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-dental-green/20 flex items-center justify-center">
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-pear-primary mb-2">Practice Walkthrough</h3>
-                        <p className="text-gray-600">Your browser doesn't support video playback</p>
-                      </div>
-                    </div>
-                  </video>
-                </div>
-              </CardContent>
-            </Card>
+            <PracticeVideo />
           </div>
         </div>
       </section>
-
-      {/* Video Interaction Script */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            // Enhanced video interaction
-            document.addEventListener('DOMContentLoaded', function() {
-              const video = document.querySelector('.practice-video');
-              const overlay = document.querySelector('.practice-video-overlay');
-
-              if (video && overlay) {
-                // Click overlay to play video
-                overlay.addEventListener('click', function() {
-                  video.play();
-                  overlay.style.display = 'none';
-                });
-
-                // Show/hide overlay based on video state
-                video.addEventListener('play', function() {
-                  overlay.style.display = 'none';
-                  video.controls = true;
-                });
-
-                video.addEventListener('pause', function() {
-                  overlay.style.display = 'flex';
-                  video.controls = false;
-                });
-
-                video.addEventListener('ended', function() {
-                  overlay.style.display = 'flex';
-                  video.controls = false;
-                });
-
-                // Optimize loading based on device
-                if (window.innerWidth <= 768) {
-                  video.preload = 'none';
-                } else {
-                  video.preload = 'metadata';
-                }
-
-                // Intersection Observer for lazy loading
-                const observer = new IntersectionObserver((entries) => {
-                  entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                      video.preload = 'metadata';
-                      observer.unobserve(entry.target);
-                    }
-                  });
-                });
-
-                observer.observe(video);
-              }
-            });
-          `
-        }}
-      />
 
       {/* Our Values Section */}
       <section className="py-20">
@@ -559,6 +422,34 @@ export default function PracticePage() {
           </div>
         </div>
       </section>
+
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": "Pear Tree Dental Practice Tour",
+            "description": "Take a virtual tour of our modern dental practice in Burton Joyce, Nottingham. See our state-of-the-art facilities and welcoming environment.",
+            "thumbnailUrl": "https://peartree.dental/images/heroes/pear-tree-home-hero-full.webp",
+            "uploadDate": "2025-09-01",
+            "duration": "PT2M30S",
+            "contentUrl": "https://peartree.dental/videos/pear-tree-dental-video-walk-through.mp4",
+            "embedUrl": "https://peartree.dental/about/practice",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Pear Tree Dental",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://peartree.dental/images/logo.png"
+              }
+            },
+            "inLanguage": "en-GB",
+            "keywords": "dental practice tour, Burton Joyce dentist, modern dental facilities, Nottingham dental clinic"
+          })
+        }}
+      />
     </div>
   );
 }

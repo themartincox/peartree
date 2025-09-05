@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Stethoscope, Users, Award, Heart } from "lucide-react";
+import { Stethoscope, Users, Award, Heart, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import ReviewBox from "@/components/ReviewBox";
 import { teamReviews } from "@/data/teamReviews";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Meet Our Nottingham Dentists | Pear Tree Dental",
+  title: "Meet Our Top-Rated Nottingham Dentists | Pear Tree Dental",
   description: "Meet our experienced team of dental professionals serving Nottingham. Led by principal dentists Javaad Mirza and Imrana Ishaque, our dedicated Nottingham team provides exceptional dental care.",
-  keywords: "dental team Nottingham, dentists Nottingham, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham, Nottingham dentist, dental experts Nottingham",
+  keywords: "dental team Nottingham, top rated dentists Nottingham, Javaad Mirza, Imrana Ishaque, dental professionals Nottingham, Best Nottingham dentist, dental experts Nottingham",
   openGraph: {
-    title: "Meet Our Nottingham Dentists | Pear Tree Dental",
+    title: "Meet Our Top-Rated Nottingham Dentists | Pear Tree Dental",
     description: "Meet our experienced team of Nottingham dental professionals dedicated to providing exceptional care and treatment to patients throughout Nottingham.",
     type: "website",
     url: "https://peartree.dental/about/team"
@@ -58,6 +60,8 @@ const associates = [
     description: "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health."
   }
 ];
+
+const dentists = [...principals, ...associates];
 
 const supportTeam = [
   {
@@ -133,15 +137,15 @@ export default function TeamPage() {
               Dedication. Expertise. Passion.
             </p>
             <p className="text-lg leading-relaxed opacity-80 max-w-3xl mx-auto">
-              We are a friendly, well-experienced team dedicated to providing our patients with the greatest care possible.
-              We are continually striving to learn more and invest in ourselves and the practice to ensure our patients
+              We are a friendly, highly-experienced team dedicated to providing our patients with the greatest care possible.
+              We continually strive to learn more, investing in ourselves and the practice to ensure our patients
               receive the most up-to-date treatments and care available.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Principal Dentists Section */}
+      {/* Dentists Section - Unified */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -151,15 +155,15 @@ export default function TeamPage() {
               </div>
             </div>
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
-              Principal Dentists
+              Dentists
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our practice is led by experienced principal dentists committed to excellence in dental care
+              Our practice is led by experienced dentists committed to excellence in dental care
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {principals.map((dentist) => (
+            {dentists.map((dentist) => (
               <div key={dentist.gdc} className="space-y-4">
                 <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
                   <CardContent className="p-8">
@@ -173,18 +177,22 @@ export default function TeamPage() {
                           className="w-full h-full object-cover rounded-full border-4 border-pear-primary/20"
                           loading="lazy"
                           placeholder="blur"
-                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                         />
                       </div>
                       <h3 className="heading-serif text-2xl font-bold text-pear-primary mb-2">
                         {dentist.name}
                       </h3>
                       <div className="space-y-2 mb-4">
-                        <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
-                          {dentist.qualifications}
-                        </Badge>
+                        {dentist.qualifications && (
+                          <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
+                            {dentist.qualifications}
+                          </Badge>
+                        )}
                         <p className="text-lg font-semibold text-gray-700">{dentist.role}</p>
-                        <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
+                        {dentist.gdc && (
+                          <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
+                        )}
                       </div>
                       <p className="text-gray-600 leading-relaxed">
                         {dentist.description}
@@ -192,75 +200,31 @@ export default function TeamPage() {
                     </div>
                   </CardContent>
                 </Card>
-
-                <ReviewBox
-                  teamMemberName={dentist.name}
-                  testimonials={teamReviews[dentist.name] || []}
-                />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Associate Dentists Section */}
-      <section className="py-20 bg-cream/30">
+      {/* Reviews CTA Section */}
+      <section className="py-12 bg-pinky-fade">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
-              <div className="p-3 bg-pear-primary/10 rounded-full">
-                <Stethoscope className="h-8 w-8 text-pear-primary" />
-              </div>
-            </div>
-            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
-              Associate Dentists
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experienced professionals providing specialised care across all areas of dentistry
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {associates.map((dentist) => (
-              <div key={dentist.gdc} className="space-y-4">
-                <Card className="group hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-8">
-                    <div className="text-center">
-                      <div className="relative mb-6 mx-auto w-40 h-40">
-                        <Image
-                          src={dentist.image}
-                          alt={`${dentist.name} - ${dentist.role} at Pear Tree Dental`}
-                          width={160}
-                          height={160}
-                          className="w-full h-full object-cover rounded-full border-4 border-pear-primary/20"
-                          loading="lazy"
-                          placeholder="blur"
-                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                        />
-                      </div>
-                      <h3 className="heading-serif text-xl font-bold text-pear-primary mb-2">
-                        {dentist.name}
-                      </h3>
-                      <div className="space-y-2 mb-4">
-                        <Badge variant="outline" className="border-pear-primary/30 text-pear-primary">
-                          {dentist.qualifications}
-                        </Badge>
-                        <p className="text-lg font-semibold text-gray-700">{dentist.role}</p>
-                        <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
-                      </div>
-                      <p className="text-gray-600 leading-relaxed">
-                        {dentist.description}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <ReviewBox
-                  teamMemberName={dentist.name}
-                  testimonials={teamReviews[dentist.name] || []}
-                />
-              </div>
-            ))}
+          <div className="max-w-4xl mx-auto text-center">
+            <Link href="/testimonials" className="group">
+              <Card className="bg-white/90 backdrop-blur-sm hover:bg-white transition-all duration-300 hover:shadow-xl border-0 overflow-hidden">
+                <CardContent className="p-8 sm:p-10">
+                  <h3 className="heading-serif text-2xl sm:text-3xl font-bold mb-4 text-dental-green group-hover:text-dental-green/90 transition-colors">
+                    Read why our team have received over 500 ⭐⭐⭐⭐⭐ reviews on Google
+                  </h3>
+                  <div className="flex justify-center">
+                    <Button variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white group-hover:scale-105 transition-all duration-300">
+                      View All Testimonials
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>
@@ -296,7 +260,7 @@ export default function TeamPage() {
                         className="w-full h-full object-cover rounded-full border-3 border-pear-primary/20"
                         loading="lazy"
                         placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                       />
                     </div>
                     <h3 className="heading-serif text-lg font-bold text-pear-primary mb-2">
@@ -317,14 +281,6 @@ export default function TeamPage() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Support Team Reviews */}
-          <div className="mt-12 max-w-4xl mx-auto">
-            <ReviewBox
-              teamMemberName="Support Team"
-              reviews={teamReviews["Support Team"] || []}
-            />
           </div>
         </div>
       </section>

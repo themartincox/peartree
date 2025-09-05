@@ -91,12 +91,12 @@ export const generalTreatments: TreatmentPrice[] = [
 
 // Cosmetic Dentistry
 export const cosmeticTreatments: TreatmentPrice[] = [
-  { name: "Teeth Whitening", price: "From £400", popular: true, category: "cosmetic" },
-  { name: "Enlighten Whitening", price: "£650", category: "cosmetic" },
+  { name: "Teeth Whitening", price: "From £350", popular: true, category: "cosmetic" },
+  { name: "Enlighten Whitening", price: "£350", category: "cosmetic" },
   { name: "Composite Veneers", price: "From £200 per tooth", category: "cosmetic" },
   { name: "Porcelain Veneers", price: "From £750 per tooth", category: "cosmetic" },
   { name: "Composite Edge Bonding", price: "From £150 per tooth", category: "cosmetic" },
-  { name: "Wedding Day Smile", price: "From £995", category: "cosmetic" },
+  { name: "Wedding Day Smile", price: "From £350", category: "cosmetic" },
   { name: "Buccal Corridor Correction", price: "From £2,500", category: "cosmetic" },
   { name: "Smile Makeover", price: "From £2,500", category: "cosmetic" }
 ];

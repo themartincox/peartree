@@ -9,8 +9,8 @@ export default function ScrollAdjustedGoogleReviews() {
   useEffect(() => {
     // Function to calculate the position
     const updatePosition = () => {
-      // Get the navigation element
-      const navElement = document.querySelector("nav");
+      // Get the secondary navigation element by its id
+      const navElement = document.querySelector("#secondary-nav");
 
       if (navElement) {
         // Get the nav's bottom position including scroll

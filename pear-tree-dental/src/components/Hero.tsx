@@ -5,6 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
+import dynamic from "next/dynamic";
+
+// Create a separate component specifically for mobile
+const MobileGoogleReviews = dynamic(() => import("@/components/MobileGoogleReviews"), { ssr: false });
+const InlineGoogleReviews = dynamic(() => import("@/components/ClientGoogleReviews"), { ssr: false });
 
 const Hero = () => {
   const { trackBookingAttempt, trackLocationConversion } = useConversionTracking();
@@ -36,7 +41,7 @@ const Hero = () => {
       <div
         className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[66vh]
                    w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]"
-        aria-hidden="true"
+        aria-hidden
         style={{
           WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
           maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
@@ -51,7 +56,6 @@ const Hero = () => {
             quality={85}
             sizes="100vw"
             className="object-cover opacity-50 object-[12%_center]"
-            // ↑ Nudge focal point 8–15% as needed. Use `object-left` for no nudge.
           />
         </div>
       </div>
@@ -110,19 +114,8 @@ const Hero = () => {
               <Link href="/membership">View Membership Plans →</Link>
             </Button>
 
-            {/*
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-6 py-4 text-base sm:text-lg w-full animate-fade-in min-h-[60px] sm:min-h-[56px]"
-              onClick={handleMembershipClick}
-            >
-              <Link href="/membership" className="text-center leading-tight">
-                Enjoy peace of mind from just 36p per day
-              </Link>
-            </Button>
-            */}
+            {/* Mobile Google reviews on mobile below the two buttons */}
+            <MobileGoogleReviews />
           </div>
         </div>
 
@@ -165,19 +158,6 @@ const Hero = () => {
               >
                 <Link href="/membership">View Membership Plans →</Link>
               </Button>
-
-              {/*
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-6 py-4 text-base sm:text-lg w-full animate-fade-in min-h-[60px] sm:min-h-[56px]"
-              >
-                <Link href="/membership" className="text-center leading-tight">
-                  Enjoy peace of mind from just 36p per day
-                </Link>
-              </Button>
-              */}
             </div>
           </div>
 

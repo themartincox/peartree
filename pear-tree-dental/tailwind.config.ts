@@ -23,6 +23,12 @@ export default {
     'border-pear-primary',
     'border-pear-gold',
     'border-pinky',
+    'animate-star-pulse-1',
+    'animate-star-pulse-2',
+    'animate-star-pulse-3',
+    'animate-star-pulse-4',
+    'animate-star-pulse-5',
+    'hover:scale-102',
   ],
   theme: {
     extend: {
@@ -85,6 +91,22 @@ export default {
           '4': 'var(--chart-4)',
           '5': 'var(--chart-5)'
         }
+      },
+      scale: {
+        '102': '1.02', // 2% scale for hover effect
+      },
+      keyframes: {
+        'star-pulse': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.1)', filter: 'brightness(1.2)' },
+        },
+      },
+      animation: {
+        'star-pulse-1': 'star-pulse 2s ease-in-out infinite',
+        'star-pulse-2': 'star-pulse 2s ease-in-out infinite 0.2s',
+        'star-pulse-3': 'star-pulse 2s ease-in-out infinite 0.4s',
+        'star-pulse-4': 'star-pulse 2s ease-in-out infinite 0.6s',
+        'star-pulse-5': 'star-pulse 2s ease-in-out infinite 0.8s',
       },
       borderRadius: {
         lg: 'var(--radius)',
