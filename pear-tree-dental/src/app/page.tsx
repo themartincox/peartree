@@ -1,15 +1,16 @@
+// Force this page to be server-side rendered
 export const dynamic = 'force-dynamic';
 
 import type React from "react";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 
 // Critical above-the-fold components - loaded immediately
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
-const ClientGoogleReviews = dynamic(() => import('@/components/ClientGoogleReviews'), {
+const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), {
   ssr: true // This will still be client-side hydrated but pre-rendered on server
 });
 
@@ -23,7 +24,7 @@ import {
 } from "@/components/WelcomingLoader";
 
 // Below-the-fold components - loaded dynamically for better performance
-const ServicesOverview = dynamic(
+const ServicesOverview = dynamicImport(
   () => import("@/components/ServicesOverview"),
   {
     loading: () => (
@@ -32,7 +33,7 @@ const ServicesOverview = dynamic(
   },
 );
 
-const TreatmentJourney = dynamic(
+const TreatmentJourney = dynamicImport(
   () => import("@/components/TreatmentJourney"),
   {
     loading: () => (
@@ -44,7 +45,7 @@ const TreatmentJourney = dynamic(
   },
 );
 
-const MembershipHighlight = dynamic(
+const MembershipHighlight = dynamicImport(
   () => import("@/components/MembershipHighlight"),
   {
     loading: () => (
@@ -53,11 +54,11 @@ const MembershipHighlight = dynamic(
   },
 );
 
-const FAQSection = dynamic(() => import("@/components/FAQSection"), {
+const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
 });
 
-const VoiceSearchOptimization = dynamic(
+const VoiceSearchOptimization = dynamicImport(
   () => import("@/components/VoiceSearchOptimization"),
   {
     loading: () => (
