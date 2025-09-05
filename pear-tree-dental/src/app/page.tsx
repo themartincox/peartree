@@ -1,3 +1,7 @@
+// Force this page to be server-side rendered
+// This solves the build error by explicitly telling Next.js not to statically generate this page
+export const dynamic = 'force-dynamic';
+
 import type React from "react";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -66,7 +70,7 @@ const VoiceSearchOptimization = dynamic(
 
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
+import { getVariant, getVariantMetadata, getVariantSync } from "@/lib/ab-testing";
 
 // Generate metadata based on A/B test variant
 export async function generateMetadata(): Promise<Metadata> {

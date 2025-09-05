@@ -2,19 +2,64 @@
 export type Variant = 'A' | 'B' | 'C';
 
 /**
+ * Check if the current context is a build-time environment
+ * This is critical to avoid dynamic server usage during static generation
+ */
+function isBuildTime(): boolean {
+  return (
+    process.env.NEXT_PHASE === 'phase-production-build' ||
+    process.env.NETLIFY_BUILD === 'true' ||
+    (process.env.NODE_ENV === 'production' &&
+     !process.env.VERCEL_URL &&
+     !process.env.NETLIFY_URL)
+  );
+}
+
+/**
+ * Synchronous variant getter - safe for build-time and static generation
+ * Use this in generateMetadata and other static contexts
+ */
+export function getVariantSync(): Variant {
+  // Always return default variant during build to prevent static generation issues
+  if (typeof window === 'undefined' && isBuildTime()) {
+    return 'A';
+  }
+
+  // For client-side, try to get from cookies
+  if (typeof window !== 'undefined') {
+    const variantFromCookies = getVariantFromCookies();
+    if (variantFromCookies) return variantFromCookies;
+  }
+
+  // Default fallback
+  return 'A';
+}
+
+/**
  * Get the current A/B test variant from server-side headers
  * This function works in Server Components and API routes
+ * Modified to handle static rendering during build
  */
 export async function getVariant(): Promise<Variant> {
-  try {
-    // Only import headers when we're in a server context
-    if (typeof window === 'undefined') {
-      const { headers } = await import('next/headers');
-      const headersList = await headers();
-      const variant = headersList.get('x-ab-variant') as Variant;
+  // First check if we're in a build context - always return 'A' for static generation
+  if (typeof window === 'undefined' && isBuildTime()) {
+    return 'A';
+  }
 
-      // Fallback to A if no variant found
-      return variant && ['A', 'B', 'C'].includes(variant) ? variant : 'A';
+  try {
+    // Only import headers when we're in a server context and not in a static build
+    if (typeof window === 'undefined') {
+      try {
+        const { headers } = await import('next/headers');
+        const headersList = await headers();
+        const variant = headersList.get('x-ab-variant') as Variant;
+
+        // Fallback to A if no variant found
+        return variant && ['A', 'B', 'C'].includes(variant) ? variant : 'A';
+      } catch (headerError) {
+        console.warn('Failed to access headers (likely static context):', headerError);
+        return 'A';
+      }
     }
   } catch (error) {
     console.warn('Failed to get variant from headers:', error);

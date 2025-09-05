@@ -11,7 +11,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
 
-  // Output configuration for Netlify (standalone for compatibility)
+  // Output configuration for Netlify
   output: 'standalone',
 
   // Skip TypeScript checks during build for faster deployment
@@ -23,6 +23,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  // For Next.js 15, use serverExternalPackages instead of experimental.serverComponentsExternalPackages
+  serverExternalPackages: ['sharp'],
 
   // Security headers for all routes
   async headers() {
@@ -60,11 +63,6 @@ const nextConfig = {
         permanent: true,
       },
     ];
-  },
-
-  // Streamlined webpack configuration for Netlify
-  webpack: (config) => {
-    return config;
   },
 };
 
