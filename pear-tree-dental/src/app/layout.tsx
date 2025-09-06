@@ -1,6 +1,5 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
@@ -13,20 +12,7 @@ import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
-// Optimize Google Fonts loading with font-display: swap
-const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-cormorant",
-});
 
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-  variable: "--font-montserrat",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peartree.dental"),
@@ -122,11 +108,18 @@ export default function RootLayout({
 
         {/* Preconnect for critical font resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect"          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"        />
+{/* Google Fonts stylesheet links */}
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
         />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet"
+        />
+
 
         {/* Preload critical images for LCP optimization */}
         <link
@@ -197,9 +190,7 @@ export default function RootLayout({
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body
-        className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}
-      >
+       <body className="min-h-screen bg-pear-background">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
