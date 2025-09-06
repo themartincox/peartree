@@ -12,6 +12,14 @@
   NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlzam53c3VvZGxkcXJjbnRoZW9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxOTcyNDUsImV4cCI6MjA3MTc3MzI0NX0.v-5CbRjEaiuVrO5YHnpJ1giRY85Ovg8QTxaE2DOInFc"
   SUPABASE_SERVICE_ROLE_KEY = "placeholder_service_role_key_for_build_only"
   ENCRYPTION_KEY = "YvPJrFGmL9qHS2xTb5D8A3X7wWgkC6Nz"
+  # Contentful environment variables
+  CONTENTFUL_SPACE_ID = "placeholder_space_id"
+  CONTENTFUL_ACCESS_TOKEN = "placeholder_access_token"
+  CONTENTFUL_DELIVERY_TOKEN = "placeholder_delivery_token"
+  CONTENTFUL_PREVIEW_TOKEN = "placeholder_preview_token"
+  CONTENTFUL_ENVIRONMENT = "master"
+  CONTENTFUL_USE_PREVIEW = "false"
+  GENERATION_MODE = "priority"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"

@@ -92,7 +92,7 @@ export const richTextRenderOptions: Options = {
 
       // If it's a blog post
       if (entry.sys.contentType.sys.id === 'pageBlogPost' && entry.fields?.slug) {
-        href = `/patient-education/${entry.fields.slug}`;
+        href = `/blog/${entry.fields.slug}`;
       }
       // If it's a service
       else if (entry.sys.contentType.sys.id === 'serviceData' && entry.fields?.slug) {

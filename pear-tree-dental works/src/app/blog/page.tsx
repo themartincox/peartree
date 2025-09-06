@@ -7,30 +7,30 @@ import { formatDate } from '@/lib/utils';
 export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
-  title: 'Patient Education | Pear Tree Dental',
-  description: 'Educational resources on dental health, treatments, and oral care tips from the expert team at Pear Tree Dental.',
+  title: 'Dental Health Blog | Pear Tree Dental',
+  description: 'Read the latest articles on dental health, treatments, and oral care tips from the expert team at Pear Tree Dental.',
   openGraph: {
-    title: 'Patient Education | Pear Tree Dental',
-    description: 'Educational resources on dental health, treatments, and oral care tips from the expert team at Pear Tree Dental.',
+    title: 'Dental Health Blog | Pear Tree Dental',
+    description: 'Read the latest articles on dental health, treatments, and oral care tips from the expert team at Pear Tree Dental.',
     type: 'website',
-    url: 'https://peartree.dental/patient-education',
+    url: 'https://peartree.dental/blog',
     siteName: 'Pear Tree Dental',
   }
 };
 
-export default async function PatientEducationIndexPage() {
+export default async function BlogIndexPage() {
   const posts = await fetchBlogPosts(12);
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-4">Patient Education</h1>
+      <h1 className="text-4xl font-bold text-center mb-4">Dental Health Blog</h1>
       <p className="text-xl text-center text-gray-600 mb-12">
         Insights, tips, and advice for maintaining excellent oral health
       </p>
 
       {posts.length === 0 ? (
         <div className="text-center py-12">
-          <p className="text-gray-500">No articles found. Check back soon for new content!</p>
+          <p className="text-gray-500">No blog posts found. Check back soon for new content!</p>
         </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,7 +41,7 @@ export default async function PatientEducationIndexPage() {
 
             return (
               <div key={slug} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <Link href={`/patient-education/${slug}`}>
+                <Link href={`/blog/${slug}`}>
                   <div className="relative h-48 w-full">
                     <Image
                       src={imageUrl}

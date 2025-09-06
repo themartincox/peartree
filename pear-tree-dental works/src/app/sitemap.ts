@@ -43,7 +43,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: 'https://peartree.dental/patient-education',
+      url: 'https://peartree.dental/blog',
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
@@ -70,7 +70,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Regular blog posts (always include these)
     const blogPosts = await fetchBlogPosts(100);
     const blogUrls = blogPosts.map(post => ({
-      url: `https://peartree.dental/patient-education/${post.fields.slug}`,
+      url: `https://peartree.dental/blog/${post.fields.slug}`,
       lastModified: new Date(post.sys.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.7,

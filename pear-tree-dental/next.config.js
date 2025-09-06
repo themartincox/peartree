@@ -62,6 +62,16 @@ const nextConfig = {
         destination: '/about/practice',
         permanent: true,
       },
+      {
+        source: '/blog',
+        destination: '/patient-education',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/patient-education/:slug',
+        permanent: true,
+      },
     ];
   },
 };
