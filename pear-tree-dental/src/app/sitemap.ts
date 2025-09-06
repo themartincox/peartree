@@ -96,7 +96,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         for (const location of locations) {
           serviceLocationUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -122,7 +122,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const topLocations = locations.slice(0, 50); // Limit to top 50 locations
         for (const location of topLocations) {
           serviceLocationUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -156,7 +156,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
         for (const location of majorLocations) {
           serviceLocationUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,

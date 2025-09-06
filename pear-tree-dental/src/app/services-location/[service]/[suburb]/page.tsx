@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const title = fillTemplate(template.fields.seoTitleTemplate, service, location);
     const description = fillTemplate(template.fields.seoDescriptionTemplate, service, location);
-    const url = `https://peartree.dental/blog/${params.service}/${params.suburb}`;
+    const url = `https://peartree.dental/services-location/${params.service}/${params.suburb}`;
 
     return {
       title,
@@ -166,11 +166,11 @@ export default async function LocalServicePage({ params }: Props) {
       .map((t: Entry<ITestimonialFields>) => ({
         author: t.fields.author || "Anonymous",
         reviewBody: extractTextFromRichText(t.fields.quote),
-        rating: typeof t.fields.rating === "number" ? t.fields.rating : undefined,
+        rating: undefined,
       }))
       .filter(t => t.reviewBody.length > 0);
 
-    const canonical = `https://peartree.dental/blog/${params.service}/${params.suburb}`;
+    const canonical = `https://peartree.dental/services-location/${params.service}/${params.suburb}`;
 
     // Related locations (same city cluster)
     const allLocs = await fetchAllLocations();
@@ -236,7 +236,7 @@ export default async function LocalServicePage({ params }: Props) {
               What our patients in {location!.fields.suburb} say
             </h2>
             {testimonials.map((t, i) => {
-              const stars = Math.max(1, Math.min(5, Math.round(t.rating ?? 5)));
+              const stars = 5; // Fixed 5 stars since we don't have rating in the model
               return (
                 <blockquote key={i} className="border-l-4 border-blue-500 pl-4 italic mt-4">
                   <p>&quot;{t.reviewBody}&quot;</p>
@@ -262,7 +262,7 @@ export default async function LocalServicePage({ params }: Props) {
               {siblings.map((item, idx) => (
                 <Link
                   key={`${item.serviceSlug}-${item.suburbSlug}-${idx}`}
-                  href={`/blog/${item.serviceSlug}/${item.suburbSlug}`}
+                  href={`/services-location/${item.serviceSlug}/${item.suburbSlug}`}
                   className="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   <h3 className="font-medium">{item.suburbName}</h3>

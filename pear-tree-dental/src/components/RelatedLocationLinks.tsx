@@ -12,7 +12,7 @@ export default function RelatedLocationLinks({ items, title }: { items: Item[]; 
         {items.map((item, idx) => (
           <Link
             key={`${item.serviceSlug}-${item.suburbSlug}-${idx}`}
-            href={`/blog/${item.serviceSlug}/${item.suburbSlug}`}
+            href={`/services-location/${item.serviceSlug}/${item.suburbSlug}`}
             className="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
           >
             <span className="font-medium">{item.suburbName}</span>
