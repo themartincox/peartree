@@ -1,0 +1,13 @@
+# Force HTTPS and remove www
+http://peartree.dental/* https://peartree.dental/:splat 301!
+http://www.peartree.dental/* https://peartree.dental/:splat 301!
+https://www.peartree.dental/* https://peartree.dental/:splat 301!
+
+# Legacy domain redirects
+http://peartreedental.co.uk/* https://peartree.dental/:splat 301!
+http://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
+https://peartreedental.co.uk/* https://peartree.dental/:splat 301!
+https://www.peartreedental.co.uk/* https://peartree.dental/:splat 301!
+
+# Service URL restructuring
+/buccal-corridor-correction /services/cosmetic/buccal-corridor-correction 301!

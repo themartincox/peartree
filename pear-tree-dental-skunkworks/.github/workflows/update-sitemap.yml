@@ -1,0 +1,190 @@
+name: Update Sitemap
+
+on:
+  # Run daily at 2 AM UTC
+  schedule:
+    - cron: '0 2 * * *'
+
+  # Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update even if no changes detected'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+  # Run when new pages are added/modified
+  push:
+    branches: [main, master]
+    paths:
+      - 'src/app/**/page.tsx'
+      - 'src/app/**/page.ts'
+      - 'src/app/**/page.jsx'
+      - 'src/app/**/page.js'
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # Needed to commit sitemap changes
+
+    steps:
+      - name: 🛒 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: 🔧 Install dependencies
+        run: |
+          npm ci
+          npm install -g typescript
+
+      - name: 📊 Display current site structure
+        run: |
+          echo "📁 Current app directory structure:"
+          find src/app -name "page.*" -type f | sort
+          echo ""
+          echo "📄 Current sitemap status:"
+          if [ -f "public/sitemap.xml" ]; then
+            echo "  Sitemap exists ($(wc -l < public/sitemap.xml) lines)"
+            echo "  Last modified: $(stat -c %y public/sitemap.xml 2>/dev/null || stat -f %Sm public/sitemap.xml)"
+          else
+            echo "  No sitemap found"
+          fi
+
+      - name: 🚀 Update sitemap
+        env:
+          SITE_URL: https://peartree.dental
+          FORCE_UPDATE: ${{ github.event.inputs.force_update }}
+        run: |
+          echo "🔄 Running sitemap update script..."
+          node scripts/update-sitemap.js
+
+      - name: 📋 Check for changes
+        id: check-changes
+        run: |
+          if [ -n "$(git status --porcelain public/sitemap.xml)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "✅ Sitemap changes detected"
+            git diff --stat public/sitemap.xml
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "ℹ️ No sitemap changes detected"
+          fi
+
+      - name: 📈 Generate sitemap summary
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          echo "📊 Sitemap Update Summary" >> sitemap-summary.md
+          echo "=========================" >> sitemap-summary.md
+          echo "" >> sitemap-summary.md
+          echo "**Timestamp:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")" >> sitemap-summary.md
+          echo "**Trigger:** ${{ github.event_name }}" >> sitemap-summary.md
+          echo "" >> sitemap-summary.md
+
+          if [ -f "public/sitemap.xml" ]; then
+            URL_COUNT=$(grep -c '<url>' public/sitemap.xml || echo "0")
+            echo "**Total URLs:** $URL_COUNT" >> sitemap-summary.md
+            echo "" >> sitemap-summary.md
+
+            # Count by priority
+            echo "**URLs by Priority:**" >> sitemap-summary.md
+            grep -o '<priority>[0-9.]*</priority>' public/sitemap.xml | sort | uniq -c | sort -nr >> sitemap-summary.md
+            echo "" >> sitemap-summary.md
+          fi
+
+          # Show recent changes
+          echo "**Recent Changes:**" >> sitemap-summary.md
+          git diff --name-only HEAD~1 src/app/ | grep 'page\.' | head -10 >> sitemap-summary.md || echo "No recent page changes detected" >> sitemap-summary.md
+
+      - name: 💾 Commit updated sitemap
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/sitemap.xml
+
+          # Create commit message
+          COMMIT_MSG="🗺️ Auto-update sitemap.xml"
+
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            COMMIT_MSG="$COMMIT_MSG - Daily update"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            COMMIT_MSG="$COMMIT_MSG - Page changes detected"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            COMMIT_MSG="$COMMIT_MSG - Manual trigger"
+          fi
+
+          # Add sitemap summary to commit if available
+          if [ -f "sitemap-summary.md" ]; then
+            COMMIT_MSG="$COMMIT_MSG
+
+$(cat sitemap-summary.md)"
+          fi
+
+          git commit -m "$COMMIT_MSG"
+          git push
+
+      - name: 📝 Create Pull Request (for non-main branches)
+        if: steps.check-changes.outputs.changes == 'true' && github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 🗺️ Auto-update sitemap.xml
+          title: 'Auto-update sitemap.xml'
+          body: |
+            🤖 **Automated Sitemap Update**
+
+            This PR contains an automated update to the sitemap.xml file based on detected changes in the site structure.
+
+            $(cat sitemap-summary.md 2>/dev/null || echo "Sitemap updated successfully")
+
+            ---
+            *This PR was created automatically by the Update Sitemap workflow.*
+          branch: automated-sitemap-update
+          delete-branch: true
+
+      - name: 📋 Upload sitemap logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: sitemap-logs
+          path: |
+            logs/sitemap-updates.log
+            sitemap-summary.md
+          retention-days: 30
+
+      - name: 🔔 Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Sitemap update failed!"
+          echo "Check the workflow logs for details."
+
+          # Could add Slack/Discord notification here
+          # curl -X POST -H 'Content-type: application/json' \
+          #   --data '{"text":"🚨 Sitemap update failed for peartree.dental"}' \
+          #   ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: ✅ Success summary
+        if: success()
+        run: |
+          if [ "${{ steps.check-changes.outputs.changes }}" = "true" ]; then
+            echo "✅ Sitemap updated successfully!"
+            URL_COUNT=$(grep -c '<url>' public/sitemap.xml || echo "0")
+            echo "📊 Total URLs in sitemap: $URL_COUNT"
+          else
+            echo "ℹ️ Sitemap check completed - no changes needed"
+          fi
+
+          echo "🕐 Workflow completed at $(date -u +"%Y-%m-%d %H:%M:%S UTC")"

@@ -1,0 +1,132 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Pear Tree Dental",
+  "name_for_model": "pear_tree_dental",
+  "description_for_human": "Premium dental practice in Burton Joyce, Nottinghamshire offering comprehensive dental care including general dentistry, cosmetic treatments, dental implants, orthodontics, and emergency care with affordable membership plans.",
+  "description_for_model": "Pear Tree Dental is a modern dental practice located in Burton Joyce, Nottinghamshire, UK. The practice provides comprehensive dental services including general dentistry (checkups, cleanings, fillings, extractions), cosmetic dentistry (teeth whitening, veneers, smile makeovers), restorative dentistry (crowns, bridges, dentures), dental implants, orthodontics (Invisalign, ClearCorrect), and emergency dental care. They offer affordable membership plans starting from £10.95/month to help patients skip NHS waiting lists. The practice serves Burton Joyce and surrounding areas including Arnold, Gedling, Lowdham, East Bridgford, and Colwick.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://peartree.dental/api/schema"
+  },
+  "logo_url": "https://peartree.dental/logo.png",
+  "contact_email": "hello@peartree.dental",
+  "legal_info_url": "https://peartree.dental/terms",
+  "practice_info": {
+    "name": "Pear Tree Dental",
+    "address": {
+      "street": "22 Nottingham Road",
+      "city": "Burton Joyce",
+      "county": "Nottinghamshire",
+      "postcode": "NG14 5AE",
+      "country": "United Kingdom"
+    },
+    "contact": {
+      "phone": "0115 931 2935",
+      "email": "hello@peartree.dental",
+      "website": "https://peartree.dental"
+    },
+    "opening_hours": {
+      "monday": "8:45 AM - 5:00 PM",
+      "tuesday": "8:45 AM - 5:00 PM",
+      "wednesday": "8:45 AM - 5:00 PM",
+      "thursday": "8:45 AM - 5:00 PM",
+      "friday": "8:00 AM - 3:30 PM",
+      "saturday": "Closed",
+      "sunday": "Closed"
+    },
+    "emergency_hours": "Emergencies by arrangement",
+    "services": [
+      {
+        "category": "General Dentistry",
+        "treatments": ["Check-ups", "Cleanings", "Fillings", "Extractions", "Root Canal Treatment", "Emergency Care"],
+        "pricing": "From £25 (NHS) / From £65 (Private)"
+      },
+      {
+        "category": "Cosmetic Dentistry",
+        "treatments": ["Teeth Whitening", "Veneers (Ultra-thin, Porcelain, Composite)", "Composite Bonding", "Smile Makeovers"],
+        "pricing": "From £180 - £650 per tooth"
+      },
+      {
+        "category": "Restorative Dentistry",
+        "treatments": ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
+        "pricing": "From £450 - £1,200"
+      },
+      {
+        "category": "Dental Implants",
+        "treatments": ["Single Implants", "Multiple Implants", "All-on-4", "Full Mouth Reconstruction"],
+        "pricing": "From £2,500 per implant"
+      },
+      {
+        "category": "Orthodontics",
+        "treatments": ["Invisalign", "ClearCorrect", "Clear Aligners"],
+        "pricing": "From £2,800 - £4,500"
+      }
+    ],
+    "membership_plans": [
+      {
+        "name": "Plan A",
+        "price": "£10.95/month",
+        "daily_cost": "36p per day",
+        "includes": ["1 check-up per year", "1 scale & polish per year", "Worldwide emergency cover"]
+      },
+      {
+        "name": "Plan B",
+        "price": "£15.95/month",
+        "daily_cost": "53p per day",
+        "includes": ["2 check-ups per year", "1 scale & polish per year", "Worldwide emergency cover"]
+      },
+      {
+        "name": "Plan C",
+        "price": "£19.95/month",
+        "daily_cost": "66p per day",
+        "includes": ["2 check-ups per year", "2 scale & polishes per year", "Worldwide emergency cover"],
+        "popular": true
+      },
+      {
+        "name": "Plan D",
+        "price": "£25.95/month",
+        "daily_cost": "86p per day",
+        "includes": ["2 check-ups per year", "2 scale & polishes per year", "1 free emergency appointment", "50% off stain removal", "Worldwide emergency cover"]
+      },
+      {
+        "name": "Plan E",
+        "price": "£29.95/month",
+        "daily_cost": "99p per day",
+        "includes": ["2 check-ups per year", "4 scale & polishes per year", "1 free emergency appointment", "50% off stain removal", "Worldwide emergency cover"]
+      },
+      {
+        "name": "Family Plan",
+        "price": "£49.50/month",
+        "daily_cost": "£1.65 per day",
+        "includes": ["2 adults + up to 3 children", "All Plan D benefits for adults", "Children under 18 included free"]
+      }
+    ],
+    "areas_served": [
+      "Burton Joyce",
+      "Arnold",
+      "Gedling",
+      "Lowdham",
+      "East Bridgford",
+      "Colwick",
+      "Nottingham",
+      "Nottinghamshire"
+    ],
+    "specialties": [
+      "Family Dentistry",
+      "Cosmetic Smile Makeovers",
+      "Dental Implants",
+      "Invisalign Clear Aligners",
+      "Emergency Dental Care",
+      "Nervous Patient Care",
+      "Dental Membership Plans"
+    ],
+    "reviews": {
+      "google_rating": "4.9/5",
+      "total_reviews": "400+",
+      "highlights": ["Professional service", "Modern facilities", "Gentle approach", "Affordable membership plans"]
+    }
+  }
+}
