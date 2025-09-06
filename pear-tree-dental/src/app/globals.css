@@ -1,5 +1,4 @@
 /* Google Fonts now loaded via Next.js font optimization */
-/* Google Fonts loaded via external stylesheet links */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,10 +37,6 @@
   --chart-4: #7fb3d3;
   --chart-5: #e8c5c5;
   --radius: 0.75rem;
-
-  /* Fallback font variables used across the project */
-  --font-cormorant: 'Cormorant Garamond', serif;
-  --font-montserrat: 'Montserrat', sans-serif;
 }
 
 .dark {
