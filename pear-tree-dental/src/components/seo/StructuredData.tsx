@@ -1,103 +1,159 @@
-'use client';
+export function DentistSchema({
+  name = 'Pear Tree Dental',
+  address = {
+    streetAddress: '123 Dental Street',
+    addressLocality: 'Nottingham',
+    addressRegion: 'Nottinghamshire',
+    postalCode: 'NG1 2AB',
+    addressCountry: 'UK'
+  },
+  telephone = '+441159694141',
+  url = 'https://peartree.dental',
+  image = 'https://peartree.dental/og/default.jpg',
+  priceRange = '£££',
+  geo = {
+    latitude: 52.9548,
+    longitude: -1.1581
+  }
+}: {
+  name?: string
+  address?: any
+  telephone?: string
+  url?: string
+  image?: string
+  priceRange?: string
+  geo?: { latitude: number; longitude: number }
+}) {
+  const openingHoursSpecification = [
+    { dayOfWeek: 'Monday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Tuesday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Wednesday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Thursday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Friday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Saturday', opens: '10:00', closes: '14:00' },
+    { dayOfWeek: 'Sunday', opens: '00:00', closes: '00:00' }
+  ]
 
-import Script from 'next/script';
-
-interface Review {
-  author: string;
-  reviewBody: string;
-  rating?: number;
-}
-
-interface StructuredDataProps {
-  service: string;
-  suburb: string;
-  city: string;
-  reviews?: Review[];
-}
-
-export default function StructuredData({ service, suburb, city, reviews = [] }: StructuredDataProps) {
-  const averageRating = reviews.length > 0
-    ? reviews.reduce((sum, review) => sum + (review.rating || 5), 0) / reviews.length
-    : 4.8; // Default rating if no reviews
-
-  const schema = {
+  const dentist = {
     '@context': 'https://schema.org',
-    '@type': 'DentalService',
-    name: `${service} in ${suburb}`,
-    provider: {
-      '@type': 'Dentist',
-      name: 'Pear Tree Dental',
-      image: 'https://peartree.dental/images/logo.png',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '22 Nottingham Road',
-        addressLocality: 'Burton Joyce',
-        postalCode: 'NG14 5AE',
-        addressRegion: 'Nottinghamshire',
-        addressCountry: 'UK'
-      },
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 52.9799,
-        longitude: -1.0367
-      },
-      telephone: '0115 931 2935',
-      priceRange: '££',
-      url: 'https://peartree.dental'
+    '@type': 'Dentist',
+    name,
+    image,
+    '@id': `${url}#dentist`,
+    url,
+    telephone,
+    priceRange,
+    address: {
+      '@type': 'PostalAddress',
+      ...address
     },
-    areaServed: {
-      '@type': 'City',
-      name: city
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: geo.latitude,
+      longitude: geo.longitude
     },
-    serviceArea: {
-      '@type': 'GeoCircle',
-      geoMidpoint: {
-        '@type': 'GeoCoordinates',
-        latitude: 52.9799,
-        longitude: -1.0367
-      },
-      geoRadius: '15000'
-    },
-    serviceType: service,
-    availableChannel: {
-      '@type': 'ServiceChannel',
-      serviceUrl: 'https://peartree.dental/book',
-      servicePhone: '0115 931 2935'
-    }
-  };
-
-  // Add reviews if available
-  if (reviews.length > 0) {
-    Object.assign(schema, {
-      review: reviews.map(review => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: review.author
-        },
-        reviewBody: review.reviewBody,
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: review.rating || 5,
-          bestRating: 5,
-          worstRating: 1
-        }
-      })),
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: averageRating.toFixed(1),
-        reviewCount: reviews.length,
-        bestRating: 5,
-        worstRating: 1
-      }
-    });
+    openingHoursSpecification: openingHoursSpecification.map(spec => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: `https://schema.org/${spec.dayOfWeek}`,
+      opens: spec.opens,
+      closes: spec.closes
+    }))
   }
 
   return (
-    <Script
-      id={`structured-data-${service.replace(/\s+/g, '-').toLowerCase()}-${suburb.toLowerCase()}`}
+    <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(dentist) }}
     />
-  );
+  )
+}
+
+export function LocalBusinessSchema({
+  name = 'Pear Tree Dental',
+  type = 'Dentist',
+  address = {
+    streetAddress: '123 Dental Street',
+    addressLocality: 'Nottingham',
+    addressRegion: 'Nottinghamshire',
+    postalCode: 'NG1 2AB',
+    addressCountry: 'UK'
+  },
+  telephone = '+441159694141',
+  url = 'https://peartree.dental',
+  image = 'https://peartree.dental/og/default.jpg',
+  priceRange = '£££'
+}: {
+  name?: string
+  type?: string
+  address?: any
+  telephone?: string
+  url?: string
+  image?: string
+  priceRange?: string
+}) {
+  const openingHoursSpecification = [
+    { dayOfWeek: 'Monday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Tuesday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Wednesday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Thursday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Friday', opens: '09:00', closes: '17:00' },
+    { dayOfWeek: 'Saturday', opens: '10:00', closes: '14:00' },
+    { dayOfWeek: 'Sunday', opens: '00:00', closes: '00:00' }
+  ]
+
+  const business = {
+    '@context': 'https://schema.org',
+    '@type': type,
+    name,
+    image,
+    '@id': `${url}#organization`,
+    url,
+    telephone,
+    priceRange,
+    address: {
+      '@type': 'PostalAddress',
+      ...address
+    },
+    openingHoursSpecification: openingHoursSpecification.map(spec => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: `https://schema.org/${spec.dayOfWeek}`,
+      opens: spec.opens,
+      closes: spec.closes
+    }))
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(business) }}
+    />
+  )
+}
+
+export default function StructuredData({
+  city = 'Nottingham',
+  service = 'General Dentistry',
+  suburb = 'Nottingham',
+  price = '£££'
+}: {
+  city?: string
+  service?: string
+  suburb?: string
+  price?: string
+}) {
+  return (
+    <>
+      <DentistSchema
+        name={`Pear Tree Dental - ${service} in ${suburb}`}
+        address={{
+          streetAddress: '123 Dental Street',
+          addressLocality: suburb,
+          addressRegion: city,
+          postalCode: 'NG1 2AB',
+          addressCountry: 'UK'
+        }}
+        priceRange={price}
+      />
+    </>
+  )
 }

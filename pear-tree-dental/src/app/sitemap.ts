@@ -78,6 +78,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Dynamic generation based on mode
     const serviceLocationUrls: MetadataRoute.Sitemap = [];
+    const blogServiceSuburbUrls: MetadataRoute.Sitemap = [];
 
     if (mode === 'priority') {
       // Only include priority services and locations
@@ -97,6 +98,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         for (const location of locations) {
           serviceLocationUrls.push({
             url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -123,6 +132,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         for (const location of topLocations) {
           serviceLocationUrls.push({
             url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -161,12 +178,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly' as const,
             priority: 0.6,
           });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
         }
       }
     }
 
-    // Combine all URLs
-    return [...baseUrls, ...blogUrls, ...serviceLocationUrls];
+    // Combine all URLs - /near-me routes are deliberately excluded from the sitemap
+    return [...baseUrls, ...blogUrls, ...serviceLocationUrls, ...blogServiceSuburbUrls];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     return baseUrls;

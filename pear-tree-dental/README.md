@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pear Tree Dental Website
 
-## Getting Started
+Pear Tree Dental's website, built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## Features
+
+- **Next.js 15**: App Router, Server Components, and hybrid rendering
+- **TypeScript**: Type safety and improved developer experience
+- **Tailwind CSS**: Utility-first styling for responsive design
+- **Contentful CMS**: Structured content management
+- **Advanced Cohort Engine**: Sophisticated personalization system
+
+## Cohort Engine
+
+The website includes a sophisticated cohort engine for personalization based on:
+
+- Geo-location and travel time estimation
+- Device type (mobile, tablet, desktop)
+- Time of day and office hours
+- User status (new, returning, frequent)
+- User intent signals
+
+See the [Cohort Engine Documentation](./COHORT-ENGINE.md) for details on this feature.
+
+## Project Structure
+
+- `src/app`: Next.js App Router pages
+- `src/components`: React components
+  - `src/components/cohort`: Cohort engine UI components
+  - `src/components/ui`: Base UI components
+  - `src/components/seo`: SEO-related components
+- `src/lib`: Utility functions and business logic
+  - `src/lib/cohort-engine`: Cohort engine core logic
+- `public`: Static assets
+
+## Setup and Development
+
+### Prerequisites
+
+- Node.js (v18+)
+- Bun (recommended) or npm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Install dependencies
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Start development server
+bun run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Building
 
-## Learn More
+```bash
+# Build for production
+bun run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start production server
+bun run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is deployed on Netlify with the following configuration:
 
-## Deploy on Vercel
+```toml
+[build]
+  command = "bun run build"
+  functions = ".netlify/functions"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[functions]
+  external_node_modules = ["sharp"]
+```

@@ -12,6 +12,7 @@ import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
+import TrackingProvider from "@/components/cohort/TrackingProvider";
 
 // Optimize Google Fonts loading with font-display: swap
 const cormorantGaramond = Cormorant_Garamond({
@@ -200,28 +201,30 @@ export default function RootLayout({
       <body
         className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}
       >
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
-          aria-label="Skip to main content"
-        >
-          Skip to main content
-        </a>
-        <a
-          href="#navigation"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-40 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
-        >
-          Skip to navigation
-        </a>
+        <TrackingProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
+            aria-label="Skip to main content"
+          >
+            Skip to main content
+          </a>
+          <a
+            href="#navigation"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-40 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
+          >
+            Skip to navigation
+          </a>
 
-        <ServiceWorkerRegistration />
-        <Navigation />
+          <ServiceWorkerRegistration />
+          <Navigation />
 
-        <main id="main-content" className="min-h-screen" role="main">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
-        <LocationDetection />
+          <main id="main-content" className="min-h-screen" role="main">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <LocationDetection />
+        </TrackingProvider>
       </body>
     </html>
   );
