@@ -1,6 +1,6 @@
 'use client';
 
-// src/components/cohort/TrackingProvider.tsx
+// src/components/TrackingProvider.tsx
 import React, { useEffect } from 'react';
 
 // Enhanced tracking types
