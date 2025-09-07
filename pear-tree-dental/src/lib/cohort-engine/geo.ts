@@ -1,6 +1,6 @@
 // src/lib/geo.ts
 import { LocationEntry } from '@/types/contentful';
-import { fetchAllLocations, getEntryField } from './contentful';
+import { fetchAllLocations, getEntryField } from '@/lib/contentful';
 import { getCachedGeoData } from './cache';
 
 // Interface for geo data

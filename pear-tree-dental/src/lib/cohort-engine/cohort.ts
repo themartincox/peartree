@@ -1,4 +1,4 @@
-// src/lib/cohort.ts
+// src/lib/cohort-engine/cohort.ts
 import { headers, cookies } from 'next/headers'
 
 export type DeviceType = 'mobile' | 'tablet' | 'desktop'

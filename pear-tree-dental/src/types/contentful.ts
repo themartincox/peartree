@@ -1,108 +1,103 @@
-import type { Document } from "@contentful/rich-text-types";
-import type { Entry, Asset } from "contentful";
+import { Entry } from 'contentful';
+import { Document } from '@contentful/rich-text-types';
 
-// Blog Template
-export interface IBlogTemplateFields {
-  internalTitle: string;
-  slug: string;
-  seoTitleTemplate: string;
-  seoDescriptionTemplate: string;
-  h1Template: string;
-  bodyContent: Document;
-  tokens?: Record<string, any>;
-  keyTakeaways?: Document;
-  internalLinkSlots?: string[];
-  schemaType?: string;
-  layoutType?: string;
-  defaultCta?: Entry<ICTAFields>;
-  faqs?: Entry<IFAQFields>[];
+// Basic Contentful entry interfaces
+export interface ServiceEntry extends Entry<any> {
+  fields: {
+    slug: string;
+    serviceName: string;
+    description?: string;
+    content?: Document;
+    metaTitle?: string;
+    metaDescription?: string;
+    metaKeywords?: string[];
+  };
 }
 
-// Component - Author
-export interface IComponentAuthorFields {
-  internalName: string;
-  name: string;
-  avatar?: Asset;
+export interface LocationEntry extends Entry<any> {
+  fields: {
+    slug: string;
+    suburb: string;
+    city: string;
+    region?: string;
+    postcode?: string;
+    address?: string;
+    latitude?: number;
+    longitude?: number;
+    localTestimonials?: Entry<any>[];
+    metaTitle?: string;
+    metaDescription?: string;
+    metaKeywords?: string[];
+  };
 }
 
-// Component - Rich Image
-export interface IComponentRichImageFields {
-  internalName: string;
-  image: Asset;
-  caption?: string;
-  fullWidth?: boolean;
+export interface BlogTemplateEntry extends Entry<any> {
+  fields: {
+    title: string;
+    seoTitleTemplate: string;
+    seoDescriptionTemplate: string;
+    bodyContent: Document;
+  };
 }
 
-// Component - SEO
-export interface IComponentSeoFields {
-  internalName: string;
-  pageTitle: string;
-  pageDescription: string;
-  canonicalUrl?: string;
-  nofollow?: boolean;
-  noindex?: boolean;
-  shareImages?: Asset[];
+export interface BlogPostEntry extends Entry<any> {
+  fields: {
+    slug: string;
+    title: string;
+    publishDate: string;
+    excerpt?: string;
+    content: Document;
+    featuredImage?: any;
+    author?: Entry<any>;
+  };
 }
 
-// CTA
-export interface ICTAFields {
-  label: string;
-  destinationUrl: string;
+export interface TestimonialEntry extends Entry<any> {
+  fields: {
+    text: string;
+    author: string;
+    rating?: number;
+    service?: ServiceEntry;
+    location?: LocationEntry;
+  };
 }
 
-// FAQ
-export interface IFAQFields {
-  question: string;
-  answer: Document;
+export interface FAQEntry extends Entry<any> {
+  fields: {
+    question: string;
+    answer: Document;
+    service?: ServiceEntry;
+    location?: LocationEntry;
+  };
 }
 
-// Location Data
-export interface ILocationDataFields {
-  suburb: string;
-  city: string;
-  slug: string;
-  uniqueLocalContent?: Document;
-  localTestimonials?: Entry<ITestimonialFields>[];
+export interface CTAEntry extends Entry<any> {
+  fields: {
+    title: string;
+    subtitle?: string;
+    buttonText: string;
+    buttonUrl: string;
+    variant?: 'primary' | 'secondary' | 'tertiary';
+  };
 }
 
-// Blog Post
-export interface IBlogPostFields {
-  internalName: string;
-  seoFields?: Entry<IComponentSeoFields>;
-  slug: string;
-  author?: Entry<IComponentAuthorFields>;
-  publishedDate: string;
-  title: string;
-  subtitle?: string;
-  featuredImage?: Asset;
-  content: Document;
-  relatedBlogPosts?: Entry<IBlogPostFields>[];
+export interface SEOEntry extends Entry<any> {
+  fields: {
+    title: string;
+    description: string;
+    keywords: string[];
+    noIndex?: boolean;
+    noFollow?: boolean;
+    canonicalUrl?: string;
+    ogImage?: any;
+  };
 }
 
-// Landing Page
-export interface ILandingPageFields {
-  internalName: string;
-  seoFields?: Entry<IComponentSeoFields>;
-  featuredBlogPost?: Entry<IBlogPostFields>;
-}
-
-// Service Data
-export interface IServiceDataFields {
-  serviceName: string;
-  slug: string;
-  description: string;
-}
-
-// Testimonial
-export interface ITestimonialFields {
-  quote: Document;
-  author: string;
-}
-
-// Helper types for token replacement
-export interface PageGenerationStats {
-  totalPossible: number;
-  priorityGenerated: number;
-  secondaryGenerated: number;
-  generationStrategy: 'priority' | 'full' | 'staged';
+export interface AuthorEntry extends Entry<any> {
+  fields: {
+    name: string;
+    title?: string;
+    bio?: Document;
+    avatar?: any;
+  };
 }

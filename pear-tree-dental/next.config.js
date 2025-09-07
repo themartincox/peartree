@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Essential image configuration for Netlify
   images: {
     domains: [
       'source.unsplash.com',
@@ -10,24 +9,14 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-
-  // Output configuration for Netlify
   output: 'standalone',
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
 
-  // Skip TypeScript checks during build for faster deployment
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-
-  // Skip ESLint checks during build
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
-  // For Next.js 15, use serverExternalPackages instead of experimental.serverComponentsExternalPackages
+  // External packages
   serverExternalPackages: ['sharp'],
 
-  // Security headers for all routes
+  // Security headers
   async headers() {
     return [
       {
@@ -45,32 +34,7 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
         ],
-      },
-    ];
-  },
-
-  // Redirect configuration for SEO and moved pages
-  async redirects() {
-    return [
-      {
-        source: '/about',
-        destination: '/about/practice',
-        permanent: true,
-      },
-      {
-        source: '/blog',
-        destination: '/patient-education',
-        permanent: true,
-      },
-      {
-        source: '/blog/:slug',
-        destination: '/patient-education/:slug',
-        permanent: true,
       },
     ];
   },

@@ -1,4 +1,4 @@
-import { getCohort } from '@/lib/cohort'
+import { getCohort } from '@/lib/cohort-engine/cohort'
 import Link from 'next/link'
 
 type Props = { serviceSlug: string; suburbSlug: string }

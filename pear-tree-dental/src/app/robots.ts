@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,12 +8,12 @@ export default function robots(): MetadataRoute.Robots {
       disallow: [
         '/api/',
         '/admin/',
-        '/dentalhub/',
-        '/member2/',
-        '/test-*',
-        '/*?*', // Disallow URLs with query parameters
+        '/_next/',
+        '/book/',
+        '/membership/signup/',
       ],
     },
     sitemap: 'https://peartree.dental/sitemap.xml',
-  };
+    host: 'https://peartree.dental',
+  }
 }

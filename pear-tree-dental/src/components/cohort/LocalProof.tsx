@@ -1,5 +1,5 @@
 // src/components/LocalProof.tsx
-import { getCohort } from '@/lib/cohort'
+import { getCohort } from '@/lib/cohort-engine/cohort'
 
 interface LocalProofProps {
   reviewsCount?: number

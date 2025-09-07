@@ -1,77 +1,93 @@
 // src/lib/indexing.ts
-import { INDEX_PRIORITY_SERVICES, INDEX_ALLOWLIST_SUBURBS, INDEX_MIN_WORDS, INDEX_REQUIRE_LOCAL_PROOF } from '@/config/indexing'
-import {
-  extractTextFromRichText,
-  replacePlaceholdersInRichText,
-  getEntryField
-} from '@/lib/contentful'
-import {
-  ServiceEntry,
-  LocationEntry,
-  EntryLike
-} from '@/types/contentful'
-import { Document as RichTextDocument } from '@contentful/rich-text-types'
+import { Document } from '@contentful/rich-text-types';
+import { extractTextFromRichText } from './contentful';
+import { INDEX_MIN_WORDS, INDEX_PRIORITY_SERVICES, INDEX_ALLOWLIST_SUBURBS } from '@/config/indexing';
 
-export type IndexDecision = {
-  indexable: boolean
-  reasons: string[]
+// Interfaces for indexability checking
+interface IndexabilityResult {
+  indexable: boolean;
+  reasons: string[];
 }
 
-export function wordCountFromRichText(doc: RichTextDocument | null | undefined): number {
-  if (!doc) return 0
-  const text = extractTextFromRichText(doc) || ''
-  return text.split(/\s+/).filter(Boolean).length
-}
-
-export function hasLocalProof(location: LocationEntry | EntryLike): boolean {
-  const testimonials = getEntryField<any[]>(location, 'localTestimonials') || []
-  const uniqueLocalContent = getEntryField<RichTextDocument>(location, 'uniqueLocalContent')
-  return (Array.isArray(testimonials) && testimonials.length > 0) || !!uniqueLocalContent
+interface IndexabilityParams {
+  service: any;
+  location: any;
+  rawBody?: Document | null;
+  filledBody?: Document | null;
+  replaceCtx?: Record<string, string>;
 }
 
 /**
- * Determine if a service/suburb page should be indexable.
- * We allow the caller to pass a "filledBody" (placeholders replaced) or "rawBody" (template doc) to count words.
+ * Decides whether a service/suburb page should be indexable based on
+ * several factors:
+ * - Is the service in the priority list?
+ * - Is the suburb in the allowlist?
+ * - Does the page have enough content?
+ * - Does the page have local testimonials?
  */
-export function decideIndexable(opts: {
-  service: ServiceEntry | EntryLike
-  location: LocationEntry | EntryLike
-  filledBody?: RichTextDocument
-  rawBody?: RichTextDocument
-  replaceCtx?: { service: string; suburb: string; city?: string }
-}): IndexDecision {
-  const reasons: string[] = []
-  const serviceSlug = (getEntryField<string>(opts.service, 'slug') || '').toLowerCase()
-  const suburbSlug = (getEntryField<string>(opts.location, 'slug') || '').toLowerCase()
+export function decideIndexable(params: IndexabilityParams): IndexabilityResult {
+  const { service, location, rawBody, filledBody, replaceCtx } = params;
 
-  // Rule 1: service priority
-  if (!INDEX_PRIORITY_SERVICES.includes(serviceSlug)) {
-    reasons.push(`service '${serviceSlug}' not in INDEX_PRIORITY_SERVICES`)
+  const reasons: string[] = [];
+  let indexable = true;
+
+  // Check if service is in priority list
+  const serviceSlug = service?.fields?.slug;
+  if (!serviceSlug) {
+    indexable = false;
+    reasons.push('Service slug missing');
+  } else if (!INDEX_PRIORITY_SERVICES.includes(serviceSlug.toLowerCase())) {
+    indexable = false;
+    reasons.push(`Service "${serviceSlug}" not in priority list`);
   }
 
-  // Rule 2: suburb allowlist
-  if (!INDEX_ALLOWLIST_SUBURBS.includes(suburbSlug)) {
-    reasons.push(`suburb '${suburbSlug}' not in INDEX_ALLOWLIST_SUBURBS`)
+  // Check if suburb is in allowlist
+  const locationSlug = location?.fields?.slug;
+  if (!locationSlug) {
+    indexable = false;
+    reasons.push('Location slug missing');
+  } else if (!INDEX_ALLOWLIST_SUBURBS.includes(locationSlug.toLowerCase())) {
+    indexable = false;
+    reasons.push(`Suburb "${locationSlug}" not in allowlist`);
   }
 
-  // Rule 3: content length
-  let words = 0
-  if (opts.filledBody) {
-    words = wordCountFromRichText(opts.filledBody)
-  } else if (opts.rawBody) {
-    // Conservative count using raw template with tokens replaced (gives a better estimate)
-    const body = opts.replaceCtx ? replacePlaceholdersInRichText(opts.rawBody, opts.replaceCtx) : opts.rawBody
-    words = wordCountFromRichText(body)
-  }
-  if (words < INDEX_MIN_WORDS) {
-    reasons.push(`content too short (${words} < ${INDEX_MIN_WORDS})`)
+  // Check if page has enough content
+  if (filledBody) {
+    const text = extractTextFromRichText(filledBody);
+    const wordCount = text.split(/\s+/).filter(Boolean).length;
+
+    if (wordCount < INDEX_MIN_WORDS) {
+      indexable = false;
+      reasons.push(`Insufficient content: ${wordCount} words (min: ${INDEX_MIN_WORDS})`);
+    }
+  } else if (rawBody && replaceCtx) {
+    // Rough estimation of word count from raw template
+    // Note: This is not 100% accurate but good enough for quick checks
+    const rawText = extractTextFromRichText(rawBody);
+
+    // Replace tokens with realistic content length
+    let estimatedText = rawText;
+    Object.entries(replaceCtx).forEach(([key, value]) => {
+      const regex = new RegExp(`\\{\\{\\s*${key}\\s*\\}\\}`, 'gi');
+      estimatedText = estimatedText.replace(regex, value);
+    });
+
+    const wordCount = estimatedText.split(/\s+/).filter(Boolean).length;
+
+    if (wordCount < INDEX_MIN_WORDS) {
+      indexable = false;
+      reasons.push(`Estimated insufficient content: ~${wordCount} words (min: ${INDEX_MIN_WORDS})`);
+    }
   }
 
-  // Rule 4: optional local proof
-  if (INDEX_REQUIRE_LOCAL_PROOF && !hasLocalProof(opts.location)) {
-    reasons.push('missing local proof')
+  // Check for local testimonials if required
+  if (process.env.INDEX_REQUIRE_LOCAL_PROOF === 'true') {
+    const hasLocalTestimonials = location?.fields?.localTestimonials?.length > 0;
+    if (!hasLocalTestimonials) {
+      indexable = false;
+      reasons.push('No local testimonials/proof available');
+    }
   }
 
-  const indexable = reasons.length === 0
-  return { indexable, reasons }
+  return { indexable, reasons };
 }
