@@ -1,3 +1,6 @@
+// Force dynamic generation to avoid prerendering at build time
+export const dynamic = "force-dynamic";
+
 import type { MetadataRoute } from 'next';
 import {
   fetchAllServices,
@@ -7,6 +10,13 @@ import {
   fetchPriorityLocations,
   contentfulHealthCheck
 } from '@/lib/contentful';
+
+// Helper function to safely convert dates to ISO string
+const toISO = (input?: string | number | Date) => {
+  if (!input) return new Date().toISOString();
+  const d = new Date(input);
+  return Number.isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
+};
 
 // Optimized sitemap generation
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -71,7 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const blogPosts = await fetchBlogPosts(100);
     const blogUrls = blogPosts.map(post => ({
       url: `https://peartree.dental/patient-education/${post.fields.slug}`,
-      lastModified: new Date(post.sys.updatedAt),
+      lastModified: toISO(post.sys?.updatedAt), // Safe date handling
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }));
@@ -90,7 +100,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       for (const service of services) {
         serviceLocationUrls.push({
           url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: new Date(service.sys.updatedAt),
+          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
           changeFrequency: 'monthly' as const,
           priority: 0.8,
         });
@@ -122,7 +132,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       for (const service of services) {
         serviceLocationUrls.push({
           url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: new Date(service.sys.updatedAt),
+          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
           changeFrequency: 'monthly' as const,
           priority: 0.8,
         });
@@ -166,7 +176,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       for (const service of priorityServices) {
         serviceLocationUrls.push({
           url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: new Date(service.sys.updatedAt),
+          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
           changeFrequency: 'monthly' as const,
           priority: 0.8,
         });

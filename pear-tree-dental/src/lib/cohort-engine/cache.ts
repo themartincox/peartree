@@ -1,13 +1,33 @@
 // src/lib/cohort-engine/cache.ts
-import type { GeoData } from './geo';
+export type GeoCacheRecord = {
+  coords?: [number, number];      // [lat, lon]
+  travelMinutes?: number;
+  lastUpdated: number;            // epoch ms
+};
 
-// Simple in-memory cache for geo data
-const geoCache = new Map<string, { data: GeoData; timestamp: number }>();
-const CACHE_TTL = 1000 * 60 * 60 * 24; // 24 hours
+const ONE_DAY = 1000 * 60 * 60 * 24;
 
-/**
- * Get cached geo data for an IP address, or fetch fresh data if needed
- */
+export const geoCache = new Map<string, GeoCacheRecord>();
+
+export function getGeoCache(key: string): GeoCacheRecord | undefined {
+  const rec = geoCache.get(key);
+  if (!rec) return undefined;
+  const fresh = Date.now() - rec.lastUpdated < ONE_DAY;
+  return fresh ? rec : undefined;
+}
+
+export function setGeoCache(
+  key: string,
+  value: Omit<GeoCacheRecord, "lastUpdated">
+): GeoCacheRecord {
+  const rec: GeoCacheRecord = { ...value, lastUpdated: Date.now() };
+  geoCache.set(key, rec);
+  return rec;
+}
+
+// Keep getCachedGeoData for backward compatibility
+import { GeoData } from './geo';
+
 export async function getCachedGeoData(
   ip: string,
   fetchFn: (ip: string) => Promise<GeoData>
@@ -18,8 +38,8 @@ export async function getCachedGeoData(
   // Check cache first
   const cachedItem = geoCache.get(cacheKey);
 
-  if (cachedItem && now - cachedItem.timestamp < CACHE_TTL) {
-    return cachedItem.data;
+  if (cachedItem && now - cachedItem.lastUpdated < ONE_DAY) {
+    return cachedItem as unknown as GeoData;
   }
 
   // Fetch fresh data
@@ -27,16 +47,16 @@ export async function getCachedGeoData(
     const data = await fetchFn(ip);
 
     // Cache the result
-    geoCache.set(cacheKey, {
-      data,
-      timestamp: now
+    setGeoCache(cacheKey, {
+      coords: data.latitude && data.longitude ? [data.latitude, data.longitude] : undefined,
+      lastUpdated: now
     });
 
     return data;
   } catch (error) {
     // If we have stale cache data, return it as fallback
     if (cachedItem) {
-      return cachedItem.data;
+      return cachedItem as unknown as GeoData;
     }
 
     // Otherwise return empty object
@@ -44,9 +64,6 @@ export async function getCachedGeoData(
   }
 }
 
-/**
- * Clear the cache for a specific key or all keys
- */
 export function clearCache(key?: string): void {
   if (key) {
     geoCache.delete(key);
@@ -55,9 +72,6 @@ export function clearCache(key?: string): void {
   }
 }
 
-/**
- * Get cache statistics
- */
 export function getCacheStats(): { size: number; keys: string[] } {
   return {
     size: geoCache.size,
