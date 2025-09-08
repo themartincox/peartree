@@ -1,5 +1,5 @@
 [build]
-  command = "bun install && NODE_OPTIONS='--max-old-space-size=4096' bun run build"
+  command = "bun install && NODE_OPTIONS='--max-old-space-size=4096' bun run build:netlify"
   functions = ".netlify/functions"
 
 [build.environment]
@@ -11,3 +11,19 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[functions]
+  external_node_modules = ["sharp"]
+
+[build.processing]
+  skip_processing = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,5 +1,5 @@
 // src/lib/indexing.ts
-import { Document } from '@contentful/rich-text-types';
+import type { Document } from '@contentful/rich-text-types';
 import { extractTextFromRichText } from './contentful';
 import { INDEX_MIN_WORDS, INDEX_PRIORITY_SERVICES, INDEX_ALLOWLIST_SUBURBS } from '@/config/indexing';
 

@@ -1,7 +1,8 @@
 'use client';
 
 // src/components/TrackingProvider.tsx
-import React, { useEffect } from 'react';
+import type React from 'react';
+import { useEffect } from 'react';
 
 // Enhanced tracking types
 interface TrackingEvent {
@@ -38,7 +39,7 @@ function getSessionId(): string {
 function getUserId(): string | undefined {
   if (typeof window === 'undefined') return undefined;
 
-  let userId = localStorage.getItem('pt_user_id');
+  const userId = localStorage.getItem('pt_user_id');
   if (!userId) {
     // Only set a user ID after the user has engaged with the site
     // This avoids tracking bounces as users
@@ -116,7 +117,7 @@ function updatePageDepth(): void {
       .find(row => row.startsWith('pt_page_depth='))
       ?.split('=')[1] || '0';
 
-    const currentDepth = parseInt(currentDepthStr, 10) || 0;
+    const currentDepth = Number.parseInt(currentDepthStr, 10) || 0;
     const newDepth = currentDepth + 1;
 
     // Set cookie with 30-day expiry
@@ -138,7 +139,7 @@ function updateVisitCount(): void {
       .find(row => row.startsWith('pt_visit_count='))
       ?.split('=')[1] || '0';
 
-    const visitCount = parseInt(visitCountStr, 10) || 0;
+    const visitCount = Number.parseInt(visitCountStr, 10) || 0;
 
     const now = new Date();
     let newVisitCount = visitCount;

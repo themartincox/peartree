@@ -1,5 +1,5 @@
 // src/app/blog/(programmatic)/[service]/[suburb]/page.tsx
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
   fetchServiceBySlug,

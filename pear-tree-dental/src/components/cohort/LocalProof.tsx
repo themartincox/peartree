@@ -28,7 +28,7 @@ export default async function LocalProof({
 
   if (cohort.travelTime && cohort.travelDistance) {
     const isFar = cohort.travelMode === 'driving' ||
-                 (cohort.travelDistance.includes('km') && parseFloat(cohort.travelDistance) > 5)
+                 (cohort.travelDistance.includes('km') && Number.parseFloat(cohort.travelDistance) > 5)
 
     if (isFar) {
       message = `Many patients travel from ${city} (${cohort.travelDistance} away) for our specialized care.`

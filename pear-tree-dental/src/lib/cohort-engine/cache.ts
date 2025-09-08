@@ -1,5 +1,5 @@
 // src/lib/cohort-engine/cache.ts
-import { GeoData } from './geo';
+import type { GeoData } from './geo';
 
 // Simple in-memory cache for geo data
 const geoCache = new Map<string, { data: GeoData; timestamp: number }>();

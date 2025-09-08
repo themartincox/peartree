@@ -1,5 +1,5 @@
-import { Entry } from 'contentful';
-import { Document } from '@contentful/rich-text-types';
+import type { Entry } from 'contentful';
+import type { Document } from '@contentful/rich-text-types';
 
 // Basic Contentful entry interfaces
 export interface ServiceEntry extends Entry<any> {

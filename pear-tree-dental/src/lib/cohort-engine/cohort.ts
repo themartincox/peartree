@@ -42,7 +42,7 @@ export interface Cohort {
 function getPageDepth(c: ReturnType<typeof cookies>): number {
   const depthCookie = c.get('pt_page_depth')
   if (!depthCookie) return 1
-  const depth = parseInt(depthCookie.value, 10)
+  const depth = Number.parseInt(depthCookie.value, 10)
   return isNaN(depth) ? 1 : depth
 }
 
@@ -53,7 +53,7 @@ function getVisitorStatus(c: ReturnType<typeof cookies>): VisitorStatus {
 
   if (!visitCountCookie) return 'new'
 
-  const visitCount = parseInt(visitCountCookie.value, 10)
+  const visitCount = Number.parseInt(visitCountCookie.value, 10)
   if (isNaN(visitCount)) return 'new'
 
   if (visitCount >= 5) return 'frequent'

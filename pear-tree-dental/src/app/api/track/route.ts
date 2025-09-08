@@ -1,5 +1,5 @@
 // src/app/api/track/route.ts
-import { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 
 export async function POST(req: NextRequest) {
   try {

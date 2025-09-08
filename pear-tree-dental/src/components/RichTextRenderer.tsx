@@ -1,6 +1,6 @@
-import React from 'react';
+import type React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { Document } from '@contentful/rich-text-types';
+import type { Document } from '@contentful/rich-text-types';
 import { richTextRenderOptions } from '@/lib/richTextRenderOptions';
 
 interface RichTextRendererProps {

@@ -1,7 +1,7 @@
 // src/components/CohortStrip.tsx
 import { headers } from 'next/headers'
 import Link from 'next/link'
-import { getCohort, chooseCtas, getContextualMessage, CtaType } from '@/lib/cohort-engine/cohort'
+import { getCohort, chooseCtas, getContextualMessage, type CtaType } from '@/lib/cohort-engine/cohort'
 import CallbackCard from './CallbackCard'
 
 export default async function CohortStrip({

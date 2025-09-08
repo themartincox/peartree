@@ -1,6 +1,6 @@
-import { Document } from '@contentful/rich-text-types';
-import { Entry } from 'contentful';
-import { LocationEntry, ServiceEntry } from '@/types/contentful';
+import type { Document } from '@contentful/rich-text-types';
+import type { Entry } from 'contentful';
+import type { LocationEntry, ServiceEntry } from '@/types/contentful';
 
 // Helper function to get a field from a Contentful entry
 export function getEntryField<T>(entry: any, fieldName: string): T | undefined {

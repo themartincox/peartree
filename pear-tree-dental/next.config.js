@@ -38,6 +38,11 @@ const nextConfig = {
       },
     ];
   },
+
+  // Netlify specific configuration
+  // Ensures compatibility with Netlify's Next.js runtime
+  // See: https://docs.netlify.com/frameworks/next-js/overview/
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;

@@ -1,5 +1,5 @@
 // src/middleware.ts
-import { NextRequest, NextResponse, userAgent } from 'next/server'
+import { type NextRequest, NextResponse, userAgent } from 'next/server'
 import { lookupGeoFromIp } from '@/lib/cohort-engine/geo'
 import { logRedirect } from '@/lib/cohort-engine/telemetry'
 import { estimateTravelTime } from '@/lib/cohort-engine/travel-time'

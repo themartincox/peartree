@@ -1,5 +1,5 @@
 // src/lib/geo.ts
-import { LocationEntry } from '@/types/contentful';
+import type { LocationEntry } from '@/types/contentful';
 import { fetchAllLocations, getEntryField } from '@/lib/contentful';
 import { getCachedGeoData } from './cache';
 
@@ -162,7 +162,7 @@ async function fetchGeoFromIp(ip: string): Promise<GeoData> {
     await new Promise(resolve => setTimeout(resolve, 200));
 
     // Simple demo logic - would be replaced with actual API call
-    const lastOctet = parseInt(ip.split('.').pop() || '0');
+    const lastOctet = Number.parseInt(ip.split('.').pop() || '0');
 
     // Different locations based on IP's last octet
     if (lastOctet % 5 === 0) {
