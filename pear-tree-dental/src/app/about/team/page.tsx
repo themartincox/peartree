@@ -71,7 +71,7 @@ const supportTeam = [
     description: "Kirsten ensures the smooth operation of our practice and coordinates patient care to provide an exceptional experience."
   },
   {
-    name: "Jade Taore",
+    name: "Jade Traoré",
     qualifications: "BSc (Hons)",
     role: "Dental Therapist",
     image: "https://ext.same-assets.com/523564123/221362571.jpeg",
