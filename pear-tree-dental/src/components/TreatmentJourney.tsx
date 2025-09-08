@@ -187,7 +187,10 @@ const TreatmentJourney = () => {
   };
 
   return (
-    <section className="py-0 bg-white">
+    <section className="py-0 bg-white relative z-10">
+      {/* Spacer element to prevent cropping from previous section */}
+      <div className="h-24 md:h-32 bg-white w-full"></div>
+
       {/* Fixed Navigation Tabs - Only visible when in journey section */}
       {isInJourneySection && (
         <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block animate-in fade-in duration-300">
@@ -218,7 +221,7 @@ const TreatmentJourney = () => {
       {/* Main Container */}
       <div
         ref={containerRef}
-        className="relative"
+        className="relative z-20"
         style={{ height: `${journeySteps.length * 100}vh` }}
       >
         {/* Header Section */}
@@ -256,7 +259,7 @@ const TreatmentJourney = () => {
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-white"
+              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-white overflow-visible"
               style={{
                 zIndex: 10 + index,
               }}

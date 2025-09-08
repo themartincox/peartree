@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Essential image configuration for Netlify
   images: {
     domains: [
       'source.unsplash.com',
@@ -9,14 +10,24 @@ const nextConfig = {
     ],
     formats: ['image/avif', 'image/webp'],
   },
-  output: 'standalone',
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
 
-  // External packages
+  // Output configuration for Netlify
+  output: 'standalone',
+
+  // Skip TypeScript checks during build for faster deployment
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+
+  // Skip ESLint checks during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
+  // For Next.js 15, use serverExternalPackages instead of experimental.serverComponentsExternalPackages
   serverExternalPackages: ['sharp'],
 
-  // Security headers
+  // Security headers for all routes
   async headers() {
     return [
       {
@@ -34,15 +45,35 @@ const nextConfig = {
             key: 'X-XSS-Protection',
             value: '1; mode=block',
           },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
         ],
       },
     ];
   },
 
-  // Netlify specific configuration
-  // Ensures compatibility with Netlify's Next.js runtime
-  // See: https://docs.netlify.com/frameworks/next-js/overview/
-  trailingSlash: true,
+  // Redirect configuration for SEO and moved pages
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/about/practice',
+        permanent: true,
+      },
+      {
+        source: '/blog',
+        destination: '/patient-education',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug',
+        destination: '/patient-education/:slug',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

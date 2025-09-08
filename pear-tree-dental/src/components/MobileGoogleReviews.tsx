@@ -12,8 +12,11 @@ function SingleLineGoogleReviews() {
   const GOOGLE_GREEN = "#34A853";
 
   return (
-    <div className="w-full bg-white shadow-md border-b border-gray-200 py-2 px-4 flex items-center justify-between">
-      <div className="flex items-center">
+    <a
+      href="/testimonials"
+      className="w-full bg-white shadow-md border-b border-gray-200 py-2 px-4 flex items-center justify-between hover:bg-gray-50 transition-colors cursor-pointer"
+    >
+      <div className="flex items-center w-full justify-center">
         <span className="text-dental-green font-medium mr-2 text-sm whitespace-nowrap">See our 500+</span>
         <div className="flex mr-1">
           {Array(5).fill(0).map((_, i) => (
@@ -34,13 +37,7 @@ function SingleLineGoogleReviews() {
           <span style={{ color: GOOGLE_RED }}>e</span>
         </div>
       </div>
-      <a
-        href="/testimonials"
-        className="ml-1 bg-dental-green hover:bg-dental-green/90 px-2 py-1 rounded text-white text-xs whitespace-nowrap transition-colors"
-      >
-        View reviews
-      </a>
-    </div>
+    </a>
   );
 }
 

@@ -109,19 +109,15 @@ const Footer = () => {
           <div className="space-y-4 sm:space-y-6 sm:col-span-2 lg:col-span-1">
             <h3 className="text-base sm:text-lg font-semibold text-white">Quick Links</h3>
 
-            <div className="space-y-2 sm:space-y-3">
-              <Link href="/services/emergency" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-3 py-2 text-center transition-colors">
+            <div className="flex flex-col space-y-[5px] sm:space-y-[5px]">
+              <Link href="/services/emergency" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-4 py-2 text-center transition-colors">
                 🚨 Dental Pain?
               </Link>
-              <Link href="/membership">
-                <Button className="btn-gold text-white w-full font-semibold h-10 sm:h-auto text-sm">
-                  Join Membership Plan
-                </Button>
+              <Link href="/membership" className="block text-xs sm:text-sm bg-pear-gold hover:bg-pear-gold-dark text-white font-semibold rounded-full px-4 py-2 text-center transition-colors">
+                Join Membership Plan
               </Link>
-              <Link href="/book">
-                <Button variant="outline" className="w-full border-white bg-white text-pear-primary h-10 sm:h-auto text-sm">
-                  Book Consultation
-                </Button>
+              <Link href="/book" className="block text-xs sm:text-sm bg-white hover:bg-gray-100 text-pear-primary font-semibold rounded-full px-4 py-2 text-center transition-colors">
+                Book Consultation
               </Link>
             </div>
 

@@ -1,202 +1,199 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next';
+import {
+  fetchAllServices,
+  fetchAllLocations,
+  fetchBlogPosts,
+  fetchPriorityServices,
+  fetchPriorityLocations,
+  contentfulHealthCheck
+} from '@/lib/contentful';
 
-export default async function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date()
-
-  // Basic static routes
-  const staticRoutes = [
+// Optimized sitemap generation
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Base URLs that are always included
+  const baseUrls = [
     {
       url: 'https://peartree.dental',
-      lastModified: currentDate,
+      lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 1.0,
-    },
-    {
-      url: 'https://peartree.dental/services',
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.9,
-    },
-    {
-      url: 'https://peartree.dental/pricing',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: 1,
     },
     {
       url: 'https://peartree.dental/about/practice',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/about/team',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/contact',
-      lastModified: currentDate,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
-      url: 'https://peartree.dental/book',
-      lastModified: currentDate,
+      url: 'https://peartree.dental/about/team',
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: 'https://peartree.dental/services',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: 'https://peartree.dental/membership',
-      lastModified: currentDate,
+      lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: 'https://peartree.dental/blog',
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: 'https://peartree.dental/locations',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: 'https://peartree.dental/emergency',
-      lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
-  ]
-
-  // Service pages
-  const serviceRoutes = [
     {
-      url: 'https://peartree.dental/services/general-dentistry',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      url: 'https://peartree.dental/patient-education',
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     },
     {
-      url: 'https://peartree.dental/services/cosmetic-dentistry',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/services/orthodontics',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/services/dental-implants',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/services/emergency-dentist',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-  ]
-
-  // Location pages
-  const locationRoutes = [
-    {
-      url: 'https://peartree.dental/locations/nottingham',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/locations/west-bridgford',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/locations/burton-joyce',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/locations/gedling',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: 'https://peartree.dental/locations/arnold',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-  ]
-
-  // Blog routes - service/suburb combinations
-  const blogRoutes = [
-    {
-      url: 'https://peartree.dental/blog/dental-implants/nottingham',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: 'https://peartree.dental/blog/dental-implants/west-bridgford',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: 'https://peartree.dental/blog/orthodontics-invisalign/nottingham',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: 'https://peartree.dental/blog/emergency-dentist/nottingham',
-      lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-  ]
-
-  // Blog posts
-  const blogPostRoutes = [
-    {
-      url: 'https://peartree.dental/blog/dental-health-tips',
-      lastModified: currentDate,
+      url: 'https://peartree.dental/contact',
+      lastModified: new Date(),
       changeFrequency: 'yearly' as const,
-      priority: 0.6,
+      priority: 0.7,
     },
-    {
-      url: 'https://peartree.dental/blog/teeth-whitening-guide',
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.6,
-    },
-    {
-      url: 'https://peartree.dental/blog/dental-implants-explained',
-      lastModified: currentDate,
-      changeFrequency: 'yearly' as const,
-      priority: 0.6,
-    },
-  ]
+  ];
 
-  // Combine all routes
-  return [
-    ...staticRoutes,
-    ...serviceRoutes,
-    ...locationRoutes,
-    ...blogRoutes,
-    ...blogPostRoutes
-  ]
+  // Check if Contentful is healthy before fetching
+  const isContentfulHealthy = await contentfulHealthCheck();
+  if (!isContentfulHealthy) {
+    console.warn('Contentful health check failed, returning base sitemap only');
+    return baseUrls;
+  }
+
+  try {
+    // Fetch content based on GENERATION_MODE
+    const mode = process.env.GENERATION_MODE || 'priority';
+
+    // Regular blog posts (always include these)
+    const blogPosts = await fetchBlogPosts(100);
+    const blogUrls = blogPosts.map(post => ({
+      url: `https://peartree.dental/patient-education/${post.fields.slug}`,
+      lastModified: new Date(post.sys.updatedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
+
+    // Dynamic generation based on mode
+    const serviceLocationUrls: MetadataRoute.Sitemap = [];
+    const blogServiceSuburbUrls: MetadataRoute.Sitemap = [];
+
+    if (mode === 'priority') {
+      // Only include priority services and locations
+      const [services, locations] = await Promise.all([
+        fetchPriorityServices(),
+        fetchPriorityLocations()
+      ]);
+
+      for (const service of services) {
+        serviceLocationUrls.push({
+          url: `https://peartree.dental/services/${service.fields.slug}`,
+          lastModified: new Date(service.sys.updatedAt),
+          changeFrequency: 'monthly' as const,
+          priority: 0.8,
+        });
+
+        for (const location of locations) {
+          serviceLocationUrls.push({
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+        }
+      }
+    } else if (mode === 'full') {
+      // Include all services and locations (potentially a lot of URLs)
+      const [services, locations] = await Promise.all([
+        fetchAllServices(),
+        fetchAllLocations()
+      ]);
+
+      for (const service of services) {
+        serviceLocationUrls.push({
+          url: `https://peartree.dental/services/${service.fields.slug}`,
+          lastModified: new Date(service.sys.updatedAt),
+          changeFrequency: 'monthly' as const,
+          priority: 0.8,
+        });
+
+        // Limit the combinations to avoid excessive URLs
+        const topLocations = locations.slice(0, 50); // Limit to top 50 locations
+        for (const location of topLocations) {
+          serviceLocationUrls.push({
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+        }
+      }
+    } else {
+      // 'staged' mode or any other - use a balanced approach
+      const [services, locations] = await Promise.all([
+        fetchAllServices(),
+        fetchAllLocations()
+      ]);
+
+      // Filter priority services, or use top 10
+      const priorityServices = services
+        .filter(s => s.fields.priority)
+        .length ? services.filter(s => s.fields.priority) : services.slice(0, 10);
+
+      // Filter major locations, or use top 20
+      const majorLocations = locations
+        .filter(l => l.fields.tier === 'major')
+        .length ? locations.filter(l => l.fields.tier === 'major') : locations.slice(0, 20);
+
+      for (const service of priorityServices) {
+        serviceLocationUrls.push({
+          url: `https://peartree.dental/services/${service.fields.slug}`,
+          lastModified: new Date(service.sys.updatedAt),
+          changeFrequency: 'monthly' as const,
+          priority: 0.8,
+        });
+
+        for (const location of majorLocations) {
+          serviceLocationUrls.push({
+            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add canonical blog/service/suburb URLs
+          blogServiceSuburbUrls.push({
+            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+        }
+      }
+    }
+
+    // Combine all URLs - /near-me routes are deliberately excluded from the sitemap
+    return [...baseUrls, ...blogUrls, ...serviceLocationUrls, ...blogServiceSuburbUrls];
+  } catch (error) {
+    console.error('Error generating sitemap:', error);
+    return baseUrls;
+  }
 }
