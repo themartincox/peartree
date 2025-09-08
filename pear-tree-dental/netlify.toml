@@ -13,12 +13,14 @@
   SUPABASE_SERVICE_ROLE_KEY = "placeholder_service_role_key_for_build_only"
   ENCRYPTION_KEY = "YvPJrFGmL9qHS2xTb5D8A3X7wWgkC6Nz"
   # Contentful environment variables
-  CONTENTFUL_SPACE_ID = "placeholder_space_id"
-  CONTENTFUL_ACCESS_TOKEN = "placeholder_access_token"
-  CONTENTFUL_DELIVERY_TOKEN = "placeholder_delivery_token"
-  CONTENTFUL_PREVIEW_TOKEN = "placeholder_preview_token"
+  CONTENTFUL_SPACE_ID = "4x22ux8m6s1o"
+  CONTENTFUL_ACCESS_TOKEN = "lM7sOSsycUZUBWOZtKg9-vAdBYxVa5rpX2y0fGLU_vE"
+  CONTENTFUL_DELIVERY_TOKEN = "lM7sOSsycUZUBWOZtKg9-vAdBYxVa5rpX2y0fGLU_vE"
+  CONTENTFUL_PREVIEW_TOKEN = "uNBsjszHyQ8J1s5tQEWA2l073d0wKyoLJV_lLrrC6xk"
   CONTENTFUL_ENVIRONMENT = "master"
   CONTENTFUL_USE_PREVIEW = "false"
+  CONTENTFUL_SERVICE_TYPE_ID = "serviceData"
+  CONTENTFUL_LOCATION_TYPE_ID = "locationData"
   GENERATION_MODE = "priority"
 
 [[plugins]]

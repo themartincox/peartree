@@ -2,6 +2,19 @@ import type { Document } from '@contentful/rich-text-types';
 import type { Entry } from 'contentful';
 import type { LocationEntry, ServiceEntry } from '@/types/contentful';
 
+// Import real Contentful client functions
+import {
+  fetchServiceBySlug as clientFetchServiceBySlug,
+  fetchLocationBySlug as clientFetchLocationBySlug,
+  fetchBlogTemplate as clientFetchBlogTemplate,
+  fetchAllServices as clientFetchAllServices,
+  fetchAllLocations as clientFetchAllLocations,
+  contentfulHealthCheck as clientContentfulHealthCheck,
+  fetchBlogPosts as clientFetchBlogPosts,
+  fetchBlogPostBySlug as clientFetchBlogPostBySlug,
+  fetchPriorityServices as clientFetchPriorityServices,
+} from './contentful-client';
+
 // Helper function to get a field from a Contentful entry
 export function getEntryField<T>(entry: any, fieldName: string): T | undefined {
   if (!entry || !entry.fields || !(fieldName in entry.fields)) {
@@ -10,152 +23,144 @@ export function getEntryField<T>(entry: any, fieldName: string): T | undefined {
   return entry.fields[fieldName] as T;
 }
 
-// Mock fetch functions for Contentful
+// Use the real implementations from contentful-client.ts
 export async function fetchServiceBySlug(slug: string): Promise<ServiceEntry | null> {
-  // In a real implementation, this would fetch from Contentful
   console.log(`Fetching service: ${slug}`);
-
-  // Return a mock service entry for development/testing
-  return {
-    sys: {
-      id: 'mock-service-id',
-      contentType: { sys: { id: 'serviceData' } }
-    },
-    fields: {
-      slug: slug,
-      serviceName: slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' '),
-      description: 'This is a mock service description for development purposes.'
-    }
-  } as ServiceEntry;
+  return clientFetchServiceBySlug(slug);
 }
 
 export async function fetchLocationBySlug(slug: string): Promise<LocationEntry | null> {
-  // In a real implementation, this would fetch from Contentful
   console.log(`Fetching location: ${slug}`);
-
-  // Return a mock location entry for development/testing
-  return {
-    sys: {
-      id: 'mock-location-id',
-      contentType: { sys: { id: 'locationData' } }
-    },
-    fields: {
-      slug: slug,
-      suburb: slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' '),
-      city: 'Nottingham',
-      latitude: 52.9548,
-      longitude: -1.1581
-    }
-  } as LocationEntry;
+  return clientFetchLocationBySlug(slug);
 }
 
 export async function fetchBlogTemplate(): Promise<Entry<any> | null> {
-  // In a real implementation, this would fetch from Contentful
   console.log('Fetching blog template');
-
-  // Return a mock blog template for development/testing
-  return {
-    sys: {
-      id: 'mock-template-id',
-      contentType: { sys: { id: 'blogTemplate' } }
-    },
-    fields: {
-      seoTitleTemplate: '{{service}} in {{suburb}} | Expert Dental Care in {{city}}',
-      seoDescriptionTemplate: 'Professional {{service}} services in {{suburb}}, {{city}}. Book your appointment today with our experienced dentists.',
-      bodyContent: {
-        nodeType: 'document',
-        data: {},
-        content: [
-          {
-            nodeType: 'paragraph',
-            data: {},
-            content: [
-              {
-                nodeType: 'text',
-                value: 'Looking for {{service}} in {{suburb}}? Our team of dental professionals provide high-quality dental care for patients in {{city}} and surrounding areas.',
-                marks: [],
-                data: {}
-              }
-            ]
-          }
-        ]
-      }
-    }
-  } as Entry<any>;
+  return clientFetchBlogTemplate();
 }
 
 export async function fetchAllServices(): Promise<ServiceEntry[]> {
-  // In a real implementation, this would fetch from Contentful
   console.log('Fetching all services');
-
-  // Return mock services for development/testing
-  return [
-    {
-      sys: { id: 'service-1', contentType: { sys: { id: 'serviceData' } } },
-      fields: {
-        slug: 'dental-implants',
-        serviceName: 'Dental Implants'
-      }
-    },
-    {
-      sys: { id: 'service-2', contentType: { sys: { id: 'serviceData' } } },
-      fields: {
-        slug: 'teeth-whitening',
-        serviceName: 'Teeth Whitening'
-      }
-    },
-    {
-      sys: { id: 'service-3', contentType: { sys: { id: 'serviceData' } } },
-      fields: {
-        slug: 'emergency-dentist',
-        serviceName: 'Emergency Dentist'
-      }
-    }
-  ] as ServiceEntry[];
+  return clientFetchAllServices();
 }
 
 export async function fetchAllLocations(): Promise<LocationEntry[]> {
-  // In a real implementation, this would fetch from Contentful
   console.log('Fetching all locations');
-
-  // Return mock locations for development/testing
-  return [
-    {
-      sys: { id: 'location-1', contentType: { sys: { id: 'locationData' } } },
-      fields: {
-        slug: 'nottingham',
-        suburb: 'Nottingham',
-        city: 'Nottingham',
-        latitude: 52.9548,
-        longitude: -1.1581
-      }
-    },
-    {
-      sys: { id: 'location-2', contentType: { sys: { id: 'locationData' } } },
-      fields: {
-        slug: 'west-bridgford',
-        suburb: 'West Bridgford',
-        city: 'Nottingham',
-        latitude: 52.9334,
-        longitude: -1.1260
-      }
-    },
-    {
-      sys: { id: 'location-3', contentType: { sys: { id: 'locationData' } } },
-      fields: {
-        slug: 'burton-joyce',
-        suburb: 'Burton Joyce',
-        city: 'Nottingham',
-        latitude: 52.9819,
-        longitude: -1.0254
-      }
-    }
-  ] as LocationEntry[];
+  return clientFetchAllLocations();
 }
 
 export async function contentfulHealthCheck(): Promise<boolean> {
-  // In a real implementation, this would check the Contentful API
-  return true;
+  return clientContentfulHealthCheck();
+}
+
+export async function fetchBlogPosts(): Promise<Entry<any>[]> {
+  console.log('Fetching all blog posts');
+  return clientFetchBlogPosts();
+}
+
+export async function fetchBlogPostBySlug(slug: string): Promise<Entry<any> | null> {
+  console.log(`Fetching blog post: ${slug}`);
+  return clientFetchBlogPostBySlug(slug);
+}
+
+export async function fetchPriorityServices(): Promise<ServiceEntry[]> {
+  console.log('Fetching priority services');
+  return clientFetchPriorityServices();
+}
+
+export async function fetchPriorityLocations(): Promise<LocationEntry[]> {
+  // For now, just return regular locations
+  // In the future, implement proper priority filtering
+  console.log('Fetching priority locations');
+  return fetchAllLocations();
+}
+
+export function replacePlaceholdersInRichText(
+  document: Document | null | undefined,
+  replacements: Record<string, string>
+): Document {
+  if (!document) {
+    return {
+      nodeType: 'document',
+      data: {},
+      content: []
+    };
+  }
+
+  // Deep clone the document to avoid mutating the original
+  const clonedDoc = JSON.parse(JSON.stringify(document));
+
+  // Helper to recursively replace placeholders in nodes
+  function processNode(node: any) {
+    // Replace text values
+    if (node.nodeType === 'text' && node.value) {
+      let newValue = node.value;
+
+      for (const [key, value] of Object.entries(replacements)) {
+        const regex = new RegExp(`\\{\\{\\s*${key}\\s*\\}\\}`, 'gi');
+        newValue = newValue.replace(regex, value);
+      }
+
+      node.value = newValue;
+    }
+
+    // Process child content recursively
+    if (node.content && Array.isArray(node.content)) {
+      node.content.forEach(processNode);
+    }
+  }
+
+  // Start processing from the top level
+  if (clonedDoc.content && Array.isArray(clonedDoc.content)) {
+    clonedDoc.content.forEach(processNode);
+  }
+
+  return clonedDoc;
+}
+
+export function getAssetUrl(asset: any): string {
+  if (!asset || !asset.fields || !asset.fields.file || !asset.fields.file.url) {
+    return '';
+  }
+
+  const url = asset.fields.file.url;
+  return url.startsWith('//') ? `https:${url}` : url;
+}
+
+export function extractTextFromRichText(document: Document): string {
+  let text = '';
+
+  function processNode(node: any) {
+    if (node.nodeType === 'text' && node.value) {
+      text += node.value + ' ';
+    }
+
+    if (node.content && Array.isArray(node.content)) {
+      node.content.forEach(processNode);
+    }
+  }
+
+  if (document?.content && Array.isArray(document.content)) {
+    document.content.forEach(processNode);
+  }
+
+  return text.trim();
+}
+
+// Fill template with service and location data
+export function fillTemplate(
+  template: string,
+  service: ServiceEntry,
+  location: LocationEntry
+): string {
+  const serviceName = service.fields.serviceName || '';
+  const suburb = location.fields.suburb || '';
+  const city = location.fields.city || '';
+
+  return template
+    .replace(/\{\{\s*service\s*\}\}/gi, serviceName)
+    .replace(/\{\{\s*suburb\s*\}\}/gi, suburb)
+    .replace(/\{\{\s*city\s*\}\}/gi, city);
 }
 
 export function replacePlaceholdersInRichText(

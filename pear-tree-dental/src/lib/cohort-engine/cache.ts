@@ -26,7 +26,7 @@ export function setGeoCache(
 }
 
 // Keep getCachedGeoData for backward compatibility
-import { GeoData } from './geo';
+import type { GeoData } from './geo';
 
 export async function getCachedGeoData(
   ip: string,
