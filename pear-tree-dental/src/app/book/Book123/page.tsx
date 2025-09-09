@@ -34,15 +34,18 @@ export default function BookPage() {
             Book Your Appointment
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to take care of your dental health in Nottingham? Let's gooooo
+            Ready to take care of your dental health in Nottingham? Let's get started.
           </p>
         </div>
 
-        {/* Booking Form */}
-        https://booking.uk.hsone.app/soe/new/%20?pid=UKJMR01
+        <div className="max-w-4xl mx-auto mt-8">
+          <iframe
+            src="https://booking.uk.hsone.app/soe/new/?pid=UKJMR01"
+            className="w-full h-[600px] border-0 rounded-xl shadow-lg"
+            title="Pear Tree Dental Booking System"
+          ></iframe>
+        </div>
 
-
-        {/* Opening Hours */}
         <div className="max-w-2xl mx-auto mt-12 text-center">
           <div className="bg-pear-primary text-white rounded-xl p-6">
             <Clock className="w-8 h-8 mx-auto mb-4" />
