@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
 import {
   Shield,
   Sparkles,
@@ -45,14 +44,8 @@ interface ServiceCardProps {
 
 const ServicesOverview = () => {
   return (
-    <section className="py-16 bg-white xl:py-[6px]">
+    <section className="pt-[200px] pb-16 bg-white xl:pb-[6px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Testimonial Before Services */}
-        <TestimonialBanner
-          text="Javaad is an absolutely lovely chap and a truly skilled Dentist. No one wants a tooth extraction, but if I'm having one done, it's him I want on the business end. Cheers chap."
-          author="Ian P"
-          className="max-w-4xl mx-auto mb-16"
-        />
 
         <ServicesContent />
       </div>

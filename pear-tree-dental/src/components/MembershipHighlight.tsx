@@ -5,7 +5,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import TestimonialBanner from "@/components/TestimonialBanner";
 import { useLocationDetection } from "@/hooks/useLocationDetection";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 import {
@@ -30,7 +29,23 @@ import {
 
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
-  planA: {
+  essentialMaintenance: {
+    name: "ESSENTIAL MAINTENANCE",
+    price: "£10.95",
+    period: "/month",
+    dailyCost: "Just 37p per day",
+    savings: "120",
+    description: "Basic preventive dental care for maintaining good oral health with regular check-ups.",
+    keyFeatures: [
+      "1 Dental check up a year",
+      "1 Scale & Polish a year",
+      "Worldwide dental accident & emergency cover"
+    ],
+    icon: UserRound,
+    color: "dental-green",
+    popular: false
+  },
+  completeCare: {
     name: "COMPLETE CARE",
     price: "£19.95",
     period: "/month",
@@ -188,7 +203,7 @@ const NottinghamMembershipBenefits = () => {
 };
 
 const MembershipHighlight = () => {
-  const [activeTab, setActiveTab] = useState("family");
+  const [activeTab, setActiveTab] = useState("completeCare");
   const { trackMembershipPlanSelect, trackBookingAttempt, trackLocationConversion } = useConversionTracking();
 
   // Memoize current plan to prevent recalculation
@@ -221,11 +236,17 @@ const MembershipHighlight = () => {
     trackBookingAttempt('membership_highlight', 'booking');
   };
 
-  // Memoize tab buttons to prevent recreation
+  // Memoize tab buttons to prevent recreation and ensure specific order
   const tabButtons = useMemo(() => {
-    return Object.entries(membershipPlans).map(([key, plan]) => {
+    // Define the specific order we want to display the plans
+    const planOrder = ["essentialMaintenance", "completeCare", "family"];
+
+    // Create buttons in the specified order
+    return planOrder.map(key => {
+      const plan = membershipPlans[key as keyof typeof membershipPlans];
       const TabIcon = plan.icon;
       const isActive = activeTab === key;
+
       return (
         <button
           key={key}
@@ -236,8 +257,9 @@ const MembershipHighlight = () => {
           aria-label={`Select ${plan.name} - ${plan.price}${plan.period}`}
           className={`w-full text-left p-3 sm:p-4 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-pear-primary ${
             isActive
-              ? key === 'planA' ? 'bg-white text-dental-green shadow-lg transform scale-105'
+              ? key === 'completeCare' ? 'bg-white text-dental-green shadow-lg transform scale-105'
               : key === 'child' ? 'bg-white text-soft-pink shadow-lg transform scale-105'
+              : key === 'essentialMaintenance' ? 'bg-white text-dental-green shadow-lg transform scale-105'
               : 'bg-white text-pear-gold shadow-lg transform scale-105'
               : 'text-white/90 hover:text-white hover:bg-white/10'
           }`}
@@ -257,13 +279,7 @@ const MembershipHighlight = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-pear-background to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Testimonial Before Membership */}
-        <TestimonialBanner
-          text="I'm frightened about going to the dentist. So glad I found this one. Great dentist. She is very patient and positive with me. Wouldn't go anywhere else!"
-          author="Charlotte P"
-          className="max-w-4xl mx-auto mb-16"
-        />
-
+       
         {/* Section Header - Simplified */}
         <div className="text-center mb-16">
           <Badge variant="secondary" className="mb-4 bg-pear-gold text-white">
@@ -328,8 +344,9 @@ const MembershipHighlight = () => {
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg ${
-                      activeTab === 'planA' ? 'bg-dental-green' :
-                      activeTab === 'child' ? 'bg-soft-pink' : 'bg-pear-gold'
+                      activeTab === 'completeCare' ? 'bg-dental-green' :
+                      activeTab === 'child' ? 'bg-soft-pink' :
+                      activeTab === 'essentialMaintenance' ? 'bg-dental-green' : 'bg-pear-gold'
                     }`}>
                       <currentPlan.Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                     </div>
@@ -391,7 +408,9 @@ const MembershipHighlight = () => {
                     className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
                     onClick={handlePlanDetailsClick}
                   >
-                    <Link href={activeTab === "family" ? "/membership#family-plan" : "/membership/signup"}>
+                    <Link href={activeTab === "family" ? "/membership#family-plan" :
+                              activeTab === "essentialMaintenance" ? "/membership#essential-maintenance" :
+                              "/membership/signup"}>
                       View Full {currentPlan.name} Details
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>

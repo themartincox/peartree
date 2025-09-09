@@ -24,14 +24,14 @@ export interface MembershipPlan {
 export const membershipPlans: MembershipPlan[] = [
   {
     name: "Adult Plan",
-    price: "from £10.50",
+    price: "from £10.95",
     period: "/month",
     description: "Complete dental care for adults",
     includes: [
-      "2 check-ups per year",
-      "2 hygienist visits",
+      "1 check-ups per year",
+      "1 hygienist visits",
       "X-rays included",
-      "10% discount on treatments",
+      "10% discount on selected treatments",
       "Emergency care priority"
     ],
     popular: true
@@ -160,7 +160,7 @@ export const getTreatmentsByCategory = (category: string): TreatmentPrice[] => {
 
 // Legacy price mappings for backward compatibility
 export const LEGACY_PRICES = {
-  TEETH_WHITENING: "From £400",
+  TEETH_WHITENING: "From £350",
   COMPOSITE_VENEERS: "From £200 per tooth",
   PORCELAIN_VENEERS: "From £750 per tooth",
   INVISALIGN: "From £2,100",
@@ -169,5 +169,5 @@ export const LEGACY_PRICES = {
   DENTAL_CROWNS: "From £750",
   ROOT_CANAL: "From £300",
   ROUTINE_EXAM: "£60",
-  EMERGENCY_APPOINTMENT: "£50"
+  EMERGENCY_APPOINTMENT: "£60"
 };

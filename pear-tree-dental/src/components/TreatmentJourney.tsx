@@ -131,8 +131,20 @@ const TreatmentJourney = () => {
       const isVisible = containerRect.top < viewportHeight && containerRect.bottom > 0;
       setIsInJourneySection(isVisible);
 
+      // Only start animation when container is fully in viewport
+      // This ensures the first step isn't truncated
+      if (containerRect.top > 0) {
+        // Container hasn't fully entered viewport yet, keep at step 0
+        setScrollProgress(0);
+        setActiveStep(0);
+        return;
+      }
+
       // Calculate overall progress through the container
-      const totalProgress = Math.max(0, Math.min(1, -containerRect.top / (containerHeight - viewportHeight)));
+      // Adjust the calculation to account for the initial offset
+      const totalProgress = Math.max(0, Math.min(1,
+        (-containerRect.top + 100) / (containerHeight - viewportHeight + 100)
+      ));
       setScrollProgress(totalProgress);
 
       // Calculate which step should be active
@@ -189,7 +201,7 @@ const TreatmentJourney = () => {
   return (
     <section className="py-0 bg-white relative z-10">
       {/* Spacer element to prevent cropping from previous section */}
-      <div className="h-24 md:h-32 bg-white w-full"></div>
+      <div className="h-48 md:h-64 bg-white w-full"></div>
 
       {/* Fixed Navigation Tabs - Only visible when in journey section */}
       {isInJourneySection && (
@@ -262,6 +274,7 @@ const TreatmentJourney = () => {
               className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-white overflow-visible"
               style={{
                 zIndex: 10 + index,
+                paddingTop: index === 0 ? "80px" : "0px", // Add padding to first step
               }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
