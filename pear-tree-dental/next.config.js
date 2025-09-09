@@ -53,7 +53,6 @@ const nextConfig = {
   // Runtime settings to optimize for Node.js
   experimental: {
     disableOptimizedLoading: true,
-    // Note: nodeMiddleware is removed as it requires Next.js canary
     serverActions: {
       bodySizeLimit: '5mb',
     },

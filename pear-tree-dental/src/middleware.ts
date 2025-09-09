@@ -1,78 +1,11 @@
 // src/middleware.ts
 import { type NextRequest, NextResponse, userAgent } from 'next/server'
+import { lookupGeoFromIp } from '@/lib/cohort-engine/geo'
+import { logRedirect } from '@/lib/cohort-engine/telemetry'
+import { estimateTravelTime } from '@/lib/cohort-engine/travel-time'
 
 // Bot detection regex
 const BOT_UA_REGEX = /bot|crawler|spider|googlebot|bingbot|slurp|duckduckbot|baiduspider|yandex/i
-
-// Simplified geo lookup for Edge runtime that doesn't rely on Contentful
-function simpleGeoLookup(ip: string) {
-  // Check if this looks like a local/private IP
-  if (ip === '127.0.0.1' || ip.startsWith('10.') || ip.startsWith('192.168.')) {
-    // Return Nottingham as a default for local development
-    return {
-      city: 'Nottingham',
-      postcode: 'NG1',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  }
-
-  // Simple demo logic based on IP's last octet
-  const lastOctet = Number.parseInt(ip.split('.').pop() || '0');
-
-  // Different locations based on IP's last octet
-  if (lastOctet % 5 === 0) {
-    return {
-      city: 'Nottingham',
-      postcode: 'NG1',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  } else if (lastOctet % 5 === 1) {
-    return {
-      city: 'West Bridgford',
-      postcode: 'NG2',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  } else if (lastOctet % 5 === 2) {
-    return {
-      city: 'Burton Joyce',
-      postcode: 'NG14',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  } else if (lastOctet % 5 === 3) {
-    return {
-      city: 'Gedling',
-      postcode: 'NG4',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  } else {
-    return {
-      city: 'Arnold',
-      postcode: 'NG5',
-      region: 'Nottinghamshire',
-      country: 'United Kingdom'
-    };
-  }
-}
-
-// Simplified travel time estimation that doesn't rely on Contentful
-function simpleTravelEstimate(city: string) {
-  // Map common cities to travel times
-  const travelTimes: Record<string, { time: string, distance: string, mode: string }> = {
-    'nottingham': { time: '20 mins', distance: '8 miles', mode: 'driving' },
-    'west bridgford': { time: '15 mins', distance: '6 miles', mode: 'driving' },
-    'burton joyce': { time: '5 mins', distance: '1 mile', mode: 'driving' },
-    'gedling': { time: '10 mins', distance: '4 miles', mode: 'driving' },
-    'arnold': { time: '15 mins', distance: '7 miles', mode: 'driving' }
-  };
-
-  const normalizedCity = city.toLowerCase();
-  return travelTimes[normalizedCity] || { time: '20 mins', distance: '10 miles', mode: 'driving' };
-}
 
 export async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
@@ -113,7 +46,7 @@ export async function middleware(request: NextRequest) {
   requestHeaders.set('x-peartree-time-of-day', timeOfDay)
   requestHeaders.set('x-peartree-day', day.toString())
 
-  // Only apply geo lookup for non-bot requests
+  // Only apply geo lookup and travel time estimation for non-bot requests
   if (!isBot) {
     try {
       // Get client IP
@@ -122,18 +55,12 @@ export async function middleware(request: NextRequest) {
         request.headers.get('x-forwarded-for')?.split(',')[0] ||
         '127.0.0.1'
 
-      // Get geo data from IP using our simplified function
-      const geoData = simpleGeoLookup(ip)
+      // Get geo data from IP
+      const geoData = await lookupGeoFromIp(ip)
 
       // Add geo data to headers
       if (geoData.city) {
         requestHeaders.set('x-peartree-city', geoData.city)
-
-        // Add simplified travel time
-        const travelEstimate = simpleTravelEstimate(geoData.city)
-        requestHeaders.set('x-peartree-travel-time', travelEstimate.time)
-        requestHeaders.set('x-peartree-travel-distance', travelEstimate.distance)
-        requestHeaders.set('x-peartree-travel-mode', travelEstimate.mode)
       }
 
       if (geoData.postcode) {
@@ -147,8 +74,35 @@ export async function middleware(request: NextRequest) {
       if (geoData.country) {
         requestHeaders.set('x-peartree-country', geoData.country)
       }
+
+      // Add coordinates for travel time estimation
+      if (geoData.latitude && geoData.longitude) {
+        requestHeaders.set(
+          'x-peartree-coords',
+          `${geoData.latitude},${geoData.longitude}`
+        )
+
+        // Get practice location from URL if available
+        let practiceLocation: string | undefined
+        const blogMatch = /\/blog\/[^\/]+\/([^\/]+)/.exec(url.pathname)
+        if (blogMatch) {
+          practiceLocation = blogMatch[1]
+        }
+
+        // Estimate travel time if we have coordinates
+        const travelEstimate = await estimateTravelTime(
+          { latitude: geoData.latitude, longitude: geoData.longitude },
+          practiceLocation as any
+        )
+
+        if (travelEstimate) {
+          requestHeaders.set('x-peartree-travel-time', travelEstimate.time)
+          requestHeaders.set('x-peartree-travel-distance', travelEstimate.distance)
+          requestHeaders.set('x-peartree-travel-mode', travelEstimate.mode)
+        }
+      }
     } catch (error) {
-      console.error('Error in middleware geo processing:', error)
+      console.error('Error getting geo data:', error)
     }
   }
 
@@ -160,6 +114,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next|static|favicon.ico|api).*)']
-  // Using Edge runtime by default
+  matcher: ['/((?!_next|static|favicon.ico|api).*)'],
+  runtime: 'nodejs'
 }

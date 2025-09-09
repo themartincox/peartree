@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import { googleReviews as importedGoogleReviews, googleReviewsStats as importedGoogleReviewsStats } from "@/data/googleReviews";
+import { googleReviews, googleReviewsStats } from "@/data/googleReviews";
 import {
   Star,
   Quote,
@@ -52,38 +52,23 @@ export const metadata: Metadata = {
   }
 };
 
-// Fallback data in case the imported data is undefined
-const fallbackStats = {
-  averageRating: 5.0,
-  totalReviews: 500,
-  fiveStarCount: 475
+// Fallback values in case data is undefined
+const reviewStats = {
+  averageRating: googleReviewsStats?.averageRating || 5.0,
+  totalReviews: googleReviewsStats?.totalReviews || 450,
+  fiveStarCount: googleReviewsStats?.fiveStarCount || 428
 };
-
-// Safely use the imported data with fallbacks
-const googleReviewsStats = importedGoogleReviewsStats || fallbackStats;
-
-// Ensure we have at least some reviews to display
-const googleReviews = importedGoogleReviews?.length ? importedGoogleReviews : [
-  {
-    id: "fallback1",
-    author: "John D.",
-    rating: 5,
-    review: "Excellent dental practice with professional and caring staff.",
-    date: "1 month ago",
-    verified: true
-  }
-];
 
 const stats = [
   {
     icon: Star,
-    value: `${googleReviewsStats.averageRating}/5`,
+    value: `${reviewStats.averageRating}/5`,
     label: "Google Rating",
-    detail: `From ${googleReviewsStats.totalReviews}+ reviews`
+    detail: `From ${reviewStats.totalReviews}+ reviews`
   },
   {
     icon: ThumbsUp,
-    value: `${googleReviewsStats.fiveStarCount}`,
+    value: `${reviewStats.fiveStarCount}`,
     label: "5-Star Reviews",
     detail: "95% of all reviews"
   },
@@ -103,14 +88,16 @@ const stats = [
 
 export default function TestimonialsPage() {
   const renderStars = (rating: number) => {
-    // Show filled stars up to the rating, then empty stars
     return [...Array(5)].map((_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${i < (typeof rating === "number" ? rating : 5) ? "text-yellow-400 fill-current" : "text-gray-300"}`}
+        className="w-4 h-4 text-yellow-400 fill-current"
       />
     ));
   };
+
+  // Ensure we have reviews data or use an empty array as fallback
+  const reviews = googleReviews || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
@@ -134,8 +121,8 @@ export default function TestimonialsPage() {
           "Individual experiences may vary",
           "Results depend on individual circumstances"
         ]}
-        rating={googleReviewsStats.averageRating}
-        reviewCount={googleReviewsStats.totalReviews}
+        rating={reviewStats.averageRating}
+        reviewCount={reviewStats.totalReviews}
         url="https://peartree.dental/testimonials"
         procedureType="Service"
       />
@@ -153,10 +140,11 @@ export default function TestimonialsPage() {
                 />
                 Google Reviews
               </Badge>
+
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary mb-6">
-              <span className="text-blue-600 block">Google Reviews</span>
+                            <span className="text-blue-600 block">Google Reviews</span>
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
@@ -192,32 +180,11 @@ export default function TestimonialsPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Filter Notice - Commented out for later use */}
-      {/*
-      <section className="py-8 bg-gradient-to-r from-yellow-50 to-blue-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <div className="flex items-center justify-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <Filter className="w-5 h-5 text-yellow-500" />
-                <span className="font-semibold text-pear-primary">Filtered Results</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                {renderStars(5)}
-                <span className="text-sm text-gray-600 ml-2">
-                  Showing only 5-star Google reviews ({googleReviewsStats.fiveStarCount} of {googleReviewsStats.totalReviews} total reviews)
-                </span>
-              </div>
             </div>
           </div>
         </div>
       </section>
-      */}
 
       {/* Google Reviews Grid */}
       <section className="py-16">
@@ -232,8 +199,8 @@ export default function TestimonialsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {googleReviews.map((review) => (
-              <Card key={review.id || review.author || Math.random()} className="hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white/90">
+            {reviews.map((review) => (
+              <Card key={review.id} className="hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white/90">
                 <CardContent className="p-6">
                   {/* Google Header */}
                   <div className="flex items-center justify-between mb-4">
@@ -255,9 +222,9 @@ export default function TestimonialsPage() {
 
                   {/* Rating */}
                   <div className="flex items-center space-x-1 mb-4">
-                    {renderStars(typeof review.rating === "number" ? review.rating : 5)}
+                    {renderStars(review.rating)}
                     <span className="text-sm font-medium text-gray-600 ml-2">
-                      {review.date || "Recently"}
+                      {review.date}
                     </span>
                   </div>
 
@@ -265,14 +232,14 @@ export default function TestimonialsPage() {
                   <div className="relative mb-4">
                     <Quote className="absolute -top-2 -left-2 w-6 h-6 text-blue-200" />
                     <p className="text-gray-700 leading-relaxed pl-4">
-                      {review.review || "No review text provided."}
+                      {review.review}
                     </p>
                   </div>
 
                   {/* Author */}
                   <div className="border-t pt-4">
                     <div className="flex items-center justify-between">
-                      <div className="font-semibold text-pear-primary">{review.author || "Anonymous"}</div>
+                      <div className="font-semibold text-pear-primary">{review.author}</div>
                       {review.helpful && (
                         <div className="flex items-center space-x-1 text-xs text-gray-500">
                           <ThumbsUp className="w-3 h-3" />
@@ -286,11 +253,11 @@ export default function TestimonialsPage() {
                   {review.response && (
                     <div className="mt-4 bg-blue-50 rounded-lg p-3 border-l-4 border-blue-200">
                       <div className="text-xs font-semibold text-blue-600 mb-1">
-                        Response from {review.response.author || "Practice"}
+                        Response from {review.response.author}
                       </div>
-                      <p className="text-sm text-gray-700">{review.response.text || "Thank you for your feedback!"}</p>
+                      <p className="text-sm text-gray-700">{review.response.text}</p>
                       <div className="text-xs text-gray-500 mt-1">
-                        {review.response.date || ""}
+                        {review.response.date}
                       </div>
                     </div>
                   )}
@@ -313,7 +280,7 @@ export default function TestimonialsPage() {
                 rel="noopener noreferrer"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
-                View All {googleReviewsStats.totalReviews}+ Reviews on Google
+                View All {reviewStats.totalReviews}+ Reviews on Google
               </a>
             </Button>
           </div>
@@ -377,7 +344,7 @@ export default function TestimonialsPage() {
                 Experience 5-Star Dental Care
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Join the {googleReviewsStats.fiveStarCount}+ patients who've given us 5-star reviews.
+                Join the {reviewStats.fiveStarCount}+ patients who've given us 5-star reviews.
                 Book your consultation today and discover why we're Burton Joyce's top-rated dental practice.
               </p>
 

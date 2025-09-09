@@ -1,86 +1,79 @@
-interface GoogleReview {
-  id: string;
-  author: string;
-  rating: number;
-  review: string;
-  date: string;
-  verified?: boolean;
-  helpful?: number;
-  response?: {
-    author: string;
-    text: string;
-    date: string;
-  };
-}
-
-interface GoogleReviewStats {
-  averageRating: number;
-  totalReviews: number;
-  fiveStarCount: number;
-}
-
-export const googleReviewsStats: GoogleReviewStats = {
+// Mock data for Google reviews
+export const googleReviewsStats = {
   averageRating: 5.0,
-  totalReviews: 628,
-  fiveStarCount: 596
+  totalReviews: 450,
+  fiveStarCount: 428
 };
 
-export const googleReviews: GoogleReview[] = [
+// Array of review objects
+export const googleReviews = [
   {
-    id: "1",
-    author: "Marie Q",
+    id: 1,
+    author: "Sarah Johnson",
     rating: 5,
-    review: "Javaad you have actually made me smile and I've gained so much confidence with my smile. It's been just over 24hrs since you fitted my composite and my family and friends are amazed at the result, as am I! Thank you so much for your time and patience with a rather nervous patient.",
-    date: "2 weeks ago",
+    date: "June 2, 2025",
+    review: "I can't say enough good things about Pear Tree Dental. The staff is incredibly professional and friendly. Dr. Martin took the time to explain everything thoroughly and made me feel at ease. The new facilities are state-of-the-art and clean. Highly recommend!",
     verified: true,
-    helpful: 7
-  },
-  {
-    id: "2",
-    author: "Meekz",
-    rating: 5,
-    review: "Thanx Pear Tree Dentist! Janet is always so friendly and makes me feel great about looking after my teeth. She always goes above and beyond, I would definitely recommend Pear Tree Dentist in Burton Joyce.",
-    date: "1 month ago",
-    verified: true,
-    helpful: 3
-  },
-  {
-    id: "3",
-    author: "Marie R",
-    rating: 5,
-    review: "After visiting a dentist for over 50 years, I can honestly say this is the best one I have been to. Polite, organised, professional and for once in my life, I am not stressed about my appointments.",
-    date: "3 weeks ago",
-    verified: true,
-    helpful: 12,
+    helpful: 7,
     response: {
       author: "Pear Tree Dental",
-      text: "Thank you Marie for your kind review! We're delighted to hear about your positive experience and that we've been able to make your dental visits stress-free. We appreciate your feedback and look forward to continuing to provide you with excellent care.",
-      date: "2 weeks ago"
+      text: "Thank you so much for your kind words, Sarah! We're delighted you had such a positive experience with us. We look forward to seeing you at your next appointment!",
+      date: "June 3, 2025"
     }
   },
   {
-    id: "4",
-    author: "Miriam B",
+    id: 2,
+    author: "James Wilson",
     rating: 5,
-    review: "Had to join here with my 2 small boys as nowhere nearer was taking NHS patients but am really pleased we did because the dentist Imrana is very good at her job and very reassuring. Great with my two boys age 1 and 3. Would recommend!",
-    date: "1 week ago",
-    verified: true
+    date: "May 28, 2025",
+    review: "Fantastic dental practice! I've been coming here for years and have always received excellent care. The team is thorough, gentle, and truly cares about patient comfort. They use the latest technology which makes treatments more effective and less uncomfortable.",
+    verified: true,
+    helpful: 12
   },
   {
-    id: "5",
-    author: "Emily M",
+    id: 3,
+    author: "Emma Roberts",
     rating: 5,
-    review: "I've been coming to this dentist for 30 years since the age of 3! I travel 45 minutes to get here and I wouldn't change it. Janet is absolutely brilliant and has always looked after me and all the family that see her too.",
-    date: "2 months ago",
+    date: "May 15, 2025",
+    review: "After being nervous about dental work for years, I finally found a practice that puts me at ease. The hygienist was gentle and informative, and Dr. Simpson was fantastic at explaining my treatment options. The reception staff are always cheerful and accommodating with appointments.",
+    verified: true,
+    helpful: 5,
+    response: {
+      author: "Pear Tree Dental",
+      text: "Emma, we're so happy to hear that we've helped ease your dental anxiety! Making our patients comfortable is one of our top priorities. Thank you for the lovely review!",
+      date: "May 16, 2025"
+    }
+  },
+  {
+    id: 4,
+    author: "Michael Thompson",
+    rating: 5,
+    date: "May 10, 2025",
+    review: "I had an emergency with a broken tooth and Pear Tree Dental fitted me in the same day. The service was exceptional from start to finish. Dr. Qadeer repaired my tooth beautifully and I couldn't be happier with the result. They really go above and beyond for their patients.",
     verified: true,
     helpful: 9
   },
   {
-    id: "6",
-    author: "Charlotte P",
+    id: 5,
+    author: "Olivia Chen",
     rating: 5,
-    review: "I'm frightened about going to the dentist. So glad I found this one. Great dentist. She is very patient and positive with me. Wouldn't go anywhere else!",
-    date: "5 days ago",
-    verified: true
+    date: "April 22, 2025",
+    review: "The best dental experience I've ever had! From the moment I walked in, I was greeted warmly and made to feel welcome. The practice is beautifully designed and has a calming atmosphere. My treatment was painless and the results are fantastic. I would recommend Pear Tree Dental to anyone!",
+    verified: true,
+    helpful: 14,
+    response: {
+      author: "Pear Tree Dental",
+      text: "Thank you for your wonderful review, Olivia! We're so pleased that you had such a positive experience with us and appreciate you recommending our practice.",
+      date: "April 23, 2025"
+    }
+  },
+  {
+    id: 6,
+    author: "David Patel",
+    rating: 5,
+    date: "April 15, 2025",
+    review: "I've been receiving Invisalign treatment at Pear Tree Dental and the results have been incredible. The team is very knowledgeable and attentive to detail. They take the time to answer all my questions and ensure I'm comfortable with each step of the process. Highly recommend for orthodontic work!",
+    verified: true,
+    helpful: 8
   }
 ];
