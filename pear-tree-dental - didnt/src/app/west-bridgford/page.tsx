@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import MedicalPracticeSchema from '@/components/seo/MedicalPracticeSchema';
-import ServiceAreaSchema from '@/components/seo/ServiceAreaSchema';
+import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
+import practiceInfo from '@/data/practiceInfo';
 import {
   MapPin,
   Clock,
@@ -48,63 +48,28 @@ export const metadata: Metadata = {
 export default function WestBridgfordPage() {
   return (
     <div className="min-h-screen bg-dental-navy text-white">
-      {/* JSON-LD Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://peartree.dental/west-bridgford",
-            "name": "Pear Tree Dental - Premium Care for West Bridgford",
-            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
-            "description": "Premium dental practice serving West Bridgford residents with luxury dental care, advanced treatments, and personalized service.",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Main Street",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
-              "addressCountry": "GB"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "52.9847",
-              "longitude": "-1.0147"
-            },
-            "telephone": "0115 931 2935",
-            "url": "https://peartree.dental",
-            "priceRange": "£££",
-            "areaServed": {
-              "@type": "Place",
-              "name": "West Bridgford, Nottinghamshire"
-            },
-            "serviceArea": {
-              "@type": "GeoCircle",
-              "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "52.9847",
-                "longitude": "-1.0147"
-              },
-              "geoRadius": "15000"
-            }
-          })
+      {/* 
+        The LocalBusinessSchema component now centralizes all primary business data.
+        We only pass page-specific overrides. This ensures NAP consistency.
+        Note: The other schema components (MedicalPracticeSchema, ServiceAreaSchema) were redundant
+        and have been removed to avoid schema duplication and potential conflicts. 
+        A single, rich schema is preferred.
+      */}
+      <LocalBusinessSchema
+        includeDentistSpecific={true}
+        pageSpecifics={{
+          "@id": "https://peartree.dental/west-bridgford",
+          name: "Pear Tree Dental - Premium Care for West Bridgford",
+          description:
+            "Premium dental practice serving West Bridgford residents with luxury dental care, advanced treatments, and personalized service.",
+          priceRange: "£££",
+          areaServed: [
+            { "@type": "Place", name: "West Bridgford, Nottinghamshire" },
+            { "@type": "Place", name: "Nottingham City Centre" },
+            { "@type": "Place", name: "The Park" },
+            { "@type": "Place", name: "Trent Bridge" }
+          ]
         }}
-      />
-
-      {/* Enhanced Medical Practice Schema for West Bridgford */}
-      <MedicalPracticeSchema
-        specialty="Premium Cosmetic Dentistry"
-        serviceName="Premium Dental Care for West Bridgford"
-        serviceDescription="Comprehensive premium dental services including cosmetic dentistry, dental implants, and advanced treatments for discerning West Bridgford residents"
-        procedureType="Comprehensive Dental Care"
-        areaServed={["West Bridgford", "Nottingham City Centre", "The Park", "Trent Bridge"]}
-      />
-
-      {/* Service Area Schema for West Bridgford Coverage */}
-      <ServiceAreaSchema
-        primaryLocation="West Bridgford"
-        specialization="Premium Dental Care"
       />
 
       {/* Premium Hero Section */}
@@ -137,9 +102,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
+                <Link href={`tel:${practiceInfo.contact.phoneInternational}`}>
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2935
+                  Call: {practiceInfo.contact.phone}
                 </Link>
               </Button>
               <Button
@@ -432,10 +397,10 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Practice Location</h3>
                       <p className="text-gray-700">
-                        Pear Tree Dental<br />
-                        Main Street<br />
-                        Burton Joyce<br />
-                        Nottinghamshire NG14 5DP
+                        {practiceInfo.name}<br />
+                        {practiceInfo.address.street}<br />
+                        {practiceInfo.address.city}<br />
+                        {practiceInfo.address.county} {practiceInfo.address.postcode}
                       </p>
                     </div>
                   </div>
@@ -445,8 +410,8 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Contact Details</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2935<br />
-                        Email: hello@peartree.dental<br />
+                        Phone: {practiceInfo.contact.phone}<br />
+                        Email: {practiceInfo.contact.email}<br />
                         Emergency: 24/7 availability
                       </p>
                     </div>
@@ -518,9 +483,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-pear-gold font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
+                <Link href={`tel:${practiceInfo.contact.phoneInternational}`}>
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2935
+                  Call: {practiceInfo.contact.phone}
                 </Link>
               </Button>
               <Button

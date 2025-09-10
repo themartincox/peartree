@@ -1,31 +1,43 @@
 import Script from "next/script";
+import practiceInfo from "@/data/practiceInfo";
 
 interface LocalBusinessSchemaProps {
   includeDentistSpecific?: boolean;
+  // Allow overriding specific properties for contextual schemas (e.g., on location pages)
+  pageSpecifics?: {
+    "@id"?: string;
+    name?: string;
+    description?: string;
+    priceRange?: string;
+    areaServed?: object | object[];
+  };
 }
 
-export default function LocalBusinessSchema({ includeDentistSpecific = false }: LocalBusinessSchemaProps) {
+export default function LocalBusinessSchema({
+  includeDentistSpecific = false,
+  pageSpecifics = {}
+}: LocalBusinessSchemaProps) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "DentistOffice", "MedicalOrganization"],
-    "name": "Pear Tree Dental Centre",
+    "name": practiceInfo.nameLong,
     "alternateName": ["Pear Tree Dental", "Private Dentist Nottingham"],
     "description": "Private dental practice serving Nottinghamshire offering comprehensive family and cosmetic dental care including general dentistry, cosmetic treatments, dental implants, Invisalign, and emergency care. Trusted by families across Nottingham, Burton Joyce, West Bridgford, Bingham, and East Bridgford.",
     "url": "https://peartree.dental",
-    "telephone": "+441159312520",
-    "email": "hello@peartree.dental",
+    "telephone": practiceInfo.contact.phoneInternational,
+    "email": practiceInfo.contact.email,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "22 Nottingham Road",
-      "addressLocality": "Burton Joyce",
-      "addressRegion": "Nottinghamshire",
-      "postalCode": "NG14 5AE",
+      "streetAddress": practiceInfo.address.street,
+      "addressLocality": practiceInfo.address.city,
+      "addressRegion": practiceInfo.address.county,
+      "postalCode": practiceInfo.address.postcode,
       "addressCountry": "GB"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "52.967",
-      "longitude": "-1.061"
+      "latitude": practiceInfo.geo.latitude,
+      "longitude": practiceInfo.geo.longitude
     },
     "openingHours": [
       "Mo-Fr 08:00-18:00",
@@ -376,8 +388,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "@type": "GeoCircle",
       "geoMidpoint": {
         "@type": "GeoCoordinates",
-        "latitude": "52.967",
-        "longitude": "-1.061"
+        "latitude": practiceInfo.geo.latitude,
+        "longitude": practiceInfo.geo.longitude
       },
       "geoRadius": "25000"
     },
@@ -411,11 +423,12 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     ]
   };
 
+  // Merge base schema with page-specific overrides
+  const finalSchema: { [key: string]: any } = { ...localBusinessSchema, ...pageSpecifics };
+
   if (includeDentistSpecific) {
     // Add comprehensive dental-specific schema
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (localBusinessSchema as any).medicalSpecialty = [
+    finalSchema.medicalSpecialty = [
       "General Dentistry",
       "Preventive Dentistry",
       "Cosmetic Dentistry",
@@ -432,9 +445,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "Family Dentistry"
     ];
 
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (localBusinessSchema as any).availableService = [
+    finalSchema.availableService = [
       {
         "@type": "MedicalProcedure",
         "name": "Dental Examination",
@@ -522,13 +533,9 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
     ];
 
     // Add medical organization specific properties
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (localBusinessSchema as any).isAcceptingNewPatients = true;
+    finalSchema.isAcceptingNewPatients = true;
 
-    // biome-ignore lint/suspicious/noExplicitAny: Schema requires dynamic property assignment
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (localBusinessSchema as any).healthPlanNetworkTier = ["NHS", "Private", "Insurance Accepted"];
+    finalSchema.healthPlanNetworkTier = ["NHS", "Private", "Insurance Accepted"];
   }
 
   return (
@@ -536,7 +543,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       id="local-business-schema"
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(localBusinessSchema)
+        __html: JSON.stringify(finalSchema)
       }}
     />
   );

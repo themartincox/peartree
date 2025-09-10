@@ -1,3 +1,5 @@
+import practiceInfo from "@/data/practiceInfo";
+
 interface PatientInfo {
   firstName: string;
   lastName: string;
@@ -46,7 +48,7 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   yPosition += 20;
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
-  doc.text('Pear Tree Dental Centre', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text(practiceInfo.nameLong, pageWidth / 2, yPosition, { align: 'center' });
 
   yPosition += 25;
 
@@ -160,7 +162,7 @@ export const generateDirectDebitGuaranteePDF = async (patientInfo: PatientInfo):
   }
 
   doc.setFontSize(10);
-  doc.text('Pear Tree Dental Centre | 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE | 0115 931 2935', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text(`${practiceInfo.nameLong} | ${practiceInfo.address.full} | ${practiceInfo.contact.phone}`, pageWidth / 2, yPosition, { align: 'center' });
 
   return doc.output('blob');
 };
@@ -206,7 +208,7 @@ export const generateMembershipTermsPDF = async (patientInfo: PatientInfo): Prom
 
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
-  doc.text('Pear Tree Dental Centre', pageWidth / 2, yPosition, { align: 'center' });
+  doc.text(practiceInfo.nameLong, pageWidth / 2, yPosition, { align: 'center' });
   yPosition += 20;
 
   // Patient Information Section
@@ -374,13 +376,13 @@ export const generateMembershipTermsPDF = async (patientInfo: PatientInfo): Prom
   addTextWithPageBreaks('PRACTICE INFORMATION', true, 14);
   yPosition += 15;
 
-  addTextWithPageBreaks('Pear Tree Dental Centre', true, 12);
+  addTextWithPageBreaks(practiceInfo.nameLong, true, 12);
   yPosition += 5;
-  addTextWithPageBreaks('22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE', false, 10);
+  addTextWithPageBreaks(practiceInfo.address.full, false, 10);
   yPosition += 5;
-  addTextWithPageBreaks('Phone: 0115 931 2935', false, 10);
+  addTextWithPageBreaks(`Phone: ${practiceInfo.contact.phone}`, false, 10);
   yPosition += 5;
-  addTextWithPageBreaks('Email: hello@peartree.dental', false, 10);
+  addTextWithPageBreaks(`Email: ${practiceInfo.contact.email}`, false, 10);
 
   // Footer on each page
   const totalPages = doc.internal.pages.length - 1;
@@ -390,7 +392,7 @@ export const generateMembershipTermsPDF = async (patientInfo: PatientInfo): Prom
     doc.setFontSize(8);
     doc.setFont("helvetica", "normal");
     doc.text(`Page ${i} of ${totalPages}`, pageWidth / 2, footerY, { align: 'center' });
-    doc.text('Pear Tree Dental Centre | 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE | 0115 931 2935', pageWidth / 2, footerY + 10, { align: 'center' });
+    doc.text(`${practiceInfo.nameLong} | ${practiceInfo.address.full} | ${practiceInfo.contact.phone}`, pageWidth / 2, footerY + 10, { align: 'center' });
   }
 
   return doc.output('blob');

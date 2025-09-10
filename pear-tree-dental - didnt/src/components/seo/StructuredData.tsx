@@ -1,13 +1,16 @@
+import practiceInfo from "@/data/practiceInfo";
+import LocalBusinessSchema from "./LocalBusinessSchema";
+
 export function DentistSchema({
   name = 'Pear Tree Dental',
   address = {
-    streetAddress: '123 Dental Street',
-    addressLocality: 'Nottingham',
-    addressRegion: 'Nottinghamshire',
-    postalCode: 'NG1 2AB',
-    addressCountry: 'UK'
+    streetAddress: practiceInfo.address.street,
+    addressLocality: practiceInfo.address.city,
+    addressRegion: practiceInfo.address.county,
+    postalCode: practiceInfo.address.postcode,
+    addressCountry: 'GB'
   },
-  telephone = '+441159694141',
+  telephone = practiceInfo.contact.phoneInternational,
   url = 'https://peartree.dental',
   image = 'https://peartree.dental/og/default.jpg',
   priceRange = '£££',
@@ -17,7 +20,7 @@ export function DentistSchema({
   }
 }: {
   name?: string
-  address?: any
+  address?: { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string; addressCountry: string; };
   telephone?: string
   url?: string
   image?: string
@@ -72,20 +75,20 @@ export function LocalBusinessSchema({
   name = 'Pear Tree Dental',
   type = 'Dentist',
   address = {
-    streetAddress: '123 Dental Street',
-    addressLocality: 'Nottingham',
-    addressRegion: 'Nottinghamshire',
-    postalCode: 'NG1 2AB',
-    addressCountry: 'UK'
+    streetAddress: practiceInfo.address.street,
+    addressLocality: practiceInfo.address.city,
+    addressRegion: practiceInfo.address.county,
+    postalCode: practiceInfo.address.postcode,
+    addressCountry: 'GB'
   },
-  telephone = '+441159694141',
+  telephone = practiceInfo.contact.phoneInternational,
   url = 'https://peartree.dental',
   image = 'https://peartree.dental/og/default.jpg',
   priceRange = '£££'
 }: {
   name?: string
   type?: string
-  address?: any
+  address?: { streetAddress: string; addressLocality: string; addressRegion: string; postalCode: string; addressCountry: string; };
   telephone?: string
   url?: string
   image?: string
@@ -137,22 +140,22 @@ export default function StructuredData({
   price = '£££'
 }: {
   city?: string
-  service?: string
+  service: string
   suburb?: string
   price?: string
 }) {
   return (
     <>
-      <DentistSchema
-        name={`Pear Tree Dental - ${service} in ${suburb}`}
-        address={{
-          streetAddress: '123 Dental Street',
-          addressLocality: suburb,
-          addressRegion: city,
-          postalCode: 'NG1 2AB',
-          addressCountry: 'UK'
+      <LocalBusinessSchema
+        pageSpecifics={{
+          name: `Pear Tree Dental - ${service} in ${suburb}`,
+          description: `Expert ${service} services for residents of ${suburb}, ${city}.`,
+          priceRange: price,
+          areaServed: {
+            "@type": "Place",
+            "name": `${suburb}, ${city}`
+          }
         }}
-        priceRange={price}
       />
     </>
   )
