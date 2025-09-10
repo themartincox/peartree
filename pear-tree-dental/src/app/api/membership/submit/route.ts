@@ -23,7 +23,29 @@ interface MembershipSubmission {
   [key: string]: unknown // Allow for additional fields
 }
 
-// Helper function to save application to Supabase
+// --- helpers: put these near the top of the file ---
+function extractClientIp(req: NextRequest): string | null {
+  // Prefer x-forwarded-for (may contain comma-separated list)
+  const raw =
+    req.headers.get('x-forwarded-for') ||
+    req.headers.get('x-real-ip') ||
+    null;
+  if (!raw) return null;
+
+  const first = raw.split(',')[0]?.trim();
+  // Very light sanity check: IPv4-ish or has ":" (IPv6)
+  const ok = /^(\d{1,3}\.){3}\d{1,3}$|:/.test(first);
+  return ok ? first : null;
+}
+
+function toISODateOrNull(s: unknown): string | null {
+  if (typeof s !== 'string' || !s) return null;
+  const d = new Date(s);
+  if (Number.isNaN(d.getTime())) return null;
+  return d.toISOString().slice(0, 10); // YYYY-MM-DD
+}
+
+// --- REPLACEMENT: saveApplicationToSupabase ---
 const saveApplicationToSupabase = async (
   formData: Record<string, unknown>,
   applicationId: string,
@@ -33,7 +55,7 @@ const saveApplicationToSupabase = async (
   request: NextRequest
 ) => {
   try {
-    // During build time, return mock data
+    // Build/SSR short-circuit (unchanged)
     if (isBuildOrSSR && process.env.NEXT_PUBLIC_SUPABASE_URL?.includes('placeholder')) {
       console.log('Build environment detected, returning mock success response');
       return { success: true, id: applicationId };
@@ -45,69 +67,84 @@ const saveApplicationToSupabase = async (
     const sortCodeEncrypted = encryptBankDetail(String(formData.sortCode || ''));
     const accountNumberEncrypted = encryptBankDetail(String(formData.accountNumber || ''));
 
-    // Get client IP and user agent for audit
-    const ip =
-      request.headers.get('x-forwarded-for') ||
-      request.headers.get('x-real-ip') ||
-      'unknown';
-
+    // Audit: valid inet or null (NEVER "unknown")
+    const ip = extractClientIp(request);
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
-    // Map form data to database schema
+    // Ensure correct types for JSONB & booleans
+    const familyMembers = Array.isArray(formData.familyMembers) ? formData.familyMembers : [];
+    const isClinicSignup = !!formData.isClinicSignup;
+
+    // Map to DB schema (normalize dates to YYYY-MM-DD, fix status, allow nulls where appropriate)
     const applicationData = {
       application_id: applicationId,
 
       // Personal info
-      first_name: formData.firstName,
-      last_name: formData.lastName,
-      email: formData.email,
-      phone: formData.phone || null,
-      date_of_birth: formData.dateOfBirth || null,
-      address: formData.address || null,
-      postcode: formData.postcode || null,
+      title: formData.title ?? null,
+      first_name: formData.firstName ?? null,
+      last_name: formData.lastName ?? null,
+      email: formData.email ?? null,
+      phone: formData.phone ?? null,
+      date_of_birth: toISODateOrNull(formData.dateOfBirth),
+      address: formData.address ?? null,
+      postcode: formData.postcode ?? null,
+
+      // Partner info (family plans)
+      partner_title: formData.partnerTitle ?? null,
+      partner_first_name: formData.partnerFirstName ?? null,
+      partner_last_name: formData.partnerLastName ?? null,
+      partner_email: formData.partnerEmail ?? null,
+      partner_phone: formData.partnerPhone ?? null,
+      partner_date_of_birth: toISODateOrNull(formData.partnerDateOfBirth),
+      partner_is_existing_patient: formData.partnerIsExistingPatient ?? null,
+      partner_preferred_dentist: formData.partnerPreferredDentist ?? null,
+      partner_dentist_gender_preference: formData.partnerDentistGenderPreference ?? null,
 
       // Bank details (encrypted)
-      account_holder_name: formData.accountHolderName,
+      account_holder_name: formData.accountHolderName ?? null,
       sort_code_encrypted: sortCodeEncrypted,
       account_number_encrypted: accountNumberEncrypted,
+      bank_name: formData.bankName ?? null,
 
       // Plan info
-      selected_plan: formData.selectedPlan,
+      selected_plan: formData.selectedPlan ?? null,
       plan_name: planName,
       plan_price: planPrice,
 
       // Patient preferences
-      is_existing_patient: formData.isExistingPatient,
-      preferred_dentist: formData.preferredDentist || null,
-      dentist_gender_preference: formData.dentistGenderPreference || null,
+      is_existing_patient: formData.isExistingPatient ?? null,
+      preferred_dentist: formData.preferredDentist ?? null,
+      dentist_gender_preference: formData.dentistGenderPreference ?? null,
       dentist_name: dentistName,
+      preferred_appointment_time: formData.preferredAppointmentTime ?? null,
+      communication_preference: formData.communicationPreference ?? null,
 
-      // Partner info (if family plan)
-      partner_first_name: formData.partnerFirstName || null,
-      partner_last_name: formData.partnerLastName || null,
-      partner_email: formData.partnerEmail || null,
-      partner_is_existing_patient: formData.partnerIsExistingPatient || null,
-      partner_preferred_dentist: formData.partnerPreferredDentist || null,
-      partner_dentist_gender_preference: formData.partnerDentistGenderPreference || null,
+      // Consents / confirmations
+      direct_debit_confirmed: !!formData.directDebitConfirmed,
+      dd_guarantee_read: !!formData.ddGuaranteeRead,
+      membership_terms_read: !!formData.membershipTermsRead,
+      marketing_consent: !!formData.marketingConsent,
+      terms_accepted: !!formData.termsAccepted,
 
       // Staff info
-      is_clinic_signup: formData.isClinicSignup || false,
-      staff_member_name: formData.staffMemberName || null,
+      is_clinic_signup: isClinicSignup,
+      staff_member_name: formData.staffMemberName ?? null,
+      staff_member_id: formData.staffMemberId ?? null,
 
-      // Family members
-      family_members: formData.familyMembers || [],
+      // Family members JSONB
+      family_members: familyMembers,
 
       // Status tracking
-      status: 'new',
+      status: 'pending',     // 🟢 changed from 'new'
       email_sent: false,
+      email_error: null,
 
       // Audit trail
-      ip_address: ip,
+      ip_address: ip,        // 🟢 null or valid inet
       user_agent: userAgent,
-      submission_source: 'website'
+      submission_source: 'website',
     };
 
-    // Insert into Supabase
     const { data, error } = await supabaseAdmin
       .from('membership_applications')
       .insert(applicationData)
@@ -116,7 +153,16 @@ const saveApplicationToSupabase = async (
 
     if (error) {
       console.error('❌ Supabase insert error:', error);
-      throw error;
+      // If it's a data error, surface it to the caller so they can return 400 instead of 500
+      return {
+        success: false,
+        error: {
+          code: error.code,
+          message: error.message,
+          details: error.details,
+          hint: error.hint
+        }
+      };
     }
 
     console.log('✅ Application saved to Supabase, ID:', data.id);
@@ -126,6 +172,7 @@ const saveApplicationToSupabase = async (
     return { success: false, error };
   }
 };
+
 
 // Helper function to update email status in Supabase
 const updateEmailStatus = async (
