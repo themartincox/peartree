@@ -1,17 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
-import { Variant } from '@/lib/ab-testing'
-
-// Add type declaration for global gtag
-declare global {
-  interface Window {
-    gtag?: (command: string, action: string, params?: any) => void;
-  }
-}
 
 interface ClientSideAnalyticsProps {
-  variant: Variant;
+  variant?: string;
 }
 
 export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProps) {
@@ -19,11 +11,12 @@ export default function ClientSideAnalytics({ variant }: ClientSideAnalyticsProp
     // Initialize any client-side analytics here
     if (typeof window !== 'undefined' && window.gtag) {
       // Track A/B test variant if provided
-      window.gtag('event', 'ab_test_variant_view', {
-        variant: variant,
-      });
-
-      console.log('Client-side analytics initialized with variant', variant);
+      if (variant) {
+        window.gtag('event', 'ab_test_variant_view', {
+          variant: variant,
+        });
+      }
+      console.log('Client-side analytics initialized', variant ? `with variant ${variant}` : '');
     }
   }, [variant])
 

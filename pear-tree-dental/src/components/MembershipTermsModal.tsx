@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import practiceInfo from "@/data/practiceInfo";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { X, Download, FileText, Scale } from "lucide-react";
@@ -16,7 +17,7 @@ export default function MembershipTermsModal({ isOpen, onClose }: MembershipTerm
   const downloadTerms = () => {
     const termsText = `
 MEMBERSHIP TERMS AND CONDITIONS
-Pear Tree Dental Centre
+${practiceInfo.nameLong}
 
 1. Fees payable by the Patient
 
@@ -120,10 +121,10 @@ Plan E
 
 ---
 
-Pear Tree Dental Centre
-22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE
-Phone: 0115 931 2935
-Email: hello@peartree.dental
+${practiceInfo.nameLong}
+${practiceInfo.address.full}
+Phone: ${practiceInfo.contact.phone}
+Email: ${practiceInfo.contact.email}
     `;
 
     const blob = new Blob([termsText], { type: 'text/plain' });
@@ -297,11 +298,11 @@ Email: hello@peartree.dental
 
             {/* Practice Information */}
             <div className="bg-pear-background/20 p-4 rounded-lg border-t-4 border-pear-primary">
-              <h4 className="font-semibold text-pear-primary mb-2">Pear Tree Dental Centre</h4>
+              <h4 className="font-semibold text-pear-primary mb-2">{practiceInfo.nameLong}</h4>
               <p className="text-sm text-gray-600">
-                22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE<br />
-                Phone: 0115 931 2935<br />
-                Email: hello@peartree.dental
+                {practiceInfo.address.full}<br />
+                Phone: {practiceInfo.contact.phone}<br />
+                Email: {practiceInfo.contact.email}
               </p>
             </div>
           </div>

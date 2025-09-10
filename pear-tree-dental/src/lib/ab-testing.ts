@@ -46,11 +46,6 @@ export async function getVariant(): Promise<Variant> {
     return 'A';
   }
 
-  // For deployments, don't try to read headers which can cause issues
-  if (process.env.NODE_ENV === 'production') {
-    return 'A';
-  }
-
   try {
     // Only import headers when we're in a server context and not in a static build
     if (typeof window === 'undefined') {
