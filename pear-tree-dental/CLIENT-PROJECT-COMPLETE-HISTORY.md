@@ -193,7 +193,7 @@ The Pear Tree Dental website has been successfully completed with **ALL original
 ### **CONTACT INFORMATION VERIFICATION**
 - ✅ **Phone Number:** 0115 931 2935 (verified across 133+ instances)
 - ✅ **Address:** 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE
-- ✅ **Email:** peartreedentalcentre@outlook.com (lowercase, consistent)
+- ✅ **Email:** hello@peartree.dental (lowercase, consistent)
 - ✅ **Opening Hours:** Monday-Thursday 8:45am-5pm, Friday 8am-3:30pm
 - ✅ **Emergency Contact:** Available by arrangement
 
@@ -326,6 +326,7 @@ The Pear Tree Dental website has been successfully completed with **ALL original
 ### **CONTACT METHODS IMPLEMENTED**
 - ✅ **Phone:** 0115 931 2935 (click-to-call enabled)
 - ✅ **Email:** peartreedentalcentre@outlook.com (mailto links)
+- ✅ **Email:** hello@peartree.dental (mailto links)
 - ✅ **Contact Form:** Multi-field with validation
 - ✅ **Address:** 22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE
 - ✅ **Map Integration** - Ready for Google Maps embed
