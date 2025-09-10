@@ -13,8 +13,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { CalendarDays, Phone, Star, Sparkles, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePerformanceMonitor } from "@/hooks/usePerformanceMonitor";
 import NavigationErrorBoundary from "@/components/navigation/NavigationErrorBoundary";
@@ -289,6 +289,7 @@ const Navigation = () => {
                                 "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
                                 service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
                               )}
+                              aria-current={pathname === service.href ? "page" : undefined}
                               aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">
@@ -315,6 +316,7 @@ const Navigation = () => {
                                 "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:ring-2 focus:ring-pear-gold",
                                 service.theme === "medical" ? "border-l-4 border-dental-green" : "border-l-4 border-soft-pink"
                               )}
+                              aria-current={pathname === service.href ? "page" : undefined}
                               aria-describedby={`service-desc-${service.title.replace(/\s+/g, '-').toLowerCase()}`}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">
@@ -335,7 +337,11 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/membership" className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm">
+                  <Link href="/membership" className={cn(
+                      "text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-3 py-1 rounded font-semibold text-sm",
+                      pathname === "/membership" && "bg-pear-gold text-white ring-2 ring-offset-2 ring-pear-gold"
+                    )}
+                    aria-current={pathname === "/membership" ? "page" : undefined}>
                     Membership Plan
                   </Link>
                 </NavigationMenuItem>
@@ -353,6 +359,7 @@ const Navigation = () => {
                             <Link
                               href={item.href}
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              aria-current={pathname === item.href ? "page" : undefined}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">
                                 {item.title}
@@ -369,13 +376,21 @@ const Navigation = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/new-patients" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
+                  <Link href="/new-patients" className={cn(
+                    "text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm",
+                     pathname === "/new-patients" && "text-pear-gold font-bold"
+                  )}
+                  aria-current={pathname === "/new-patients" ? "page" : undefined}>
                     New Patients
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/contact" className="text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm">
+                  <Link href="/contact" className={cn(
+                    "text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm",
+                    pathname === "/contact" && "text-pear-gold font-bold"
+                  )}
+                  aria-current={pathname === "/contact" ? "page" : undefined}>
                     Contact
                   </Link>
                 </NavigationMenuItem>
@@ -425,36 +440,41 @@ const Navigation = () => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col h-full mobile-nav-content overflow-y-auto pb-8" role="navigation" aria-label="Mobile site navigation">
-                    {/* Mobile Logo */}
-                    <Link
-                      href="/"
-                      className="flex items-center focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md mb-6"
-                      aria-label="Pear Tree Dental - Return to homepage"
-                      onClick={closeMobileMenu}
-                    >
-                      <div className="w-8 h-8 mr-3">
-                        <Image
-                          src="/images/dental-motif-logo.png"
-                          alt="Pear Tree Dental Logo"
-                          width={32}
-                          height={32}
-                          className="w-full h-full object-contain"
-                          // Removed filter to show teal on white variant
-                        />
-                      </div>
-                      <div className="flex flex-col">
-                        <div className="brand-logo text-lg text-pear-primary leading-tight font-garamond">
-                          PEAR TREE DENTAL
+                  <div className="flex items-center justify-between mb-6">
+                      <Link
+                        href="/"
+                        className="flex items-center focus:outline-none focus:ring-2 focus:ring-pear-gold focus:rounded-md"
+                        aria-label="Pear Tree Dental - Return to homepage"
+                        onClick={closeMobileMenu}
+                      >
+                        <div className="w-8 h-8 mr-3">
+                          <Image
+                            src="/images/dental-motif-logo.png"
+                            alt="Pear Tree Dental Logo"
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-contain"
+                          />
                         </div>
-                      </div>
-                    </Link>
+                        <div className="flex flex-col">
+                          <div className="brand-logo text-lg text-pear-primary leading-tight font-garamond">
+                            PEAR TREE DENTAL
+                          </div>
+                        </div>
+                      </Link>
+                      <SheetClose asChild>
+                        <Button variant="ghost" size="icon" className="text-pear-primary" aria-label="Close menu">
+                          <X className="h-6 w-6" />
+                        </Button>
+                      </SheetClose>
+                    </div>
 
+                  <div className="flex flex-col h-full mobile-nav-content overflow-y-auto pb-8" role="navigation" aria-label="Mobile site navigation">
                     {/* Mobile CTAs */}
                     <div className="flex flex-col space-y-3">
                       <Link href="/services/emergency" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1 nav-button">
-                          🚨 Dental Pain? Call Now
+                          <span aria-hidden="true">🚨</span> Dental Pain? Call Now
                         </Button>
                       </Link>
                       <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
@@ -492,8 +512,12 @@ const Navigation = () => {
                             <Link
                               key={service.title}
                               href={service.href}
-                              className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1"
+                              className={cn(
+                                "block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1",
+                                pathname === service.href && "font-bold text-pear-primary"
+                              )}
                               onClick={closeMobileMenu}
+                              aria-current={pathname === service.href ? "page" : undefined}
                             >
                               {service.title}
                             </Link>
@@ -503,8 +527,12 @@ const Navigation = () => {
 
                       <Link
                         href="/membership"
-                        className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-2 py-1 rounded font-semibold text-sm"
+                        className={cn(
+                          "text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-2 py-1 rounded font-semibold text-sm",
+                           pathname === "/membership" && "bg-pear-gold text-white"
+                        )}
                         onClick={closeMobileMenu}
+                        aria-current={pathname === "/membership" ? "page" : undefined}
                       >
                         Membership Plan
                       </Link>
@@ -516,8 +544,12 @@ const Navigation = () => {
                             <Link
                               key={item.title}
                               href={item.href}
-                              className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1"
+                              className={cn(
+                                "block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1",
+                                pathname === item.href && "font-bold text-pear-primary"
+                              )}
                               onClick={closeMobileMenu}
+                              aria-current={pathname === item.href ? "page" : undefined}
                             >
                               {item.title}
                             </Link>
@@ -528,15 +560,23 @@ const Navigation = () => {
                       <div className="space-y-2 mt-2">
                         <Link
                           href="/new-patients"
-                          className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1"
+                          className={cn(
+                            "block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1",
+                            pathname === "/new-patients" && "font-bold underline"
+                          )}
                           onClick={closeMobileMenu}
+                          aria-current={pathname === "/new-patients" ? "page" : undefined}
                         >
                           New Patients
                         </Link>
                         <Link
                           href="/contact"
-                          className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1"
+                          className={cn(
+                            "block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1",
+                            pathname === "/contact" && "font-bold underline"
+                          )}
                           onClick={closeMobileMenu}
+                          aria-current={pathname === "/contact" ? "page" : undefined}
                         >
                           Contact
                         </Link>
