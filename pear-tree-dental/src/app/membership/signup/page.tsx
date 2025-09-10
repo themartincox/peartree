@@ -1454,20 +1454,34 @@ export default function MembershipSignupPage() {
                     </div>
 
                     <div>
-                      <Label htmlFor="sortCode">Sort Code *</Label>
-                      <Input
+                                  <Label htmlFor="sortCode">Sort Code *</Label>
+                      // inside your component (above the return)
+const handleSortCodeChange = (raw: string) => {
+  // keep digits only, max 6
+  const digits = raw.replace(/\D/g, '').slice(0, 6);
+  // format to 12-34-56 progressively
+  const withDashes = digits
+    .replace(/(\d{2})(\d)/, '$1-$2')
+    .replace(/(\d{2}-\d{2})(\d)/, '$1-$2');
+  setFormData((p) => ({ ...p, sortCode: withDashes }));
+};
+                   <Input
   id="sortCode"
   type="text"
   inputMode="numeric"
-  pattern="[0-9\\-]*"   // escaped hyphen ✅
+  // allow either "123456" or "12-34-56"
+  pattern="^(\\d{6}|\\d{2}-\\d{2}-\\d{2})$"
+  title="Enter 123456 or 12-34-56"
   value={formData.sortCode}
   onChange={(e) => handleSortCodeChange(e.target.value)}
   placeholder="12-34-56"
-  maxLength={8}
+  maxLength={8}               // 6 digits + 2 dashes
   className="mt-1 font-mono"
   autoComplete="off"
   spellCheck={false}
 />
+
+
                       <p className="text-xs text-gray-500 mt-1">Format: XX-XX-XX</p>
                     </div>
 
