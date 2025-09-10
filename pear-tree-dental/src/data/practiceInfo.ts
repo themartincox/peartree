@@ -1,17 +1,23 @@
 // Central source of truth for practice information
 export const practiceInfo = {
-  name: "Pear Tree Dental",
+  name: "Pear Tree Dental", // Short name for general use
+  nameLong: "Pear Tree Dental Centre", // Official name for schemas
   address: {
-    street: "22 Nottingham Road",
+    street: "22 Nottingham Rd",
     city: "Burton Joyce",
     county: "Nottingham",
     postcode: "NG14 5AE",
-    full: "22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE"
+    full: "22 Nottingham Rd, Burton Joyce, Nottingham NG14 5AE"
   },
   contact: {
     phone: "0115 931 2935",
+    phoneInternational: "+441159312935", // E.164 format for schemas
     email: "hello@peartree.dental",
     emergencyPhone: "0115 931 2935"
+  },
+  geo: {
+    latitude: "52.9873", // Corrected coordinates
+    longitude: "-1.0454" // Corrected coordinates
   },
   openingHours: [
     { day: "Monday", hours: "8:45 AM - 5:00 PM", isOpen: true, emergency: false },
