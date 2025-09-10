@@ -1456,18 +1456,18 @@ export default function MembershipSignupPage() {
                     <div>
                       <Label htmlFor="sortCode">Sort Code *</Label>
                       <Input
-                        id="sortCode"
-                        type="text"
-                        inputMode="numeric"
-                        pattern="[0-9-]*"
-                        value={formData.sortCode}
-                        onChange={(e) => handleSortCodeChange(e.target.value)}
-                        placeholder="12-34-56"
-                        maxLength={8}
-                        className="mt-1 font-mono"
-                        autoComplete="off"
-                        spellCheck={false}
-                      />
+  id="sortCode"
+  type="text"
+  inputMode="numeric"
+  pattern="[0-9\\-]*"   // escaped hyphen ✅
+  value={formData.sortCode}
+  onChange={(e) => handleSortCodeChange(e.target.value)}
+  placeholder="12-34-56"
+  maxLength={8}
+  className="mt-1 font-mono"
+  autoComplete="off"
+  spellCheck={false}
+/>
                       <p className="text-xs text-gray-500 mt-1">Format: XX-XX-XX</p>
                     </div>
 
