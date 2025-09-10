@@ -10,6 +10,7 @@ import {
   fetchPriorityLocations,
   contentfulHealthCheck
 } from '@/lib/contentful';
+import { getAllLocationSlugs } from '@/data/locationData';
 
 // Helper function to safely convert dates to ISO string
 const toISO = (input?: string | number | Date) => {
@@ -73,6 +74,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return baseUrls;
   }
 
+  // Add new dynamic location pages from locationData.ts
+  const locationSlugs = getAllLocationSlugs();
+  const staticLocationUrls = locationSlugs.map(slug => ({
+    url: `https://peartree.dental/location/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   try {
     // Fetch content based on GENERATION_MODE
     const mode = process.env.GENERATION_MODE || 'priority';
@@ -89,6 +99,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Dynamic generation based on mode
     const serviceLocationUrls: MetadataRoute.Sitemap = [];
     const blogServiceSuburbUrls: MetadataRoute.Sitemap = [];
+    const dynamicLocationServiceUrls: MetadataRoute.Sitemap = [];
 
     if (mode === 'priority') {
       // Only include priority services and locations
@@ -116,6 +127,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           // Add canonical blog/service/suburb URLs
           blogServiceSuburbUrls.push({
             url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add new /locations/{location}/{service} URLs
+          dynamicLocationServiceUrls.push({
+            url: `https://peartree.dental/locations/${location.fields.slug}/${service.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -150,6 +169,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           // Add canonical blog/service/suburb URLs
           blogServiceSuburbUrls.push({
             url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
+
+          // Add new /locations/{location}/{service} URLs
+          dynamicLocationServiceUrls.push({
+            url: `https://peartree.dental/locations/${location.fields.slug}/${service.fields.slug}`,
             lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.6,
@@ -196,12 +223,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly' as const,
             priority: 0.6,
           });
+
+          // Add new /locations/{location}/{service} URLs
+          dynamicLocationServiceUrls.push({
+            url: `https://peartree.dental/locations/${location.fields.slug}/${service.fields.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+          });
         }
       }
     }
 
-    // Combine all URLs - /near-me routes are deliberately excluded from the sitemap
-    return [...baseUrls, ...blogUrls, ...serviceLocationUrls, ...blogServiceSuburbUrls];
+    // Combine all URLs
+    return [...baseUrls, ...staticLocationUrls, ...blogUrls, ...serviceLocationUrls, ...blogServiceSuburbUrls, ...dynamicLocationServiceUrls];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     return baseUrls;
