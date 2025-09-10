@@ -94,7 +94,7 @@ const nurses = [
   {
     name: "Madiyah Qadeer",
     role: "Dental Nurse",
-    image: "/images/team/madiyah-qadeer.webp"
+    image: "https://ext.same-assets.com/523564123/2850927388.jpeg"
   },
   {
     name: "Caitlin Swinscoe",
@@ -114,7 +114,7 @@ const nurses = [
   {
     name: "Sarah Simpson",
     role: "Apprentice Dental Nurse",
-    image: "/images/team/sarah-simpson.webp"
+    image: "https://ext.same-assets.com/523564123/1195986396.jpeg"
   }
 ];
 
