@@ -1453,21 +1453,42 @@ export default function MembershipSignupPage() {
                       />
                     </div>
 
-                    <div>
-                      <Label htmlFor="sortCode">Sort Code *</Label>
-                      <Input
-                        id="sortCode"
-                        type="text"
-                        inputMode="numeric"
-                        pattern="[0-9-]*"
-                        value={formData.sortCode}
-                        onChange={(e) => handleSortCodeChange(e.target.value)}
-                        placeholder="12-34-56"
-                        maxLength={8}
-                        className="mt-1 font-mono"
-                        autoComplete="off"
-                        spellCheck={false}
-                      />
+                    // ...imports...
+export default function SignupPage() {
+  // state/hooks here
+  // const [formData, setFormData] = useState({ sortCode: "" /* ... */ });
+
+  // ✅ define handlers OUTSIDE JSX (above return)
+  const handleSortCodeChange = (raw: string) => {
+    const digits = raw.replace(/\D/g, "").slice(0, 6);
+    const withDashes = digits
+      .replace(/(\d{2})(\d)/, "$1-$2")
+      .replace(/(\d{2}-\d{2})(\d)/, "$1-$2");
+    setFormData((p) => ({ ...p, sortCode: withDashes }));
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
+      <Label htmlFor="sortCode">Sort Code *</Label>
+      <Input
+        id="sortCode"
+        type="text"
+        inputMode="numeric"
+        pattern="^(\\d{6}|\\d{2}-\\d{2}-\\d{2})$"   {/* allow 123456 or 12-34-56 */}
+        title="Enter 123456 or 12-34-56"
+        value={formData.sortCode}
+        onChange={(e) => handleSortCodeChange(e.target.value)}
+        placeholder="12-34-56"
+        maxLength={8}                                  {/* 6 digits + 2 dashes */}
+        className="mt-1 font-mono"
+        autoComplete="off"
+        spellCheck={false}
+      />
+      {/* …rest of your form… */}
+    </div>
+  );
+}
+
                       <p className="text-xs text-gray-500 mt-1">Format: XX-XX-XX</p>
                     </div>
 
