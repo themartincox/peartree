@@ -86,7 +86,7 @@ export default function ClientGoogleReviews() {
   // This will be a floating widget that follows as you scroll
   return (
     <div
-      className={`fixed z-50 shadow-md hover:shadow-lg reviews-widget-wrapper right-6 bg-opacity-80 hover:bg-opacity-100 bg-white rounded-xl border border-pear-primary transition-all duration-500 transform ${
+      className={`fixed z-50 shadow-md hover:shadow-lg reviews-widget-wrapper right-6 bg-opacity-80 hover:bg-opacity-100 bg-white rounded-xl border border-gray-200 transition-all duration-500 transform ${
         isHidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       }`}
       style={{ top: headerHeight ? `${headerHeight + 10}px` : '100px' }}
