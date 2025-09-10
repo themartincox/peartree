@@ -52,23 +52,16 @@ export const metadata: Metadata = {
   }
 };
 
-// Fallback values in case data is undefined
-const reviewStats = {
-  averageRating: googleReviewsStats?.averageRating || 5.0,
-  totalReviews: googleReviewsStats?.totalReviews || 450,
-  fiveStarCount: googleReviewsStats?.fiveStarCount || 428
-};
-
 const stats = [
   {
     icon: Star,
-    value: `${reviewStats.averageRating}/5`,
+    value: `${googleReviewsStats.averageRating}/5`,
     label: "Google Rating",
-    detail: `From ${reviewStats.totalReviews}+ reviews`
+    detail: `From ${googleReviewsStats.totalReviews}+ reviews`
   },
   {
     icon: ThumbsUp,
-    value: `${reviewStats.fiveStarCount}`,
+    value: `${googleReviewsStats.fiveStarCount}`,
     label: "5-Star Reviews",
     detail: "95% of all reviews"
   },
@@ -96,9 +89,6 @@ export default function TestimonialsPage() {
     ));
   };
 
-  // Ensure we have reviews data or use an empty array as fallback
-  const reviews = googleReviews || [];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
       {/* Enhanced SEO Schema */}
@@ -121,8 +111,8 @@ export default function TestimonialsPage() {
           "Individual experiences may vary",
           "Results depend on individual circumstances"
         ]}
-        rating={reviewStats.averageRating}
-        reviewCount={reviewStats.totalReviews}
+        rating={googleReviewsStats.averageRating}
+        reviewCount={googleReviewsStats.totalReviews}
         url="https://peartree.dental/testimonials"
         procedureType="Service"
       />
@@ -140,7 +130,7 @@ export default function TestimonialsPage() {
                 />
                 Google Reviews
               </Badge>
-
+             
             </div>
 
             <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary mb-6">
@@ -180,11 +170,33 @@ export default function TestimonialsPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-
+              
             </div>
           </div>
         </div>
       </section>
+
+      {/* Filter Notice - Commented out for later use */}
+      {/*
+      <section className="py-8 bg-gradient-to-r from-yellow-50 to-blue-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <Filter className="w-5 h-5 text-yellow-500" />
+                <span className="font-semibold text-pear-primary">Filtered Results</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                {renderStars(5)}
+                <span className="text-sm text-gray-600 ml-2">
+                  Showing only 5-star Google reviews ({googleReviewsStats.fiveStarCount} of {googleReviewsStats.totalReviews} total reviews)
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      */}
 
       {/* Google Reviews Grid */}
       <section className="py-16">
@@ -199,7 +211,7 @@ export default function TestimonialsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {reviews.map((review) => (
+            {googleReviews.map((review) => (
               <Card key={review.id} className="hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white/90">
                 <CardContent className="p-6">
                   {/* Google Header */}
@@ -280,7 +292,7 @@ export default function TestimonialsPage() {
                 rel="noopener noreferrer"
               >
                 <ExternalLink className="w-5 h-5 mr-2" />
-                View All {reviewStats.totalReviews}+ Reviews on Google
+                View All {googleReviewsStats.totalReviews}+ Reviews on Google
               </a>
             </Button>
           </div>
@@ -344,7 +356,7 @@ export default function TestimonialsPage() {
                 Experience 5-Star Dental Care
               </h2>
               <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                Join the {reviewStats.fiveStarCount}+ patients who've given us 5-star reviews.
+                Join the {googleReviewsStats.fiveStarCount}+ patients who've given us 5-star reviews.
                 Book your consultation today and discover why we're Burton Joyce's top-rated dental practice.
               </p>
 
