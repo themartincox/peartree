@@ -7,7 +7,7 @@ interface OpenTodayProps {
 }
 
 export default async function OpenToday({ reviewsCount = 500, rating = 4.9 }: OpenTodayProps) {
-  const h = headers()
+  const h = await headers()
   const city = h.get('x-peartree-city') || 'your area'
 
   // Determine if we're open now
