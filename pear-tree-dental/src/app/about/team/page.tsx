@@ -30,7 +30,7 @@ const principals = [
     role: "Principal Dentist",
     gdc: "290378",
     image: "https://ext.same-assets.com/523564123/2131251075.jpeg",
-    description: "With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques."
+    description: "Dual qualified as both Doctor and Dentist, Javaad has a whole-body holistic outlook towards oral care. With extensive experience in comprehensive dental care, Javaad leads our practice with a commitment to the highest standards of patient care and modern dental techniques."
   },
   {
     name: "Imrana Ishaque",
