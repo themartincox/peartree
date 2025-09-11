@@ -21,7 +21,7 @@ import OpenToday from '@/components/cohort/OpenToday'
 import PriceExplainer from '@/components/cohort/PriceExplainer'
 import IntentSurvey from '@/components/cohort/IntentSurvey'
 import ChangeArea from '@/components/cohort/ChangeArea'
-import ExitIntent from '@/components/cohort/ExitIntent'
+// import ExitIntent from '@/components/cohort/ExitIntent' // Removed import
 import StructuredData from '@/components/seo/StructuredData'
 import { ServiceEntry, LocationEntry } from '@/types/contentful'
 
@@ -240,7 +240,6 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
           emergency={serviceSlug === 'emergency-dentist'}
         />
 
-        <ExitIntent serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
       </div>
     )
   } catch (error) {
