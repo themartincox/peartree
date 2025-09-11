@@ -58,7 +58,7 @@ function setUserId(): void {
   }
 }
 
-// Simple tracking function that sends events to our API
+// Simple tracking function that sends events to Simple Analytics
 export function trackEvent(event: string, data?: Record<string, any>) {
   try {
     // Don't track during SSR
@@ -83,12 +83,13 @@ export function trackEvent(event: string, data?: Record<string, any>) {
       }
     };
 
-    // Send to our API endpoint
-    fetch('/api/track', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(trackingEvent),
-    });
+    // Send to Simple Analytics if available, otherwise log to console
+    if (typeof window !== 'undefined' && typeof (window as any).sa_event === 'function') {
+      (window as any).sa_event(trackingEvent.event, trackingEvent.data);
+    } else {
+      console.log('[TrackingEvent]', trackingEvent.event, trackingEvent.data);
+    }
+
   } catch (e) {
     console.error('Tracking error:', e);
   }
@@ -110,64 +111,14 @@ function startPageTimeTracking(): () => void {
   };
 }
 
-// Update page depth cookie
-function updatePageDepth(): void {
-  try {
-    const currentDepthStr = document.cookie.split('; ')
-      .find(row => row.startsWith('pt_page_depth='))
-      ?.split('=')[1] || '0';
-
-    const currentDepth = Number.parseInt(currentDepthStr, 10) || 0;
-    const newDepth = currentDepth + 1;
-
-    // Set cookie with 30-day expiry
-    document.cookie = `pt_page_depth=${newDepth}; path=/; max-age=2592000`;
-  } catch (e) {
-    console.error('Error updating page depth:', e);
-  }
-}
-
-// Update visit count cookie
-function updateVisitCount(): void {
-  try {
-    // Check if this is a new session
-    const lastVisitStr = document.cookie.split('; ')
-      .find(row => row.startsWith('pt_last_visit='))
-      ?.split('=')[1];
-
-    const visitCountStr = document.cookie.split('; ')
-      .find(row => row.startsWith('pt_visit_count='))
-      ?.split('=')[1] || '0';
-
-    const visitCount = Number.parseInt(visitCountStr, 10) || 0;
-
-    const now = new Date();
-    let newVisitCount = visitCount;
-
-    // If last visit was more than 4 hours ago or no last visit, count as new visit
-    if (!lastVisitStr || (now.getTime() - new Date(lastVisitStr).getTime() > 4 * 60 * 60 * 1000)) {
-      newVisitCount = visitCount + 1;
-      // If they've visited at least twice, set a user ID
-      if (newVisitCount >= 2) {
-        setUserId();
-      }
-    }
-
-    // Set cookies with 1 year expiry
-    document.cookie = `pt_visit_count=${newVisitCount}; path=/; max-age=31536000`;
-    document.cookie = `pt_last_visit=${now.toISOString()}; path=/; max-age=31536000`;
-    document.cookie = `pt_returning=1; path=/; max-age=31536000`;
-  } catch (e) {
-    console.error('Error updating visit count:', e);
-  }
-}
-
 // Enhanced tracking provider
 export default function TrackingProvider({ children }: { children: React.ReactNode }) {
+  console.log('[TrackingProvider] Component rendering...'); // Added for debugging
   useEffect(() => {
-    // Update cookies and track page view on mount
-    updatePageDepth();
-    updateVisitCount();
+    // Explicitly check for Simple Analytics availability
+    if (typeof window !== 'undefined') {
+      console.log('[TrackingProvider] window.sa_event available:', typeof (window as any).sa_event === 'function');
+    }
 
     // Track page view
     trackEvent('page_view', {

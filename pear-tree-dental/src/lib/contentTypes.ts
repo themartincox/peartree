@@ -8,7 +8,7 @@ export const FAQ_TYPE = 'faq';
 export const LOCATION_TYPE = 'locationData';
 export const BLOG_POST_TYPE = 'pageBlogPost';
 export const LANDING_PAGE_TYPE = 'pageLanding';
-export const SERVICE_TYPE = 'serviceData';
+export const SERVICE_TYPE = 'serviceDataserviceData';
 export const TESTIMONIAL_TYPE = 'testimonial';
 
 // Default limits for API calls

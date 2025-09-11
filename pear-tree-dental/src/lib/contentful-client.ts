@@ -425,7 +425,7 @@ export async function fetchBlogPosts(): Promise<BlogPostEntry[]> {
     // First try to fetch with the configured content type
     let response = await client.getEntries({
       content_type: blogPostTypeId,
-      order: '-fields.publishDate',
+      order: '-fields.publishedDate',
       limit: 100,
     }).catch(error => {
       console.warn(`Error fetching blog posts with type '${blogPostTypeId}': ${error.message}`);
@@ -437,7 +437,7 @@ export async function fetchBlogPosts(): Promise<BlogPostEntry[]> {
       console.warn(`No blog posts found with type '${blogPostTypeId}', trying fallback 'blogPost'`);
       response = await client.getEntries({
         content_type: 'blogPost',
-        order: '-fields.publishDate',
+        order: '-fields.publishedDate',
         limit: 100,
       }).catch(() => ({ items: [] }));
     }

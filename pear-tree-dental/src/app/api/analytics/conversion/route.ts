@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Log conversion for analysis (in production, you'd send to your analytics service)
+    // Log conversion for analysis
     console.log('[Analytics] Conversion Event:', {
       type: conversionEvent.event_type,
       location: conversionEvent.metadata?.detected_location,
@@ -32,18 +32,12 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // In production, you would:
-    // 1. Send to Google Analytics 4
-    // 2. Send to your CRM (HubSpot, Salesforce, etc.)
-    // 3. Store in your database for analysis
-    // 4. Trigger marketing automation if high-value conversion
-
     // For high-value conversions, you might want to:
     if (shouldTriggerAlert(conversionEvent)) {
       await triggerHighValueAlert(conversionEvent);
     }
 
-    // Store in simple analytics log (you'd use a proper database in production)
+    // Store conversion event in your custom database (e.g., PostgreSQL, ClickHouse, BigQuery)
     await storeConversionEvent(conversionEvent);
 
     return NextResponse.json(
@@ -99,7 +93,7 @@ async function triggerHighValueAlert(event: ConversionEvent) {
   }
 }
 
-// Store conversion event (use proper database in production)
+// Store conversion event in your custom database
 async function storeConversionEvent(event: ConversionEvent) {
   try {
     // In production, store in your database:

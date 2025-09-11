@@ -30,10 +30,24 @@ export function sanitizeTextInput(input: string): string {
     .replace(/<[^>]*>/g, '')
     // Remove SQL injection patterns
     .replace(/('|(\\')|(;)|(--)|(\s(OR|AND)\s))/gi, '')
-    // Remove dangerous characters
-    .replace(/[<>"'\\&]/g, '')
-    // Normalize whitespace
-    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Sanitizes name and address input to allow spaces and common characters,
+ * while still preventing XSS and basic injection attacks.
+ */
+export function sanitizeNameAndAddressInput(input: string): string {
+  if (typeof input !== 'string') return '';
+
+  return input
+    // Remove HTML tags and script content
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<[^>]*>/g, '')
+    // Remove basic SQL injection patterns (more lenient than general text)
+    .replace(/('|(--))/gi, '')
+    // Allow letters, numbers, spaces, and common punctuation for addresses
+    .replace(/[^a-zA-Z0-9\s.,\-\/#]/g, '')
     .trim();
 }
 
@@ -148,7 +162,7 @@ export function validateAndSanitizeName(name: string, fieldName = 'Name'): { isV
     return { isValid: false, sanitized: '', error: `${fieldName} is required` };
   }
 
-  const sanitized = sanitizeTextInput(name);
+  const sanitized = sanitizeNameAndAddressInput(name);
 
   if (sanitized.length < 1) {
     return { isValid: false, sanitized: '', error: `${fieldName} is required` };
@@ -266,7 +280,7 @@ export function validateMembershipForm(data: any): ValidationResult {
   if (!data.address || typeof data.address !== 'string') {
     errors.address = 'Address is required';
   } else {
-    const sanitizedAddress = sanitizeTextInput(data.address);
+    const sanitizedAddress = sanitizeNameAndAddressInput(data.address);
     if (sanitizedAddress.length < 10) {
       errors.address = 'Please provide a complete address';
     } else if (sanitizedAddress.length > 200) {

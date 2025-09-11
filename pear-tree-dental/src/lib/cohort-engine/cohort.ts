@@ -6,7 +6,7 @@ export type TimeOfDay = 'morning' | 'afternoon' | 'evening' | 'night'
 export type ReferrerType = 'Direct' | 'Search' | 'Paid' | 'Social' | 'Email' | 'Other'
 export type UserIntent = 'emergency' | 'research' | 'booking' | 'price-shopping' | 'unknown'
 export type CtaType = 'call' | 'book' | 'membership' | 'chat' | 'contact' | 'appointment'
-export type VisitorStatus = 'new' | 'returning' | 'frequent'
+// export type VisitorStatus = 'new' | 'returning' | 'frequent' // Removed
 
 export interface Cohort {
   // Location data
@@ -23,9 +23,9 @@ export interface Cohort {
 
   // Traffic source & behavior
   referrer: ReferrerType
-  visitorStatus: VisitorStatus
+  // visitorStatus: VisitorStatus // Removed
   intentSignals: UserIntent
-  pageDepth: number
+  // pageDepth: number // Removed
 
   // Time and distance estimates
   travelTime?: string | null
@@ -38,37 +38,16 @@ export interface Cohort {
   emergency: boolean
 }
 
-// Extract page depth from cookies
-function getPageDepth(c: ReturnType<typeof cookies>): number {
-  const depthCookie = c.get('pt_page_depth')
-  if (!depthCookie) return 1
-  const depth = Number.parseInt(depthCookie.value, 10)
-  return isNaN(depth) ? 1 : depth
-}
-
-// Determine visitor status from cookies
-function getVisitorStatus(c: ReturnType<typeof cookies>): VisitorStatus {
-  const visitCountCookie = c.get('pt_visit_count')
-  const lastVisitCookie = c.get('pt_last_visit')
-
-  if (!visitCountCookie) return 'new'
-
-  const visitCount = Number.parseInt(visitCountCookie.value, 10)
-  if (isNaN(visitCount)) return 'new'
-
-  if (visitCount >= 5) return 'frequent'
-  if (visitCount >= 1) return 'returning'
-  return 'new'
-}
+// Removed getPageDepth and getVisitorStatus functions
 
 // Infer user intent from behavior signals
 function inferUserIntent(params: {
   path: string,
   referrer: ReferrerType,
   searchParams: URLSearchParams,
-  visitorStatus: VisitorStatus
+  // visitorStatus: VisitorStatus // Removed
 }): UserIntent {
-  const { path, referrer, searchParams, visitorStatus } = params
+  const { path, referrer, searchParams } = params // Removed visitorStatus
 
   // Emergency indicators
   if (
@@ -83,8 +62,8 @@ function inferUserIntent(params: {
   if (
     path.includes('book') ||
     path.includes('appointment') ||
-    searchParams.get('book') === 'true' ||
-    visitorStatus === 'frequent'
+    searchParams.get('book') === 'true'
+    // || visitorStatus === 'frequent' // Removed
   ) {
     return 'booking'
   }
@@ -103,8 +82,8 @@ function inferUserIntent(params: {
   // Research
   if (
     referrer === 'Search' ||
-    referrer === 'Social' ||
-    visitorStatus === 'new'
+    referrer === 'Social'
+    // || visitorStatus === 'new' // Removed
   ) {
     return 'research'
   }
@@ -114,7 +93,7 @@ function inferUserIntent(params: {
 
 export async function getCohort(): Promise<Cohort> {
   const h = headers()
-  const c = cookies()
+  const c = cookies() // Still need cookies for now, but will remove usage
   const ref = (h.get('x-peartree-referrer') || 'Direct').toLowerCase()
   const url = new URL(h.get('x-url') || 'https://peartree.dental')
   const path = url.pathname.toLowerCase()
@@ -129,11 +108,7 @@ export async function getCohort(): Promise<Cohort> {
     : ref === 'direct' ? 'Direct'
     : 'Other'
 
-  // Get visitor status
-  const visitorStatus = getVisitorStatus(c)
-
-  // Get page depth
-  const pageDepth = getPageDepth(c)
+  // Removed visitorStatus and pageDepth logic
 
   // Determine weekday
   const now = new Date()
@@ -162,7 +137,7 @@ export async function getCohort(): Promise<Cohort> {
     path,
     referrer,
     searchParams,
-    visitorStatus
+    // visitorStatus // Removed
   })
 
   // Build the cohort
@@ -181,9 +156,9 @@ export async function getCohort(): Promise<Cohort> {
 
     // Traffic source & behavior
     referrer,
-    visitorStatus,
+    // visitorStatus, // Removed
     intentSignals,
-    pageDepth,
+    // pageDepth, // Removed
 
     // Time and distance estimates
     travelTime: h.get('x-peartree-travel-time'),
@@ -233,10 +208,10 @@ export function chooseCtas(opts: {
         return ['book', 'call', 'contact']
       }
 
-      // Frequent visitors get membership options higher
-      if (cohort.visitorStatus === 'frequent') {
-        return ['book', 'membership', 'call']
-      }
+      // Removed visitorStatus logic
+      // if (cohort.visitorStatus === 'frequent') {
+      //   return ['book', 'membership', 'call']
+      // }
 
       // Mobile outside office hours prioritizes call
       if (cohort.device === 'mobile' && !cohort.officeOpen) {
@@ -270,9 +245,10 @@ export function getContextualMessage(cohort: Cohort): string | null {
     return `We're currently closed, but you can book online for tomorrow.`
   }
 
-  if (cohort.visitorStatus === 'returning') {
-    return `Welcome back! How can we help you today?`
-  }
+  // Removed visitorStatus logic
+  // if (cohort.visitorStatus === 'returning') {
+  //   return `Welcome back! How can we help you today?`
+  // }
 
   return `Hello ${cohort.city}! How can we help you today?`
 }

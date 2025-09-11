@@ -381,6 +381,53 @@ export default function MembershipSignupPage() {
         return;
       }
 
+      // Generate PDFs
+      const patientInfo = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        planName: currentPlan.name,
+        planPrice: currentPlan.price,
+        dentistName: formData.isExistingPatient === 'yes'
+          ? formData.preferredDentist
+          : (formData.dentistGenderPreference === 'no-preference'
+            ? 'To be assigned based on availability'
+            : `${formData.dentistGenderPreference?.charAt(0).toUpperCase()}${formData.dentistGenderPreference?.slice(1)} dentist (to be assigned)`),
+        partnerFirstName: selectedPlan === 'family' ? formData.partnerFirstName : '',
+        partnerLastName: selectedPlan === 'family' ? formData.partnerLastName : '',
+        partnerDentistName: selectedPlan === 'family'
+          ? (formData.partnerIsExistingPatient === 'yes'
+            ? formData.partnerPreferredDentist
+            : (formData.partnerDentistGenderPreference === 'no-preference'
+              ? 'To be assigned based on availability'
+              : `${formData.partnerDentistGenderPreference?.charAt(0).toUpperCase()}${formData.partnerDentistGenderPreference?.slice(1)} dentist (to be assigned)`))
+          : '',
+        isFamily: selectedPlan === 'family',
+        isExistingPatient: formData.isExistingPatient,
+        dentistGenderPreference: formData.dentistGenderPreference,
+        accountHolderName: formData.accountHolderName,
+        sortCode: formData.sortCode,
+        accountNumber: formData.accountNumber,
+      };
+
+      const ddGuaranteePdfBlob = await generateDirectDebitGuaranteePDF(patientInfo);
+      const membershipTermsPdfBlob = await generateMembershipTermsPDF(patientInfo);
+
+      const blobToBase64 = (blob: Blob): Promise<string> => {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => {
+            resolve(reader.result as string);
+          };
+          reader.onerror = (error) => {
+            reject(error);
+          };
+        });
+      };
+
+      const ddGuaranteePdfBase64 = await blobToBase64(ddGuaranteePdfBlob);
+      const membershipTermsPdfBase64 = await blobToBase64(membershipTermsPdfBlob);
+
       const response = await fetch('/api/membership/submit', {
         method: 'POST',
         headers: {
@@ -389,7 +436,9 @@ export default function MembershipSignupPage() {
         body: JSON.stringify({
           ...formData,
           selectedPlan,
-          isClinicSignup: isClinicAccess
+          isClinicSignup: isClinicAccess,
+          ddGuaranteePdf: ddGuaranteePdfBase64,
+          membershipTermsPdf: membershipTermsPdfBase64,
         }),
       });
 
@@ -769,11 +818,10 @@ export default function MembershipSignupPage() {
                       <div
                         key={key}
                         onClick={() => setSelectedPlan(key)}
-                        className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
-                          selectedPlan === key
+                        className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all duration-300 ${selectedPlan === key
                             ? `border-${plan.color} bg-gradient-to-br ${plan.gradient} text-white shadow-xl`
-                            : 'border-gray-200 hover:border-gray-300 hover:shadow-md'
-                        } ${plan.popular ? 'transform scale-105' : ''}`}
+                            : 'border-gray-200 hover:border-gray-300 hover:shadow-md'}
+                        ${plan.popular ? 'transform scale-105' : ''}`}
                       >
                         {plan.popular && (
                           <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-dental-green text-white">
@@ -781,9 +829,7 @@ export default function MembershipSignupPage() {
                           </Badge>
                         )}
 
-                        <div className={`text-center mb-4 ${
-                          selectedPlan === key ? 'text-white' : 'text-pear-primary'
-                        }`}>
+                        <div className={`text-center mb-4 ${selectedPlan === key ? 'text-white' : 'text-pear-primary'}`}>
                           <h3 className="font-bold text-lg mb-2">{plan.name}</h3>
                           <div className="text-3xl font-bold">{plan.price}</div>
                           <div className="text-sm opacity-80">{plan.period}</div>
@@ -793,12 +839,8 @@ export default function MembershipSignupPage() {
                         <div className="space-y-2">
                           {plan.features.map((feature, index) => (
                             <div key={index} className="flex items-start space-x-2">
-                              <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${
-                                selectedPlan === key ? 'text-white' : `text-${plan.color}`
-                              }`} />
-                              <span className={`text-sm ${
-                                selectedPlan === key ? 'text-white' : 'text-gray-700'
-                              }`}>
+                              <CheckCircle className={`w-4 h-4 flex-shrink-0 mt-0.5 ${selectedPlan === key ? 'text-white' : `text-${plan.color}`}`} />
+                              <span className={`text-sm ${selectedPlan === key ? 'text-white' : 'text-gray-700'}`}>
                                 {feature}
                               </span>
                             </div>
@@ -871,7 +913,7 @@ export default function MembershipSignupPage() {
                       <Input
                         id="firstName"
                         type="text"
-                        pattern="[A-Za-z\s\-\']*"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.firstName}
                         onChange={(e) => secureHandleInputChange("firstName", e.target.value)}
                         placeholder="Enter your first name"
@@ -887,7 +929,7 @@ export default function MembershipSignupPage() {
                       <Input
                         id="lastName"
                         type="text"
-                        pattern="[A-Za-z\s\-\']*"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.lastName}
                         onChange={(e) => secureHandleInputChange("lastName", e.target.value)}
                         placeholder="Enter your last name"
@@ -1442,7 +1484,7 @@ export default function MembershipSignupPage() {
                       <Input
                         id="accountHolderName"
                         type="text"
-                        pattern="[A-Za-z\s\-\']*"
+                        pattern="[A-Za-z\s\-']*"
                         value={formData.accountHolderName}
                         onChange={(e) => secureHandleInputChange("accountHolderName", e.target.value)}
                         placeholder="Name as it appears on your bank account"
@@ -1453,7 +1495,7 @@ export default function MembershipSignupPage() {
                       />
                     </div>
 
-                      
+                    <div>
                       <Label htmlFor="sortCode">Sort Code *</Label>
                       <Input
                         id="sortCode"
@@ -1469,7 +1511,6 @@ export default function MembershipSignupPage() {
                         autoComplete="off"
                         spellCheck={false}
                       />
-
                       <p className="text-xs text-gray-500 mt-1">Format: XX-XX-XX</p>
                     </div>
 
@@ -1479,7 +1520,7 @@ export default function MembershipSignupPage() {
                         id="accountNumber"
                         type="text"
                         inputMode="numeric"
-                        pattern="^\d{6,8}$"
+                        pattern="^\\d{6,8}$"
                         value={formData.accountNumber}
                         onChange={(e) => handleAccountNumberChange(e.target.value)}
                         placeholder="12345678"
@@ -1693,9 +1734,7 @@ export default function MembershipSignupPage() {
                       >
                         <p className="text-blue-800 font-medium">Before you join, here are 5 key things to know about your membership:</p>
                         <ChevronDown
-                          className={`w-5 h-5 text-blue-800 transition-transform duration-200 ${
-                            isKeyThingsExpanded ? 'rotate-180' : ''
-                          }`}
+                          className={`w-5 h-5 text-blue-800 transition-transform duration-200 ${isKeyThingsExpanded ? 'rotate-180' : ''}`}
                         />
                       </div>
 

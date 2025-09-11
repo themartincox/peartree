@@ -408,7 +408,9 @@ export async function POST(request: NextRequest) {
       accountHolderName: sanitizedData.accountHolderName,
       familyMembers: sanitizedData.familyMembers || [],
       isClinicSignup: sanitizedData.isClinicSignup || false,
-      staffMemberName: sanitizedData.staffMemberName || ''
+      staffMemberName: sanitizedData.staffMemberName || '',
+      ddGuaranteePdf: sanitizedData.ddGuaranteePdf,
+      membershipTermsPdf: sanitizedData.membershipTermsPdf,
     };
 
     // ✅ TRY TO SEND EMAIL (but don't fail the whole thing if email fails)
