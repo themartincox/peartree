@@ -25,18 +25,24 @@ export function getEntryField<T>(entry: any, fieldName: string): T | undefined {
 
 // Use the real implementations from contentful-client.ts
 export async function fetchServiceBySlug(slug: string): Promise<ServiceEntry | null> {
-  console.log(`Fetching service: ${slug}`);
-  return clientFetchServiceBySlug(slug);
+  console.log(`[Contentful] Fetching service: ${slug}`);
+  const result = await clientFetchServiceBySlug(slug);
+  console.log(`[Contentful] Service '${slug}' result:`, result ? 'found' : 'not found');
+  return result;
 }
 
 export async function fetchLocationBySlug(slug: string): Promise<LocationEntry | null> {
-  console.log(`Fetching location: ${slug}`);
-  return clientFetchLocationBySlug(slug);
+  console.log(`[Contentful] Fetching location: ${slug}`);
+  const result = await clientFetchLocationBySlug(slug);
+  console.log(`[Contentful] Location '${slug}' result:`, result ? 'found' : 'not found');
+  return result;
 }
 
 export async function fetchBlogTemplate(): Promise<Entry<any> | null> {
-  console.log('Fetching blog template');
-  return clientFetchBlogTemplate();
+  console.log('[Contentful] Fetching blog template');
+  const result = await clientFetchBlogTemplate();
+  console.log('[Contentful] Blog template result:', result ? 'found' : 'not found');
+  return result;
 }
 
 export async function fetchAllServices(): Promise<ServiceEntry[]> {
@@ -96,7 +102,7 @@ export function replacePlaceholdersInRichText(
       let newValue = node.value;
 
       for (const [key, value] of Object.entries(replacements)) {
-        const regex = new RegExp(`\\{\\{\\s*${key}\\s*\\}\\}`, 'gi');
+        const regex = new RegExp(`\\{\\{ \s*${key}\s* \\}\}`, 'gi');
         newValue = newValue.replace(regex, value);
       }
 

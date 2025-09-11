@@ -92,7 +92,7 @@ function inferUserIntent(params: {
 }
 
 export async function getCohort(): Promise<Cohort> {
-  const h = headers()
+  const h = await headers()
   const c = cookies() // Still need cookies for now, but will remove usage
   const ref = (h.get('x-peartree-referrer') || 'Direct').toLowerCase()
   const url = new URL(h.get('x-url') || 'https://peartree.dental')
@@ -122,8 +122,6 @@ export async function getCohort(): Promise<Cohort> {
   if (blogMatch) {
     currentService = blogMatch[1]
     currentLocation = blogMatch[2]
-  } else if (path.startsWith('/near-me/')) {
-    currentService = path.split('/')[2]
   }
 
   // Determine if this is an emergency context

@@ -2,15 +2,31 @@
 const nextConfig = {
   // Essential image configuration for Netlify
   images: {
-    domains: [
-      'source.unsplash.com',
-      'images.unsplash.com',
-      'ext.same-assets.com',
-      'ugc.same-assets.com',
-      'images.ctfassets.net', // Contentful images
-    ],
+    // domains: [
+    //   'source.unsplash.com',
+    //   'images.unsplash.com',
+    //   'ext.same-assets.com',
+    //   'ugc.same-assets.com',
+    //   'images.ctfassets.net', // Contentful images
+    // ],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'source.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ext.same-assets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'ugc.same-assets.com',
+      },
       {
         protocol: 'https',
         hostname: 'images.ctfassets.net',
@@ -32,6 +48,7 @@ const nextConfig = {
   },
 
   // External packages that need to be transpiled
+  transpilePackages: ['framer-motion'],
   serverExternalPackages: ['sharp', 'contentful'],
 
   // Webpack configuration

@@ -95,29 +95,19 @@ export async function generateStaticParams() {
     const healthy = await contentfulHealthCheck()
     if (!healthy) return []
 
-    // Only prebuild the top slice (fast builds)
+    // Prebuild all possible combinations
     const [allServices, allLocations] = await Promise.all([fetchAllServices(), fetchAllLocations()])
 
-    const s = allServices.filter(svc => {
-      const slug = getEntryField<string>(svc, 'slug')
-      return slug && INDEX_PRIORITY_SERVICES.includes(slug.toLowerCase())
-    })
-
-    const l = allLocations.filter(loc => {
-      const slug = getEntryField<string>(loc, 'slug')
-      return slug && INDEX_ALLOWLIST_SUBURBS.includes(slug.toLowerCase())
-    })
-
     const params: { service: string; suburb: string }[] = []
-    for (const svc of s) {
+    for (const svc of allServices) {
       const sSlug = getEntryField<string>(svc, 'slug') ?? ''
-      for (const loc of l) {
+      for (const loc of allLocations) {
         const lSlug = getEntryField<string>(loc, 'slug') ?? ''
         params.push({ service: sSlug, suburb: lSlug })
       }
     }
 
-    console.log(`Prebuilding ${params.length} priority service/suburb combinations`);
+    console.log(`Prebuilding ${params.length} service/suburb combinations for Full SSG`);
     return params
   } catch (err) {
     console.error('generateStaticParams error', err)

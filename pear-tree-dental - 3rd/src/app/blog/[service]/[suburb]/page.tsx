@@ -1,4 +1,3 @@
-// src/app/blog/(programmatic)/[service]/[suburb]/page.tsx
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import {
@@ -22,7 +21,7 @@ import OpenToday from '@/components/cohort/OpenToday'
 import PriceExplainer from '@/components/cohort/PriceExplainer'
 import IntentSurvey from '@/components/cohort/IntentSurvey'
 import ChangeArea from '@/components/cohort/ChangeArea'
-import ExitIntent from '@/components/cohort/ExitIntent'
+// import ExitIntent from '@/components/cohort/ExitIntent' // Removed import
 import StructuredData from '@/components/seo/StructuredData'
 import { ServiceEntry, LocationEntry } from '@/types/contentful'
 
@@ -31,9 +30,9 @@ type RouteParams = { service: string; suburb: string }
 export async function generateMetadata(
   { params, searchParams }: { params: RouteParams; searchParams: { [key: string]: string | string[] | undefined } }
 ): Promise<Metadata> {
-  const { service: serviceSlug, suburb } = params
+  const { service: serviceSlug, suburb } = await params
   // Check if this is an ad mode page
-  const adMode = isAdMode(searchParams ? new URLSearchParams(Object.entries(searchParams).map(([k, v]) => [k, String(v)])) : null)
+  const adMode = isAdMode(searchParams ? new URLSearchParams(Object.entries(await searchParams).map(([k, v]) => [k, String(v)])) : null)
 
   const fallback: Metadata = {
     title: 'Pear Tree Dental — Professional Dental Care',
@@ -131,7 +130,7 @@ export const dynamicParams = true;
 export const revalidate = 3600; // 1 hour
 
 export default async function ServiceSuburbPage({ params }: { params: RouteParams }) {
-  const { service: serviceSlug, suburb: suburbSlug } = params
+  const { service: serviceSlug, suburb: suburbSlug } = await params
 
   try {
     // Fetch all required data
@@ -222,25 +221,6 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
           locationSlug={suburbSlug}
         />
 
-        <div className="mt-8 bg-gray-100 p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4">Why Choose Pear Tree Dental for {serviceName} in {suburbName}?</h2>
-          <p>We offer personalized {serviceName} treatments for patients in {suburbName} and surrounding areas.</p>
-
-          {getEntryField<any[]>(location, 'localTestimonials')?.length > 0 && (
-            <div className="mt-4">
-              <h3 className="text-lg font-medium mb-2">What Our {suburbName} Patients Say</h3>
-              <div className="space-y-3">
-                {getEntryField<any[]>(location, 'localTestimonials')?.slice(0, 2).map((testimonial, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded shadow-sm">
-                    <p className="italic">{getEntryField<string>(testimonial, 'text')}</p>
-                    <p className="text-right text-sm mt-2">— {getEntryField<string>(testimonial, 'author')}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
         {process.env.NODE_ENV === 'development' && (
           <div className={`mt-6 p-4 rounded-lg text-white ${indexable ? 'bg-green-600' : 'bg-red-600'}`}>
             <h3 className="font-bold">Indexability Status: {indexable ? 'Indexable' : 'Not Indexable'}</h3>
@@ -260,7 +240,6 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
           emergency={serviceSlug === 'emergency-dentist'}
         />
 
-        <ExitIntent serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
       </div>
     )
   } catch (error) {
