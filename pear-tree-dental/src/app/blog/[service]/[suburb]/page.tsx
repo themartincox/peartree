@@ -28,11 +28,11 @@ import { ServiceEntry, LocationEntry } from '@/types/contentful'
 type RouteParams = { service: string; suburb: string }
 
 export async function generateMetadata(
-  { params, searchParams }: { params: RouteParams; searchParams: { [key: string]: string | string[] | undefined } }
+  { params }: { params: RouteParams }
 ): Promise<Metadata> {
   const { service: serviceSlug, suburb } = await params
-  // Check if this is an ad mode page
-  const adMode = isAdMode(searchParams ? new URLSearchParams(Object.entries(await searchParams).map(([k, v]) => [k, String(v)])) : null)
+  // adMode logic removed from generateMetadata to ensure static metadata generation
+  const adMode = false; // Default to false for static metadata
 
   const fallback: Metadata = {
     title: 'Pear Tree Dental — Professional Dental Care',
