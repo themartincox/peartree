@@ -206,6 +206,12 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
 
         <h1 className="text-3xl font-bold mb-6">{serviceName} in {suburbName}</h1>
 
+        {ptdIsLocal === 'true' ? (
+          <p className="text-lg text-green-700 mb-4">Welcome, local resident! We're glad you're nearby.</p>
+        ) : (
+          <p className="text-lg text-blue-700 mb-4">Welcome, visitor! Explore our services.</p>
+        )}
+
         <CohortStrip serviceSlug={serviceSlug} suburbSlug={suburbSlug} emergency={serviceSlug === 'emergency-dentist'} />
 
         <OpenToday reviewsCount={Math.floor(300 + Math.random() * 400)} rating={4.8 + Math.random() * 0.2} />
