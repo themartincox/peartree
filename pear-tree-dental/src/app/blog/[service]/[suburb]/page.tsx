@@ -1,4 +1,3 @@
-import { headers } from 'next/headers' // Import headers
 import { notFound } from 'next/navigation'
 import { headers } from 'next/headers' // Import headers
 import {
