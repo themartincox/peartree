@@ -3,7 +3,7 @@
 // Load environment variables from .env.local
 require('dotenv').config({ path: './.env.local' });
 
-const { decryptBankDetail } = require('./src/lib/encryption'); // Adjust path if you save this script elsewhere
+const { decryptBankDetail } = require('./src/lib/encryption.ts'); // Adjust path if you save this script elsewhere
 
 // --- Configuration ---
 // IMPORTANT: Ensure this ENCRYPTION_KEY matches the one used when data was encrypted.
@@ -17,8 +17,8 @@ if (!ENCRYPTION_KEY) {
 
 // --- Encrypted Data from Supabase ---
 // Replace these with the actual encrypted values from your Supabase table
-const encryptedSortCode = '2c60dad556369dc569a751487d678e75:1a6f7d0a6fcaab5d1894f28ce4cde44d:7b473fd8dbf3b677'; // e.g., 'iv:authTag:encrypted'
-const encryptedAccountNumber = '7724dea96348f460165939b0301d97dc:63afe0ab56779afe58851663bad21e7d:6f3def3aeb6d6edc'; // e.g., 'iv:authTag:encrypted'
+const encryptedSortCode = 'c2571c0705e6fad3ffafd574015fb8ca:feefbb946f27c5b5e92b10d15b5e1d4a:d800a6a240ffaa72'; // e.g., 'iv:authTag:encrypted'
+const encryptedAccountNumber = '46ad03eeca80e61f8c373373c57d2303:f4e1a2fce0a10995d0cda24cc24d0ecf:9f1ab199ce63ceee'; // e.g., 'iv:authTag:encrypted'
 
 // --- Decryption ---
 try {

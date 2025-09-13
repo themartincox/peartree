@@ -36,8 +36,10 @@ export function middleware(request: NextRequest) {
   }
 
   // Only apply A/B testing to the exact homepage path
+  // This condition will be removed or modified as we expand cohort logic
   if (request.nextUrl.pathname !== '/' || request.nextUrl.search) {
-    return NextResponse.next();
+    // For now, only apply A/B to homepage, but apply cohort logic to all pages
+    // We will refine this matcher later
   }
 
   // Skip for specific request types that might cause loops
@@ -53,34 +55,55 @@ export function middleware(request: NextRequest) {
   try {
     const response = NextResponse.next();
 
-    // Check for existing variant cookie with fallback
-    let variant = request.cookies.get(COOKIE_NAME)?.value as Variant;
+    // --- Cohort Detection Logic ---
+    let geoCohort = 'unknown';
+    const city = request.geo?.city || 'UnknownCity';
+    const region = request.geo?.region || 'UnknownRegion';
+    const country = request.geo?.country || 'UnknownCountry';
 
-    // Only assign new variant if none exists or invalid
-    if (!variant || !['A', 'B', 'C'].includes(variant)) {
-      variant = assignVariant();
-
-      // Set cookie with variant assignment - more restrictive settings
-      response.cookies.set(COOKIE_NAME, variant, {
-        maxAge: COOKIE_MAX_AGE,
-        httpOnly: false,
-        secure: true, // Always secure in production
-        sameSite: 'strict', // More restrictive for security
-        path: '/',
-      });
+    // Simplified mapping for demonstration. In a real app, this would be more robust.
+    if (city === 'Nottingham') {
+      geoCohort = 'nottingham';
+    } else if (region === 'England') {
+      geoCohort = 'england';
+    } else if (country === 'GB') {
+      geoCohort = 'uk';
     }
 
-    // Add variant headers for server-side rendering with safe defaults
-    const headers = getVariantHeaders(variant);
-    Object.entries(headers).forEach(([key, value]) => {
-      if (key && value && typeof value === 'string') {
-        response.headers.set(key, value);
-      }
-    });
+    // Set the custom cohort header
+    response.headers.set('x-ptd-cohort', `geo=${geoCohort}`);
 
-    // Mark as processed to prevent loops
-    response.headers.set('x-ab-processed', '1');
-    response.headers.set('x-ab-variant', variant);
+    // --- Existing A/B Testing Logic (only for homepage for now) ---
+    if (request.nextUrl.pathname === '/' && !request.nextUrl.search) {
+      // Check for existing variant cookie with fallback
+      let variant = request.cookies.get(COOKIE_NAME)?.value as Variant;
+
+      // Only assign new variant if none exists or invalid
+      if (!variant || !['A', 'B', 'C'].includes(variant)) {
+        variant = assignVariant();
+
+        // Set cookie with variant assignment - more restrictive settings
+        response.cookies.set(COOKIE_NAME, variant, {
+          maxAge: COOKIE_MAX_AGE,
+          httpOnly: false,
+          secure: true, // Always secure in production
+          sameSite: 'strict', // More restrictive for security
+          path: '/',
+        });
+      }
+
+      // Add variant headers for server-side rendering with safe defaults
+      const headers = getVariantHeaders(variant);
+      Object.entries(headers).forEach(([key, value]) => {
+        if (key && value && typeof value === 'string') {
+          response.headers.set(key, value);
+        }
+      });
+
+      // Mark as processed to prevent loops
+      response.headers.set('x-ab-processed', '1');
+      response.headers.set('x-ab-variant', variant);
+    }
 
     return response;
   } catch (error) {
