@@ -1,5 +1,6 @@
-import type { Metadata } from 'next'
+import { headers } from 'next/headers' // Import headers
 import { notFound } from 'next/navigation'
+import { headers } from 'next/headers' // Import headers
 import {
   fetchServiceBySlug,
   fetchLocationBySlug,
@@ -134,6 +135,30 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
     // Return 404 if any required data is missing
     if (!service || !location || !template) {
       return notFound()
+    }
+
+    // --- Read custom headers from Edge Middleware ---
+    const requestHeaders = headers();
+    const ptdCity = requestHeaders.get('x-peartree-city');
+    const ptdRegion = requestHeaders.get('x-peartree-region');
+    const ptdCountry = requestHeaders.get('x-peartree-country');
+    const ptdDevice = requestHeaders.get('x-peartree-device');
+    const ptdTimeOfDay = requestHeaders.get('x-peartree-time-of-day');
+    const ptdOfficeHours = requestHeaders.get('x-peartree-office-hours');
+    const ptdPostcode = requestHeaders.get('x-peartree-postcode');
+    const ptdIsLocal = requestHeaders.get('x-peartree-is-local');
+
+    if (process.env.NODE_ENV === 'development') {
+      console.log('--- Headers from Edge Middleware ---');
+      console.log('x-peartree-city:', ptdCity);
+      console.log('x-peartree-region:', ptdRegion);
+      console.log('x-peartree-country:', ptdCountry);
+      console.log('x-peartree-device:', ptdDevice);
+      console.log('x-peartree-time-of-day:', ptdTimeOfDay);
+      console.log('x-peartree-office-hours:', ptdOfficeHours);
+      console.log('x-peartree-postcode:', ptdPostcode);
+      console.log('x-peartree-is-local:', ptdIsLocal);
+      console.log('------------------------------------');
     }
 
     // Extract data from contentful entities
