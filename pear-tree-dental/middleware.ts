@@ -56,22 +56,75 @@ export function middleware(request: NextRequest) {
     const response = NextResponse.next();
 
     // --- Cohort Detection Logic ---
-    let geoCohort = 'unknown';
-    const city = request.geo?.city || 'UnknownCity';
-    const region = request.geo?.region || 'UnknownRegion';
-    const country = request.geo?.country || 'UnknownCountry';
+    const cohorts: string[] = [];
 
-    // Simplified mapping for demonstration. In a real app, this would be more robust.
+    // 1. Geo-based Cohorts
+    const city = request.geo?.city || '';
+    const region = request.geo?.region || '';
+    const country = request.geo?.country || '';
+    const postalCode = request.geo?.postalCode || ''; // More granular if available
+
+    let geoCohort = 'global'; // Default broad cohort
+
+    // Specific local areas (example mapping - refine as needed)
     if (city === 'Nottingham') {
-      geoCohort = 'nottingham';
+      geoCohort = 'nottingham-city';
+      if (postalCode.startsWith('NG4')) { // Example postcode check
+        geoCohort = 'gedling';
+      } else if (postalCode.startsWith('NG9')) {
+        geoCohort = 'beeston'; // Example
+      }
+      // Add more specific suburb/postcode logic here
     } else if (region === 'England') {
       geoCohort = 'england';
     } else if (country === 'GB') {
-      geoCohort = 'uk';
+      geoCohort = 'uk-national';
     }
+    cohorts.push(`geo=${geoCohort}`);
 
-    // Set the custom cohort header
-    response.headers.set('x-ptd-cohort', `geo=${geoCohort}`);
+    // 2. Time-based Cohorts (using UTC time at Edge, convert to London time if needed)
+    const now = new Date(); // Time at Edge Function execution
+    const hour = now.getUTCHours(); // Use UTC hour for consistency across Edge locations
+
+    let timeOfDayCohort = 'night';
+    if (hour >= 6 && hour < 12) {
+      timeOfDayCohort = 'morning';
+    } else if (hour >= 12 && hour < 18) {
+      timeOfDayCohort = 'afternoon';
+    } else if (hour >= 18 && hour < 22) {
+      timeOfDayCohort = 'evening';
+    }
+    cohorts.push(`time=${timeOfDayCohort}`);
+
+    // Office hours (example: 9 AM - 5 PM UTC, Mon-Fri) - adjust for London timezone if needed
+    const dayOfWeek = now.getUTCDay(); // 0 = Sunday, 6 = Saturday
+    const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 5;
+    const isOfficeHours = isWeekday && hour >= 9 && hour < 17;
+    cohorts.push(`office-hours=${isOfficeHours ? 'true' : 'false'}`);
+
+    // 3. Device-based Cohorts
+    const userAgent = request.headers.get('user-agent') || '';
+    const isMobile = request.headers.get('sec-ch-ua-mobile') === '?1' || userAgent.includes('Mobi');
+    const deviceCohort = isMobile ? 'mobile' : 'desktop';
+    cohorts.push(`device=${deviceCohort}`);
+
+    // 4. Intent Source Cohorts (simplified example - expand as needed)
+    const referrer = request.headers.get('referer') || '';
+    const utmSource = request.nextUrl.searchParams.get('utm_source') || '';
+    let sourceCohort = 'direct';
+
+    if (utmSource) {
+      sourceCohort = utmSource;
+    } else if (referrer.includes('google.com')) {
+      sourceCohort = 'organic-google';
+    } else if (referrer.includes('facebook.com')) {
+      sourceCohort = 'organic-facebook';
+    }
+    // Add more specific source logic (e.g., for maps, specific campaigns)
+    cohorts.push(`source=${sourceCohort}`);
+
+    // Set the custom cohort header by joining all identified cohorts
+    response.headers.set('x-ptd-cohort', cohorts.join('; '));
 
     // --- Existing A/B Testing Logic (only for homepage for now) ---
     if (request.nextUrl.pathname === '/' && !request.nextUrl.search) {
