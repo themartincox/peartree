@@ -137,7 +137,7 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
     }
 
     // --- Read custom headers from Edge Middleware ---
-    const requestHeaders = headers();
+    const requestHeaders = await headers(); // Await the headers() call
     const ptdCity = requestHeaders.get('x-peartree-city');
     const ptdRegion = requestHeaders.get('x-peartree-region');
     const ptdCountry = requestHeaders.get('x-peartree-country');
