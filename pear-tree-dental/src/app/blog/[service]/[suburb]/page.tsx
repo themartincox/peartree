@@ -212,6 +212,11 @@ export default async function ServiceSuburbPage({ params }: { params: RouteParam
           <p className="text-lg text-blue-700 mb-4">Welcome, visitor! Explore our services.</p>
         )}
 
+        {/* Example of using resolved variants */}
+        {resolvedVariants.heroText && (
+          <p className="text-lg text-purple-700 mb-4">{resolvedVariants.heroText}</p>
+        )}
+
         <CohortStrip serviceSlug={serviceSlug} suburbSlug={suburbSlug} emergency={serviceSlug === 'emergency-dentist'} />
 
         <OpenToday reviewsCount={Math.floor(300 + Math.random() * 400)} rating={4.8 + Math.random() * 0.2} />
