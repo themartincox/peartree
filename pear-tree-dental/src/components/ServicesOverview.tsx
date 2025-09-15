@@ -89,7 +89,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
               alt={`${service.title} - Professional dental care at Pear Tree Dental`}
               fill
               className="object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              sizes="(max-width: 640px) 48vw, (max-width: 1024px) 33vw, 376px"
             />
             <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
           </div>

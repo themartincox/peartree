@@ -350,7 +350,7 @@ const TreatmentJourney = () => {
                               alt={step.imageDescription}
                               fill
                               className="object-cover"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                              sizes="(max-width: 640px) 48vw, (max-width: 1024px) 33vw, 376px"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/40 to-transparent" />
                           </>

@@ -31,7 +31,9 @@ const Hero = () => {
           alt="Pear Tree Dental modern practice background"
           fill
           priority
+          fetchPriority="high"
           quality={85}
+          sizes="100vw"
           className="object-cover object-top"
         />
         <div className="absolute inset-0 bg-black/25" />

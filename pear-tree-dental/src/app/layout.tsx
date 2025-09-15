@@ -133,6 +133,13 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
+          href="/_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1920&q=85"
+          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=640&q=85 640w, /_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1080&q=85 1080w, /_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1920&q=85 1920w"
+          imagesizes="100vw"
+        />
+        <link
+          rel="preload"
+          as="image"
           href="/images/dental-practice-hero-burton-joyce.webp"
         />
         <link

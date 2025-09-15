@@ -1,8 +1,8 @@
 // Mock data for Google reviews
 export const googleReviewsStats = {
-  averageRating: 5.0,
-  totalReviews: 450,
-  fiveStarCount: 428
+  averageRating: 4.9,
+  totalReviews: 506,
+  fiveStarCount: 490
 };
 
 // Array of review objects
