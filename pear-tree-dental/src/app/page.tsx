@@ -65,25 +65,25 @@ import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 // --- Service Data Mapping ---
 // This object provides the decorative data that is not yet in Contentful.
 const serviceDecorations: { [key: string]: any } = {
-  'general-dentistry': {
+  'general': {
     icon: "Shield",
     theme: "medical",
     treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
     image: "/images/general-dental-checkup.webp",
   },
-  'cosmetic-dentistry': {
+  'cosmetic': {
     icon: "Sparkles",
     theme: "cosmetic",
     treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
     image: "/images/cosmetic-dentistry-services.webp",
   },
-  'restorative-dentistry': {
+  'restorative': {
     icon: "ShieldCheck",
     theme: "medical",
     treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
     image: "/images/restorative-dental-treatment.webp",
   },
-  'dental-implants': {
+  'implants': {
     icon: "Zap",
     theme: "cosmetic",
     treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
@@ -95,7 +95,7 @@ const serviceDecorations: { [key: string]: any } = {
     treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
     image: "/images/orthodontics-invisalign-treatment.webp",
   },
-  'emergency-dentistry': {
+  'emergency-dentist': {
     icon: "AlertTriangle",
     theme: "medical",
     treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],

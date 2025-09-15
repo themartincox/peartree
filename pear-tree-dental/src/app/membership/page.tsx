@@ -137,11 +137,7 @@ export default function MembershipPage() {
             </h3>
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
               <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start gap-3">
-                  <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Laboratory fees and prescriptions</span>
-                </li>
-                <li className="flex items-start gap-3">
+                               <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-pear-primary rounded-full mt-2 flex-shrink-0"></span>
                   <span className="lg:text-left">Referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan</span>
                 </li>

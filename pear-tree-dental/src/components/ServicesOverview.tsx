@@ -157,12 +157,12 @@ const ServicesContent = ({ services }: ServicesOverviewProps) => {
   const findService = (slug: string) => services.find(s => s.slug === slug);
 
   // Recreate the display order based on the fetched services
-  const cosmetic = findService('cosmetic-dentistry');
-  const general = findService('general-dentistry');
-  const restorative = findService('restorative-dentistry');
-  const implants = findService('dental-implants');
+  const cosmetic = findService('cosmetic');
+  const general = findService('general');
+  const restorative = findService('restorative');
+  const implants = findService('implants');
   const orthodontics = findService('orthodontics');
-  const emergency = findService('emergency-dentistry');
+  const emergency = findService('emergency-dentist');
 
   const topRowServices = [cosmetic, general, restorative].filter(Boolean) as Service[];
   const bottomRowServices = [implants, orthodontics, emergency].filter(Boolean) as Service[];

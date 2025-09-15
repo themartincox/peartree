@@ -71,11 +71,11 @@ export default function ExaminationSection() {
 
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-pear-primary">
-                    Personalized Treatment Plan
+                    Personalised Treatment Plan
                   </h3>
                   <p className="text-sm text-gray-600">
                     Based on your examination findings, we'll create a
-                    customized treatment plan that addresses your specific needs
+                    customised treatment plan that addresses your specific needs
                     and goals for your smile. We'll explain all options and
                     costs clearly.
                   </p>

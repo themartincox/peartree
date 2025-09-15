@@ -8,78 +8,10 @@ import { Button } from '@/components/ui/button';
 import { Check, AlertCircle, Info } from 'lucide-react';
 import PriceComparisonTooltip from '../price-comparison-tooltip';
 
+import { plans as allPlans } from "./data";
+
 // Define the plan data
-const plans = [
-  {
-    id: "plan-a",
-    name: "PLAN A",
-    price: 10.95,
-    color: "plan-a",
-    features: [
-      "1 Dental check up a year",
-      "1 Scale & Polish a year",
-    ],
-    perDay: 0.36,
-    savings: 118, // Annual savings compared to paying individually
-    normalPrice: 247.60, // Price without the plan
-  },
-  {
-    id: "plan-b",
-    name: "PLAN B",
-    price: 15.95,
-    color: "plan-b",
-    features: [
-      "2 Dental check ups a year",
-      "1 Scale & Polish a year",
-    ],
-    perDay: 0.53,
-    savings: 180,
-    normalPrice: 359.88,
-  },
-  {
-    id: "plan-c",
-    name: "PLAN C",
-    price: 19.95,
-    color: "plan-c",
-    features: [
-      "2 Dental check ups a year",
-      "2 Scale & Polishes a year",
-    ],
-    perDay: 0.66,
-    savings: 205,
-    normalPrice: 416.20,
-  },
-  {
-    id: "plan-d",
-    name: "PLAN D",
-    price: 25.95,
-    color: "plan-d",
-    features: [
-      "2 Dental check ups a year",
-      "2 Scale & Polishes a year",
-      "1 Free emergency appt a year",
-      "50% off stain removal",
-    ],
-    perDay: 0.86,
-    savings: 290,
-    normalPrice: 597.20,
-  },
-  {
-    id: "plan-e",
-    name: "PLAN E",
-    price: 29.95,
-    color: "plan-e",
-    features: [
-      "2 Dental check ups a year",
-      "4 Scale & Polishes a year",
-      "1 Free emergency appt a year",
-      "50% off stain removal",
-    ],
-    perDay: 0.99,
-    savings: 350,
-    normalPrice: 710.40,
-  },
-];
+const plans = allPlans.map(p => ({ ...p, price: parseFloat(p.price.replace('£', '')), perDay: parseFloat(p.perDay.replace('p per day', '')) / 100 }));
 
 export default function PlanComparisonSlider() {
   const [sliderValue, setSliderValue] = useState([25]);

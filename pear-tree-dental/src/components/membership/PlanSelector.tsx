@@ -7,79 +7,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-// Define the plan data
-const plans = [
-  {
-    id: "plan-a",
-    name: "ESSENTIAL MAINTENANCE",
-    price: "£10.95",
-    color: "plan-a",
-    features: [
-      "1 Dental check up a year",
-      "1 Scale & Polish a year",
-    ],
-    perDay: "36p per day",
-    sticker: null,
-  },
-  {
-    id: "plan-b",
-    name: "ROUTINE CARE",
-    price: "£15.95",
-    color: "plan-b",
-    features: [
-      "2 Dental check ups a year",
-      "1 Scale & Polish a year",
-    ],
-    perDay: "53p per day",
-    sticker: null,
-  },
-  {
-    id: "plan-c",
-    name: "COMPLETE CARE",
-    price: "£19.95",
-    color: "plan-c",
-    features: [
-      "2 Dental check ups a year",
-      "2 Scale & Polishes a year",
-    ],
-    perDay: "66p per day",
-    sticker: "Most Popular",
-  },
-  {
-    id: "plan-d",
-    name: "COMPLETE CARE PLUS",
-    price: "£25.95",
-    color: "plan-d",
-    features: [
-      "2 Dental check ups a year",
-      "2 Scale & Polishes a year",
-      "1 Free emergency appt a year",
-      "50% off stain removal",
-    ],
-    perDay: "86p per day",
-    sticker: "Great Value",
-  },
-  {
-    id: "plan-e",
-    name: "PERIODONTAL HEALTH",
-    price: "£29.95",
-    color: "plan-d",
-    features: [
-      "2 Dental check ups a year",
-      "4 Scale & Polishes a year (every 3 months)",
-      "1 Free emergency appt a year",
-      "50% off stain removal",
-    ],
-    perDay: "99p per day",
-    description: "Specifically designed for patients with periodontal disease and gum issues",
-    sticker: null,
-  },
-];
+import { plans } from "./data";
 
 // Plan color gradient classes - Using brand colors with complementary bridging
 const planGradientClasses = {
-  "plan-a": "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white", // Essential: Green (matches live)
-  "plan-b": "bg-gradient-to-r from-teal-400 to-teal-500 text-white", // Routine: Teal bridge (less bold, connects green to dark teal)
+  "plan-a": "bg-pinky fade text-white", // Essential: Green (matches live)
+  "plan-b": "bg-pinky haze text-white", // Routine: Teal bridge (less bold, connects green to dark teal)
   "plan-c": "bg-gradient-to-r from-slate-600 to-slate-700 text-white", // Complete: Dark teal (was Routine Care's color)
   "plan-d": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Complete Plus: Brand gold gradient
   "plan-e": "bg-gradient-to-r from-pear-gold to-pear-gold-dark text-white", // Periodontal: Brand gold gradient

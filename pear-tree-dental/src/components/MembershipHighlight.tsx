@@ -122,19 +122,14 @@ const NottinghamMembershipBenefits = () => {
           <p className="text-gray-600">Exclusive advantages that make the 15-minute journey from Nottingham well worth it</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 justify-center">
           <div className="text-center">
             <Car className="w-8 h-8 text-dental-green mx-auto mb-3" />
             <h4 className="font-semibold text-pear-primary mb-2">Free Parking Always</h4>
             <p className="text-sm text-gray-600">Save £15+ per visit compared to city centre practices</p>
           </div>
 
-          <div className="text-center">
-            <Clock className="w-8 h-8 text-dental-green mx-auto mb-3" />
-            <h4 className="font-semibold text-pear-primary mb-2">Evening Appointments</h4>
-            <p className="text-sm text-gray-600">6pm slots available for city workers</p>
-          </div>
-
+       
           <div className="text-center">
             <ShieldCheck className="w-8 h-8 text-dental-green mx-auto mb-3" />
             <h4 className="font-semibold text-pear-primary mb-2">No NHS Waiting</h4>
@@ -152,9 +147,9 @@ const NottinghamMembershipBenefits = () => {
           <h4 className="font-semibold text-pear-primary mb-4 text-center">Annual Savings Calculator for Nottingham Patients</h4>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-2xl font-bold text-dental-green mb-1">£180</div>
+              <div className="text-2xl font-bold text-dental-green mb-1">£60</div>
               <div className="text-sm text-gray-600">Parking savings</div>
-              <div className="text-xs text-gray-500 mt-1">12 visits × £15 city center parking</div>
+              <div className="text-xs text-gray-500 mt-1">4 visits × £15 city center parking</div>
             </div>
             <div>
               <div className="text-2xl font-bold text-dental-green mb-1">£400</div>
@@ -162,7 +157,7 @@ const NottinghamMembershipBenefits = () => {
               <div className="text-xs text-gray-500 mt-1">vs. private dental costs in city</div>
             </div>
             <div className="border-l border-dental-green/20 pl-6 md:pl-0 md:border-l-0">
-              <div className="text-3xl font-bold text-pear-gold mb-1">£580</div>
+              <div className="text-3xl font-bold text-pear-gold mb-1">£460</div>
               <div className="text-sm text-gray-600 font-semibold">Total saved annually</div>
               <div className="text-xs text-gray-500 mt-1">Plus time and stress savings</div>
             </div>

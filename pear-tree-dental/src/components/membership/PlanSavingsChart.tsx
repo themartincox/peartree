@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 const plans = [
   {
     id: "plan-a",
-    name: "Plan A",
+    name: "Essential Maintenance",
     price: 10.95,
     annualCost: 131.40,
     normalCost: 247.60,
@@ -16,7 +16,7 @@ const plans = [
   },
   {
     id: "plan-b",
-    name: "Plan B",
+    name: "Routine Care",
     price: 15.95,
     annualCost: 191.40,
     normalCost: 359.88,
@@ -25,7 +25,7 @@ const plans = [
   },
   {
     id: "plan-c",
-    name: "Plan C",
+    name: "Complete Care",
     price: 19.95,
     annualCost: 239.40,
     normalCost: 416.20,
@@ -34,7 +34,7 @@ const plans = [
   },
   {
     id: "plan-d",
-    name: "Plan D",
+    name: "Complete Care Plus",
     price: 25.95,
     annualCost: 311.40,
     normalCost: 597.20,
@@ -43,7 +43,7 @@ const plans = [
   },
   {
     id: "plan-e",
-    name: "Plan E",
+    name: "Periodontal Health",
     price: 29.95,
     annualCost: 359.40,
     normalCost: 710.40,
