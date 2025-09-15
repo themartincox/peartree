@@ -82,64 +82,13 @@ const LOCATION_DATA: { [key: string]: LocationData } = {
 };
 
 export default function LocationDetection() {
+
   const [userLocation, setUserLocation] = useState<LocationData | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
 
-  const detectUserLocationSilently = useCallback(async () => {
-    try {
-      // Silent GPS detection only - no fallbacks to avoid any popups
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            const { latitude, longitude } = position.coords;
-            const location = getLocationFromCoordinates(latitude, longitude);
-
-            // Only show popup if user is OUTSIDE service area and needs directions
-            if (!location && !isDismissed) {
-              // User is outside service area - show helpful directions popup
-              setUserLocation({
-                area: 'Outside Service Area',
-                postcode: 'Unknown',
-                travelTime: 'Variable',
-                route: 'via major roads',
-                specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
-              });
-              setIsVisible(true);
-            }
-            // If user IS in service area, don't show anything - they probably know where we are
-          },
-          () => {
-            // GPS failed - do nothing, stay silent
-            // No IP fallback to avoid any detection indicators
-          },
-          {
-            timeout: 2000, // Very short timeout
-            enableHighAccuracy: false, // Faster detection
-            maximumAge: 600000 // Use cached location for 10 minutes
-          }
-        );
-      }
-      // If no geolocation available, stay silent - no popups
-    } catch (error) {
-      // Silent failure - no indicators to user
-    }
-    }, [isDismissed]);
-
-  useEffect(() => {
-    // Check if user has dismissed the modal this session
-    const dismissed = sessionStorage.getItem('locationModalDismissed') === 'true';
-    setIsDismissed(dismissed);
-
-    if (!dismissed) {
-      // Start silent detection after a delay to be less intrusive
-      setTimeout(() => {
-        detectUserLocationSilently();
-      }, 8000); // Increased delay so user doesn't notice detection happening
-    }
-  }, [detectUserLocationSilently]);
-
-  const getLocationFromCoordinates = (lat: number, lon: number): LocationData | null => {
+  // Helper to determine location from coordinates
+  const getLocationFromCoordinates = useCallback((lat: number, lon: number): LocationData | null => {
     // Burton Joyce coordinates: approximately 52.9847, -1.0147
     const burtonJoyceDistance = Math.sqrt(Math.pow(lat - 52.9847, 2) + Math.pow(lon - (-1.0147), 2));
 
@@ -154,10 +103,50 @@ export default function LocationDetection() {
         return LOCATION_DATA['west bridgford']; // Further but still in service area
       }
     }
-
     // Outside service area - return null to trigger directions popup
     return null;
-  };
+  }, []);
+
+  const requestLocation = useCallback(async () => {
+    try {
+      await navigator.permissions?.query({ name: 'geolocation' as PermissionName });
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            const location = getLocationFromCoordinates(latitude, longitude);
+            if (!location && !isDismissed) {
+              setUserLocation({
+                area: 'Outside Service Area',
+                postcode: 'Unknown',
+                travelTime: 'Variable',
+                route: 'via major roads',
+                specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+              });
+              setIsVisible(true);
+            }
+          },
+          () => {
+            // Geolocation denied or failed - stay silent
+          },
+          {
+            timeout: 2000,
+            enableHighAccuracy: false,
+            maximumAge: 600000
+          }
+        );
+      }
+    } catch (error) {
+      // Permission query failed - stay silent
+    }
+  }, [getLocationFromCoordinates, isDismissed]);
+
+  useEffect(() => {
+    // Check if user has dismissed the modal this session
+    const dismissed = sessionStorage.getItem('locationModalDismissed') === 'true';
+    setIsDismissed(dismissed);
+  }, []);
+
 
   // Auto-dismiss when user navigates (except for phone calls)
   const handleNavigation = () => {
@@ -169,97 +158,101 @@ export default function LocationDetection() {
   const handleDismiss = () => {
     setIsVisible(false);
     setIsDismissed(true);
-    // Remember dismissal for this session
     sessionStorage.setItem('locationModalDismissed', 'true');
   };
 
-  // Don't show anything if user has dismissed or detection isn't visible
-  if (isDismissed || !isVisible || !userLocation) {
+  if (isDismissed) {
     return null;
   }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <Card className="w-96 shadow-xl border border-dental-green/20 bg-white">
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-5 h-5 text-dental-green" />
-                <span className="font-semibold text-dental-navy">
-                  Need directions to our practice?
-                </span>
-              </div>
-              <Button variant="ghost" size="sm" onClick={handleDismiss}>
-                <X className="w-4 h-4" />
-              </Button>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-sm">
-                <MapPin className="w-4 h-4 text-dental-green" />
-                <span className="text-gray-700">
-                  <strong>22 Nottingham Road, Burton Joyce, NG14 5AE</strong>
-                </span>
-              </div>
-
-              <div className="flex items-center space-x-3 text-sm">
-                <Car className="w-4 h-4 text-dental-green" />
-                <span className="text-gray-700">Easy access with free on-site parking</span>
-              </div>
-
-              <div className="flex items-center space-x-3 text-sm">
-                <Clock className="w-4 h-4 text-dental-green" />
-                <span className="text-gray-700">Mon-Thu: 8:45am-5pm | Fri: 8am-3:30pm</span>
-              </div>
-
-              {userLocation.specialOffer && (
-                <div className="bg-pear-gold/10 rounded-lg p-3 border border-pear-gold/20">
+    <>
+      {!isVisible && (
+        <div className="space-y-2 text-center">
+          <p className="text-sm text-dental-navy">
+            See how far you are from Nottingham's top-rated Dentist
+          </p>
+          <Button onClick={requestLocation}>Find nearest route</Button>
+        </div>
+      )}
+      {isVisible && userLocation && (
+        <div className="fixed bottom-4 right-4 z-50">
+          <Card className="w-96 shadow-xl border border-dental-green/20 bg-white">
+            <CardContent className="p-6">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-pear-gold" />
-                    <span className="text-sm font-medium text-pear-gold">
-                      Worth the Journey
+                    <MapPin className="w-5 h-5 text-dental-green" />
+                    <span className="font-semibold text-dental-navy">
+                      Need directions to our practice?
                     </span>
                   </div>
-                  <p className="text-sm text-gray-700 mt-1">
-                    {userLocation.specialOffer}
-                  </p>
+                  <Button variant="ghost" size="sm" onClick={handleDismiss}>
+                    <X className="w-4 h-4" />
+                  </Button>
                 </div>
-              )}
-            </div>
-
-            <div className="flex space-x-2">
-              <Button asChild size="sm" className="flex-1 bg-dental-green hover:bg-dental-green/90 text-white">
-                <a href="tel:01159312935">
-                  <Phone className="w-4 h-4 mr-1" />
-                  Call Now
-                </a>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="flex-1" onClick={handleNavigation}>
-                <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE" target="_blank" rel="noopener noreferrer">
-                  <Navigation className="w-4 h-4 mr-1" />
-                  Get Directions
-                </a>
-              </Button>
-            </div>
-
-            <div className="text-center">
-              <Button
-                asChild
-                variant="link"
-                size="sm"
-                className="text-dental-green text-xs"
-                onClick={handleNavigation}
-              >
-                <Link href="/book">
-                  <UserPlus className="w-3 h-3 mr-1" />
-                  Book Appointment
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3 text-sm">
+                    <MapPin className="w-4 h-4 text-dental-green" />
+                    <span className="text-gray-700">
+                      <strong>22 Nottingham Road, Burton Joyce, NG14 5AE</strong>
+                    </span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <Car className="w-4 h-4 text-dental-green" />
+                    <span className="text-gray-700">Easy access with free on-site parking</span>
+                  </div>
+                  <div className="flex items-center space-x-3 text-sm">
+                    <Clock className="w-4 h-4 text-dental-green" />
+                    <span className="text-gray-700">Mon-Thu: 8:45am-5pm | Fri: 8am-3:30pm</span>
+                  </div>
+                  {userLocation.specialOffer && (
+                    <div className="bg-pear-gold/10 rounded-lg p-3 border border-pear-gold/20">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="w-4 h-4 text-pear-gold" />
+                        <span className="text-sm font-medium text-pear-gold">
+                          Worth the Journey
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-700 mt-1">
+                        {userLocation.specialOffer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <div className="flex space-x-2">
+                  <Button asChild size="sm" className="flex-1 bg-dental-green hover:bg-dental-green/90 text-white">
+                    <a href="tel:01159312935">
+                      <Phone className="w-4 h-4 mr-1" />
+                      Call Now
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline" size="sm" className="flex-1" onClick={handleNavigation}>
+                    <a href="https://maps.google.com/maps?q=22+Nottingham+Road,+Burton+Joyce,+Nottingham,+NG14+5AE" target="_blank" rel="noopener noreferrer">
+                      <Navigation className="w-4 h-4 mr-1" />
+                      Get Directions
+                    </a>
+                  </Button>
+                </div>
+                <div className="text-center">
+                  <Button
+                    asChild
+                    variant="link"
+                    size="sm"
+                    className="text-dental-green text-xs"
+                    onClick={handleNavigation}
+                  >
+                    <Link href="/book">
+                      <UserPlus className="w-3 h-3 mr-1" />
+                      Book Appointment
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
+    </>
   );
 }

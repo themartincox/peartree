@@ -62,3 +62,10 @@
 [[edge_functions]]
   path = "/"
   function = "ab-testing"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+  Cross-Origin-Opener-Policy = "same-origin"
+  Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' https://scripts.simpleanalyticscdn.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://queue.simpleanalyticscdn.com; media-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; require-trusted-types-for 'script';"

@@ -10,7 +10,7 @@ interface LocationInfo {
   postcode?: string;
 }
 
-export const useLocationDetection = (): LocationInfo => {
+export const useLocationDetection = (): LocationInfo & { requestLocation: () => void } => {
   const [locationInfo, setLocationInfo] = useState<LocationInfo>({
     isNottingham: false,
     isDetected: false
@@ -157,5 +157,5 @@ export const useLocationDetection = (): LocationInfo => {
     }
   };
 
-  return locationInfo;
+  return { ...locationInfo, requestLocation: detectUserLocationSilently };
 };
