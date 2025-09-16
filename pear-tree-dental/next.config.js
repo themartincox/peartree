@@ -50,6 +50,8 @@ const nextConfig = {
   // Output configuration for Netlify
   output: 'standalone',
 
+  outputFileTracingRoot: require('path').join(__dirname, './'),
+
   // Skip TypeScript checks during build for faster deployment
   typescript: {
     ignoreBuildErrors: true,
