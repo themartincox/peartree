@@ -7,6 +7,7 @@ interface Service {
   href: string;
   description: string;
   theme: string;
+  isEmergency?: boolean;
 }
 
 interface AboutItem {
@@ -35,7 +36,13 @@ const LazyNavigationItems = ({ services, about, onItemClick }: LazyNavigationIte
                 className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors"
                 onClick={onItemClick}
               >
-                {service.title}
+                {service.isEmergency ? (
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                    {service.title}
+                  </span>
+                ) : (
+                  service.title
+                )}
               </Link>
             ))}
           </div>

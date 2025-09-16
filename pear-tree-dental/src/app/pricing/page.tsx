@@ -143,7 +143,7 @@ export default function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/membership">
+                  <Link href={`/membership/signup?plan=${plan.planId}`}>
                     <Button className="w-full bg-pear-primary hover:bg-pear-primary/90 text-white">
                       Join Plan
                     </Button>

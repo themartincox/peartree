@@ -51,7 +51,7 @@
     "ratingValue": "4.9",
     "bestRating": "5",
     "worstRating": "1",
-    "ratingCount": "400"
+    "ratingCount": "510"
   },
   "review": [
     {
@@ -149,7 +149,17 @@
     },
     {
       "@type": "City",
+      "name": "West Bridgford",
+      "containedInPlace": "Nottinghamshire"
+    }
+    {
+      "@type": "City",
       "name": "Nottingham",
+      "containedInPlace": "Nottinghamshire"
+    }
+    {
+      "@type": "City",
+      "name": "Mapperley",
       "containedInPlace": "Nottinghamshire"
     }
   ],

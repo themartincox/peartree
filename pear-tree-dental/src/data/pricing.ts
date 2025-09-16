@@ -18,49 +18,95 @@ export interface MembershipPlan {
   description: string;
   includes: string[];
   popular?: boolean;
+  planId: string;
 }
 
 // Membership Plans
 export const membershipPlans: MembershipPlan[] = [
   {
-    name: "Adult Plan",
-    price: "from £10.95",
+    name: "Family Plan",
+    price: "£49.50",
     period: "/month",
-    description: "Complete dental care for adults",
+    description: "Dental care for the whole family",
     includes: [
-      "1 check-ups per year",
-      "1 hygienist visits",
+      "2 check-ups per year, per person",
+      "2 hygienist visits per year, per person",
       "X-rays included",
       "10% discount on selected treatments",
       "Emergency care priority"
     ],
-    popular: true
+    popular: true,
+    planId: "family"
   },
   {
-    name: "Child Plan",
-    price: "Free",
-    period: "with Adult plan",
-    description: "Comprehensive care for children",
+    name: "Essential Maintenance Plan",
+    price: "£10.95",
+    period: "/month",
+    description: "Essential dental care for one person",
+    includes: [
+      "1 check-up per year",
+      "1 hygienist visit per year",
+      "X-rays included",
+      "10% discount on selected treatments",
+    ],
+    planId: "plan-a"
+  },
+  {
+    name: "Routine Care",
+    price: "£15.95",
+    period: "/month",
+    description: "Routine dental care for one person",
     includes: [
       "2 check-ups per year",
-      "Fluoride treatments",
+      "1 hygienist visit per year",
       "X-rays included",
-      "10% discount on treatments",
-      "Emergency care priority"
-    ]
+      "10% discount on selected treatments",
+    ],
+    popular: true,
+    planId: "plan-b"
   },
   {
-    name: "Family Plan",
-    price: "£49.50",
+    name: "Complete Care",
+    price: "£19.95",
     period: "/month",
-    description: "Complete care for up to 5 people",
+    description: "Complete dental care for one person",
     includes: [
-      "Up to 5 family members",
-      "All check-ups included",
-      "All hygienist visits",
-      "10% discount on treatments",
+      "2 check-ups per year",
+      "2 hygienist visits per year",
+      "X-rays included",
+      "10% discount on selected treatments",
       "Emergency care priority"
-    ]
+    ],
+    planId: "plan-c"
+  },
+  {
+    name: "Complete Care Plus",
+    price: "£25.95",
+    period: "/month",
+    description: "The ultimate dental care plan",
+    includes: [
+      "2 check-ups per year",
+      "2 hygienist visits per year",
+      "X-rays included",
+      "10% discount on selected treatments",
+      "Emergency care priority",
+      "Worldwide dental insurance"
+    ],
+    planId: "plan-d"
+  },
+  {
+    name: "Periodontal Health",
+    price: "£29.95",
+    period: "/month",
+    description: "Specialist periodontal care",
+    includes: [
+      "2 check-ups per year",
+      "4 specialist hygienist visits per year",
+      "X-rays included",
+      "10% discount on periodontal treatments",
+      "Emergency care priority"
+    ],
+    planId: "plan-e"
   }
 ];
 

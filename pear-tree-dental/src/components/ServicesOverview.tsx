@@ -24,7 +24,7 @@ interface Service {
   title: string;
   description: string;
   icon: string;
-  theme: "medical" | "cosmetic";
+  theme: "medical" | "cosmetic" | "primary" | "destructive";
   treatments: string[];
   href: string;
   image?: string;
@@ -73,7 +73,20 @@ const ServicesOverview = ({ services }: ServicesOverviewProps) => {
 
 const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const isTeal = service.theme === "medical";
+
+  const getIconColorClass = (theme: Service['theme']) => {
+    switch (theme) {
+      case 'primary':
+        return 'text-pear-primary';
+      case 'destructive':
+        return 'text-destructive';
+      case 'cosmetic':
+        return 'text-pear-gold';
+      case 'medical':
+      default:
+        return 'text-dental-green';
+    }
+  };
 
   return (
     <div
@@ -99,7 +112,7 @@ const ServiceCard = ({ service, index, cardVariants, iconVariants }: ServiceCard
           <CardHeader className="pb-4 flex-grow">
             <div className="flex items-center justify-between mb-4">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg bg-white/90 backdrop-blur-sm hover:scale-105 hover:rotate-1 transition-all duration-200">
-                <IconRenderer iconName={service.icon} className={`w-6 h-6 sm:w-7 sm:h-7 ${isTeal ? 'text-dental-green' : 'text-pear-gold'}`} />
+                <IconRenderer iconName={service.icon} className={`w-6 h-6 sm:w-7 sm:h-7 ${getIconColorClass(service.theme)}`} />
               </div>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}

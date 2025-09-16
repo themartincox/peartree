@@ -67,7 +67,7 @@ import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 const serviceDecorations: { [key: string]: any } = {
   'general': {
     icon: "Shield",
-    theme: "medical",
+    theme: "primary",
     treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
     image: "/images/general-dental-checkup.webp",
   },
@@ -79,7 +79,7 @@ const serviceDecorations: { [key: string]: any } = {
   },
   'restorative': {
     icon: "ShieldCheck",
-    theme: "medical",
+    theme: "primary",
     treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
     image: "/images/restorative-dental-treatment.webp",
   },
@@ -97,7 +97,7 @@ const serviceDecorations: { [key: string]: any } = {
   },
   'emergency-dentist': {
     icon: "AlertTriangle",
-    theme: "medical",
+    theme: "destructive",
     treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
     image: "/images/emergency-dental-care.webp",
   },

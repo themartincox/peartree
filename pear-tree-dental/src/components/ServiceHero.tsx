@@ -323,7 +323,7 @@ export default function ServiceHero({
               <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-pear-primary to-pear-primary/80 text-white font-semibold group"
+                className="bg-pinky-fade text-white font-semibold group"
                 onClick={handlePhoneClick}
               >
                 <a href="tel:01159312935">
@@ -336,7 +336,7 @@ export default function ServiceHero({
                 asChild={!!primaryCTA.href}
                 variant="outline"
                 size="lg"
-                className="border-2 border-pear-primary text-pear-primaryte hover:bg-pear-primary hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold group"
+                className="border-2 border-pinky text-pinky hover:bg-pinky-fade hover:text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold group"
                 onClick={handleBookingClick}
               >
                 {primaryCTA.href ? (

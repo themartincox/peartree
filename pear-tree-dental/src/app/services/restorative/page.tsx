@@ -374,6 +374,58 @@ export default function RestorativeDentistryPage() {
             </p>
           </div>
 
+          <div className="flex justify-center mb-8">
+            <div className="w-full md:w-1/2 lg:w-[48%]">
+                <Card className="hover:shadow-xl transition-all duration-300 h-full border-2 border-dental-green">
+                    <div className="bg-dental-green text-white text-center py-2 text-sm font-semibold">
+                        Popular Treatment
+                    </div>
+                    <CardHeader className="pt-6">
+                        <div className="flex justify-between items-start mb-4">
+                            <CardTitle className="text-xl font-semibold text-pear-primary">
+                                Dental Veneers
+                            </CardTitle>
+                            <Badge variant="outline" className="text-dental-green border-dental-green">
+                                From £750
+                            </Badge>
+                        </div>
+                        <CardDescription className="text-gray-600">
+                            Transform your smile with ultra-thin, custom-made porcelain veneers.
+                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                            <div>
+                                <span className="text-gray-500">Duration:</span>
+                                <div className="font-medium text-pear-primary">2-3 visits</div>
+                            </div>
+                            <div>
+                                <span className="text-gray-500">Lifespan:</span>
+                                <div className="font-medium text-pear-primary">10-15 years</div>
+                            </div>
+                        </div>
+                        <div className="mb-6">
+                            <span className="text-gray-500 text-sm">Materials:</span>
+                            <div className="flex flex-wrap gap-2 mt-2">
+                                <Badge variant="secondary" className="text-xs">
+                                    Porcelain
+                                </Badge>
+                                <Badge variant="secondary" className="text-xs">
+                                    Composite
+                                </Badge>
+                            </div>
+                        </div>
+                        <Link href="/services/cosmetic/veneers">
+                            <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
+                                Learn More about Veneers
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                        </Link>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {treatments.map((treatment) => (
               <Card

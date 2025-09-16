@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import ServiceNavigation from "@/components/ServiceNavigation";
 import ServiceStructuredData from "@/components/seo/ServiceStructuredData";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
+import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import {
   Heart,
@@ -108,9 +109,9 @@ export default function GeneralDentistryPage() {
         pageUrl="/services/general"
       />
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-dental-green/10 via-white to-soft-blue/10 overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-primary/10 via-white to-soft-blue/10 overflow-hidden">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-dental-green rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
         </div>
 
@@ -123,7 +124,7 @@ export default function GeneralDentistryPage() {
               {/* H1 Title - First on mobile for immediate page identification */}
               <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
                 Complete
-                <span className="block text-dental-green">General Dentistry</span>
+                <span className="block text-pear-primary">General Dentistry</span>
               </h1>
 
               {/* Hero Video - Second on mobile, appears above other content */}
@@ -144,7 +145,7 @@ export default function GeneralDentistryPage() {
                         type="video/mp4"
                       />
                       {/* Fallback for browsers that don't support video */}
-                      <div className="w-full h-full bg-gradient-to-br from-dental-green/20 to-soft-blue/20 flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
                         <div className="text-center">
                           <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
                           <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
@@ -155,9 +156,9 @@ export default function GeneralDentistryPage() {
                 </Card>
 
                 {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-75">
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
                   <div className="flex items-center space-x-2 sm:space-x-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
                       <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <div>
@@ -169,7 +170,7 @@ export default function GeneralDentistryPage() {
               </div>
 
               {/* Badge - Third on mobile, provides context */}
-              <Badge variant="secondary" className="mb-4 bg-dental-green text-white">
+              <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
                 <Heart className="w-4 h-4 mr-2" />
                 Comprehensive Dental Care
               </Badge>
@@ -183,14 +184,14 @@ export default function GeneralDentistryPage() {
               {/* CTAs - Fifth on mobile */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold group w-full sm:w-auto">
+                  <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold group w-full sm:w-auto">
                     <CalendarDays className="w-5 h-5 mr-2" />
                     Book Check-up
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white w-full sm:w-auto">
+                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white w-full sm:w-auto">
                     <Phone className="w-5 h-5 mr-2" />
                     Call 0115 931 2935
                   </Button>
@@ -200,15 +201,15 @@ export default function GeneralDentistryPage() {
               {/* Quick Stats - Last on mobile */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-gray-200">
                 <div className="text-center">
-                  <div className="text-lg sm:text-2xl font-bold text-dental-green">NHS</div>
+                  <div className="text-lg sm:text-2xl font-bold text-pear-primary">NHS</div>
                   <div className="text-xs sm:text-sm text-gray-600">& Private care</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg sm:text-2xl font-bold text-dental-green">All Ages</div>
+                  <div className="text-lg sm:text-2xl font-bold text-pear-primary">All Ages</div>
                   <div className="text-xs sm:text-sm text-gray-600">Family friendly</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-lg sm:text-2xl font-bold text-dental-green">Priority</div>
+                  <div className="text-lg sm:text-2xl font-bold text-pear-primary">Priority</div>
                   <div className="text-xs sm:text-sm text-gray-600">Appointments</div>
                 </div>
               </div>
@@ -232,7 +233,7 @@ export default function GeneralDentistryPage() {
                       type="video/mp4"
                     />
                     {/* Fallback for browsers that don't support video */}
-                    <div className="w-full h-full bg-gradient-to-br from-dental-green/20 to-soft-blue/20 flex items-center justify-center">
+                    <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
                       <div className="text-center">
                         <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
                         <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
@@ -243,9 +244,9 @@ export default function GeneralDentistryPage() {
               </Card>
 
               {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-dental-green/20 opacity-75">
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
                 <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-dental-green rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
                     <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
@@ -318,10 +319,10 @@ export default function GeneralDentistryPage() {
             ].map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="p-6 bg-gradient-to-br from-dental-green/5 to-dental-green/10 border-2 border-dental-green/20 hover:border-dental-green hover:shadow-xl hover:shadow-dental-green/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
+                <Card key={index} className="p-6 bg-gradient-to-br from-pear-primary/5 to-pear-primary/10 border-2 border-pear-primary/20 hover:border-pear-primary hover:shadow-xl hover:shadow-pear-primary/20 hover:scale-105 transition-all duration-300 group cursor-pointer">
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-br from-pear-primary to-pear-primary/80 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                         <Icon className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300" />
                       </div>
                       <div>
@@ -332,18 +333,57 @@ export default function GeneralDentistryPage() {
                     <ul className="space-y-1">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="text-sm text-gray-700 flex items-center space-x-2">
-                          <CheckCircle className="w-3 h-3 text-dental-green flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
+                          <CheckCircle className="w-3 h-3 text-pear-primary flex-shrink-0 group-hover:scale-110 transition-transform duration-300" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <div className="pt-3 border-t border-dental-green/20 group-hover:border-dental-green/40 transition-colors duration-300">
+                    <div className="pt-3 border-t border-pear-primary/20 group-hover:border-pear-primary/40 transition-colors duration-300">
                       <div className="text-pear-primary font-semibold text-lg group-hover:scale-105 transition-transform duration-300">{service.price}</div>
                     </div>
                   </div>
                 </Card>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Before & After Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
+              Real Patient Results
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the transformations we've achieved for our patients with
+              expert restorative dentistry.
+            </p>
+          </div>
+
+          <div className="max-w-7xl mx-auto mb-16">
+            <BeforeAfterSliderPair
+              primarySlider={{
+                beforeImage: "/images/before-after/repair-restore-before.JPG",
+                afterImage: "/images/before-after/repair-restore-after.JPG",
+                beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
+                afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
+                title: "Dental Implant Restoration",
+                description: "Complete tooth replacement with dental implant providing natural appearance and full functionality like your own teeth",
+                treatmentType: "Single Tooth Implant"
+              }}
+              secondarySlider={{
+                beforeImage: "/images/before-after/airflow-composite-bond-polish-hygienist-before.webp",
+                afterImage: "/images/before-after/airflow-composite-bond-polish-hygienist-after.webp",
+                beforeAlt: "Patient's teeth before composite bonding treatment showing worn and discolored areas",
+                afterAlt: "Patient's teeth after airflow polish and composite bonding showing natural, restored appearance",
+                title: "Composite Bonding Transformation",
+                description: "Advanced airflow polishing combined with composite bonding to restore natural tooth shape and color with seamless results",
+                treatmentType: "Composite Bonding + Airflow Polish"
+              }}
+              className="bg-gradient-to-br from-pear-primary/5 to-teal-50 rounded-2xl p-6"
+            />
           </div>
         </div>
       </section>
@@ -382,8 +422,8 @@ export default function GeneralDentistryPage() {
                   const Icon = benefit.icon;
                   return (
                     <div key={index} className="flex space-x-4">
-                      <div className="w-12 h-12 bg-dental-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-6 h-6 text-dental-green" />
+                      <div className="w-12 h-12 bg-pear-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-6 h-6 text-pear-primary" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>

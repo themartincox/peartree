@@ -163,7 +163,12 @@ const TreatmentJourney = () => {
           stepElement.style.transform = "translateY(0px)";
           stepElement.style.zIndex = `${10 + index}`;
           stepElement.style.position = 'sticky';
-          stepElement.style.top = '0px';
+          // Responsive sticky offset: 0 on desktop, 120px on mobile (adjust as needed)
+          if (window.innerWidth < 768) {
+            stepElement.style.top = '120px';
+          } else {
+            stepElement.style.top = '0px';
+          }
         } else {
           // Future steps - positioned normally below
           stepElement.style.transform = "translateY(0px)";
@@ -232,12 +237,12 @@ const TreatmentJourney = () => {
 
       {/* Main Container */}
       <div
-        ref={containerRef}
-        className="relative z-20"
-        style={{ height: `${journeySteps.length * 100}vh` }}
+  ref={containerRef}
+  className="relative z-20 pb-36 md:pb-20"
+  style={{ height: `${journeySteps.length * 100}vh` }}
       >
-        {/* Header Section */}
-        <div className="absolute top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-sm py-6 sm:py-8 border-b border-gray-100">
+        {/* Header Section - responsive: absolute on md+, static on mobile */}
+        <div className="z-40 bg-white/95 backdrop-blur-sm py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
@@ -271,7 +276,7 @@ const TreatmentJourney = () => {
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-white overflow-visible"
+              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-gradient-to-b from-pink-50 via-pink-100 to-white overflow-visible"
               style={{
                 zIndex: 10 + index,
                 paddingTop: index === 0 ? "80px" : "0px", // Add padding to first step

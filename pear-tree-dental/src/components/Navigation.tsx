@@ -184,7 +184,8 @@ const Navigation = () => {
       title: "Emergency Dentistry",
       href: "/services/emergency",
       description: "Urgent dental care when you need it most",
-      theme: "medical"
+      theme: "medical",
+      isEmergency: true
     },
   ];
 

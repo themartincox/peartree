@@ -23,10 +23,10 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Cosmetic Dentistry Services Burton Joyce | Pear Tree Dental",
-  description: "Transform your smile with our comprehensive cosmetic dentistry services in Burton Joyce. Teeth whitening, veneers, smile makeovers and more. Book consultation today.",
+  title: "Cosmetic Dentistry Services Nottingham | Pear Tree Dental",
+  description: "Transform your smile with our comprehensive cosmetic dentistry services in Nottingham and surrounding areas. Teeth whitening, veneers, smile makeovers and more. Book consultation today.",
   keywords: [
-    "cosmetic dentistry Burton Joyce",
+    "cosmetic dentistry Nottingham",
     "teeth whitening Nottingham",
     "dental veneers Burton Joyce",
     "smile makeover Nottingham",
@@ -409,7 +409,7 @@ export default function CosmeticDentistryPage() {
                         </div>
 
                         <Link href={service.link}>
-                          <Button className="w-full group-hover:bg-pear-gold transition-colors">
+                          <Button className="w-full bg-pinky-fade text-white hover:opacity-90 hover:shadow-lg group-hover:scale-[1.02] transition-all font-medium">
                             Learn More
                             <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
