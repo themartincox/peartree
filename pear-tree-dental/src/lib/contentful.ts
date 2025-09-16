@@ -1,169 +1,57 @@
-import type { Document } from '@contentful/rich-text-types';
-import type { Entry } from 'contentful';
-import type { LocationEntry, ServiceEntry } from '@/types/contentful';
+import { createClient, type CreateClientParams } from 'contentful'
+import pLimit from 'p-limit'
 
-// Import real Contentful client functions
-import {
-  fetchServiceBySlug as clientFetchServiceBySlug,
-  fetchLocationBySlug as clientFetchLocationBySlug,
-  fetchBlogTemplate as clientFetchBlogTemplate,
-  fetchAllServices as clientFetchAllServices,
-  fetchAllLocations as clientFetchAllLocations,
-  contentfulHealthCheck as clientContentfulHealthCheck,
-  fetchBlogPosts as clientFetchBlogPosts,
-  fetchBlogPostBySlug as clientFetchBlogPostBySlug,
-  fetchPriorityServices as clientFetchPriorityServices,
-} from './contentful-client';
+const CONCURRENCY = Number(process.env.CONTENTFUL_CONCURRENCY ?? 4)
+const limit = pLimit(CONCURRENCY)
 
-// Helper function to get a field from a Contentful entry
-export function getEntryField<T>(entry: any, fieldName: string): T | undefined {
-  if (!entry || !entry.fields || !(fieldName in entry.fields)) {
-    return undefined;
+const client = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID!,
+  accessToken: (process.env.CONTENTFUL_USE_PREVIEW === 'true'
+    ? process.env.CONTENTFUL_ACCESS_TOKEN
+    : process.env.CONTENTFUL_DELIVERY_TOKEN)!,
+  environment: process.env.CONTENTFUL_ENVIRONMENT || 'master',
+  // SDK has basic retry, but we add our own guard/logging too
+  retryOnError: true,
+  // helpful logs (you can also gate by NODE_ENV === 'production')
+  logHandler: (level, data) => {
+    // eslint-disable-next-line no-console
+    console[level]?.('[contentful]', data?.message || data)
   }
-  return entry.fields[fieldName] as T;
-}
+} as CreateClientParams)
 
-// Use the real implementations from contentful-client.ts
-export async function fetchServiceBySlug(slug: string): Promise<ServiceEntry | null> {
-  console.log(`[Contentful] Fetching service: ${slug}`);
-  const result = await clientFetchServiceBySlug(slug);
-  console.log(`[Contentful] Service '${slug}' result:`, result ? 'found' : 'not found');
-  return result;
-}
+function sleep(ms: number) { return new Promise(r => setTimeout(r, ms)) }
 
-export async function fetchLocationBySlug(slug: string): Promise<LocationEntry | null> {
-  console.log(`[Contentful] Fetching location: ${slug}`);
-  const result = await clientFetchLocationBySlug(slug);
-  console.log(`[Contentful] Location '${slug}' result:`, result ? 'found' : 'not found');
-  return result;
-}
-
-export async function fetchBlogTemplate(): Promise<Entry<any> | null> {
-  console.log('[Contentful] Fetching blog template');
-  const result = await clientFetchBlogTemplate();
-  console.log('[Contentful] Blog template result:', result ? 'found' : 'not found');
-  return result;
-}
-
-export async function fetchAllServices(): Promise<ServiceEntry[]> {
-  console.log('Fetching all services');
-  return clientFetchAllServices();
-}
-
-export async function fetchAllLocations(): Promise<LocationEntry[]> {
-  console.log('Fetching all locations');
-  return clientFetchAllLocations();
-}
-
-export async function contentfulHealthCheck(): Promise<boolean> {
-  return clientContentfulHealthCheck();
-}
-
-export async function fetchBlogPosts(): Promise<Entry<any>[]> {
-  console.log('Fetching all blog posts');
-  return clientFetchBlogPosts();
-}
-
-export async function fetchBlogPostBySlug(slug: string): Promise<Entry<any> | null> {
-  console.log(`Fetching blog post: ${slug}`);
-  return clientFetchBlogPostBySlug(slug);
-}
-
-export async function fetchPriorityServices(): Promise<ServiceEntry[]> {
-  console.log('Fetching priority services');
-  return clientFetchPriorityServices();
-}
-
-export async function fetchPriorityLocations(): Promise<LocationEntry[]> {
-  // For now, just return regular locations
-  console.log('Fetching priority locations');
-  return fetchAllLocations();
-}
-
-export function replacePlaceholdersInRichText(
-  document: Document | null | undefined,
-  replacements: Record<string, string>
-): Document {
-  if (!document) {
-    return {
-      nodeType: 'document',
-      data: {},
-      content: []
-    };
-  }
-
-  // Deep clone the document to avoid mutating the original
-  const clonedDoc = JSON.parse(JSON.stringify(document));
-
-  // Helper to recursively replace placeholders in nodes
-  function processNode(node: any) {
-    // Replace text values
-    if (node.nodeType === 'text' && node.value) {
-      let newValue = node.value;
-
-      for (const [key, value] of Object.entries(replacements)) {
-        const regex = new RegExp(`\\{\\{ \s*${key}\s* \\}\}`, 'gi');
-        newValue = newValue.replace(regex, value);
+async function withRetries<T>(fn: () => Promise<T>, ctx: string, max = 6) {
+  let attempt = 0
+  // Exponential backoff starting ~400ms
+  while (true) {
+    try {
+      return await fn()
+    } catch (err: any) {
+      const status = err?.status || err?.response?.status
+      const retryAfter = Number(err?.response?.headers?.get?.('retry-after')) || 0
+      const isRetryable = status === 429 || (status >= 500 && status < 600)
+      attempt++
+      if (!isRetryable || attempt > max) {
+        console.error(`[contentful:${ctx}] FAILED after ${attempt} attempts`, { status, err: err?.message })
+        throw err
       }
-
-      node.value = newValue;
-    }
-
-    // Process child content recursively
-    if (node.content && Array.isArray(node.content)) {
-      node.content.forEach(processNode);
+      const base = Math.min(1000 * 2 ** (attempt - 1), 8000)
+      const delay = Math.max(base, retryAfter * 1000)
+      console.warn(`[contentful:${ctx}] ${status} retrying in ${delay}ms (attempt ${attempt}/${max})`)
+      await sleep(delay)
     }
   }
-
-  // Start processing from the top level
-  if (clonedDoc.content && Array.isArray(clonedDoc.content)) {
-    clonedDoc.content.forEach(processNode);
-  }
-
-  return clonedDoc;
 }
 
-export function getAssetUrl(asset: any): string {
-  if (!asset || !asset.fields || !asset.fields.file || !asset.fields.file.url) {
-    return '';
-  }
-
-  const url = asset.fields.file.url;
-  return url.startsWith('//') ? `https:${url}` : url;
+export async function cfQuery<T>(ctx: string, call: () => Promise<T>): Promise<T> {
+  return limit(() => withRetries(call, ctx))
 }
 
-export function extractTextFromRichText(document: Document): string {
-  let text = '';
-
-  function processNode(node: any) {
-    if (node.nodeType === 'text' && node.value) {
-      text += node.value + ' ';
-    }
-
-    if (node.content && Array.isArray(node.content)) {
-      node.content.forEach(processNode);
-    }
-  }
-
-  if (document?.content && Array.isArray(document.content)) {
-    document.content.forEach(processNode);
-  }
-
-  return text.trim();
+// Example helpers (use these in your loaders/server components)
+export async function getEntries<T>(query: any, ctx = 'getEntries') {
+  return cfQuery(ctx, () => client.getEntries<T>(query))
 }
-
-// Fill template with service and location data
-export function fillTemplate(
-  template: string,
-  service: ServiceEntry,
-  location: LocationEntry
-): string {
-  const serviceName = service.fields.serviceName || '';
-  const suburb = location.fields.suburb || '';
-  const city = location.fields.city || '';
-
-  return template
-    .replace(/\{\{\s*service\s*\}\}/gi, serviceName)
-    .replace(/\{\{\s*suburb\s*\}\}/gi, suburb)
-    .replace(/\{\{\s*city\s*\}\}/gi, city);
+export async function getEntry<T>(id: string, ctx = `getEntry:${id}`) {
+  return cfQuery(ctx, () => client.getEntry<T>(id))
 }

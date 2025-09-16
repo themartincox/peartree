@@ -2,14 +2,11 @@ import { notFound } from 'next/navigation'
 import { headers } from 'next/headers' // Import headers
 import { Suspense } from 'react'; // Import Suspense
 import {
-  fetchServiceBySlug,
-  fetchLocationBySlug,
-  fetchBlogTemplate,
   replacePlaceholdersInRichText,
   contentfulHealthCheck,
-  fetchAllServices,
-  fetchAllLocations,
-  getEntryField
+  getEntryField,
+  getEntries,
+  getEntry
 } from '@/lib/contentful'
 import { decideIndexable } from '@/lib/indexing'
 import RichTextRenderer from '@/components/RichTextRenderer'
@@ -52,9 +49,9 @@ export async function generateMetadata(
 
   try {
     const [service, location, template] = await Promise.all([
-      fetchServiceBySlug(serviceSlug),
-      fetchLocationBySlug(suburb),
-      fetchBlogTemplate(),
+      getEntry<ServiceEntry>(serviceSlug, 'generateMetadata:service'),
+      getEntry<LocationEntry>(suburb, 'generateMetadata:location'),
+      getEntry<any>(process.env.CONTENTFUL_BLOG_TEMPLATE_TYPE_ID!, 'generateMetadata:template'),
     ])
     if (!service || !location || !template) return fallback
 
@@ -103,18 +100,28 @@ export async function generateStaticParams() {
     const healthy = await contentfulHealthCheck()
     if (!healthy) return []
 
-    const [allServices, allLocations] = await Promise.all([fetchAllServices(), fetchAllLocations()])
+    const [allServices, allLocations] = await Promise.all([
+      getEntries<{ fields: { slug: string } }>({ content_type: process.env.CONTENTFUL_SERVICE_TYPE_ID, select: 'fields.slug' }, 'generateStaticParams:services'),
+      getEntries<{ fields: { slug: string } }>({ content_type: process.env.CONTENTFUL_LOCATION_TYPE_ID, select: 'fields.slug' }, 'generateStaticParams:locations')
+    ])
 
-    const params: { service: string; suburb: string }[] = []
-    for (const svc of allServices) {
+    let params: { service: string; suburb: string }[] = []
+    for (const svc of allServices.items) {
       const sSlug = getEntryField<string>(svc, 'slug') ?? ''
-      for (const loc of allLocations) {
+      for (const loc of allLocations.items) {
         const lSlug = getEntryField<string>(loc, 'slug') ?? ''
         params.push({ service: sSlug, suburb: lSlug })
       }
     }
 
-    console.log(`Prebuilding ${params.length} service/suburb combinations for Full SSG`);
+    // Fast CI mode to avoid rate-limit during deployments
+    if (process.env.FAST_BUILD === '1') {
+      params = params.slice(0, 20) // build a small sample
+      console.log(`FAST_BUILD enabled: Prebuilding ${params.length} service/suburb combinations`);
+    } else {
+      console.log(`Prebuilding ${params.length} service/suburb combinations for Full SSG`);
+    }
+
     return params
   } catch (err) {
     console.error('generateStaticParams error', err)
@@ -127,115 +134,120 @@ export const dynamicParams = true;
 export default async function ServiceSuburbPage({ params }: { params: RouteParams }) {
   const { service: serviceSlug, suburb: suburbSlug } = await params
 
+  let service: ServiceEntry | null = null;
+  let location: LocationEntry | null = null;
+  let template: any = null;
+  let allLocations: LocationEntry[] = [];
+
   try {
-    const [service, location, template, allLocations] = await Promise.all([
-      fetchServiceBySlug(serviceSlug),
-      fetchLocationBySlug(suburbSlug),
-      fetchBlogTemplate(),
-      fetchAllLocations(),
+    [service, location, template, allLocations] = await Promise.all([
+      getEntry<ServiceEntry>(serviceSlug, 'ServiceSuburbPage:service'),
+      getEntry<LocationEntry>(suburbSlug, 'ServiceSuburbPage:location'),
+      getEntry<any>(process.env.CONTENTFUL_BLOG_TEMPLATE_TYPE_ID!, 'ServiceSuburbPage:template'),
+      getEntries<LocationEntry>({ content_type: process.env.CONTENTFUL_LOCATION_TYPE_ID }, 'ServiceSuburbPage:allLocations').then(res => res.items),
     ])
-
-    if (!service || !location || !template) {
-      return notFound()
-    }
-
-    const serviceName = getEntryField<string>(service, 'serviceName') ?? 'Our Service'
-    const suburbName = getEntryField<string>(location, 'suburb') ?? 'Your Area'
-    const cityName = getEntryField<string>(location, 'city') ?? 'Your City'
-
-    const bodyDoc = getEntryField(template, 'bodyContent')
-
-    const filledBody = replacePlaceholdersInRichText(bodyDoc, {
-      service: serviceName,
-      suburb: suburbName,
-      city: cityName
-    })
-
-    const { indexable, reasons } = decideIndexable({
-      service, location, filledBody
-    })
-
-    if (!indexable) {
-      console.log(`Page ${serviceSlug}/${suburbSlug} is not indexable. Reasons:`, reasons)
-    }
-
-    const nearbyLocations = allLocations
-      .filter(loc => {
-        const locCity = getEntryField<string>(loc, 'city')
-        return locCity === cityName
-      })
-      .map(loc => ({
-        slug: getEntryField<string>(loc, 'slug') ?? '',
-        name: getEntryField<string>(loc, 'suburb') ?? ''
-      }))
-      .filter(loc => loc.slug && loc.slug !== suburbSlug)
-
-    return (
-      <div className="container mx-auto py-8">
-        <StructuredData
-          city={cityName}
-          service={serviceName}
-          suburb={suburbName}
-        />
-
-        <h1 className="text-3xl font-bold mb-6">{serviceName} in {suburbName}</h1>
-
-        <Suspense fallback={<div className="h-8 mb-4" /> /* Placeholder for layout stability */}>
-          <PersonalizedWelcome />
-        </Suspense>
-
-        <CohortStrip serviceSlug={serviceSlug} suburbSlug={suburbSlug} emergency={serviceSlug === 'emergency-dentist'} />
-
-        <OpenToday reviewsCount={Math.floor(300 + Math.random() * 400)} rating={4.8 + Math.random() * 0.2} />
-
-        <PriceExplainer serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
-
-        {nearbyLocations.length > 0 && (
-          <ChangeArea
-            serviceSlug={serviceSlug}
-            current={suburbSlug}
-            options={[
-              { slug: suburbSlug, name: suburbName },
-              ...nearbyLocations
-            ]}
-          />
-        )}
-
-        <div className="prose max-w-none">
-          <RichTextRenderer document={filledBody} />
-        </div>
-
-        <IntentSurvey serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
-
-        <LocalProof
-          reviewsCount={Math.floor(300 + Math.random() * 400)}
-          serviceSlug={serviceSlug}
-          locationSlug={suburbSlug}
-        />
-
-        {process.env.NODE_ENV === 'development' && (
-          <div className={`mt-6 p-4 rounded-lg text-white ${indexable ? 'bg-green-600' : 'bg-red-600'}`}>
-            <h3 className="font-bold">Indexability Status: {indexable ? 'Indexable' : 'Not Indexable'}</h3>
-            {!indexable && (
-              <ul className="list-disc ml-6 mt-2">
-                {reasons.map((reason, i) => (
-                  <li key={i}>{reason}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-
-        <StickyCtaBar
-          serviceSlug={serviceSlug}
-          suburbSlug={suburbSlug}
-          emergency={serviceSlug === 'emergency-dentist'}
-        />
-
-      </div>
-    )
   } catch (error) {
-    console.error(`Error rendering ${serviceSlug}/${suburbSlug} page:`, error)
+    console.error(`Error fetching Contentful data for ${serviceSlug}/${suburbSlug}:`, error);
+    // Continue with nulls, the notFound() check will handle it
+  }
+
+  if (!service || !location || !template) {
     return notFound()
   }
+
+  const serviceName = getEntryField<string>(service, 'serviceName') ?? 'Our Service'
+  const suburbName = getEntryField<string>(location, 'suburb') ?? 'Your Area'
+  const cityName = getEntryField<string>(location, 'city') ?? 'Your City'
+
+  const bodyDoc = getEntryField(template, 'bodyContent')
+
+  const filledBody = replacePlaceholdersInRichText(bodyDoc, {
+    service: serviceName,
+    suburb: suburbName,
+    city: cityName
+  })
+
+  const { indexable, reasons } = decideIndexable({
+    service, location, filledBody
+  })
+
+  if (!indexable) {
+    console.log(`Page ${serviceSlug}/${suburbSlug} is not indexable. Reasons:`, reasons)
+  }
+
+  const nearbyLocations = allLocations
+    .filter(loc => {
+      const locCity = getEntryField<string>(loc, 'city')
+      return locCity === cityName
+    })
+    .map(loc => ({
+      slug: getEntryField<string>(loc, 'slug') ?? '',
+      name: getEntryField<string>(loc, 'suburb') ?? ''
+    }))
+    .filter(loc => loc.slug && loc.slug !== suburbSlug)
+
+  return (
+    <div className="container mx-auto py-8">
+      <StructuredData
+        city={cityName}
+        service={serviceName}
+        suburb={suburbName}
+      />
+
+      <h1 className="text-3xl font-bold mb-6">{serviceName} in {suburbName}</h1>
+
+      <Suspense fallback={<div className="h-8 mb-4" /> /* Placeholder for layout stability */}>
+        <PersonalizedWelcome />
+      </Suspense>
+
+      <CohortStrip serviceSlug={serviceSlug} suburbSlug={suburbSlug} emergency={serviceSlug === 'emergency-dentist'} />
+
+      <OpenToday reviewsCount={Math.floor(300 + Math.random() * 0.2)} rating={4.8 + Math.random() * 0.2} />
+
+      <PriceExplainer serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
+
+      {nearbyLocations.length > 0 && (
+        <ChangeArea
+          serviceSlug={serviceSlug}
+          current={suburbSlug}
+          options={[
+            { slug: suburbSlug, name: suburbName },
+            ...nearbyLocations
+          ]}
+        />
+      )}
+
+      <div className="prose max-w-none">
+        <RichTextRenderer document={filledBody} />
+      </div>
+
+      <IntentSurvey serviceSlug={serviceSlug} suburbSlug={suburbSlug} />
+
+      <LocalProof
+        reviewsCount={Math.floor(300 + Math.random() * 400)}
+        serviceSlug={serviceSlug}
+        locationSlug={suburbSlug}
+      />
+
+      {process.env.NODE_ENV === 'development' && (
+        <div className={`mt-6 p-4 rounded-lg text-white ${indexable ? 'bg-green-600' : 'bg-red-600'}`}>
+          <h3 className="font-bold">Indexability Status: {indexable ? 'Indexable' : 'Not Indexable'}</h3>
+          {!indexable && (
+            <ul className="list-disc ml-6 mt-2">
+              {reasons.map((reason, i) => (
+                <li key={i}>{reason}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+
+      <StickyCtaBar
+        serviceSlug={serviceSlug}
+        suburbSlug={suburbSlug}
+        emergency={serviceSlug === 'emergency-dentist'}
+      />
+
+    </div>
+  )
 }
