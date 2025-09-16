@@ -27,6 +27,7 @@
   CONTENTFUL_BLOG_POST_TYPE_ID = "pageBlogPost"
   GENERATION_MODE = "fallback"
   USE_MOCK_DATA = "true"
+  NEXT_IMAGE_OPTIMIZER_DISABLED = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
