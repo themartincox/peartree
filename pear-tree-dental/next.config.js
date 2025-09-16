@@ -79,6 +79,12 @@ const nextConfig = {
       };
     }
 
+    // Add webpack alias for '@'
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      '@': require('path').join(process.cwd(), 'src')
+    }
+
     return config;
   },
 

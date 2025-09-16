@@ -3,13 +3,14 @@ export const dynamic = "force-dynamic";
 
 import type { MetadataRoute } from 'next';
 import {
-  fetchAllServices,
-  fetchAllLocations,
   fetchBlogPosts,
   fetchPriorityServices,
   fetchPriorityLocations,
-  contentfulHealthCheck
-} from '@/lib/contentful';
+  fetchAllServices,
+  fetchAllLocations,
+  cfEntries, // add this if you call cfEntries(...)
+  contentfulHealthCheck,
+} from '@/lib/contentful'
 
 // Helper function to safely convert dates to ISO string
 const toISO = (input?: string | number | Date) => {
