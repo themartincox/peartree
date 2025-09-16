@@ -28,6 +28,8 @@
   GENERATION_MODE = "fallback"
   USE_MOCK_DATA = "true"
   NEXT_IMAGE_OPTIMIZER_DISABLED = "true"
+  NEXT_PUBLIC_CONTENTFUL_USE_PREVIEW = "false"
+  NEXT_PUBLIC_USE_MOCK_DATA = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
