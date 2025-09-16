@@ -1,5 +1,5 @@
 [build]
-  command = "NODE_OPTIONS='--max-old-space-size=8192' SKIP_ENV_VALIDATION=true DISABLE_ESLINT_PLUGIN=true bun run build"
+  command = "NODE_OPTIONS='--max-old-space-size=8192' SKIP_ENV_VALIDATION=true DISABLE_ESLINT_PLUGIN=true npm run build"
   functions = ".netlify/functions"
   publish = ".next"
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ./netlify.toml"
@@ -30,6 +30,9 @@
   NEXT_IMAGE_OPTIMIZER_DISABLED = "true"
   NEXT_PUBLIC_CONTENTFUL_USE_PREVIEW = "false"
   NEXT_PUBLIC_USE_MOCK_DATA = "true"
+
+#[[plugins]]
+#  package = "@netlify/plugin-lighthouse"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
