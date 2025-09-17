@@ -174,20 +174,20 @@ export default function RestorativeDentistryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pear-primary/5 via-white to-soft-blue/5">
+    <div className="min-h-screen bg-gradient-to-br from-dental-green/5 via-white to-soft-blue/5">
       {/* Hero Section - Medical Theme */}
       <section className="pt-32 pb-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <Badge variant="secondary" className="bg-pear-primary text-white">
+              <Badge variant="secondary" className="bg-dental-green text-white">
                 <Wrench className="w-4 h-4 mr-2" />
                 Restorative Dentistry
               </Badge>
 
               <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary leading-tight">
                 Repair & Restore
-                <span className="text-pear-primary block">Your Teeth</span>
+                <span className="text-dental-green block">Your Teeth</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
@@ -198,19 +198,19 @@ export default function RestorativeDentistryPage() {
               {/* Key Benefits */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-pear-primary" />
+                  <CheckCircle className="w-5 h-5 text-dental-green" />
                   <span className="text-sm font-medium">Natural-looking results</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-pear-primary" />
+                  <CheckCircle className="w-5 h-5 text-dental-green" />
                   <span className="text-sm font-medium">Premium materials</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-pear-primary" />
+                  <CheckCircle className="w-5 h-5 text-dental-green" />
                   <span className="text-sm font-medium">Long-lasting solutions</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-5 h-5 text-pear-primary" />
+                  <CheckCircle className="w-5 h-5 text-dental-green" />
                   <span className="text-sm font-medium">Expert craftsmanship</span>
                 </div>
               </div>
@@ -218,13 +218,13 @@ export default function RestorativeDentistryPage() {
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/book">
-                  <Button size="lg" className="bg-gradient-to-r from-pear-primary to-soft-blue text-white font-semibold group shadow-lg">
+                  <Button size="lg" className="bg-gradient-to-r from-dental-green to-soft-blue text-white font-semibold group shadow-lg">
                     Book Consultation
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white bg-white">
+                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white bg-white">
                     <Phone className="w-5 h-5 mr-2" />
                     Call 0115 931 2935
                   </Button>
@@ -234,7 +234,7 @@ export default function RestorativeDentistryPage() {
               {/* Trust indicators */}
               <div className="flex items-center space-x-6 text-sm text-gray-600">
                 <div className="flex items-center space-x-2">
-                  <Award className="w-4 h-4 text-pear-primary" />
+                  <Award className="w-4 h-4 text-dental-green" />
                   <span>Expert technicians</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -242,7 +242,7 @@ export default function RestorativeDentistryPage() {
                   <span>Latest technology</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <ShieldCheck className="w-4 h-4 text-pear-primary" />
+                  <ShieldCheck className="w-4 h-4 text-dental-green" />
                   <span>Quality guarantee</span>
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function RestorativeDentistryPage() {
                 </picture>
 
                 {/* Overlay with content - lighter and disappears on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-pear-primary/60 to-soft-blue/60 group-hover:from-pear-primary/20 group-hover:to-soft-blue/20 transition-all duration-500 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-dental-green/60 to-soft-blue/60 group-hover:from-dental-green/20 group-hover:to-soft-blue/20 transition-all duration-500 flex items-center justify-center">
                   <div className="text-center text-white p-8 max-w-md group-hover:opacity-80 transition-opacity duration-500">
                     <h3 className="text-2xl font-semibold mb-4">Advanced Restoration Technology</h3>
                     <p className="text-white/90 mb-6">
@@ -310,7 +310,7 @@ export default function RestorativeDentistryPage() {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-pear-primary to-soft-blue rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-soft-blue rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2">{benefit.title}</h3>
@@ -376,8 +376,8 @@ export default function RestorativeDentistryPage() {
 
           <div className="flex justify-center mb-8">
             <div className="w-full md:w-1/2 lg:w-[48%]">
-                <Card className="hover:shadow-xl transition-all duration-300 h-full border-2 border-pear-primary">
-                    <div className="bg-pear-primary text-white text-center py-2 text-sm font-semibold">
+                <Card className="hover:shadow-xl transition-all duration-300 h-full border-2 border-dental-green">
+                    <div className="bg-dental-green text-white text-center py-2 text-sm font-semibold">
                         Popular Treatment
                     </div>
                     <CardHeader className="pt-6">
@@ -385,7 +385,7 @@ export default function RestorativeDentistryPage() {
                             <CardTitle className="text-xl font-semibold text-pear-primary">
                                 Dental Veneers
                             </CardTitle>
-                            <Badge variant="outline" className="text-pear-primary border-pear-primary">
+                            <Badge variant="outline" className="text-dental-green border-dental-green">
                                 From £750
                             </Badge>
                         </div>
@@ -416,7 +416,7 @@ export default function RestorativeDentistryPage() {
                             </div>
                         </div>
                         <Link href="/services/cosmetic/veneers">
-                            <Button className="w-full bg-gradient-to-r from-pear-primary to-soft-blue text-white hover:shadow-lg">
+                            <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
                                 Learn More about Veneers
                                 <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
@@ -431,11 +431,11 @@ export default function RestorativeDentistryPage() {
               <Card
                 key={treatment.name}
                 className={`hover:shadow-xl transition-all duration-300 ${
-                  treatment.popular ? 'border-2 border-pear-primary' : ''
+                  treatment.popular ? 'border-2 border-dental-green' : ''
                 }`}
               >
                 {treatment.popular && (
-                  <div className="bg-pear-primary text-white text-center py-2 text-sm font-semibold">
+                  <div className="bg-dental-green text-white text-center py-2 text-sm font-semibold">
                     Popular Treatment
                   </div>
                 )}
@@ -445,7 +445,7 @@ export default function RestorativeDentistryPage() {
                     <CardTitle className="text-xl font-semibold text-pear-primary">
                       {treatment.name}
                     </CardTitle>
-                    <Badge variant="outline" className="text-pear-primary border-pear-primary">
+                    <Badge variant="outline" className="text-dental-green border-dental-green">
                       {treatment.price}
                     </Badge>
                   </div>
@@ -478,7 +478,7 @@ export default function RestorativeDentistryPage() {
                   </div>
 
                   <Link href="/book">
-                    <Button className="w-full bg-gradient-to-r from-pear-primary to-soft-blue text-white hover:shadow-lg">
+                    <Button className="w-full bg-gradient-to-r from-dental-green to-soft-blue text-white hover:shadow-lg">
                       Book {treatment.name}
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
@@ -531,13 +531,13 @@ export default function RestorativeDentistryPage() {
       </section>
 
       {/* Subtle Visual Transition */}
-      <div className="relative h-12 bg-gradient-to-b from-white via-pear-primary/2 to-pear-primary/5">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-pear-primary/10 to-soft-blue/10 opacity-50" />
-        <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-pear-primary/20 to-transparent" />
+      <div className="relative h-12 bg-gradient-to-b from-white via-dental-green/2 to-dental-green/5">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-dental-green/10 to-soft-blue/10 opacity-50" />
+        <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-dental-green/20 to-transparent" />
       </div>
 
       {/* Materials Section */}
-      <section className="pt-12 pb-16 bg-gradient-to-r from-pear-primary/5 to-soft-blue/5">
+      <section className="pt-12 pb-16 bg-gradient-to-r from-dental-green/5 to-soft-blue/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
@@ -591,9 +591,9 @@ export default function RestorativeDentistryPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {process.map((step, index) => (
-              <Card key={step.step} className="text-center relative bg-white border-pear-primary/20">
+              <Card key={step.step} className="text-center relative bg-white border-dental-green/20">
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pear-primary to-soft-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg">
+                  <div className="w-12 h-12 bg-gradient-to-br from-dental-green to-soft-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg shadow-lg">
                     {step.step}
                   </div>
                   <h3 className="font-semibold text-pear-primary mb-2 text-sm">{step.title}</h3>
@@ -601,7 +601,7 @@ export default function RestorativeDentistryPage() {
                 </CardContent>
                 {index < process.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <ArrowRight className="w-6 h-6 text-pear-primary/30" />
+                    <ArrowRight className="w-6 h-6 text-dental-green/30" />
                   </div>
                 )}
               </Card>
@@ -685,7 +685,7 @@ export default function RestorativeDentistryPage() {
       {/* Final CTA Section */}
       <section className="py-16 bg-gradient-to-b from-green-50/10 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-pear-primary to-soft-blue text-white overflow-hidden">
+          <Card className="bg-gradient-to-r from-dental-green to-soft-blue text-white overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Ready to Restore Your Smile?
@@ -697,13 +697,13 @@ export default function RestorativeDentistryPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <Link href="/book">
-                  <Button size="lg" className="bg-white text-pear-primary hover:bg-gray-100 font-semibold shadow-lg">
+                  <Button size="lg" className="bg-white text-dental-green hover:bg-gray-100 font-semibold shadow-lg">
                     Book Free Consultation
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary bg-transparent">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-dental-green bg-transparent">
                     Call 0115 931 2935
                   </Button>
                 </a>

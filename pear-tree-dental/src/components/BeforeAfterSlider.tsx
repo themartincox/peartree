@@ -25,24 +25,21 @@ export default function BeforeAfterSlider({
   title,
   description,
   treatmentType,
-  className = ""
+  className = "",
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const mountedRef = useRef(true);
 
-  // Handle position updates with mounted check
   const updatePosition = useCallback((clientX: number) => {
     if (!mountedRef.current || !containerRef.current) return;
-
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percentage);
   }, []);
 
-  // Handle mouse/touch events for dragging
   const handleStart = useCallback((clientX: number) => {
     if (!mountedRef.current) return;
     setIsDragging(true);
@@ -59,7 +56,7 @@ export default function BeforeAfterSlider({
     setIsDragging(false);
   }, []);
 
-  // Mouse events
+  // Mouse
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     handleStart(e.clientX);
@@ -73,7 +70,7 @@ export default function BeforeAfterSlider({
     handleEnd();
   }, [handleEnd]);
 
-  // Touch events
+  // Touch
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     handleStart(e.touches[0].clientX);
   }, [handleStart]);
@@ -87,32 +84,27 @@ export default function BeforeAfterSlider({
     handleEnd();
   }, [handleEnd]);
 
-  // Effect to handle global mouse/touch events
+  // Bind/unbind listeners while dragging
   useEffect(() => {
     if (isDragging && mountedRef.current) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('touchend', handleTouchEnd);
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.addEventListener("touchmove", handleTouchMove, { passive: false });
+      document.addEventListener("touchend", handleTouchEnd);
     }
-
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('touchmove', handleTouchMove);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("touchmove", handleTouchMove);
+      document.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging, handleMouseMove, handleMouseUp, handleTouchMove, handleTouchEnd]);
 
-  // Cleanup effect
   useEffect(() => {
     mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
+    return () => { mountedRef.current = false; };
   }, []);
 
-  // Quick position buttons
   const setPosition = useCallback((position: number) => {
     if (!mountedRef.current) return;
     setSliderPosition(position);
@@ -120,7 +112,6 @@ export default function BeforeAfterSlider({
 
   return (
     <div className={`space-y-6 ${className}`}>
-      {/* Header */}
       {(title || treatmentType) && (
         <div className="text-center space-y-2">
           {treatmentType && (
@@ -129,18 +120,12 @@ export default function BeforeAfterSlider({
               {treatmentType} Results
             </Badge>
           )}
-          {title && (
-            <h3 className="heading-serif text-2xl font-bold text-pear-primary">
-              {title}
-            </h3>
-          )}
-          {description && (
-            <p className="text-gray-600">{description}</p>
-          )}
+          {title && <h3 className="heading-serif text-2xl font-bold text-pear-primary">{title}</h3>}
+          {description && <p className="text-gray-600">{description}</p>}
         </div>
       )}
 
-      {/* Slider Container */}
+      {/* Slider */}
       <div className="relative">
         <div
           ref={containerRef}
@@ -148,7 +133,7 @@ export default function BeforeAfterSlider({
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >
-          {/* Before Image (Base Layer) */}
+          {/* Before (base) */}
           <div className="absolute inset-0">
             <Image
               src={beforeImage}
@@ -157,40 +142,39 @@ export default function BeforeAfterSlider({
               className="object-cover object-center"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
               priority
+              draggable={false}
+              decoding="async"
             />
-            {/* Before Label */}
-            <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+            <div className="pointer-events-none absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
               Before
             </div>
           </div>
 
-          {/* After Image (Clipped Layer) */}
+          {/* After (clipped) */}
           <div
             className="absolute inset-0 transition-all duration-75 ease-out"
-            style={{
-              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`
-            }}
+            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
           >
             <Image
               src={afterImage}
               alt={afterAlt}
               fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover object-center"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 50vw"
+              draggable={false}
+              decoding="async"
             />
-            {/* After Label */}
-            <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+            <div className="pointer-events-none absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
               After
             </div>
           </div>
 
-          {/* Slider Line */}
+          {/* Slider line & handle */}
           <div
             className="absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-all duration-75 ease-out z-20"
-            style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+            style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
           >
-            {/* Slider Handle */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize hover:bg-gray-50 transition-colors">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-2 border-gray-300 flex items-center justify-center cursor-ew-resize hover:bg-gray-50 transition-colors">
               <div className="flex space-x-1">
                 <ArrowLeft className="w-3 h-3 text-gray-600" />
                 <ArrowRight className="w-3 h-3 text-gray-600" />
@@ -198,13 +182,13 @@ export default function BeforeAfterSlider({
             </div>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {sliderPosition < 25 ? 'Before' : sliderPosition > 75 ? 'After' : 'Transition'}
+          {/* Progress tag */}
+          <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            {sliderPosition < 25 ? "Before" : sliderPosition > 75 ? "After" : "Transition"}
           </div>
         </div>
 
-        {/* Quick Position Controls */}
+        {/* Quick controls */}
         <div className="flex justify-center space-x-4 mt-4">
           <Button
             variant={sliderPosition <= 25 ? "default" : "outline"}
@@ -234,7 +218,6 @@ export default function BeforeAfterSlider({
         </div>
       </div>
 
-      {/* Instructions */}
       <div className="text-center text-sm text-gray-600">
         <p>Drag the slider or use the buttons to compare before and after results</p>
       </div>
