@@ -289,7 +289,6 @@ const TreatmentJourney = () => {
               className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-pear-background overflow-visible"
               style={{
                 zIndex: 10 + index,
-                paddingTop: index === 0 ? "80px" : "0px", // Add padding to first step
               }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
