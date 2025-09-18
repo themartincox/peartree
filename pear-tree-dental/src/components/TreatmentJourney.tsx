@@ -172,7 +172,7 @@ const TreatmentJourney = () => {
               stepElement.style.position = 'sticky';
               // Responsive sticky offset: 0 on desktop, 120px on mobile (adjust as needed)
               if (window.innerWidth < 768) {
-                stepElement.style.top = '120px';
+                stepElement.style.top = '80px';
               } else {
                 stepElement.style.top = '0px';
               }
@@ -286,7 +286,7 @@ const TreatmentJourney = () => {
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-pear-background overflow-visible"
+              className="step-item-wrapper h-screen flex items-center justify-center pt-20 transition-all duration-500 ease-out group bg-pear-background overflow-visible"
               style={{
                 zIndex: 10 + index,
               }}
