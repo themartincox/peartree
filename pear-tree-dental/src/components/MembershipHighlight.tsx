@@ -406,7 +406,7 @@ const MembershipHighlight = () => {
                     <Link href={activeTab === "family" ? "/membership#family-plan" :
                               activeTab === "essentialMaintenance" ? "/membership#essential-maintenance" :
                               "/membership/signup"}>
-                      View Full {currentPlan.name} Details
+                      View {currentPlan.name} Details
                       <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
