@@ -1,16 +1,7 @@
-const withAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE === 'true' });
-
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const baseConfig = {
   // Essential image configuration for Netlify
   images: {
-    // domains: [
-    //   'source.unsplash.com',
-    //   'images.unsplash.com',
-    //   'ext.same-assets.com',
-    //   'ugc.same-assets.com',
-    //   'images.ctfassets.net', // Contentful images
-    // ],
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -96,6 +87,7 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '5mb',
     },
+    optimizePackageImports: ["lucide-react"],
   },
 
   // Security headers for all routes
@@ -147,4 +139,16 @@ const nextConfig = {
   },
 };
 
-module.exports = withAnalyzer(nextConfig);
+if (process.env.ANALYZE === "true") {
+  try {
+    const withAnalyzer = require("@next/bundle-analyzer")({ enabled: true });
+    module.exports = withAnalyzer(baseConfig);
+  } catch (err) {
+    console.warn(
+      "[next.config] @next/bundle-analyzer not installed; skipping analyzer."
+    );
+    module.exports = baseConfig;
+  }
+} else {
+  module.exports = baseConfig;
+}
