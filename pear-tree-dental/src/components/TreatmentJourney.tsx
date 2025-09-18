@@ -342,9 +342,24 @@ const TreatmentJourney = () => {
                       <div className="aspect-[4/3] relative">
                         {step.mediaType === "video" ? (
                           <>
+                            {/* Desktop Video */}
                             <video
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-cover hidden md:block"
                               poster={step.posterPath}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              preload="metadata"
+                              aria-label={step.imageDescription}
+                            >
+                              <source src={step.videoPath} type="video/mp4" />
+                              Your browser does not support the video tag.
+                            </video>
+                            {/* Mobile Video */}
+                            <video
+                              className="w-full h-full object-cover block md:hidden"
+                              poster="/images/treatment-journey/mobile/assessment-poster-small.webp"
                               autoPlay
                               muted
                               loop
