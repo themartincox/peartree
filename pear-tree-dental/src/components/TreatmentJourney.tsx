@@ -119,67 +119,78 @@ const TreatmentJourney = () => {
   ];
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-
-      const container = containerRef.current;
-      const containerRect = container.getBoundingClientRect();
-      const containerHeight = container.offsetHeight;
-      const viewportHeight = window.innerHeight;
-
-      // Check if we're in the journey section (container is visible on screen)
-      const isVisible = containerRect.top < viewportHeight && containerRect.bottom > 0;
-      setIsInJourneySection(isVisible);
-
-      // Only start animation when container is fully in viewport
-      // This ensures the first step isn't truncated
-      if (containerRect.top > 0) {
-        // Container hasn't fully entered viewport yet, keep at step 0
-        setScrollProgress(0);
-        setActiveStep(0);
-        return;
-      }
-
-      // Calculate overall progress through the container
-      // Adjust the calculation to account for the initial offset
-      const totalProgress = Math.max(0, Math.min(1,
-        (-containerRect.top + 100) / (containerHeight - viewportHeight + 100)
-      ));
-      setScrollProgress(totalProgress);
-
-      // Calculate which step should be active
-      const stepProgress = totalProgress * journeySteps.length;
-      const currentStep = Math.min(Math.floor(stepProgress), journeySteps.length - 1);
-      setActiveStep(currentStep);
-
-      // Apply transforms to each step with proper sticky behavior
-      stepsRef.current.forEach((step, index) => {
-        if (!step) return;
-
-        const stepElement = step;
-
-        if (index <= currentStep) {
-          // Current and previous steps - stick in place
-          stepElement.style.transform = "translateY(0px)";
-          stepElement.style.zIndex = `${10 + index}`;
-          stepElement.style.position = 'sticky';
-          // Responsive sticky offset: 0 on desktop, 120px on mobile (adjust as needed)
-          if (window.innerWidth < 768) {
-            stepElement.style.top = '120px';
-          } else {
-            stepElement.style.top = '0px';
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!containerRef.current) {
+            ticking = false;
+            return;
           }
-        } else {
-          // Future steps - positioned normally below
-          stepElement.style.transform = "translateY(0px)";
-          stepElement.style.zIndex = `${10 + index}`;
-          stepElement.style.position = 'relative';
-          stepElement.style.top = 'auto';
-        }
-      });
+
+          const container = containerRef.current;
+          const containerRect = container.getBoundingClientRect();
+          const containerHeight = container.offsetHeight;
+          const viewportHeight = window.innerHeight;
+
+          // Check if we're in the journey section (container is visible on screen)
+          const isVisible = containerRect.top < viewportHeight && containerRect.bottom > 0;
+          setIsInJourneySection(isVisible);
+
+          // Only start animation when container is fully in viewport
+          // This ensures the first step isn't truncated
+          if (containerRect.top > 0) {
+            // Container hasn't fully entered viewport yet, keep at step 0
+            setScrollProgress(0);
+            setActiveStep(0);
+            ticking = false;
+            return;
+          }
+
+          // Calculate overall progress through the container
+          // Adjust the calculation to account for the initial offset
+          const totalProgress = Math.max(0, Math.min(1,
+            (-containerRect.top + 100) / (containerHeight - viewportHeight + 100)
+          ));
+          setScrollProgress(totalProgress);
+
+          // Calculate which step should be active
+          const stepProgress = totalProgress * journeySteps.length;
+          const currentStep = Math.min(Math.floor(stepProgress), journeySteps.length - 1);
+          setActiveStep(currentStep);
+
+          // Apply transforms to each step with proper sticky behavior
+          stepsRef.current.forEach((step, index) => {
+            if (!step) return;
+
+            const stepElement = step;
+
+            if (index <= currentStep) {
+              // Current and previous steps - stick in place
+              stepElement.style.transform = "translateY(0px)";
+              stepElement.style.zIndex = `${10 + index}`;
+              stepElement.style.position = 'sticky';
+              // Responsive sticky offset: 0 on desktop, 120px on mobile (adjust as needed)
+              if (window.innerWidth < 768) {
+                stepElement.style.top = '120px';
+              } else {
+                stepElement.style.top = '0px';
+              }
+            } else {
+              // Future steps - positioned normally below
+              stepElement.style.transform = "translateY(0px)";
+              stepElement.style.zIndex = `${10 + index}`;
+              stepElement.style.position = 'relative';
+              stepElement.style.top = 'auto';
+            }
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Initial call
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -242,7 +253,7 @@ const TreatmentJourney = () => {
   style={{ height: `${journeySteps.length * 100}vh` }}
       >
         {/* Header Section - responsive: absolute on md+, static on mobile */}
-        <div className="z-40 bg-white/95 backdrop-blur-sm py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0">
+        <div className="z-40 bg-white/95 py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">

@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
@@ -117,18 +118,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* DNS Prefetch for faster font loading */}
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
-        {/* Preconnect for critical font resources */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
         {/* Preload critical images for LCP optimization */}
         <link
           rel="preload"
@@ -204,9 +193,6 @@ export default function RootLayout({
         <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
-        {/* Simple Analytics script for local development */}
-        <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-        <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerPolicy="no-referrer-when-downgrade" /></noscript>
       </head>
       <body
         className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}
@@ -235,6 +221,8 @@ export default function RootLayout({
           <Footer />
           <LocationDetection />
         </TrackingProvider>
+        {/* Simple Analytics script - loads after page is interactive */}
+        <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />
       </body>
     </html>
   );

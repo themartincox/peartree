@@ -55,6 +55,7 @@ const Hero = () => {
             alt=""
             fill
             priority
+            fetchPriority="high"
             quality={85}
             sizes="100vw"
             className="object-cover opacity-50 object-[12%_center]"
@@ -70,6 +71,7 @@ const Hero = () => {
           width={1200}
           height={900}
           priority
+          fetchPriority="high"
           quality={85}
           sizes="(min-width: 1536px) 1200px, (min-width: 1280px) 1050px, (min-width: 1024px) 900px, 750px"
           className="w-[52vw] min-w-[600px] max-w-[1200px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"

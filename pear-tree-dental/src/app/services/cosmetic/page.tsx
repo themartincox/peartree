@@ -216,7 +216,10 @@ export default function CosmeticDentistryPage() {
             {/* Top Row: Teeth Whitening & Teeth Straightening */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {cosmeticServices.slice(0, 2).map((service) => (
-                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+                <Card
+  key={service.name}
+  className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col "
+>
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
@@ -243,7 +246,7 @@ export default function CosmeticDentistryPage() {
                         </div>
                       </div>
 
-                      <div className="bg-soft-pink/10 p-4 rounded-lg">
+                      <div className="bg-white p-4 rounded-lg">
                         <div className="text-center">
                           <span className="text-gray-600 text-xs uppercase tracking-wide">Expected Results:</span>
                           <div className="font-semibold text-pear-primary mt-1 text-sm">{service.results}</div>
@@ -267,8 +270,10 @@ export default function CosmeticDentistryPage() {
             {/* Middle Row: Veneers & Bonding */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {cosmeticServices.slice(2, 4).map((service) => (
-                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-                  <CardHeader>
+<Card
+  key={service.name}
+  className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-gradient-to-br from-pear-background/30 to-white"
+>                  <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
                         {service.name}
@@ -318,8 +323,10 @@ export default function CosmeticDentistryPage() {
             {/* Bottom Row: Wedding Day & Smile Makeover */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {cosmeticServices.slice(4, 6).map((service) => (
-                <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-                  <CardHeader>
+<Card
+  key={service.name}
+  className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10"
+>                  <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
                         {service.name}
@@ -370,8 +377,10 @@ export default function CosmeticDentistryPage() {
             <div className="flex justify-center">
               <div className="w-full md:w-1/2">
                 {cosmeticServices.slice(6, 7).map((service) => (
-                  <Card key={service.name} className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
-                    <CardHeader>
+<Card
+  key={service.name}
+  className="hover:shadow-xl transition-all duration-300 group h-full flex flex-col bg-gradient-to-br from-soft-pink/10 to-soft-lavender/10"
+>                    <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <CardTitle className="text-xl font-semibold text-pear-primary group-hover:text-pear-gold transition-colors">
                           {service.name}
