@@ -271,12 +271,11 @@ const TreatmentJourney = () => {
           ];
 
           return (
-            <div
-              key={`step-${index}`}
+            <div              key={`step-${index}`}
               ref={(el) => {
                 stepsRef.current[index] = el;
               }}
-              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-gradient-to-b from-pink-50 via-pink-100 to-white overflow-visible"
+              className="step-item-wrapper h-screen flex items-center justify-center transition-all duration-500 ease-out group bg-pear-background overflow-visible"
               style={{
                 zIndex: 10 + index,
                 paddingTop: index === 0 ? "80px" : "0px", // Add padding to first step
