@@ -260,11 +260,11 @@ return (
             </div>
             <div className="flex flex-col">
               <div
-                className="brand-logo text-pear-primary xl:text-left lg:text-center whitespace-nowrap"
+                className="brand-logo text-pear-primary xl:text-left lg:text-center"
                 style={{ fontSize: 25, lineHeight: "1.125" }}
               >
-                <span>PEAR TREE</span>
-                <span className="ml-2">DENTAL</span>
+                <span className="block sm:inline">PEAR TREE</span>
+                <span className="block sm:inline sm:ml-2">DENTAL</span>
               </div>
             </div>
           </Link>
@@ -583,9 +583,9 @@ return (
               />
             </div>
             <div className="flex flex-col">
-              <div className="brand-logo text-2xl p-0 sm:p-1 whitespace-nowrap" style={{ fontSize: 25, color: "#fff" }}>
-                <span>PEAR TREE</span>
-                <span className="ml-2">DENTAL</span>
+              <div className="brand-logo text-2xl p-0 sm:p-1" style={{ fontSize: 25, color: "#fff" }}>
+                <span className="block sm:inline">PEAR TREE</span>
+                <span className="block sm:inline sm:ml-2">DENTAL</span>
               </div>
             </div>
           </Link>
@@ -737,9 +737,9 @@ return (
               />
             </div>
             <div className="flex flex-col">
-              <div className="brand-logo text-2xl p-0 sm:p-1 whitespace-nowrap" style={{ fontSize: 25, color: "#fff" }}>
-                <span>PEAR TREE</span>
-                <span className="ml-2">DENTAL</span>
+              <div className="brand-logo text-2xl p-0 sm:p-1" style={{ fontSize: 25, color: "#fff" }}>
+                <span className="block sm:inline">PEAR TREE</span>
+                <span className="block sm:inline sm:ml-2">DENTAL</span>
               </div>
             </div>
           </Link>
