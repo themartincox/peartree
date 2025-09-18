@@ -7,7 +7,7 @@
     "build": "next build",
     "build:production": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production next build --no-lint",
     "build:optimized": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' next build --no-lint",
-    "build:analyze": "ANALYZE=true ./node_modules/.bin/next build",
+    "build:analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "bunx biome lint --write && bunx tsc --noEmit",
     "format": "bunx biome format --write",
