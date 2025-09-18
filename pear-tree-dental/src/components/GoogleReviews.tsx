@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import Image from "next/image";
 import { googleReviewsStats } from "@/data/googleReviews";
 
 interface GoogleReviewsProps {
@@ -10,7 +11,7 @@ export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
   const stats = {
     averageRating: googleReviewsStats?.averageRating || 5.0,
     totalReviews: googleReviewsStats?.totalReviews || 450,
-    fiveStarCount: googleReviewsStats?.fiveStarCount || 428
+    fiveStarCount: googleReviewsStats?.fiveStarCount || 428,
   };
 
   // Render the stars
@@ -18,20 +19,19 @@ export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
     return Array(5)
       .fill(0)
       .map((_, i) => (
-        <Star
-          key={i}
-          className="w-3 h-3 text-yellow-400 fill-current"
-        />
+        <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
       ));
   };
 
   return (
     <div className={`p-3 ${className}`} data-testid="googlereviews-widget">
       <div className="flex items-center justify-center mb-1">
-        <img
-          src="https://logo.clearbit.com/google.com"
+        <Image
+          src="/images/google-logo-mini.webp"
           alt="Google"
-          className="w-4 h-4 mr-1"
+          width={16}
+          height={16}
+          className="mr-1"
         />
         <span className="text-xs font-medium text-gray-700">Google Reviews</span>
       </div>
