@@ -40,8 +40,12 @@ const Hero = () => {
 
       {/* MOBILE-ONLY slice (NO priority) */}
 <div
-  className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none h-[75vh]
-             w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px] -bottom-[30px] -right-[30px] -translate-y-[30px]"
+  className="block lg:hidden absolute
+             right-[-30px] bottom-0 z-10 pointer-events-none
+             h-[66vh]
+             w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]
+             -translate-x-[30px] -translate-y-[30px]
+             origin-bottom-right scale-[1.1] lg:scale-100"
   aria-hidden
   style={{
     WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
@@ -53,9 +57,9 @@ const Hero = () => {
       src="/images/heroes/hero-home-new-family.webp"
       alt=""
       fill
-      quality={75}
+      quality={85}
       sizes="100vw"
-      className="object-cover opacity-40 object-[12%_center]"
+      className="object-cover object-[12%_center]"
     />
   </div>
 </div>
@@ -77,13 +81,14 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
               {/* MOBILE / TABLET LAYOUT */}
         <div className="lg:hidden py-8 sm:py-12 relative">
-          <h1 className="heading-serif text-5xl sm:text-5xl md:text-7xl font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
-            Expert dental care
-            <br />
-            with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
-            <br />
-            <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
-          </h1>
+          <h1 className="heading-serif text-4xl sm:text-6xl md:text-7xl font-bold
+               text-pear-primary drop-shadow-md leading-[1.05] mb-6">
+  Expert dental care
+  <br />
+  with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
+  <br />
+  <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
+</h1>
 
           <p className="text-lg sm:text-xl text-pear-primary lg:text-white leading-relaxed max-w-2xl mb-8">
   Modern dental care serving Nottingham and surrounding areas. Skip
