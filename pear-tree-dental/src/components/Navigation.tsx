@@ -108,11 +108,11 @@ const Navigation = () => {
   useEffect(() => {
     const onScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 80);
+      setIsScrolled(scrollY > 100);
       
       // For mobile home page, track if we're past 100px for secondary nav content
       if (isHomePage && window.innerWidth < 768) {
-        setPastTrigger(scrollY > 80);
+        setPastTrigger(scrollY > 100);
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -166,6 +166,29 @@ const Navigation = () => {
       window.removeEventListener("journey:ending", onEnding);
     };
   }, []);
+
+  // Track when first journey step appears on mobile
+  useEffect(() => {
+    if (!isHomePage) return;
+    
+    const handleScroll = () => {
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile) return;
+      
+      // Look for the first journey step card
+      const firstStep = document.querySelector('.step-item-wrapper');
+      if (!firstStep) return;
+      
+      const rect = firstStep.getBoundingClientRect();
+      // Hide nav when first step starts appearing on screen
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        setJourneyStarted(true);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage]);
 
   // Visibility logic
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;

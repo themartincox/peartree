@@ -91,7 +91,7 @@ const Hero = () => {
 </h1>
 
 {/* MOBILE ONLY bounded text container */}
-<div className="block lg:hidden w-1/2 mx-auto">
+<div className="block lg:hidden w-1/2 mx-0">
   <p className="text-lg sm:text-xl text-pear-primary font-semibold leading-relaxed 
                  drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
     Modern dental care serving Nottingham and surrounding areas.
