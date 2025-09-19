@@ -123,7 +123,6 @@ const COLOR_CLASSES = [
   "bg-gradient-to-br from-pear-primary to-pear-gold",
 ];
 
-// ---------- Component ----------
 const TreatmentJourney: React.FC = () => {
   const journeySteps = useMemo(() => JOURNEY_STEPS, []);
   const [activeStep, setActiveStep] = useState(0);
@@ -132,8 +131,6 @@ const TreatmentJourney: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-
-  // Step wrappers and any step videos (for pause/play)
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
@@ -141,7 +138,7 @@ const TreatmentJourney: React.FC = () => {
   const GAP_PX = 8;
   const [reviewsHeight, setReviewsHeight] = useState(0);
 
-  // ---- Keep CSS var --journey-top in sync with reviews widget height
+  // — Keep CSS var --journey-top in sync with reviews widget height
   useEffect(() => {
     const onSticky = (e: Event) => {
       const ce = e as CustomEvent;
@@ -165,40 +162,40 @@ const TreatmentJourney: React.FC = () => {
     );
   }, [reviewsHeight]);
 
-  // ---- IntersectionObserver to determine active step & section presence
+  // — Toggle body class so scroll-snap applies ONLY while visible
+  useEffect(() => {
+    if (isInJourneySection) {
+      document.body.classList.add("journey-active");
+    } else {
+      document.body.classList.remove("journey-active");
+    }
+    return () => document.body.classList.remove("journey-active");
+  }, [isInJourneySection]);
+
+  // — IntersectionObserver: section presence + active step
   useEffect(() => {
     const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
     if (!containerRef.current || steps.length === 0) return;
 
-    // Use JS to compute top offset in px (IO needs plain px/percent)
-    const topOffset = -(reviewsHeight + GAP_PX);
-
     const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsInJourneySection(entry.isIntersecting);
-      },
+      (entries) => setIsInJourneySection(entries[0]?.isIntersecting ?? false),
       { root: null, threshold: 0.05 }
     );
     sectionObserver.observe(containerRef.current);
 
-    // Tighter threshold to reduce rapid toggling; pick largest ratio
+    // Bias to the largest visible step to avoid jitter
+    const topOffset = -(reviewsHeight + GAP_PX);
     const stepObserver = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
         if (visible) {
           const idx = steps.indexOf(visible.target as HTMLDivElement);
-          if (idx !== -1 && idx !== activeStep) setActiveStep(idx);
+          if (idx !== -1) setActiveStep(idx);
         }
       },
-      {
-        root: null,
-        threshold: [0.6, 0.95],
-        rootMargin: `${topOffset}px 0px 0px 0px`,
-      }
+      { root: null, threshold: [0.55, 0.9], rootMargin: `${topOffset}px 0px 0px 0px` }
     );
 
     steps.forEach((el) => stepObserver.observe(el));
@@ -207,62 +204,29 @@ const TreatmentJourney: React.FC = () => {
       sectionObserver.disconnect();
       stepObserver.disconnect();
     };
-    // include activeStep to avoid flicker loops from stale closure
-  }, [journeySteps.length, reviewsHeight, activeStep]);
+  }, [journeySteps.length, reviewsHeight]);
 
-  // ---- Lightweight progress computation (read-only)
+  // — Progress is simply based on active index now
   useEffect(() => {
-    const onScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const total = containerRef.current.offsetHeight - vh;
-      const startOffset =
-        rect.top > 0 ? 0 : Math.min(Math.abs(rect.top), Math.max(total, 1));
-      const pct = Math.max(0, Math.min(1, startOffset / Math.max(total, 1)));
-      setScrollProgress(pct);
-    };
+    const denom = Math.max(1, journeySteps.length - 1);
+    setScrollProgress(activeStep / denom);
+  }, [activeStep, journeySteps.length]);
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
-  // ---- Pause/play videos depending on active step
+  // — Pause/play videos depending on active step
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (!vid) return;
-      if (i === activeStep) {
-        vid.play().catch(() => {});
-      } else {
-        vid.pause();
-      }
+      if (i === activeStep) vid.play().catch(() => {});
+      else vid.pause();
     });
   }, [activeStep]);
 
-  // ---- Scroll to step (offset-aware) — used by desktop dots
+  // — Scroll to step (window scroll is snap-enabled; offset via scroll-padding-top)
   const scrollToStep = (idx: number) => {
-    if (!containerRef.current) return;
-
-    const container = containerRef.current;
-    const containerTop = container.offsetTop;
-    const viewportHeight = window.innerHeight;
-    const totalHeight = container.offsetHeight;
-
-    const targetProgress = idx / journeySteps.length;
-    const headerH = headerRef.current?.clientHeight ?? 0;
-    const offset = Math.max(reviewsHeight + GAP_PX, headerH);
-
-    const targetScroll =
-      containerTop +
-      targetProgress * Math.max(totalHeight - viewportHeight, 1) -
-      offset;
-
-    window.scrollTo({ top: Math.max(0, targetScroll), behavior: "smooth" });
+    const el = stepRefs.current[idx];
+    if (!el) return;
+    // Use native smooth + scroll-snap; scroll-padding-top ensures offset
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -299,17 +263,13 @@ const TreatmentJourney: React.FC = () => {
         </div>
       )}
 
-      {/* Main Container (uses dynamic viewport units to avoid mobile CLS) */}
-      <div
-        ref={containerRef}
-        className="relative z-20 pb-36 md:pb-20"
-        style={{ height: `calc(${journeySteps.length} * 100svh)` }}
-      >
-        {/* Section Header (absolute on md+), marked for measuring */}
+      {/* Main Container — no giant height; each step is 100svh and snaps */}
+      <div ref={containerRef} className="relative z-20 pb-36 md:pb-20">
+        {/* Section Header */}
         <div
           ref={headerRef}
           data-journey-header
-          className="z-40 bg-pear-background py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0"
+          className="z-40 bg-pear-background py-6 sm:py-8 border-b border-gray-100 w-full"
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
@@ -337,7 +297,6 @@ const TreatmentJourney: React.FC = () => {
         {journeySteps.map((step, index) => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
-          const isCurrent = index === activeStep;
 
           return (
             <div
@@ -347,12 +306,10 @@ const TreatmentJourney: React.FC = () => {
               }}
               className={[
                 "step-item-wrapper",
-                // Reduce flicker: isolate paints & avoid transforms on sticky parent
-                "flex items-center justify-center pt-20 transition-colors duration-200 ease-out group bg-pear-background overflow-visible",
-                "contain-paint", // isolates repaints inside this step
-                isCurrent ? "sticky top-[var(--journey-top)] z-30" : "relative",
+                "snap-start", // <- scroll-snap target
+                "min-h-[100svh] flex items-center justify-center pt-20 transition-colors duration-200 ease-out group bg-pear-background overflow-visible",
+                "contain-paint", // isolate paints inside this step
               ].join(" ")}
-              style={{ minHeight: "100svh" }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
@@ -378,11 +335,7 @@ const TreatmentJourney: React.FC = () => {
                         <div className="text-xs uppercase tracking-wide text-gray-500">
                           Step {index + 1} — {step.number}
                         </div>
-                        <h3
-                          className={`heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold ${
-                            index % 2 === 0 ? "text-pear-primary" : "text-pear-primary"
-                          }`}
-                        >
+                        <h3 className="heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-pear-primary">
                           {step.title}
                         </h3>
                       </div>
@@ -411,7 +364,7 @@ const TreatmentJourney: React.FC = () => {
                         <Link href="/book">
                           <Button className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                             Start Your Journey
-                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                           </Button>
                         </Link>
                       </div>
@@ -481,7 +434,17 @@ const TreatmentJourney: React.FC = () => {
         :root {
           --journey-top: 8px;
         }
-        /* Flicker guards: promote the media layer and hide backface */
+        /* Apply gentle snap only while the journey is on screen */
+        body.journey-active {
+          scroll-snap-type: y proximity;
+          scroll-padding-top: var(--journey-top);
+          scroll-behavior: smooth; /* for programmatic scrolls */
+          scrollbar-gutter: stable both-edges;
+        }
+        .step-item-wrapper {
+          scroll-margin-top: var(--journey-top);
+        }
+        /* Flicker guards */
         .journey-media {
           will-change: transform;
           transform: translateZ(0);
@@ -489,6 +452,10 @@ const TreatmentJourney: React.FC = () => {
           -webkit-backface-visibility: hidden;
         }
         @media (prefers-reduced-motion: reduce) {
+          body.journey-active {
+            scroll-snap-type: none;
+            scroll-behavior: auto;
+          }
           .treatment-journey-section * {
             transition: none !important;
             animation: none !important;
