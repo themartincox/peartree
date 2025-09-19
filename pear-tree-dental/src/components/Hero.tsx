@@ -91,9 +91,7 @@ const Hero = () => {
 </h1>
 
           <p className="text-lg sm:text-xl text-pear-primary lg:text-white font-semibold leading-relaxed max-w-2xl mb-8 drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)] lg:drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
-  Modern dental care serving Nottingham and surrounding areas. Skip
-  the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
-</p>
+  Modern dental care serving Nottingham and surrounding areas.</p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md">
             <Button
