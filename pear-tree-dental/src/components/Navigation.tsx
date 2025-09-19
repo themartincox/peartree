@@ -18,27 +18,25 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Lazy load non-critical navigation components (mobile sheet body)
+// Lazy load non-critical navigation components (mobile sheet content)
 const LazyNavigationItems = lazy(() =>
   import("@/components/navigation/LazyNavigationItems").then((m) => m)
 );
+
+const SCROLL_THRESHOLD = 100; // px
 
 const Navigation = () => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
 
-  // Visibility & UI state
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // State
+  const [isScrolled, setIsScrolled] = useState(false);     // >100px
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
+  const [inJourney, setInJourney] = useState(false);       // journey active?
 
-  // Home-only flags
-  const [pastTrigger, setPastTrigger] = useState(false); // after #reviews-sticky-trigger
-  const [inJourney, setInJourney] = useState(false);     // within Journey section
-
-  // Touch gesture handling for swipe-to-close (mobile sheet)
+  // Touch (mobile sheet)
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
 
@@ -78,7 +76,7 @@ const Navigation = () => {
     setIsSwipeIndicatorVisible(false);
   }, []);
 
-  // Close mobile menu when a link is clicked
+  // Close menu on link click
   const closeMobileMenu = useCallback(() => {
     const content = document.querySelector(".mobile-nav-content");
     if (content) content.classList.add("exiting");
@@ -90,41 +88,15 @@ const Navigation = () => {
     }, 150);
   }, []);
 
-  // SSR-safe viewport detection
+  // Scroll flag (>100px)
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
-    onResize();
-    window.addEventListener("resize", onResize, { passive: true });
-    return () => window.removeEventListener("resize", onResize);
-  }, []);
-
-  // Generic scroll flag
-  useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 100);
+    const onScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Sentinel for reviews trigger (runs on all viewports)
-  useEffect(() => {
-    if (!isHomePage) return;
-    const el = document.getElementById("reviews-sticky-trigger");
-    if (!el) return;
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        // past trigger when it has scrolled above the top
-        setPastTrigger(!entry.isIntersecting && entry.boundingClientRect.top <= 0);
-      },
-      { root: null, threshold: 0 }
-    );
-
-    io.observe(el);
-    return () => io.disconnect();
-  }, [isHomePage]);
-
-  // Journey enter/exit events from the TreatmentJourney component
+  // Journey enter/exit events from TreatmentJourney
   useEffect(() => {
     const onEnter = () => setInJourney(true);
     const onExit = () => setInJourney(false);
@@ -136,7 +108,7 @@ const Navigation = () => {
     };
   }, []);
 
-  // Load secondary nav content when mobile menu opens
+  // Load extra nav in mobile sheet
   useEffect(() => {
     if (!isMobileMenuOpen) return;
     setShouldLoadSecondaryNav(true);
@@ -145,14 +117,9 @@ const Navigation = () => {
     return () => clearTimeout(t);
   }, [isMobileMenuOpen]);
 
-  // Visibility rules
-  // Home: primary visible before passing the trigger and when not inside the Journey.
-  // Non-home: primary visible until scrolled >100px (previous behavior).
-  const primaryVisible = isHomePage ? !pastTrigger && !inJourney : !isScrolled;
-
-  // Home: secondary visible after passing the trigger and hidden while in Journey.
-  // Non-home: secondary visible after 100px scroll (previous behavior).
-  const secondaryVisible = isHomePage ? pastTrigger && !inJourney : isScrolled;
+  // Visibility rules (same on home & non-home now)
+  const primaryVisible = !isScrolled;                // hide after 100px
+  const secondaryVisible = isScrolled && !inJourney; // show after 100px, but hide while Journey active
 
   // Menu data
   const services = [
@@ -508,7 +475,7 @@ const Navigation = () => {
                       </div>
                     </nav>
 
-                    {/* Lazy section (optional extra links/cards) */}
+                    {/* Optional extra links/cards */}
                     {shouldLoadSecondaryNav && (
                       <Suspense
                         fallback={
@@ -572,7 +539,7 @@ const Navigation = () => {
               </div>
             </Link>
 
-            {/* Centralized CTAs (desktop/tablet) */}
+            {/* Centralized CTAs */}
             <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:flex items-center space-x-4">
               <Link href="/book">
                 <Button

@@ -166,49 +166,47 @@ const TreatmentJourney: React.FC = () => {
   }, [reviewsHeight]);
 
   // ---- IntersectionObserver to determine active step & section presence
-  useEffect(() => {
-    const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (!containerRef.current || steps.length === 0) return;
+useEffect(() => {
+  const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
+  if (!containerRef.current || steps.length === 0) return;
 
-    // Observes the section to know when to show nav affordances
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        setIsInJourneySection(entry.isIntersecting);
-      },
-      { root: null, threshold: 0.05 }
-    );
+  // Use JS to compute top offset in px
+  const topOffset = -(reviewsHeight + GAP_PX);
 
-    sectionObserver.observe(containerRef.current);
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      setIsInJourneySection(entry.isIntersecting);
+    },
+    { root: null, threshold: 0.05 }
+  );
+  sectionObserver.observe(containerRef.current);
 
-    // Observes each step to choose the most "centered" as active
-    // We bias toward the middle of the viewport (0.6 threshold)
-    const stepObserver = new IntersectionObserver(
-      (entries) => {
-        // Pick the entry with the largest intersection ratio
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (visible) {
-          const idx = steps.indexOf(visible.target as HTMLDivElement);
-          if (idx !== -1) setActiveStep(idx);
-        }
-      },
-      {
-        root: null,
-        threshold: [0.35, 0.6, 0.95],
-        rootMargin: `calc(var(--journey-top, 0px) * -1) 0px 0px 0px`, // account for sticky offset
+  const stepObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) {
+        const idx = steps.indexOf(visible.target as HTMLDivElement);
+        if (idx !== -1) setActiveStep(idx);
       }
-    );
+    },
+    {
+      root: null,
+      threshold: [0.35, 0.6, 0.95],
+      rootMargin: `${topOffset}px 0px 0px 0px`, // <-- FIXED (numeric px value only)
+    }
+  );
 
-    steps.forEach((el) => stepObserver.observe(el));
+  steps.forEach((el) => stepObserver.observe(el));
 
-    return () => {
-      sectionObserver.disconnect();
-      stepObserver.disconnect();
-    };
-  }, [journeySteps.length]);
+  return () => {
+    sectionObserver.disconnect();
+    stepObserver.disconnect();
+  };
+}, [journeySteps.length, reviewsHeight]);
+
 
   // ---- Lightweight progress computation (no heavy per-frame layout writes)
   useEffect(() => {
