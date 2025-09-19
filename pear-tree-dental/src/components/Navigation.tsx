@@ -28,6 +28,8 @@ const Navigation = () => {
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+const [pastTrigger, setPastTrigger] = useState(false);
+const [inJourney, setInJourney] = useState(false);
 
   // Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
@@ -97,6 +99,25 @@ const Navigation = () => {
     return () => clearTimeout(t);
   }, [isMobileMenuOpen]);
 
+useEffect(() => {
+  if (!isHomePage) return;
+
+  const el = document.getElementById('reviews-sticky-trigger');
+  if (!el) return;
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      const e = entries[0];
+      // when the trigger leaves the top (i.e., page is scrolled past it), show secondary
+      setPastTrigger(!e.isIntersecting && e.boundingClientRect.top <= 0);
+    },
+    { root: null, threshold: 0 }
+  );
+
+  io.observe(el);
+  return () => io.disconnect();
+}, [isHomePage]);
+
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 100);
     window.addEventListener("scroll", onScroll);
@@ -120,6 +141,18 @@ const Navigation = () => {
     { title: "Dental Education", href: "/patient-education", description: "Helpful guides and oral health resources" },
     { title: "Pricing", href: "/pricing", description: "Transparent dental treatment pricing" },
   ];
+
+
+useEffect(() => {
+  const onEnter = () => setInJourney(true);
+  const onExit = () => setInJourney(false);
+  window.addEventListener('journey:enter', onEnter);
+  window.addEventListener('journey:exit', onExit);
+  return () => {
+    window.removeEventListener('journey:enter', onEnter);
+    window.removeEventListener('journey:exit', onExit);
+  };
+}, []);
 
   return (
     <>

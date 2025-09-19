@@ -24,6 +24,15 @@ const GoogleReviewsWidget = () => {
 
 // Improved placeholder: track widget height
   const [widgetHeight, setWidgetHeight] = useState(0);
+useEffect(() => {
+  if (isSticky) {
+    // broadcast current height so other components can align with it
+    const height = widgetRef.current?.offsetHeight ?? widgetHeight ?? 0;
+    window.dispatchEvent(new CustomEvent('reviews:sticky', { detail: { height } }));
+  } else {
+    window.dispatchEvent(new CustomEvent('reviews:unsticky'));
+  }
+}, [isSticky, widgetHeight]);
 
   // Add useCallback for measuring the widget height
   const measureWidgetHeight = useCallback(() => {
