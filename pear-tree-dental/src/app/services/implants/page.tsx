@@ -115,128 +115,156 @@ export default function ImplantsPage() {
       {/* Hero Section */}
       <ServiceHero {...getServiceHeroConfig("/services/implants")} />
 
+{/* Implant Types */}
+<section id="implant-types" className="py-16 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
+        Complete Implant Solutions
+      </h2>
+      <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        From single tooth replacement to full mouth reconstruction, we have the right solution for you
+      </p>
+    </div>
 
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {[
+        {
+          title: "Single Implant",
+          description: "Replace one missing tooth with a natural-looking implant crown",
+          price: "From £2,500",
+          features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
+          image: "single-implant",
+          url: "/services/implants/single-implant",
+          buttonText: "Explore Single Implants"
+        },
+        {
+          title: "Multiple Implants",
+          description: "Replace several missing teeth with individual implant solutions",
+          price: "From £6,000",
+          features: ["Multiple implants", "Individual crowns", "Stable foundation", "Independent function"],
+          image: "multiple-implants",
+          url: "/services/implants/multiple-implant",
+          buttonText: "Explore Multiple Implants"
+        },
+        {
+          title: "Implant Bridge",
+          description: "Replace multiple adjacent teeth with implant-supported bridge",
+          price: "From £8,500",
+          features: ["2-4 implants", "Connected crowns", "Cost effective", "Strong support"],
+          image: "implant-bridge",
+          url: "/services/implants/implant-bridge",
+          buttonText: "Explore Implant Bridges"
+        },
+        {
+          title: "All-on-4",
+          description: "Replace entire arch of teeth with 4 strategically placed implants",
+          price: "POA",
+          features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
+          image: "all-on-4",
+          url: "/services/implants/all-on-4",
+          buttonText: "Explore All-on-4"
+        }
+      ].map((implant, index) => (
+        <Card
+          key={index}
+          className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20"
+        >
+          {implant.image === "all-on-4" ? (
+            // Existing All-on-4 picture
+            <div className="aspect-[4/3] relative overflow-hidden">
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/images/implants/all-on-4-large.webp"
+                  type="image/webp"
+                />
+                <source
+                  media="(min-width: 480px)"
+                  srcSet="/images/implants/all-on-4-medium.webp"
+                  type="image/webp"
+                />
+                <source
+                  srcSet="/images/implants/all-on-4-small.webp"
+                  type="image/webp"
+                />
+                <Image
+                  src="/images/implants-all-on-4.JPG"
+                  alt="All-on-4 dental implants full arch restoration"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+          ) : implant.image === "single-implant" ? (
+            <div className="aspect-[4/3] relative overflow-hidden">
+              <Image
+                src="/images/implants/single-implant.webp"
+                alt="Single dental implant with crown"
+                fill
+                className="object-cover"
+                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                loading="lazy"
+              />
+            </div>
+          ) : implant.image === "multiple-implants" ? (
+            <div className="aspect-[4/3] relative overflow-hidden">
+              <Image
+                src="/images/implants/multiple-implants.webp"
+                alt="Multiple dental implants with individual crowns"
+                fill
+                className="object-cover"
+                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                loading="lazy"
+              />
+            </div>
+          ) : implant.image === "implant-bridge" ? (
+            <div className="aspect-[4/3] relative overflow-hidden">
+              <Image
+                src="/images/implants/implant-bridge.webp"
+                alt="Implant-supported dental bridge"
+                fill
+                className="object-cover"
+                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                loading="lazy"
+              />
+            </div>
+          ) : null}
 
-      {/* Implant Types */}
-      <section id="implant-types" className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
-              Complete Implant Solutions
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              From single tooth replacement to full mouth reconstruction, we have the right solution for you
-            </p>
-          </div>
+          <CardContent className="p-6">
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-xl font-bold text-pear-primary mb-2">{implant.title}</h3>
+                <p className="text-gray-600 text-sm mb-3">{implant.description}</p>
+                <div className="text-lg font-bold text-pear-gold">{implant.price}</div>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: "Single Implant",
-                description: "Replace one missing tooth with a natural-looking implant crown",
-                price: "From £2,500",
-                features: ["One titanium implant", "Custom crown", "Natural appearance", "Preserve adjacent teeth"],
-                image: "single-implant",
-                url: "/services/implants/single-implant",
-                buttonText: "Explore Single Implants"
-              },
-              {
-                title: "Multiple Implants",
-                description: "Replace several missing teeth with individual implant solutions",
-                price: "From £6,000",
-                features: ["Multiple implants", "Individual crowns", "Stable foundation", "Independent function"],
-                image: "multiple-implants",
-                url: "/services/implants/multiple-implant",
-                buttonText: "Explore Multiple Implants"
-              },
-              {
-                title: "Implant Bridge",
-                description: "Replace multiple adjacent teeth with implant-supported bridge",
-                price: "From £8,500",
-                features: ["2-4 implants", "Connected crowns", "Cost effective", "Strong support"],
-                image: "implant-bridge",
-                url: "/services/implants/implant-bridge",
-                buttonText: "Explore Implant Bridges"
-              },
-              {
-                title: "All-on-4",
-                description: "Replace entire arch of teeth with 4 strategically placed implants",
-                price: "POA",
-                features: ["4 implants per arch", "Full arch restoration", "Same day teeth", "Minimal surgery"],
-                image: "all-on-4",
-                url: "/services/implants/all-on-4",
-                buttonText: "Explore All-on-4"
-              }
-            ].map((implant, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20">
-                {implant.image === "all-on-4" ? (
-                  <div className="aspect-[4/3] relative overflow-hidden">
-                    <picture>
-                      <source
-                        media="(min-width: 768px)"
-                        srcSet="/images/implants/all-on-4-large.webp"
-                        type="image/webp"
-                      />
-                      <source
-                        media="(min-width: 480px)"
-                        srcSet="/images/implants/all-on-4-medium.webp"
-                        type="image/webp"
-                      />
-                      <source
-                        srcSet="/images/implants/all-on-4-small.webp"
-                        type="image/webp"
-                      />
-                      <Image
-                        src="/images/implants-all-on-4.JPG"
-                        alt="All-on-4 dental implants full arch restoration"
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
-                        loading="lazy"
-                      />
-                    </picture>
-                  </div>
-                ) : (
-                  <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                    <div className="text-center">
-                      <h4 className="font-bold text-gray-700 text-sm">{implant.image.toUpperCase()}</h4>
-                      <p className="text-xs text-gray-600">Clinical diagram</p>
-                    </div>
-                  </div>
-                )}
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="text-xl font-bold text-pear-primary mb-2">{implant.title}</h3>
-                      <p className="text-gray-600 text-sm mb-3">{implant.description}</p>
-                      <div className="text-lg font-bold text-pear-gold">{implant.price}</div>
-                    </div>
+              <ul className="space-y-2">
+                {implant.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
+                    <span className="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
 
-                    <ul className="space-y-2">
-                      {implant.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-pear-gold flex-shrink-0" />
-                          <span className="text-sm text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+              <Link href={implant.url}>
+                <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
+                  <span className="hidden sm:inline">{implant.buttonText}</span>
+                  <span className="sm:hidden">Learn More</span>
+                </Button>
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
 
-                    <Link href={implant.url}>
-                      <Button className="w-full bg-gradient-to-r from-pear-primary to-pear-primary/90 text-white">
-                        <span className="hidden sm:inline">
-                          {implant.buttonText}
-                        </span>
-                        <span className="sm:hidden">Learn More</span>
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      
       {/* Treatment Process */}
       <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
