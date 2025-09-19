@@ -77,7 +77,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
               {/* MOBILE / TABLET LAYOUT */}
         <div className="lg:hidden py-8 sm:py-12 relative">
-          <h1 className="heading-serif text-5xl sm:text-6xl md:text-7xl font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
+          <h1 className="heading-serif text-5xl sm:text-5xl md:text-7xl font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
             Expert dental care
             <br />
             with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
