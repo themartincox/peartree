@@ -45,7 +45,7 @@ const Hero = () => {
              h-[66vh]
              w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]
              -translate-x-[30px] -translate-y-[30px]
-             origin-bottom-right scale-[1.1] lg:scale-100"
+             origin-bottom-right scale-[1.25] lg:scale-100"
   aria-hidden
   style={{
     WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
