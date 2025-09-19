@@ -13,6 +13,9 @@ import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
+import ClientProviders from "@/components/ClientProviders";          // ✅ new
+import LazyLocationDetection from "@/components/LazyLocationDetection"; // ✅ new
+
 // import TrackingProvider from "@/components/cohort/TrackingProvider";
 const TrackingProvider = dynamic(() => import("@/components/cohort/TrackingProvider"), {
   ssr: false,
@@ -43,27 +46,24 @@ export const metadata: Metadata = {
   /* … your existing metadata exactly as before … */
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* ❌ Removed global image preloads to help LCP
-            - Let the actual <Image priority fetchPriority="high" /> drive critical fetches */}
+        {/* Remove global image preloads to help LCP; let <Image priority /> handle it */}
         <link rel="canonical" href="https://peartree.dental" />
-
-        {/* Favicons, meta, schemas, manifest */}
         <LocalBusinessSchema includeDentistSpecific />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
         <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
-        <TrackingProvider>
+
+      <body className={`min-h-screen bg-pear-background ${/* font variables */ ""}`}>
+        <ClientProviders>
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pear-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-pear-gold"
-            aria-label="Skip to main content"
           >
             Skip to main content
           </a>
@@ -83,11 +83,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
           <Footer />
 
-          {/* ✅ After main, lazy-loaded */}
-          <LocationDetection />
-        </TrackingProvider>
+          {/* After main; lazy and client-only */}
+          <LazyLocationDetection />
+        </ClientProviders>
 
-        {/* Analytics after interactive */}
         <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />
       </body>
     </html>
