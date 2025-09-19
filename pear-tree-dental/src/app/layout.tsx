@@ -6,7 +6,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import SmartNav from "@/components/SmartNav";
+import SmartNav from "@/components/Navigation";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
