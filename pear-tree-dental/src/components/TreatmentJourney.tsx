@@ -285,23 +285,18 @@ const TreatmentJourney: React.FC = () => {
         {journeySteps.map((step, index) => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
-          // Highest z-index for later steps so they slide over earlier ones
-          const z = 100 + (journeySteps.length - index); // e.g., 105,104,...,101
+          // RIGHT: later steps get higher z-index, so they layer on top
+const z = 100 + index; // e.g. 100,101,102,103,104
 
           return (
-            <div
-              key={`step-${index}`}
-              ref={(el) => {
-                stepRefs.current[index] = el;
-              }}
-              className={[
-                "step-item-wrapper",
-                "sticky top-[var(--journey-top)]",
-                "min-h-[100svh] flex items-center justify-center pt-20 bg-pear-background overflow-visible",
-                "contain-paint", // isolate repaints inside
-              ].join(" ")}
-              style={{ zIndex: z }}
-            >
+         <div
+  key={`step-${index}`}
+  ref={(el) => { stepRefs.current[index] = el; }}
+  className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
+  style={{ zIndex: 100 + index }}
+>
+  {/* ... */}
+</div>
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center ${
