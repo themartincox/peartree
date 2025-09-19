@@ -166,56 +166,57 @@ const TreatmentJourney: React.FC = () => {
   }, [reviewsHeight]);
 
   // ---- IntersectionObserver to determine active step & section presence
-useEffect(() => {
-  const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
-  if (!containerRef.current || steps.length === 0) return;
+  useEffect(() => {
+    const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
+    if (!containerRef.current || steps.length === 0) return;
 
-  // Use JS to compute top offset in px
-  const topOffset = -(reviewsHeight + GAP_PX);
+    // Use JS to compute top offset in px (IO needs plain px/percent)
+    const topOffset = -(reviewsHeight + GAP_PX);
 
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0];
-      setIsInJourneySection(entry.isIntersecting);
-    },
-    { root: null, threshold: 0.05 }
-  );
-  sectionObserver.observe(containerRef.current);
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInJourneySection(entry.isIntersecting);
+      },
+      { root: null, threshold: 0.05 }
+    );
+    sectionObserver.observe(containerRef.current);
 
-  const stepObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) {
-        const idx = steps.indexOf(visible.target as HTMLDivElement);
-        if (idx !== -1) setActiveStep(idx);
+    // Tighter threshold to reduce rapid toggling; pick largest ratio
+    const stepObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          const idx = steps.indexOf(visible.target as HTMLDivElement);
+          if (idx !== -1 && idx !== activeStep) setActiveStep(idx);
+        }
+      },
+      {
+        root: null,
+        threshold: [0.6, 0.95],
+        rootMargin: `${topOffset}px 0px 0px 0px`,
       }
-    },
-    {
-      root: null,
-      threshold: [0.35, 0.6, 0.95],
-      rootMargin: `${topOffset}px 0px 0px 0px`, // <-- FIXED (numeric px value only)
-    }
-  );
+    );
 
-  steps.forEach((el) => stepObserver.observe(el));
+    steps.forEach((el) => stepObserver.observe(el));
 
-  return () => {
-    sectionObserver.disconnect();
-    stepObserver.disconnect();
-  };
-}, [journeySteps.length, reviewsHeight]);
+    return () => {
+      sectionObserver.disconnect();
+      stepObserver.disconnect();
+    };
+    // include activeStep to avoid flicker loops from stale closure
+  }, [journeySteps.length, reviewsHeight, activeStep]);
 
-
-  // ---- Lightweight progress computation (no heavy per-frame layout writes)
+  // ---- Lightweight progress computation (read-only)
   useEffect(() => {
     const onScroll = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const vh = window.innerHeight;
       const total = containerRef.current.offsetHeight - vh;
-      // Start counting once the top hits the top of viewport (-journey-top for accuracy)
       const startOffset =
         rect.top > 0 ? 0 : Math.min(Math.abs(rect.top), Math.max(total, 1));
       const pct = Math.max(0, Math.min(1, startOffset / Math.max(total, 1)));
@@ -236,7 +237,6 @@ useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (!vid) return;
       if (i === activeStep) {
-        // Try play; ignore errors on iOS autoplay policies since we set muted+playsInline
         vid.play().catch(() => {});
       } else {
         vid.pause();
@@ -244,7 +244,7 @@ useEffect(() => {
     });
   }, [activeStep]);
 
-  // ---- Scroll to step (offset-aware)
+  // ---- Scroll to step (offset-aware) — used by desktop dots
   const scrollToStep = (idx: number) => {
     if (!containerRef.current) return;
 
@@ -299,34 +299,6 @@ useEffect(() => {
         </div>
       )}
 
-      {/* Mobile Step Bar (accessibility + quick jump) */}
-      {isInJourneySection && (
-        <div className="fixed bottom-3 left-1/2 -translate-x-1/2 z-50 w-[92vw] rounded-full bg-white/90 backdrop-blur px-4 py-2 shadow-lg border border-gray-200 lg:hidden motion-safe:animate-in motion-safe:fade-in">
-          <div className="flex items-center justify-between gap-3">
-            <button
-              className="text-sm font-medium text-gray-700 disabled:opacity-40"
-              onClick={() => scrollToStep(Math.max(0, activeStep - 1))}
-              disabled={activeStep === 0}
-            >
-              Prev
-            </button>
-            <div className="text-sm text-gray-600">
-              Step <strong>{activeStep + 1}</strong> of{" "}
-              <strong>{journeySteps.length}</strong>
-            </div>
-            <button
-              className="text-sm font-medium text-gray-700 disabled:opacity-40"
-              onClick={() =>
-                scrollToStep(Math.min(journeySteps.length - 1, activeStep + 1))
-              }
-              disabled={activeStep === journeySteps.length - 1}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* Main Container (uses dynamic viewport units to avoid mobile CLS) */}
       <div
         ref={containerRef}
@@ -375,8 +347,9 @@ useEffect(() => {
               }}
               className={[
                 "step-item-wrapper",
-                // Use svh to avoid mobile browser UI causing cls
-                "flex items-center justify-center pt-20 transition-all duration-300 ease-out group bg-pear-background overflow-visible",
+                // Reduce flicker: isolate paints & avoid transforms on sticky parent
+                "flex items-center justify-center pt-20 transition-colors duration-200 ease-out group bg-pear-background overflow-visible",
+                "contain-paint", // isolates repaints inside this step
                 isCurrent ? "sticky top-[var(--journey-top)] z-30" : "relative",
               ].join(" ")}
               style={{ minHeight: "100svh" }}
@@ -397,19 +370,17 @@ useEffect(() => {
                       <div
                         className={`w-12 h-12 sm:w-16 sm:h-16 ${
                           COLOR_CLASSES[index % COLOR_CLASSES.length]
-                        } rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}
+                        } rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0`}
                       >
-                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white group-hover:scale-110 transition-transform duration-300" />
+                        <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       </div>
                       <div>
                         <div className="text-xs uppercase tracking-wide text-gray-500">
                           Step {index + 1} — {step.number}
                         </div>
                         <h3
-                          className={`heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold transition-colors duration-300 ${
-                            index % 2 === 0
-                              ? "text-pear-primary group-hover:text-pear-gold"
-                              : "text-pear-primary group-hover:text-pear-primary/80"
+                          className={`heading-serif text-2xl sm:text-3xl lg:text-4xl font-bold ${
+                            index % 2 === 0 ? "text-pear-primary" : "text-pear-primary"
                           }`}
                         >
                           {step.title}
@@ -440,7 +411,7 @@ useEffect(() => {
                         <Link href="/book">
                           <Button className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                             Start Your Journey
-                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform" />
                           </Button>
                         </Link>
                       </div>
@@ -449,11 +420,10 @@ useEffect(() => {
 
                   {/* Media */}
                   <div className={`${isReverse ? "lg:col-start-1" : "lg:col-start-2"}`}>
-                    <Card className="overflow-hidden shadow-2xl transform hover:scale-105 hover:shadow-pear-gold/20 group-hover:shadow-3xl transition-all duration-300 motion-reduce:transform-none">
-                      <div className="aspect-[4/3] relative">
+                    <Card className="overflow-hidden shadow-2xl">
+                      <div className="aspect-[4/3] relative journey-media">
                         {step.mediaType === "video" ? (
                           <>
-                            {/* Single video element; CSS handles sizing */}
                             <video
                               ref={(el) => (videoRefs.current[index] = el)}
                               className="w-full h-full object-cover"
@@ -463,7 +433,6 @@ useEffect(() => {
                               loop
                               preload="metadata"
                               aria-label={step.imageDescription}
-                              // These help avoid extra UI and accidental popouts
                               controls={false}
                               disablePictureInPicture
                               controlsList="nodownload noplaybackrate noremoteplayback"
@@ -479,9 +448,8 @@ useEffect(() => {
                               src={step.imagePath}
                               alt={step.imageDescription}
                               fill
-                              className="object-cover"
+                              className="object-cover will-change-transform"
                               sizes="(max-width: 640px) 92vw, (max-width: 1024px) 44vw, 560px"
-                              // Consider priority for the first step if it is above the fold often
                               priority={index === 0}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-pear-primary/30 to-transparent pointer-events-none" />
@@ -510,9 +478,15 @@ useEffect(() => {
       </div>
 
       <style jsx global>{`
-        /* Provide a default for --journey-top in case events don't fire */
         :root {
           --journey-top: 8px;
+        }
+        /* Flicker guards: promote the media layer and hide backface */
+        .journey-media {
+          will-change: transform;
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
         @media (prefers-reduced-motion: reduce) {
           .treatment-journey-section * {
