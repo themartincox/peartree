@@ -15,7 +15,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// ---------- Types ----------
 interface JourneyStep {
   number: string;
   title: string;
@@ -30,7 +29,6 @@ interface JourneyStep {
   features: string[];
 }
 
-// ---------- Data (stable reference) ----------
 const JOURNEY_STEPS: JourneyStep[] = [
   {
     number: "One",
@@ -114,7 +112,6 @@ const JOURNEY_STEPS: JourneyStep[] = [
   },
 ];
 
-// Decorative palette for the icon blocks
 const COLOR_CLASSES = [
   "bg-gradient-to-br from-pear-primary to-pear-primary/80",
   "bg-gradient-to-br from-pear-gold to-pear-gold/80",
@@ -134,11 +131,10 @@ const TreatmentJourney: React.FC = () => {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Sticky reviews widget spacing
   const GAP_PX = 8;
   const [reviewsHeight, setReviewsHeight] = useState(0);
 
-  // -- keep CSS var --journey-top in sync with reviews widget
+  // listen to sticky reviews widget height
   useEffect(() => {
     const onSticky = (e: Event) => {
       const ce = e as CustomEvent;
@@ -155,6 +151,7 @@ const TreatmentJourney: React.FC = () => {
     };
   }, []);
 
+  // expose top offset for sticky
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--journey-top",
@@ -162,7 +159,7 @@ const TreatmentJourney: React.FC = () => {
     );
   }, [reviewsHeight]);
 
-  // -- Section presence + active step via IO (no layout writes)
+  // IO for section presence + active step
   useEffect(() => {
     const steps = stepRefs.current.filter(Boolean) as HTMLDivElement[];
     if (!containerRef.current || steps.length === 0) return;
@@ -173,7 +170,7 @@ const TreatmentJourney: React.FC = () => {
     );
     sectionObserver.observe(containerRef.current);
 
-    const topOffset = -(reviewsHeight + GAP_PX); // px string for rootMargin
+    const topOffset = -(reviewsHeight + GAP_PX);
     const stepObserver = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -195,13 +192,13 @@ const TreatmentJourney: React.FC = () => {
     };
   }, [journeySteps.length, reviewsHeight]);
 
-  // -- progress from active index (smooth, no scroll math)
+  // progress from active index
   useEffect(() => {
     const denom = Math.max(1, journeySteps.length - 1);
     setScrollProgress(activeStep / denom);
   }, [activeStep, journeySteps.length]);
 
-  // -- pause/play videos based on active step
+  // pause/play videos
   useEffect(() => {
     videoRefs.current.forEach((vid, i) => {
       if (!vid) return;
@@ -210,7 +207,6 @@ const TreatmentJourney: React.FC = () => {
     });
   }, [activeStep]);
 
-  // -- dot-nav scroll (native smooth; offset handled by scroll-margin-top)
   const scrollToStep = (idx: number) => {
     const el = stepRefs.current[idx];
     if (!el) return;
@@ -219,12 +215,10 @@ const TreatmentJourney: React.FC = () => {
 
   return (
     <section className="treatment-journey-section py-0 bg-pear-background relative z-10">
-      {/* Spacer to avoid cropping from previous section */}
       <div className="h-16 md:h-16 bg-pear-background w-full" />
 
-      {/* Desktop dots + progress (only while section is visible) */}
       {isInJourneySection && (
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[200] hidden lg:block animate-in fade-in duration-300">
+        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[300] hidden lg:block animate-in fade-in duration-300">
           <div className="flex flex-col space-y-2">
             {journeySteps.map((step, index) => (
               <button
@@ -251,9 +245,13 @@ const TreatmentJourney: React.FC = () => {
         </div>
       )}
 
-      {/* Main container; each step is sticky with top var */}
-      <div ref={containerRef} className="relative z-20 pb-36 md:pb-20">
-        {/* Section header */}
+      {/* TALL CONTAINER drives stacked-sticky */}
+      <div
+        ref={containerRef}
+        className="relative z-20 pb-36 md:pb-20"
+        style={{ height: `calc(${journeySteps.length} * 100svh)` }}
+      >
+        {/* header */}
         <div
           ref={headerRef}
           data-journey-header
@@ -274,36 +272,35 @@ const TreatmentJourney: React.FC = () => {
           </div>
         </div>
 
-        {/* SR live region */}
+        {/* sr live region */}
         <div aria-live="polite" className="sr-only">
           {`Step ${activeStep + 1} of ${journeySteps.length}: ${
             journeySteps[activeStep]?.title ?? ""
           }`}
         </div>
 
-        {/* Steps (ALL sticky; later steps stack above earlier ones) */}
+        {/* STICKY STACK */}
         {journeySteps.map((step, index) => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
-          // RIGHT: later steps get higher z-index, so they layer on top
-const z = 100 + index; // e.g. 100,101,102,103,104
+          const z = 100 + index; // later steps above earlier steps
 
           return (
-         <div
-  key={`step-${index}`}
-  ref={(el) => { stepRefs.current[index] = el; }}
-  className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
-  style={{ zIndex: 100 + index }}
->
-  {/* ... */}
-</div>
+            <div
+              key={`step-${index}`}
+              ref={(el) => {
+                stepRefs.current[index] = el;
+              }}
+              className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
+              style={{ zIndex: z }}
+            >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center ${
                     isReverse ? "lg:grid-flow-col-dense" : ""
                   }`}
                 >
-                  {/* Content */}
+                  {/* TEXT */}
                   <div
                     className={`space-y-4 sm:space-y-6 ${
                       isReverse ? "lg:col-start-2" : ""
@@ -357,7 +354,7 @@ const z = 100 + index; // e.g. 100,101,102,103,104
                     )}
                   </div>
 
-                  {/* Media */}
+                  {/* MEDIA */}
                   <div className={`${isReverse ? "lg:col-start-1" : "lg:col-start-2"}`}>
                     <Card className="overflow-hidden shadow-2xl">
                       <div className="aspect-[4/3] relative journey-media">
@@ -421,11 +418,10 @@ const z = 100 + index; // e.g. 100,101,102,103,104
           --journey-top: 8px;
         }
         /* Ensure parents don't kill sticky */
-        .treatment-journey-section,
-        .treatment-journey-section * {
-          /* Do not set overflow on any ancestor that would prevent sticky */
+        .treatment-journey-section {
+          overflow: visible !important;
         }
-        /* Flicker guards: promote media layer and isolate paints */
+        /* Flicker guards */
         .journey-media {
           will-change: transform;
           transform: translateZ(0);
