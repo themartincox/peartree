@@ -217,7 +217,7 @@ const TreatmentJourney = () => {
   return (
     <section className="py-0 bg-pear-background relative z-10">
       {/* Spacer element to prevent cropping from previous section */}
-      <div className="h-48 md:h-16 bg-pear-background w-full"></div>
+      <div className="h-16 md:h-16 bg-pear-background w-full"></div>
 
       {/* Fixed Navigation Tabs - Only visible when in journey section */}
       {isInJourneySection && (
