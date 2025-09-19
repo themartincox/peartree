@@ -90,8 +90,19 @@ const Hero = () => {
   <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
 </h1>
 
-          <p className="text-lg sm:text-xl text-pear-primary lg:text-white font-normal leading-relaxed max-w-2xl mb-8 drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)] lg:drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
-  Modern dental care serving Nottingham and surrounding areas.</p>
+{/* MOBILE ONLY bounded text container */}
+<div className="block lg:hidden w-1/2 mx-auto">
+  <p className="text-lg sm:text-xl text-pear-primary font-semibold leading-relaxed 
+                 drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
+    Modern dental care serving Nottingham and surrounding areas.
+  </p>
+</div>
+
+{/* DESKTOP text (unchanged) */}
+<p className="hidden lg:block text-xl text-white font-normal leading-relaxed max-w-2xl 
+              mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
+  Modern dental care serving Nottingham and surrounding areas.
+</p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md">
             <Button
