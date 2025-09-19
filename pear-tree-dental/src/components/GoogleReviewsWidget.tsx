@@ -22,8 +22,7 @@ const GoogleReviewsWidget = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-// before: <div className="...">
-<div data-role="reviews-widget" className="...">
+
   {/* existing reviews widget content */}
 </div>
   
@@ -232,6 +231,7 @@ const GoogleReviewsWidget = () => {
       )}
 
       <div
+data-role="reviews-widget"
         ref={widgetRef}
         className={`
           transition-all duration-500 ease-in-out z-50

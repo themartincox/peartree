@@ -225,12 +225,12 @@ return (
   <>
 
 // before: <header className="...">
-<header data-role="primary-header" className="...">
   {/* existing header content */}
 </header>   
 
  {/* Main Navigation - Full menu when not scrolled */}
     <header
+data-role="primary-header"
       id="navigation"
       role="banner"
       className={cn(
@@ -569,6 +569,7 @@ return (
 
     {/* Simplified Navigation - Shows on scroll */}
     <header
+     data-role="primary-header"
       id="secondary-nav"
       className={cn(
         "secondary-nav fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
