@@ -37,7 +37,7 @@ const Hero = () => {
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-gray-100/40" />
       </div>
 
       {/* MOBILE-ONLY: right-anchored slice (wider so shoulder isn't cut) */}

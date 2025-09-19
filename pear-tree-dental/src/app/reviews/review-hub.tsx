@@ -6,23 +6,16 @@ import Link from "next/link";
 import { ExternalLink, Star, ThumbsUp, MessageSquare, ShieldAlert } from "lucide-react";
 
 // --- CONFIG ---
-// Put your real “write a review” links here.
-// Tip: include UTM and optional IDs (visit, clinician, location) via query params.
 const BASE_UTM = "utm_source=sms&utm_medium=review_request&utm_campaign=post_visit";
 
-const PLATFORMS: Record<
-  string,
-  { label: string; href: string; brand: "google" | "facebook" | "trustpilot" | "yelp" | "other" }
-> = {
+const PLATFORMS = {
   google: {
     label: "Google",
-    // Replace with your direct "Write a review" link for your GMB profile
     href: `https://g.page/r/XXXXX/review?${BASE_UTM}`,
     brand: "google",
   },
   facebook: {
     label: "Facebook",
-    // Replace with your page's Reviews tab URL
     href: `https://www.facebook.com/yourpage/reviews/?${BASE_UTM}`,
     brand: "facebook",
   },
@@ -41,10 +34,11 @@ const PLATFORMS: Record<
     href: `https://example.com/reviews/other?${BASE_UTM}`,
     brand: "other",
   },
-};
+} as const;
 
-// Optional: brand styles
-const brandStyles: Record<string, string> = {
+type PlatformKey = keyof typeof PLATFORMS;
+
+const brandStyles: Record<PlatformKey, string> = {
   google: "border-emerald-300 bg-emerald-50",
   facebook: "border-blue-300 bg-blue-50",
   trustpilot: "border-emerald-400 bg-emerald-50",
@@ -55,25 +49,38 @@ const brandStyles: Record<string, string> = {
 export default function ReviewHub() {
   const params = useSearchParams();
 
-  // Allow priority via URL, e.g. /reviews?priority=facebook
-  const priorityParam = params.get("priority")?.toLowerCase();
+  // Normalize & validate ?priority=
+  const priorityFromUrl = (params.get("priority") || "").toLowerCase() as PlatformKey;
+  const initialPriority: PlatformKey =
+    priorityFromUrl && priorityFromUrl in PLATFORMS ? priorityFromUrl : "google";
+
+  const [priority, setPriority] = useState<PlatformKey>(initialPriority);
+
   const visitId = params.get("visitId") ?? "";
   const clinician = params.get("clinician") ?? "";
   const location = params.get("location") ?? "";
 
-  const [priority, setPriority] = useState<string>(
-    PLATFORMS[priorityParam ?? "google"] ? (priorityParam as string) : "google"
-  );
+  const priorityPlatform = useMemo(() => {
+    return PLATFORMS[priority] ?? PLATFORMS.google;
+  }, [priority]);
 
-  const priorityPlatform = useMemo(() => PLATFORMS[priority], [priority]);
-
-  // Build fully tracked URLs with passthrough IDs
-  const trackedUrl = (href: string) => {
-    const u = new URL(href);
-    if (visitId) u.searchParams.set("visitId", visitId);
-    if (clinician) u.searchParams.set("clinician", clinician);
-    if (location) u.searchParams.set("location", location);
-    return u.toString();
+  // Safe URL builder
+  const trackedUrl = (raw: string) => {
+    try {
+      const u = new URL(raw);
+      if (visitId) u.searchParams.set("visitId", visitId);
+      if (clinician) u.searchParams.set("clinician", clinician);
+      if (location) u.searchParams.set("location", location);
+      return u.toString();
+    } catch {
+      const hasQuery = raw.includes("?");
+      const qs = new URLSearchParams({
+        ...(visitId ? { visitId } : {}),
+        ...(clinician ? { clinician } : {}),
+        ...(location ? { location } : {}),
+      }).toString();
+      return qs ? `${raw}${hasQuery ? "&" : "?"}${qs}` : raw;
+    }
   };
 
   return (
@@ -86,7 +93,11 @@ export default function ReviewHub() {
       </header>
 
       {/* Priority block */}
-      <div className={`border rounded-2xl p-6 mb-6 ${brandStyles[priorityPlatform.brand] ?? "border-slate-200"}`}>
+      <div
+        className={`border rounded-2xl p-6 mb-6 ${
+          brandStyles[priorityPlatform.brand as PlatformKey] ?? "border-slate-200"
+        }`}
+      >
         <div className="flex items-center gap-3">
           <ThumbsUp className="w-6 h-6" />
           <h2 className="text-xl font-medium">Prefer to review on {priorityPlatform.label}?</h2>
@@ -111,7 +122,7 @@ export default function ReviewHub() {
 
           {/* Platform selector */}
           <div className="ml-auto flex gap-2">
-            {Object.entries(PLATFORMS).map(([key, p]) => (
+            {(Object.entries(PLATFORMS) as [PlatformKey, (typeof PLATFORMS)[PlatformKey]][]).map(([key, p]) => (
               <button
                 key={key}
                 onClick={() => setPriority(key)}
@@ -126,18 +137,18 @@ export default function ReviewHub() {
           </div>
         </div>
 
-        {/* Exact link preview (so they “know where they will be leaving it”) */}
+        {/* Exact link preview */}
         <p className="mt-3 text-xs text-slate-500 break-all">
           Direct link:&nbsp;
           <span className="underline">{trackedUrl(priorityPlatform.href)}</span>
         </p>
       </div>
 
-      {/* All platforms list (visible, not highlighted) */}
+      {/* All platforms list */}
       <div className="rounded-2xl border border-slate-200 p-6 mb-8">
         <h3 className="text-lg font-medium mb-3">Or choose another platform</h3>
         <ul className="space-y-3">
-          {Object.entries(PLATFORMS).map(([key, p]) => (
+          {(Object.entries(PLATFORMS) as [PlatformKey, (typeof PLATFORMS)[PlatformKey]][]).map(([key, p]) => (
             <li key={key} className="flex items-center justify-between gap-3">
               <div>
                 <p className="font-medium">{p.label}</p>
@@ -158,7 +169,7 @@ export default function ReviewHub() {
         </ul>
       </div>
 
-      {/* Private feedback path (owner inbox) */}
+      {/* Private feedback path */}
       <div className="rounded-2xl border border-amber-300 bg-amber-50 p-6">
         <div className="flex items-center gap-3">
           <ShieldAlert className="w-6 h-6" />
@@ -168,8 +179,7 @@ export default function ReviewHub() {
           Your feedback helps us improve. This message goes to the owner—not published as a review.
         </p>
 
-        {/* Netlify Forms version (zero backend work). 
-            In Netlify UI, you'll see form submissions named "owner-feedback". */}
+        {/* Netlify Forms */}
         <form
           name="owner-feedback"
           method="POST"
@@ -178,14 +188,12 @@ export default function ReviewHub() {
           className="mt-4 space-y-3"
         >
           <input type="hidden" name="form-name" value="owner-feedback" />
-          {/* Honeypot */}
           <p className="hidden">
             <label>
               Don’t fill this out if you’re human: <input name="bot-field" />
             </label>
           </p>
 
-          {/* Hidden passthrough IDs */}
           <input type="hidden" name="visitId" value={visitId} />
           <input type="hidden" name="clinician" value={clinician} />
           <input type="hidden" name="location" value={location} />
@@ -193,20 +201,11 @@ export default function ReviewHub() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-medium">Your name (optional)</label>
-              <input
-                name="name"
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-                placeholder="Jane Doe"
-              />
+              <input name="name" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2" />
             </div>
             <div>
               <label className="block text-sm font-medium">Email (optional)</label>
-              <input
-                name="email"
-                type="email"
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-                placeholder="jane@example.com"
-              />
+              <input name="email" type="email" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2" />
             </div>
           </div>
 
@@ -221,10 +220,7 @@ export default function ReviewHub() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2"
-          >
+          <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2">
             <MessageSquare className="w-4 h-4" />
             Send to owner
           </button>
