@@ -155,53 +155,53 @@ const Navigation = () => {
   }, []);
 
   // Mobile-only: Track when first journey step appears
-  useEffect(() => {
-    if (!isHomePage || typeof window === 'undefined') return;
+useEffect(() => {
+  if (!isHomePage || typeof window === 'undefined') return;
+  
+  const handleScroll = () => {
+    if (window.innerWidth >= 768) return; // Only on mobile
     
-    const handleScroll = () => {
-      if (window.innerWidth >= 768) return; // Only on mobile
-      
-      const firstStep = document.querySelector('.step-item-wrapper');
-      if (!firstStep) return;
-      
-      const rect = firstStep.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        setMobileJourneyStarted(true);
-      }
-    };
+    const firstStep = document.querySelector('.step-item-wrapper');
+    if (!firstStep) return;
     
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHomePage]);
+    const rect = firstStep.getBoundingClientRect();
+    // Trigger when first step enters viewport
+    if (rect.top < window.innerHeight * 0.9) {
+      setMobileJourneyStarted(true);
+    }
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll(); // Check initially
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [isHomePage]);
 
   // Determine visibility states
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
   
-  // Primary navigation visibility
-  let primaryVisible: boolean;
-  if (!isHomePage) {
-    // Non-home pages: hide after scroll on all devices
-    primaryVisible = !isScrolled;
-  } else if (isMobile) {
-    // Home page mobile: hide when journey starts or scrolled
-    primaryVisible = !mobileJourneyStarted && !isScrolled;
-  } else {
-    // Home page desktop: hide after scroll
-    primaryVisible = !isScrolled;
-  }
+  /// Primary navigation visibility
+let primaryVisible: boolean;
+if (!isHomePage) {
+  primaryVisible = !isScrolled;
+} else if (isMobile) {
+  // Mobile home: hide only when journey first step appears
+  primaryVisible = !mobileJourneyStarted;
+} else {
+  // Desktop home: always show until scrolled
+  primaryVisible = !isScrolled;
+}
 
-  // Secondary navigation visibility
-  let secondaryVisible: boolean;
-  if (!isHomePage) {
-    // Non-home pages: show after scroll on all devices
-    secondaryVisible = isScrolled;
-  } else if (isMobile) {
-    // Home page mobile: show after 100px scroll but hide during journey
-    secondaryVisible = (isScrolled && !inJourney) || journeyEnding;
-  } else {
-    // Home page desktop: show after trigger and not in journey
-    secondaryVisible = pastTrigger && !inJourney;
-  }
+// Secondary navigation visibility  
+let secondaryVisible: boolean;
+if (!isHomePage) {
+  secondaryVisible = isScrolled;
+} else if (isMobile) {
+  // Mobile home: show after 100px, hide during journey middle, show at end
+  secondaryVisible = (isScrolled && !inJourney) || journeyEnding;
+} else {
+  // Desktop home: show after trigger and not in journey
+  secondaryVisible = pastTrigger && !inJourney;
+}
 
   const services = [
     { title: "General Dentistry", href: "/services/general", description: "Comprehensive dental care for your everyday needs", theme: "medical" },
