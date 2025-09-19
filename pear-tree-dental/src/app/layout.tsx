@@ -2,31 +2,20 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import Script from "next/script";
-import dynamic from "next/dynamic";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import SmartNav from "@/components/Navigation";
+import SmartNav from "@/components/Navigation"; // ✅ use SmartNav later
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
-import ClientProviders from "@/components/ClientProviders";          // ✅ new
-import LazyLocationDetection from "@/components/LazyLocationDetection"; // ✅ new
 
-// import TrackingProvider from "@/components/cohort/TrackingProvider";
-const TrackingProvider = dynamic(() => import("@/components/cohort/TrackingProvider"), {
-  ssr: false,
-  // While it loads, just render children; most providers render context only
-  loading: () => <></>,
-});
-
-// Lazy-load Location detection after interaction
-const LocationDetection = dynamic(() => import("@/components/LocationDetection"), {
-  ssr: false,
-});
+// ✅ client wrappers (no dynamic calls here)
+import ClientProviders from "@/components/ClientProviders";
+import LazyLocationDetection from "@/components/LazyLocationDetection";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -43,14 +32,14 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  /* … your existing metadata exactly as before … */
+  // …your existing metadata…
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Remove global image preloads to help LCP; let <Image priority /> handle it */}
+        {/* No global image preloads; let <Image priority /> handle LCP */}
         <link rel="canonical" href="https://peartree.dental" />
         <LocalBusinessSchema includeDentistSpecific />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
@@ -59,7 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
       </head>
 
-      <body className={`min-h-screen bg-pear-background ${/* font variables */ ""}`}>
+      <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
         <ClientProviders>
           <a
             href="#main-content"
@@ -83,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <Footer />
 
-          {/* After main; lazy and client-only */}
+          {/* after main; client & lazy */}
           <LazyLocationDetection />
         </ClientProviders>
 
