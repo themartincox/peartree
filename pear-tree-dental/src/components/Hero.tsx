@@ -75,7 +75,93 @@ const Hero = () => {
 
       {/* MAIN CONTAINER (unchanged content) */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        {/* ...rest of your hero JSX exactly as you had it... */}
+              {/* MOBILE / TABLET LAYOUT */}
+        <div className="lg:hidden py-8 sm:py-12 relative">
+          <h1 className="heading-serif text-5xl sm:text-6xl md:text-7xl font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
+            Expert dental care
+            <br />
+            with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
+            <br />
+            <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
+          </h1>
+
+          <p className="text-lg sm:text-xl text-white leading-relaxed max-w-2xl mb-8">
+            Modern dental care serving Nottingham and surrounding areas. Skip
+            the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+          </p>
+
+          <div className="flex flex-col space-y-4 w-full max-w-md">
+            <Button
+              asChild
+              size="lg"
+              className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full"
+              onClick={handleBookingClick}
+            >
+              <Link href="/book">
+                <Calendar className="h-5 w-5 mr-2" />
+                Book Your Consultation
+              </Link>
+            </Button>
+
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
+              onClick={handleMembershipClick}
+            >
+              <Link href="/membership">View Membership Plans →</Link>
+            </Button>
+
+            {/* Mobile Google reviews on mobile below the two buttons */}
+            <MobileGoogleReviews />
+          </div>
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden lg:flex lg:items-center min-h-[100svh]">
+          <div className="max-w-2xl space-y-8">
+            <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight">
+              Expert dental care
+              <br />
+              with a{" "}
+              <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
+              <br />
+              <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
+            </h1>
+
+            <p className="text-xl text-white leading-relaxed max-w-lg">
+              Modern dental care serving Nottingham and surrounding areas. Skip
+              the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+            </p>
+
+            <div className="flex flex-col space-y-4 max-w-md">
+              <Button
+                asChild
+                size="lg"
+                className="bg-pear-primary hover:bg-pear-primary text-white font-semibold px-8 py-4 text-lg w-full"
+                onClick={handleBookingClick}
+              >
+                <Link href="/book">
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Book Your Consultation
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
+                onClick={handleMembershipClick}
+              >
+                <Link href="/membership">View Membership Plans →</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative">{/* Desktop right-side area */}</div>
+        </div>
       </div>
     </section>
   );
