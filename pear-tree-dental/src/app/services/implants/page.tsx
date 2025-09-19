@@ -266,16 +266,17 @@ export default function ImplantsPage() {
 </section>
 
 {/* Single Implant Before/After */}
-<BeforeAfterSlider
-  beforeImage="/images/before-after/single-dental-implant-before.webp"
-  afterImage="/images/before-after/single-dental-implant-after.webp"
-  beforeAlt="Before single dental implant"
-  afterAlt="After single dental implant"
-  title="Single Dental Implant — Real Patient"
-  description="See how a single implant restores function and aesthetics."
-  treatmentType="Implants"
-  className="my-12"
-/>
+<div className="w-full md:w-1/2 mx-auto my-16">
+        <BeforeAfterSlider
+          beforeImage="/images/before-after/single-dental-implant-before.webp"
+          afterImage="/images/before-after/single-dental-implant-after.webp"
+          beforeAlt="Before single dental implant"
+          afterAlt="After single dental implant"
+          title="Single Dental Implant — Real Patient"
+          description="See how a single implant restores function and aesthetics."
+          treatmentType="Implants"
+        />
+      </div>
       
       {/* Treatment Process */}
       <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
