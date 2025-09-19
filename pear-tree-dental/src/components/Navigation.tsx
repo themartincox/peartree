@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { useState, useEffect, useRef, useCallback, Suspense, lazy } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,24 +20,26 @@ import { cn } from "@/lib/utils";
 
 // Lazy load non-critical navigation components
 const LazyNavigationItems = lazy(() =>
-  import("@/components/navigation/LazyNavigationItems").then((module) => module)
+  import("@/components/navigation/LazyNavigationItems").then((m) => m)
 );
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [shouldLoadSecondaryNav, setShouldLoadSecondaryNav] = useState(false);
+  const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
+
+  // Home-only flags
+  const [pastTrigger, setPastTrigger] = useState(false);
+  const [inJourney, setInJourney] = useState(false);
+
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-const [pastTrigger, setPastTrigger] = useState(false);
-const [inJourney, setInJourney] = useState(false);
 
   // Touch gesture handling for swipe-to-close
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
-  const [isSwipeIndicatorVisible, setIsSwipeIndicatorVisible] = useState(false);
 
-  // Swipe gesture detection
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchStartY.current = e.touches[0].clientY;
@@ -78,7 +81,7 @@ const [inJourney, setInJourney] = useState(false);
     setIsSwipeIndicatorVisible(false);
   }, []);
 
-  // Close menu when a link is clicked
+  // Close mobile menu when a link is clicked (with tiny exit animation)
   const closeMobileMenu = useCallback(() => {
     const content = document.querySelector(".mobile-nav-content");
     if (content) content.classList.add("exiting");
@@ -99,30 +102,47 @@ const [inJourney, setInJourney] = useState(false);
     return () => clearTimeout(t);
   }, [isMobileMenuOpen]);
 
-useEffect(() => {
-  if (!isHomePage) return;
-
-  const el = document.getElementById('reviews-sticky-trigger');
-  if (!el) return;
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      const e = entries[0];
-      // when the trigger leaves the top (i.e., page is scrolled past it), show secondary
-      setPastTrigger(!e.isIntersecting && e.boundingClientRect.top <= 0);
-    },
-    { root: null, threshold: 0 }
-  );
-
-  io.observe(el);
-  return () => io.disconnect();
-}, [isHomePage]);
-
+  // Generic scroll flag (non-home pages use this for secondary)
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 100);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Sentinel to know when we’re past the hero/trigger (home only)
+  useEffect(() => {
+    if (!isHomePage) return;
+
+    const el = document.getElementById("reviews-sticky-trigger");
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const e = entries[0];
+        // past trigger when it leaves the top
+        setPastTrigger(!e.isIntersecting && e.boundingClientRect.top <= 0);
+      },
+      { root: null, threshold: 0 }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [isHomePage]);
+
+  // Journey enter/exit events coming from the TreatmentJourney component
+  useEffect(() => {
+    const onEnter = () => setInJourney(true);
+    const onExit = () => setInJourney(false);
+    window.addEventListener("journey:enter", onEnter);
+    window.addEventListener("journey:exit", onExit);
+    return () => {
+      window.removeEventListener("journey:enter", onEnter);
+      window.removeEventListener("journey:exit", onExit);
+    };
+  }, []);
+
+  // Visibility logic for the secondary header
+  const secondaryVisible = isHomePage ? pastTrigger && !inJourney : isScrolled;
 
   const services = [
     { title: "General Dentistry", href: "/services/general", description: "Comprehensive dental care for your everyday needs", theme: "medical" },
@@ -141,18 +161,6 @@ useEffect(() => {
     { title: "Dental Education", href: "/patient-education", description: "Helpful guides and oral health resources" },
     { title: "Pricing", href: "/pricing", description: "Transparent dental treatment pricing" },
   ];
-
-
-useEffect(() => {
-  const onEnter = () => setInJourney(true);
-  const onExit = () => setInJourney(false);
-  window.addEventListener('journey:enter', onEnter);
-  window.addEventListener('journey:exit', onExit);
-  return () => {
-    window.removeEventListener('journey:enter', onEnter);
-    window.removeEventListener('journey:exit', onExit);
-  };
-}, []);
 
   return (
     <>
@@ -193,7 +201,10 @@ useEffect(() => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="brand-logo text-pear-primary xl:text-left lg:text-center whitespace-nowrap" style={{ fontSize: 25, lineHeight: "1.125" }}>
+                <div
+                  className="brand-logo text-pear-primary xl:text-left lg:text-center whitespace-nowrap"
+                  style={{ fontSize: 25, lineHeight: "1.125" }}
+                >
                   <span>PEAR TREE</span>
                   <span className="ml-2">DENTAL</span>
                 </div>
@@ -226,7 +237,10 @@ useEffect(() => {
                               aria-describedby={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">{service.title}</div>
-                              <p id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`} className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                              >
                                 {service.description}
                               </p>
                             </Link>
@@ -250,7 +264,10 @@ useEffect(() => {
                               aria-describedby={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
                             >
                               <div className="text-sm font-medium leading-none text-pear-primary">{service.title}</div>
-                              <p id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`} className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                              <p
+                                id={`service-desc-${service.title.replace(/\s+/g, "-").toLowerCase()}`}
+                                className="line-clamp-2 text-sm leading-snug text-muted-foreground"
+                              >
                                 {service.description}
                               </p>
                             </Link>
@@ -297,14 +314,20 @@ useEffect(() => {
 
                 {/* New Patients */}
                 <NavigationMenuItem>
-                  <Link href="/new-patients" className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold">
+                  <Link
+                    href="/new-patients"
+                    className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold"
+                  >
                     New Patients
                   </Link>
                 </NavigationMenuItem>
 
                 {/* Contact */}
                 <NavigationMenuItem>
-                  <Link href="/contact" className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold">
+                  <Link
+                    href="/contact"
+                    className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold"
+                  >
                     Contact
                   </Link>
                 </NavigationMenuItem>
@@ -312,7 +335,9 @@ useEffect(() => {
                 {/* Dental Pain */}
                 <NavigationMenuItem>
                   <Link href="/services/emergency">
-                    <Button className="ml-2 h-10 rounded-full bg-red-600 px-4 text-sm font-semibold text-white hover:bg-red-700">Dental Pain?</Button>
+                    <Button className="ml-2 h-10 rounded-full bg-red-600 px-4 text-sm font-semibold text-white hover:bg-red-700">
+                      Dental Pain?
+                    </Button>
                   </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -370,7 +395,9 @@ useEffect(() => {
                     {/* Mobile CTAs */}
                     <div className="flex flex-col space-y-3">
                       <Link href="/services/emergency" onClick={closeMobileMenu} className="nav-item-enter">
-                        <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1 nav-button">🚨 Dental Pain? Call Now</Button>
+                        <Button className="bg-red-600 hover:bg-red-700 text-white w-full h-10 text-sm font-bold rounded-full px-4 py-1 nav-button">
+                          🚨 Dental Pain? Call Now
+                        </Button>
                       </Link>
                       <Link href="/book" onClick={closeMobileMenu} className="nav-item-enter">
                         <Button className="bg-gradient-to-r from-dental-green to-soft-blue text-white w-full h-10 text-sm px-4 py-1 nav-button">
@@ -404,14 +431,23 @@ useEffect(() => {
                         <div className="text-pear-primary font-semibold">Services</div>
                         <div className="ml-4 space-y-1">
                           {services.map((service) => (
-                            <Link key={service.title} href={service.href} className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1" onClick={closeMobileMenu}>
+                            <Link
+                              key={service.title}
+                              href={service.href}
+                              className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1"
+                              onClick={closeMobileMenu}
+                            >
                               {service.title}
                             </Link>
                           ))}
                         </div>
                       </div>
 
-                      <Link href="/membership" className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-2 py-1 rounded font-semibold text-sm" onClick={closeMobileMenu}>
+                      <Link
+                        href="/membership"
+                        className="text-pear-gold hover:bg-pear-gold hover:text-white transition-all px-2 py-1 rounded font-semibold text-sm"
+                        onClick={closeMobileMenu}
+                      >
                         Membership Plan
                       </Link>
 
@@ -419,7 +455,12 @@ useEffect(() => {
                         <div className="text-pear-primary font-semibold">About</div>
                         <div className="ml-4 space-y-1">
                           {about.map((item) => (
-                            <Link key={item.title} href={item.href} className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1" onClick={closeMobileMenu}>
+                            <Link
+                              key={item.title}
+                              href={item.href}
+                              className="block text-sm text-muted-foreground hover:text-pear-gold transition-colors py-1"
+                              onClick={closeMobileMenu}
+                            >
                               {item.title}
                             </Link>
                           ))}
@@ -427,10 +468,18 @@ useEffect(() => {
                       </div>
 
                       <div className="space-y-2 mt-2">
-                        <Link href="/new-patients" className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1" onClick={closeMobileMenu}>
+                        <Link
+                          href="/new-patients"
+                          className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1"
+                          onClick={closeMobileMenu}
+                        >
                           New Patients
                         </Link>
-                        <Link href="/contact" className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1" onClick={closeMobileMenu}>
+                        <Link
+                          href="/contact"
+                          className="block text-pear-primary hover:text-pear-gold transition-colors font-medium text-sm py-1"
+                          onClick={closeMobileMenu}
+                        >
                           Contact
                         </Link>
                       </div>
@@ -443,13 +492,15 @@ useEffect(() => {
         </div>
       </header>
 
-      {/* Simplified Navigation - Shows on scroll */}
+      {/* Secondary Navigation - home: after trigger & not in journey; others: after scroll */}
       <header
         data-role="primary-header"
         id="secondary-nav"
         className={cn(
           "secondary-nav fixed top-0 left-0 right-0 z-[60] transition-all duration-500 ease-in-out pt-[3px] sm:pt-0",
-          isScrolled ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg" : "transform -translate-y-full opacity-0 pointer-events-none"
+          secondaryVisible
+            ? "transform translate-y-0 opacity-100 bg-pear-primary shadow-lg"
+            : "transform -translate-y-full opacity-0 pointer-events-none"
         )}
         aria-label="Simplified navigation"
       >
@@ -458,7 +509,13 @@ useEffect(() => {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-7 h-7 sm:w-9 sm:h-9 text-white">
-                <Image src="/images/dental-motif-logo.png" alt="Pear Tree Dental Logo" width={36} height={36} className="w-full h-full object-contain filter brightness-0 invert" />
+                <Image
+                  src="/images/dental-motif-logo.png"
+                  alt="Pear Tree Dental Logo"
+                  width={36}
+                  height={36}
+                  className="w-full h-full object-contain filter brightness-0 invert"
+                />
               </div>
               <div className="flex flex-col">
                 <div className="brand-logo text-2xl p-0 sm:p-1" style={{ fontSize: 25, color: "#fff" }}>
@@ -468,7 +525,7 @@ useEffect(() => {
               </div>
             </Link>
 
-            {/* Central CTAs */}
+            {/* Center CTAs */}
             <div className="absolute left-1/2 transform -translate-x-1/2 hidden sm:flex items-center space-x-4">
               <Link href="/book">
                 <Button size="sm" className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary/90">
@@ -486,17 +543,26 @@ useEffect(() => {
             {/* Mobile CTAs */}
             <div className="flex sm:hidden flex-col items-end space-y-2">
               <Link href="/book">
-                <Button className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary/90">Book Appointment</Button>
+                <Button className="bg-pear-primary text-white font-bold px-3 py-2 h-9 text-xs border-2 border-white hover:bg-pear-primary/90">
+                  Book Appointment
+                </Button>
               </Link>
               <Link href="/membership">
-                <Button className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs">Explore Membership</Button>
+                <Button className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-3 py-2 h-9 text-xs">
+                  Explore Membership
+                </Button>
               </Link>
             </div>
 
-            {/* Hamburger for secondary */}
+            {/* Secondary hamburger */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md" aria-label="Open mobile navigation menu">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+                  aria-label="Open mobile navigation menu"
+                >
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
