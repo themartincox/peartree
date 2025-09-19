@@ -5,14 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   MessageCircle,
   Stethoscope,
   Clipboard,
   CreditCard,
   Heart,
-  ChevronRight,
   CheckCircle,
   ArrowRight
 } from "lucide-react";
@@ -39,7 +37,7 @@ const TreatmentJourney = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const stepsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  const journeySteps = [
++ const journeySteps: JourneyStep[] = [
     {
       number: "One",
       title: "Your consultation",
@@ -246,6 +244,8 @@ stepsRef.current.forEach((step, index) => {
               <button
                 key={`nav-${index}`}
                 onClick={() => scrollToStep(index)}
+ aria-label={`Go to step ${index + 1}: ${step.title}`}
++               aria-current={activeStep === index ? 'step' : undefined}
                 className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                   activeStep === index
                     ? 'bg-pear-primary border-pear-primary scale-150 shadow-lg'
