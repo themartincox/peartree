@@ -108,11 +108,11 @@ const Navigation = () => {
   useEffect(() => {
     const onScroll = () => {
       const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 100);
+      setIsScrolled(scrollY > 80);
       
       // For mobile home page, track if we're past 100px for secondary nav content
       if (isHomePage && window.innerWidth < 768) {
-        setPastTrigger(scrollY > 100);
+        setPastTrigger(scrollY > 80);
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
