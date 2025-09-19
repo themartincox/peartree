@@ -241,36 +241,36 @@ return (
         <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Logo */}
           <Link
-            href="/"
-            className="hidden lg:flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
-            aria-label="Pear Tree Dental - Return to homepage"
-          >
-<Link href="/" className="lg:hidden sr-only">
-  Home
+  href="/"
+  className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+  aria-label="Pear Tree Dental - Return to homepage"
+>
+  {/* Logo → hidden on mobile only */}
+  <div className="hidden sm:block w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14">
+    <Image
+      src="/images/dental-motif-logo.png"
+      alt="Pear Tree Dental Logo"
+      width={56}
+      height={56}
+      className="w-full h-full object-contain"
+      style={{
+        filter:
+          "brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1200%) hue-rotate(165deg) brightness(90%) contrast(95%)",
+      }}
+    />
+  </div>
+
+  {/* Text → always visible (mobile, tablet, desktop) */}
+  <div className="flex flex-col">
+    <div
+      className="brand-logo text-pear-primary xl:text-left lg:text-center whitespace-nowrap"
+      style={{ fontSize: 25, lineHeight: "1.125" }}
+    >
+      <span>PEAR TREE</span>
+      <span className="ml-2">DENTAL</span>
+    </div>
+  </div>
 </Link>
-            <div className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14">
-              <Image
-                src="/images/dental-motif-logo.png"
-                alt="Pear Tree Dental Logo"
-                width={56}
-                height={56}
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "brightness(0) saturate(100%) invert(20%) sepia(54%) saturate(1200%) hue-rotate(165deg) brightness(90%) contrast(95%)",
-                }}
-              />
-            </div>
-            <div className="flex flex-col">
-              <div
-                className="brand-logo text-pear-primary xl:text-left lg:text-center whitespace-nowrap"
-                style={{ fontSize: 25, lineHeight: "1.125" }}
-              >
-                <span>PEAR TREE</span>
-                <span className="ml-2">DENTAL</span>
-              </div>
-            </div>
-          </Link>
 
           {/* Desktop Navigation (single instance) */}
           <NavigationMenu className="hidden lg:flex" role="navigation" aria-label="Main site navigation">
