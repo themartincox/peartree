@@ -19,7 +19,7 @@ const PracticeShowcase = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Main Practice Showcase */}
-            <Card className="relative overflow-hidden bg-white shadow-2xl h-[600px] lg:h-[500px] group">
+            <Card className="relative overflow-hidden bg-pear-background shadow-2xl h-[600px] lg:h-[500px] group">
               {/* Practice Image Background */}
               <div className="absolute inset-0">
                 <Image

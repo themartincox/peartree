@@ -63,7 +63,7 @@ const IconRenderer = ({ iconName, className }: { iconName: string; className: st
 
 const ServicesOverview = ({ services }: ServicesOverviewProps) => {
   return (
-    <section className="pt-[200px] pb-16 bg-white xl:pb-[6px]">
+    <section className="pt-[64px] pb-16 bg-pear-background xl:pb-[6px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <ServicesContent services={services} />
       </div>
