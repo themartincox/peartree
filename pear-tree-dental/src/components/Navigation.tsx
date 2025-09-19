@@ -242,9 +242,12 @@ return (
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+            className="hidden lg:flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
             aria-label="Pear Tree Dental - Return to homepage"
           >
+<Link href="/" className="lg:hidden sr-only">
+  Home
+</Link>
             <div className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14">
               <Image
                 src="/images/dental-motif-logo.png"

@@ -59,7 +59,7 @@ const Hero = () => {
       fill
       quality={85}
       sizes="100vw"
-      className="object-cover object-[12%_center]"
+      className="object-cover opacity-60 object-[12%_center]"
     />
   </div>
 </div>
@@ -81,7 +81,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
               {/* MOBILE / TABLET LAYOUT */}
         <div className="lg:hidden py-8 sm:py-12 relative">
-          <h1 className="heading-serif text-4xl sm:text-6xl md:text-7xl font-bold
+          <h1 className="heading-serif text-[2.6rem] sm:text-6xl md:text-7xl font-bold
                text-pear-primary drop-shadow-md leading-[1.05] mb-6">
   Expert dental care
   <br />
