@@ -11,6 +11,7 @@ import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQS
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
 import BeforeAfterButton from "@/components/BeforeAfterButton";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Zap,
   Shield,
@@ -264,6 +265,17 @@ export default function ImplantsPage() {
   </div>
 </section>
 
+{/* Single Implant Before/After */}
+<BeforeAfterSlider
+  beforeImage="/images/before-after/single-dental-implant-before.webp"
+  afterImage="/images/before-after/single-dental-implant-after.webp"
+  beforeAlt="Before single dental implant"
+  afterAlt="After single dental implant"
+  title="Single Dental Implant — Real Patient"
+  description="See how a single implant restores function and aesthetics."
+  treatmentType="Implants"
+  className="my-12"
+/>
       
       {/* Treatment Process */}
       <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
