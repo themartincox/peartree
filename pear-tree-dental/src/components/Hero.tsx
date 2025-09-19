@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20 bg-pear">
       {/* BACKGROUND (LCP): practice image */}
-      <div className="absolute top-0 left-0 right-0 h-[90%] -z-10 sm:block">
+      <div className="absolute top-0 left-0 right-0 h-[90%] -z-10 hidden sm:block">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
           alt="Pear Tree Dental modern practice background"
@@ -33,7 +33,7 @@ const Hero = () => {
           fetchPriority="high"
           quality={85}
           sizes="100vw"
-          className="object-cover object-top"
+          className="object-cover object-[12%_center]"
         />
         <div className="absolute inset-0 bg-gray-100/40" />
       </div>
