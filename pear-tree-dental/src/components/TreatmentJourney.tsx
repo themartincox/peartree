@@ -253,7 +253,7 @@ const TreatmentJourney = () => {
   style={{ height: `${journeySteps.length * 100}vh` }}
       >
         {/* Header Section - responsive: absolute on md+, static on mobile */}
-        <div className="z-40 bg-white/95 py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0">
+        <div className="z-40 bg-pear-background py-6 sm:py-8 border-b border-gray-100 w-full md:absolute md:top-0 md:left-0 md:right-0">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="heading-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-pear-primary mb-4 sm:mb-6">
