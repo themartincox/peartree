@@ -155,7 +155,7 @@ const TreatmentJourney = () => {
     };
   }, []);
 
-  // Emit journey enter/exit for the nav to react to
+  // Emit journey enter/exit and progression events
   useEffect(() => {
     if (isInJourneySection) {
       window.dispatchEvent(new CustomEvent("journey:enter"));
@@ -180,12 +180,13 @@ const TreatmentJourney = () => {
         const rect = container.getBoundingClientRect();
         const containerHeight = container.offsetHeight;
         const viewportHeight = window.innerHeight;
+        const isMobile = window.innerWidth < 768;
 
         // Is the journey section on screen?
         const visible = rect.top < viewportHeight && rect.bottom > 0;
         setIsInJourneySection(visible);
 
-        // Don’t start progression until container top reaches viewport
+        // Don't start progression until container top reaches viewport
         if (rect.top > 0) {
           setScrollProgress(0);
           setActiveStep(0);
@@ -216,6 +217,16 @@ const TreatmentJourney = () => {
         );
         setActiveStep(current);
 
+        // Emit specific journey progression events for mobile nav choreography
+        if (isMobile) {
+          if (stepProgress > 0.1 && stepProgress < 0.3) {
+            window.dispatchEvent(new CustomEvent("journey:starting"));
+          }
+          if (stepProgress > 4.7) {
+            window.dispatchEvent(new CustomEvent("journey:ending"));
+          }
+        }
+
         // Apply sticky behavior
         stepsRef.current.forEach((step, index) => {
           if (!step) return;
@@ -226,12 +237,9 @@ const TreatmentJourney = () => {
             step.style.transform = "translateY(0)";
             step.style.zIndex = `${10 + index}`;
 
-            if (window.innerWidth < 768) {
-              // Mobile: tighter top while "journey-active" is set
-              const mobileTightTop = "clamp(24px, 8mm, 56px)";
-              const mobileDefaultTop = "80px";
-              const useTight = document.body.classList.contains("journey-active");
-              step.style.top = useTight ? mobileTightTop : mobileDefaultTop;
+            if (isMobile) {
+              // Mobile: stick 8px below the Google widget
+              step.style.top = `${reviewsHeight + GAP_PX}px`;
             } else {
               // Desktop: sit just under the reviews widget with a uniform gap
               step.style.top = `${reviewsHeight + GAP_PX}px`;
@@ -271,7 +279,7 @@ const TreatmentJourney = () => {
   };
 
   return (
-    <section className="py-0 bg-pear-background relative z-10">
+    <section className="treatment-journey-section py-0 bg-pear-background relative z-10">
       {/* Spacer element to prevent cropping from previous section */}
       <div className="h-16 md:h-16 bg-pear-background w-full"></div>
 
