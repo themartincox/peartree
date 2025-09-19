@@ -41,7 +41,7 @@ const Hero = () => {
       {/* MOBILE-ONLY slice (NO priority) */}
 <div
   className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none h-[66vh]
-             w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px] -translate-x-[30px] -translate-y-[30px]"
+             w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px] -bottom-[30px] -right-[30px] -translate-y-[30px]"
   aria-hidden
   style={{
     WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
@@ -85,10 +85,10 @@ const Hero = () => {
             <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-white leading-relaxed max-w-2xl mb-8">
-            Modern dental care serving Nottingham and surrounding areas. Skip
-            the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
-          </p>
+          <p className="text-lg sm:text-xl text-pear-primary lg:text-white leading-relaxed max-w-2xl mb-8">
+  Modern dental care serving Nottingham and surrounding areas. Skip
+  the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+</p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md">
             <Button
