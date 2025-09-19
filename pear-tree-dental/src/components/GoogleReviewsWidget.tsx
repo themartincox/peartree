@@ -22,11 +22,6 @@ const GoogleReviewsWidget = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-
-  {/* existing reviews widget content */}
-</div>
-  
-
 // Improved placeholder: track widget height
   const [widgetHeight, setWidgetHeight] = useState(0);
 
@@ -225,9 +220,7 @@ const GoogleReviewsWidget = () => {
     <>
       {isHomepage && isSticky && (
         <div
-          className="transition-all duration-500"
-          style={{ height: widgetHeight || 80 }}
-        />
+          className="transition-all duration-500" style={{ height: widgetHeight || 80 }}/>
       )}
 
       <div
