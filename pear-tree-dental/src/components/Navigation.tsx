@@ -223,7 +223,13 @@ const Navigation = () => {
   ];
 return (
   <>
-    {/* Main Navigation - Full menu when not scrolled */}
+
+// before: <header className="...">
+<header data-role="primary-header" className="...">
+  {/* existing header content */}
+</header>   
+
+ {/* Main Navigation - Full menu when not scrolled */}
     <header
       id="navigation"
       role="banner"

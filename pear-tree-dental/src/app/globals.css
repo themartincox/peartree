@@ -1034,3 +1034,25 @@ input:valid {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 }
+
+/* globals.css */
+
+/* Mobile-only */
+@media (max-width: 767.98px) {
+  /* While journey is active, slide/opacity-hide header + reviews widget */
+  body.journey-active [data-role="primary-header"],
+  body.journey-active [data-role="reviews-widget"] {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  /* When not active, ensure they’re visible (in case inline styles exist) */
+  [data-role="primary-header"],
+  [data-role="reviews-widget"] {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+}

@@ -9,9 +9,9 @@ interface GoogleReviewsProps {
 export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
   // Get stats with fallbacks
   const stats = {
-    averageRating: googleReviewsStats?.averageRating || 5.0,
-    totalReviews: googleReviewsStats?.totalReviews || 450,
-    fiveStarCount: googleReviewsStats?.fiveStarCount || 428,
+    averageRating: googleReviewsStats?.averageRating || 4.9,
+    totalReviews: googleReviewsStats?.totalReviews || 550,
+    fiveStarCount: googleReviewsStats?.fiveStarCount || 525,
   };
 
   // Render the stars

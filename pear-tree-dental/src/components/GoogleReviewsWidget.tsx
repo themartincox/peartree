@@ -22,7 +22,13 @@ const GoogleReviewsWidget = () => {
   const widgetRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  // Improved placeholder: track widget height
+// before: <div className="...">
+<div data-role="reviews-widget" className="...">
+  {/* existing reviews widget content */}
+</div>
+  
+
+// Improved placeholder: track widget height
   const [widgetHeight, setWidgetHeight] = useState(0);
 
   // Add useCallback for measuring the widget height

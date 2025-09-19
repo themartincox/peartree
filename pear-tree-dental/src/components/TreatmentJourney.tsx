@@ -118,7 +118,23 @@ const TreatmentJourney = () => {
     }
   ];
 
-  useEffect(() => {
+// inside TreatmentJourney component (near other hooks)
+useEffect(() => {
+  const isMobile = () => window.innerWidth < 768;
+  // Toggle body class only on mobile while the journey is in view
+  if (isInJourneySection && isMobile()) {
+    document.body.classList.add("journey-active");
+  } else {
+    document.body.classList.remove("journey-active");
+  }
+  return () => {
+    document.body.classList.remove("journey-active");
+  };
+}, [isInJourneySection]);
+
+// ...inside your requestAnimationFrame loop where you set sticky styles
+
+ useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
@@ -160,30 +176,33 @@ const TreatmentJourney = () => {
           setActiveStep(currentStep);
 
           // Apply transforms to each step with proper sticky behavior
-          stepsRef.current.forEach((step, index) => {
-            if (!step) return;
+stepsRef.current.forEach((step, index) => {
+  if (!step) return;
+  const stepElement = step;
 
-            const stepElement = step;
+  if (index <= currentStep) {
+    // Current and previous steps - stick in place
+    stepElement.style.transform = "translateY(0px)";
+    stepElement.style.zIndex = `${10 + index}`;
+    stepElement.style.position = 'sticky';
 
-            if (index <= currentStep) {
-              // Current and previous steps - stick in place
-              stepElement.style.transform = "translateY(0px)";
-              stepElement.style.zIndex = `${10 + index}`;
-              stepElement.style.position = 'sticky';
-              // Responsive sticky offset: 0 on desktop, 120px on mobile (adjust as needed)
-              if (window.innerWidth < 768) {
-                stepElement.style.top = '80px';
-              } else {
-                stepElement.style.top = '0px';
-              }
-            } else {
-              // Future steps - positioned normally below
-              stepElement.style.transform = "translateY(0px)";
-              stepElement.style.zIndex = `${10 + index}`;
-              stepElement.style.position = 'relative';
-              stepElement.style.top = 'auto';
-            }
-          });
+    if (window.innerWidth < 768) {
+      // Use tight top (~8mm) only while header/reviews are hidden
+      const mobileTightTop = "clamp(24px, 8mm, 56px)";
+      const mobileDefaultTop = "80px";
+      const useTight = document.body.classList.contains("journey-active");
+      stepElement.style.top = useTight ? mobileTightTop : mobileDefaultTop;
+    } else {
+      stepElement.style.top = '0px';
+    }
+  } else {
+    // Future steps - positioned normally below
+    stepElement.style.transform = "translateY(0px)";
+    stepElement.style.zIndex = `${10 + index}`;
+    stepElement.style.position = 'relative';
+    stepElement.style.top = 'auto';
+  }
+});
           ticking = false;
         });
         ticking = true;
