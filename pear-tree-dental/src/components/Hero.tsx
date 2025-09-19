@@ -40,7 +40,7 @@ const Hero = () => {
 
       {/* MOBILE-ONLY slice (NO priority) */}
 <div
-  className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none h-[66vh]
+  className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none h-[75vh]
              w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px] -bottom-[30px] -right-[30px] -translate-y-[30px]"
   aria-hidden
   style={{
@@ -53,9 +53,9 @@ const Hero = () => {
       src="/images/heroes/hero-home-new-family.webp"
       alt=""
       fill
-      quality={85}
+      quality={75}
       sizes="100vw"
-      className="object-cover opacity-50 object-[12%_center]"
+      className="object-cover opacity-40 object-[12%_center]"
     />
   </div>
 </div>
