@@ -25,6 +25,7 @@ const Hero = () => {
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20">
       {/* BACKGROUND: practice image under nav, with contrast overlay */}
+{/* BACKGROUND: push that darned image out like a baby! */}
       <div className="absolute top-0 left-0 right-0 h-[90%] -z-10">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
