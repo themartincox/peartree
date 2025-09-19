@@ -2,41 +2,56 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import LocationDetection from "@/components/LocationDetection";
-import SmartNav from "@/components/SmartNav";              // ✅ using SmartNav
+import SmartNav from "@/components/SmartNav";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
-import TrackingProvider from "@/components/cohort/TrackingProvider";
+// import TrackingProvider from "@/components/cohort/TrackingProvider";
+const TrackingProvider = dynamic(() => import("@/components/cohort/TrackingProvider"), {
+  ssr: false,
+  // While it loads, just render children; most providers render context only
+  loading: () => <></>,
+});
 
-/* ... your metadata block stays the same ... */
+// Lazy-load Location detection after interaction
+const LocationDetection = dynamic(() => import("@/components/LocationDetection"), {
+  ssr: false,
+});
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-cormorant",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-montserrat",
+});
+
+export const metadata: Metadata = {
+  /* … your existing metadata exactly as before … */
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        {/* Preload critical images for LCP optimization */}
-        <link
-          rel="preload"
-          as="image"
-          href="/_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1920&q=85"
-          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=640&q=85 640w, /_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1080&q=85 1080w, /_next/image?url=%2Fimages%2Fheroes%2Fpear-tree-home-hero-full.webp&w=1920&q=85 1920w"
-          imagesizes="100vw"
-        />
-        <link rel="preload" as="image" href="/images/dental-practice-hero-burton-joyce.webp" />
-        <link rel="preload" as="image" href="/images/general-dental-checkup.webp" />
-        <link rel="preload" as="image" href="/images/cosmetic-dentistry-services.webp" />
-
+        {/* ❌ Removed global image preloads to help LCP
+            - Let the actual <Image priority fetchPriority="high" /> drive critical fetches */}
         <link rel="canonical" href="https://peartree.dental" />
-        {/* ... rest of your <head> unchanged ... */}
+
+        {/* Favicons, meta, schemas, manifest */}
         <LocalBusinessSchema includeDentistSpecific />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
         <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
@@ -60,16 +75,19 @@ export default function RootLayout({
           </a>
 
           <ServiceWorkerRegistration />
-          <SmartNav /> {/* ✅ swapped in */}
+          <SmartNav />
 
           <main id="main-content" className="min-h-screen" role="main">
             <PageTransition>{children}</PageTransition>
           </main>
+
           <Footer />
+
+          {/* ✅ After main, lazy-loaded */}
           <LocationDetection />
         </TrackingProvider>
 
-        {/* Simple Analytics - deferred */}
+        {/* Analytics after interactive */}
         <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />
       </body>
     </html>
