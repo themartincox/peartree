@@ -131,18 +131,10 @@ export default function GeneralDentistryPage() {
               <div className="relative mt-8 lg:mt-0 lg:hidden">
                 <Card className="overflow-hidden shadow-2xl">
                   <div className="aspect-[4/3] relative">
-                    <video
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      poster="/images/heroes/pear-tree-general-dentistry-hero.webp"
-                    >
+                    
                       <source
-                        src="/videos/pear-tree-dental-general-dentistry-hero.mp4"
-                        type="video/mp4"
+                        src="/images/heroes/pear-tree-dental-general-dentistry.webp'"
+                        type="image/webp"
                       />
                       {/* Fallback for browsers that don't support video */}
                       <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
@@ -219,18 +211,10 @@ export default function GeneralDentistryPage() {
             <div className="relative mt-8 lg:mt-0 order-2 lg:order-2 hidden lg:block">
               <Card className="overflow-hidden shadow-2xl">
                 <div className="aspect-[4/3] relative">
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster="/images/heroes/pear-tree-general-dentistry-hero.webp"
-                  >
+                  
                     <source
-                      src="/videos/pear-tree-dental-general-dentistry-hero.mp4"
-                      type="video/mp4"
+                      src="/images/heroes/pear-tree-dental-general-dentistry.webp"
+                      type="image/webp"
                     />
                     {/* Fallback for browsers that don't support video */}
                     <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
