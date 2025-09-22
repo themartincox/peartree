@@ -104,7 +104,7 @@ const Hero = () => {
   Modern dental care from Nottingham's top rated clinic.
 </p>
 
-          <div className="flex flex-col space-y-4 w-full max-w-md">
+          <div className="flex flex-col space-y-4 w-full max-w-md mt-[60px]">
             <Button
               asChild
               size="lg"
@@ -146,7 +146,7 @@ const Hero = () => {
 
             <p className="text-xl text-white leading-relaxed max-w-lg">
               Modern dental care serving Nottingham and surrounding areas. Skip
-              the NHS waiting lists with our Nottingham membership plans from just £10.95/month.
+              the NHS waiting lists with our membership plans from just £10.95/month.
             </p>
 
             <div className="flex flex-col space-y-4 max-w-md">
