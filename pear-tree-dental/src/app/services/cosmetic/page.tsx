@@ -448,9 +448,9 @@ export default function CosmeticDentistryPage() {
           <div className="max-w-7xl mx-auto">
             <BeforeAfterSliderPair
               primarySlider={{
-                beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.webp",
-                afterImage: "/images/before-after/whitening-composite-edge-bonding-after.webp",
-                beforeAlt: "Patient's teeth before whitening and composite edge bonding showing discoloration and uneven edges",
+                beforeImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp",
+                afterImage: "/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp",
+                beforeAlt: "Patient's teeth before whitening and composite edge bonding showing discolouration and uneven edges",
                 afterAlt: "Patient's teeth after professional whitening and composite edge bonding with bright, even, natural appearance",
                 title: "Whitening & Composite Edge Bonding",
                 description: "Professional teeth whitening combined with precision composite edge bonding to create a bright, uniform smile with perfect tooth proportions",
