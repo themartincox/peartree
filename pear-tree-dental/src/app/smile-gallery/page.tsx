@@ -70,8 +70,133 @@ interface GalleryItem {
   afterDescription: string;
 }
 
-// NOTE: galleryItems is currently unused in this file. Keeping it here in case you wire it later.
-const galleryItems: GalleryItem[] = [ /* ... your items unchanged ... */ ];
+const galleryItems: GalleryItem[] = [ {
+    id: "1",
+    title: "Complete Smile Makeover with Veneers",
+    treatment: ["Porcelain Veneers", "Teeth Whitening"],
+    category: "Smile Makeover",
+    beforeImage: "/images/gallery/smile-makeover-before-1.webp",
+    afterImage: "/images/gallery/smile-makeover-after-1.webp",
+    description: "Dramatic transformation using porcelain veneers to create a perfectly aligned, bright smile",
+    duration: "3 months",
+    featured: true,
+    patientAge: "32",
+    concern: "Crooked, discolored teeth affecting confidence",
+    result: "Perfect alignment and natural white color",
+    beforeDescription: "Heavily stained and misaligned front teeth",
+    afterDescription: "Beautiful, natural-looking porcelain veneers"
+  },
+  {
+    id: "2",
+    title: "Professional Teeth Whitening Results",
+    treatment: ["Professional Whitening"],
+    category: "Whitening",
+    beforeImage: "/images/gallery/whitening-before-1.webp",
+    afterImage: "/images/gallery/whitening-after-1.webp",
+    description: "6 shades whiter in just one session with our professional whitening treatment",
+    duration: "1 session",
+    patientAge: "28",
+    concern: "Years of coffee and wine staining",
+    result: "Dramatically whiter, brighter smile",
+    beforeDescription: "Heavily stained teeth from lifestyle habits",
+    afterDescription: "Bright, natural-looking white teeth"
+  },
+  {
+    id: "3",
+    title: "Single Tooth Implant Restoration",
+    treatment: ["Dental Implant", "Crown"],
+    category: "Implants",
+    beforeImage: "/images/gallery/implant-before-1.webp",
+    afterImage: "/images/gallery/implant-after-1.webp",
+    description: "Seamless replacement of a missing front tooth with a dental implant and crown",
+    duration: "4 months",
+    featured: true,
+    patientAge: "45",
+    concern: "Missing front tooth affecting speech and confidence",
+    result: "Natural-looking tooth that functions perfectly",
+    beforeDescription: "Gap from missing central incisor",
+    afterDescription: "Perfectly matched implant crown"
+  },
+  {
+    id: "4",
+    title: "Invisalign Smile Correction",
+    treatment: ["Invisalign"],
+    category: "Orthodontics",
+    beforeImage: "/images/gallery/invisalign-before-1.webp",
+    afterImage: "/images/gallery/invisalign-after-1.webp",
+    description: "Straightened crowded teeth using clear Invisalign aligners",
+    duration: "14 months",
+    patientAge: "24",
+    concern: "Crowded and crooked front teeth",
+    result: "Perfectly aligned teeth without braces",
+    beforeDescription: "Severely crowded lower front teeth",
+    afterDescription: "Beautifully aligned smile"
+  },
+  {
+    id: "5",
+    title: "Composite Bonding Transformation",
+    treatment: ["Composite Bonding"],
+    category: "Bonding",
+    beforeImage: "/images/gallery/bonding-before-1.webp",
+    afterImage: "/images/gallery/bonding-after-1.webp",
+    description: "Closed gaps and reshaped teeth using composite bonding in a single visit",
+    duration: "1 session",
+    featured: true,
+    patientAge: "26",
+    concern: "Gaps between front teeth and uneven shape",
+    result: "Even, gap-free smile achieved same day",
+    beforeDescription: "Multiple gaps and uneven tooth shapes",
+    afterDescription: "Uniform, gap-free front teeth"
+  },
+  {
+    id: "6",
+    title: "Wedding Day Smile Enhancement",
+    treatment: ["Teeth Whitening", "Composite Bonding"],
+    category: "Wedding Smile",
+    beforeImage: "/images/gallery/wedding-before-1.webp",
+    afterImage: "/images/gallery/wedding-after-1.webp",
+    description: "Perfect bridal smile achieved in time for the big day",
+    duration: "3 weeks",
+    patientAge: "29",
+    concern: "Wanted perfect smile for wedding photos",
+    result: "Picture-perfect bridal smile",
+    beforeDescription: "Slightly stained teeth with minor imperfections",
+    afterDescription: "Bright, flawless wedding day smile"
+  },
+  {
+    id: "7",
+    title: "Full Mouth Dental Implants",
+    treatment: ["Multiple Implants", "Implant Bridge"],
+    category: "Implants",
+    beforeImage: "/images/gallery/full-mouth-before-1.webp",
+    afterImage: "/images/gallery/full-mouth-after-1.webp",
+    description: "Complete smile restoration using multiple dental implants",
+    duration: "8 months",
+    featured: true,
+    patientAge: "58",
+    concern: "Multiple missing teeth affecting eating and speech",
+    result: "Full function restored with natural-looking teeth",
+    beforeDescription: "Multiple missing teeth throughout the mouth",
+    afterDescription: "Complete smile restored with implant-supported teeth"
+  },
+  {
+    id: "8",
+    title: "Gum Disease Treatment Results",
+    treatment: ["Periodontal Treatment", "Crown Lengthening"],
+    category: "Restorative",
+    beforeImage: "/images/gallery/gum-before-1.webp",
+    afterImage: "/images/gallery/gum-after-1.webp",
+    description: "Healthy gums and improved smile after comprehensive periodontal treatment",
+    duration: "6 months",
+    patientAge: "42",
+    concern: "Red, swollen gums and 'gummy' smile",
+    result: "Healthy pink gums with perfect tooth-to-gum ratio",
+    beforeDescription: "Inflamed gums with excessive gum tissue",
+    afterDescription: "Healthy gums with ideal proportions"
+  }
+];
+
+
 
 const categories = [
   "All Results",
@@ -91,7 +216,67 @@ const stats = [
   { icon: Clock, value: "25+", label: "Years Experience" },
 ];
 
-const featuredTransformations = [ /* ... your featured items unchanged ... */ ];
+const featuredTransformations = [   {
+    id: "featured-1",
+    title: "Complete Smile Makeover with Orthodontics",
+    treatment: ["Invisalign", "Teeth Whitening", "Composite Bonding"],
+    category: "Smile Makeover",
+    beforeImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp",
+    afterImage: "/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp",
+    description: "Comprehensive smile transformation combining orthodontics, professional whitening, and precision composite bonding for a perfectly aligned and radiant smile",
+    duration: "18 months",
+    patientAge: "28",
+    concern: "Crooked teeth with gaps and discoloration affecting confidence",
+    result: "Perfectly aligned, bright white smile with natural proportions",
+    beforeDescription: "Crowded, misaligned teeth with visible staining",
+    afterDescription: "Beautifully aligned, bright white smile"
+  },
+  {
+    id: "featured-2",
+    title: "Dental Implant Restoration",
+    treatment: ["Dental Implants", "Crown Restoration"],
+    category: "Implants",
+    beforeImage: "/images/before-after/implants-before.webp",
+    afterImage: "/images/before-after/implants-after.webp",
+    description: "Life-changing implant restoration replacing missing teeth with natural-looking, permanently fixed solutions",
+    duration: "6 months",
+    patientAge: "52",
+    concern: "Missing teeth affecting eating, speech and confidence",
+    result: "Full function restored with natural-looking permanent teeth",
+    beforeDescription: "Multiple missing teeth with gaps",
+    afterDescription: "Complete restoration with implant-supported teeth"
+  },
+  {
+    id: "featured-3",
+    title: "Buccal Corridor Correction",
+    treatment: ["Smile Design", "Restorative Work"],
+    category: "Cosmetic Enhancement",
+    beforeImage: "/images/before-after/BCC-before.webp",
+    afterImage: "/images/before-after/BCC-after.webp",
+    description: "Advanced smile design to eliminate dark spaces and create a fuller, more youthful smile appearance",
+    duration: "15 months",
+    patientAge: "25",
+    concern: "Narrow smile with dark corridors making smile appear aged",
+    result: "Fuller, wider smile with enhanced youthful appearance",
+    beforeDescription: "Narrow smile showing buccal corridors",
+    afterDescription: "Fuller smile with improved proportions"
+  },
+  {
+    id: "featured-4",
+    title: "Professional Teeth Whitening & Bonding",
+    treatment: ["Professional Whitening", "Composite Bonding"],
+    category: "Cosmetic Dentistry",
+    beforeImage: "/images/before-after/whitening-composite-edge-bonding-before.webp",
+    afterImage: "/images/before-after/whitening-composite-edge-bonding-after.webp",
+    description: "Professional whitening combined with precision edge bonding to create uniform, brilliant white teeth",
+    duration: "2 sessions",
+    patientAge: "24",
+    concern: "Stained teeth with uneven edges and minor gaps",
+    result: "Brilliant white smile with perfect tooth uniformity",
+    beforeDescription: "Discolored teeth with irregular edges",
+    afterDescription: "Bright, uniform smile with perfect proportions"
+  }
+];
 
 export default function SmileGalleryPage() {
   return (
