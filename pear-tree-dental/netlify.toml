@@ -69,6 +69,7 @@
   path = "/"
   function = "ab-testing"
 
+# 1. Security headers (keep yours)
 [[headers]]
   for = "/*"
   [headers.values]
@@ -76,12 +77,25 @@
   Cross-Origin-Opener-Policy = "same-origin"
   Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' https://scripts.simpleanalyticscdn.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://queue.simpleanalyticscdn.com; media-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; require-trusted-types-for 'script';"
 
+# 2. Ensure compression negotiation works (replace the bad Content-Encoding block with this)
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Vary = "Accept-Encoding"
+  Cache-Control = "public, max-age=0, must-revalidate"
+
+# 3. Static assets: cache forever
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
 [[headers]]
   for = "/auto-events.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+  Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/proxy.js"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+  Cache-Control = "public, max-age=31536000, immutable"
