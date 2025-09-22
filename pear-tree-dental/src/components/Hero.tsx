@@ -57,6 +57,8 @@ const Hero = () => {
       src="/images/heroes/hero-home-new-family.webp"
       alt=""
       fill
+priority
+          fetchPriority="high"
       quality={85}
       sizes="100vw"
       className="object-cover opacity-60 object-[12%_center]"
@@ -69,6 +71,8 @@ const Hero = () => {
         <Image
           src="/images/heroes/hero-home-new-family.webp"
           alt="Smiling family at Pear Tree Dental"
+priority
+          fetchPriority="high"
           width={1200}
           height={900}
           quality={85}
