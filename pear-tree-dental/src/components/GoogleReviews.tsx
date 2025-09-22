@@ -10,45 +10,40 @@ export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
   // Get stats with fallbacks
   const stats = {
     averageRating: googleReviewsStats?.averageRating || 4.9,
-    totalReviews: googleReviewsStats?.totalReviews || 550,
-    fiveStarCount: googleReviewsStats?.fiveStarCount || 525,
+    totalReviews: googleReviewsStats?.totalReviews || 510,
   };
 
-  // Render the stars
-  const renderStars = () => {
-    return Array(5)
+  // Render stars
+  const renderStars = () =>
+    Array(5)
       .fill(0)
       .map((_, i) => (
         <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
       ));
-  };
 
   return (
-    <div className={`p-3 ${className}`} data-testid="googlereviews-widget">
-      <div className="flex items-center justify-center mb-1">
+    <div
+      className={`p-2 flex flex-col items-center text-center ${className}`}
+      data-testid="googlereviews-widget"
+    >
+      {/* Line 1 */}
+      <div className="flex items-center space-x-1">
+        <span className="text-lg font-bold text-pear-primary">
+          {stats.averageRating}/5
+        </span>
+        <div className="flex space-x-0.5">{renderStars()}</div>
+      </div>
+
+      {/* Line 2 */}
+      <div className="flex items-center space-x-1 text-xs text-gray-600">
+        <span>From {stats.totalReviews}+ reviews</span>
         <Image
           src="/images/google-logo-mini.webp"
           alt="Google"
-          width={16}
-          height={16}
-          className="mr-1"
+          width={14}
+          height={14}
+          className="inline-block"
         />
-        <span className="text-xs font-medium text-gray-700">Google Reviews</span>
-      </div>
-
-      <div className="flex flex-col items-center">
-        <div className="text-2xl font-bold text-pear-primary">
-          {stats.averageRating}
-          <span className="text-sm text-gray-500">/5</span>
-        </div>
-
-        <div className="flex items-center space-x-1 my-1">
-          {renderStars()}
-        </div>
-
-        <div className="text-xs text-gray-600">
-          Based on {stats.totalReviews}+ reviews
-        </div>
       </div>
     </div>
   );
