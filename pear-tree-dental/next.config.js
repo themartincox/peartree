@@ -2,8 +2,7 @@
 const baseConfig = {
   // Essential image configuration for Netlify
   images: {
-    formats: ['image/avif', 'image/webp'],
-    remotePatterns: [
+formats: ["image/avif", "image/webp"], // allow AVIF where supported    remotePatterns: [
       {
         protocol: 'https',
         hostname: 'source.unsplash.com',

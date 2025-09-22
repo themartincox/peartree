@@ -60,8 +60,8 @@ const Hero = () => {
             fill
             priority
             fetchPriority="high"
-            quality={85}
-            sizes="100vw"
+            quality={70}
+            sizes="(max-width: 480px) 92vw, (max-width: 768px) 92vw, 50vw"
             className="object-cover object-[12%_center] opacity-60"
           />
         </div>
