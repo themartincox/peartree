@@ -46,7 +46,7 @@ const nextConfig = {
 
   experimental: {
     // Remove deprecated flags; keep the useful ones
-    optimizeCss: true,
+    // optimizeCss: true,
     optimizePackageImports: ["lucide-react"],
     serverActions: { bodySizeLimit: "5mb" },
   },
