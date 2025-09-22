@@ -109,67 +109,66 @@ export default function GeneralDentistryPage() {
         faqs={generalDentistryFAQs}
         pageUrl="/services/general"
       />
+
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-primary/10 via-white to-soft-blue/10 lg:-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-primary/10 via-white to-soft-blue/10">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
         </div>
 
-
-
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Mobile-first content order: Title → Image → Badge → Text → Benefits → CTAs */}
             <div className="space-y-8 order-1 lg:order-1">
-              {/* H1 Title - First on mobile for immediate page identification */}
+              {/* H1 Title */}
               <h1 className="heading-serif text-[40px] sm:text-5xl lg:text-6xl font-bold text-pear-primary leading-tight mb-4 sm:mb-6">
                 Complete
                 <span className="block text-pear-primary">General Dentistry</span>
               </h1>
 
-              
+              {/* Mobile image */}
               <div className="relative mt-8 lg:mt-0 lg:hidden">
-  <Card className="overflow-hidden shadow-2xl">
-    <div className="relative aspect-[4/3]">
-      <Image
-        src="/images/heroes/pear-tree-dental-general-dentistry.webp"
-        alt="General dentistry at Pear Tree Dental"
-        fill
-        priority                // LCP hint on mobile
-        fetchPriority="high"
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover"
-      />
-    </div>
-  </Card>
-  {/* Floating Elements */}
-  <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
-    <div className="flex items-center space-x-2 sm:space-x-3">
-      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
-        <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-      </div>
-      <div>
-        <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
-        <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
-      </div>
-    </div>
-  </div>
-</div>
+                <Card className="overflow-hidden shadow-2xl">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src="/images/heroes/pear-tree-dental-general-dentistry.webp"
+                      alt="General dentistry at Pear Tree Dental"
+                      fill
+                      priority                // LCP hint on mobile
+                      fetchPriority="high"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </Card>
+                {/* Floating Elements */}
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
+                  <div className="flex items-center space-x-2 sm:space-x-3">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
+                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+                      <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              {/* Badge - Third on mobile, provides context */}
+              {/* Badge */}
               <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
                 <Heart className="w-4 h-4 mr-2" />
                 Comprehensive Dental Care
               </Badge>
 
-              {/* Description - Fourth on mobile */}
+              {/* Description */}
               <p className="text-base sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
                 Comprehensive dental care for all ages. From routine check-ups to preventive treatments,
                 we provide the foundation for lifelong oral health in a comfortable, caring environment.
               </p>
 
-              {/* CTAs - Fifth on mobile */}
+              {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/book">
                   <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white font-semibold group w-full sm:w-auto">
@@ -186,7 +185,7 @@ export default function GeneralDentistryPage() {
                 </a>
               </div>
 
-              {/* Quick Stats - Last on mobile */}
+              {/* Quick Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t border-gray-200">
                 <div className="text-center">
                   <div className="text-lg sm:text-2xl font-bold text-pear-primary">NHS</div>
@@ -203,31 +202,34 @@ export default function GeneralDentistryPage() {
               </div>
             </div>
 
+            {/* Desktop image */}
             <div className="relative mt-8 lg:mt-0 order-2 lg:order-2 hidden lg:block">
-  <Card className="overflow-hidden shadow-2xl">
-    <div className="relative aspect-[4/3]">
-      <Image
-        src="/images/heroes/pear-tree-dental-general-dentistry.webp"
-        alt="General dentistry at Pear Tree Dental"
-        fill
-        sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover"
-      />
-    </div>
-  </Card>
-  {/* Floating Elements */}
-  <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
-    <div className="flex items-center space-x-2 sm:space-x-3">
-      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
-        <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-      </div>
-      <div>
-        <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
-        <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
-      </div>
-    </div>
-  </div>
-</div>
+              <Card className="overflow-hidden shadow-2xl">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src="/images/heroes/pear-tree-dental-general-dentistry.webp"
+                    alt="General dentistry at Pear Tree Dental"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+              </Card>
+              {/* Floating Elements */}
+              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
+                <div className="flex items-center space-x-2 sm:space-x-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
+                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+                    <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> {/* close grid */}
+        </div>   {/* close container */}
       </section>
 
       {/* Core Services */}
