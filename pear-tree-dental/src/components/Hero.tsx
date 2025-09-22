@@ -92,16 +92,16 @@ const Hero = () => {
 
 {/* MOBILE ONLY bounded text container */}
 <div className="block lg:hidden w-1/2 mx-0">
-  <p className="text-lg sm:text-xl text-pear-primary font-semibold leading-relaxed 
+  <p className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed 
                  drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
-    Modern dental care serving Nottingham and surrounding areas.
+    Modern dental care from Nottingham's top rated clinic.
   </p>
 </div>
 
 {/* DESKTOP text (unchanged) */}
 <p className="hidden lg:block text-xl text-white font-normal leading-relaxed max-w-2xl 
               mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
-  Modern dental care serving Nottingham and surrounding areas.
+  Modern dental care from Nottingham's top rated clinic.
 </p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md">
