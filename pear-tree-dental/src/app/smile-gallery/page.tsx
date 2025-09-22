@@ -27,8 +27,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Smile Gallery - Before & After Results | Pear Tree Dental Burton Joyce",
-  description: "View our stunning before and after smile transformations. Real patient results from cosmetic dentistry, teeth whitening, veneers, dental implants and smile makeovers in Burton Joyce.",
+  title: "Smile Gallery - Before & After Results | Top Rated Nottingham Cosmetic Dentist | Pear Tree Dental",
+  description: "View our stunning before and after smile transformations. Real Nottingham patient results from cosmetic dentistry, teeth whitening, veneers, dental implants and smile makeovers in Burton Joyce.",
   keywords: [
     "smile gallery Burton Joyce",
     "before after dental photos",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Smile Gallery - Amazing Before & After Results | Pear Tree Dental",
-    description: "See incredible smile transformations from our Burton Joyce dental practice",
+    description: "See incredible smile transformations from our Nottingham dental practice",
     type: "website",
     url: "https://peartree.dental/smile-gallery"
   },
@@ -382,17 +382,7 @@ export default function SmileGalleryPage() {
               </Button>
             </div>
 
-            {/* Privacy Notice */}
-            <div className="mt-8 bg-gray-50 rounded-lg p-4 text-sm text-gray-600">
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <Shield className="w-4 h-4 text-dental-green" />
-                <span className="font-medium">Patient Privacy Protected</span>
-              </div>
-              <p>All photos shared with written patient consent. Individual results may vary.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+            
 
       {/* Filter Section - Commented out for later use when more content is added */}
       {/*
@@ -569,39 +559,7 @@ export default function SmileGalleryPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white overflow-hidden">
-            <CardContent className="p-12 text-center relative">
-              <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
-                Ready for Your Own Transformation?
-              </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                These incredible results could be yours too. Book a free consultation to discuss
-                your smile goals and discover what's possible for your unique situation.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Link href="/book">
-                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Book Free Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-                <Link href="/testimonials">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-white text-soft-pink hover:bg-white hover:text-soft-pink"
-                  >
-                    <Star className="w-5 h-5 mr-2" />
-                    Read Patient Stories
-                  </Button>
-                </Link>
-              </div>
-
+      
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
                 <div className="flex items-center justify-center space-x-2">
                   <CheckCircle className="w-4 h-4" />
@@ -738,6 +696,50 @@ export default function SmileGalleryPage() {
               />
             </div>
           </div>
+{/* CTA Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <Card className="bg-gradient-to-r from-soft-pink to-soft-lavender text-white overflow-hidden">
+            <CardContent className="p-12 text-center relative">
+              <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
+                Ready for Your Own Transformation?
+              </h2>
+              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+                These incredible results could be yours too. Book a free consultation to discuss
+                your smile goals and discover what's possible for your unique situation.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-soft-pink hover:bg-white/90 font-semibold">
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Free Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/testimonials">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white text-soft-pink hover:bg-white hover:text-soft-pink"
+                  >
+                    <Star className="w-5 h-5 mr-2" />
+                    Read Patient Stories
+                  </Button>
+                </Link>
+              </div>
+{/* Privacy Notice */}
+            <div className="mt-8 bg-gray-50 rounded-lg p-4 text-sm text-gray-600">
+              <div className="flex items-center justify-center space-x-2 mb-2">
+                <Shield className="w-4 h-4 text-dental-green" />
+                <span className="font-medium">Patient Privacy Protected</span>
+              </div>
+              <p>All photos shared with written patient consent. Individual results may vary.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
           {/* Gallery Navigation */}
           <div className="text-center mt-12">
