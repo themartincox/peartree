@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Restorative Dentistry - Repair & Restore Teeth in Burton Joyce",
+  title: "Restorative Dentistry - Repair & Restore Teeth in Nottingham",
   description: "Expert restorative dentistry in Burton Joyce. Crowns, bridges, dentures, and tooth restoration. High-quality materials and modern techniques for lasting results.",
   keywords: [
     "restorative dentistry Burton Joyce",
@@ -252,11 +252,11 @@ export default function RestorativeDentistryPage() {
             <div className="relative group">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <picture>
-                  <source media="(min-width: 768px)" srcSet="/images/heroes/restorative/restorative-hero-large.webp" type="image/webp" />
-                  <source media="(min-width: 480px)" srcSet="/images/heroes/restorative/restorative-hero-medium.webp" type="image/webp" />
-                  <source srcSet="/images/heroes/restorative/restorative-hero-small.webp" type="image/webp" />
+                  <source media="(min-width: 768px)" srcSet="/images/heroes/demo-veneers.png" type="image/png" />
+                  <source media="(min-width: 480px)" srcSet="/images/heroes/restorative/demo-veneers.png" type="image/png" />
+                  <source srcSet="/images/heroes/restorative/demo-veneers.png" type="image/png" />
                   <img
-                    src="/images/heroes/restorative/restorative-hero.JPG"
+                    src="/images/heroes/restorative/demo-veneers.png"
                     alt="Advanced restorative dentistry at Pear Tree Dental"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"

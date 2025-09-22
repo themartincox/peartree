@@ -254,9 +254,13 @@ data-role="reviews-widget"
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center flex-wrap gap-x-2">
-                  <h5 className={`font-medium transition-all duration-500 ${isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'}`}>
-                    {reviews[currentReview].author}
-                  </h5>
+                  <p
+  className={`font-medium transition-all duration-500 ${
+    isSticky ? 'text-gray-800 text-sm' : isHomepage ? 'text-white' : 'text-gray-800'
+  }`}
+>
+  {reviews[currentReview].author}
+</p>
                   <div className="flex items-center space-x-1">
                     <div className="flex">
                       {[...Array(reviews[currentReview].rating)].map((_, i) => (
