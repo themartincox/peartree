@@ -81,8 +81,8 @@ const galleryItems: GalleryItem[] = [ {
     duration: "3 months",
     featured: true,
     patientAge: "32",
-    concern: "Crooked, discolored teeth affecting confidence",
-    result: "Perfect alignment and natural white color",
+    concern: "Crooked, discoloured teeth affecting confidence",
+    result: "Perfect alignment and natural white colour",
     beforeDescription: "Heavily stained and misaligned front teeth",
     afterDescription: "Beautiful, natural-looking porcelain veneers"
   },
@@ -226,7 +226,7 @@ const featuredTransformations = [   {
     description: "Comprehensive smile transformation combining orthodontics, professional whitening, and precision composite bonding for a perfectly aligned and radiant smile",
     duration: "18 months",
     patientAge: "28",
-    concern: "Crooked teeth with gaps and discoloration affecting confidence",
+    concern: "Crooked teeth with gaps and discolouration affecting confidence",
     result: "Perfectly aligned, bright white smile with natural proportions",
     beforeDescription: "Crowded, misaligned teeth with visible staining",
     afterDescription: "Beautifully aligned, bright white smile"
@@ -273,7 +273,7 @@ const featuredTransformations = [   {
     patientAge: "24",
     concern: "Stained teeth with uneven edges and minor gaps",
     result: "Brilliant white smile with perfect tooth uniformity",
-    beforeDescription: "Discolored teeth with irregular edges",
+    beforeDescription: "Discoloured teeth with irregular edges",
     afterDescription: "Bright, uniform smile with perfect proportions"
   }
 ];
