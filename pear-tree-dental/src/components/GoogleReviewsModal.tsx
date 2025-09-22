@@ -161,7 +161,7 @@ const GoogleReviewsModal = ({ isOpen, onClose }: GoogleReviewsModalProps) => {
         <div className="p-6 border-t border-gray-200 bg-gray-50">
           <div className="text-center">
             <p className="text-sm text-gray-600 mb-3">
-              Click below to see over 400 5 ⭐ reviews on Google
+              Click below to see over 500 5 ⭐ reviews on Google
             </p>
             <a
               href="https://www.google.com/search?q=Pear+Tree+Dental+Burton+Joyce+reviews"
