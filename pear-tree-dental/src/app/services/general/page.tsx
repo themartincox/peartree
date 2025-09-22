@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -25,8 +26,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "General Dentistry Burton Joyce | NHS & Private Care | Pear Tree Dental",
-  description: "Comprehensive general dentistry in Burton Joyce. Check-ups, cleanings, fillings, extractions. NHS and private options. Book your dental appointment today.",
+  title: "General Dentistry Nottingham | NHS & Private Care | Pear Tree Dental",
+  description: "Comprehensive general dentistry in Nottingham and surrounding areas. Check-ups, cleanings, fillings, extractions. NHS and private options. Book your dental appointment today.",
   keywords: [
     "general dentistry Burton Joyce",
     "dental check-up Nottinghamshire",
@@ -109,7 +110,7 @@ export default function GeneralDentistryPage() {
         pageUrl="/services/general"
       />
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-primary/10 via-white to-soft-blue/10 overflow-hidden">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-pear-primary/10 via-white to-soft-blue/10 lg:-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 w-32 h-32 bg-pear-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-soft-blue rounded-full blur-3xl" />
@@ -127,39 +128,34 @@ export default function GeneralDentistryPage() {
                 <span className="block text-pear-primary">General Dentistry</span>
               </h1>
 
-              {/* Hero Video - Second on mobile, appears above other content */}
+              
               <div className="relative mt-8 lg:mt-0 lg:hidden">
-                <Card className="overflow-hidden shadow-2xl">
-                  <div className="aspect-[4/3] relative">
-                    
-                      <source
-                        src="/images/heroes/pear-tree-dental-general-dentistry.webp'"
-                        type="image/webp"
-                      />
-                      {/* Fallback for browsers that don't support video */}
-                      <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
-                        <div className="text-center">
-                          <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
-                          <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
-                        </div>
-                      </div>
-                    </video>
-                  </div>
-                </Card>
-
-                {/* Floating Elements */}
-                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
-                  <div className="flex items-center space-x-2 sm:space-x-3">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
-                      <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
-                      <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+  <Card className="overflow-hidden shadow-2xl">
+    <div className="relative aspect-[4/3]">
+      <Image
+        src="/images/heroes/pear-tree-dental-general-dentistry.webp"
+        alt="General dentistry at Pear Tree Dental"
+        fill
+        priority                // LCP hint on mobile
+        fetchPriority="high"
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover"
+      />
+    </div>
+  </Card>
+  {/* Floating Elements */}
+  <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
+    <div className="flex items-center space-x-2 sm:space-x-3">
+      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
+        <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      </div>
+      <div>
+        <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+        <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
+      </div>
+    </div>
+  </div>
+</div>
 
               {/* Badge - Third on mobile, provides context */}
               <Badge variant="secondary" className="mb-4 bg-pear-primary text-white">
@@ -207,41 +203,31 @@ export default function GeneralDentistryPage() {
               </div>
             </div>
 
-            {/* Hero Video - Desktop only (hidden on mobile since it appears inline above) */}
             <div className="relative mt-8 lg:mt-0 order-2 lg:order-2 hidden lg:block">
-              <Card className="overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] relative">
-                  
-                    <source
-                      src="/images/heroes/pear-tree-dental-general-dentistry.webp"
-                      type="image/webp"
-                    />
-                    {/* Fallback for browsers that don't support video */}
-                    <div className="w-full h-full bg-gradient-to-br from-pear-primary/20 to-soft-blue/20 flex items-center justify-center">
-                      <div className="text-center">
-                        <h3 className="text-base sm:text-xl font-bold text-pear-primary mb-2">General Dentistry Care</h3>
-                        <p className="text-gray-600 text-xs sm:text-base">Comprehensive dental services for all ages</p>
-                      </div>
-                    </div>
-                  </video>
-                </div>
-              </Card>
-
-              {/* Floating Elements */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
-                <div className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
-                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
-                    <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <Card className="overflow-hidden shadow-2xl">
+    <div className="relative aspect-[4/3]">
+      <Image
+        src="/images/heroes/pear-tree-dental-general-dentistry.webp"
+        alt="General dentistry at Pear Tree Dental"
+        fill
+        sizes="(max-width: 1024px) 100vw, 50vw"
+        className="object-cover"
+      />
+    </div>
+  </Card>
+  {/* Floating Elements */}
+  <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-3 sm:p-4 shadow-lg border border-pear-primary/20 opacity-75">
+    <div className="flex items-center space-x-2 sm:space-x-3">
+      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-pear-primary rounded-xl flex items-center justify-center">
+        <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+      </div>
+      <div>
+        <p className="font-semibold text-pear-primary text-sm sm:text-base">Family Care</p>
+        <p className="text-xs sm:text-sm text-gray-600">All Ages Welcome</p>
+      </div>
+    </div>
+  </div>
+</div>
       </section>
 
       {/* Core Services */}
