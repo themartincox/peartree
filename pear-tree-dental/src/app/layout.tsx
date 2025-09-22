@@ -13,7 +13,6 @@ import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
-// ✅ client wrappers (no dynamic calls here)
 import ClientProviders from "@/components/ClientProviders";
 import LazyLocationDetection from "@/components/LazyLocationDetection";
 
@@ -39,13 +38,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* No global image preloads; let <Image priority /> handle LCP */}
         <link rel="canonical" href="https://peartree.dental" />
         <LocalBusinessSchema includeDentistSpecific />
         <MedicalPracticeSchema specialty="Comprehensive Dentistry" />
         <ServiceAreaSchema primaryLocation="Nottingham" specialization="Dental Care" />
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
+
+        {/* ⭐ Preload desktop hero image ONLY on ≥1024px to help desktop LCP without double-preloading mobile */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/heroes/hero-home-new-family.webp"
+          media="(min-width: 1024px)"
+          // type="image/webp" // uncomment if correct
+          imagesrcset="/images/heroes/hero-home-new-family.webp 750w, /images/heroes/hero-home-new-family.webp 900w, /images/heroes/hero-home-new-family.webp 1050w, /images/heroes/hero-home-new-family.webp 1200w"
+          imagesizes="(min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
+        />
+        {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
+        <link rel="preconnect" href="https://images.ctfassets.net" crossOrigin="" />
+        */}
       </head>
 
       <body className={`min-h-screen bg-pear-background ${cormorantGaramond.variable} ${montserrat.variable}`}>
@@ -64,7 +76,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </a>
 
           <ServiceWorkerRegistration />
-          <SmartNav />
+
+          {/* ⭐ Ensure the target for #navigation exists */}
+          <div id="navigation">
+            <SmartNav />
+          </div>
 
           <main id="main-content" className="min-h-screen" role="main">
             <PageTransition>{children}</PageTransition>
@@ -72,7 +88,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <Footer />
 
-          {/* after main; client & lazy */}
           <LazyLocationDetection />
         </ClientProviders>
 

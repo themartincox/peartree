@@ -23,14 +23,15 @@ const Hero = () => {
 
   return (
     <section className="relative w-full overflow-hidden min-h-[100svh] -mt-16 sm:-mt-20 pt-16 sm:pt-20 bg-pear">
-      {/* BACKGROUND (LCP): practice image */}
+      {/* ------------------------ */}
+      {/* DESKTOP/TABLET BACKGROUND (DECORATIVE, NO PRIORITY) */}
+      {/* ------------------------ */}
       <div className="absolute top-0 left-0 right-0 h-[90%] -z-10 hidden sm:block">
         <Image
           src="/images/heroes/pear-tree-home-hero-full.webp"
-          alt="Pear Tree Dental modern practice background"
+          alt=""
           fill
-          priority
-          fetchPriority="high"
+          fetchPriority="low"
           quality={85}
           sizes="100vw"
           className="object-cover object-[12%_center]"
@@ -38,78 +39,92 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gray-100/40" />
       </div>
 
-      {/* MOBILE-ONLY slice (NO priority) */}
-<div
-  className="block lg:hidden absolute
-             right-[-30px] bottom-0 z-10 pointer-events-none
-             h-[66vh]
-             w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]
-             -translate-x-[30px] -translate-y-[30px]
-             origin-bottom-right scale-[1.25] lg:scale-100"
-  aria-hidden
-  style={{
-    WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-    maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-  }}
->
-  <div className="relative h-full w-full overflow-hidden">
-    <Image
-      src="/images/heroes/hero-home-new-family.webp"
-      alt=""
-      fill
-priority
-          fetchPriority="high"
-      quality={85}
-      sizes="100vw"
-      className="object-cover opacity-60 object-[12%_center]"
-    />
-  </div>
-</div>
+      {/* ------------------------ */}
+      {/* MOBILE-ONLY FOREGROUND (LCP TARGET) */}
+      {/* Exactly one priority image */}
+      {/* ------------------------ */}
+      <div
+        className="block lg:hidden absolute right-[-30px] bottom-0 z-10 pointer-events-none
+                   h-[66vh] w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]
+                   -translate-x-[30px] -translate-y-[30px] origin-bottom-right scale-[1.25]"
+        aria-hidden="true"
+        style={{
+          WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+          maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+        }}
+      >
+        <div className="relative h-full w-full overflow-hidden">
+          <Image
+            src="/images/heroes/hero-home-new-family.webp"
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            quality={85}
+            sizes="100vw"
+            className="object-cover object-[12%_center] opacity-60"
+          />
+        </div>
+      </div>
 
-      {/* DESKTOP family image (NO priority) */}
+      {/* ------------------------ */}
+      {/* DESKTOP FAMILY IMAGE (DECORATIVE, NO PRIORITY) */}
+      {/* Reserve space via width/height + sizes; avoid priority to prevent double-preload */}
+      {/* ------------------------ */}
       <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
         <Image
           src="/images/heroes/hero-home-new-family.webp"
           alt="Smiling family at Pear Tree Dental"
-priority
-          fetchPriority="high"
           width={1200}
           height={900}
           quality={85}
-          sizes="(min-width: 1536px) 1200px, (min-width: 1280px) 1050px, (min-width: 1024px) 900px, 750px"
+          fetchPriority="low"
+          sizes="(min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
           className="w-[52vw] min-w-[600px] max-w-[1200px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"
         />
       </div>
 
-      {/* MAIN CONTAINER (unchanged content) */}
+      {/* ------------------------ */}
+      {/* MAIN CONTAINER */}
+      {/* ------------------------ */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-              {/* MOBILE / TABLET LAYOUT */}
+        {/* MOBILE / TABLET */}
         <div className="lg:hidden py-8 sm:py-12 relative">
-          <h1 className="heading-serif text-[2.6rem] sm:text-6xl md:text-7xl font-bold
-               text-pear-primary drop-shadow-md leading-[1.05] mb-6">
-  Expert dental care
-  <br />
-  with a <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">personal</span>
-  <br />
-  <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
-</h1>
+          <h1
+            className="heading-serif text-[2.6rem] sm:text-6xl md:text-7xl font-bold
+                       text-pear-primary drop-shadow-md leading-[1.05] mb-6"
+          >
+            Expert dental care
+            <br />
+            with a{" "}
+            <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">
+              personal
+            </span>
+            <br />
+            <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">
+              touch
+            </span>
+          </h1>
 
-{/* MOBILE ONLY bounded text container */}
-<div className="block lg:hidden w-1/2 mx-0">
-  <p className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed 
-                 drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]">
-    Modern dental care from Nottingham's top rated clinic.
-<br /> Building brighter smiles since 1990.
-  </p>
+          {/* MOBILE-ONLY bounded text container (1/2 width, centered region) */}
+          <div className="block lg:hidden w-1/2 mx-0">
+            <p
+              className="text-lg sm:text-xl text-pear-primary font-medium leading-relaxed
+                         drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
+            >
+              Modern dental care from Nottingham&apos;s top rated clinic.
+              <br /> Building brighter smiles since 1990.
+            </p>
+          </div>
 
-</div>
-
-{/* DESKTOP text (unchanged) */}
-<p className="hidden lg:block text-xl text-white font-normal leading-relaxed max-w-2xl 
-              mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
-  Modern dental care from Nottingham's top rated clinic.
-<br /> Building brighter smiles since 1990.
-</p>
+          {/* Desktop variant hidden on mobile */}
+          <p
+            className="hidden lg:block text-xl text-white font-normal leading-relaxed max-w-2xl
+                       mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]"
+          >
+            Modern dental care from Nottingham&apos;s top rated clinic.
+            <br /> Building brighter smiles since 1990.
+          </p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md mt-[60px]">
             <Button
@@ -134,12 +149,11 @@ priority
               <Link href="/membership">View Membership Plans →</Link>
             </Button>
 
-            {/* Mobile Google reviews on mobile below the two buttons */}
             <MobileGoogleReviews />
           </div>
         </div>
 
-        {/* DESKTOP LAYOUT */}
+        {/* DESKTOP */}
         <div className="hidden lg:flex lg:items-center min-h-[100svh]">
           <div className="max-w-2xl space-y-8">
             <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight">
@@ -152,8 +166,8 @@ priority
             </h1>
 
             <p className="text-xl text-white leading-relaxed max-w-lg">
-              Modern dental care from Nottingham's top rated clinic.
-<br /> Building brighter smiles since 1990.
+              Modern dental care from Nottingham&apos;s top rated clinic.
+              <br /> Building brighter smiles since 1990.
             </p>
 
             <div className="flex flex-col space-y-4 max-w-md">
