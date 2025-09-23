@@ -80,7 +80,7 @@ const supportTeam = [
   {
     name: "Lee-Anne Smith",
     role: "Hygienist",
-    image: "https://ext.same-assets.com/523564123/3263532149.png",
+    image: "/images/team/lee-anne-smith.webp",
     description: "Lee-Anne provides professional cleaning and hygiene treatments, helping you maintain healthy gums and teeth."
   }
 ];
@@ -104,7 +104,7 @@ const nurses = [
   {
     name: "Hannah Buckley",
     role: "Apprentice Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/2850927388.jpeg"
+    image: "/images/team/hannah-buckley.webp"
   },
   {
     name: "Katy Parkes",
