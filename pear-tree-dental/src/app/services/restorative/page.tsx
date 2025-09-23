@@ -252,11 +252,11 @@ export default function RestorativeDentistryPage() {
             <div className="relative group">
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
                 <picture>
-                  <source media="(min-width: 768px)" srcSet="/images/heroes/demo-veneers.png" type="image/png" />
-                  <source media="(min-width: 480px)" srcSet="/images/heroes/restorative/demo-veneers.png" type="image/png" />
+                  <source media="(min-width: 768px)" srcSet="/images/heroes/veneers.webp" type="image/webp" />
+                  <source media="(min-width: 480px)" srcSet="/images/heroes/restorative/veneers.webp" type="image/webp" />
                   <source srcSet="/images/heroes/restorative/demo-veneers.png" type="image/png" />
                   <img
-                    src="/images/heroes/restorative/demo-veneers.png"
+                    src="/images/heroes/restorative/veneers.webp"
                     alt="Advanced restorative dentistry at Pear Tree Dental"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"

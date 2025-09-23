@@ -291,7 +291,7 @@ const TreatmentJourney: React.FC = () => {
               ref={(el) => {
                 stepRefs.current[index] = el;
               }}
-              className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
+              className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 lg:pt-12 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
               style={{ zIndex: z }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
