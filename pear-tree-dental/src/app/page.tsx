@@ -1,6 +1,8 @@
+// app/page.tsx
 import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
+import { headers } from "next/headers"; // 👈 add this
 
 // Data fetching and types
 import { fetchAllServices } from "@/lib/contentful-client";
@@ -12,9 +14,7 @@ import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
-const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), {
-  ssr: true
-});
+const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), { ssr: true });
 
 // Loaders for dynamic components
 import {
@@ -26,44 +26,31 @@ import {
 } from "@/components/WelcomingLoader";
 
 // Below-the-fold components - loaded dynamically
-const ServicesOverview = dynamicImport(
-  () => import("@/components/ServicesOverview"),
-  {
-    loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
-  },
-);
+const ServicesOverview = dynamicImport(() => import("@/components/ServicesOverview"), {
+  loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
+});
 
-const TreatmentJourney = dynamicImport(
-  () => import("@/components/TreatmentJourney"),
-  {
-    loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
-  },
-);
+const TreatmentJourney = dynamicImport(() => import("@/components/TreatmentJourney"), {
+  loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
+});
 
-const MembershipHighlight = dynamicImport(
-  () => import("@/components/MembershipHighlight"),
-  {
-    loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
-  },
-);
+const MembershipHighlight = dynamicImport(() => import("@/components/MembershipHighlight"), {
+  loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
+});
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
 });
 
-const VoiceSearchOptimization = dynamicImport(
-  () => import("@/components/VoiceSearchOptimization"),
-  {
-    loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
-  },
-);
+const VoiceSearchOptimization = dynamicImport(() => import("@/components/VoiceSearchOptimization"), {
+  loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
+});
 
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
 // --- Service Data Mapping ---
-// This object provides the decorative data that is not yet in Contentful.
 const serviceDecorations: { [key: string]: any } = {
   'general': {
     icon: "Shield",
@@ -103,40 +90,42 @@ const serviceDecorations: { [key: string]: any } = {
   },
 };
 
-// Generate metadata based on A/B test variant
+// --- A/B metadata stays, but we can also read headers in metadata if you want (see below) ---
 export async function generateMetadata(): Promise<Metadata> {
   const variant = await getVariant();
   const variantMetadata = getVariantMetadata(variant);
-
   return {
     title: variantMetadata.title,
     description: variantMetadata.description,
-    other: {
-      "x-ab-variant": variant,
-    },
+    other: { "x-ab-variant": variant },
   };
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
+  // 👇 Read cohort headers the middleware forwarded as *request* headers
+  const h = headers();
+  const geo = h.get("x-peartree-geo") ?? "global";
+  const timeOfDay = h.get("x-peartree-time") ?? "day";
+  const officeOpen = h.get("x-peartree-office-hours") === "true";
+  const device = h.get("x-peartree-device") ?? "desktop";
+  const source = h.get("x-peartree-source") ?? "direct";
+
   const variant = await getVariant();
 
-  // Fetch all services from Contentful
+  // Fetch and map services
   const allServices = await fetchAllServices();
-
-  // Map and enrich the fetched services with decorative data
   const mappedServices = allServices.map((service: ServiceEntry) => {
     const decoration = serviceDecorations[service.fields.slug] || {};
     return {
       id: service.sys.id,
       title: service.fields.serviceName,
-      description: service.fields.description || '',
+      description: service.fields.description || "",
       href: `/services/${service.fields.slug}`,
       slug: service.fields.slug,
-      // Merge decorative fields from the map
-      icon: decoration.icon || "Shield", // Fallback icon
+      icon: decoration.icon || "Shield",
       theme: decoration.theme || "medical",
       treatments: decoration.treatments || [],
-      image: decoration.image || '',
+      image: decoration.image || "",
     };
   });
 
@@ -175,19 +164,22 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   return (
     <ServerSideABWrapper variant={variant}>
-      <ServiceFAQSchema
-        serviceName="Pear Tree Dental Practice"
-        faqs={homepageFAQs}
-        pageUrl="/"
-      />
+      <ServiceFAQSchema serviceName="Pear Tree Dental Practice" faqs={homepageFAQs} pageUrl="/" />
+      {/* 👇 Pass cohort props into components that should change */}
       <ClientGoogleReviews />
-      <Hero />
-      <PracticeShowcase />
-      {/* Pass the dynamic, mapped services to the component */}
+      <Hero
+        geo={geo}
+        officeOpen={officeOpen}
+        device={device}
+        timeOfDay={timeOfDay}
+        source={source}
+        variant={variant}
+      />
+      <PracticeShowcase geo={geo} />
       <ServicesOverview services={mappedServices} />
       <TreatmentJourney />
-      <MembershipHighlight />
-      <VoiceSearchOptimization />
+      <MembershipHighlight officeOpen={officeOpen} />
+      <VoiceSearchOptimization source={source} />
       <FAQSection />
     </ServerSideABWrapper>
   );
