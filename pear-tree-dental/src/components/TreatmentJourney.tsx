@@ -172,17 +172,22 @@ const TreatmentJourney: React.FC = () => {
 
     const topOffset = -(reviewsHeight + GAP_PX);
     const stepObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          const idx = steps.indexOf(visible.target as HTMLDivElement);
-          if (idx !== -1) setActiveStep(idx);
-        }
-      },
-      { root: null, threshold: [0.6, 0.9], rootMargin: `${topOffset}px 0px 0px 0px` }
-    );
+  (entries) => {
+    const visible = entries
+      .filter((e) => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) {
+      const idx = steps.indexOf(visible.target as HTMLDivElement);
+      if (idx !== -1) setActiveStep(idx);
+    }
+  },
+  {
+    root: null,
+    // Keep the existing top offset for sticky widgets...
+    rootMargin: `${topOffset}px 0px -20% 0px`, // <-- adds bottom leeway
+    threshold: [0.5, 0.75],                     // <-- easier to remain "active"
+  }
+);
 
     steps.forEach((el) => stepObserver.observe(el));
 
@@ -247,10 +252,10 @@ const TreatmentJourney: React.FC = () => {
 
       {/* TALL CONTAINER drives stacked-sticky */}
       <div
-        ref={containerRef}
-        className="relative z-20 pb-36 md:pb-20"
-        style={{ height: `calc(${journeySteps.length} * 100svh)` }}
-      >
+  ref={containerRef}
+  className="relative z-20 pb-36 md:pb-32 lg:pb-40" /* was md:pb-20 */
+  style={{ height: `calc((${journeySteps.length} + 1) * 100svh)` }} /* or keep your + sentinel div */
+/>
         {/* header */}
         <div
           ref={headerRef}
@@ -272,6 +277,7 @@ const TreatmentJourney: React.FC = () => {
           </div>
         </div>
 
+
         {/* sr live region */}
         <div aria-live="polite" className="sr-only">
           {`Step ${activeStep + 1} of ${journeySteps.length}: ${
@@ -291,8 +297,7 @@ const TreatmentJourney: React.FC = () => {
               ref={(el) => {
                 stepRefs.current[index] = el;
               }}
-              className="sticky top-[var(--journey-top)] h-[100svh] flex items-center justify-center pt-20 lg:pt-12 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
-              style={{ zIndex: z }}
+className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items-start justify-center pt-10 lg:pt-8 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"              style={{ zIndex: z }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
@@ -412,7 +417,7 @@ const TreatmentJourney: React.FC = () => {
           );
         })}
       </div>
-
+<div aria-hidden className="h-8 lg:h-12 bg-pear-background" />
       <style jsx global>{`
         :root {
           --journey-top: 8px;
