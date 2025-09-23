@@ -16,8 +16,8 @@ export const metadata: Metadata = {
     "advanced dental technology Nottingham",
     "state-of-the-art dentistry Nottingham",
     "patient-centered dental care Nottingham",
-    "dental clinic Nottingham"
-"best dental clinic Nottingham"
+    "dental clinic Nottingham",
+"best dental clinic Nottingham",
   ],
   openGraph: {
     title: "About Our Nottingham Dental Practice | Pear Tree Dental",
