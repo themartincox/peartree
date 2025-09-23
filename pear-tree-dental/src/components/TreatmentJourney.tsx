@@ -417,7 +417,7 @@ className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items
           );
         })}
       </div>
-<div aria-hidden className="h-8 lg:h-12 bg-pear-background" />
+<div aria-hidden="true" className="h-8 lg:h-12 bg-pear-background" />
       <style jsx global>{`
         :root {
           --journey-top: 8px;
