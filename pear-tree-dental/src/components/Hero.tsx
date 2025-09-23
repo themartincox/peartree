@@ -112,7 +112,7 @@ const Hero = () => {
               className="text-lg sm:text-xl text-pear-primary font-medium leading-relaxed
                          drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
             >
-              Modern dental care at Nottingham&apos;s top-rated dental clinic.
+              Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
               <br /> Trusted since 1990.
             </p>
           </div>
@@ -122,7 +122,7 @@ const Hero = () => {
             className="hidden lg:block text-xl text-pear-primary font-normal leading-relaxed max-w-2xl
                        mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]"
           >
-            Modern dental care at Nottingham&apos;s top-rated dental clinic.
+            Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
             <br /> Trusted since 1990.
           </p>
 
@@ -166,7 +166,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl text-pear-primary leading-relaxed max-w-lg">
-              Modern dental care at Nottingham&apos;s top-rated dental clinic.
+              Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
               <br /> Trusted since 1990.
             </p>
 

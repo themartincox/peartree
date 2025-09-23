@@ -255,7 +255,7 @@ const TreatmentJourney: React.FC = () => {
   ref={containerRef}
   className="relative z-20 pb-36 md:pb-32 lg:pb-40" /* was md:pb-20 */
   style={{ height: `calc((${journeySteps.length} + 1) * 100svh)` }} /* or keep your + sentinel div */
-/>
+>
         {/* header */}
         <div
           ref={headerRef}
@@ -417,7 +417,6 @@ className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items
           );
         })}
       </div>
-<div aria-hidden="true" className="h-8 lg:h-12 bg-pear-background" />
       <style jsx global>{`
         :root {
           --journey-top: 8px;
