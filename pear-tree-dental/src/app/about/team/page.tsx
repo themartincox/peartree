@@ -139,7 +139,7 @@ export default function TeamPage() {
             <p className="text-lg leading-relaxed opacity-80 max-w-3xl mx-auto">
               We are a friendly, highly-experienced team dedicated to providing our patients with the greatest care possible.
               We continually strive to learn more, investing in ourselves and the practice to ensure our patients
-              receive the most up-to-date treatments and care available.
+              receive the most up-to-date treatments and care available. Our patient focus is why we are Nottingham's top-rated dental clinic and Dental Clinic of the Year for Nottinghamshire.
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ import PracticeVideo from "./practiceVideo.client";
 
 export const metadata: Metadata = {
   title: "About Our Nottingham Dental Practice | Pear Tree Dental",
-  description: "Discover our modern Nottingham dental practice with state-of-the-art facilities, advanced technology, and a patient-centered approach to dental care serving all of Nottingham.",
+  description: "Discover our award winning Nottingham dental practice with state-of-the-art facilities, advanced technology, and a patient-centered approach to dental care serving all of Nottingham.",
   keywords: [
     "dental practice Nottingham",
     "modern dental clinic Nottingham",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "state-of-the-art dentistry Nottingham",
     "patient-centered dental care Nottingham",
     "dental clinic Nottingham"
+"best dental clinic Nottingham"
   ],
   openGraph: {
     title: "About Our Nottingham Dental Practice | Pear Tree Dental",
@@ -117,7 +118,7 @@ export default function PracticePage() {
               State-of-the-Art Facilities in Burton Joyce
             </p>
             <p className="text-lg leading-relaxed opacity-80 max-w-3xl mx-auto">
-              Located on the edge of Nottingham, nestled in Burton Joyce, our practice combines cutting-edge dental technology
+              Located on the edge of Nottingham, nestled in Burton Joyce, our award winning practice combines cutting-edge dental technology
               with a warm, welcoming environment to provide exceptional dental care for the whole family.
             </p>
           </div>
@@ -386,7 +387,7 @@ export default function PracticePage() {
                 <p className="text-gray-600">Happy Patients</p>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-pear-primary mb-2">400+</div>
+                <div className="text-2xl font-bold text-pear-primary mb-2">500+</div>
                 <p className="text-gray-600">5-Star Reviews</p>
               </div>
             </div>

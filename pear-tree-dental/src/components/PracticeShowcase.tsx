@@ -24,7 +24,7 @@ const PracticeShowcase = () => {
               <div className="absolute inset-0">
                 <Image
                   src="/images/cosmetic-dentistry-services.webp"
-                  alt="Modern dental practice interior at Pear Tree Dental"
+                  alt="Award winning dental practice interior at Pear Tree Dental"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
@@ -40,7 +40,7 @@ const PracticeShowcase = () => {
                     Experience Excellence in Every Detail
                   </h2>
                   <p className="text-white/95 mb-4 lg:mb-6 text-base lg:text-lg leading-relaxed">
-                    Our practice combines cutting-edge technology with luxurious comfort.
+                    Our award-winning practice combines cutting-edge technology with luxurious comfort.
                     From digital X-rays to relaxing treatment rooms, every aspect is designed
                     with your experience in mind.
                   </p>

@@ -212,11 +212,33 @@ const TreatmentJourney: React.FC = () => {
     });
   }, [activeStep]);
 
+
   const scrollToStep = (idx: number) => {
     const el = stepRefs.current[idx];
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+useEffect(() => {
+  const recalc = () => {
+    if (!containerRef.current) return;
+    const headerH = headerRef.current?.offsetHeight ?? 0;
+
+    const root = getComputedStyle(document.documentElement);
+    const topPx = parseInt(root.getPropertyValue("--journey-top")) || 0;
+
+    const vh = window.innerHeight;
+    // Track = header + N*vh + top offset + small buffer
+    const buffer = 24; // tweak if you see a tiny clip
+    const total = headerH + journeySteps.length * vh + topPx + buffer;
+
+    containerRef.current.style.height = `${total}px`;
+  };
+
+  recalc();
+  window.addEventListener("resize", recalc);
+  return () => window.removeEventListener("resize", recalc);
+}, [journeySteps.length, reviewsHeight]);
 
   return (
     <section className="treatment-journey-section py-0 bg-pear-background relative z-10">
@@ -253,7 +275,7 @@ const TreatmentJourney: React.FC = () => {
       {/* TALL CONTAINER drives stacked-sticky */}
       <div
   ref={containerRef}
-  className="relative z-20 pb-36 md:pb-32 lg:pb-40" /* was md:pb-20 */
+  className="relative z-20 pb-12 md:pb-16 lg:pb-20" /* was md:pb-20 */
   style={{ height: `calc((${journeySteps.length} + 1) * 100svh)` }} /* or keep your + sentinel div */
 >
         {/* header */}
