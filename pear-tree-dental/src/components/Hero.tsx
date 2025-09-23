@@ -112,18 +112,18 @@ const Hero = () => {
               className="text-lg sm:text-xl text-pear-primary font-medium leading-relaxed
                          drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
             >
-              Modern dental care from Nottingham&apos;s top rated clinic.
-              <br /> Building brighter smiles since 1990.
+              Modern dental care at Nottingham&apos;s top-rated dental clinic.
+              <br /> Trusted since 1990.
             </p>
           </div>
 
           {/* Desktop variant hidden on mobile */}
           <p
-            className="hidden lg:block text-xl text-white font-normal leading-relaxed max-w-2xl
+            className="hidden lg:block text-xl text-pear-primary font-normal leading-relaxed max-w-2xl
                        mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]"
           >
-            Modern dental care from Nottingham&apos;s top rated clinic.
-            <br /> Building brighter smiles since 1990.
+            Modern dental care at Nottingham&apos;s top-rated dental clinic.
+            <br /> Trusted since 1990.
           </p>
 
           <div className="flex flex-col space-y-4 w-full max-w-md mt-[60px]">
@@ -165,9 +165,9 @@ const Hero = () => {
               <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
             </h1>
 
-            <p className="text-xl text-white leading-relaxed max-w-lg">
-              Modern dental care from Nottingham&apos;s top rated clinic.
-              <br /> Building brighter smiles since 1990.
+            <p className="text-xl text-pear-primary leading-relaxed max-w-lg">
+              Modern dental care at Nottingham&apos;s top-rated dental clinic.
+              <br /> Trusted since 1990.
             </p>
 
             <div className="flex flex-col space-y-4 max-w-md">
