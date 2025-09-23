@@ -44,6 +44,48 @@
 [functions.options]
   timeout = 30
 
+[[redirects]]
+  from = "/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blank-2"
+  to = "/services"
+  status = 301
+
+[[redirects]]
+  from = "/blank-3"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/our-team"
+  to = "/about/team"
+  status = 301
+
+[[redirects]]
+  from = "/blank-4"
+  to = "/patient-education"
+  status = 301
+
+[[redirects]]
+  from = "/about-4"
+  to = "/terms"
+  status = 301
+
+[[redirects]]
+  from = "/blank-1"
+  to = "/about/practice"
+  status = 301
+
+[[redirects]]
+  from = "/about-7"
+  to = "/membership"
+  status = 301
+
+# Ignore "janet" and API endpoints as requested
+
 [dev]
   framework = "next"
   autoLaunch = false

@@ -1,0 +1,1058 @@
+/* Google Fonts now loaded via Next.js font optimization */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Pear Tree Dental Brand Colors */
+  --primary: #09394d; /* Deep teal */
+  --background: #FAF9F6; /* Off-white */
+  --accent-gold: #D4AF37; /* Gold */
+  --dental-green: #4a7c59; /* Dental green for medical treatments */
+  --soft-blue: #7fb3d3; /* Soft blue for medical treatments */
+  --soft-pink: #e8c5c5; /* Soft pink for cosmetic treatments */
+  --soft-lavender: #d1c4e9; /* Soft lavender for cosmetic treatments */
+
+  /* Shadcn variables */
+  --foreground: #09394d;
+  --card: #ffffff;
+  --card-foreground: #09394d;
+  --popover: #ffffff;
+  --popover-foreground: #09394d;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #f8fafc;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #09394d;
+  --chart-1: #09394d;
+  --chart-2: #D4AF37;
+  --chart-3: #4a7c59;
+  --chart-4: #7fb3d3;
+  --chart-5: #e8c5c5;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+  --primary: #09394d;
+  --primary-foreground: #f8fafc;
+  --secondary: #1e293b;
+  --secondary-foreground: #f8fafc;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #1e293b;
+  --accent-foreground: #f8fafc;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f8fafc;
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #09394d;
+  --chart-1: #09394d;
+  --chart-2: #D4AF37;
+  --chart-3: #4a7c59;
+  --chart-4: #7fb3d3;
+  --chart-5: #e8c5c5;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: var(--background);
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Global Heading Styles - Site-wide Typography System */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-weight: 500;
+}
+
+/* Responsive heading sizes */
+h1 {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight;
+}
+
+h2 {
+  @apply text-3xl sm:text-4xl font-bold leading-tight;
+}
+
+h3 {
+  @apply text-xl sm:text-2xl font-semibold leading-tight;
+}
+
+h4 {
+  @apply text-lg sm:text-xl font-semibold;
+}
+
+/* Body text defaults to Montserrat */
+body {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+}
+
+/* Brand Typography Classes */
+.brand-logo {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+}
+
+.brand-subtitle {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.heading-serif {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  font-weight: 500;
+}
+
+.text-montserrat {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif;
+}
+
+/* Typography Override Classes */
+.font-serif {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif !important;
+}
+
+/* Add Garamond font styling for the header */
+.font-garamond {
+  font-family: 'EB Garamond', 'Garamond', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* Specific typography utilities for consistency */
+.title-hero {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight;
+}
+
+.title-section {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  @apply text-3xl sm:text-4xl font-bold leading-tight;
+}
+
+.title-card {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', serif;
+  @apply text-xl sm:text-2xl font-semibold leading-tight;
+}
+
+/* Medical Treatment Colors */
+.medical-theme {
+  --theme-primary: var(--dental-green);
+  --theme-secondary: var(--soft-blue);
+}
+
+/* Cosmetic Treatment Colors */
+.cosmetic-theme {
+  --theme-primary: var(--soft-pink);
+  --theme-secondary: var(--soft-lavender);
+}
+
+/* Plan Color Classes */
+.plan-a {
+  background: linear-gradient(135deg, #48cc6c 0%, #2d8a47 100%);
+}
+
+.plan-b {
+  background: linear-gradient(135deg, #09394d 0%, #1e5f73 100%);
+}
+
+.plan-c {
+  background: linear-gradient(135deg, #4A90A4 0%, #2d6b7a 100%);
+}
+
+.plan-d {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+}
+
+.plan-e {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%);
+}
+
+.family-plan {
+  background: linear-gradient(135deg, #09394d 0%, #48cc6c 100%);
+}
+
+/* Animation Classes */
+@keyframes accordion-down {
+  from { height: 0 }
+  to { height: var(--radix-accordion-content-height) }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height) }
+  to { height: 0 }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Premium animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Location-aware membership benefits animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.duration-1000 {
+  animation-duration: 1000ms;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium button styles */
+.btn-premium {
+  background: linear-gradient(135deg, var(--primary) 0%, #0b4d66 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(9, 57, 77, 0.2);
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(9, 57, 77, 0.3);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #b8941f 100%);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Hero Component Optimizations */
+.hero-bg-pattern {
+  position: relative;
+}
+
+.hero-bg-pattern::before {
+  content: '';
+  position: absolute;
+  top: 5rem;
+  left: 2.5rem;
+  width: 8rem;
+  height: 8rem;
+  background: var(--primary);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.hero-bg-pattern::after {
+  content: '';
+  position: absolute;
+  top: 10rem;
+  right: 5rem;
+  width: 12rem;
+  height: 12rem;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.hero-image-container::before {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 5rem;
+  height: 5rem;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  z-index: -1;
+}
+
+.hero-image-container::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  width: 4rem;
+  height: 4rem;
+  background: rgba(232, 197, 197, 0.3);
+  border-radius: 50%;
+  filter: blur(1.5rem);
+  z-index: -1;
+}
+
+/* A/B Test Utility Classes */
+.pt-screen {
+  padding-top: 100vh;
+}
+
+/* Ensure smooth animations for A/B test transitions */
+.ab-test-welcome-screen {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+/* Optimized animations for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  .ab-test-welcome-screen {
+    will-change: opacity, transform;
+  }
+}
+
+/* Handle reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .ab-test-welcome-screen {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .animate-in,
+  .fade-in {
+    animation: none !important;
+  }
+}
+
+/* Server-side A/B Testing Styles */
+
+/* Variant A - No additional styles needed */
+.ab-variant-a {
+  /* Standard homepage styling */
+}
+
+/* Variant B - Clean welcome screen with animations */
+.welcome-screen-b {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: welcomeFadeOut 0.5s ease-in-out 1s forwards;
+}
+
+.welcome-content-b {
+  animation: welcomeSlideUp 0.6s ease-out;
+}
+
+.welcome-text-b {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: #374151;
+  text-align: center;
+  padding: 0 1rem;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.ab-variant-b-content {
+  padding-top: 100vh;
+  animation: contentSlideIn 0.8s ease-out 1.4s both;
+}
+
+/* Variant C - Background image welcome screen */
+.welcome-screen-c {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: welcomeFadeOut 0.5s ease-in-out 1s forwards;
+}
+
+.welcome-screen-c.image-loaded {
+  background-image: url('/images/dental-office-welcome.svg');
+}
+
+.welcome-overlay-c {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.welcome-content-c {
+  position: relative;
+  z-index: 10;
+  animation: welcomeSlideUp 0.6s ease-out;
+}
+
+.welcome-text-c {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 300;
+  color: white;
+  text-align: center;
+  padding: 0 1rem;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ab-variant-c-content {
+  padding-top: 100vh;
+  animation: contentSlideIn 0.8s ease-out 1.4s both;
+}
+
+/* Pink Haze - Reusable Color Palette from Smile Design */
+.pink-haze {
+  background: linear-gradient(to right, var(--soft-pink), var(--soft-lavender));
+}
+
+.pink-haze-subtle {
+  background: linear-gradient(135deg, rgba(232, 197, 197, 0.1), rgba(209, 196, 233, 0.1));
+}
+
+.pink-haze-border {
+  border: 1px solid rgba(232, 197, 197, 0.3);
+}
+
+/* Mobile Navigation Smooth Animations */
+.mobile-nav-overlay {
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-panel {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.mobile-nav-panel.entering {
+  transform: translateX(0);
+}
+
+.mobile-nav-panel.exiting {
+  transform: translateX(100%);
+}
+
+.mobile-nav-content {
+  transition: opacity 0.3s ease-out 0.1s;
+  will-change: opacity;
+}
+
+.mobile-nav-content.entering {
+  opacity: 1;
+}
+
+.mobile-nav-content.exiting {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+/* Navigation Item Animations */
+.nav-item {
+  transition: all 0.2s ease-out;
+  transform: translateX(0);
+}
+
+.nav-item:hover {
+  transform: translateX(4px);
+  background-color: rgba(9, 57, 77, 0.05);
+}
+
+.nav-item:active {
+  transform: translateX(2px) scale(0.98);
+}
+
+/* Button Animations */
+.nav-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) scale(1);
+}
+
+.nav-button:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.nav-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Stagger Animation for Navigation Items */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.nav-item-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.nav-item-enter:nth-child(1) { animation-delay: 0.05s; }
+.nav-item-enter:nth-child(2) { animation-delay: 0.1s; }
+.nav-item-enter:nth-child(3) { animation-delay: 0.15s; }
+.nav-item-enter:nth-child(4) { animation-delay: 0.2s; }
+.nav-item-enter:nth-child(5) { animation-delay: 0.25s; }
+.nav-item-enter:nth-child(6) { animation-delay: 0.3s; }
+.nav-item-enter:nth-child(7) { animation-delay: 0.35s; }
+.nav-item-enter:nth-child(8) { animation-delay: 0.4s; }
+
+/* Swipe Gesture Visual Feedback */
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
+}
+
+.swipe-indicator.active {
+  opacity: 0.6;
+  animation: swipeHint 2s ease-in-out infinite;
+}
+
+@keyframes swipeHint {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(8px); }
+}
+
+/* Enhanced Sheet Animations */
+.sheet-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.sheet-content {
+  animation: slideInFromRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Pinky gradient for brand logos section - subtle and classy */
+.pinky {
+  background: linear-gradient(135deg, #f8f4f6 0%, #f3e8ed 25%, #ead5df 75%, #e1c2d1 100%);
+}
+
+.pinky-fade {
+  background: linear-gradient(to right, transparent 0%, #f8f4f6 20%, #f3e8ed 40%, #ead5df 60%, #e1c2d1 80%, #d4a7be 100%);
+}
+
+/* Brand logo hover effects */
+.brand-logo-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: grayscale(0.7) opacity(0.8);
+}
+
+.brand-logo-container:hover {
+  filter: grayscale(0) opacity(1);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.brand-logo-white {
+  filter: brightness(0) invert(1);
+}
+
+/* Optimized animations for better performance */
+@keyframes welcomeFadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes welcomeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes contentSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth scroll behavior for all variants */
+.ab-variant-a,
+.ab-variant-b,
+.ab-variant-c {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimizations */
+
+/* Reduce paint complexity for animations */
+.btn-premium,
+.btn-gold {
+  will-change: transform, box-shadow;
+  backface-visibility: hidden;
+}
+
+/* Optimize gradient performance */
+.plan-a,
+.plan-b,
+.plan-c,
+.plan-d,
+.plan-e {
+  background-attachment: local;
+}
+
+/* Optimize backdrop-blur performance */
+.hero-bg-pattern::before,
+.hero-bg-pattern::after {
+  will-change: auto;
+  contain: layout style paint;
+}
+
+/* Reduce layout shifts with proper sizing */
+.hero-image-container {
+  contain: layout style;
+}
+
+/* Optimize transform animations */
+@media (prefers-reduced-motion: no-preference) {
+
+  .transform.scale-105 {
+    transform: scale(1.05);
+  }
+}
+
+/* Critical CSS inline optimization */
+.critical-above-fold {
+  font-display: swap;
+  contain: layout style paint;
+}
+
+/* Accessibility Improvements */
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only:focus,
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* High Contrast Focus Indicators */
+*:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced Focus Styles for Interactive Elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+}
+
+/* Skip Links Styling */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Improved Color Contrast */
+.text-gray-600 {
+  color: #4b5563; /* Improved contrast from original */
+}
+
+.text-gray-500 {
+  color: #6b7280; /* Improved contrast */
+}
+
+/* Ensure sufficient contrast for small text */
+.text-sm.text-gray-600 {
+  color: #374151; /* Darker for better contrast on small text */
+}
+
+/* Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .btn-gold {
+    background: #000;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+
+  .btn-gold:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
+
+  .text-pear-primary {
+    color: #000;
+  }
+
+  .text-pear-gold {
+    color: #000;
+  }
+
+  .bg-pear-background {
+    background: #fff;
+  }
+}
+
+/* Font Size Scaling Support */
+@media (min-resolution: 2dppx) {
+  /* Optimize for high-DPI displays */
+  .heading-serif {
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
+  }
+}
+
+/* Keyboard Navigation Indicators */
+.focus-within\:ring-2:focus-within {
+  box-shadow: 0 0 0 2px var(--accent-gold);
+}
+
+/* Improved Button Accessibility */
+button[disabled],
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button[aria-pressed="true"] {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* ARIA Live Region Styling */
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Form Accessibility */
+input:invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 1px #dc2626;
+}
+
+input:valid {
+  border-color: #16a34a;
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Success Message Styling */
+.success-message {
+  color: #16a34a;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Performance optimizations */
+.welcome-screen-b,
+.welcome-screen-c {
+  will-change: opacity, visibility;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+.welcome-content-b,
+.welcome-content-c {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .welcome-text-b,
+  .welcome-text-c {
+    font-size: 2rem;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-text-b,
+  .welcome-text-c {
+    font-size: 1.75rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Ensure proper stacking context */
+.ab-variant-b .welcome-screen-b,
+.ab-variant-c .welcome-screen-c {
+  isolation: isolate;
+}
+
+/* Server-side accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen-b,
+  .welcome-screen-c,
+  .ab-variant-b-content,
+  .ab-variant-c-content,
+  .welcome-content-b,
+  .welcome-content-c {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ab-variant-b-content,
+  .ab-variant-c-content {
+    padding-top: 0;
+  }
+
+  .welcome-screen-b,
+  .welcome-screen-c {
+    display: none;
+  }
+}
+
+/* Mobile Navigation - Remove backdrop shade */
+[data-state="open"] > .fixed.inset-0 {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Mobile Navigation Sheet - Remove overlay */
+.mobile-nav-sheet .bg-black\/80,
+.mobile-nav-sheet .bg-background\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-black\/80,
+[data-radix-portal] .fixed.inset-0.z-50.bg-background\/80 {
+  display: none !important;
+}
+
+/* Ensure mobile nav content is on top */
+[data-radix-portal] .fixed.inset-y-0.right-0 {
+  z-index: 100 !important;
+}
+
+/* Add this to the end of the file */
+
+/* Star pulse animations with staggered delays */
+@keyframes starPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(251, 191, 36, 0.7));
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.9));
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0px rgba(251, 191, 36, 0.7));
+    opacity: 1;
+  }
+}
+
+.star-container {
+  display: flex;
+  align-items: center;
+}
+
+.star-container svg {
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), filter 0.2s cubic-bezier(0.4,0,0.2,1);
+  animation: starPulse 1.2s infinite;
+}
+
+.star-container svg:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.7));
+}
+
+/* Custom animations with proper delays */
+.animate-star-pulse-1 {
+  animation-delay: 0s;
+}
+.animate-star-pulse-2 {
+  animation-delay: 0.2s;
+}
+.animate-star-pulse-3 {
+  animation-delay: 0.4s;
+}
+.animate-star-pulse-4 {
+  animation-delay: 0.6s;
+}
+.animate-star-pulse-5 {
+  animation-delay: 0.8s;
+}
+
+/* Mobile Google Reviews widget animations */
+@media (max-width: 767px) {
+  .reviews-hover-effect {
+    transition: all 0.3s ease;
+  }
+
+  .reviews-hover-effect:hover,
+  .reviews-hover-effect:active {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}
+
+/* globals.css */
+
+/* Mobile-only */
+@media (max-width: 767.98px) {
+  /* While journey is active, slide/opacity-hide header + reviews widget */
+  body.journey-active [data-role="primary-header"],
+  body.journey-active [data-role="reviews-widget"] {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  /* When not active, ensure they’re visible (in case inline styles exist) */
+  [data-role="primary-header"],
+  [data-role="reviews-widget"] {
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+}
