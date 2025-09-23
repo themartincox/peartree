@@ -2,7 +2,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
-import { headers } from "next/headers"; // 👈 add this
+import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchAllServices } from "@/lib/contentful-client";
@@ -13,8 +13,10 @@ import { practiceInfo } from "@/data/practiceInfo";
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
-// Add ClientGoogleReviews wrapper with 'use client' directive
-const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), { ssr: true });
+// Client wrapper for Google reviews
+const ClientGoogleReviews = dynamicImport(() => import("@/components/ClientGoogleReviews"), {
+  ssr: true,
+});
 
 // Loaders for dynamic components
 import {
@@ -50,39 +52,47 @@ import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
-// --- Service Data Mapping ---
-const serviceDecorations: { [key: string]: any } = {
-  'general': {
+// --- Static decorations (icons, themes, treatments, images) ---
+const serviceDecorations: Record<
+  string,
+  {
+    icon?: string;
+    theme?: string;
+    treatments?: string[];
+    image?: string;
+  }
+> = {
+  general: {
     icon: "Shield",
     theme: "primary",
     treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
     image: "/images/general-dental-checkup.webp",
   },
-  'cosmetic': {
+  cosmetic: {
     icon: "Sparkles",
     theme: "cosmetic",
     treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
     image: "/images/cosmetic-dentistry-services.webp",
   },
-  'restorative': {
+  restorative: {
     icon: "ShieldCheck",
     theme: "primary",
     treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
     image: "/images/restorative-dental-treatment.webp",
   },
-  'implants': {
+  implants: {
     icon: "Zap",
     theme: "cosmetic",
     treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
     image: "/images/dental-implants-procedure.webp",
   },
-  'orthodontics': {
+  orthodontics: {
     icon: "Smile",
     theme: "cosmetic",
     treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
     image: "/images/orthodontics-invisalign-treatment.webp",
   },
-  'emergency-dentist': {
+  "emergency-dentist": {
     icon: "AlertTriangle",
     theme: "destructive",
     treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
@@ -90,7 +100,46 @@ const serviceDecorations: { [key: string]: any } = {
   },
 };
 
-// --- A/B metadata stays, but we can also read headers in metadata if you want (see below) ---
+// --- Optional static copy (titles/descriptions) for fallback ---
+const STATIC_SERVICE_COPY: Record<string, { title: string; description?: string }> = {
+  general: { title: "General Dentistry", description: "Check-ups, hygiene, fillings and more." },
+  cosmetic: { title: "Cosmetic Dentistry", description: "Whitening, veneers, bonding, smile makeovers." },
+  restorative: { title: "Restorative Dentistry", description: "Crowns, bridges, dentures, inlays & onlays." },
+  implants: { title: "Dental Implants", description: "Single, multiple, All-on-4 and implant bridges." },
+  orthodontics: { title: "Orthodontics", description: "Invisalign, retainers and clear aligners." },
+  "emergency-dentist": { title: "Emergency Dentist", description: "Same-day pain relief and urgent repairs." },
+};
+
+type ServiceCard = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  slug: string;
+  icon: string;
+  theme: string;
+  treatments: string[];
+  image: string;
+};
+
+// Helper to build a static card from decorations
+function buildStaticCard(slug: string): ServiceCard {
+  const deco = serviceDecorations[slug] || {};
+  const copy = STATIC_SERVICE_COPY[slug] || { title: slug.replace(/-/g, " ") };
+  return {
+    id: `static-${slug}`,
+    title: copy.title,
+    description: copy.description || "",
+    href: `/services/${slug}`,
+    slug,
+    icon: deco.icon || "Shield",
+    theme: deco.theme || "medical",
+    treatments: deco.treatments || [],
+    image: deco.image || "",
+  };
+}
+
+// --- A/B metadata ---
 export async function generateMetadata(): Promise<Metadata> {
   const variant = await getVariant();
   const variantMetadata = getVariantMetadata(variant);
@@ -102,7 +151,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  // 👇 Read cohort headers the middleware forwarded as *request* headers
+  // Read cohort headers the middleware forwarded as *request* headers
   const h = headers();
   const geo = h.get("x-peartree-geo") ?? "global";
   const timeOfDay = h.get("x-peartree-time") ?? "day";
@@ -112,32 +161,50 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   const variant = await getVariant();
 
-  // Fetch and map services
-  const allServices = await fetchAllServices();
-  const mappedServices = allServices.map((service: ServiceEntry) => {
-    const decoration = serviceDecorations[service.fields.slug] || {};
-    return {
-      id: service.sys.id,
-      title: service.fields.serviceName,
-      description: service.fields.description || "",
-      href: `/services/${service.fields.slug}`,
-      slug: service.fields.slug,
-      icon: decoration.icon || "Shield",
-      theme: decoration.theme || "medical",
-      treatments: decoration.treatments || [],
-      image: decoration.image || "",
-    };
-  });
+  // --- Contentful with graceful fallbacks ---
+  let mappedServices: ServiceCard[] = [];
 
- });
+  try {
+    const allServices = await fetchAllServices();
 
-  const mappedBySlug = new Map(mappedServices.map((service) => [service.slug, service]));
-  const servicesForOverview = Object.entries(serviceDecorations).map(([slug, decoration]) => {
-    const mapped = mappedBySlug.get(slug);
-    if (mapped) {
-      return mapped;
+    if (Array.isArray(allServices) && allServices.length > 0) {
+      // index by slug
+      const bySlug = new Map(
+        allServices
+          .filter((s: ServiceEntry) => s?.fields?.slug)
+          .map((s: ServiceEntry) => [s.fields.slug, s]),
+      );
+
+      // Build in curated order of serviceDecorations
+      mappedServices = Object.keys(serviceDecorations).map((slug) => {
+        const fromCF = bySlug.get(slug);
+        if (fromCF) {
+          const deco = serviceDecorations[slug] || {};
+          return {
+            id: fromCF.sys.id,
+            title: fromCF.fields.serviceName,
+            description: fromCF.fields.description || "",
+            href: `/services/${slug}`,
+            slug,
+            icon: deco.icon || "Shield",
+            theme: deco.theme || "medical",
+            treatments: deco.treatments || [],
+            image: deco.image || "",
+          };
+        }
+        // per-slug fallback if missing in CF
+        return buildStaticCard(slug);
+      });
+    } else {
+      // Global fallback: CF returned nothing
+      mappedServices = Object.keys(serviceDecorations).map(buildStaticCard);
     }
+  } catch {
+    // Hard failure talking to CF → global static fallback
+    mappedServices = Object.keys(serviceDecorations).map(buildStaticCard);
+  }
 
+  // --- FAQs ---
   const homepageFAQs = [
     {
       question: "How often should I visit the dentist for a check-up?",
@@ -151,13 +218,11 @@ export default async function HomePage(): Promise<React.JSX.Element> {
     },
     {
       question: "How do I book an emergency dental appointment?",
-      answer:
-        `Call us immediately at ${practiceInfo.contact.phone} for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible.`,
+      answer: `Call us immediately at ${practiceInfo.contact.phone} for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible.`,
     },
     {
       question: "Where is your dental practice located?",
-      answer:
-        `We're located at ${practiceInfo.address.full}. We're easy to find on the main A612 road with free parking available directly outside the practice.`,
+      answer: `We're located at ${practiceInfo.address.full}. We're easy to find on the main A612 road with free parking available directly outside the practice.`,
     },
     {
       question: "What's included in a routine dental examination?",
@@ -166,15 +231,14 @@ export default async function HomePage(): Promise<React.JSX.Element> {
     },
     {
       question: "How can I contact the practice?",
-      answer:
-        `You can call us at ${practiceInfo.contact.phone}, email ${practiceInfo.contact.email}, or visit us at ${practiceInfo.address.full}. We also offer online booking for your convenience.`,
+      answer: `You can call us at ${practiceInfo.contact.phone}, email ${practiceInfo.contact.email}, or visit us at ${practiceInfo.address.full}. We also offer online booking for your convenience.`,
     },
   ];
 
   return (
     <ServerSideABWrapper variant={variant}>
       <ServiceFAQSchema serviceName="Pear Tree Dental Practice" faqs={homepageFAQs} pageUrl="/" />
-      {/* 👇 Pass cohort props into components that should change */}
+      {/* Cohort-aware components */}
       <ClientGoogleReviews />
       <Hero
         geo={geo}
