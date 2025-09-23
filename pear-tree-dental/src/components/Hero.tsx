@@ -1,15 +1,15 @@
 "use client";
 
 import { useMemo } from "react";
-import { Calendar, Phone } from "lucide-react";
+import { Calendar, Phone, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 import dynamic from "next/dynamic";
+import { googleReviewsStats } from "@/data/googleReviews";
 
 const MobileGoogleReviews = dynamic(() => import("@/components/MobileGoogleReviews"), { ssr: false });
-const InlineGoogleReviews = dynamic(() => import("@/components/ClientGoogleReviews"), { ssr: false });
 
 type HeroProps = {
   geo: string;               // "gedling" | "nottingham-city" | "england" | "uk-national" | "global"
@@ -45,6 +45,14 @@ const Hero = ({
     }
     return trust + since;
   }, [variant, timeOfDay]);
+
+  const reviewStats = useMemo(
+    () => ({
+      averageRating: googleReviewsStats?.averageRating ?? 4.9,
+      totalReviews: googleReviewsStats?.totalReviews ?? 500,
+    }),
+    [],
+  );
 
   const primaryCTA = officeOpen && device !== "mobile" ? "call" : "book";
   const telHref = "tel:0115 931 2935"; // TODO: real number
@@ -234,8 +242,31 @@ const Hero = ({
                 <Link href="/membership">View Membership Plans →</Link>
               </Button>
 
-              {/* Optional inline reviews on desktop */}
-              <InlineGoogleReviews />
+              {/* Inline review stats for desktop */}
+              <div className="flex items-center justify-between rounded-xl border border-white/70 bg-white/90 px-4 py-3 shadow-md backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-pear-primary">
+                    <span className="text-2xl font-semibold">
+                      {reviewStats.averageRating.toFixed(1)}
+                    </span>
+                    <div className="flex items-center gap-0.5 text-yellow-400">
+                      {Array.from({ length: 5 }).map((_, idx) => (
+                        <Star key={idx} className="h-4 w-4 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+                  <span className="text-sm text-gray-600">
+                    {reviewStats.totalReviews}+ Google reviews
+                  </span>
+                </div>
+                <Image
+                  src="/images/google-logo-mini.webp"
+                  alt="Google reviews"
+                  width={28}
+                  height={28}
+                  className="h-6 w-6"
+                />
+              </div>
             </div>
 
             {/* tiny debug tag — remove when happy */}
