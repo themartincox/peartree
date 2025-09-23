@@ -75,12 +75,6 @@ export default function ClientGoogleReviews() {
     };
   }, [isMobile, isHomepage]);
 
-  // MOBILE HOMEPAGE: inline widget that becomes sticky under header
-  // Avoid rendering duplicate widgets on the mobile homepage (handled within the hero)
-  if (isMobile && isHomepage) {
-    return null;
-  }
-
   const measureWidgetHeight = useCallback(() => {
     if (!widgetRef.current) return 0;
     const height = widgetRef.current.offsetHeight || 0;
@@ -109,6 +103,11 @@ export default function ClientGoogleReviews() {
       if (observer) observer.disconnect();
     };
   }, [measureWidgetHeight]);
+
+  // MOBILE HOMEPAGE: inline widget handled inside Hero component
+  if (isMobile && isHomepage) {
+    return null;
+  }
 
   // DESKTOP HOMEPAGE or ANY DEVICE on OTHER PAGES: show floating widget
   // This will be a floating widget that follows as you scroll
