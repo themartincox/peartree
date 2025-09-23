@@ -129,6 +129,15 @@ export default async function HomePage(): Promise<React.JSX.Element> {
     };
   });
 
+ });
+
+  const mappedBySlug = new Map(mappedServices.map((service) => [service.slug, service]));
+  const servicesForOverview = Object.entries(serviceDecorations).map(([slug, decoration]) => {
+    const mapped = mappedBySlug.get(slug);
+    if (mapped) {
+      return mapped;
+    }
+
   const homepageFAQs = [
     {
       question: "How often should I visit the dentist for a check-up?",
