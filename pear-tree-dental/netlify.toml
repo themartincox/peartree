@@ -44,10 +44,6 @@
 [functions.options]
   timeout = 30
 
-[[redirects]]
-  from = "/"
-  to = "/"
-  status = 301
 
 [[redirects]]
   from = "/blank-2"
@@ -83,6 +79,11 @@
   from = "/about-7"
   to = "/membership"
   status = 301
+
+[[redirects]]
+  from = "/_api/*"
+  to = "/404"
+  status = 404
 
 # Ignore "janet" and API endpoints as requested
 
