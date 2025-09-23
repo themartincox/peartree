@@ -52,62 +52,72 @@ import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
-// --- Static decorations (icons, themes, treatments, images) ---
-const serviceDecorations: Record<
-  string,
-  {
-    icon?: string;
-    theme?: string;
-    treatments?: string[];
-    image?: string;
-  }
-> = {
+// --- Static service metadata for fallback + enrichment ---
+type ServiceDecoration = {
+  label: string;
+  description?: string;
+  href: string;
+  icon: string;
+  theme: string;
+  treatments: string[];
+  image: string;
+};
+
+const serviceDecorations: Record<string, ServiceDecoration> = {
   general: {
+    label: "General Dentistry",
+    description: "Keep your family's smiles healthy with regular check-ups, hygiene visits, and everyday dentistry.",
+    href: "/services/general",
     icon: "Shield",
     theme: "primary",
     treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
     image: "/images/general-dental-checkup.webp",
   },
   cosmetic: {
+    label: "Cosmetic Dentistry",
+    description: "Smile makeovers, whitening, and veneers designed to enhance your confidence.",
+    href: "/services/cosmetic",
     icon: "Sparkles",
     theme: "cosmetic",
     treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
     image: "/images/cosmetic-dentistry-services.webp",
   },
   restorative: {
+    label: "Restorative Dentistry",
+    description: "Repair and rebuild teeth with crowns, bridges, dentures, and more.",
+    href: "/services/restorative",
     icon: "ShieldCheck",
     theme: "primary",
     treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
     image: "/images/restorative-dental-treatment.webp",
   },
   implants: {
+    label: "Dental Implants",
+    description: "Long-lasting implant solutions from single teeth to full-arch smile restorations.",
+    href: "/services/implants",
     icon: "Zap",
     theme: "cosmetic",
     treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
     image: "/images/dental-implants-procedure.webp",
   },
   orthodontics: {
+    label: "Orthodontics",
+    description: "Discreet teeth straightening with Invisalign, ClearCorrect, and specialist retainers.",
+    href: "/services/orthodontics",
     icon: "Smile",
     theme: "cosmetic",
     treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
     image: "/images/orthodontics-invisalign-treatment.webp",
   },
   "emergency-dentist": {
+    label: "Emergency Dentist",
+    description: "Same-day relief for tooth pain, trauma, and urgent dental problems.",
+    href: "/services/emergency",
     icon: "AlertTriangle",
     theme: "destructive",
     treatments: ["Dental Pain Relief", "Emergency Repairs", "Trauma Treatment", "Out-of-hours Care"],
     image: "/images/emergency-dental-care.webp",
   },
-};
-
-// --- Optional static copy (titles/descriptions) for fallback ---
-const STATIC_SERVICE_COPY: Record<string, { title: string; description?: string }> = {
-  general: { title: "General Dentistry", description: "Check-ups, hygiene, fillings and more." },
-  cosmetic: { title: "Cosmetic Dentistry", description: "Whitening, veneers, bonding, smile makeovers." },
-  restorative: { title: "Restorative Dentistry", description: "Crowns, bridges, dentures, inlays & onlays." },
-  implants: { title: "Dental Implants", description: "Single, multiple, All-on-4 and implant bridges." },
-  orthodontics: { title: "Orthodontics", description: "Invisalign, retainers and clear aligners." },
-  "emergency-dentist": { title: "Emergency Dentist", description: "Same-day pain relief and urgent repairs." },
 };
 
 type ServiceCard = {
@@ -121,23 +131,6 @@ type ServiceCard = {
   treatments: string[];
   image: string;
 };
-
-// Helper to build a static card from decorations
-function buildStaticCard(slug: string): ServiceCard {
-  const deco = serviceDecorations[slug] || {};
-  const copy = STATIC_SERVICE_COPY[slug] || { title: slug.replace(/-/g, " ") };
-  return {
-    id: `static-${slug}`,
-    title: copy.title,
-    description: copy.description || "",
-    href: `/services/${slug}`,
-    slug,
-    icon: deco.icon || "Shield",
-    theme: deco.theme || "medical",
-    treatments: deco.treatments || [],
-    image: deco.image || "",
-  };
-}
 
 // --- A/B metadata ---
 export async function generateMetadata(): Promise<Metadata> {
@@ -161,47 +154,71 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   const variant = await getVariant();
 
-  // --- Contentful with graceful fallbacks ---
-  let mappedServices: ServiceCard[] = [];
+  const decorationEntries = Object.entries(serviceDecorations);
+  const fallbackServices: ServiceCard[] = decorationEntries.map(([slug, deco]) => ({
+    id: `static-${slug}`,
+    title: deco.label,
+    description: deco.description || "",
+    href: deco.href,
+    slug,
+    icon: deco.icon,
+    theme: deco.theme,
+    treatments: deco.treatments,
+    image: deco.image,
+  }));
+
+  let mappedServices: ServiceCard[] = fallbackServices;
 
   try {
     const allServices = await fetchAllServices();
 
     if (Array.isArray(allServices) && allServices.length > 0) {
-      // index by slug
       const bySlug = new Map(
         allServices
-          .filter((s: ServiceEntry) => s?.fields?.slug)
-          .map((s: ServiceEntry) => [s.fields.slug, s]),
+          .filter((service: ServiceEntry) => service?.fields?.slug)
+          .map((service: ServiceEntry) => [service.fields.slug, service]),
       );
 
-      // Build in curated order of serviceDecorations
-      mappedServices = Object.keys(serviceDecorations).map((slug) => {
-        const fromCF = bySlug.get(slug);
-        if (fromCF) {
-          const deco = serviceDecorations[slug] || {};
-          return {
-            id: fromCF.sys.id,
-            title: fromCF.fields.serviceName,
-            description: fromCF.fields.description || "",
-            href: `/services/${slug}`,
-            slug,
-            icon: deco.icon || "Shield",
-            theme: deco.theme || "medical",
-            treatments: deco.treatments || [],
-            image: deco.image || "",
-          };
+      const curated = decorationEntries.map(([slug, deco]) => {
+        const fromContentful = bySlug.get(slug);
+        if (!fromContentful) {
+          return fallbackServices.find((svc) => svc.slug === slug)!;
         }
-        // per-slug fallback if missing in CF
-        return buildStaticCard(slug);
+
+        return {
+          id: fromContentful.sys.id,
+          title: fromContentful.fields.serviceName || deco.label,
+          description: fromContentful.fields.description || deco.description || "",
+          href: deco.href,
+          slug,
+          icon: deco.icon,
+          theme: deco.theme,
+          treatments: deco.treatments,
+          image: deco.image,
+        } as ServiceCard;
       });
-    } else {
-      // Global fallback: CF returned nothing
-      mappedServices = Object.keys(serviceDecorations).map(buildStaticCard);
+
+      const additional = allServices
+        .filter((service) => {
+          const slug = service?.fields?.slug;
+          return slug && !serviceDecorations[slug];
+        })
+        .map((service) => ({
+          id: service.sys.id,
+          title: service.fields.serviceName,
+          description: service.fields.description || "",
+          href: `/services/${service.fields.slug}`,
+          slug: service.fields.slug,
+          icon: "Shield",
+          theme: "medical",
+          treatments: [],
+          image: "",
+        } as ServiceCard));
+
+      mappedServices = [...curated, ...additional];
     }
   } catch {
-    // Hard failure talking to CF → global static fallback
-    mappedServices = Object.keys(serviceDecorations).map(buildStaticCard);
+    mappedServices = fallbackServices;
   }
 
   // --- FAQs ---
@@ -248,11 +265,11 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         source={source}
         variant={variant}
       />
-      <PracticeShowcase geo={geo} />
+      <PracticeShowcase />
       <ServicesOverview services={mappedServices} />
       <TreatmentJourney />
-      <MembershipHighlight officeOpen={officeOpen} />
-      <VoiceSearchOptimization source={source} />
+      <MembershipHighlight />
+      <VoiceSearchOptimization />
       <FAQSection />
     </ServerSideABWrapper>
   );

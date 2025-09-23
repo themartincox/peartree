@@ -274,10 +274,10 @@ useEffect(() => {
 
       {/* TALL CONTAINER drives stacked-sticky */}
       <div
-  ref={containerRef}
-  className="relative z-20 pb-12 md:pb-16 lg:pb-20" /* was md:pb-20 */
-  style={{ height: `calc((${journeySteps.length} + 1) * 100svh)` }} /* or keep your + sentinel div */
->
+        ref={containerRef}
+        className="relative z-20 pb-6 md:pb-5 lg:pb-2"
+        style={{ height: `calc(${journeySteps.length} * 100svh)` }}
+      >
         {/* header */}
         <div
           ref={headerRef}

@@ -41,89 +41,160 @@ export const metadata: Metadata = {
   }
 };
 
-// This object provides the decorative data that is not yet in Contentful.
-const serviceDecorations: { [key: string]: any } = {
-  'general-dentistry': {
+type ServiceDecoration = {
+  slug: string;
+  contentfulSlug?: string;
+  label: string;
+  description: string;
+  href: string;
+  icon: typeof Heart;
+  color: string;
+  features: string[];
+  image: string;
+  isCore: boolean;
+  featured?: boolean;
+};
+
+const serviceDecorations: ServiceDecoration[] = [
+  {
+    slug: "general",
+    contentfulSlug: "general-dentistry",
+    label: "General Dentistry",
+    description:
+      "Keep your smile healthy with routine examinations, hygiene visits, and preventive care tailored to your needs.",
+    href: "/services/general",
     icon: Heart,
     color: "dental-green",
     features: ["Regular Check-ups", "Professional Cleaning", "Fluoride Treatments", "Oral Health Advice"],
     image: "/images/general-dental-checkup.webp",
-    isCore: true
+    isCore: true,
   },
-  'restorative-dentistry': {
+  {
+    slug: "restorative",
+    contentfulSlug: "restorative-dentistry",
+    label: "Restorative Dentistry",
+    description:
+      "Repair or replace damaged teeth with lifelike crowns, bridges, dentures, and advanced restorative treatments.",
+    href: "/services/restorative",
     icon: Shield,
     color: "dental-green",
     features: ["Fillings", "Crowns & Bridges", "Root Canal Treatment", "Dentures"],
     image: "/images/restorative-dental-treatment.webp",
-    isCore: true
+    isCore: true,
   },
-  'cosmetic-dentistry': {
+  {
+    slug: "cosmetic",
+    contentfulSlug: "cosmetic-dentistry",
+    label: "Cosmetic Dentistry",
+    description:
+      "Design the smile you love with whitening, veneers, bonding, and bespoke makeover plans.",
+    href: "/services/cosmetic",
     icon: Sparkles,
     color: "soft-pink",
     features: ["Teeth Whitening", "Porcelain Veneers", "Composite Bonding", "Smile Makeovers"],
     image: "/images/cosmetic-dentistry-services.webp",
-    isCore: false
-  },
-  'complete-smile-makeover': {
-    icon: Zap,
-    color: "rose-500",
-    features: ["Digital Smile Design", "Multiple Treatments", "Coordinated Care", "Life-Changing Results"],
-    image: "/images/complete-smile-makeover.webp",
     isCore: false,
-    featured: true
   },
-  'wedding-day-smile': {
-    icon: Heart,
-    color: "rose-500",
-    features: ["Timeline Planning", "Bridal Packages", "Perfect Day Guarantee", "Quick Enhancements"],
-    image: "/images/wedding-day-smile.webp",
-    isCore: false,
-    featured: true
-  },
-  'dental-implants': {
+  {
+    slug: "implants",
+    contentfulSlug: "dental-implants",
+    label: "Dental Implants",
+    description:
+      "Permanent tooth replacement solutions ranging from single implants to full-arch restorations.",
+    href: "/services/implants",
     icon: Crown,
     color: "soft-pink",
     features: ["Single Implants", "Multiple Implants", "Full Mouth Restoration", "Implant-Supported Dentures"],
     image: "/images/dental-implants-procedure.webp",
-    isCore: false
+    isCore: false,
   },
-  'orthodontics': {
+  {
+    slug: "orthodontics",
+    contentfulSlug: "orthodontics",
+    label: "Orthodontics",
+    description:
+      "Straighten teeth discreetly with Invisalign, ClearCorrect, or specialist orthodontic options.",
+    href: "/services/orthodontics",
     icon: Smile,
     color: "soft-pink",
     features: ["Invisalign", "ClearCorrect", "Traditional Braces", "Retainers"],
     image: "/images/orthodontics-invisalign-treatment.webp",
-    isCore: false
+    isCore: false,
   },
-  'emergency-dentistry': {
+  {
+    slug: "emergency",
+    contentfulSlug: "emergency-dentistry",
+    label: "Emergency Dentistry",
+    description:
+      "Rapid relief for toothache, trauma, broken teeth, and urgent dental problems in Nottingham.",
+    href: "/services/emergency",
     icon: AlertCircle,
     color: "red-500",
     features: ["Pain Relief", "Urgent Repairs", "Same-Day Appointments", "Out-of-Hours Care"],
     image: "/images/emergency-dental-care.webp",
-    isCore: true
-  }
-};
+    isCore: true,
+  },
+];
 
 const ServicesPage = async () => {
   const fetchedServices = await fetchAllServices();
 
-  const services = fetchedServices.map((service: ServiceEntry) => {
-    const decoration = serviceDecorations[service.fields.slug] || {};
+  const decorationMap = new Map(
+    serviceDecorations.map((decoration) => [decoration.contentfulSlug ?? decoration.slug, decoration]),
+  );
+
+  const servicesFromCms = fetchedServices.map((service: ServiceEntry) => {
+    const contentfulSlug = service.fields.slug;
+    const decoration = decorationMap.get(contentfulSlug);
+    const routeSlug = decoration?.slug ?? contentfulSlug;
+
     return {
       id: service.sys.id,
-      title: service.fields.serviceName,
-      description: service.fields.description || '',
-      href: `/services/${service.fields.slug}`,
-      icon: decoration.icon || Heart, // Fallback icon
-      color: decoration.color || "dental-green",
-      features: decoration.features || [],
-      image: decoration.image || '',
-      isCore: decoration.isCore || false,
-      featured: decoration.featured || false,
+      slug: routeSlug,
+      title: service.fields.serviceName || decoration?.label || "",
+      description: service.fields.description || decoration?.description || '',
+      href: decoration?.href || `/services/${contentfulSlug}`,
+      icon: decoration?.icon || Heart,
+      color: decoration?.color || "dental-green",
+      features: decoration?.features || [],
+      image: decoration?.image || '',
+      isCore: decoration?.isCore ?? false,
+      featured: decoration?.featured ?? false,
+      originalSlug: contentfulSlug,
     };
   });
 
-  const coreServices = services.filter(service => service.isCore);
-  const cosmeticServices = services.filter(service => !service.isCore);
+  const cmsBySlug = new Map(servicesFromCms.map((service) => [service.slug, service]));
+
+  const decoratedServices = serviceDecorations.map((decoration) => {
+    const cmsService = cmsBySlug.get(decoration.slug);
+    if (cmsService) {
+      const { originalSlug: _originalSlug, ...rest } = cmsService;
+      return rest;
+    }
+
+    return {
+      id: decoration.slug,
+      slug: decoration.slug,
+      title: decoration.label,
+      description: decoration.description,
+      href: decoration.href,
+      icon: decoration.icon,
+      color: decoration.color,
+      features: decoration.features,
+      image: decoration.image,
+      isCore: decoration.isCore,
+      featured: decoration.featured ?? false,
+    };
+  });
+
+  const additionalServices = servicesFromCms
+    .filter((service) => !decorationMap.has(service.originalSlug))
+    .map(({ originalSlug: _originalSlug, ...service }) => service);
+  const services = [...decoratedServices, ...additionalServices];
+
+  const coreServices = services.filter((service) => service.isCore);
+  const cosmeticServices = services.filter((service) => !service.isCore);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background to-white">
@@ -167,13 +238,9 @@ const ServicesPage = async () => {
       </section>
 
       {/* Core Services Section */}
-      <section className="py-16">
+      <section className="py-16 bg-pear-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-dental-green/10 text-dental-green">
-              <Shield className="w-4 h-4 mr-2" />
-              Essential Care
-            </Badge>
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Core Dental Services
             </h2>
@@ -204,15 +271,16 @@ const ServicesPage = async () => {
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
-                          <ServiceIcon className={`w-6 h-6 ${
-                            service.color === 'red-500' ? 'text-red-500' : service.color === 'dental-green' ? 'text-dental-green' : 'text-soft-pink'
-                          }`} />
+                          <ServiceIcon
+                            className={`w-6 h-6 opacity-60 group-hover:opacity-100 transition-opacity duration-200 ${
+                              service.color === 'red-500'
+                                ? 'text-red-500'
+                                : service.color === 'dental-green'
+                                  ? 'text-dental-green'
+                                  : 'text-soft-pink'
+                            }`}
+                          />
                         </div>
-                        {service.isCore && (
-                          <Badge variant="secondary" className="bg-dental-green/10 text-dental-green text-xs backdrop-blur-sm">
-                            Essential
-                          </Badge>
-                        )}
                       </div>
                       <h3 className="text-xl font-bold text-white group-hover:text-pear-gold transition-colors drop-shadow-lg">
                         {service.title}
@@ -248,13 +316,9 @@ const ServicesPage = async () => {
       </section>
 
       {/* Cosmetic Services Section */}
-      <section className="py-16 bg-gradient-to-br from-soft-pink/5 to-soft-lavender/5">
+      <section className="py-16 bg-pear-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4 bg-soft-pink/10 text-soft-pink">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Smile Enhancement
-            </Badge>
             <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-4">
               Cosmetic & Specialty Services
             </h2>
@@ -285,11 +349,8 @@ const ServicesPage = async () => {
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm hover:scale-105 transition-all duration-200 shadow-lg">
-                          <ServiceIcon className="w-6 h-6 text-soft-pink" />
+                          <ServiceIcon className="w-6 h-6 text-soft-pink opacity-60 group-hover:opacity-100 transition-opacity duration-200" />
                         </div>
-                        <Badge variant="secondary" className="bg-soft-pink/10 text-soft-pink text-xs backdrop-blur-sm">
-                          Cosmetic
-                        </Badge>
                       </div>
                       <h3 className="text-xl font-bold text-white group-hover:text-pear-gold transition-colors drop-shadow-lg">
                         {service.title}
@@ -388,7 +449,7 @@ const ServicesPage = async () => {
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
               Take the first step towards optimal oral health and a confident smile.
-              Our team is here to provide personalized care tailored to your needs.
+              Our team is here to provide personalised care tailored to your needs.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

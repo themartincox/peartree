@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import MedicalPracticeSchema from '@/components/seo/MedicalPracticeSchema';
 import ServiceAreaSchema from '@/components/seo/ServiceAreaSchema';
+import { practiceInfo } from '@/data/practiceInfo';
 import {
   MapPin,
   Clock,
@@ -46,49 +47,56 @@ export const metadata: Metadata = {
 };
 
 export default function WestBridgfordPage() {
+  const telDisplay = practiceInfo.contact.phone;
+  const telHref = `tel:${telDisplay.replace(/\s+/g, '')}`;
+  const emergencyHref = `tel:${practiceInfo.contact.emergencyPhone.replace(/\s+/g, '')}`;
+  const address = practiceInfo.address;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://peartree.dental/west-bridgford",
+    name: "Pear Tree Dental - Premium Care for West Bridgford",
+    image: "https://peartree.dental/images/pear-tree-dental-practice.jpg",
+    description:
+      "Premium dental practice serving West Bridgford residents with luxury dental care, advanced treatments, and personalised service.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: address.street,
+      addressLocality: address.city,
+      addressRegion: address.county,
+      postalCode: address.postcode,
+      addressCountry: "GB"
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: address.gps.latitude,
+      longitude: address.gps.longitude
+    },
+    telephone: telDisplay,
+    url: "https://peartree.dental",
+    priceRange: "£££",
+    areaServed: {
+      "@type": "Place",
+      name: "West Bridgford, Nottinghamshire"
+    },
+    serviceArea: {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: address.gps.latitude,
+        longitude: address.gps.longitude
+      },
+      geoRadius: "15000"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-dental-navy text-white">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://peartree.dental/west-bridgford",
-            "name": "Pear Tree Dental - Premium Care for West Bridgford",
-            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
-            "description": "Premium dental practice serving West Bridgford residents with luxury dental care, advanced treatments, and personalized service.",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Main Street",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
-              "addressCountry": "GB"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "52.9847",
-              "longitude": "-1.0147"
-            },
-            "telephone": "0115 931 2935",
-            "url": "https://peartree.dental",
-            "priceRange": "£££",
-            "areaServed": {
-              "@type": "Place",
-              "name": "West Bridgford, Nottinghamshire"
-            },
-            "serviceArea": {
-              "@type": "GeoCircle",
-              "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "52.9847",
-                "longitude": "-1.0147"
-              },
-              "geoRadius": "15000"
-            }
-          })
+          __html: JSON.stringify(schema)
         }}
       />
 
@@ -128,7 +136,7 @@ export default function WestBridgfordPage() {
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
               West Bridgford residents choose Pear Tree Dental for exceptional dental care.
-              Experience advanced treatments, personalized service, and quality care just minutes from home.
+              Experience advanced treatments, personalised service, and quality care just minutes from home.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -137,9 +145,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
+                <Link href={telHref}>
                   <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2935
+                  Call: {telDisplay}
                 </Link>
               </Button>
               <Button
@@ -325,17 +333,30 @@ export default function WestBridgfordPage() {
               <div className="bg-gradient-to-r from-pear-gold/10 to-dental-green/10 rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">Membership Plans for West Bridgford Residents</h3>
                 <p className="text-gray-700 mb-6">
-                  Save up to 15% on all treatments with our comprehensive membership plans. Includes priority booking,
+                  Save up to 10% on all treatments with our comprehensive membership plans. Includes priority booking,
                   member benefits, and complimentary services.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold">
-                    <Crown className="w-5 h-5 mr-2" />
-                    Explore Membership Plans
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-pear-gold hover:bg-pear-gold/90 text-dental-navy font-semibold"
+                  >
+                    <Link href="/membership">
+                      <Crown className="w-5 h-5 mr-2" />
+                      Explore Membership Plans
+                    </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white">
-                    <CalendarDays className="w-5 h-5 mr-2" />
-                    Book Consultation
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-dental-green text-dental-green hover:bg-dental-green hover:text-white"
+                  >
+                    <Link href="/book">
+                      <CalendarDays className="w-5 h-5 mr-2" />
+                      Book Consultation
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -358,7 +379,7 @@ export default function WestBridgfordPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Dr. Margaret Thompson",
+                  name: "Dr. M. Thompson",
                   location: "West Bridgford",
                   profession: "Consultant",
                   text: "The level of service and attention to detail is exceptional. As a healthcare professional myself, I appreciate their advanced approach and genuine care.",
@@ -366,7 +387,7 @@ export default function WestBridgfordPage() {
                   service: "Professional Dentistry"
                 },
                 {
-                  name: "James Mitchell",
+                  name: "James M.",
                   location: "West Bridgford",
                   profession: "Business Owner",
                   text: "Outstanding cosmetic work and the convenience from West Bridgford is perfect. The team understands the importance of a professional image.",
@@ -374,7 +395,7 @@ export default function WestBridgfordPage() {
                   service: "Cosmetic Dentistry"
                 },
                 {
-                  name: "Sarah Williams",
+                  name: "Sarah W.",
                   location: "West Bridgford",
                   profession: "Solicitor",
                   text: "Premium dental care with the personal touch. The journey is easy and the results speak for themselves. Highly recommended to my colleagues.",
@@ -432,10 +453,10 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Practice Location</h3>
                       <p className="text-gray-700">
-                        Pear Tree Dental<br />
-                        Main Street<br />
-                        Burton Joyce<br />
-                        Nottinghamshire NG14 5DP
+                        {practiceInfo.name}<br />
+                        {address.street}<br />
+                        {address.city}<br />
+                        {address.county} {address.postcode}
                       </p>
                     </div>
                   </div>
@@ -445,9 +466,9 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Contact Details</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2935<br />
-                        Email: hello@peartree.dental<br />
-                        Emergency: 24/7 availability
+                        Phone: {telDisplay}<br />
+                        Email: {practiceInfo.contact.email}<br />
+                        Emergency: <a className="text-pear-primary font-semibold" href={emergencyHref}>{practiceInfo.contact.emergencyPhone}</a>
                       </p>
                     </div>
                   </div>
@@ -457,10 +478,10 @@ export default function WestBridgfordPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Flexible Hours</h3>
                       <div className="text-gray-700 space-y-1">
-                        <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                        <p>Saturday: 9:00 AM - 2:00 PM</p>
-                        <p>Evening appointments available</p>
-                        <p>Lunch-hour appointments</p>
+                        <p>{practiceInfo.openingHoursDisplay.weekdays}</p>
+                        <p>{practiceInfo.openingHoursDisplay.friday}</p>
+                        <p>{practiceInfo.openingHoursDisplay.weekend}</p>
+                        <p>{practiceInfo.openingHoursDisplay.emergency}</p>
                       </div>
                     </div>
                   </div>
@@ -516,11 +537,11 @@ export default function WestBridgfordPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white hover:bg-white/90 text-pear-gold font-semibold px-8 py-4"
+                className="bg-white hover:bg-white/90 text-pear-primary font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
-                  <Phone className="h-5 w-5 mr-2" />
-                  Call: 0115 931 2935
+                <Link href="/book">
+                  <CalendarDays className="h-5 w-5 mr-2" />
+                  Book Your Visit
                 </Link>
               </Button>
               <Button
@@ -529,9 +550,9 @@ export default function WestBridgfordPage() {
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-pear-gold px-8 py-4"
               >
-                <Link href="/membership">
-                  <Crown className="h-5 w-5 mr-2" />
-                  Membership Plans
+                <Link href={telHref}>
+                  <Phone className="h-5 w-5 mr-2" />
+                  Call: {telDisplay}
                 </Link>
               </Button>
             </div>

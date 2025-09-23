@@ -272,7 +272,7 @@ const MembershipHighlight = () => {
   }, [activeTab]);
 
   return (
-    <section className="py-16 bg-gradient-to-br from-pear-background to-white">
+    <section className="pt-9 pb-16 md:pt-7 md:pb-20 lg:pt-3 bg-gradient-to-br from-pear-background to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
        
         {/* Section Header - Simplified */}
