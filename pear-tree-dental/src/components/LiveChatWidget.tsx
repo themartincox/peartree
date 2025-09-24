@@ -200,7 +200,7 @@ export default function LiveChatWidget({
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsMinimized(!isMinimized)}
-                  className="text-white hover:bg-white/20 h-6 w-6 p-0"
+                  className="text-blue-100 hover:bg-white/20 h-6 w-6 p-0"
                 >
                   {isMinimized ? <Maximize2 className="w-3 h-3" /> : <Minimize2 className="w-3 h-3" />}
                 </Button>
@@ -208,7 +208,7 @@ export default function LiveChatWidget({
                   variant="ghost"
                   size="sm"
                   onClick={() => setIsOpen(false)}
-                  className="text-white hover:bg-white/20 h-6 w-6 p-0"
+                  className="text-blue-100 hover:bg-white/20 h-6 w-6 p-0"
                 >
                   <X className="w-3 h-3" />
                 </Button>

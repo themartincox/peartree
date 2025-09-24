@@ -256,7 +256,7 @@ const MembershipHighlight = () => {
               : key === 'child' ? 'bg-white text-soft-pink shadow-lg transform scale-105'
               : key === 'essentialMaintenance' ? 'bg-white text-dental-green shadow-lg transform scale-105'
               : 'bg-white text-pear-gold shadow-lg transform scale-105'
-              : 'text-white/90 hover:text-white hover:bg-white/10'
+              : 'text-pear-gold hover:text-pear-gold hover:bg-white/10'
           }`}
         >
           <div className="flex items-center space-x-2 sm:space-x-3">

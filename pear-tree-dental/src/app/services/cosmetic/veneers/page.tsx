@@ -538,7 +538,7 @@ export default function VeneersPage() {
               </Button>
             </a>
             <Link href="/book">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary">
+              <Button size="lg" variant="outline" className="border-white text-pear-primary hover:bg-white hover:text-pear-primary">
                 <Mail className="w-5 h-5 mr-2" />
                 Book Online Consultation
               </Button>
@@ -548,7 +548,7 @@ export default function VeneersPage() {
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             {veneerTypes.map((veneer) => (
               <Link key={veneer.id} href={veneer.href}>
-                <Button variant="ghost" className="text-white hover:bg-white/10">
+                <Button variant="ghost" className="text-pear-gold hover:bg-white/10">
                   Learn About {veneer.name.split(' ')[0]} Veneers
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

@@ -502,7 +502,7 @@ export default function TeethWhiteningPage() {
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-yellow-600 font-semibold bg-transparent">
+                  <Button size="lg" variant="outline" className="border-white text-yellow-600 hover:bg-white hover:text-yellow-600 font-semibold bg-transparent">
                     Call 0115 931 2935
                   </Button>
                 </a>

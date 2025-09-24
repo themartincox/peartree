@@ -410,7 +410,7 @@ export default function AirFlowStainRemovalPage() {
                   Book Air Flow Treatment
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600">
                   Learn About Other Hygiene Services
                 </Button>
               </div>

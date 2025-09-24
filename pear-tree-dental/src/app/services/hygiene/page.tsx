@@ -463,7 +463,7 @@ export default function HygieneServicesPage() {
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-600">
+                  <Button size="lg" variant="outline" className="border-white text-cyan-600 hover:bg-white hover:text-cyan-600">
                     Call 0115 931 2935
                   </Button>
                 </a>

@@ -134,7 +134,7 @@ export default function WhatsAppWidget({
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 h-8 w-8 p-0"
+                className="text-green-100 hover:bg-white/20 h-8 w-8 p-0"
               >
                 <X className="w-4 h-4" />
               </Button>

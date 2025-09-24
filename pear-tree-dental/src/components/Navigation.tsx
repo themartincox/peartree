@@ -577,7 +577,7 @@ const Navigation = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
+                  className="text-pear-gold hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white focus:rounded-md"
                   aria-label="Open mobile navigation menu"
                 >
                   <Menu className="h-6 w-6" />

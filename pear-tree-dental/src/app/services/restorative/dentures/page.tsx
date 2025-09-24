@@ -476,7 +476,7 @@ export default function DenturesPage() {
                   Book Free Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-amber-600">
+                <Button size="lg" variant="outline" className="border-white text-amber-600 hover:bg-white hover:text-amber-600">
                   Call 0115 931 2935
                 </Button>
               </div>

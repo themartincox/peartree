@@ -75,7 +75,7 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   !showAfter
                     ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
+                    : 'text-pear-gold hover:bg-white/20'
                 }`}
               >
                 Before
@@ -85,7 +85,7 @@ export default function BeforeAfterSlider({ images, className = "" }: BeforeAfte
                 className={`px-4 py-2 text-sm font-medium transition-colors ${
                   showAfter
                     ? 'bg-white text-black'
-                    : 'text-white hover:bg-white/20'
+                    : 'text-pear-gold hover:bg-white/20'
                 }`}
               >
                 After

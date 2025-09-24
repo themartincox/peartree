@@ -554,7 +554,7 @@ export default function NG4DentalPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-dental-green px-8 py-4"
+                className="border-white text-dental-green hover:bg-white hover:text-dental-green px-8 py-4"
               >
                 <Link href="/membership">
                   <Zap className="h-5 w-5 mr-2" />

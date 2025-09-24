@@ -303,7 +303,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
+                <Button size="lg" variant="outline" className="border-2 border-white text-purple-600 hover:bg-white hover:text-purple-600 px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -384,7 +384,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-3 font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-emerald-600 hover:bg-white hover:text-emerald-600 px-8 py-3 font-semibold rounded-full shadow-lg transform hover:scale-105 transition-all">
                     <Phone className="w-5 h-5 mr-2" />
                     Speak to Our Team
                   </Button>
@@ -523,7 +523,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
                       </Button>
                     </Link>
                     <a href="tel:01159312935" className="w-full">
-                      <Button size="lg" variant="outline" className="w-full border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all">
+                      <Button size="lg" variant="outline" className="w-full border-2 border-white text-purple-600 hover:bg-white hover:text-purple-600 px-8 py-3 font-semibold rounded-lg shadow-lg transform hover:scale-105 transition-all">
                         <Phone className="w-5 h-5 mr-2" />
                         Call Now: 0115 931 2935
                       </Button>
@@ -723,7 +723,7 @@ export default function ArnoldDentalCarePatientFeedbackPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-3 border-white text-white hover:bg-white hover:text-purple-600 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all bg-white/15 backdrop-blur-sm hover:shadow-white/50">
+                <Button size="lg" variant="outline" className="border-3 border-white text-purple-600 hover:bg-white hover:text-purple-600 px-12 py-5 text-xl font-bold rounded-full shadow-2xl transform hover:scale-110 transition-all bg-white/15 backdrop-blur-sm hover:shadow-white/50">
                   <Phone className="w-6 h-6 mr-3" />
                   Call: 0115 931 2935
                 </Button>

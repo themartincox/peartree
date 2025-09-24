@@ -577,7 +577,7 @@ export default function ImplantsPage() {
                 </Button>
               </Link>
               <Link href="/services/treatment-comparison">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary bg-transparent">
+                <Button size="lg" variant="outline" className="border-white text-pear-primary hover:bg-white hover:text-pear-primary bg-transparent">
                   Compare All Options
                 </Button>
               </Link>

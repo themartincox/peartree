@@ -277,7 +277,7 @@ export default function MapperleyEmergencyDentistPage() {
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button size="lg" variant="outline" className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Emergency Appointment
                 </Button>
@@ -634,7 +634,7 @@ export default function MapperleyEmergencyDentistPage() {
                 </Button>
               </a>
               <Link href="/book">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button size="lg" variant="outline" className="border-white text-red-600 hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-full">
                   <Calendar className="w-5 h-5 mr-2" />
                   Book Emergency Appointment
                 </Button>

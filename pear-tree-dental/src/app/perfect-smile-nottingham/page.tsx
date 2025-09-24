@@ -725,7 +725,7 @@ export default function PerfectSmileNottinghamPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 font-semibold text-lg px-8 py-4 h-auto bg-transparent">
+                <Button size="lg" variant="outline" className="border-2 border-white text-purple-600 hover:bg-white hover:text-purple-600 font-semibold text-lg px-8 py-4 h-auto bg-transparent">
                   <Phone className="w-5 h-5 mr-2" />
                   Call 0115 931 2935
                 </Button>

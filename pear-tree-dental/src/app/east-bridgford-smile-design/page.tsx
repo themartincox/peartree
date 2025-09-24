@@ -528,7 +528,7 @@ export default function EastBridgfordSmileDesignPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-pear-gold px-8 py-4"
+                className="border-white text-pear-gold hover:bg-white hover:text-pear-gold px-8 py-4"
               >
                 <Link href="/east-bridgford">
                   <ArrowRight className="h-5 w-5 mr-2" />

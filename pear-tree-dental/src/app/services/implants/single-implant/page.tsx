@@ -535,7 +535,7 @@ export default function SingleImplantPage() {
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <Link href="/services/treatment-comparison">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-teal-600">
+                  <Button size="lg" variant="outline" className="border-white text-teal-600 hover:bg-white hover:text-teal-600">
                     Compare All Treatment Options
                   </Button>
                 </Link>

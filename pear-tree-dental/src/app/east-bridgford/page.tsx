@@ -508,7 +508,7 @@ export default function EastBridgfordPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4"
+                className="border-white text-pear-primary hover:bg-white hover:text-pear-primary px-8 py-4"
               >
                 <Link href="/membership">
                   <Crown className="h-5 w-5 mr-2" />

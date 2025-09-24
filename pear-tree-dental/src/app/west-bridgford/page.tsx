@@ -548,7 +548,7 @@ export default function WestBridgfordPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-pear-gold px-8 py-4"
+                className="border-white text-pear-gold hover:bg-white hover:text-pear-gold px-8 py-4"
               >
                 <Link href={telHref}>
                   <Phone className="h-5 w-5 mr-2" />

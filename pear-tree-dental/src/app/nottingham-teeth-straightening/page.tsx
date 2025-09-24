@@ -521,7 +521,7 @@ export default function NottinghamTeethStraighteningPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-dental-green px-8 py-4"
+                className="border-white text-dental-green hover:bg-white hover:text-dental-green px-8 py-4"
               >
                 <Link href="/contact">
                   Book Online Consultation

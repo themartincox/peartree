@@ -345,7 +345,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button size="lg" variant="outline" className="border-white text-rose-600 hover:bg-white hover:text-rose-600 px-8 py-4 text-lg font-semibold rounded-full">
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>
@@ -779,7 +779,7 @@ export default function GedlingCompleteSmileMakeoversPage() {
                 </Button>
               </Link>
               <a href="tel:01159312935">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-rose-600 px-8 py-4 text-lg font-semibold rounded-full">
+                <Button size="lg" variant="outline" className="border-white text-rose-600 hover:bg-white hover:text-rose-600 px-8 py-4 text-lg font-semibold rounded-full">
                   <Phone className="w-5 h-5 mr-2" />
                   Call: 0115 931 2935
                 </Button>

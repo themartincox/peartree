@@ -539,7 +539,7 @@ export default function CompleteDenturesPage() {
                   Book Complete Denture Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+                <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600">
                   Explore Other Denture Options
                 </Button>
               </div>

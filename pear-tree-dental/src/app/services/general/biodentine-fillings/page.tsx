@@ -484,7 +484,7 @@ export default function BiodentineFillingPage() {
                   Book Biodentine Consultation
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-green-600">
+                <Button size="lg" variant="outline" className="border-white text-green-600 hover:bg-white hover:text-green-600">
                   Learn About Other Filling Options
                 </Button>
               </div>

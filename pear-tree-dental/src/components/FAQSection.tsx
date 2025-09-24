@@ -424,7 +424,7 @@ const FAQSection = () => {
                       className={`w-full text-left p-2 sm:p-3 rounded-lg transition-all duration-300 ${
                         activeTab === key
                           ? 'bg-white text-pear-primary shadow-lg'
-                          : 'text-white/80 hover:text-white hover:bg-white/10'
+                          : 'text-pear-gold hover:text-pear-gold hover:bg-white/10'
                       }`}
                     >
                       <div className="flex items-center space-x-2 sm:space-x-3">

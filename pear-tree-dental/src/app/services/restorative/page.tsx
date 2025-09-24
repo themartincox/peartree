@@ -703,7 +703,7 @@ export default function RestorativeDentistryPage() {
                   </Button>
                 </Link>
                 <a href="tel:01159312935">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-pear-primary bg-transparent">
+                  <Button size="lg" variant="outline" className="border-white text-pear-primary hover:bg-white hover:text-pear-primary bg-transparent">
                     Call 0115 931 2935
                   </Button>
                 </a>
