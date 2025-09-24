@@ -4,13 +4,11 @@ export const dynamic = "force-dynamic";
 import type { MetadataRoute } from 'next';
 import {
   fetchBlogPosts,
-  fetchPriorityServices,
   fetchPriorityLocations,
-  fetchAllServices,
   fetchAllLocations,
-  cfEntries, // add this if you call cfEntries(...)
   contentfulHealthCheck,
 } from '@/lib/contentful'
+import { fetchCategorySlugs, fetchTreatmentSlugs } from '@/lib/services'
 
 // Helper function to safely convert dates to ISO string
 const toISO = (input?: string | number | Date) => {
@@ -75,134 +73,90 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    // Fetch content based on GENERATION_MODE
     const mode = process.env.GENERATION_MODE || 'priority';
 
-    // Regular blog posts (always include these)
-    const blogPosts = await fetchBlogPosts(100);
+    const [blogPosts, categories, treatments] = await Promise.all([
+      fetchBlogPosts(100),
+      fetchCategorySlugs(),
+      fetchTreatmentSlugs(),
+    ]);
+
     const blogUrls = blogPosts.map(post => ({
       url: `https://peartree.dental/patient-education/${post.fields.slug}`,
-      lastModified: toISO(post.sys?.updatedAt), // Safe date handling
+      lastModified: toISO(post.sys?.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }));
 
-    // Dynamic generation based on mode
+    const categoryUrls = categories.map(category => ({
+      url: `https://peartree.dental/services/${category.slug}`,
+      lastModified: toISO(category.updatedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    }));
+
+    const treatmentUrls = treatments
+      .filter(treatment => treatment.parentSlug)
+      .map(treatment => ({
+        url: `https://peartree.dental/services/${treatment.parentSlug}/${treatment.slug}`,
+        lastModified: toISO(treatment.updatedAt),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+      }));
+
+    let serviceSubset = categories;
+    let locationSubset = [] as Awaited<ReturnType<typeof fetchAllLocations>>;
+
+    if (mode === 'priority') {
+      locationSubset = await fetchPriorityLocations();
+      if (!locationSubset.length) {
+        locationSubset = await fetchAllLocations();
+      }
+      serviceSubset = categories.slice(0, Math.min(6, categories.length));
+    } else if (mode === 'full') {
+      locationSubset = await fetchAllLocations();
+      serviceSubset = categories;
+    } else {
+      const allLocations = await fetchAllLocations();
+      const majorLocations = allLocations.filter(loc => loc.fields.tier === 'major');
+      locationSubset = majorLocations.length ? majorLocations : allLocations.slice(0, 20);
+      serviceSubset = categories.slice(0, Math.min(10, categories.length));
+    }
+
+    const selectedLocations = locationSubset.slice(0, mode === 'full' ? 50 : locationSubset.length);
+
     const serviceLocationUrls: MetadataRoute.Sitemap = [];
     const blogServiceSuburbUrls: MetadataRoute.Sitemap = [];
 
-    if (mode === 'priority') {
-      // Only include priority services and locations
-      const [services, locations] = await Promise.all([
-        fetchPriorityServices(),
-        fetchPriorityLocations()
-      ]);
+    for (const service of serviceSubset) {
+      for (const location of selectedLocations) {
+        const serviceSlug = service.slug;
+        const locationSlug = location.fields.slug;
 
-      for (const service of services) {
         serviceLocationUrls.push({
-          url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
+          url: `https://peartree.dental/services-location/${serviceSlug}/${locationSlug}`,
+          lastModified: new Date(),
           changeFrequency: 'monthly' as const,
-          priority: 0.8,
+          priority: 0.6,
         });
 
-        for (const location of locations) {
-          serviceLocationUrls.push({
-            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-
-          // Add canonical blog/service/suburb URLs
-          blogServiceSuburbUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-        }
-      }
-    } else if (mode === 'full') {
-      // Include all services and locations (potentially a lot of URLs)
-      const [services, locations] = await Promise.all([
-        fetchAllServices(),
-        fetchAllLocations()
-      ]);
-
-      for (const service of services) {
-        serviceLocationUrls.push({
-          url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
+        blogServiceSuburbUrls.push({
+          url: `https://peartree.dental/blog/${serviceSlug}/${locationSlug}`,
+          lastModified: new Date(),
           changeFrequency: 'monthly' as const,
-          priority: 0.8,
+          priority: 0.6,
         });
-
-        // Limit the combinations to avoid excessive URLs
-        const topLocations = locations.slice(0, 50); // Limit to top 50 locations
-        for (const location of topLocations) {
-          serviceLocationUrls.push({
-            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-
-          // Add canonical blog/service/suburb URLs
-          blogServiceSuburbUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-        }
-      }
-    } else {
-      // 'staged' mode or any other - use a balanced approach
-      const [services, locations] = await Promise.all([
-        fetchAllServices(),
-        fetchAllLocations()
-      ]);
-
-      // Filter priority services, or use top 10
-      const priorityServices = services
-        .filter(s => s.fields.priority)
-        .length ? services.filter(s => s.fields.priority) : services.slice(0, 10);
-
-      // Filter major locations, or use top 20
-      const majorLocations = locations
-        .filter(l => l.fields.tier === 'major')
-        .length ? locations.filter(l => l.fields.tier === 'major') : locations.slice(0, 20);
-
-      for (const service of priorityServices) {
-        serviceLocationUrls.push({
-          url: `https://peartree.dental/services/${service.fields.slug}`,
-          lastModified: toISO(service.sys?.updatedAt), // Safe date handling
-          changeFrequency: 'monthly' as const,
-          priority: 0.8,
-        });
-
-        for (const location of majorLocations) {
-          serviceLocationUrls.push({
-            url: `https://peartree.dental/services-location/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-
-          // Add canonical blog/service/suburb URLs
-          blogServiceSuburbUrls.push({
-            url: `https://peartree.dental/blog/${service.fields.slug}/${location.fields.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.6,
-          });
-        }
       }
     }
 
-    // Combine all URLs - /near-me routes are deliberately excluded from the sitemap
-    return [...baseUrls, ...blogUrls, ...serviceLocationUrls, ...blogServiceSuburbUrls];
+    return [
+      ...baseUrls,
+      ...categoryUrls,
+      ...treatmentUrls,
+      ...serviceLocationUrls,
+      ...blogServiceSuburbUrls,
+      ...blogUrls,
+    ];
   } catch (error) {
     console.error('Error generating sitemap:', error);
     return baseUrls;

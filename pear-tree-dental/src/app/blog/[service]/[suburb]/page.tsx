@@ -101,7 +101,10 @@ export async function generateStaticParams() {
     if (!healthy) return []
 
     const [allServices, allLocations] = await Promise.all([
-      getEntries<{ fields: { slug: string } }>({ content_type: process.env.CONTENTFUL_SERVICE_TYPE_ID, select: 'fields.slug' }, 'generateStaticParams:services'),
+      getEntries<{ fields: { slug: string } }>({
+        content_type: process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID,
+        select: 'fields.slug'
+      }, 'generateStaticParams:services'),
       getEntries<{ fields: { slug: string } }>({ content_type: process.env.CONTENTFUL_LOCATION_TYPE_ID, select: 'fields.slug' }, 'generateStaticParams:locations')
     ])
 

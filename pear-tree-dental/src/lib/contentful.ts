@@ -155,7 +155,7 @@ export async function fetchBlogPosts(opts?: number | { limit?: number }) {
 }
 
 export async function fetchServiceBySlug(slug: string) {
-  const typeId = process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service'
+  const typeId = process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service'
   const res: any = await cfEntries(
     { content_type: typeId, 'fields.slug': slug, limit: 1 },
     `fetchServiceBySlug:${slug}`
@@ -173,7 +173,7 @@ export async function fetchLocationBySlug(slug: string) {
 }
 
 export async function fetchAllServices(select?: string) {
-  const typeId = process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service'
+  const typeId = process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service'
   const res: any = await cfEntries(
     { content_type: typeId, select: select || 'fields.slug,fields.name', limit: 1000 },
     'fetchAllServices'
@@ -192,7 +192,7 @@ export async function fetchAllLocations(select?: string) {
 
 export async function fetchPriorityServices() {
   const prim = await cfEntries<any>(
-    { content_type: process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service', 'fields.priority': true, limit: 100 },
+    { content_type: process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'service', 'fields.priority': true, limit: 100 },
     'fetchPriorityServices'
   )
   return (prim?.items?.length ? prim.items : await fetchAllServices()) || []

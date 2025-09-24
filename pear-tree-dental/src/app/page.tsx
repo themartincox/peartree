@@ -4,8 +4,7 @@ import dynamicImport from "next/dynamic";
 import { headers } from "next/headers";
 
 // Data fetching and types
-import { fetchAllServices } from "@/lib/contentful-client";
-import type { ServiceEntry } from "@/types/contentful";
+import { fetchHubData } from "@/lib/services";
 import { practiceInfo } from "@/data/practiceInfo";
 
 // Critical above-the-fold components
@@ -67,6 +66,7 @@ import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 // This object provides the decorative data that is not yet in Contentful.
 const serviceDecorations: { [key: string]: any } = {
   'general': {
+    contentfulSlug: "general-dentistry",
     label: "General Dentistry",
     description: "Keep your family's smiles healthy with regular check-ups, hygiene visits, and everyday dentistry.",
     href: "/services/general",
@@ -76,6 +76,7 @@ const serviceDecorations: { [key: string]: any } = {
     image: "/images/general-dental-checkup.webp",
   },
   'cosmetic': {
+    contentfulSlug: "cosmetic-dentistry",
     label: "Cosmetic Dentistry",
     description: "Smile makeovers, whitening, and veneers designed to enhance your confidence.",
     href: "/services/cosmetic",
@@ -85,6 +86,7 @@ const serviceDecorations: { [key: string]: any } = {
     image: "/images/cosmetic-dentistry-services.webp",
   },
   'restorative': {
+    contentfulSlug: "restorative-dentistry",
     label: "Restorative Dentistry",
     description: "Repair and rebuild teeth with crowns, bridges, dentures, and more.",
     href: "/services/restorative",
@@ -94,6 +96,7 @@ const serviceDecorations: { [key: string]: any } = {
     image: "/images/restorative-dental-treatment.webp",
   },
   'implants': {
+    contentfulSlug: "dental-implants",
     label: "Dental Implants",
     description: "Long-lasting implant solutions from single teeth to full-arch smile restorations.",
     href: "/services/implants",
@@ -103,6 +106,7 @@ const serviceDecorations: { [key: string]: any } = {
     image: "/images/dental-implants-procedure.webp",
   },
   'orthodontics': {
+    contentfulSlug: "orthodontics",
     label: "Orthodontics",
     description: "Discreet teeth straightening with Invisalign, ClearCorrect, and specialist retainers.",
     href: "/services/orthodontics",
@@ -112,6 +116,7 @@ const serviceDecorations: { [key: string]: any } = {
     image: "/images/orthodontics-invisalign-treatment.webp",
   },
   'emergency-dentist': {
+    contentfulSlug: "emergency-dentistry",
     label: "Emergency Dentist",
     description: "Same-day relief for tooth pain, trauma, and urgent dental problems.",
     href: "/services/emergency",
@@ -145,38 +150,17 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   const variant = await getVariant();
 
-  // Fetch all services from Contentful
-  const allServices = await fetchAllServices();
+  const { categories } = await fetchHubData();
+  const categoriesBySlug = new Map(categories.map((category) => [category.slug, category]));
 
-  // Map and enrich the fetched services with decorative data
-  const mappedServices = allServices.map((service: ServiceEntry) => {
-    const decoration = serviceDecorations[service.fields.slug] || {};
-    return {
-      id: service.sys.id,
-      title: service.fields.serviceName || decoration.label || "",
-      description: service.fields.description || decoration.description || '',
-      href: decoration.href || `/services/${service.fields.slug}`,
-      slug: service.fields.slug,
-      // Merge decorative fields from the map
-      icon: decoration.icon || "Shield", // Fallback icon
-      theme: decoration.theme || "medical",
-      treatments: decoration.treatments || [],
-      image: decoration.image || '',
-    };
-  });
-
-  const mappedBySlug = new Map(mappedServices.map((service) => [service.slug, service]));
   const servicesForOverview = Object.entries(serviceDecorations).map(([slug, decoration]) => {
-    const mapped = mappedBySlug.get(slug);
-    if (mapped) {
-      return mapped;
-    }
+    const match = categoriesBySlug.get(decoration.contentfulSlug ?? slug) ?? categoriesBySlug.get(slug);
 
     return {
-      id: slug,
-      title: decoration.label,
-      description: decoration.description,
-      href: decoration.href,
+      id: match?.sys.id ?? slug,
+      title: match?.title ?? decoration.label,
+      description: match?.excerpt ?? decoration.description,
+      href: match ? `/services/${match.slug}` : decoration.href,
       slug,
       icon: decoration.icon,
       theme: decoration.theme,

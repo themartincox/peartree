@@ -55,7 +55,11 @@ function getMockContentfulClient() {
       console.log('Using mock Contentful client with query:', query);
 
       // Mock data based on query content type
-      if (query.content_type === process.env.CONTENTFUL_SERVICE_TYPE_ID || query.content_type === 'serviceData') {
+      if (
+        query.content_type === process.env.SERVICE_TYPE_ID ||
+        query.content_type === process.env.CONTENTFUL_SERVICE_TYPE_ID ||
+        query.content_type === 'serviceData'
+      ) {
         return mockServiceEntries(query);
       } else if (query.content_type === process.env.CONTENTFUL_LOCATION_TYPE_ID || query.content_type === 'locationData') {
         return mockLocationEntries(query);
@@ -278,7 +282,7 @@ export async function fetchServiceBySlug(slug: string): Promise<ServiceEntry | n
     const client = await getContentfulClient();
     if (!client) return null;
 
-    const serviceTypeId = process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
+    const serviceTypeId = process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
 
     const response = await client.getEntries({
       content_type: serviceTypeId,
@@ -336,7 +340,7 @@ export async function fetchAllServices(): Promise<ServiceEntry[]> {
     const client = await getContentfulClient();
     if (!client) return [];
 
-    const serviceTypeId = process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
+    const serviceTypeId = process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
 
     const response = await client.getEntries({
       content_type: serviceTypeId,
@@ -504,7 +508,7 @@ export async function fetchPriorityServices(): Promise<ServiceEntry[]> {
     const client = await getContentfulClient();
     if (!client) return [];
 
-    const serviceTypeId = process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
+    const serviceTypeId = process.env.SERVICE_TYPE_ID || process.env.CONTENTFUL_SERVICE_TYPE_ID || 'serviceData';
 
     const response = await client.getEntries({
       content_type: serviceTypeId,
