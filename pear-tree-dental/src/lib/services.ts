@@ -84,7 +84,12 @@ const HUB_SERVICES_QUERY = /* GraphQL */ `
         excerpt
         sortOrder
         featuredOnHub
-        parent { slug title }
+        parent {
+          ... on Service {
+            slug
+            title
+          }
+        }
       }
     }
   }
@@ -140,7 +145,12 @@ const CATEGORY_QUERY = /* GraphQL */ `
         slug
         excerpt
         sortOrder
-        parent { slug title }
+        parent {
+          ... on Service {
+            slug
+            title
+          }
+        }
       }
     }
   }
@@ -183,12 +193,22 @@ const TREATMENT_QUERY = /* GraphQL */ `
         schemaType
         body { json }
         heroImage { url description title }
-        parent { title slug }
+        parent {
+          ... on Service {
+            title
+            slug
+          }
+        }
         relatedCollection(limit: 6) {
           items {
             title
             slug
-            parent { slug title }
+            parent {
+              ... on Service {
+                slug
+                title
+              }
+            }
           }
         }
       }
@@ -223,7 +243,12 @@ const TREATMENT_SLUGS_QUERY = /* GraphQL */ `
       items {
         sys { id }
         slug
-        parent { slug title }
+        parent {
+          ... on Service {
+            slug
+            title
+          }
+        }
       }
     }
   }
