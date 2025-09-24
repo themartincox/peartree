@@ -132,7 +132,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
 
           {/* Desktop variant hidden on mobile */}
           <p
-            className="hidden lg:block text-xl text-pear-primary font-semi-bold leading-relaxed max-w-2xl
+            className="hidden lg:block text-xl text-pear-primary font-semibold leading-relaxed max-w-2xl
                        mb-8 drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]"
           >
             Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
