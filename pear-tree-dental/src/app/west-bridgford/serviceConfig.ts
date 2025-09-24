@@ -17,7 +17,6 @@ import {
   Star,
   Syringe,
   Timer,
-  Tooth,
   TrendingUp,
   Wand2
 } from "lucide-react";

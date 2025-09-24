@@ -1,6 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
+import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchAllServices } from "@/lib/contentful-client";
@@ -46,8 +47,6 @@ const MembershipHighlight = dynamicImport(
     loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
   },
 );
-
-const JudgeBanner = dynamicImport(() => import("@/components/JudgeBanner"));
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
@@ -221,14 +220,13 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   return (
     <ServerSideABWrapper variant={variant}>
-      {showJudgeBanner && <JudgeBanner city={visitorCity} />}
       <ServiceFAQSchema
         serviceName="Pear Tree Dental Practice"
         faqs={homepageFAQs}
         pageUrl="/"
       />
       <ClientGoogleReviews />
-      <Hero />
+      <Hero nonLocalBanner={showJudgeBanner ? { city: visitorCity } : null} />
       <PracticeShowcase />
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
