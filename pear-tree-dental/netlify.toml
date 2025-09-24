@@ -96,6 +96,48 @@
   to = "/404"
   status = 404
 
+[[redirects]]
+  from = "/arnold-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/park-dental-care-reviews-nottingham"
+  to = "/reviews/the-park"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carlton-dental-surgery-reviews-nottingham"
+  to = "/reviews/carlton"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mapperley-dental-practice-reviews-nottingham"
+  to = "/reviews/mapperley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impressions-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/westdale-dental-reviews-nottingham"
+  to = "/reviews/mapperley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sherwood-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
 # Ignore "janet" and API endpoints as requested
 
 [dev]
