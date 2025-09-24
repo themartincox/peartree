@@ -336,9 +336,14 @@ export async function renderCategoryFallback(slug: string): Promise<ReactElement
   const loader = resolveCategoryFallbackLoader(slug);
   if (!loader) return null;
 
-  const mod = await loader();
-  const Component = mod.default;
-  return createElement(Component);
+  try {
+    const mod = await loader();
+    const Component = mod.default;
+    return createElement(Component);
+  } catch (error) {
+    console.error(`[service-fallbacks] Failed to render category fallback for slug "${slug}"`, error);
+    return null;
+  }
 }
 
 export async function renderTreatmentFallback(
@@ -352,7 +357,15 @@ export async function renderTreatmentFallback(
 
   if (!loader) return null;
 
-  const mod = await loader();
-  const Component = mod.default;
-  return createElement(Component);
+  try {
+    const mod = await loader();
+    const Component = mod.default;
+    return createElement(Component);
+  } catch (error) {
+    console.error(
+      `[service-fallbacks] Failed to render treatment fallback for "${categorySlug}/${treatmentSlug}"`,
+      error,
+    );
+    return null;
+  }
 }
