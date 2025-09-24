@@ -3,6 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 const ENABLE_COHORT = process.env.ENABLE_COHORT !== "false";
 
+const LOCAL_CITIES = new Set([
+  "Nottingham",
+  "Gedling",
+  "Carlton",
+  "Burton Joyce",
+  "Mapperley",
+  "Arnold",
+  "West Bridgford",
+]);
+
 export function middleware(request: NextRequest) {
   const t0 = performance.now();
 
@@ -13,19 +23,25 @@ export function middleware(request: NextRequest) {
   }
   const contentType = request.headers.get("content-type") || "";
   const accept = request.headers.get("accept") || "";
-  if (contentType.includes("application/json") || accept.includes("application/json") || accept.includes("text/event-stream")) {
+  if (
+    contentType.includes("application/json") ||
+    accept.includes("application/json") ||
+    accept.includes("text/event-stream")
+  ) {
     return NextResponse.next();
   }
 
-  // We'll fill this, then pass it to NextResponse.next()
   const reqHeaders = new Headers(request.headers);
 
   if (ENABLE_COHORT) {
-    // --- compute cohorts ---
     const city = request.geo?.city || "";
     const region = request.geo?.region || "";
     const country = request.geo?.country || "";
     const postal = request.geo?.postalCode || "";
+
+    const isLocal =
+      country === "GB" &&
+      (LOCAL_CITIES.has(city) || (region === "England" && (postal.startsWith("NG") || postal.startsWith("DE"))));
 
     let geo = "global";
     if (city === "Nottingham") {
@@ -47,34 +63,36 @@ export function middleware(request: NextRequest) {
 
     const ref = request.headers.get("referer") || "";
     const utm = request.nextUrl.searchParams.get("utm_source") || "";
-    const source = utm || (ref.includes("google.") ? "organic-google" : ref.includes("facebook.") ? "organic-facebook" : "direct");
+    const sourceCandidate = ref.includes("google.")
+      ? "organic-google"
+      : ref.includes("facebook.")
+      ? "organic-facebook"
+      : "direct";
+    const source = utm || sourceCandidate;
 
     const cohort = `geo=${geo}; time=${time}; office-hours=${office}; device=${device}; source=${source}`;
 
-    // ✅ 1) Set REQUEST headers *before* NextResponse.next()
     reqHeaders.set("x-ptd-cohort", cohort);
     reqHeaders.set("x-peartree-geo", geo);
     reqHeaders.set("x-peartree-time", time);
     reqHeaders.set("x-peartree-office-hours", office);
     reqHeaders.set("x-peartree-device", device);
     reqHeaders.set("x-peartree-source", source);
+    reqHeaders.set("x-peartree-city", city);
+    reqHeaders.set("x-peartree-country", country);
+    reqHeaders.set("x-peartree-local", isLocal ? "true" : "false");
   }
 
-  // ✅ 2) Now create the response, passing the modified request headers
   const res = NextResponse.next({ request: { headers: reqHeaders } });
 
   if (ENABLE_COHORT) {
-    // Optional debug response header
     res.headers.set("x-ptd-cohort", reqHeaders.get("x-ptd-cohort") || "");
 
-    // ✅ 3) Netlify cache segmentation (cookieless, keep minimal)
-    // Use the canonical casing Netlify documents ("Netlify-Vary"); it will show as lower-case in responses.
-    const varyBy = "header=x-peartree-geo|x-peartree-office-hours|x-peartree-device";
+    const varyBy = "header=x-peartree-geo|x-peartree-office-hours|x-peartree-device|x-peartree-local";
     const existing = res.headers.get("Netlify-Vary") || res.headers.get("netlify-vary");
     res.headers.set("Netlify-Vary", existing ? `${existing}, ${varyBy}` : varyBy);
   }
 
-  // Server-Timing
   const dur = Math.round((performance.now() - t0) * 10) / 10;
   const prev = res.headers.get("Server-Timing");
   res.headers.set("Server-Timing", prev ? `${prev}, mw;dur=${dur}` : `mw;dur=${dur}`);

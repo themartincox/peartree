@@ -1,8 +1,6 @@
-// app/page.tsx
 import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
-import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchAllServices } from "@/lib/contentful-client";
@@ -13,9 +11,9 @@ import { practiceInfo } from "@/data/practiceInfo";
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
 
-// Client wrapper for Google reviews
-const ClientGoogleReviews = dynamicImport(() => import("@/components/ClientGoogleReviews"), {
-  ssr: true,
+// Add ClientGoogleReviews wrapper with 'use client' directive
+const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), {
+  ssr: true
 });
 
 // Loaders for dynamic components
@@ -28,43 +26,50 @@ import {
 } from "@/components/WelcomingLoader";
 
 // Below-the-fold components - loaded dynamically
-const ServicesOverview = dynamicImport(() => import("@/components/ServicesOverview"), {
-  loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
-});
+const ServicesOverview = dynamicImport(
+  () => import("@/components/ServicesOverview"),
+  {
+    loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
+  },
+);
 
-const TreatmentJourney = dynamicImport(() => import("@/components/TreatmentJourney"), {
-  loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
-});
+const TreatmentJourney = dynamicImport(
+  () => import("@/components/TreatmentJourney"),
+  {
+    loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
+  },
+);
 
-const MembershipHighlight = dynamicImport(() => import("@/components/MembershipHighlight"), {
-  loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
+const MembershipHighlight = dynamicImport(
+  () => import("@/components/MembershipHighlight"),
+  {
+    loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
+  },
+);
+
+const JudgeBanner = dynamicImport(() => import("@/components/JudgeBanner"), {
+  ssr: false,
 });
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
 });
 
-const VoiceSearchOptimization = dynamicImport(() => import("@/components/VoiceSearchOptimization"), {
-  loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
-});
+const VoiceSearchOptimization = dynamicImport(
+  () => import("@/components/VoiceSearchOptimization"),
+  {
+    loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
+  },
+);
 
 import ServerSideABWrapper from "@/components/ServerSideABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
-// --- Static service metadata for fallback + enrichment ---
-type ServiceDecoration = {
-  label: string;
-  description?: string;
-  href: string;
-  icon: string;
-  theme: string;
-  treatments: string[];
-  image: string;
-};
-
-const serviceDecorations: Record<string, ServiceDecoration> = {
-  general: {
+// --- Service Data Mapping ---
+// This object provides the decorative data that is not yet in Contentful.
+const serviceDecorations: { [key: string]: any } = {
+  'general': {
     label: "General Dentistry",
     description: "Keep your family's smiles healthy with regular check-ups, hygiene visits, and everyday dentistry.",
     href: "/services/general",
@@ -73,7 +78,7 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
     treatments: ["Check-ups & Cleaning", "Fillings", "Extractions", "Root Canal"],
     image: "/images/general-dental-checkup.webp",
   },
-  cosmetic: {
+  'cosmetic': {
     label: "Cosmetic Dentistry",
     description: "Smile makeovers, whitening, and veneers designed to enhance your confidence.",
     href: "/services/cosmetic",
@@ -82,7 +87,7 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
     treatments: ["Teeth Whitening", "Veneers", "Bonding", "Smile Makeover"],
     image: "/images/cosmetic-dentistry-services.webp",
   },
-  restorative: {
+  'restorative': {
     label: "Restorative Dentistry",
     description: "Repair and rebuild teeth with crowns, bridges, dentures, and more.",
     href: "/services/restorative",
@@ -91,7 +96,7 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
     treatments: ["Crowns", "Bridges", "Dentures", "Inlays & Onlays"],
     image: "/images/restorative-dental-treatment.webp",
   },
-  implants: {
+  'implants': {
     label: "Dental Implants",
     description: "Long-lasting implant solutions from single teeth to full-arch smile restorations.",
     href: "/services/implants",
@@ -100,7 +105,7 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
     treatments: ["Single Implants", "Multiple Implants", "All-on-4", "Implant Bridges"],
     image: "/images/dental-implants-procedure.webp",
   },
-  orthodontics: {
+  'orthodontics': {
     label: "Orthodontics",
     description: "Discreet teeth straightening with Invisalign, ClearCorrect, and specialist retainers.",
     href: "/services/orthodontics",
@@ -109,7 +114,7 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
     treatments: ["Invisalign", "ClearCorrect", "Retainers", "Orthodontic Consultation"],
     image: "/images/orthodontics-invisalign-treatment.webp",
   },
-  "emergency-dentist": {
+  'emergency-dentist': {
     label: "Emergency Dentist",
     description: "Same-day relief for tooth pain, trauma, and urgent dental problems.",
     href: "/services/emergency",
@@ -120,108 +125,69 @@ const serviceDecorations: Record<string, ServiceDecoration> = {
   },
 };
 
-type ServiceCard = {
-  id: string;
-  title: string;
-  description: string;
-  href: string;
-  slug: string;
-  icon: string;
-  theme: string;
-  treatments: string[];
-  image: string;
-};
-
-// --- A/B metadata ---
+// Generate metadata based on A/B test variant
 export async function generateMetadata(): Promise<Metadata> {
   const variant = await getVariant();
   const variantMetadata = getVariantMetadata(variant);
+
   return {
     title: variantMetadata.title,
     description: variantMetadata.description,
-    other: { "x-ab-variant": variant },
+    other: {
+      "x-ab-variant": variant,
+    },
   };
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  // Read cohort headers the middleware forwarded as *request* headers
-  const h = headers();
-  const geo = h.get("x-peartree-geo") ?? "global";
-  const timeOfDay = h.get("x-peartree-time") ?? "day";
-  const officeOpen = h.get("x-peartree-office-hours") === "true";
-  const device = h.get("x-peartree-device") ?? "desktop";
-  const source = h.get("x-peartree-source") ?? "direct";
+  const headerStore = headers();
+  const visitorCity = headerStore.get("x-peartree-city") ?? "";
+  const visitorCountry = headerStore.get("x-peartree-country") ?? "";
+  const visitorIsLocal = headerStore.get("x-peartree-local") === "true";
+  const showJudgeBanner = visitorCountry === "GB" && !visitorIsLocal && Boolean(visitorCity);
 
   const variant = await getVariant();
 
-  const decorationEntries = Object.entries(serviceDecorations);
-  const fallbackServices: ServiceCard[] = decorationEntries.map(([slug, deco]) => ({
-    id: `static-${slug}`,
-    title: deco.label,
-    description: deco.description || "",
-    href: deco.href,
-    slug,
-    icon: deco.icon,
-    theme: deco.theme,
-    treatments: deco.treatments,
-    image: deco.image,
-  }));
+  // Fetch all services from Contentful
+  const allServices = await fetchAllServices();
 
-  let mappedServices: ServiceCard[] = fallbackServices;
+  // Map and enrich the fetched services with decorative data
+  const mappedServices = allServices.map((service: ServiceEntry) => {
+    const decoration = serviceDecorations[service.fields.slug] || {};
+    return {
+      id: service.sys.id,
+      title: service.fields.serviceName || decoration.label || "",
+      description: service.fields.description || decoration.description || '',
+      href: decoration.href || `/services/${service.fields.slug}`,
+      slug: service.fields.slug,
+      // Merge decorative fields from the map
+      icon: decoration.icon || "Shield", // Fallback icon
+      theme: decoration.theme || "medical",
+      treatments: decoration.treatments || [],
+      image: decoration.image || '',
+    };
+  });
 
-  try {
-    const allServices = await fetchAllServices();
-
-    if (Array.isArray(allServices) && allServices.length > 0) {
-      const bySlug = new Map(
-        allServices
-          .filter((service: ServiceEntry) => service?.fields?.slug)
-          .map((service: ServiceEntry) => [service.fields.slug, service]),
-      );
-
-      const curated = decorationEntries.map(([slug, deco]) => {
-        const fromContentful = bySlug.get(slug);
-        if (!fromContentful) {
-          return fallbackServices.find((svc) => svc.slug === slug)!;
-        }
-
-        return {
-          id: fromContentful.sys.id,
-          title: fromContentful.fields.serviceName || deco.label,
-          description: fromContentful.fields.description || deco.description || "",
-          href: deco.href,
-          slug,
-          icon: deco.icon,
-          theme: deco.theme,
-          treatments: deco.treatments,
-          image: deco.image,
-        } as ServiceCard;
-      });
-
-      const additional = allServices
-        .filter((service) => {
-          const slug = service?.fields?.slug;
-          return slug && !serviceDecorations[slug];
-        })
-        .map((service) => ({
-          id: service.sys.id,
-          title: service.fields.serviceName,
-          description: service.fields.description || "",
-          href: `/services/${service.fields.slug}`,
-          slug: service.fields.slug,
-          icon: "Shield",
-          theme: "medical",
-          treatments: [],
-          image: "",
-        } as ServiceCard));
-
-      mappedServices = [...curated, ...additional];
+  const mappedBySlug = new Map(mappedServices.map((service) => [service.slug, service]));
+  const servicesForOverview = Object.entries(serviceDecorations).map(([slug, decoration]) => {
+    const mapped = mappedBySlug.get(slug);
+    if (mapped) {
+      return mapped;
     }
-  } catch {
-    mappedServices = fallbackServices;
-  }
 
-  // --- FAQs ---
+    return {
+      id: slug,
+      title: decoration.label,
+      description: decoration.description,
+      href: decoration.href,
+      slug,
+      icon: decoration.icon,
+      theme: decoration.theme,
+      treatments: decoration.treatments,
+      image: decoration.image,
+    };
+  });
+
   const homepageFAQs = [
     {
       question: "How often should I visit the dentist for a check-up?",
@@ -235,11 +201,13 @@ export default async function HomePage(): Promise<React.JSX.Element> {
     },
     {
       question: "How do I book an emergency dental appointment?",
-      answer: `Call us immediately at ${practiceInfo.contact.phone} for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible.`,
+      answer:
+        `Call us immediately at ${practiceInfo.contact.phone} for dental emergencies. We reserve same-day appointments for urgent problems including severe pain, swelling, trauma, or knocked-out teeth. Our emergency line provides immediate guidance and we'll get you seen as quickly as possible.`,
     },
     {
       question: "Where is your dental practice located?",
-      answer: `We're located at ${practiceInfo.address.full}. We're easy to find on the main A612 road with free parking available directly outside the practice.`,
+      answer:
+        `We're located at ${practiceInfo.address.full}. We're easy to find on the main A612 road with free parking available directly outside the practice.`,
     },
     {
       question: "What's included in a routine dental examination?",
@@ -248,25 +216,24 @@ export default async function HomePage(): Promise<React.JSX.Element> {
     },
     {
       question: "How can I contact the practice?",
-      answer: `You can call us at ${practiceInfo.contact.phone}, email ${practiceInfo.contact.email}, or visit us at ${practiceInfo.address.full}. We also offer online booking for your convenience.`,
+      answer:
+        `You can call us at ${practiceInfo.contact.phone}, email ${practiceInfo.contact.email}, or visit us at ${practiceInfo.address.full}. We also offer online booking for your convenience.`,
     },
   ];
 
   return (
     <ServerSideABWrapper variant={variant}>
-      <ServiceFAQSchema serviceName="Pear Tree Dental Practice" faqs={homepageFAQs} pageUrl="/" />
-      {/* Cohort-aware components */}
-      <ClientGoogleReviews />
-      <Hero
-        geo={geo}
-        officeOpen={officeOpen}
-        device={device}
-        timeOfDay={timeOfDay}
-        source={source}
-        variant={variant}
+      {showJudgeBanner && <JudgeBanner city={visitorCity} />}
+      <ServiceFAQSchema
+        serviceName="Pear Tree Dental Practice"
+        faqs={homepageFAQs}
+        pageUrl="/"
       />
+      <ClientGoogleReviews />
+      <Hero />
       <PracticeShowcase />
-      <ServicesOverview services={mappedServices} />
+      {/* Pass the dynamic, mapped services to the component */}
+      <ServicesOverview services={servicesForOverview} />
       <TreatmentJourney />
       <MembershipHighlight />
       <VoiceSearchOptimization />
