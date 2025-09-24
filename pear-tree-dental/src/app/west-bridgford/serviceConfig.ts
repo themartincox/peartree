@@ -128,7 +128,7 @@ export const westBridgfordServiceContent: Record<string, ServiceEntry> = {
             "Guided implant placement",
             "Bespoke porcelain crown"
           ],
-          icon: Tooth
+          icon: Smile
         },
         {
           name: "Smile-In-A-Day",
@@ -636,7 +636,7 @@ export const westBridgfordServiceContent: Record<string, ServiceEntry> = {
             "Temporary bridge",
             "Premium ceramic finish"
           ],
-          icon: Tooth
+          icon: Smile
         },
         {
           name: "Three-Unit Bridge",

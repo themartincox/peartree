@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
 import { headers } from "next/headers";
+import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchAllServices } from "@/lib/contentful-client";
