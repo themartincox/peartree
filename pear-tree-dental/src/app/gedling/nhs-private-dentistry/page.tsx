@@ -34,7 +34,7 @@ import {
 
 export const metadata: Metadata = {
   title: "NHS & Private Dentistry in Gedling - Flexible Options for Working Families | Pear Tree Dental",
-  description: "NHS & Private dentistry for Gedling working families. Flexible treatment options, mixed care available, and honest advice about best value options. Quick drive from Gedling NG4.",
+  description: "NHS & Private dentistry for Gedling working families. Flexible treatment options, mixed care available, and honest advice about best value options. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "NHS dentist Gedling",
     "private dentist Gedling NG4",

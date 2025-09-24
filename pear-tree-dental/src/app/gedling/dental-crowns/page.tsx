@@ -35,7 +35,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Dental Crowns in Gedling - Quality Restorations for Working Families | Pear Tree Dental",
-  description: "Dental crowns for Gedling working families. Quality restorations, honest pricing, and flexible payment options. Same-day CEREC crowns available. Quick drive from Gedling NG4.",
+  description: "Dental crowns for Gedling working families. Quality restorations, honest pricing, and flexible payment options. Same-day CEREC crowns available. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "dental crowns Gedling",
     "tooth crowns Gedling NG4",

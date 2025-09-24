@@ -36,7 +36,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Children's Dentistry in Gedling - Convenient Care for Working Parents | Pear Tree Dental",
-  description: "Children's dentistry for Gedling working families. Convenient appointments, gentle care, and prevention focus. Child-friendly environment. Quick drive from Gedling NG4.",
+  description: "Children's dentistry for Gedling working families. Convenient appointments, gentle care, and prevention focus. Child-friendly environment. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "children's dentistry Gedling",
     "kids dentist Gedling NG4",

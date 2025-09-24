@@ -38,7 +38,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Flexible Payment Dentistry in Gedling - Financing Options for Working Families | Pear Tree Dental",
-  description: "Flexible payment dentistry for Gedling working families. Affordable financing options, payment plans, and budget-friendly dental care. Quick drive from Gedling NG4.",
+  description: "Flexible payment dentistry for Gedling working families. Affordable financing options, payment plans, and budget-friendly dental care. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "flexible payment dentistry Gedling",
     "dental payment plans Gedling NG4",

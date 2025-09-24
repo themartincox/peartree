@@ -38,7 +38,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Complete Smile Makeovers in Gedling - Affordable Transformations for Working Families | Pear Tree Dental",
-  description: "Complete smile makeovers for Gedling working families. Affordable smile transformations, flexible payment plans, and comprehensive care. Quick drive from Gedling NG4.",
+  description: "Complete smile makeovers for Gedling working families. Affordable smile transformations, flexible payment plans, and comprehensive care. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "complete smile makeover Gedling",
     "smile transformation Gedling NG4",

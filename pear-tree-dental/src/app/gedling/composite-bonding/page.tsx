@@ -36,7 +36,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Composite Bonding in Gedling - Affordable Smile Improvements for Working Families | Pear Tree Dental",
-  description: "Composite bonding for Gedling working families. Affordable smile improvements, same-day treatment, and flexible payment options. Quick drive from Gedling NG4.",
+  description: "Composite bonding for Gedling working families. Affordable smile improvements, same-day treatment, and flexible payment options. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "composite bonding Gedling",
     "tooth bonding Gedling NG4",

@@ -33,7 +33,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Affordable Teeth Whitening in Gedling - Professional Results for Working Families | Pear Tree Dental",
-  description: "Affordable teeth whitening for Gedling working families. Professional results, payment plans available, and family-friendly service. Quick drive from Gedling NG4.",
+  description: "Affordable teeth whitening for Gedling working families. Professional results, payment plans available, and family-friendly service. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "affordable teeth whitening Gedling",
     "cheap teeth whitening Gedling NG4",

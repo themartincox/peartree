@@ -38,7 +38,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Family Preventive Care in Gedling - Long-Term Health Focus for Working Families | Pear Tree Dental",
-  description: "Family preventive care for Gedling working families. Long-term dental health focus, family health plans, and convenient preventive services. Quick drive from Gedling NG4.",
+  description: "Family preventive care for Gedling working families. Long-term dental health focus, family health plans, and convenient preventive services. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "family preventive care Gedling",
     "preventive dentistry Gedling NG4",

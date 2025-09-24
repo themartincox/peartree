@@ -33,7 +33,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Emergency Dentist in Gedling - Fast Relief for Working Families | Pear Tree Dental",
-  description: "Emergency dentist for Gedling working families. Fast pain relief, child-friendly emergency care, and convenient appointments. Quick drive from Gedling NG4.",
+  description: "Emergency dentist for Gedling working families. Fast pain relief, child-friendly emergency care, and convenient appointments. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "emergency dentist Gedling",
     "dental emergency Gedling NG4",

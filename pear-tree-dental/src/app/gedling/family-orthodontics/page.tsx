@@ -35,7 +35,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Family Orthodontics in Gedling - Affordable Braces for Working Families | Pear Tree Dental",
-  description: "Family orthodontics for Gedling working families. Affordable braces, flexible payment plans, and convenient scheduling. Quality teeth straightening. Quick drive from Gedling NG4.",
+  description: "Family orthodontics for Gedling working families. Affordable braces, flexible payment plans, and convenient scheduling. Quality teeth straightening. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "family orthodontics Gedling",
     "affordable braces Gedling NG4",

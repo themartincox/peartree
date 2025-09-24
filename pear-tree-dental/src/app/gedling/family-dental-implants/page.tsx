@@ -36,7 +36,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Family Dental Implants in Gedling - Practical Tooth Replacement for Working Families | Pear Tree Dental",
-  description: "Family dental implants for Gedling working families. Practical tooth replacement solutions, flexible payment plans, and family-focused care. Quick drive from Gedling NG4.",
+  description: "Family dental implants for Gedling working families. Practical tooth replacement solutions, flexible payment plans, and family-focused care. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "family dental implants Gedling",
     "dental implants Gedling NG4",

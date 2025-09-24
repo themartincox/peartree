@@ -33,7 +33,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Family Dentistry in Gedling - Comprehensive Care for Working Families | Pear Tree Dental",
-  description: "Family dentistry for Gedling working families. Comprehensive dental care for all ages, flexible appointments, and honest pricing. Quick drive from Gedling NG4.",
+  description: "Family dentistry for Gedling working families. Comprehensive dental care for all ages, flexible appointments, and honest pricing. Quick drive from Gedling NG4. Just 7 minutes from Gedling to our Burton Joyce clinic.",
   keywords: [
     "family dentistry Gedling",
     "family dentist Gedling NG4",
