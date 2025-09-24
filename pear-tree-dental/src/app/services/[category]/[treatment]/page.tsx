@@ -8,6 +8,7 @@ import RichTextRenderer from "@/components/RichTextRenderer";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 900;
+export const dynamic = "force-dynamic";
 
 const SITE_URL = "https://peartree.dental";
 
@@ -40,13 +41,18 @@ const createBreadcrumbs = (segments: Array<{ name: string; href: string }>) => (
 });
 
 export async function generateStaticParams() {
-  const treatments = await fetchTreatmentSlugs();
-  return treatments
-    .filter((entry) => entry.parentSlug)
-    .map((entry) => ({
-      category: entry.parentSlug!,
-      treatment: entry.slug,
-    }));
+  try {
+    const treatments = await fetchTreatmentSlugs();
+    return treatments
+      .filter((entry) => entry.parentSlug)
+      .map((entry) => ({
+        category: entry.parentSlug!,
+        treatment: entry.slug,
+      }));
+  } catch (error) {
+    console.warn("[services treatment] Falling back to empty params due to Contentful error", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string; treatment: string }> }): Promise<Metadata> {
