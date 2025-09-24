@@ -180,7 +180,7 @@ export default function PlanSelector() {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
-                          <span>All adults get Plan D benefits</span>
+                          <span>Complete Care Plus for all adults</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <Check className="h-4 w-4 text-pear-primary mt-0.5 flex-shrink-0" />
