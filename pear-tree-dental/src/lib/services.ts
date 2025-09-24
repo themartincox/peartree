@@ -21,7 +21,6 @@ export interface ServiceCategorySummary {
   title: string;
   excerpt?: string | null;
   sortOrder?: number | null;
-  updatedAt?: string | null;
 }
 
 export interface ServiceCategoryDetail extends ServiceCategorySummary {
@@ -42,7 +41,6 @@ export interface ServiceTreatmentSummary {
   excerpt?: string | null;
   sortOrder?: number | null;
   parent: ServiceReference | null;
-  updatedAt?: string | null;
 }
 
 export interface ServiceTreatmentDetail extends ServiceTreatmentSummary {
@@ -63,7 +61,6 @@ interface HubServiceItem {
   slug: string;
   title: string;
   type: ServiceType;
-  updatedAt?: string | null;
   excerpt?: string | null;
   sortOrder?: number | null;
   featuredOnHub?: boolean | null;
@@ -81,7 +78,6 @@ const HUB_SERVICES_QUERY = /* GraphQL */ `
     serviceCollection(limit: $limit, where: { isHidden_not: true }) {
       items {
         sys { id }
-        updatedAt
         title
         slug
         type
@@ -98,7 +94,6 @@ interface CategoryQueryResponse {
   serviceCollection?: {
     items: Array<{
       sys: SysMeta;
-      updatedAt?: string | null;
       title: string;
       slug: string;
       excerpt?: string | null;
@@ -111,7 +106,6 @@ interface CategoryQueryResponse {
   treatments?: {
     items: Array<{
       sys: SysMeta;
-      updatedAt?: string | null;
       title: string;
       slug: string;
       excerpt?: string | null;
@@ -126,7 +120,6 @@ const CATEGORY_QUERY = /* GraphQL */ `
     serviceCollection(limit: 1, where: { slug: $slug, type: "category", isHidden_not: true }) {
       items {
         sys { id }
-        updatedAt
         title
         slug
         excerpt
@@ -143,7 +136,6 @@ const CATEGORY_QUERY = /* GraphQL */ `
     ) {
       items {
         sys { id }
-        updatedAt
         title
         slug
         excerpt
@@ -158,7 +150,6 @@ interface TreatmentQueryResponse {
   serviceCollection?: {
     items: Array<{
       sys: SysMeta;
-      updatedAt?: string | null;
       title: string;
       slug: string;
       excerpt?: string | null;
@@ -184,7 +175,6 @@ const TREATMENT_QUERY = /* GraphQL */ `
     serviceCollection(limit: 1, where: { slug: $slug, type: "treatment", isHidden_not: true }) {
       items {
         sys { id }
-        updatedAt
         title
         slug
         excerpt
@@ -210,7 +200,6 @@ interface SlugResponse {
   serviceCollection?: {
     items: Array<{
       sys: SysMeta;
-      updatedAt?: string | null;
       slug: string;
       parent?: ServiceReference | null;
     }>;
@@ -222,7 +211,6 @@ const CATEGORY_SLUGS_QUERY = /* GraphQL */ `
     serviceCollection(limit: $limit, where: { type: "category", isHidden_not: true }) {
       items {
         sys { id }
-        updatedAt
         slug
       }
     }
@@ -234,7 +222,6 @@ const TREATMENT_SLUGS_QUERY = /* GraphQL */ `
     serviceCollection(limit: $limit, where: { type: "treatment", isHidden_not: true }) {
       items {
         sys { id }
-        updatedAt
         slug
         parent { slug title }
       }
@@ -252,12 +239,11 @@ export async function fetchHubData(limit = DEFAULT_LIMIT) {
     .filter((item) => item.type === "category" && !item.parent)
     .sort((a, b) => bySortOrder(a.sortOrder, b.sortOrder))
     .map((item) => ({
-      sys: { ...item.sys, updatedAt: item.updatedAt ?? undefined },
+      sys: item.sys,
       slug: item.slug,
       title: item.title,
       excerpt: item.excerpt,
       sortOrder: item.sortOrder,
-      updatedAt: item.updatedAt ?? null,
     }));
 
   const featured = new Map<string, ServiceTreatmentSummary[]>();
@@ -270,13 +256,12 @@ export async function fetchHubData(limit = DEFAULT_LIMIT) {
       const arr = featured.get(parentSlug) ?? [];
       if (arr.length < 3) {
         arr.push({
-          sys: { ...item.sys, updatedAt: item.updatedAt ?? undefined },
+          sys: item.sys,
           slug: item.slug,
           title: item.title,
           excerpt: item.excerpt,
           sortOrder: item.sortOrder,
           parent: item.parent ?? null,
-          updatedAt: item.updatedAt ?? null,
         });
       }
       featured.set(parentSlug, arr);
@@ -295,17 +280,16 @@ export async function fetchCategory(slug: string) {
 
   const treatments: ServiceTreatmentSummary[] = (data.treatments?.items ?? [])
     .map((item) => ({
-      sys: { ...item.sys, updatedAt: item.updatedAt ?? undefined },
+      sys: item.sys,
       slug: item.slug,
       title: item.title,
       excerpt: item.excerpt,
       sortOrder: item.sortOrder,
       parent: item.parent ?? null,
-      updatedAt: item.updatedAt ?? null,
     }));
 
   const detail: ServiceCategoryDetail = {
-    sys: { ...category.sys, updatedAt: category.updatedAt ?? undefined },
+    sys: category.sys,
     slug: category.slug,
     title: category.title,
     excerpt: category.excerpt,
@@ -319,7 +303,6 @@ export async function fetchCategory(slug: string) {
           title: category.heroImage.title ?? null,
         }
       : null,
-    updatedAt: category.updatedAt ?? null,
   };
 
   return { category: detail, treatments } as const;
@@ -334,7 +317,7 @@ export async function fetchTreatment(slug: string) {
   }
 
   const detail: ServiceTreatmentDetail = {
-    sys: { ...treatment.sys, updatedAt: treatment.updatedAt ?? undefined },
+    sys: treatment.sys,
     slug: treatment.slug,
     title: treatment.title,
     excerpt: treatment.excerpt,
@@ -358,7 +341,6 @@ export async function fetchTreatment(slug: string) {
         slug: item.slug,
         parent: item.parent ?? null,
       })) ?? [],
-    updatedAt: treatment.updatedAt ?? null,
   };
 
   return detail;
@@ -368,7 +350,6 @@ export async function fetchCategorySlugs(limit = DEFAULT_LIMIT) {
   const data = await contentfulGraphQL<SlugResponse>(CATEGORY_SLUGS_QUERY, { limit });
   return (data.serviceCollection?.items ?? []).map((item) => ({
     slug: item.slug,
-    updatedAt: item.updatedAt,
   }));
 }
 
@@ -377,7 +358,6 @@ export async function fetchTreatmentSlugs(limit = DEFAULT_LIMIT) {
   return (data.serviceCollection?.items ?? []).map((item) => ({
     slug: item.slug,
     parentSlug: item.parent?.slug ?? null,
-    updatedAt: item.updatedAt,
   }));
 }
 
