@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import { createElement, type ReactElement } from "react";
 import type {
   ServiceCategorySummary,
   ServiceTreatmentSummary,
@@ -358,7 +358,7 @@ export async function renderCategoryFallback(slug: string): Promise<ReactElement
 
   const mod = await loader();
   const Component = mod.default;
-  return <Component />;
+  return createElement(Component);
 }
 
 export async function renderTreatmentFallback(
@@ -374,5 +374,5 @@ export async function renderTreatmentFallback(
 
   const mod = await loader();
   const Component = mod.default;
-  return <Component />;
+  return createElement(Component);
 }
