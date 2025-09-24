@@ -14,11 +14,9 @@ interface GraphQLResponse<T> {
 const SPACE = process.env.CONTENTFUL_SPACE_ID;
 const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT ?? "master";
 
-if (!SPACE) {
-  throw new Error("CONTENTFUL_SPACE_ID must be defined to use the GraphQL client");
-}
-
-const GRAPHQL_ENDPOINT = `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/${ENVIRONMENT}`;
+const GRAPHQL_ENDPOINT = SPACE
+  ? `https://graphql.contentful.com/content/v1/spaces/${SPACE}/environments/${ENVIRONMENT}`
+  : null;
 
 function resolveToken(preview?: boolean) {
   const usePreview = preview ?? process.env.CONTENTFUL_USE_PREVIEW === "true";
@@ -43,36 +41,62 @@ export async function contentfulGraphQL<T>(
   variables: Record<string, unknown> = {},
   options: GraphQLRequestOptions = {}
 ): Promise<T> {
-  const { token, usePreview } = resolveToken(options.preview);
-
-  const response = await fetch(GRAPHQL_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify({ query, variables }),
-    next: {
-      revalidate: options.revalidate ?? (usePreview ? 0 : 300),
-      tags: options.tags,
-    },
-  });
-
-  if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`Contentful GraphQL error: ${response.status} ${response.statusText} — ${body}`);
+  if (!GRAPHQL_ENDPOINT || !SPACE) {
+    console.warn("[contentfulGraphQL] Contentful credentials missing – returning empty result.");
+    return {} as T;
   }
 
-  const payload = (await response.json()) as GraphQLResponse<T>;
+  let token: string;
+  let usePreview = false;
 
-  if (payload.errors?.length) {
-    const message = payload.errors.map((error) => error.message).join(" | ");
-    throw new Error(`Contentful GraphQL responded with errors: ${message}`);
+  try {
+    const resolved = resolveToken(options.preview);
+    token = resolved.token;
+    usePreview = resolved.usePreview;
+  } catch (error) {
+    console.warn(
+      "[contentfulGraphQL] Unable to resolve Contentful token, falling back to empty data.",
+      error,
+    );
+    return {} as T;
   }
 
-  if (!payload.data) {
-    throw new Error("Contentful GraphQL response did not include data");
-  }
+  try {
+    const response = await fetch(GRAPHQL_ENDPOINT, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ query, variables }),
+      next: {
+        revalidate: options.revalidate ?? (usePreview ? 0 : 300),
+        tags: options.tags,
+      },
+    });
 
-  return payload.data;
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Contentful GraphQL error: ${response.status} ${response.statusText} — ${body}`);
+    }
+
+    const payload = (await response.json()) as GraphQLResponse<T>;
+
+    if (payload.errors?.length) {
+      const message = payload.errors.map((error) => error.message).join(" | ");
+      throw new Error(`Contentful GraphQL responded with errors: ${message}`);
+    }
+
+    if (!payload.data) {
+      throw new Error("Contentful GraphQL response did not include data");
+    }
+
+    return payload.data;
+  } catch (error) {
+    console.warn(
+      "[contentfulGraphQL] Request failed, using fallback content instead of Contentful data.",
+      error,
+    );
+    return {} as T;
+  }
 }
