@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchTreatment, fetchTreatmentSlugs, resolveCategorySlugAlias } from "@/lib/services";
+import { renderTreatmentFallback } from "@/lib/service-fallbacks";
 import RichTextRenderer from "@/components/RichTextRenderer";
 import { Button } from "@/components/ui/button";
 
@@ -84,23 +85,31 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 
 export default async function TreatmentPage({ params }: { params: Promise<{ category: string; treatment: string }> }) {
   const { category, treatment } = await params;
-  const entry = await fetchTreatment(treatment);
-
-  if (!entry) {
-    notFound();
+  let entry = null;
+  try {
+    entry = await fetchTreatment(treatment);
+  } catch (error) {
+    console.error(`Failed to fetch treatment ${treatment} from Contentful`, error);
   }
 
-  if (!entry.parent?.slug) {
+  if (!entry || !entry.parent?.slug) {
+    const fallback = await renderTreatmentFallback(category, treatment);
+    if (fallback) {
+      return fallback;
+    }
+    const alias = await resolveCategorySlugAlias(category);
+    if (alias && alias !== category) {
+      const aliasFallback = await renderTreatmentFallback(alias, treatment);
+      if (aliasFallback) {
+        return aliasFallback;
+      }
+    }
     notFound();
   }
 
   const canonicalCategory = entry.parent.slug;
   if (canonicalCategory !== category) {
-    const alias = await resolveCategorySlugAlias(category);
-    if (alias && alias === canonicalCategory) {
-      redirect(`/services/${canonicalCategory}/${entry.slug}`);
-    }
-    notFound();
+    redirect(`/services/${canonicalCategory}/${entry.slug}`);
   }
 
   const breadcrumbs = createBreadcrumbs([

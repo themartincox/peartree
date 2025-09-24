@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchHubData } from "@/lib/services";
+import { fallbackCategories } from "@/lib/service-fallbacks";
 import { practiceInfo } from "@/data/practiceInfo";
 
 // Critical above-the-fold components
@@ -150,7 +151,22 @@ export default async function HomePage(): Promise<React.JSX.Element> {
 
   const variant = await getVariant();
 
-  const { categories } = await fetchHubData();
+  let categories;
+  try {
+    const hubData = await fetchHubData();
+    categories = hubData.categories;
+  } catch (error) {
+    console.error(
+      "Failed to load homepage service data from Contentful, using static fallback",
+      error,
+    );
+    categories = fallbackCategories;
+  }
+
+  if (!categories?.length) {
+    categories = fallbackCategories;
+  }
+
   const categoriesBySlug = new Map(categories.map((category) => [category.slug, category]));
 
   const servicesForOverview = Object.entries(serviceDecorations).map(([slug, decoration]) => {

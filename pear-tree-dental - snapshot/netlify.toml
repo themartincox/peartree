@@ -1,0 +1,197 @@
+[build]
+  command = "NODE_OPTIONS='--max-old-space-size=8192' SKIP_ENV_VALIDATION=true DISABLE_ESLINT_PLUGIN=true npm run build"
+  functions = ".netlify/functions"
+  publish = ".next"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ./netlify.toml"
+
+[build.environment]
+  DISABLE_ESLINT_PLUGIN = "true"
+  SKIP_ENV_VALIDATION = "true"
+  NEXT_TELEMETRY_DISABLED = "1"
+  NODE_ENV = "production"
+  NODE_VERSION = "20"
+  NETLIFY_USE_YARN = "false"
+  NETLIFY_USE_BUN = "true"
+  # Supabase environment variables properly configured
+  NEXT_PUBLIC_SUPABASE_URL = "https://isjnwsuodldqrcntheoh.supabase.co"
+  NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlzam53c3VvZGxkcXJjbnRoZW9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYxOTcyNDUsImV4cCI6MjA3MTc3MzI0NX0.v-5CbRjEaiuVrO5YHnpJ1giRY85Ovg8QTxaE2DOInFc"
+  SUPABASE_SERVICE_ROLE_KEY = "placeholder_service_role_key_for_build_only"
+  ENCRYPTION_KEY = "YvPJrFGmL9qHS2xTb5D8A3X7wWgkC6Nz"
+  # Contentful environment variables
+  CONTENTFUL_SPACE_ID = "4x22ux8m6s1o"
+  CONTENTFUL_ENVIRONMENT = "master"
+  CONTENTFUL_USE_PREVIEW = "false"
+  CONTENTFUL_SERVICE_TYPE_ID = "serviceDataserviceData"
+  CONTENTFUL_LOCATION_TYPE_ID = "locationData"
+  CONTENTFUL_BLOG_TEMPLATE_TYPE_ID = "blogTemplate"
+  CONTENTFUL_BLOG_POST_TYPE_ID = "pageBlogPost"
+  GENERATION_MODE = "fallback"
+  USE_MOCK_DATA = "true"
+  NEXT_PUBLIC_CONTENTFUL_USE_PREVIEW = "false"
+  NEXT_PUBLIC_USE_MOCK_DATA = "true"
+ ENABLE_AB = "false"
+
+#[[plugins]]
+#  package = "@netlify/plugin-lighthouse"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[functions]
+  external_node_modules = ["sharp", "contentful"]
+  node_bundler = "esbuild"
+
+[functions.options]
+  timeout = 30
+# Force old domain (both apex and www) to the new canonical
+[[redirects]]
+  from = "https://www.peartreedentalcentre.co.uk/*"
+  to = "https://peartree.dental/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://peartreedentalcentre.co.uk/*"
+  to = "https://peartree.dental/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blank-2"
+  to = "/services"
+  status = 301
+
+[[redirects]]
+  from = "/blank-3"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/our-team"
+  to = "/about/team"
+  status = 301
+
+[[redirects]]
+  from = "/blank-4"
+  to = "/patient-education"
+  status = 301
+
+[[redirects]]
+  from = "/about-4"
+  to = "/terms"
+  status = 301
+
+[[redirects]]
+  from = "/blank-1"
+  to = "/about/practice"
+  status = 301
+
+[[redirects]]
+  from = "/about-7"
+  to = "/membership"
+  status = 301
+
+[[redirects]]
+  from = "/_api/*"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/arnold-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/park-dental-care-reviews-nottingham"
+  to = "/reviews/the-park"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/carlton-dental-surgery-reviews-nottingham"
+  to = "/reviews/carlton"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/mapperley-dental-practice-reviews-nottingham"
+  to = "/reviews/mapperley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/impressions-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/westdale-dental-reviews-nottingham"
+  to = "/reviews/mapperley"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sherwood-dental-care-reviews-nottingham"
+  to = "/reviews/arnold"
+  status = 301
+  force = true
+
+# Ignore "janet" and API endpoints as requested
+
+[dev]
+  framework = "next"
+  autoLaunch = false
+
+[build.processing]
+  skip_processing = true
+
+[build.processing.css]
+  bundle = false
+  minify = false
+
+[build.processing.js]
+  bundle = false
+  minify = false
+
+[build.processing.html]
+  pretty_urls = false
+
+[build.processing.images]
+  compress = false
+
+[[edge_functions]]
+  path = "/"
+  function = "ab-testing"
+
+# 1. Security headers (keeping)
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+  Cross-Origin-Opener-Policy = "same-origin"
+  Content-Security-Policy = "default-src 'self'; img-src 'self' data: https:; script-src 'self' https://scripts.simpleanalyticscdn.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://queue.simpleanalyticscdn.com; media-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; require-trusted-types-for 'script';"
+
+# 2. Ensure compression negotiation works (replace the bad Content-Encoding block with this)
+[[headers]]
+  for = "/*"
+  [headers.values]
+  Vary = "Accept-Encoding"
+  Cache-Control = "public, max-age=0, must-revalidate"
+
+# 3. Static assets: cache forever
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/auto-events.js"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/proxy.js"
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"

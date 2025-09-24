@@ -1,0 +1,77 @@
+export const plans = [
+  {
+    id: "plan-a",
+    name: "ESSENTIAL MAINTENANCE",
+    price: "£10.95",
+    color: "plan-a",
+    features: [
+      "1 Dental check up a year",
+      "1 Scale & Polish a year",
+    ],
+    perDay: "36p per day",
+    sticker: null,
+    savings: 118, // Annual savings compared to paying individually
+    normalPrice: 247.60, // Price without the plan
+  },
+  {
+    id: "plan-b",
+    name: "ROUTINE CARE",
+    price: "£15.95",
+    color: "plan-b",
+    features: [
+      "2 Dental check ups a year",
+      "1 Scale & Polish a year",
+    ],
+    perDay: "53p per day",
+    sticker: null,
+    savings: 180,
+    normalPrice: 359.88,
+  },
+  {
+    id: "plan-c",
+    name: "COMPLETE CARE",
+    price: "£19.95",
+    color: "plan-c",
+    features: [
+      "2 Dental check ups a year",
+      "2 Scale & Polishes a year",
+    ],
+    perDay: "66p per day",
+    sticker: "Most Popular",
+    savings: 205,
+    normalPrice: 416.20,
+  },
+  {
+    id: "plan-d",
+    name: "COMPLETE CARE PLUS",
+    price: "£25.95",
+    color: "plan-d",
+    features: [
+      "2 Dental check ups a year",
+      "2 Scale & Polishes a year",
+      "1 Free emergency appt a year",
+      "50% off stain removal",
+    ],
+    perDay: "86p per day",
+    sticker: "Great Value",
+    savings: 290,
+    normalPrice: 597.20,
+  },
+  {
+    id: "plan-e",
+    name: "PERIODONTAL HEALTH",
+    price: "£29.95",
+    color: "plan-d",
+    features: [
+      "2 Dental check ups a year",
+      "4 Scale & Polishes a year (every 3 months)",
+      "1 Free emergency appt a year",
+      "50% off stain removal",
+    ],
+    perDay: "99p per day",
+    description: "Specifically designed for patients with periodontal disease and gum issues",
+    sticker: null,
+    savings: 350,
+    normalPrice: 710.40,
+  },
+];

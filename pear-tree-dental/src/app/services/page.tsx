@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { fetchHubData } from "@/lib/services";
+import { fallbackCategories, fallbackFeaturedTreatments } from "@/lib/service-fallbacks";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -143,7 +144,29 @@ const breadcrumbJson = {
 };
 
 const ServicesPage = async () => {
-  const { categories, featured } = await fetchHubData();
+  let categories;
+  let featured;
+
+  try {
+    const hubData = await fetchHubData();
+    categories = hubData.categories;
+    featured = hubData.featured;
+  } catch (error) {
+    console.error(
+      "Failed to load service hub data from Contentful, using fallback content",
+      error,
+    );
+    categories = fallbackCategories;
+    featured = fallbackFeaturedTreatments;
+  }
+
+  if (!categories?.length) {
+    categories = fallbackCategories;
+  }
+
+  if (!featured || featured.size === 0) {
+    featured = fallbackFeaturedTreatments;
+  }
 
   const decoratedCategories = categories.map((category, index) => {
     const decoration = decorationLookup.get(category.slug) ?? decorationLookup.get(category.slug.replace(/-pear-tree$/, "")) ?? null;
@@ -324,4 +347,3 @@ const ServicesPage = async () => {
 };
 
 export default ServicesPage;
-

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchCategory, fetchCategorySlugs, resolveCategorySlugAlias } from "@/lib/services";
+import { renderCategoryFallback } from "@/lib/service-fallbacks";
 import RichTextRenderer from "@/components/RichTextRenderer";
 import { Button } from "@/components/ui/button";
 
@@ -86,17 +87,46 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 
 export default async function ServiceCategoryPage({ params }: { params: Promise<{ category: string }> }) {
   const { category: slug } = await params;
-  let data = await fetchCategory(slug);
+  const slugCandidates = [slug];
+  const alias = await resolveCategorySlugAlias(slug);
+  if (alias && alias !== slug) {
+    slugCandidates.push(alias);
+  }
 
-  if (!data) {
-    const alias = await resolveCategorySlugAlias(slug);
-    if (alias && alias !== slug) {
-      redirect(`/services/${alias}`);
+  let data = null;
+  let resolvedSlug = slug;
+
+  for (const candidate of slugCandidates) {
+    try {
+      const result = await fetchCategory(candidate);
+      if (result) {
+        data = result;
+        resolvedSlug = candidate;
+        break;
+      }
+    } catch (error) {
+      console.error(`Failed to fetch category ${candidate} from Contentful`, error);
     }
   }
 
   if (!data) {
+    for (const candidate of slugCandidates) {
+      const fallback = await renderCategoryFallback(candidate);
+      if (fallback) {
+        return fallback;
+      }
+    }
+
+    const fallback = await renderCategoryFallback(slug);
+    if (fallback) {
+      return fallback;
+    }
+
     notFound();
+  }
+
+  if (resolvedSlug !== slug) {
+    redirect(`/services/${resolvedSlug}`);
   }
 
   const { category, treatments } = data;
