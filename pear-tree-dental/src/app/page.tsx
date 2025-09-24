@@ -47,9 +47,7 @@ const MembershipHighlight = dynamicImport(
   },
 );
 
-const JudgeBanner = dynamicImport(() => import("@/components/JudgeBanner"), {
-  ssr: false,
-});
+const JudgeBanner = dynamicImport(() => import("@/components/JudgeBanner"));
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
