@@ -281,13 +281,8 @@ registerTreatmentFallback(
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
-  'dentures/cobalt-chrome-dentures',
+  'cobalt-chrome-dentures',
   () => import('@/legacy/services/restorative/dentures/cobalt-chrome-dentures/page'),
-);
-registerTreatmentFallback(
-  ['restorative', 'restorative-dentistry'],
-  'dentures/valplast-dentures',
-  () => import('@/legacy/services/restorative/dentures/valplast-dentures/page'),
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
@@ -296,28 +291,13 @@ registerTreatmentFallback(
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
-  'dentures/partial-dentures',
-  () => import('@/legacy/services/restorative/dentures/partial-dentures/page'),
-);
-registerTreatmentFallback(
-  ['restorative', 'restorative-dentistry'],
   'partial-dentures',
   () => import('@/legacy/services/restorative/dentures/partial-dentures/page'),
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
-  'dentures/hybrid-dentures',
-  () => import('@/legacy/services/restorative/dentures/hybrid-dentures/page'),
-);
-registerTreatmentFallback(
-  ['restorative', 'restorative-dentistry'],
   'hybrid-dentures',
   () => import('@/legacy/services/restorative/dentures/hybrid-dentures/page'),
-);
-registerTreatmentFallback(
-  ['restorative', 'restorative-dentistry'],
-  'dentures/complete-dentures',
-  () => import('@/legacy/services/restorative/dentures/complete-dentures/page'),
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],

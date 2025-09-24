@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     title: "Buccal Corridor Correction Nottingham | Pear Tree Dental",
     description: "Get the Hollywood Smile in Nottingham by eliminating dark spaces at the corners. Expert buccal corridor correction from £2,500.",
     type: "website",
-    url: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
+    url: "https://peartree.dental/services/cosmetic-dentistry/buccal-corridor-correction"
   },
   alternates: {
-    canonical: "https://peartree.dental/services/cosmetic/buccal-corridor-correction"
+    canonical: "https://peartree.dental/services/cosmetic-dentistry/buccal-corridor-correction"
   },
   // Add performance optimizations
   other: {
@@ -182,7 +182,7 @@ export default function BuccalCorridorCorrectionPage() {
         ]}
         rating={4.9}
         reviewCount={156}
-        url="https://peartree.dental/services/cosmetic/buccal-corridor-correction"
+        url="https://peartree.dental/services/cosmetic-dentistry/buccal-corridor-correction"
         procedureType="Service"
       />
 
