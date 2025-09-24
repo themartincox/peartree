@@ -166,30 +166,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://peartree.dental/services/restorative-dentistry/dentures/valplast-dentures</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://peartree.dental/services/restorative-dentistry/dentures/partial-dentures</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://peartree.dental/services/restorative-dentistry/dentures/hybrid-dentures</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://peartree.dental/services/restorative-dentistry/dentures/complete-dentures</loc>
-    <lastmod>2025-09-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
 
   <!-- General dentistry -->
   <url>

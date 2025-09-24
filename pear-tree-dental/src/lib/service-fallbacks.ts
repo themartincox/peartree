@@ -197,7 +197,7 @@ registerTreatmentFallback(
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
   'composite-bonding',
-  () => import('@/legacy/services/cosmetic/edge-bonding/page'),
+  () => import('@/legacy/services/cosmetic/composite-bonding/page'),
 );
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
