@@ -338,32 +338,3 @@ export async function fetchBlogPostBySlug(slug: string) {
   );
   return res?.items?.[0] ?? null;
 }
-
-/** ── Explicit named export list to prevent tree-shaking issues ─────────── */
-export {
-  // flags & health
-  contentfulHealthCheck,
-  // low-level
-  cfEntries,
-  cfEntry,
-  // utils
-  fillTemplate,
-  extractTextFromRichText,
-  replacePlaceholdersInRichText,
-  getAssetUrl,
-  // domain helpers
-  fetchBlogPosts,
-  fetchContentfulPosts,
-  fetchBlogPostBySlug,
-  fetchServiceBySlug,
-  fetchLocationBySlug,
-  fetchAllServices,
-  fetchAllLocations,
-  fetchPriorityServices,
-  fetchPriorityLocations,
-  fetchBlogTemplate,
-  // legacy aliases
-  getEntries,
-  getEntry,
-  getEntryField,
-};
