@@ -122,8 +122,11 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed
                            drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
               >
+                <br />
                 Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
-                <br /> Trusted since 1990.
+                <br />
+                <br />
+                Trusted since 1990.
               </p>
             </div>
 
