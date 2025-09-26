@@ -57,7 +57,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
       {/* DESKTOP FAMILY IMAGE (DECORATIVE, NO PRIORITY) */}
       {/* Reserve space via width/height + sizes; avoid priority to prevent double-preload */}
       {/* ------------------------ */}
-      <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
+      <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none">
         <Image
           src="/images/heroes/hero-home-new-family.webp"
           alt="Smiling family at Pear Tree Dental"
