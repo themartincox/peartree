@@ -53,12 +53,16 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         </div>
 
         {/* ------------------------ */}
-        {/* MOBILE FAMILY IMAGE - TALL AND POSITIONED FROM RIGHT */}
+        {/* MOBILE-ONLY: right-anchored slice (wider so shoulder isn't cut) */}
         {/* ------------------------ */}
         <div
-          className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none
-                     h-[70vh] w-[50vw] sm:w-[50vw] md:w-[50vw]"
+          className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[66vh]
+                     w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]"
           aria-hidden="true"
+          style={{
+            WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+            maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+          }}
         >
           <div className="relative h-full w-full overflow-hidden">
             <Image
@@ -66,9 +70,10 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               alt=""
               fill
               priority
-              quality={75}
-              sizes="50vw"
-              className="object-cover object-left opacity-60"
+              fetchPriority="high"
+              quality={85}
+              sizes="100vw"
+              className="object-cover opacity-50 object-[12%_center]"
             />
           </div>
         </div>
