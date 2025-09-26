@@ -137,6 +137,14 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
 
   const { category, treatments } = data;
 
+  if (resolvedSlug === 'restorative') {
+    category.heroImage = {
+      url: '/images/heroes/restorative/veneers.webp',
+      description: 'Veneers',
+      title: 'Veneers'
+    };
+  }
+
   const breadcrumbs = createBreadcrumbs([
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },

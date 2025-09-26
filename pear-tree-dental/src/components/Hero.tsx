@@ -117,7 +117,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             </h1>
 
             {/* MOBILE-ONLY bounded text container (1/2 width, centred region) */}
-            <div className="w-3/5 mx-0 mb-8">
+            <div className="w-3/4 mx-0 mb-8">
               <p
                 className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed
                            drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
