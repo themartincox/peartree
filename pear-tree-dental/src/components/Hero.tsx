@@ -56,7 +56,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         {/* MOBILE-ONLY: right-anchored slice (wider so shoulder isn't cut) */}
         {/* ------------------------ */}
         <div
-          className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[66vh]
+          className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[75vh]
                      w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]"
           aria-hidden="true"
           style={{
@@ -117,7 +117,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             </h1>
 
             {/* MOBILE-ONLY bounded text container (1/2 width, centred region) */}
-            <div className="w-1/2 mx-0 mb-8">
+            <div className="w-3/5 mx-0 mb-8">
               <p
                 className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed
                            drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
@@ -157,7 +157,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
           {/* DESKTOP */}
           <div className="hidden lg:flex lg:items-center min-h-[100svh]">
             <div className="max-w-2xl">
-              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6 -mt-20">
+              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6 transform -translate-y-20">
                 Expert dental care
                 <br />
                 with a{" "}
