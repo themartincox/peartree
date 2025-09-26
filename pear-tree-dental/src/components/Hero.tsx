@@ -56,7 +56,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         {/* MOBILE-ONLY: right-anchored slice (wider so shoulder isn't cut) */}
         {/* ------------------------ */}
         <div
-          className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[66vh]
+          className="block lg:hidden absolute right-0 bottom-6 z-10 pointer-events-none h-[75vh]
                      w-[85vw] sm:w-[46vw] md:w-[42vw]"
           aria-hidden="true"
           style={{
