@@ -125,7 +125,6 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 <br />
                 Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
                 <br />
-                <br />
                 Trusted since 1990.
               </p>
             </div>
