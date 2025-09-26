@@ -57,12 +57,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         {/* ------------------------ */}
         <div
           className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none
-                     h-[70vh] w-[60vw] sm:w-[55vw] md:w-[50vw]"
+                     h-[70vh] w-[50vw] sm:w-[50vw] md:w-[50vw]"
           aria-hidden="true"
-          style={{
-            WebkitMaskImage: "linear-gradient(to left, black 50%, transparent 100%)",
-            maskImage: "linear-gradient(to left, black 50%, transparent 100%)",
-          }}
         >
           <div className="relative h-full w-full overflow-hidden">
             <Image
@@ -71,7 +67,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               fill
               priority
               quality={75}
-              sizes="(max-width: 640px) 60vw, (max-width: 768px) 55vw, 50vw"
+              sizes="50vw"
               className="object-cover object-left opacity-60"
             />
           </div>
@@ -156,7 +152,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
           {/* DESKTOP */}
           <div className="hidden lg:flex lg:items-center min-h-[100svh]">
             <div className="max-w-2xl">
-              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6 -mt-4">
+              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6 -mt-20">
                 Expert dental care
                 <br />
                 with a{" "}
