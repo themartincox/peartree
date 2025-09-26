@@ -60,8 +60,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                      h-[70vh] w-[60vw] sm:w-[55vw] md:w-[50vw]"
           aria-hidden="true"
           style={{
-            WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-            maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to left, black 50%, transparent 100%)",
+            maskImage: "linear-gradient(to left, black 50%, transparent 100%)",
           }}
         >
           <div className="relative h-full w-full overflow-hidden">
@@ -155,8 +155,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
 
           {/* DESKTOP */}
           <div className="hidden lg:flex lg:items-center min-h-[100svh]">
-            <div className="max-w-2xl space-y-6">
-              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight">
+            <div className="max-w-2xl">
+              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
                 Expert dental care
                 <br />
                 with a{" "}
@@ -165,7 +165,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 <span className="text-pear-gold font-bold drop-shadow-[2px_2px_4px_rgba(255,255,255,0.3)]">touch</span>
               </h1>
 
-              <p className="text-xl text-pear-primary font-semibold leading-relaxed max-w-lg
+              <p className="text-xl text-pear-primary font-semibold leading-relaxed max-w-lg mb-8
                            drop-shadow-[1px_1px_2px_rgba(255,255,255,0.6)]">
                 Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
                 <br /> Trusted since 1990.
