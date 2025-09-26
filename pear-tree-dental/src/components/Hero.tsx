@@ -53,18 +53,43 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         </div>
 
         {/* ------------------------ */}
-        {/* FAMILY IMAGE - NOW WITH PRIORITY FOR LCP */}
+        {/* MOBILE FAMILY IMAGE - TALL AND POSITIONED FROM RIGHT */}
         {/* ------------------------ */}
-        <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none">
+        <div
+          className="block lg:hidden absolute right-0 bottom-0 z-10 pointer-events-none
+                     h-[70vh] w-[60vw] sm:w-[55vw] md:w-[50vw]"
+          aria-hidden="true"
+          style={{
+            WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+            maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
+          }}
+        >
+          <div className="relative h-full w-full overflow-hidden">
+            <Image
+              src="/images/heroes/hero-home-new-family.webp"
+              alt=""
+              fill
+              priority
+              quality={75}
+              sizes="(max-width: 640px) 60vw, (max-width: 768px) 55vw, 50vw"
+              className="object-cover object-left opacity-60"
+            />
+          </div>
+        </div>
+
+        {/* ------------------------ */}
+        {/* DESKTOP FAMILY IMAGE - LARGER SIZE */}
+        {/* ------------------------ */}
+        <div className="absolute bottom-[10%] right-0 z-20 pointer-events-none hidden lg:block">
           <Image
             src="/images/heroes/hero-home-new-family.webp"
             alt="Smiling family at Pear Tree Dental"
             width={1200}
             height={900}
             quality={85}
-            priority
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 45vw, (min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
-            className="w-[50vw] min-w-[300px] max-w-[1200px] sm:w-[45vw] lg:w-[52vw] lg:min-w-[600px] xl:w-[60vw] 2xl:w-[68vw] h-auto object-contain"
+            fetchPriority="low"
+            sizes="(min-width:1536px) 1320px, (min-width:1280px) 1155px, (min-width:1024px) 990px, 825px"
+            className="w-[57vw] min-w-[660px] max-w-[1320px] xl:w-[66vw] 2xl:w-[75vw] h-auto object-contain"
           />
         </div>
 
@@ -130,7 +155,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
 
           {/* DESKTOP */}
           <div className="hidden lg:flex lg:items-center min-h-[100svh]">
-            <div className="max-w-2xl space-y-8">
+            <div className="max-w-2xl space-y-6">
               <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight">
                 Expert dental care
                 <br />
