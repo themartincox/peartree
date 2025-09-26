@@ -122,7 +122,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
           {/* MOBILE-ONLY bounded text container (1/2 width, centered region) */}
           <div className="block lg:hidden w-1/2 mx-0">
             <p
-              className="text-lg sm:text-xl text-pear-primary font-bold leading-relaxed
+              className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed
                          drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
             >
               Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.

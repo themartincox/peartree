@@ -196,7 +196,7 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     aria-label="Services menu"
-                    className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-primary/40"
+                    className="inline-flex h-10 items-center rounded-md bg-pear-primary px-3 text-sm font-medium text-white shadow hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-primary/40"
                   >
                     Services
                   </NavigationMenuTrigger>
@@ -268,7 +268,7 @@ const Navigation = () => {
 
                 {/* About */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-primary/40">
+                  <NavigationMenuTrigger className="inline-flex h-10 items-center rounded-md bg-pear-primary px-3 text-sm font-medium text-white shadow hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-primary/40">
                     About
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -294,7 +294,7 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <Link
                     href="/new-patients"
-                    className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold"
+                    className="inline-flex h-10 items-center rounded-md bg-pear-primary px-3 text-sm font-medium text-white shadow hover:text-pear-gold"
                   >
                     New Patients
                   </Link>
