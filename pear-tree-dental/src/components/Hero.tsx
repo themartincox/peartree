@@ -52,34 +52,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         <div className="absolute inset-0 bg-gray-100/40" />
       </div>
 
-      {/* ------------------------ */}
-      {/* MOBILE-ONLY FOREGROUND (LCP TARGET) */}
-      {/* Exactly one priority image */}
-      {/* ------------------------ */}
-      <div
-        className="block lg:hidden absolute right-[-30px] bottom-0 z-10 pointer-events-none
-                   h-[66vh] w-[52vw] sm:w-[46vw] md:w-[42vw] min-w-[320px]
-                   -translate-x-[30px] -translate-y-[30px] origin-bottom-right scale-[1.25]"
-        aria-hidden="true"
-        style={{
-          WebkitMaskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-          maskImage: "linear-gradient(to left, black 70%, transparent 100%)",
-        }}
-      >
-        <div className="relative h-full w-full overflow-hidden">
-          <Image
-            src="/images/heroes/hero-home-new-family.webp"
-            alt=""
-            fill
-            priority
-            fetchPriority="high"
-            quality={70}
-            sizes="(max-width: 480px) 92vw, (max-width: 768px) 92vw, 50vw"
-            className="object-cover object-[12%_center] opacity-60"
-          />
-        </div>
-      </div>
-
+     
       {/* ------------------------ */}
       {/* DESKTOP FAMILY IMAGE (DECORATIVE, NO PRIORITY) */}
       {/* Reserve space via width/height + sizes; avoid priority to prevent double-preload */}
