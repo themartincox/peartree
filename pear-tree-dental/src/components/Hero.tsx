@@ -156,7 +156,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
           {/* DESKTOP */}
           <div className="hidden lg:flex lg:items-center min-h-[100svh]">
             <div className="max-w-2xl">
-              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6">
+              <h1 className="heading-serif text-[85px] font-bold text-pear-primary drop-shadow-md leading-tight mb-6 -mt-8">
                 Expert dental care
                 <br />
                 with a{" "}
