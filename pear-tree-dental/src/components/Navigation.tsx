@@ -304,7 +304,7 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <Link
                     href="/contact"
-                    className="inline-flex h-10 items-center rounded-md bg-white px-3 text-sm font-medium text-pear-primary shadow hover:text-pear-gold"
+                    className="inline-flex h-10 items-center rounded-md bg-pear-primary px-3 text-sm font-medium text-white shadow hover:text-pear-gold"
                   >
                     Contact
                   </Link>
