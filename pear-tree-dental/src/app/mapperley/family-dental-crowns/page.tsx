@@ -34,8 +34,8 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dental Crowns in Mapperley - Quality Restorations for Working Families | Pear Tree Dental",
-  description: "Dental crowns for Mapperley working families. Quality restorations, honest pricing, and flexible payment options. Same-day CEREC crowns available. Quick drive from Mapperley NG3.",
+  title: "Dental Crowns in Mapperley - Quality Restorations for Busy Families | Pear Tree Dental",
+  description: "Dental crowns for Mapperley families. Quality restorations, honest pricing, and flexible payment options. Same-day CEREC crowns available. Quick drive from Mapperley NG3.",
   keywords: [
     "dental crowns Mapperley",
     "tooth crowns Mapperley NG3",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     "working families dentist Mapperley"
   ],
   openGraph: {
-    title: "Dental Crowns in Mapperley - Quality Restorations for Working Families | Pear Tree Dental",
-    description: "Dental crowns for Mapperley working families. Quality restorations with honest pricing and flexible payment options.",
+    title: "Dental Crowns in Mapperley - Quality Restorations for Busy Families | Pear Tree Dental",
+    description: "Dental crowns for Mapperley families. Quality restorations with honest pricing and flexible payment options.",
     url: "https://peartree.dental/mapperley/dental-crowns"
   },
   alternates: {
@@ -59,7 +59,7 @@ export default function MapperleyDentalCrownsPage() {
   const mapperleyCrownsFAQs = [
     {
       question: "How affordable are quality dental crowns from Mapperley?",
-      answer: "We believe quality dental crowns should be accessible to Mapperley working families. Our crowns start from £450 with payment plan options available. We provide honest pricing upfront and use quality materials that offer excellent value for money."
+      answer: "We believe quality dental crowns should be accessible to Mapperley families. Our crowns start from £450 with payment plan options available. We provide honest pricing upfront and use quality materials that offer excellent value for money."
     },
     {
       question: "What's the difference between your crown options?",
@@ -67,16 +67,13 @@ export default function MapperleyDentalCrownsPage() {
     },
     {
       question: "Can you fit crown appointments around work schedules?",
-      answer: "Absolutely! We understand working families in Mapperley have busy schedules. We offer early morning and evening appointments, and our same-day CEREC crowns can often be completed in one visit, minimizing time off work."
+      answer: "Absolutely! We understand families in Mapperley have busy schedules. We offer early morning and evening appointments, and our same-day CEREC crowns can often be completed in one visit, minimising time off work."
     },
     {
       question: "How long do dental crowns last?",
       answer: "Quality dental crowns typically last 10-15 years with proper care. We provide detailed aftercare instructions and regular check-ups to ensure your investment lasts. Our crowns come with warranties for added peace of mind."
     },
-    {
-      question: "Do you offer payment plans for crown treatment?",
-      answer: "Yes! We understand crown treatment is an investment for working families. We offer flexible payment plans to spread costs over 6-12 months with 0% interest options available, making quality restoration affordable."
-    }
+    
   ];
 
   const crownOptions = [
@@ -184,7 +181,7 @@ export default function MapperleyDentalCrownsPage() {
       savings: "Avoid paying for premium features you don't need"
     },
     {
-      strategy: "Treatment Timing Optimization",
+      strategy: "Treatment Timing Optimisation",
       approach: "Plan crown treatment at optimal time to prevent emergencies",
       benefit: "Avoid urgent treatment costs and work disruption",
       savings: "Planned treatment often 20-30% less than emergency alternatives"
@@ -201,13 +198,7 @@ export default function MapperleyDentalCrownsPage() {
       benefit: "Better treatment outcomes with coordinated approach",
       savings: "Reduced per-crown costs and fewer total appointments"
     },
-    {
-      strategy: "Payment Plan Utilization",
-      approach: "Spread crown costs over 6-12 months with 0% interest",
-      benefit: "Get quality treatment now, pay over time",
-      savings: "Avoid delaying treatment which can lead to more expensive problems"
-    },
-    {
+       {
       strategy: "NHS vs Private Comparison",
       approach: "Transparent comparison of NHS and private crown options",
       benefit: "Make informed choice based on value and appearance needs",
@@ -293,7 +284,7 @@ export default function MapperleyDentalCrownsPage() {
             <div className="flex justify-center mb-6">
               <Badge className="bg-amber-500 text-white px-4 py-2 text-sm font-semibold">
                 <MapPin className="w-4 h-4 mr-2" />
-                Serving Mapperley Working Families
+                Serving Busy Mapperley Families
               </Badge>
             </div>
 
@@ -302,7 +293,7 @@ export default function MapperleyDentalCrownsPage() {
             </h1>
 
             <p className="text-xl sm:text-2xl leading-relaxed opacity-90 mb-4">
-              Quality Restorations for Working Families
+              Quality Restorations for Busy Families
             </p>
 
             <div className="bg-white/10 rounded-lg p-4 mb-8 inline-block">
@@ -328,7 +319,7 @@ export default function MapperleyDentalCrownsPage() {
             </div>
 
             <div className="mt-8 text-yellow-200">
-              <p className="text-lg font-semibold">👑 Quality dental crowns with honest pricing for Mapperley families!</p>
+              <p className="text-lg font-semibold"> Quality dental crowns with honest pricing for Mapperley families!</p>
             </div>
           </div>
         </div>
@@ -340,11 +331,11 @@ export default function MapperleyDentalCrownsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Quality Dental Crowns for Mapperley Working Families
+                Quality Dental Crowns for Mapperley Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We understand that Mapperley working families need dental crowns that offer excellent quality
-                and value. Our honest pricing and flexible payment options make quality restorations achievable.
+                We understand that Busy Mapperley families need dental crowns that offer excellent quality
+                and value. Our honest pricing and payment options make quality restorations achievable.
               </p>
             </div>
 
@@ -368,7 +359,7 @@ export default function MapperleyDentalCrownsPage() {
               <Crown className="w-12 h-12 text-amber-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-pear-primary mb-4">Quality Crowns with Honest Value</h3>
               <p className="text-lg text-gray-600 mb-6">
-                We believe Mapperley working families deserve quality dental crowns that provide excellent
+                We believe Mapperley families deserve quality dental crowns that provide excellent
                 value for money. Our transparent approach helps you choose the best option for your needs and budget.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
@@ -400,7 +391,7 @@ export default function MapperleyDentalCrownsPage() {
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Choose from our range of quality crown treatments designed to provide
-                excellent value and results for working family budgets.
+                excellent value and results for family budgets.
               </p>
             </div>
 
@@ -441,7 +432,7 @@ export default function MapperleyDentalCrownsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                When Mapperley Working Families Need Dental Crowns
+                When Mapperley Families Need Dental Crowns
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Understanding when crowns are needed helps working families plan
@@ -539,7 +530,7 @@ export default function MapperleyDentalCrownsPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-primary mb-6">
-                Value Strategies for Mapperley Working Families
+                Value Strategies for Mapperley Families
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Smart approaches to getting quality crown treatment that provides
@@ -718,7 +709,7 @@ export default function MapperleyDentalCrownsPage() {
             </h2>
             <p className="text-xl leading-relaxed opacity-90 mb-8">
               Don't let cost concerns delay essential crown treatment. Book quality dental crowns
-              with honest pricing and payment plans designed for working families.
+              with honest pricing and payment plans designed for Busy families.
             </p>
 
             <div className="bg-white/10 rounded-lg p-6 mb-8 inline-block">
