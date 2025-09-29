@@ -1,3 +1,4 @@
+ 
 {
   "name": "nextjs-shadcn",
   "version": "0.1.2",
@@ -19,6 +20,7 @@
     "sitemap:stats": "npm run sitemap:build && node -e \"import('./dist/utils/sitemap-generator.js').then(m => m.getSitemapStats('./src/app').then(console.log))\"",
     "sitemap:force": "FORCE_UPDATE=true node scripts/update-sitemap.js",
     "generate-sitemap:legacy": "node scripts/generate-sitemap.js",
+    "sitemap:crawl": "node scripts/generate-full-sitemap.mjs --base https://peartree.dental --out public --include /services --include /book --include /contact --include /reviews --include /blog --follow-nofollow --rate 4",
     "prebuild": "echo 'Using Next.js App Router sitemap generation'"
   },
   "dependencies": {

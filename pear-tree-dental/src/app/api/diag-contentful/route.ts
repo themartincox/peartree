@@ -1,89 +1,144 @@
-// src/app/api/diag-contentful/route.ts
 import { NextResponse } from "next/server";
-import { flags, cfEntries } from "@/lib/contentful";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
-async function probeByType(typeId: string, opts?: { locale?: string }) {
-  try {
-    const res = await cfEntries<any>(
-      {
-        content_type: typeId,
-        limit: 5,
-        order: ["-sys.updatedAt"],
-        include: 0,
-        ...(opts?.locale ? { locale: opts.locale } : {}),
-      },
-      `diag:${typeId}${opts?.locale ? `:${opts.locale}` : ""}`
-    );
-    const items = (res?.items ?? []).map((it: any) => ({
-      contentType: it?.sys?.contentType?.sys?.id,
-      slug: it?.fields?.slug,
-      title: it?.fields?.title ?? it?.fields?.name,
-      hasPublishedDate: "publishedDate" in (it?.fields ?? {}),
-      hasDate: "date" in (it?.fields ?? {}),
-      locale: it?.sys?.locale,
-      updatedAt: it?.sys?.updatedAt,
-    }));
-    return { ok: true, count: items.length, items };
-  } catch (e: any) {
-    return { ok: false, error: e?.message || String(e) };
-  }
-}
-
-async function probeAny(opts?: { locale?: string }) {
-  try {
-    const res = await cfEntries<any>(
-      {
-        limit: 5,
-        order: ["-sys.updatedAt"],
-        include: 0,
-        ...(opts?.locale ? { locale: opts.locale } : {}),
-      },
-      `diag:any${opts?.locale ? `:${opts.locale}` : ""}`
-    );
-    const items = (res?.items ?? []).map((it: any) => ({
-      contentType: it?.sys?.contentType?.sys?.id,
-      slug: it?.fields?.slug,
-      sampleFields: Object.keys(it?.fields || {}).slice(0, 6),
-      locale: it?.sys?.locale,
-      updatedAt: it?.sys?.updatedAt,
-    }));
-    return { ok: true, count: items.length, items };
-  } catch (e: any) {
-    return { ok: false, error: e?.message || String(e) };
-  }
-}
+type Diag = {
+  ok: boolean;
+  mode: "delivery" | "preview";
+  endpoint: string;
+  spaceId?: string;
+  environment?: string;
+  tokenNameUsed?: string;
+  hasToken?: boolean;
+  lastGraphQLStatus?: number | null;
+  lastGraphQLErrors?: any;
+  sampleQueryOk?: boolean;
+  hints?: string[];
+};
 
 export async function GET() {
-  const typeFromEnv =
-    process.env.CONTENTFUL_BLOG_POST_TYPE_ID ||
-    process.env.NEXT_PUBLIC_CONTENTFUL_BLOG_POST_TYPE_ID ||
-    "pageBlogPost";
+  const spaceId = process.env.CONTENTFUL_SPACE_ID || process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
+  const environment = process.env.CONTENTFUL_ENVIRONMENT || "master";
 
-  const env = {
-    CONTENTFUL_SPACE_ID: !!process.env.CONTENTFUL_SPACE_ID,
-    CONTENTFUL_ENVIRONMENT: process.env.CONTENTFUL_ENVIRONMENT || "master",
-    CONTENTFUL_USE_PREVIEW: process.env.CONTENTFUL_USE_PREVIEW || "false",
-    CONTENTFUL_BLOG_POST_TYPE_ID: typeFromEnv,
-    FAST_BUILD: process.env.FAST_BUILD || "unset",
-    USE_MOCK_DATA: process.env.USE_MOCK_DATA || "unset",
+  // Try the common variable names you’ve used across the codebase
+  const candidates = [
+    "CONTENTFUL_DELIVERY_TOKEN",
+    "CONTENTFUL_ACCESS_TOKEN",
+    "CONTENTFUL_GRAPHQL_TOKEN",
+    "CONTENTFUL_CDA_TOKEN",
+  ] as const;
+
+  let token: string | undefined;
+  let tokenNameUsed: string | undefined;
+  for (const name of candidates) {
+    const v = process.env[name];
+    if (v && !token) {
+      token = v;
+      tokenNameUsed = name;
+    }
+  }
+
+  const usePreview = String(process.env.CONTENTFUL_USE_PREVIEW || "").toLowerCase() === "true";
+  const mode: "delivery" | "preview" = usePreview ? "preview" : "delivery";
+  const endpoint =
+    mode === "preview"
+      ? `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/${environment}?preview=true`
+      : `https://graphql.contentful.com/content/v1/spaces/${spaceId}/environments/${environment}`;
+
+  const diag: Diag = {
+    ok: false,
+    mode,
+    endpoint,
+    spaceId,
+    environment,
+    tokenNameUsed,
+    hasToken: Boolean(token),
+    lastGraphQLStatus: null,
+    lastGraphQLErrors: null,
+    sampleQueryOk: false,
+    hints: [],
   };
 
-  const checks = {
-    byEnvType_defaultLocale: await probeByType(typeFromEnv),
-    byEnvType_enGB: await probeByType(typeFromEnv, { locale: "en-GB" }),
+  // Basic sanity hints up front
+  if (!spaceId) diag.hints.push("Missing CONTENTFUL_SPACE_ID.");
+  if (!environment) diag.hints.push("Missing CONTENTFUL_ENVIRONMENT (defaulting to 'master').");
+  if (!token) diag.hints.push(`No token found in ${candidates.join(", ")}.`);
 
-    // Common alternates people use
-    by_blogPost: await probeByType("blogPost"),
-    by_pageBlogPost: await probeByType("pageBlogPost"),
-    by_article: await probeByType("article"),
+  // If anything critical is missing, return early
+  if (!spaceId || !token) {
+    return NextResponse.json(diag, { status: 200 });
+  }
 
-    // No content_type: enumerate what exists at all
-    any_defaultLocale: await probeAny(),
-    any_enGB: await probeAny({ locale: "en-GB" }),
-  };
+  // Minimal GraphQL query – tweak a content type name you know exists
+  const query = /* GraphQL */ `
+    query DiagServices($limit: Int!) {
+      serviceCollection(limit: $limit) {
+        total
+        items {
+          sys { id }
+          slug
+          title
+        }
+      }
+    }
+  `;
 
-  return NextResponse.json({ flags, env, checks });
+  try {
+    const res = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ query, variables: { limit: 1 } }),
+      // Contentful is fine without caching for a diag call
+      next: { revalidate: 0 },
+    });
+
+    diag.lastGraphQLStatus = res.status;
+
+    const json = await res.json().catch(() => ({}));
+    if (json?.errors) {
+      diag.lastGraphQLErrors = json.errors;
+      // Helpful error tips
+      const codes = JSON.stringify(json.errors);
+      if (/ACCESS_TOKEN_INVALID|Authentication failed/i.test(codes)) {
+        diag.hints.push(
+          "Token invalid for this endpoint. If CONTENTFUL_USE_PREVIEW=false, you must use a Delivery (CDA) token.",
+        );
+        diag.hints.push(
+          "If CONTENTFUL_USE_PREVIEW=true, use a Preview (CPA) token or append preview=true to endpoint as done here.",
+        );
+      }
+      if (/UnknownType|Cannot query field/i.test(codes)) {
+        diag.hints.push(
+          "Your GraphQL model may differ (content type not named 'service'). Change the sample query to a type that exists.",
+        );
+      }
+    }
+
+    // Success path
+    if (res.ok && json?.data) {
+      const total = json.data?.serviceCollection?.total ?? 0;
+      diag.sampleQueryOk = true;
+      diag.ok = true;
+      if (total === 0) {
+        diag.hints.push("Auth OK, but no items returned. Check environment and content type name.");
+      }
+    } else {
+      diag.sampleQueryOk = false;
+    }
+  } catch (e: any) {
+    diag.hints.push(`Network/Fetch error: ${e?.message || e}`);
+  }
+
+  // Final generic hints
+  diag.hints.push(
+    `Ensure the token belongs to space "${spaceId}" and environment "${environment}" and has the 'Content Delivery API - access' permission.`,
+  );
+  if (mode === "delivery") {
+    diag.hints.push("Currently using Delivery endpoint. Set CONTENTFUL_USE_PREVIEW=true to test Preview.");
+  } else {
+    diag.hints.push("Currently using Preview endpoint. Set CONTENTFUL_USE_PREVIEW=false to switch to Delivery.");
+  }
+
+  return NextResponse.json(diag, { status: 200 });
 }
