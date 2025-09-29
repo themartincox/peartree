@@ -3,20 +3,10 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import {
-  ExternalLink,
-  Star,
-  ThumbsUp,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { ExternalLink, Star, CheckCircle, ChevronDown, ChevronUp } from "lucide-react";
 
 // --- CONFIG ---
 const BASE_UTM = "utm_source=sms&utm_medium=review_request&utm_campaign=post_visit";
-
-// Set your two preferred platforms here or via ?options=google,trustpilot
-const DEFAULT_VISIBLE: PlatformKey[] = ["google", "trustpilot"];
 
 const PLATFORMS = {
   google: {
@@ -38,6 +28,9 @@ const PLATFORMS = {
 } as const;
 
 type PlatformKey = keyof typeof PLATFORMS;
+
+// Set your two preferred platforms here or via ?options=google,trustpilot
+const DEFAULT_VISIBLE: PlatformKey[] = ["google", "trustpilot"];
 
 export default function ReviewHub() {
   const params = useSearchParams();
@@ -113,15 +106,16 @@ export default function ReviewHub() {
           })}
         </div>
 
-        {/* Collapsible 'Other options' */}
+        {/* Show other options ONLY after 👍 (this card only renders when mood === 'positive') */}
         {otherPlatforms.length > 0 && (
-          <div className="mt-4">
+          <div className="mt-8 rounded-2xl border border-slate-200 p-6">
+            <h3 className="text-lg font-medium mb-3">Prefer a different platform?</h3>
             <button
               type="button"
               onClick={() => setShowOthers((s) => !s)}
               className="inline-flex items-center gap-2 text-sm underline underline-offset-2"
               aria-expanded={showOthers}
-              aria-controls="other-options"
+              aria-controls="other-options-global"
             >
               {showOthers ? (
                 <>
@@ -135,7 +129,7 @@ export default function ReviewHub() {
             </button>
 
             <div
-              id="other-options"
+              id="other-options-global"
               className={`overflow-hidden transition-[max-height] duration-300 ${
                 showOthers ? "max-h-[300px] mt-3" : "max-h-0"
               }`}
@@ -160,6 +154,10 @@ export default function ReviewHub() {
                 })}
               </ul>
             </div>
+
+            <p className="text-xs text-slate-500 mt-3">
+              We never discourage honest reviews. Public review options are always available.
+            </p>
           </div>
         )}
 
@@ -168,14 +166,13 @@ export default function ReviewHub() {
         </p>
       </div>
     ),
-    // deps that affect tracked URLs / lists
     [visiblePlatforms, otherPlatforms, visitId, clinician, location, showOthers]
   );
 
   const NegativeCard = (
     <div className="mt-6 rounded-2xl border border-amber-300 bg-amber-50 p-6">
-      <h2 className="text-lg font-semibold">Sorry we fell short — tell the owner directly</h2>
-      <p className="mt-2 text-slate-700">Your message isn’t public. We’ll use it to make things right.</p>
+      <h2 className="text-lg font-semibold">Sorry we fell short — tell us how we could do better</h2>
+      <p className="mt-2 text-slate-700">Your message isn’t public. Your feedback helps us improve our service.</p>
 
       <form
         name="owner-feedback"
@@ -221,18 +218,13 @@ export default function ReviewHub() {
             <label className="block text-sm font-medium" htmlFor="fb-email">
               Email (optional)
             </label>
-            <input
-              id="fb-email"
-              name="email"
-              type="email"
-              className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-            />
+            <input id="fb-email" name="email" type="email" className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2" />
           </div>
         </div>
 
         <div>
           <label className="block text-sm font-medium" htmlFor="fb-message">
-            What happened? How can we improve?
+            How can we improve?
           </label>
           <textarea
             id="fb-message"
@@ -240,19 +232,13 @@ export default function ReviewHub() {
             required
             rows={5}
             className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2"
-            placeholder="Share details so we can help…"
+            placeholder="Share details so we can do better…"
           />
         </div>
 
-        <button
-          type="submit"
-          className="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2"
-          aria-label="Send message to practice owner"
-        >
+        <button type="submit" className="inline-flex items-center gap-2 rounded-xl bg-black text-white px-4 py-2">
           Send privately
         </button>
-
-        <p className="text-xs text-slate-500 mt-2">We reply within 1 business day.</p>
       </form>
     </div>
   );
@@ -264,14 +250,10 @@ export default function ReviewHub() {
         <p className="mt-2 text-slate-600">Tell us with one tap.</p>
 
         {formSuccess && (
-          <div
-            className="mt-4 flex items-start gap-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4"
-            role="status"
-            aria-live="polite"
-          >
+          <div className="mt-4 flex items-start gap-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4" role="status" aria-live="polite">
             <CheckCircle className="w-5 h-5" />
             <p>
-              Thanks — your message was sent to the owner. We’ll reply within one business day
+              Thanks — your message was sent to the team.
               {visitId ? <> (Ref: {visitId})</> : null}.
             </p>
           </div>
@@ -302,61 +284,6 @@ export default function ReviewHub() {
 
       {mood === "positive" && PositiveCard}
       {mood === "negative" && NegativeCard}
-
-      {/* Keep public review options accessible even if user chose 👎 (policy-friendly) */}
-      {mood !== "positive" && otherPlatforms.length > 0 && (
-        <div className="mt-8 rounded-2xl border border-slate-200 p-6">
-          <h3 className="text-lg font-medium mb-3">Prefer a different platform?</h3>
-          <button
-            type="button"
-            onClick={() => setShowOthers((s) => !s)}
-            className="inline-flex items-center gap-2 text-sm underline underline-offset-2"
-            aria-expanded={showOthers}
-            aria-controls="other-options-global"
-          >
-            {showOthers ? (
-              <>
-                Hide other options <ChevronUp className="w-4 h-4" />
-              </>
-            ) : (
-              <>
-                Show other options <ChevronDown className="w-4 h-4" />
-              </>
-            )}
-          </button>
-
-          <div
-            id="other-options-global"
-            className={`overflow-hidden transition-[max-height] duration-300 ${
-              showOthers ? "max-h-[300px] mt-3" : "max-h-0"
-            }`}
-          >
-            <ul className="flex flex-wrap gap-3">
-              {otherPlatforms.map((key) => {
-                const p = PLATFORMS[key];
-                return (
-                  <li key={key}>
-                    <Link
-                      href={trackedUrl(p.href)}
-                      prefetch={false}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm hover:bg-slate-50"
-                      aria-label={`Go to ${p.label} review page`}
-                    >
-                      {p.label} <ExternalLink className="w-4 h-4" />
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <p className="text-xs text-slate-500 mt-3">
-            We never discourage honest reviews. Public review options are always available.
-          </p>
-        </div>
-      )}
     </section>
   );
 }
