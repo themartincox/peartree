@@ -65,7 +65,7 @@ const associates = [
     role: "Associate Dentist",
     gdc: "264376",
     image: "/images/team/anna-abbasi.webp",
-    description: "Anna has extensive experience in community dentistry, is great with children, taking pride in delivering high quality ethical dentistry for the whole family."
+    description: "Anna has extensive experience in community dentistry, taking pride in delivering high quality ethical dentistry for the whole family."
   }
 ];
 
