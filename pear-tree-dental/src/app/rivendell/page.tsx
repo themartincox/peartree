@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -9,11 +9,8 @@ import {
   Phone,
   Star,
   CheckCircle,
-  Car,
-  CalendarDays,
   Shield,
   Heart,
-  Navigation,
   Route,
   Users,
   Home,
@@ -26,7 +23,8 @@ import {
 
 export const metadata: Metadata = {
   title: 'Dentist for Rivendell Residents - Pear Tree Dental | New Home Dental Care',
-  description: 'New to Rivendell? Register your family with Pear Tree Dental. Local dental care for Rivendell housing estate residents with family-friendly services.',
+  description:
+    'New to Rivendell? Register your family with Pear Tree Dental. Local dental care for Rivendell housing estate residents with family-friendly services.',
   keywords: [
     'dentist Rivendell',
     'Rivendell dental care',
@@ -34,16 +32,17 @@ export const metadata: Metadata = {
     'family dentist Rivendell',
     'dental registration Rivendell',
     'children dentist Rivendell',
-    'Rivendell housing estate dentist'
+    'Rivendell housing estate dentist',
   ],
   openGraph: {
     title: 'Dentist for Rivendell Residents - Pear Tree Dental | New Home Dental Care',
-    description: 'Welcome to the area! Family dental care for Rivendell residents. Easy registration, children welcome, membership plans available.',
-    url: 'https://peartree.dental/rivendell'
+    description:
+      'Welcome to the area! Family dental care for Rivendell residents. Easy registration, children welcome, membership plans available.',
+    url: 'https://peartree.dental/rivendell',
   },
   alternates: {
-    canonical: 'https://peartree.dental/rivendell'
-  }
+    canonical: 'https://peartree.dental/rivendell',
+  },
 };
 
 export default function RivendellPage() {
@@ -54,41 +53,42 @@ export default function RivendellPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "@id": "https://peartree.dental/rivendell",
-            "name": "Pear Tree Dental - Serving Rivendell Residents",
-            "image": "https://peartree.dental/images/pear-tree-dental-practice.jpg",
-            "description": "Family dental practice serving Rivendell housing estate residents with comprehensive dental care for all ages.",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "22 Nottingham Road",
-              "addressLocality": "Burton Joyce",
-              "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5AE",
-              "addressCountry": "GB"
+            '@context': 'https://schema.org',
+            '@type': 'LocalBusiness',
+            '@id': 'https://peartree.dental/rivendell',
+            name: 'Pear Tree Dental - Serving Rivendell Residents',
+            image: 'https://peartree.dental/images/pear-tree-dental-practice.jpg',
+            description:
+              'Family dental practice serving Rivendell housing estate residents with comprehensive dental care for all ages.',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '22 Nottingham Road',
+              addressLocality: 'Burton Joyce',
+              addressRegion: 'Nottinghamshire',
+              postalCode: 'NG14 5AE',
+              addressCountry: 'GB',
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "52.9847",
-              "longitude": "-1.0147"
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: '52.9847',
+              longitude: '-1.0147',
             },
-            "telephone": "0115 931 2935",
-            "url": "https://peartree.dental",
-            "areaServed": {
-              "@type": "Place",
-              "name": "Rivendell, Nottinghamshire"
+            telephone: '0115 931 2935',
+            url: 'https://peartree.dental',
+            areaServed: {
+              '@type': 'Place',
+              name: 'Rivendell, Nottinghamshire',
             },
-            "serviceArea": {
-              "@type": "GeoCircle",
-              "geoMidpoint": {
-                "@type": "GeoCoordinates",
-                "latitude": "52.9847",
-                "longitude": "-1.0147"
+            serviceArea: {
+              '@type': 'GeoCircle',
+              geoMidpoint: {
+                '@type': 'GeoCoordinates',
+                latitude: '52.9847',
+                longitude: '-1.0147',
               },
-              "geoRadius": "15000"
-            }
-          })
+              geoRadius: '15000',
+            },
+          }),
         }}
       />
 
@@ -112,7 +112,7 @@ export default function RivendellPage() {
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Welcome to Rivendell! As you settle into your new home, let Pear Tree Dental be your family's
+              Welcome to Rivendell! As you settle into your new home, let Pear Tree Dental be your family&apos;s
               trusted local dental practice. Convenient location, family-friendly care, and easy registration.
             </p>
 
@@ -122,10 +122,10 @@ export default function RivendellPage() {
                 size="lg"
                 className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
+                <a href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
                   Call: 0115 931 2935
-                </Link>
+                </a>
               </Button>
               <Button
                 asChild
@@ -150,7 +150,7 @@ export default function RivendellPage() {
                 <Users className="w-4 h-4 mr-1" />
                 Family Plans
               </Badge>
-                        </div>
+            </div>
           </div>
         </div>
       </section>
@@ -162,7 +162,8 @@ export default function RivendellPage() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">✓ Settling Into Your New Home?</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Make dental care part of your new home setup. We make it easy for Rivendell families to register and get started.
+                Make dental care part of your new home setup. We make it easy for Rivendell families to register and get
+                started.
               </p>
             </div>
 
@@ -172,20 +173,31 @@ export default function RivendellPage() {
                   <h3 className="text-2xl font-bold mb-6 text-dental-navy">New Home Checklist</h3>
                   <div className="space-y-4">
                     {[
-                      { task: "Set up utilities", status: "complete" },
-                      { task: "Register with GP", status: "complete" },
-                      { task: "Find local schools", status: "complete" },
-                      { task: "Register with dentist", status: "pending", highlight: true },
-                      { task: "Explore local amenities", status: "pending" }
+                      { task: 'Set up utilities', status: 'complete' },
+                      { task: 'Register with GP', status: 'complete' },
+                      { task: 'Find local schools', status: 'complete' },
+                      { task: 'Register with dentist', status: 'pending', highlight: true },
+                      { task: 'Explore local amenities', status: 'pending' },
                     ].map((item, index) => (
-                      <div key={index} className={`flex items-center space-x-3 p-3 rounded-lg ${
-                        item.highlight ? 'bg-pear-gold/20 border border-pear-gold/30' :
-                        item.status === 'complete' ? 'bg-dental-green/10' : 'bg-gray-50'
-                      }`}>
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                          item.status === 'complete' ? 'bg-dental-green' :
-                          item.highlight ? 'bg-pear-gold' : 'bg-gray-300'
-                        }`}>
+                      <div
+                        key={index}
+                        className={`flex items-center space-x-3 p-3 rounded-lg ${
+                          item.highlight
+                            ? 'bg-pear-gold/20 border border-pear-gold/30'
+                            : item.status === 'complete'
+                            ? 'bg-dental-green/10'
+                            : 'bg-gray-50'
+                        }`}
+                      >
+                        <div
+                          className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                            item.status === 'complete'
+                              ? 'bg-dental-green'
+                              : item.highlight
+                              ? 'bg-pear-gold'
+                              : 'bg-gray-300'
+                          }`}
+                        >
                           {item.status === 'complete' ? (
                             <CheckCircle className="w-4 h-4 text-white" />
                           ) : (
@@ -234,12 +246,12 @@ export default function RivendellPage() {
                     <div>
                       <h3 className="font-bold text-xl mb-2">Easy Registration</h3>
                       <p className="text-gray-700 mb-2">
-                        Simple family registration process - we'll handle all the paperwork
+                        Simple family registration process - we&apos;ll handle all the paperwork
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
                         <li>• Register whole family together</li>
                         <li>• Flexible appointment times</li>
-                                              </ul>
+                      </ul>
                     </div>
                   </div>
                 </Card>
@@ -251,9 +263,7 @@ export default function RivendellPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-xl mb-2">Children Welcome</h3>
-                      <p className="text-gray-700 mb-2">
-                        Gentle, caring dental care for children of all ages
-                      </p>
+                      <p className="text-gray-700 mb-2">Gentle, caring dental care for children of all ages</p>
                       <ul className="text-sm text-gray-600 space-y-1">
                         <li>• Fun, friendly environment</li>
                         <li>• Patient, experienced team</li>
@@ -283,56 +293,59 @@ export default function RivendellPage() {
               {[
                 {
                   title: "Children's Dentistry",
-                  description: "Gentle dental care to keep young smiles healthy",
+                  description: 'Gentle dental care to keep young smiles healthy',
                   icon: Baby,
-                  features: ["First dental visits", "Preventive treatments", "Tooth-friendly education", "Fluoride applications"],
-                  price: "From £0",
-                  badge: "Ages 0-17"
+                  features: ['First dental visits', 'Preventive treatments', 'Tooth-friendly education', 'Fluoride applications'],
+                  price: 'From £0',
+                  badge: 'Ages 0-17',
                 },
                 {
-                  title: "Family Check-ups",
-                  description: "Regular dental health assessments for the whole family",
+                  title: 'Family Check-ups',
+                  description: 'Regular dental health assessments for the whole family',
                   icon: Users,
-                  features: ["Comprehensive exams", "X-rays when needed", "Oral health advice", "Treatment planning"],
-                  price: "From £60",
-                  badge: "Whole Family"
+                  features: ['Comprehensive exams', 'X-rays when needed', 'Oral health advice', 'Treatment planning'],
+                  price: 'From £60',
+                  badge: 'Whole Family',
                 },
                 {
-                  title: "Emergency Care",
-                  description: "Urgent dental care when your family needs it",
+                  title: 'Emergency Care',
+                  description: 'Urgent dental care when your family needs it',
                   icon: Shield,
-                  features: ["Same-day appointments", "Pain relief", "Emergency repairs", "Out-of-hours advice"],
-                  price: "From £55",
-                  badge: "24/7 Support"
+                  features: ['Same-day appointments', 'Pain relief', 'Emergency repairs', 'Out-of-hours advice'],
+                  price: 'From £55',
+                  badge: '24/7 Support',
                 },
                 {
-                  title: "Preventive Care",
+                  title: 'Preventive Care',
                   description: "Keep your family's teeth healthy with regular care",
                   icon: Heart,
-                  features: ["Professional cleaning", "Hygienist appointments", "Dietary advice", "Sealants for children"],
-                  price: "From £55",
-                  badge: "Prevention First"
+                  features: ['Professional cleaning', 'Hygienist appointments', 'Dietary advice', 'Sealants for children'],
+                  price: 'From £55',
+                  badge: 'Prevention First',
                 },
                 {
-                  title: "Family Membership",
-                  description: "Affordable dental care plans for families",
+                  title: 'Family Membership',
+                  description: 'Affordable dental care plans for families',
                   icon: HeartHandshake,
-                  features: ["Predictable monthly costs", "No consultation fees", "Discounts on treatments", "Priority booking"],
-                  price: "From £10.95",
-                  badge: "Save £££s"
+                  features: ['Predictable monthly costs', 'No consultation fees', 'Discounts on treatments', 'Priority booking'],
+                  price: 'From £10.95',
+                  badge: 'Save £££s',
                 },
                 {
-                  title: "Cosmetic Dentistry",
-                  description: "Smile makeovers for adults and teens",
+                  title: 'Cosmetic Dentistry',
+                  description: 'Smile makeovers for adults and teens',
                   icon: Smile,
-                  features: ["Teeth whitening", "Straightening options", "Veneers", "Composite bonding"],
-                  price: "From £350",
-                  badge: "Confidence Boost"
-                }
+                  features: ['Teeth whitening', 'Straightening options', 'Veneers', 'Composite bonding'],
+                  price: 'From £350',
+                  badge: 'Confidence Boost',
+                },
               ].map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <Card key={index} className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors">
+                  <Card
+                    key={index}
+                    className="p-6 border border-dental-green/20 hover:border-dental-green/40 transition-colors"
+                  >
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
@@ -363,6 +376,7 @@ export default function RivendellPage() {
               })}
             </div>
 
+            {/* Offer CTA (fixed buttons) */}
             <div className="text-center mt-12">
               <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">🎉 New Rivendell Resident Offer</h3>
@@ -371,26 +385,28 @@ export default function RivendellPage() {
                   Plus, children under 12 get a free dental health pack!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/membership" passHref>
-  <Button
-    size="lg"
-    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
-  >
-    <UserPlus className="w-5 h-5 mr-2" />
-    Register Your Family
-  </Button>
-</Link>
-                  <Button size="lg" variant="outline" className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
+                  >
+                    <Link href="/membership">
+                      <UserPlus className="w-5 h-5 mr-2" />
+                      Register Your Family
+                    </Link>
+                  </Button>
+
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white"
+                  >
                     <a href="tel:01159312935">
-  <Button
-    size="lg"
-    variant="outline"
-    className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white"
-  >
-    <Phone className="w-5 h-5 mr-2" />
-    Call: 0115 931 2935
-  </Button>
-</a>
+                      <Phone className="w-5 h-5 mr-2" />
+                      Call: 0115 931 2935
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -412,29 +428,32 @@ export default function RivendellPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Emma & Tom B.",
-                  location: "Rivendell",
-                  text: "We moved to Rivendell last year and finding Pear Tree Dental was one of the best decisions. The kids love going, and the staff make everything so easy for busy families.",
+                  name: 'Emma & Tom B.',
+                  location: 'Rivendell',
+                  text:
+                    'We moved to Rivendell last year and finding Pear Tree Dental was one of the best decisions. The kids love going, and the staff make everything so easy for busy families.',
                   rating: 5,
-                  service: "Family Registration",
-                  children: "3 children"
+                  service: 'Family Registration',
+                  children: '3 children',
                 },
                 {
-                  name: "Sarah J.",
-                  location: "Rivendell",
-                  text: "As a new mum in the area, I was nervous about finding good dental care. The team is super understanding and gentle with my toddler. The journey is really quick too!",
+                  name: 'Sarah J.',
+                  location: 'Rivendell',
+                  text:
+                    'As a new mum in the area, I was nervous about finding good dental care. The team is super understanding and gentle with my toddler. The journey is really quick too!',
                   rating: 5,
                   service: "Children's Dentistry",
-                  children: "1 toddler"
+                  children: '1 toddler',
                 },
                 {
-                  name: "The Martinez Family",
-                  location: "Rivendell",
-                  text: "The family membership plan has saved us so much money. Great to have a local dentist that really cares about the community. Highly recommend to new residents!",
+                  name: 'The Martinez Family',
+                  location: 'Rivendell',
+                  text:
+                    'The family membership plan has saved us so much money. Great to have a local dentist that really cares about the community. Highly recommend to new residents!',
                   rating: 5,
-                  service: "Family Membership",
-                  children: "Family of 5"
-                }
+                  service: 'Family Membership',
+                  children: 'Family of 5',
+                },
               ].map((review, index) => (
                 <Card key={index} className="p-6 shadow-lg border border-dental-green/20">
                   <div className="space-y-4">
@@ -443,12 +462,12 @@ export default function RivendellPage() {
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
                     </div>
-                    <blockquote className="text-gray-700 italic">
-                      "{review.text}"
-                    </blockquote>
+                    <blockquote className="text-gray-700 italic">"{review.text}"</blockquote>
                     <div className="border-t pt-4">
                       <div className="font-semibold text-dental-green">{review.name}</div>
-                      <div className="text-sm text-gray-600">{review.location} • {review.children}</div>
+                      <div className="text-sm text-gray-600">
+                        {review.location} • {review.children}
+                      </div>
                       <div className="text-sm text-pear-gold font-medium">{review.service}</div>
                     </div>
                   </div>
@@ -486,9 +505,12 @@ export default function RivendellPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Our Practice</h3>
                       <p className="text-gray-700">
-                        Pear Tree Dental<br />
-                        22 Nottingham Road<br />
-                        Burton Joyce<br />
+                        Pear Tree Dental
+                        <br />
+                        22 Nottingham Road
+                        <br />
+                        Burton Joyce
+                        <br />
                         Nottinghamshire NG14 5AE
                       </p>
                     </div>
@@ -499,8 +521,10 @@ export default function RivendellPage() {
                     <div>
                       <h3 className="font-semibold mb-2">Contact Us</h3>
                       <p className="text-gray-700">
-                        Phone: 0115 931 2935<br />
-                        New patients welcome<br />
+                        Phone: 0115 931 2935
+                        <br />
+                        New patients welcome
+                        <br />
                         Family registration available
                       </p>
                     </div>
@@ -527,19 +551,27 @@ export default function RivendellPage() {
                   <h3 className="font-semibold mb-4 text-dental-green">Simple Journey (6 minutes)</h3>
                   <ol className="space-y-2 text-gray-700">
                     <li className="flex items-start space-x-2">
-                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">1</span>
+                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">
+                        1
+                      </span>
                       <span>Exit Rivendell estate onto the main road</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">2</span>
+                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">
+                        2
+                      </span>
                       <span>Follow signs to Burton Joyce village center</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">3</span>
+                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">
+                        3
+                      </span>
                       <span>Turn left onto at the first traffic lights in Burton Joyce</span>
                     </li>
                     <li className="flex items-start space-x-2">
-                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">4</span>
+                      <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">
+                        4
+                      </span>
                       <span>Pear Tree Dental right in front with free parking</span>
                     </li>
                   </ol>
@@ -559,12 +591,10 @@ export default function RivendellPage() {
       <section className="py-16 bg-dental-green text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Ready to Register Your Family?
-            </h2>
+            <h2 className="text-3xl font-bold mb-6">Ready to Register Your Family?</h2>
             <p className="text-xl mb-8 text-white/90">
-              Join the growing Rivendell community who trust Pear Tree Dental with their family's oral health.
-              Easy registration, warm welcome, and dental care you can trust.
+              Join the growing Rivendell community who trust Pear Tree Dental with their family&apos;s oral health. Easy
+              registration, warm welcome, and dental care you can trust.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -572,10 +602,10 @@ export default function RivendellPage() {
                 size="lg"
                 className="bg-white hover:bg-white/90 text-dental-green font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
+                <a href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
                   Call: 0115 931 2935
-                </Link>
+                </a>
               </Button>
               <Button
                 asChild
