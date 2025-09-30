@@ -1,90 +1,436 @@
-{
-  "name": "nextjs-shadcn",
-  "version": "0.1.2",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -H 0.0.0.0",
-    "build": "next build",
-    "build:production": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production next build --no-lint",
-    "build:optimized": "DISABLE_ESLINT_PLUGIN=true SKIP_ENV_VALIDATION=true NODE_ENV=production NODE_OPTIONS='--max-old-space-size=4096' next build --no-lint",
-    "build:analyze": "ANALYZE=true ./node_modules/.bin/next build",
-    "postbuild": "node scripts/generate-sitemap.mjs",
-    "start": "next start",
-    "lint": "bunx biome lint --write && bunx tsc --noEmit",
-    "format": "bunx biome format --write",
-    "type-check": "bunx tsc --noEmit",
-    "validate-contacts": "node .same/contact-validation-script.js",
-    "pre-deploy-check": "bun run validate-contacts && bun run lint",
-    "sitemap:update": "node scripts/update-sitemap.js",
-    "sitemap:build": "tsc src/utils/sitemap-generator.ts --outDir dist --target es2020 --module esnext --moduleResolution node --allowSyntheticDefaultImports --esModuleInterop",
-    "sitemap:stats": "npm run sitemap:build && node -e \"import('./dist/utils/sitemap-generator.js').then(m => m.getSitemapStats('./src/app').then(console.log))\"",
-    "sitemap:force": "FORCE_UPDATE=true node scripts/update-sitemap.js",
-    "generate-sitemap:legacy": "node scripts/generate-sitemap.js",
-    "sitemap:crawl": "node scripts/generate-full-sitemap.mjs --base https://peartree.dental --out public --include /services --include /book --include /contact --include /reviews --include /blog --follow-nofollow --rate 4",
-    "prebuild": "echo 'Using Next.js App Router sitemap generation'"
-  },
-  "dependencies": {
-    "@contentful/rich-text-react-renderer": "^16.1.3",
-    "@contentful/rich-text-types": "16.3.0",
-    "@hookform/resolvers": "^5.1.1",
-    "@radix-ui/react-accordion": "^1.2.11",
-    "@radix-ui/react-avatar": "^1.1.10",
-    "@radix-ui/react-checkbox": "^1.3.2",
-    "@radix-ui/react-dialog": "^1.1.15",
-    "@radix-ui/react-dropdown-menu": "^2.1.15",
-    "@radix-ui/react-label": "^2.1.7",
-    "@radix-ui/react-navigation-menu": "^1.2.13",
-    "@radix-ui/react-select": "^2.2.5",
-    "@radix-ui/react-separator": "^1.1.7",
-    "@radix-ui/react-slider": "^1.3.5",
-    "@radix-ui/react-slot": "^1.2.3",
-    "@radix-ui/react-tabs": "^1.1.12",
-    "@react-pdf/renderer": "^4.3.0",
-    "@sanity/image-url": "^1.1.0",
-    "@supabase/supabase-js": "^2.57.0",
-    "@types/nodemailer": "^6.4.17",
-    "autoprefixer": "^10.4.21",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "contentful": "^11.7.19",
-    "crypto": "^1.0.1",
-    "dotenv": "^16.6.1",
-    "framer-motion": "^12.16.0",
-    "jspdf": "^3.0.1",
-    "lucide-react": "^0.522.0",
-    "next": "^15.5.3",
-    "next-sanity": "^9.12.0",
-    "nodemailer": "^7.0.4",
-    "p-limit": "^7.1.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-hook-form": "^7.57.0",
-    "react-icons": "^5.5.0",
-    "react-markdown": "^10.1.0",
-    "react-scan": "^0.4.3",
-    "remark-gfm": "^4.0.1",
-    "tailwind-merge": "^3.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "web-vitals": "^5.0.3",
-    "zod": "^3.25.56"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@eslint/eslintrc": "^3.3.1",
-    "@next/bundle-analyzer": "^15.3.2",
-    "@types/node": "20.19.13",
-    "@types/react": "18.3.24",
-    "@types/react-dom": "^18.3.7",
-    "bippy": "^0.3.16",
-    "eslint": "^9.27.0",
-    "eslint-config-next": "15.1.7",
-    "postcss": "^8.5.3",
-    "sharp": "^0.34.3",
-    "tailwindcss": "^3.4.17",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
-  },
-  "volta": {
-    "node": "20.19.5"
+#!/usr/bin/env node
+// ESM script: Generate sitemap with FS + Contentful dynamic URLs + surgical excludes
+
+import 'dotenv/config';
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+// ---------- Paths (define before using them anywhere) ----------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRoot = path.resolve(__dirname, "..");
+
+// Load .env.local explicitly for local dev (Netlify already injects env)
+if (!process.env.NETLIFY) {
+  const { config: loadEnv } = await import('dotenv');
+  // override so .env.local wins locally without affecting CI
+  loadEnv({ path: path.join(projectRoot, '.env.local'), override: true });
+}
+
+// ---------- Paths & env ----------
+const appDir = path.join(projectRoot, "src", "app");
+const publicDir = path.join(projectRoot, "public");
+const sitemapPath = path.join(publicDir, "sitemap.xml");
+const ignoreFilePath = path.join(projectRoot, ".sitemapignore");
+
+const baseUrl = (process.env.SITE_URL || "https://peartree.dental").replace(/\/+$/, "");
+const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
+const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || "master";
+const CDA_TOKEN = process.env.CONTENTFUL_CDA_TOKEN || process.env.CONTENTFUL_DELIVERY_TOKEN;
+const GRAPHQL_URL = SPACE_ID
+  ? `https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}/environments/${ENVIRONMENT}`
+  : "";
+
+// CLI flags
+const argv = new Map(process.argv.slice(2).flatMap((a) => {
+  const m = a.match(/^--([^=]+)(?:=(.*))?$/);
+  return m ? [[m[1], m[2] ?? true]] : [];
+}));
+const VERBOSE = argv.has("verbose") || argv.has("v");
+const DRY_RUN = argv.has("dry-run");
+
+// ---------- Config ----------
+const ROUTE_CONFIGS = [
+  { pattern: "/", priority: 1.0, changefreq: "weekly" },
+  { pattern: "/services", priority: 0.9, changefreq: "weekly" },
+  { pattern: "/book", priority: 0.9, changefreq: "weekly" },
+  { pattern: "/contact", priority: 0.8, changefreq: "monthly" },
+  { pattern: "/new-patients", priority: 0.8, changefreq: "monthly" },
+  { pattern: "/pricing", priority: 0.8, changefreq: "weekly" },
+  { pattern: "/membership", priority: 0.8, changefreq: "monthly" },
+  { pattern: "/services/*", priority: 0.8, changefreq: "monthly" },
+
+  // Location/service priorities
+  { pattern: "/arnold/*", priority: 0.9, changefreq: "weekly" },
+  { pattern: "/mapperley/*", priority: 0.9, changefreq: "weekly" },
+  { pattern: "/gedling/*", priority: 0.9, changefreq: "weekly" },
+  { pattern: "/arnold", priority: 0.6, changefreq: "monthly" },
+  { pattern: "/mapperley", priority: 0.6, changefreq: "monthly" },
+  { pattern: "/gedling", priority: 0.6, changefreq: "monthly" },
+
+  { pattern: "/about/*", priority: 0.7, changefreq: "monthly" },
+  { pattern: "/testimonials", priority: 0.7, changefreq: "monthly" },
+  { pattern: "/smile-gallery", priority: 0.6, changefreq: "monthly" },
+  { pattern: "/complaints", priority: 0.5, changefreq: "yearly" },
+  { pattern: "/success", priority: 0.3, changefreq: "yearly" },
+  { pattern: "/offline", priority: 0.1, changefreq: "yearly" },
+];
+
+const DEFAULT_CONFIG = { priority: 0.5, changefreq: "monthly" };
+
+// Optional inline excludes (exact or wildcards). You can also use .sitemapignore and CLI flags.
+const EXCLUDE = [
+  // "/admin/*",
+  // "/secret",
+];
+
+// ---------- Helpers ----------
+function log(...args) { if (VERBOSE || DRY_RUN) console.log(...args); }
+
+function patternToRegex(pattern) {
+  // simple glob → regex: ** = any nested, * = single segment
+  let p = pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&");
+  p = p.replace(/\*\*/g, "§§DOUBLESTAR§§");
+  p = p.replace(/\*/g, "[^/]*");
+  p = p.replace(/§§DOUBLESTAR§§/g, ".*");
+  return new RegExp(`^${p}$`);
+}
+
+function matchesAny(urlPath, patterns) {
+  for (const p of patterns) {
+    const rx = patternToRegex(p);
+    if (rx.test(urlPath)) return true;
+  }
+  return false;
+}
+
+function getRouteConfig(route) {
+  const exact = ROUTE_CONFIGS.find((c) => c.pattern === route);
+  if (exact) return exact;
+  const wildcard = ROUTE_CONFIGS.find((c) => c.pattern.includes("*") && patternToRegex(c.pattern).test(route));
+  return wildcard || DEFAULT_CONFIG;
+}
+
+function isoDateOnly(d) {
+  return new Date(d).toISOString().split("T")[0];
+}
+
+async function getFileLastMod(filePath) {
+  try {
+    const s = await fs.stat(filePath);
+    return isoDateOnly(s.mtime);
+  } catch {
+    return isoDateOnly(Date.now());
   }
 }
+
+function sanitizeSegment(segment) {
+  if (!segment) return "";
+  if (segment.startsWith("@")) return "";                    // parallel routes
+  if (segment.startsWith("(") && segment.endsWith(")")) return ""; // route groups
+  if (segment.includes("[") || segment.includes("]")) return null;  // dynamic → skip (FS)
+  return segment.replace(/%5B|%5D/g, "");
+}
+
+async function collectFileSystemRoutes(dir) {
+  const results = [];
+  async function walk(currentDir, parts = []) {
+    let entries;
+    try { entries = await fs.readdir(currentDir, { withFileTypes: true }); }
+    catch (e) { if (e?.code === "ENOENT") return; throw e; }
+
+    for (const entry of entries) {
+      if (entry.name.startsWith("_") || entry.name.startsWith(".")) continue;
+      const entryPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(entryPath, [...parts, entry.name]);
+        continue;
+      }
+      if (!entry.isFile() || !/^page\.(tsx|ts|jsx|js|mdx)$/.test(entry.name)) continue;
+
+      let hasDynamic = false;
+      const sanitized = [];
+      for (const p of parts) {
+        const s = sanitizeSegment(p);
+        if (s === null) { hasDynamic = true; break; }
+        if (s) sanitized.push(s);
+      }
+      if (hasDynamic) continue;
+      const route = sanitized.length ? `/${sanitized.join("/")}` : "/";
+      results.push({ route, filePath: entryPath });
+    }
+  }
+  await walk(dir);
+  // Deduplicate by route (prefer latest file found)
+  const map = new Map();
+  for (const r of results) map.set(r.route, r.filePath);
+  return [...map.entries()].map(([route, filePath]) => ({ route, filePath })).sort((a,b)=>a.route.localeCompare(b.route));
+}
+
+// ---------- Contentful ----------
+async function cfFetch(query, variables = {}) {
+  if (!SPACE_ID || !CDA_TOKEN) return { data: null, errors: [{ message: "Missing Contentful env vars" }] };
+  const res = await fetch(GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${CDA_TOKEN}`,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!res.ok) throw new Error(`Contentful GraphQL ${res.status} ${res.statusText}`);
+  return res.json();
+}
+
+// Paginated fetcher
+async function cfPaged(query, rootKey, pageSize = 100) {
+  let items = [];
+  let skip = 0;
+  for (;;) {
+    const { data, errors } = await cfFetch(query, { limit: pageSize, skip });
+    if (errors) throw new Error(errors.map(e => e.message).join("; "));
+    const page = data?.[rootKey]?.items ?? [];
+    items = items.concat(page);
+    const total = data?.[rootKey]?.total ?? page.length;
+    skip += page.length;
+    if (skip >= total || page.length === 0) break;
+  }
+  return items;
+}
+
+// Blog: PageBlogPost
+const BLOG_QUERY = `
+query BlogIndex($limit: Int!, $skip: Int!) {
+  pageBlogPostCollection(limit: $limit, skip: $skip, where: { slug_exists: true }, order: publishedDate_DESC) {
+    total
+    items {
+      slug
+      isHidden
+      sys { updatedAt }
+    }
+  }
+}`;
+
+// Services (single type with type=category/treatment)
+const SERVICE_QUERY = `
+query ServiceIndex($limit: Int!, $skip: Int!) {
+  serviceCollection(limit: $limit, skip: $skip, where: { slug_exists: true }, order: sys_firstPublishedAt_ASC) {
+    total
+    items {
+      slug
+      type
+      isHidden
+      parent { slug }
+      sys { updatedAt }
+    }
+  }
+}`;
+
+async function getBlogUrls() {
+  const items = await cfPaged(BLOG_QUERY, "pageBlogPostCollection");
+  return items
+    .filter(x => x?.slug && !x?.isHidden)
+    .map(x => ({
+      route: `/blog/${x.slug}`,
+      lastmod: isoDateOnly(x.sys?.updatedAt || Date.now()),
+      source: "cms",
+    }));
+}
+
+async function getServiceUrls() {
+  const items = await cfPaged(SERVICE_QUERY, "serviceCollection");
+  const cats = items.filter(x => x?.type === "category" && !x?.isHidden && x?.slug);
+  const catSlugs = new Set(cats.map(c => c.slug));
+
+  const urls = [];
+
+  // category URLs
+  for (const c of cats) {
+    urls.push({
+      route: `/services/${c.slug}`,
+      lastmod: isoDateOnly(c.sys?.updatedAt || Date.now()),
+      source: "cms",
+    });
+  }
+
+  // treatment URLs
+  const treatments = items.filter(x => x?.type === "treatment" && !x?.isHidden && x?.slug && x?.parent?.slug);
+  for (const t of treatments) {
+    const cat = t.parent.slug;
+    // Only create if parent category exists or is known
+    if (catSlugs.has(cat) || cat) {
+      urls.push({
+        route: `/services/${cat}/${t.slug}`,
+        lastmod: isoDateOnly(t.sys?.updatedAt || Date.now()),
+        source: "cms",
+      });
+    }
+  }
+  return urls;
+}
+
+// ---------- Exclusion handling ----------
+async function loadIgnoreFile() {
+  try {
+    const txt = await fs.readFile(ignoreFilePath, "utf-8");
+    return txt
+      .split("\n")
+      .map(l => l.trim())
+      .filter(l => l && !l.startsWith("#"));
+  } catch {
+    return [];
+  }
+}
+
+function collectCliExcludes() {
+  // allow multiple --exclude flags
+  const patterns = [];
+  for (const [k, v] of argv) {
+    if (k === "exclude") {
+      if (v === true) continue;
+      patterns.push(v);
+    }
+  }
+  return patterns;
+}
+
+// ---------- XML ----------
+function buildXml(urls) {
+  const entries = urls.map(u => {
+    const changefreq = u.changefreq;
+    const priority = u.priority.toFixed(1);
+    return [
+      "  <url>",
+      `    <loc>${u.loc}</loc>`,
+      `    <lastmod>${u.lastmod}</lastmod>`,
+      `    <changefreq>${changefreq}</changefreq>`,
+      `    <priority>${priority}</priority>`,
+      "  </url>"
+    ].join("\n");
+  }).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n` +
+         `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+         `${entries}\n</urlset>\n`;
+}
+
+async function writeIfChanged(filePath, content) {
+  try {
+    const existing = await fs.readFile(filePath, "utf-8");
+    if (existing.trim() === content.trim()) return false;
+  } catch {}
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, content, "utf-8");
+  return true;
+}
+
+// ---------- Main ----------
+async function main() {
+  console.log("🗺️  Generating sitemap…");
+  console.log(`🌐 Base URL: ${baseUrl}`);
+  if (process.env.NETLIFY) console.log("🏗️ Running on Netlify build environment");
+
+  // In production builds (Netlify), require Contentful env vars so we don't silently ship FS-only sitemap
+  if (process.env.NETLIFY && (!SPACE_ID || !CDA_TOKEN)) {
+    throw new Error("Missing Contentful env vars in Netlify. Set CONTENTFUL_SPACE_ID, CONTENTFUL_ENVIRONMENT, and CONTENTFUL_DELIVERY_TOKEN (or CONTENTFUL_CDA_TOKEN).");
+  }
+
+  // Early ping to catch 401s with a tiny query (fail the build on Netlify)
+  if (SPACE_ID && CDA_TOKEN) {
+    try {
+      const ping = await fetch(GRAPHQL_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${CDA_TOKEN}` },
+        body: JSON.stringify({ query: "{ __typename }" }),
+      });
+      if (ping.status === 401) {
+        throw new Error("Contentful GraphQL 401 Unauthorized — check token type (Delivery, not Preview/Management), space ID, and environment.");
+      }
+    } catch (e) {
+      if (process.env.NETLIFY) throw e; // fail the build in prod
+      console.warn("⚠️  Contentful ping failed (continuing locally):", e.message);
+    }
+  }
+
+  // 1) Collect FS routes
+  const fsRoutes = await collectFileSystemRoutes(appDir);
+  log(`FS routes: ${fsRoutes.length}`);
+
+  // 2) Collect CMS routes (optional if env provided)
+  let cmsRoutes = [];
+  if (SPACE_ID && CDA_TOKEN) {
+    try {
+      const [blog, services] = await Promise.all([
+        getBlogUrls(),
+        getServiceUrls(),
+      ]);
+      cmsRoutes = blog.concat(services);
+      log(`CMS routes: ${cmsRoutes.length} (${blog.length} blog, ${services.length} services)`);
+    } catch (e) {
+      if (process.env.NETLIFY) {
+        throw new Error(`Contentful fetch failed during sitemap: ${e.message}`);
+      } else {
+        console.warn("⚠️  Contentful fetch failed:", e.message);
+      }
+    }
+  } else {
+    console.warn("⚠️  Skipping CMS routes (missing Contentful env vars).");
+  }
+
+  // Normalize into a single set
+  const allRoutes = new Map();
+
+  // FS → route + lastmod from file
+  for (const { route, filePath } of fsRoutes) {
+    const lastmod = await getFileLastMod(filePath);
+    const cfg = getRouteConfig(route);
+    allRoutes.set(route, { route, lastmod, ...cfg });
+  }
+
+  // CMS → route + lastmod from CMS, config from patterns
+  for (const { route, lastmod } of cmsRoutes) {
+    const cfg = getRouteConfig(route);
+    const existing = allRoutes.get(route);
+    // Prefer most recent lastmod
+    const lm = existing ? (existing.lastmod > lastmod ? existing.lastmod : lastmod) : lastmod;
+    allRoutes.set(route, { route, lastmod: lm, ...cfg });
+  }
+
+  // 3) Exclusions
+  const excludePatterns = [
+    ...EXCLUDE,
+    ...await loadIgnoreFile(),
+    ...collectCliExcludes(),
+  ];
+
+  const beforeCount = allRoutes.size;
+  for (const r of Array.from(allRoutes.keys())) {
+    if (matchesAny(r, excludePatterns)) {
+      allRoutes.delete(r);
+      log("Excluded:", r);
+    }
+  }
+  const afterCount = allRoutes.size;
+  console.log(`🔍 Routes kept: ${afterCount} (excluded ${beforeCount - afterCount})`);
+
+  // 4) Build URLs + sort
+  const urls = Array.from(allRoutes.values()).map(({ route, lastmod, changefreq, priority }) => ({
+    loc: `${baseUrl}${route === "/" ? "" : route}`,
+    lastmod,
+    changefreq,
+    priority,
+  }));
+
+  urls.sort((a, b) => (b.priority - a.priority) || a.loc.localeCompare(b.loc));
+
+  // 5) XML
+  const xml = buildXml(urls);
+
+  if (DRY_RUN) {
+    console.log("— dry run —");
+    console.log(xml);
+    return;
+  }
+
+  const updated = await writeIfChanged(sitemapPath, xml);
+  if (updated) {
+    console.log(`✅ Wrote ${sitemapPath} with ${urls.length} URLs`);
+  } else {
+    console.log("ℹ️  Sitemap unchanged.");
+  }
+}
+
+main().catch((e) => {
+  console.error("❌ Failed:", e);
+  process.exit(1);
+});

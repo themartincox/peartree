@@ -58,10 +58,16 @@ const associates = [
     gdc: "264893",
     image: "https://ext.same-assets.com/523564123/410337074.jpeg",
     description: "Gavin focuses on preventive care and modern treatment techniques, helping patients maintain optimal oral health."
+  },
+  {
+    name: "Anna Abbasi",
+    qualifications: "BDS",
+    role: "Associate Dentist",
+    gdc: "264376",
+    image: "/images/team/anna-abbasi.webp",
+    description: "Anna has extensive experience in community dentistry, is great with children and nervous patients, and takes pride in delivering high quality ethical dentistry for the whole family."
   }
 ];
-
-const dentists = [...principals, ...associates];
 
 const supportTeam = [
   {
@@ -145,7 +151,7 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Dentists Section - Unified */}
+      {/* Dentists Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -162,8 +168,52 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {dentists.map((dentist) => (
+          {/* Principal Dentists - 2 columns */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
+            {principals.map((dentist) => (
+              <div key={dentist.gdc} className="space-y-4">
+                <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
+                  <CardContent className="p-8">
+                    <div className="text-center">
+                      <div className="relative mb-6 mx-auto w-48 h-48">
+                        <Image
+                          src={dentist.image}
+                          alt={`${dentist.name} - ${dentist.role} at Pear Tree Dental`}
+                          width={192}
+                          height={192}
+                          className="w-full h-full object-cover rounded-full border-4 border-pear-primary/20"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                        />
+                      </div>
+                      <h3 className="heading-serif text-2xl font-bold text-pear-primary mb-2">
+                        {dentist.name}
+                      </h3>
+                      <div className="space-y-2 mb-4">
+                        {dentist.qualifications && (
+                          <Badge variant="secondary" className="bg-pear-primary/10 text-pear-primary">
+                            {dentist.qualifications}
+                          </Badge>
+                        )}
+                        <p className="text-lg font-semibold text-gray-700">{dentist.role}</p>
+                        {dentist.gdc && (
+                          <p className="text-sm text-gray-500">GDC: {dentist.gdc}</p>
+                        )}
+                      </div>
+                      <p className="text-gray-600 leading-relaxed">
+                        {dentist.description}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+
+          {/* Associate Dentists - 3 columns centred */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {associates.map((dentist) => (
               <div key={dentist.gdc} className="space-y-4">
                 <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-pear-primary/30">
                   <CardContent className="p-8">
