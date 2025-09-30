@@ -1,14 +1,21 @@
 #!/usr/bin/env node
 // ESM script: Generate sitemap with FS + Contentful dynamic URLs + surgical excludes
 
+import 'dotenv/config';
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-// ---------- Paths & env ----------
+// ---------- Resolve paths first ----------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const projectRoot = path.resolve(__dirname, "..");
+
+// Load .env.local explicitly (dotenv doesn't auto-load it in plain Node)
+import { config as loadEnv } from "dotenv";
+loadEnv({ path: path.join(projectRoot, ".env.local"), override: true });
+
+// ---------- Paths & env ----------
 const appDir = path.join(projectRoot, "src", "app");
 const publicDir = path.join(projectRoot, "public");
 const sitemapPath = path.join(publicDir, "sitemap.xml");
@@ -17,7 +24,7 @@ const ignoreFilePath = path.join(projectRoot, ".sitemapignore");
 const baseUrl = (process.env.SITE_URL || "https://peartree.dental").replace(/\/+$/, "");
 const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
 const ENVIRONMENT = process.env.CONTENTFUL_ENVIRONMENT || "master";
-const CDA_TOKEN = process.env.CONTENTFUL_CDA_TOKEN;
+const CDA_TOKEN = process.env.CONTENTFUL_CDA_TOKEN || process.env.CONTENTFUL_DELIVERY_TOKEN;
 const GRAPHQL_URL = `https://graphql.contentful.com/content/v1/spaces/${SPACE_ID}/environments/${ENVIRONMENT}`;
 
 const argv = new Map(process.argv.slice(2).flatMap((a) => {
