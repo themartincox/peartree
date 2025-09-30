@@ -17,8 +17,8 @@ if (!ENCRYPTION_KEY) {
 
 // --- Encrypted Data from Supabase ---
 // Replace these with the actual encrypted values from your Supabase table
-const encryptedSortCode = '4e088c3412e39f42b370ce196935871b:c82f373f523c4f699ba0f7816d444f87:5a0ba8c06c7f5d69'; // e.g., 'iv:authTag:encrypted'
-const encryptedAccountNumber = '0c910450d316b649f9974d38bb703dbb:e4bb4fd42d22b30f2da9c86e0a9cbe02:fcd796300071df8d'; // e.g., 'iv:authTag:encrypted'
+const encryptedSortCode = '26f002a7203d4f9f247e11ec611fc8cd:323311836d70c4e8dafec459ffcf2983:57455859a2103cda'; // e.g., 'iv:authTag:encrypted'
+const encryptedAccountNumber = '88b3099b3432ba62675cdbcb08b5864f:3eb78d9952bd2f5debe5ea3c47a6e94a:d7485d5a0db8c88c'; // e.g., 'iv:authTag:encrypted'
 
 // --- Decryption ---
 try {

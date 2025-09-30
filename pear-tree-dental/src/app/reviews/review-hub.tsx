@@ -11,15 +11,15 @@ const BASE_UTM = "utm_source=sms&utm_medium=review_request&utm_campaign=post_vis
 const PLATFORMS = {
   google: {
     label: "Google",
-    href: `https://g.page/r/XXXXX/review?${BASE_UTM}`, // ← replace XXXXX
+    href: `https://g.page/r/CRuyzKUKE1IPEBM/review?${BASE_UTM}`, // ← replace XXXXX
   },
   facebook: {
     label: "Facebook",
-    href: `https://www.facebook.com/yourpage/reviews/?${BASE_UTM}`,
+    href: `https://www.facebook.com/profile.php?id=100088367133379&sk=reviews{BASE_UTM}`,
   },
   trustpilot: {
     label: "Trustpilot",
-    href: `https://uk.trustpilot.com/review/yourdomain?${BASE_UTM}`,
+    href: `https://www.trustpilot.com/review/peartree.dental?${BASE_UTM}`,
   },
   yelp: {
     label: "Yelp",

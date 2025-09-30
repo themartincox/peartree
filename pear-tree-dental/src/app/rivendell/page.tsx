@@ -62,10 +62,10 @@ export default function RivendellPage() {
             "description": "Family dental practice serving Rivendell housing estate residents with comprehensive dental care for all ages.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Main Street",
+              "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
@@ -108,7 +108,7 @@ export default function RivendellPage() {
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               New to the Area?
-              <span className="text-pear-gold block">Your Local Dentist</span>
+              <span className="text-pear-gold block">Say Hello to Your Local Dentist</span>
             </h1>
 
             <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
@@ -150,11 +150,7 @@ export default function RivendellPage() {
                 <Users className="w-4 h-4 mr-1" />
                 Family Plans
               </Badge>
-              <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                <HeartHandshake className="w-4 h-4 mr-1" />
-                New Patient Discount
-              </Badge>
-            </div>
+                        </div>
           </div>
         </div>
       </section>
@@ -243,8 +239,7 @@ export default function RivendellPage() {
                       <ul className="text-sm text-gray-600 space-y-1">
                         <li>• Register whole family together</li>
                         <li>• Flexible appointment times</li>
-                        <li>• New patient welcome discount</li>
-                      </ul>
+                                              </ul>
                     </div>
                   </div>
                 </Card>
@@ -291,7 +286,7 @@ export default function RivendellPage() {
                   description: "Gentle dental care to keep young smiles healthy",
                   icon: Baby,
                   features: ["First dental visits", "Preventive treatments", "Tooth-friendly education", "Fluoride applications"],
-                  price: "From £35",
+                  price: "From £0",
                   badge: "Ages 0-17"
                 },
                 {
@@ -299,7 +294,7 @@ export default function RivendellPage() {
                   description: "Regular dental health assessments for the whole family",
                   icon: Users,
                   features: ["Comprehensive exams", "X-rays when needed", "Oral health advice", "Treatment planning"],
-                  price: "From £45",
+                  price: "From £60",
                   badge: "Whole Family"
                 },
                 {
@@ -307,7 +302,7 @@ export default function RivendellPage() {
                   description: "Urgent dental care when your family needs it",
                   icon: Shield,
                   features: ["Same-day appointments", "Pain relief", "Emergency repairs", "Out-of-hours advice"],
-                  price: "From £75",
+                  price: "From £55",
                   badge: "24/7 Support"
                 },
                 {
@@ -323,7 +318,7 @@ export default function RivendellPage() {
                   description: "Affordable dental care plans for families",
                   icon: HeartHandshake,
                   features: ["Predictable monthly costs", "No consultation fees", "Discounts on treatments", "Priority booking"],
-                  price: "From £8.99",
+                  price: "From £10.95",
                   badge: "Save £££s"
                 },
                 {
@@ -331,7 +326,7 @@ export default function RivendellPage() {
                   description: "Smile makeovers for adults and teens",
                   icon: Smile,
                   features: ["Teeth whitening", "Straightening options", "Veneers", "Composite bonding"],
-                  price: "From £300",
+                  price: "From £350",
                   badge: "Confidence Boost"
                 }
               ].map((service, index) => {
@@ -372,18 +367,30 @@ export default function RivendellPage() {
               <div className="bg-gradient-to-r from-dental-green/10 to-pear-gold/10 rounded-2xl p-8 max-w-4xl mx-auto">
                 <h3 className="text-2xl font-bold mb-4">🎉 New Rivendell Resident Offer</h3>
                 <p className="text-gray-700 mb-6">
-                  <strong>20% off</strong> your family's first appointments when you register as a new patient.
+                  <strong>Save £££</strong> when your family joins our membership scheme and receive priority appointments.
                   Plus, children under 12 get a free dental health pack!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold">
-                    <UserPlus className="w-5 h-5 mr-2" />
-                    Register Your Family
-                  </Button>
+                  <Link href="/membership" passHref>
+  <Button
+    size="lg"
+    className="bg-dental-green hover:bg-dental-green/90 text-white font-semibold"
+  >
+    <UserPlus className="w-5 h-5 mr-2" />
+    Register Your Family
+  </Button>
+</Link>
                   <Button size="lg" variant="outline" className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white">
-                    <Phone className="w-5 h-5 mr-2" />
-                    Call: 0115 931 2935
-                  </Button>
+                    <a href="tel:01159312935">
+  <Button
+    size="lg"
+    variant="outline"
+    className="border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white"
+  >
+    <Phone className="w-5 h-5 mr-2" />
+    Call: 0115 931 2935
+  </Button>
+</a>
                 </div>
               </div>
             </div>
@@ -405,7 +412,7 @@ export default function RivendellPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
-                  name: "Emma & Tom Bradley",
+                  name: "Emma & Tom B.",
                   location: "Rivendell",
                   text: "We moved to Rivendell last year and finding Pear Tree Dental was one of the best decisions. The kids love going, and the staff make everything so easy for busy families.",
                   rating: 5,
@@ -413,9 +420,9 @@ export default function RivendellPage() {
                   children: "3 children"
                 },
                 {
-                  name: "Sarah Johnson",
+                  name: "Sarah J.",
                   location: "Rivendell",
-                  text: "As a new mum in the area, I was nervous about finding good dental care. The team is so understanding and gentle with my toddler. The journey is super quick too!",
+                  text: "As a new mum in the area, I was nervous about finding good dental care. The team is super understanding and gentle with my toddler. The journey is really quick too!",
                   rating: 5,
                   service: "Children's Dentistry",
                   children: "1 toddler"
@@ -480,9 +487,9 @@ export default function RivendellPage() {
                       <h3 className="font-semibold mb-2">Our Practice</h3>
                       <p className="text-gray-700">
                         Pear Tree Dental<br />
-                        Main Street<br />
+                        22 Nottingham Road<br />
                         Burton Joyce<br />
-                        Nottinghamshire NG14 5DP
+                        Nottinghamshire NG14 5AE
                       </p>
                     </div>
                   </div>
@@ -529,16 +536,16 @@ export default function RivendellPage() {
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">3</span>
-                      <span>Turn right onto Main Street in Burton Joyce</span>
+                      <span>Turn left onto at the first traffic lights in Burton Joyce</span>
                     </li>
                     <li className="flex items-start space-x-2">
                       <span className="bg-dental-green text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold mt-0.5 flex-shrink-0">4</span>
-                      <span>Pear Tree Dental on your left with free parking</span>
+                      <span>Pear Tree Dental right in front with free parking</span>
                     </li>
                   </ol>
                   <div className="mt-4 p-3 bg-dental-green/10 rounded">
                     <p className="text-sm text-dental-navy">
-                      <strong>Perfect for families:</strong> Local route, no traffic lights, safe parking right outside the practice!
+                      <strong>Perfect for families:</strong> Local route, safe parking right outside the practice!
                     </p>
                   </div>
                 </div>
