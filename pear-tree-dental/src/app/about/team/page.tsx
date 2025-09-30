@@ -38,7 +38,7 @@ const principals = [
     role: "Principal Dentist",
     gdc: "252578",
     image: "https://ext.same-assets.com/523564123/3375693680.jpeg",
-    description: "Imrana brings specialised expertise in restorative and aesthetic dentistry, her calm manner ensures patients young and old all receive the most advanced treatments available."
+    description: "Imrana brings specialised expertise in restorative and aesthetic dentistry, with a particular interest in cosmetic dentistry. Her calm manner ensures patients young and old all receive the most advanced treatments available in a caring and empathetic environment."
   }
 ];
 
