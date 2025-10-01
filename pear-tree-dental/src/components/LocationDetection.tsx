@@ -86,6 +86,7 @@ export default function LocationDetection() {
   const [userLocation, setUserLocation] = useState<LocationData | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Helper to determine location from coordinates
   const getLocationFromCoordinates = useCallback((lat: number, lon: number): LocationData | null => {
@@ -108,22 +109,38 @@ export default function LocationDetection() {
   }, []);
 
   const requestLocation = useCallback(async () => {
+    if (isDismissed || isLoading) return;
+    setIsLoading(true);
     try {
-      // Don't block on permissions API; some browsers reject/are unsupported.
+      // Don't block on Permissions API; not universal.
       navigator.permissions?.query({ name: 'geolocation' as PermissionName }).catch(() => {});
 
       if (navigator.geolocation) {
+        let completed = false;
+        const showFallback = () => {
+          if (completed || isDismissed) return;
+          setUserLocation({
+            area: 'Directions',
+            postcode: 'Unknown',
+            travelTime: '—',
+            route: 'via major roads',
+            specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+          });
+          setIsVisible(true);
+          setIsLoading(false);
+          completed = true;
+        };
+
+        const timeoutId = window.setTimeout(showFallback, 2000);
+
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
             const location = getLocationFromCoordinates(latitude, longitude);
-
             if (!isDismissed) {
               if (location) {
-                // Inside service area: show tailored info as a card too
                 setUserLocation(location);
               } else {
-                // Outside service area: show welcoming message
                 setUserLocation({
                   area: 'Outside Service Area',
                   postcode: 'Unknown',
@@ -133,10 +150,26 @@ export default function LocationDetection() {
                 });
               }
               setIsVisible(true);
+              setIsLoading(false);
+              completed = true;
+              window.clearTimeout(timeoutId);
             }
           },
           () => {
-            // Geolocation denied or failed - stay silent for now
+            // Geolocation denied/failed: show fallback card
+            window.clearTimeout(timeoutId);
+            if (!completed && !isDismissed) {
+              setUserLocation({
+                area: 'Directions',
+                postcode: 'Unknown',
+                travelTime: '—',
+                route: 'via major roads',
+                specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+              });
+              setIsVisible(true);
+              setIsLoading(false);
+              completed = true;
+            }
           },
           {
             timeout: 2000,
@@ -144,11 +177,35 @@ export default function LocationDetection() {
             maximumAge: 600000
           }
         );
+      } else {
+        // No geolocation available: show fallback
+        if (!isDismissed) {
+          setUserLocation({
+            area: 'Directions',
+            postcode: 'Unknown',
+            travelTime: '—',
+            route: 'via major roads',
+            specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+          });
+          setIsVisible(true);
+        }
+        setIsLoading(false);
       }
     } catch (error) {
-      // Swallow unexpected errors to avoid breaking the CTA
+      // Unexpected error: still show fallback for better UX
+      if (!isDismissed) {
+        setUserLocation({
+          area: 'Directions',
+          postcode: 'Unknown',
+          travelTime: '—',
+          route: 'via major roads',
+          specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+        });
+        setIsVisible(true);
+      }
+      setIsLoading(false);
     }
-  }, [getLocationFromCoordinates, isDismissed]);
+  }, [getLocationFromCoordinates, isDismissed, isLoading]);
 
   useEffect(() => {
     // Check if user has dismissed the modal this session
@@ -181,7 +238,9 @@ export default function LocationDetection() {
           <p className="text-sm text-dental-navy">
             See how far you are from Nottingham's top-rated Dentist
           </p>
-          <Button onClick={requestLocation}>Find nearest route</Button>
+          <Button onClick={requestLocation} disabled={isLoading} aria-busy={isLoading}>
+            {isLoading ? 'Finding route…' : 'Find nearest route'}
+          </Button>
         </div>
       )}
       {isVisible && userLocation && (
