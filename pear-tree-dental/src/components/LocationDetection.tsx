@@ -109,25 +109,34 @@ export default function LocationDetection() {
 
   const requestLocation = useCallback(async () => {
     try {
-      await navigator.permissions?.query({ name: 'geolocation' as PermissionName });
+      // Don't block on permissions API; some browsers reject/are unsupported.
+      navigator.permissions?.query({ name: 'geolocation' as PermissionName }).catch(() => {});
+
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
             const location = getLocationFromCoordinates(latitude, longitude);
-            if (!location && !isDismissed) {
-              setUserLocation({
-                area: 'Outside Service Area',
-                postcode: 'Unknown',
-                travelTime: 'Variable',
-                route: 'via major roads',
-                specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
-              });
+
+            if (!isDismissed) {
+              if (location) {
+                // Inside service area: show tailored info as a card too
+                setUserLocation(location);
+              } else {
+                // Outside service area: show welcoming message
+                setUserLocation({
+                  area: 'Outside Service Area',
+                  postcode: 'Unknown',
+                  travelTime: 'Variable',
+                  route: 'via major roads',
+                  specialOffer: 'We welcome patients from all areas - travel is often worth it for quality care!'
+                });
+              }
               setIsVisible(true);
             }
           },
           () => {
-            // Geolocation denied or failed - stay silent
+            // Geolocation denied or failed - stay silent for now
           },
           {
             timeout: 2000,
@@ -137,7 +146,7 @@ export default function LocationDetection() {
         );
       }
     } catch (error) {
-      // Permission query failed - stay silent
+      // Swallow unexpected errors to avoid breaking the CTA
     }
   }, [getLocationFromCoordinates, isDismissed]);
 
