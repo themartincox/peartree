@@ -25,6 +25,8 @@ export default function ServiceFAQSchema({
   const faqData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    // Provide a stable @id to prevent duplicate FAQ detections across schemas
+    ...(pageUrl ? { "@id": `${pageUrl.replace(/\/$/, '')}#faq` } : {}),
     "mainEntity": faqs.map((faq, index) => ({
       "@type": "Question",
       "name": faq.question,

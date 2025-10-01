@@ -286,7 +286,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   },
 
   "/services/cosmetic/wedding-day-smile": {
-    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
+    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.webp",
     heroImageAlt: "Perfect wedding day smile showing radiant bride with beautiful teeth",
     badgeText: "Wedding Day Smile",
     badgeIcon: "Heart",
@@ -314,7 +314,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   },
 
   "/wedding-day-smile": {
-    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.jpg",
+    heroImage: "/images/heroes/cosmetic/wedding-smile-hero.webp",
     heroImageAlt: "Perfect wedding day smile showing radiant bride with beautiful teeth",
     badgeText: "Wedding Day Smile",
     badgeIcon: "Heart",

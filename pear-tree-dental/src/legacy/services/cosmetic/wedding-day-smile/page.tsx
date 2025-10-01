@@ -207,6 +207,7 @@ export default function WeddingDaySmilePage() {
       <ServiceFAQSchema
         serviceName="Wedding Day Smile"
         faqs={weddingSmileFAQs}
+        pageUrl="https://peartree.dental/services/cosmetic/wedding-day-smile"
       />
 
       {/* Hero Section */}
@@ -278,7 +279,7 @@ export default function WeddingDaySmilePage() {
             <div className="relative">
               <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/heroes/cosmetic/wedding-smile-hero.jpg"
+                  src="/images/heroes/cosmetic/wedding-smile-hero.webp"
                   alt="Perfect wedding day smile showing radiant bride with beautiful teeth"
                   fill
                   className="object-cover"

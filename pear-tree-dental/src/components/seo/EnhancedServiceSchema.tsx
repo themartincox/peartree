@@ -66,13 +66,6 @@ export default function EnhancedServiceSchema({
         "Mo-Th 08:00-17:00",
         "Fr 08:00-16:00"
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": rating,
-        "reviewCount": reviewCount,
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "Professional License",
