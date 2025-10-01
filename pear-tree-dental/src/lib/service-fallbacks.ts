@@ -187,16 +187,6 @@ registerTreatmentFallback(
 // Support nested slug variants used by CMS links
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
-  'teeth-whitening/enlighten',
-  () => import('@/legacy/services/cosmetic/teeth-whitening/enlighten/page'),
-);
-registerTreatmentFallback(
-  ['cosmetic', 'cosmetic-dentistry'],
-  'teeth-whitening/boutique',
-  () => import('@/legacy/services/cosmetic/teeth-whitening/boutique/page'),
-);
-registerTreatmentFallback(
-  ['cosmetic', 'cosmetic-dentistry'],
   'teeth-whitening-enlighten',
   () => import('@/legacy/services/cosmetic/teeth-whitening/enlighten/page'),
 );
