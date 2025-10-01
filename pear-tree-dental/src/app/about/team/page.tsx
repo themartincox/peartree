@@ -119,7 +119,7 @@ const nurses = [
   },
   {
     name: "Sarah Simpson",
-    role: "Apprentice Dental Nurse",
+    role: "Dental Nurse",
     image: "/images/team/sarah-simpson.webp"
   }
 ];
