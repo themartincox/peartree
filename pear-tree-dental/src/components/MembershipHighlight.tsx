@@ -70,7 +70,7 @@ const membershipPlans = {
     description: "Coverage and Peace of Mind for 2 adults and up to 3 children with significant family savings.",
     keyFeatures: [
       "2 Adults + up to 3 children covered",
-      "All adults get Plan D benefits",
+      "All adults get Complete Care Plus benefits",
       "Children under 18 included free",
       "Simplified billing for whole family"
     ],

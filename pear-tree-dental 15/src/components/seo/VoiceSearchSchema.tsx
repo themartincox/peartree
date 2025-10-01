@@ -92,13 +92,7 @@ const VoiceSearchSchema = () => {
             }
           ]
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "400",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
+        
         "sameAs": [
           "https://www.facebook.com/peartreeDental",
           "https://www.google.com/maps/place/Pear+Tree+Dental+Centre"

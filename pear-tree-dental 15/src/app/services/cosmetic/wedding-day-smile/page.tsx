@@ -198,8 +198,6 @@ export default function WeddingDaySmilePage() {
           "Treatment timeline considerations for wedding planning",
           "Need for maintenance after wedding"
         ]}
-        rating={4.9}
-        reviewCount={89}
         url="https://peartree.dental/services/cosmetic/wedding-day-smile"
         procedureType="MedicalProcedure"
       />

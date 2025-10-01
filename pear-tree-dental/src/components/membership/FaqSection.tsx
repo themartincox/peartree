@@ -6,7 +6,7 @@ const faqs = [
   {
     id: "examination",
     question: "What's included in a dental examination?",
-    answer: "A full health check of your mouth, teeth and gums, full medical, social and dental history, cancer screening of your mouth, and assessment of your jaw and bite. You'll also receive full digital X-rays and report diagnosis, treatment options & costs, and a personalized treatment plan."
+    answer: "A full health check of your mouth, teeth and gums, full medical, social and dental history, cancer screening of your mouth, and assessment of your jaw and bite. You'll also receive full digital X-rays and report diagnosis, treatment options & costs, and a personalised treatment plan."
   },
   {
     id: "nhs-care",
@@ -25,8 +25,8 @@ const faqs = [
   },
   {
     id: "plan-difference",
-    question: "What's the difference between Plan B and Plan C?",
-    answer: "The main difference is that Plan B includes 2 dental check-ups and 1 scale & polish per year (49p per day), while Plan C includes 2 dental check-ups and 2 scale & polishes per year (58p per day). Choose Plan C if you prefer more frequent hygiene appointments."
+    question: "What's the difference between Routine Care and Complete Care?",
+    answer: "The main difference is that Routine Care includes 2 dental check-ups and 1 scale & polish per year (49p per day), while Complete Care includes 2 dental check-ups and 2 scale & polishes per year (58p per day). Choose Complete Care if you prefer more frequent hygiene appointments."
   },
   {
     id: "cancellation",
@@ -41,7 +41,7 @@ const faqs = [
   {
     id: "not-covered",
     question: "What isn't covered by the Pear Tree Dental Care Plan?",
-    answer: "The plan does not cover laboratory fees and prescriptions, referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan, or orthodontics and implants. These would incur additional costs."
+    answer: "The plan does not cover referral to a specialist for any dental procedure or a referral for any specialist test such as an OPG x-ray / CT scan, or orthodontics and implants. These would incur additional costs."
   }
 ];
 
