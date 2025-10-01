@@ -26,7 +26,7 @@ const allServices: ServiceNavItem[] = [
   {
     id: "cosmetic",
     title: "Cosmetic Dentistry",
-    href: "/services/cosmetic",
+    href: "/services/cosmetic-dentistry",
     category: "cosmetic",
     description: "Transform your smile with aesthetic treatments"
   },

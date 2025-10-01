@@ -70,6 +70,12 @@ const nextConfig = {
       { source: "/about", destination: "/about/practice", permanent: true },
       { source: "/blog", destination: "/patient-education", permanent: true },
       { source: "/blog/:slug", destination: "/patient-education/:slug", permanent: true },
+      // Canonicalise cosmetic category to contentful slug
+      { source: "/services/cosmetic", destination: "/services/cosmetic-dentistry", permanent: true },
+      { source: "/services/cosmetic/:slug*", destination: "/services/cosmetic-dentistry/:slug*", permanent: true },
+      // Harmonise whitening subpaths (support both hyphen and nested)
+      { source: "/services/:category/teeth-whitening-enlighten", destination: "/services/:category/teeth-whitening/enlighten", permanent: true },
+      { source: "/services/:category/teeth-whitening-boutique", destination: "/services/:category/teeth-whitening/boutique", permanent: true },
     ];
   },
 };
