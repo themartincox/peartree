@@ -150,6 +150,91 @@ async function collectFileSystemRoutes(dir) {
   return [...map.entries()].map(([route, filePath]) => ({ route, filePath })).sort((a,b)=>a.route.localeCompare(b.route));
 }
 
+// ---------- Fallback content from repo (no CMS) ----------
+async function collectBlogFromFS() {
+  const blogDir = path.join(projectRoot, "content", "blog");
+  let entries = [];
+  try {
+    const files = await fs.readdir(blogDir);
+    for (const f of files) {
+      if (!/\.(md|mdx)$/i.test(f)) continue;
+      const slug = f.replace(/\.(md|mdx)$/i, "");
+      if (slug && slug !== "template") {
+        const p = path.join(blogDir, f);
+        const lastmod = await getFileLastMod(p);
+        entries.push({ route: `/patient-education/${slug}`, lastmod, source: "fs" });
+      }
+    }
+  } catch {}
+  return entries;
+}
+
+async function parseServiceFallbacks() {
+  const sfPath = path.join(projectRoot, "src", "lib", "service-fallbacks.ts");
+  let src = "";
+  try { src = await fs.readFile(sfPath, "utf-8"); } catch { return { categories: [], treatments: [] }; }
+  const categories = new Set();
+  const catRegex = /registerCategoryFallback\(\[(.*?)\]/g;
+  let m;
+  while ((m = catRegex.exec(src))) {
+    const list = m[1].split(",").map((s)=>s.replace(/[\s'"`]/g,"").trim()).filter(Boolean);
+    for (const s of list) categories.add(s);
+  }
+  const treatments = [];
+  const treatRegex = /registerTreatmentFallback\(\s*\[(.*?)\]\s*,\s*['"]([a-z0-9-/.]+)['"]/g;
+  let t;
+  while ((t = treatRegex.exec(src))) {
+    const cats = t[1].split(",").map((s)=>s.replace(/[\s'"`]/g,"").trim()).filter(Boolean);
+    const treatment = t[2];
+    treatments.push({ cats, treatment });
+  }
+  return { categories: Array.from(categories), treatments };
+}
+
+async function collectLegacyServiceRoutes() {
+  const out = [];
+  const { categories, treatments } = await parseServiceFallbacks();
+  const today = isoDateOnly(Date.now());
+  for (const c of categories) {
+    out.push({ route: `/services/${c}`, lastmod: today, source: "fs" });
+  }
+  for (const { cats, treatment } of treatments) {
+    for (const c of cats) {
+      out.push({ route: `/services/${c}/${treatment}`, lastmod: today, source: "fs" });
+    }
+  }
+  return out;
+}
+
+async function collectLocationSlugs() {
+  const entries = await fs.readdir(appDir, { withFileTypes: true }).catch(() => []);
+  const ignore = new Set(["api","services","services-location","blog","patient-education","about","contact","book","membership","pricing","privacy","terms","testimonials","reviews","thank-you","success","offline","cohort-demo"]);
+  const slugs = [];
+  for (const e of entries) {
+    if (!e.isDirectory()) continue;
+    const name = e.name;
+    if (ignore.has(name) || name.startsWith(".")) continue;
+    const hasPage = await fs.stat(path.join(appDir, name, "page.tsx")).then(()=>true).catch(()=>false);
+    if (hasPage) slugs.push(name);
+  }
+  return slugs;
+}
+
+async function collectServiceLocationCombos() {
+  const out = [];
+  const { categories } = await parseServiceFallbacks();
+  const locs = await collectLocationSlugs();
+  const cats = categories.slice(0, 6);
+  const suburbs = locs.slice(0, 12);
+  const today = isoDateOnly(Date.now());
+  for (const c of cats) {
+    for (const s of suburbs) {
+      out.push({ route: `/services-location/${c}/${s}`, lastmod: today, source: "fs" });
+    }
+  }
+  return out;
+}
+
 // ---------- Contentful ----------
 async function cfFetch(query, variables = {}) {
   if (!SPACE_ID || !CDA_TOKEN) return { data: null, errors: [{ message: "Missing Contentful env vars" }] };
@@ -332,6 +417,13 @@ async function main() {
     console.warn("⚠️  Skipping CMS routes (missing Contentful env vars).");
   }
 
+  // 2b) Repo fallback routes (blogs + legacy services + service-location combos)
+  const [blogFs, legacyServices, serviceLocs] = await Promise.all([
+    collectBlogFromFS(),
+    collectLegacyServiceRoutes(),
+    collectServiceLocationCombos(),
+  ]);
+
   // Normalize into a single set
   const allRoutes = new Map();
 
@@ -349,6 +441,16 @@ async function main() {
     // Prefer most recent lastmod
     const lm = existing ? (existing.lastmod > lastmod ? existing.lastmod : lastmod) : lastmod;
     allRoutes.set(route, { route, lastmod: lm, ...cfg });
+  }
+
+  // FS fallbacks → add if not already present
+  for (const list of [blogFs, legacyServices, serviceLocs]) {
+    for (const { route, lastmod } of list) {
+      const cfg = getRouteConfig(route);
+      const existing = allRoutes.get(route);
+      const lm = existing ? (existing.lastmod > lastmod ? existing.lastmod : lastmod) : lastmod;
+      allRoutes.set(route, { route, lastmod: lm, ...cfg });
+    }
   }
 
   // 3) Exclusions

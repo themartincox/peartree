@@ -130,8 +130,81 @@ export async function scanAppDirectory(appDir: string): Promise<string[]> {
       }
     }
 
-    // Sort routes for consistency
-    return routes.sort();
+    // Also include blog content from local `content/blog` as /patient-education/:slug
+    try {
+      const blogDir = path.resolve(appDir, "..", "..", "content", "blog");
+      const blogFiles = await fs.promises.readdir(blogDir).catch(() => [] as string[]);
+      for (const f of blogFiles) {
+        if (!/\.(md|mdx)$/i.test(f)) continue;
+        const slug = f.replace(/\.(md|mdx)$/i, "");
+        if (slug && slug !== "template") {
+          routes.push(`/patient-education/${slug}`);
+        }
+      }
+    } catch {}
+
+    // Include legacy service fallbacks declared in src/lib/service-fallbacks.ts
+    try {
+      const sfPath = path.resolve(appDir, "..", "lib", "service-fallbacks.ts");
+      const src = await fs.promises.readFile(sfPath, "utf-8");
+
+      // category fallbacks: registerCategoryFallback(['cosmetic','cosmetic-dentistry'], ...)
+      const catRegex = /registerCategoryFallback\(\[(.*?)\]/g;
+      const catSlugs = new Set<string>();
+      let m: RegExpExecArray | null;
+      while ((m = catRegex.exec(src))) {
+        const list = m[1]
+          .split(",")
+          .map((s) => s.replace(/[\s'"`]/g, "").trim())
+          .filter(Boolean);
+        for (const s of list) {
+          catSlugs.add(s);
+          routes.push(`/services/${s}`);
+        }
+      }
+
+      // treatment fallbacks: registerTreatmentFallback([category...], 'treatment', ...)
+      const treatRegex = /registerTreatmentFallback\(\s*\[(.*?)\]\s*,\s*['"]([a-z0-9-/.]+)['"]/g;
+      let t: RegExpExecArray | null;
+      while ((t = treatRegex.exec(src))) {
+        const catList = t[1]
+          .split(",")
+          .map((s) => s.replace(/[\s'"`]/g, "").trim())
+          .filter(Boolean);
+        const treatment = t[2];
+        for (const c of catList) {
+          routes.push(`/services/${c}/${treatment}`);
+        }
+      }
+
+      // Best-effort service-location combos: combine a subset of categories with likely suburb slugs from src/app/*
+      try {
+        const appChildren = await fs.promises.readdir(appDir, { withFileTypes: true });
+        const coreIgnore = new Set([
+          "api","services","services-location","blog","patient-education","about","contact","book","membership","pricing","privacy","terms","testimonials","reviews","thank-you","success","sitemap.xml","robots.ts","sitemap.ts","layout.tsx","page.tsx","not-found.tsx","offline","cohort-demo","components","data","lib","config","types","utils"
+        ]);
+        const suburbs: string[] = [];
+        for (const e of appChildren) {
+          if (!e.isDirectory()) continue;
+          const name = e.name;
+          if (coreIgnore.has(name)) continue;
+          // choose only simple slug folders that have a page.tsx
+          const pagePath = path.join(appDir, name, "page.tsx");
+          const hasPage = await fs.promises.stat(pagePath).then(()=>true).catch(()=>false);
+          if (hasPage) suburbs.push(name);
+        }
+        const cats = Array.from(catSlugs).slice(0, 6);
+        const locs = suburbs.slice(0, 12);
+        for (const c of cats) {
+          for (const s of locs) {
+            routes.push(`/services-location/${c}/${s}`);
+          }
+        }
+      } catch {}
+    } catch {}
+
+    // Sort and dedupe
+    return Array.from(new Set(routes)).sort();
   } catch (error) {
     console.error('Error scanning app directory:', error);
     return [];
