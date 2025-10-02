@@ -85,7 +85,7 @@ export default function TeethWhiteningPage() {
         "6-8 shades improvement"
       ],
       popular: true,
-      link: "/services/cosmetic/teeth-whitening/boutique"
+      link: "/services/teeth-whitening/boutique"
     },
     {
       name: "Enlighten Whitening",
@@ -102,7 +102,7 @@ export default function TeethWhiteningPage() {
       ],
       popular: false,
       premium: true,
-      link: "/services/cosmetic/teeth-whitening/enlighten"
+      link: "/services/teeth-whitening/enlighten"
     }
   ];
 

@@ -190,6 +190,35 @@ registerTreatmentFallback(
   'teeth-whitening-enlighten',
   () => import('@/legacy/services/cosmetic/teeth-whitening/enlighten/page'),
 );
+
+// Canonical nested routes support
+registerTreatmentFallback(
+  ['teeth-whitening'],
+  'enlighten',
+  () => import('@/legacy/services/cosmetic/teeth-whitening/enlighten/page'),
+);
+registerTreatmentFallback(
+  ['teeth-whitening'],
+  'boutique',
+  () => import('@/legacy/services/cosmetic/teeth-whitening/boutique/page'),
+);
+
+// Veneers nested routes (legacy deep links)
+registerTreatmentFallback(
+  ['cosmetic', 'cosmetic-dentistry'],
+  'veneers/porcelain',
+  () => import('@/legacy/services/cosmetic/veneers/porcelain/page'),
+);
+registerTreatmentFallback(
+  ['cosmetic', 'cosmetic-dentistry'],
+  'veneers/composite',
+  () => import('@/legacy/services/cosmetic/veneers/composite/page'),
+);
+registerTreatmentFallback(
+  ['cosmetic', 'cosmetic-dentistry'],
+  'veneers/ultra-thin',
+  () => import('@/legacy/services/cosmetic/veneers/ultra-thin/page'),
+);
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
   'edge-bonding',
@@ -279,6 +308,32 @@ registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
   'dentures',
   () => import('@/legacy/services/restorative/dentures/page'),
+);
+// Dentures nested routes
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dentures/complete-dentures',
+  () => import('@/legacy/services/restorative/dentures/complete-dentures/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dentures/partial-dentures',
+  () => import('@/legacy/services/restorative/dentures/partial-dentures/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dentures/valplast-dentures',
+  () => import('@/legacy/services/restorative/dentures/valplast-dentures/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dentures/cobalt-chrome-dentures',
+  () => import('@/legacy/services/restorative/dentures/cobalt-chrome-dentures/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dentures/hybrid-dentures',
+  () => import('@/legacy/services/restorative/dentures/hybrid-dentures/page'),
 );
 registerTreatmentFallback(
   ['restorative', 'restorative-dentistry'],
