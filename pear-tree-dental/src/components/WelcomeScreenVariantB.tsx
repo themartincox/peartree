@@ -12,7 +12,7 @@ export default function WelcomeScreenVariantB() {
     document.body.style.overflow = 'hidden';
 
     // Hold for ~0.5s then allow CSS fade (0.5s), unmount after ~1s total
-    const total = 1000; // 500ms hold + 500ms fade
+    const total = 1500; // 750ms hold + 750ms fade
     const timer = setTimeout(() => {
       setVisible(false);
       document.body.style.overflow = prev;
