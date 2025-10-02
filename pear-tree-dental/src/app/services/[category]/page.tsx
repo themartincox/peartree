@@ -8,7 +8,6 @@ import RichTextRenderer from "@/components/RichTextRenderer";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 900;
-export const dynamic = "force-dynamic";
 
 const SITE_URL = "https://peartree.dental";
 

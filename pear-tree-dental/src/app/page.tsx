@@ -1,7 +1,6 @@
 import type React from "react";
 import type { Metadata } from "next";
 import dynamicImport from "next/dynamic";
-import { headers } from "next/headers";
 
 // Data fetching and types
 import { fetchHubData } from "@/lib/services";
@@ -11,10 +10,11 @@ import { practiceInfo } from "@/data/practiceInfo";
 // Critical above-the-fold components
 import Hero from "@/components/Hero";
 import PracticeShowcase from "@/components/PracticeShowcase";
+export const revalidate = 300;
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
 const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), {
-  ssr: true
+  ssr: false
 });
 
 // Loaders for dynamic components
@@ -31,6 +31,7 @@ const ServicesOverview = dynamicImport(
   () => import("@/components/ServicesOverview"),
   {
     loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
+    ssr: false,
   },
 );
 
@@ -38,6 +39,7 @@ const TreatmentJourney = dynamicImport(
   () => import("@/components/TreatmentJourney"),
   {
     loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
+    ssr: false,
   },
 );
 
@@ -45,23 +47,25 @@ const MembershipHighlight = dynamicImport(
   () => import("@/components/MembershipHighlight"),
   {
     loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
+    ssr: false,
   },
 );
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
+  ssr: false,
 });
 
 const VoiceSearchOptimization = dynamicImport(
   () => import("@/components/VoiceSearchOptimization"),
   {
     loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
+    ssr: false,
   },
 );
 
-import ServerSideABWrapper from "@/components/ServerSideABWrapper";
+import ClientABWrapper from "@/components/ClientABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
-import { getVariant, getVariantMetadata } from "@/lib/ab-testing";
 
 // --- Service Data Mapping ---
 // This object provides the decorative data that is not yet in Contentful.
@@ -128,28 +132,16 @@ const serviceDecorations: { [key: string]: any } = {
   },
 };
 
-// Generate metadata based on A/B test variant
+// Static metadata to keep the page cacheable
 export async function generateMetadata(): Promise<Metadata> {
-  const variant = await getVariant();
-  const variantMetadata = getVariantMetadata(variant);
-
   return {
-    title: variantMetadata.title,
-    description: variantMetadata.description,
-    other: {
-      "x-ab-variant": variant,
-    },
+    title: "Dentist in Nottingham | Pear Tree Dental Practice",
+    description:
+      "Your trusted private dentist in Nottingham for Invisalign, dental implants, and smile makeovers. Book a consultation at our modern Nottingham practice.",
   };
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  const headerStore = headers();
-  const visitorCity = headerStore.get("x-peartree-city") ?? "";
-  const visitorCountry = headerStore.get("x-peartree-country") ?? "";
-  const visitorIsLocal = headerStore.get("x-peartree-local") === "true";
-  const showJudgeBanner = visitorCountry === "GB" && !visitorIsLocal && Boolean(visitorCity);
-
-  const variant = await getVariant();
 
   let categories;
   try {
@@ -219,14 +211,14 @@ export default async function HomePage(): Promise<React.JSX.Element> {
   ];
 
   return (
-    <ServerSideABWrapper variant={variant}>
+    <ClientABWrapper>
       <ServiceFAQSchema
         serviceName="Pear Tree Dental Practice"
         faqs={homepageFAQs}
         pageUrl="/"
       />
       <ClientGoogleReviews />
-      <Hero nonLocalBanner={showJudgeBanner ? { city: visitorCity } : null} />
+      <Hero />
       <PracticeShowcase />
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
@@ -234,6 +226,6 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <MembershipHighlight />
       <VoiceSearchOptimization />
       <FAQSection />
-    </ServerSideABWrapper>
+    </ClientABWrapper>
   );
 }
