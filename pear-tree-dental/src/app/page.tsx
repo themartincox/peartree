@@ -32,12 +32,9 @@ const ServicesOverview = dynamicImport(
   },
 );
 
-const TreatmentJourney = dynamicImport(
-  () => import("@/components/TreatmentJourney"),
-  {
-    loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
-  },
-);
+// Client-lazy wrappers for below-the-fold sections
+import ClientLazyFAQSection from "@/components/lazy/ClientLazyFAQSection";
+import ClientLazyTreatmentJourney from "@/components/lazy/ClientLazyTreatmentJourney";
 
 const MembershipHighlight = dynamicImport(
   () => import("@/components/MembershipHighlight"),
@@ -46,9 +43,7 @@ const MembershipHighlight = dynamicImport(
   },
 );
 
-const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
-  loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
-});
+// FAQSection handled by client-lazy wrapper
 
 const VoiceSearchOptimization = dynamicImport(
   () => import("@/components/VoiceSearchOptimization"),
@@ -220,10 +215,10 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <PracticeShowcase />
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
-      <TreatmentJourney />
+      <ClientLazyTreatmentJourney />
       <MembershipHighlight />
       <VoiceSearchOptimization />
-      <FAQSection />
+      <ClientLazyFAQSection />
     </>
   );
 }

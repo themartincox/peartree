@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import styles from './WelcomeOverlay.module.css';
 
 export default function WelcomeScreenVariantB() {
   const [visible, setVisible] = useState(true);
@@ -26,9 +27,9 @@ export default function WelcomeScreenVariantB() {
   if (!visible) return null;
 
   return (
-    <div className="welcome-screen-b" aria-hidden>
-      <div className="welcome-content-b">
-        <h1 className="welcome-text-b">Welcome to Pear Tree Dental</h1>
+    <div className={styles.overlay} aria-hidden>
+      <div className={styles.content}>
+        <h1 className={styles.text}>Welcome to Pear Tree Dental</h1>
       </div>
     </div>
   );

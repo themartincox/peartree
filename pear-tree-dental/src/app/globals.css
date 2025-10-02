@@ -377,41 +377,7 @@ html {
   /* Standard homepage styling */
 }
 
-/* Variant B - Clean welcome screen with animations */
-.welcome-screen-b {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 50;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Hold for 0.5s, then fade for 0.5s */
-  animation: welcomeFadeOut 0.5s ease-in-out 0.5s forwards;
-}
-
-.welcome-content-b {
-  animation: welcomeSlideUp 0.6s ease-out;
-}
-
-.welcome-text-b {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 300;
-  color: #374151;
-  text-align: center;
-  padding: 0 1rem;
-  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.ab-variant-b-content {
-  padding-top: 100vh;
-  animation: contentSlideIn 0.8s ease-out 1.4s both;
-}
+/* Variant B overlay CSS moved to module: src/components/WelcomeOverlay.module.css */
 
 /* Variant C - Background image welcome screen */
 .welcome-screen-c {
@@ -922,30 +888,19 @@ input:valid {
   }
 }
 
-/* Ensure proper stacking context */
-.ab-variant-b .welcome-screen-b,
-.ab-variant-c .welcome-screen-c {
-  isolation: isolate;
-}
+/* Ensure proper stacking context - Variant C only */
+.ab-variant-c .welcome-screen-c { isolation: isolate; }
 
 /* Server-side accessibility improvements */
 @media (prefers-reduced-motion: reduce) {
   .welcome-screen-b,
   .welcome-screen-c,
-  .ab-variant-b-content,
   .ab-variant-c-content,
-  .welcome-content-b,
   .welcome-content-c {
     animation: none !important;
     transition: none !important;
   }
 
-  .ab-variant-b-content,
-  .ab-variant-c-content {
-    padding-top: 0;
-  }
-
-  .welcome-screen-b,
   .welcome-screen-c {
     display: none;
   }
