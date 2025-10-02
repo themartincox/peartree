@@ -3,34 +3,32 @@
 import { useEffect, useState } from 'react';
 
 export default function WelcomeScreenVariantB() {
-  const [showWelcome, setShowWelcome] = useState(true);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Auto-hide after 1 second and scroll to main content
+    // Lock scroll while overlay is visible
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    // Hold for ~0.5s then allow CSS fade (0.5s), unmount after ~1s total
+    const total = 1000; // 500ms hold + 500ms fade
     const timer = setTimeout(() => {
-      setShowWelcome(false);
+      setVisible(false);
+      document.body.style.overflow = prev;
+    }, total);
 
-      // Smooth scroll to main content
-      const mainContent = document.getElementById('main-content');
-      if (mainContent) {
-        mainContent.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    }, 1000);
-
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = prev;
+    };
   }, []);
 
-  if (!showWelcome) return null;
+  if (!visible) return null;
 
   return (
-    <div className="welcome-screen-b">
+    <div className="welcome-screen-b" aria-hidden>
       <div className="welcome-content-b">
-        <h1 className="welcome-text-b">
-          Welcome to Pear Tree Dental
-        </h1>
+        <h1 className="welcome-text-b">Welcome to Pear Tree Dental</h1>
       </div>
     </div>
   );
