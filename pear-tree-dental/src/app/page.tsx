@@ -13,9 +13,7 @@ import PracticeShowcase from "@/components/PracticeShowcase";
 export const revalidate = 300;
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
-const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'), {
-  ssr: false
-});
+const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'));
 
 // Loaders for dynamic components
 import {
@@ -26,12 +24,11 @@ import {
   HappyPatientLoader,
 } from "@/components/WelcomingLoader";
 
-// Below-the-fold components - loaded dynamically
+// Below-the-fold components - loaded dynamically (server-compatible)
 const ServicesOverview = dynamicImport(
   () => import("@/components/ServicesOverview"),
   {
     loading: () => <DentalTeamLoader message="Loading our amazing services..." />,
-    ssr: false,
   },
 );
 
@@ -39,7 +36,6 @@ const TreatmentJourney = dynamicImport(
   () => import("@/components/TreatmentJourney"),
   {
     loading: () => <HappyPatientLoader height="h-screen" message="Mapping your treatment journey..." />,
-    ssr: false,
   },
 );
 
@@ -47,20 +43,17 @@ const MembershipHighlight = dynamicImport(
   () => import("@/components/MembershipHighlight"),
   {
     loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
-    ssr: false,
   },
 );
 
 const FAQSection = dynamicImport(() => import("@/components/FAQSection"), {
   loading: () => <DiverseSmilesLoader message="Loading helpful answers..." />,
-  ssr: false,
 });
 
 const VoiceSearchOptimization = dynamicImport(
   () => import("@/components/VoiceSearchOptimization"),
   {
     loading: () => <GentleCareLoader height="h-64" message="Optimizing your experience..." />,
-    ssr: false,
   },
 );
 
@@ -211,12 +204,17 @@ export default async function HomePage(): Promise<React.JSX.Element> {
   ];
 
   return (
-    <ClientABWrapper>
+    <>
+      {/* Client AB overlay and classes (cookieless) */}
+      <ClientABWrapper />
+
+      {/* Server-side SEO schema must remain outside client boundaries */}
       <ServiceFAQSchema
         serviceName="Pear Tree Dental Practice"
         faqs={homepageFAQs}
         pageUrl="/"
       />
+
       <ClientGoogleReviews />
       <Hero />
       <PracticeShowcase />
@@ -226,6 +224,6 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <MembershipHighlight />
       <VoiceSearchOptimization />
       <FAQSection />
-    </ClientABWrapper>
+    </>
   );
 }
