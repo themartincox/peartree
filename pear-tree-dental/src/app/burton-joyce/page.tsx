@@ -126,9 +126,9 @@ export default function BurtonJoycePage() {
                     <h3 className="font-bold text-pear-primary mb-2">Practice Address</h3>
                     <p className="text-gray-700 mb-2">
                       Pear Tree Dental Centre<br />
-                      25 Main Street<br />
+                      22 Nottingham Road<br />
                       Burton Joyce<br />
-                      Nottinghamshire NG14 5DP
+                      Nottinghamshire NG14 5AE
                     </p>
                     <Button variant="outline" size="sm" className="border-dental-green text-dental-green">
                       <Navigation className="w-4 h-4 mr-2" />
@@ -193,7 +193,7 @@ export default function BurtonJoycePage() {
                     <MapPin className="w-16 h-16 mx-auto mb-4 text-dental-green" />
                     <h3 className="text-xl font-bold text-gray-700 mb-2">INTERACTIVE MAP</h3>
                     <p className="text-gray-600">Google Maps showing Burton Joyce location</p>
-                    <p className="text-sm text-gray-500 mt-2">25 Main Street, Burton Joyce, NG14 5DP</p>
+                    <p className="text-sm text-gray-500 mt-2">22 Nottingham Road, Burton Joyce, NG14 5AE</p>
                   </div>
                 </div>
               </Card>

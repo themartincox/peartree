@@ -51,7 +51,7 @@ export async function GET() {
         phone: '07123456789',
         dateOfBirth: '1985-06-15',
         address: '123 Test Street, Burton Joyce',
-        postcode: 'NG14 5DP',
+        postcode: 'NG14 5AE',
         accountHolderName: 'John Smith',
         sortCode: '12-34-56',
         accountNumber: '12345678',

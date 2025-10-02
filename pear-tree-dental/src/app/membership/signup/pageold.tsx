@@ -951,7 +951,7 @@ export default function MembershipSignupPage() {
                         pattern="[A-Za-z0-9\s]*"
                         value={formData.postcode}
                         onChange={(e) => secureHandleInputChange("postcode", e.target.value.toUpperCase())}
-                        placeholder="NG14 5DP"
+                        placeholder="NG14 5AE"
                         className="mt-1 uppercase"
                         maxLength={10}
                         autoComplete="postal-code"

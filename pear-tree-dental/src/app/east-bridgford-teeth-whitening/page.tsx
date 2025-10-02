@@ -61,10 +61,10 @@ export default function EastBridgfordTeethWhiteningPage() {
               "name": "Pear Tree Dental",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Main Street",
+                "streetAddress": "22 Nottingham Road",
                 "addressLocality": "Burton Joyce",
                 "addressRegion": "Nottinghamshire",
-                "postalCode": "NG14 5DP",
+                "postalCode": "NG14 5AE",
                 "addressCountry": "GB"
               },
               "telephone": "0115 931 2935"

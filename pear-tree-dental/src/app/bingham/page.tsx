@@ -59,10 +59,10 @@ export default function BinghamPage() {
             "description": "Family dental practice serving Bingham residents with comprehensive dental care, children's dentistry, and membership plans.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Main Street",
+              "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
@@ -414,9 +414,9 @@ export default function BinghamPage() {
                       <h3 className="font-semibold mb-2">Practice Location</h3>
                       <p className="text-gray-700">
                         Pear Tree Dental<br />
-                        Main Street<br />
+                        22 Nottingham Road<br />
                         Burton Joyce<br />
-                        Nottinghamshire NG14 5DP
+                        Nottinghamshire NG14 5AE
                       </p>
                     </div>
                   </div>

@@ -33,7 +33,7 @@ export async function GET() {
       phone: '07123456789',
       dateOfBirth: '1985-06-15',
       address: '123 Test Street, Burton Joyce, Nottingham',
-      postcode: 'NG14 5DP',
+      postcode: 'NG14 5AE',
       accountHolderName: 'John Smith',
       sortCode: '12-34-56',
       accountNumber: '12345678',
@@ -99,7 +99,7 @@ export async function GET() {
 
     // Test 5: UK-Specific Validation
     const ukValidationTests = [
-      { field: 'postcode', value: 'NG14 5DP', shouldPass: true },
+      { field: 'postcode', value: 'NG14 5AE', shouldPass: true },
       { field: 'postcode', value: 'INVALID', shouldPass: false },
       { field: 'sortCode', value: '12-34-56', shouldPass: true },
       { field: 'sortCode', value: '123456', shouldPass: true }, // Auto-formats to 12-34-56 (good UX)

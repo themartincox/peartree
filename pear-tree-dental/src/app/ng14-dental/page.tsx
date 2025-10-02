@@ -64,10 +64,10 @@ export default function NG14DentalPage() {
             "description": "Local dental practice serving the NG14 postal area including Burton Joyce, Lowdham, and new housing developments.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Main Street",
+              "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
@@ -207,7 +207,7 @@ export default function NG14DentalPage() {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-gray-700 mb-4">
-                    Right in the heart of NG14 on Main Street, Burton Joyce - the most convenient location for all NG14 residents
+                    Right in the heart of NG14 on Nottingham Road, Burton Joyce - the most convenient location for all NG14 residents
                   </p>
                   <div className="space-y-2 text-sm text-gray-600">
                     <p>• Central NG14 location</p>
@@ -293,7 +293,7 @@ export default function NG14DentalPage() {
                     <div>
                       <h3 className="font-bold text-xl mb-2">Right in Your NG14 Postcode</h3>
                       <p className="text-gray-700 mb-2">
-                        We're located at NG14 5DP - right in the heart of your postal area for maximum convenience
+                        We're located at NG14 5AE - right in the heart of your postal area for maximum convenience
                       </p>
                       <ul className="text-sm text-gray-600 space-y-1">
                         <li>• Same postcode area as many NG14 residents</li>

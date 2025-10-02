@@ -66,10 +66,10 @@ export default function NG4DentalPage() {
             "description": "Convenient dental practice serving the NG4 postal area including Arnold, Gedling, and new housing developments.",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Main Street",
+              "streetAddress": "22 Nottingham Road",
               "addressLocality": "Burton Joyce",
               "addressRegion": "Nottinghamshire",
-              "postalCode": "NG14 5DP",
+              "postalCode": "NG14 5AE",
               "addressCountry": "GB"
             },
             "geo": {
