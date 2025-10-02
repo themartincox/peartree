@@ -36,12 +36,7 @@ const ServicesOverview = dynamicImport(
 import ClientLazyFAQSection from "@/components/lazy/ClientLazyFAQSection";
 import ClientLazyTreatmentJourney from "@/components/lazy/ClientLazyTreatmentJourney";
 
-const MembershipHighlight = dynamicImport(
-  () => import("@/components/MembershipHighlight"),
-  {
-    loading: () => <FamilyCareLoader message="Preparing membership benefits..." />,
-  },
-);
+import ClientLazyMembershipHighlight from "@/components/lazy/ClientLazyMembershipHighlight";
 
 // FAQSection handled by client-lazy wrapper
 
@@ -216,7 +211,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
       <ClientLazyTreatmentJourney />
-      <MembershipHighlight />
+      <ClientLazyMembershipHighlight />
       <VoiceSearchOptimization />
       <ClientLazyFAQSection />
     </>
