@@ -301,13 +301,17 @@ export default function BoutiqueWhiteningPage() {
                   <div className="text-sm text-gray-600">Complete kit</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold">
-                    Book Boutique Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold">
+                      Book Boutique Consultation
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -592,13 +596,17 @@ export default function BoutiqueWhiteningPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
-                  Book Boutique Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600">
-                  Compare Whitening Options
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                    Book Boutique Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/services/teeth-whitening">
+                  <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600">
+                    Compare Whitening Options
+                  </Button>
+                </Link>
               </div>
 
               <div className="text-sm text-white/80">

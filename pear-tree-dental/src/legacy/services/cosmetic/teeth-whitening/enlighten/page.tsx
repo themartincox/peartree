@@ -253,13 +253,17 @@ export default function EnlightenWhiteningPage() {
                   <div className="text-sm text-gray-600">Complete treatment</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold">
-                    Book Enlighten Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
-                    Call 0115 931 2935
-                  </Button>
+                  <Link href="/book">
+                    <Button size="lg" className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold">
+                      Book Enlighten Consultation
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                  <a href="tel:01159312935">
+                    <Button size="lg" variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
+                      Call 0115 931 2935
+                    </Button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -497,13 +501,17 @@ export default function EnlightenWhiteningPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
-                  Book Enlighten Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-orange-600 hover:bg-white hover:text-orange-600">
-                  Compare Whitening Options
-                </Button>
+                <Link href="/book">
+                  <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
+                    Book Enlighten Consultation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+                <Link href="/services/teeth-whitening">
+                  <Button size="lg" variant="outline" className="border-white text-orange-600 hover:bg-white hover:text-orange-600">
+                    Compare Whitening Options
+                  </Button>
+                </Link>
               </div>
 
               <div className="text-sm text-white/80">
