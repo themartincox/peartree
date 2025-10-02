@@ -1,5 +1,5 @@
 # AI Model Training Guidance for Pear Tree Dental Website
-# Last updated: September 24, 2025
+# Last updated: October 02, 2025
 # URL: https://peartree.dental
 
 # GENERAL INFORMATION

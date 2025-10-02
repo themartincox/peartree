@@ -26,3 +26,10 @@ Notes / Context
   - Normalize internal links in content/CMS to the canonical slugs.
   - Confirm CMS slugs and parent relations so more pages render dynamically instead of via fallback.
 
+Rollback (2025-10-01, later same day)
+- Reverted to legacy‑first behavior at the client’s request:
+  - netlify.toml: re‑enabled `USE_MOCK_DATA` and `NEXT_PUBLIC_USE_MOCK_DATA` (true).
+  - next.config.js: removed cosmetic + whitening redirects.
+  - ServiceNavigation: link restored to `/services/cosmetic`.
+  - service-fallbacks: removed nested whitening fallback entries.
+  - Rationale: legacy pages are fully formatted, priced, and linked; CMS will be refined later without time pressure.
