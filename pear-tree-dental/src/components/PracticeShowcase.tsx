@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import GoogleReviewsWidget from "@/components/GoogleReviewsWidget";
+import ClientLazyGoogleReviews from "@/components/ClientLazyGoogleReviews";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -48,9 +48,9 @@ const PracticeShowcase = () => {
                   {/* Sticky Trigger Element - invisible marker for when widget should become sticky */}
                   <div id="reviews-sticky-trigger" className="absolute w-1 h-1 opacity-0 pointer-events-none"></div>
 
-                  {/* Google Reviews Widget - Homepage Position */}
+                  {/* Google Reviews Widget - Homepage Position (lazy, client-only) */}
                   <div className="mt-6">
-                    <GoogleReviewsWidget />
+                    <ClientLazyGoogleReviews />
                   </div>
                 </div>
               </div>

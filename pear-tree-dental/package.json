@@ -87,4 +87,19 @@
     "typescript": "^5.9.2"
   },
   "volta": { "node": "20.19.5" }
+  ,
+  "browserslist": {
+    "production": [
+      "Chrome >= 114",
+      "Edge >= 115",
+      "Safari >= 16.4",
+      "iOS >= 16.4",
+      "Firefox >= 115"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
