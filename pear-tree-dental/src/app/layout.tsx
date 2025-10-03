@@ -15,7 +15,6 @@ import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
 import ClientProviders from "@/components/ClientProviders";
 import LazyLocationDetection from "@/components/LazyLocationDetection";
-import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -90,7 +89,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
 
           <LazyLocationDetection />
-          <WhatsAppWidget position="bottom-right" phoneNumber="447525114953" />
         </ClientProviders>
 
         <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />

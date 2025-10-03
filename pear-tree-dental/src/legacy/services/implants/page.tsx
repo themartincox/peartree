@@ -10,7 +10,6 @@ import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
 import ServiceFAQSchema, { commonDentalFAQs } from "@/components/seo/ServiceFAQSchema";
 import ServiceHero from "@/components/ServiceHero";
 import { getServiceHeroConfig } from "@/data/serviceHeroes";
-import BeforeAfterButton from "@/components/BeforeAfterButton";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import {
   Zap,
@@ -265,18 +264,6 @@ export default function ImplantsPage() {
   </div>
 </section>
 
-{/* Single Implant Before/After */}
-<div className="w-full md:w-1/2 mx-auto my-16">
-        <BeforeAfterSlider
-          beforeImage="/images/before-after/single-dental-implant-before.webp"
-          afterImage="/images/before-after/single-dental-implant-after.webp"
-          beforeAlt="Before single dental implant"
-          afterAlt="After single dental implant"
-          title="Single Dental Implant — Real Patient"
-          description="See how a single implant restores function and aesthetics."
-          treatmentType="Implants"
-        />
-      </div>
       
       {/* Treatment Process */}
       <section className="py-16 bg-gradient-to-br from-pear-background/30 to-white">
@@ -362,20 +349,18 @@ export default function ImplantsPage() {
           </div>
 
           <div className="max-w-4xl mx-auto mb-8">
-            <BeforeAfterButton
-              images={[
-                {
-                  beforeSrc: "/images/before-after/implants-before.png",
-                  afterSrc: "/images/before-after/implants-after.png",
-                  beforeAlt: "Patient with missing tooth before dental implant treatment showing gap in smile",
-                  afterAlt: "Patient after dental implant treatment with natural-looking replacement tooth perfectly integrated",
-                  title: "Single Tooth Implant Transformation",
-                  description: "Complete dental implant transformation showing natural-looking tooth replacement that functions just like your natural teeth",
-                  treatment: "Single Tooth Implant"
-                }
-              ]}
-            />
-
+            <div className="w-full md:w-2/3 lg:w-1/2 mx-auto">
+              <BeforeAfterSlider
+                beforeImage="/images/before-after/single-dental-implant-before.webp"
+                afterImage="/images/before-after/single-dental-implant-after.webp"
+                beforeAlt="Before single dental implant"
+                afterAlt="After single dental implant"
+                title="Single Dental Implant — Real Patient"
+                description="See how a single implant restores function and aesthetics."
+                treatmentType="Implants"
+              />
+            </div>
+          
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <div className="text-center">
                 <div className="w-12 h-12 bg-pear-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
