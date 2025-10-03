@@ -5,6 +5,7 @@ import { MessageCircle, X, Phone, Calendar, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useConversionTracking } from "@/hooks/useConversionTracking";
 
 interface WhatsAppWidgetProps {
   phoneNumber?: string;
@@ -20,6 +21,7 @@ export default function WhatsAppWidget({
   const [isOpen, setIsOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const { trackConversion, trackPhoneClick } = useConversionTracking();
 
   useEffect(() => {
     // Get current page path for context-aware messaging
@@ -77,9 +79,19 @@ export default function WhatsAppWidget({
     return baseMessage;
   };
 
-  const openWhatsApp = (message: string) => {
+  const openWhatsApp = (message: string, promptType: "quick" | "custom" = "quick", promptTitle?: string) => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    // Track conversation start by prompt type
+    try {
+      trackConversion('whatsapp_chat_start', {
+        prompt_type: promptType,
+        quick_title: promptTitle || null,
+        page_path: currentPage,
+      });
+    } catch (e) {
+      // non-blocking
+    }
     window.open(whatsappUrl, "_blank");
     setIsOpen(false);
   };
@@ -153,7 +165,7 @@ export default function WhatsAppWidget({
                 return (
                   <button
                     key={index}
-                    onClick={() => openWhatsApp(msg.message)}
+                    onClick={() => openWhatsApp(msg.message, "quick", msg.title)}
                     className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors group"
                   >
                     <div className="flex items-center space-x-3">
@@ -171,7 +183,7 @@ export default function WhatsAppWidget({
 
             {/* Custom Message Button */}
             <Button
-              onClick={() => openWhatsApp(getContextualMessage())}
+              onClick={() => openWhatsApp(getContextualMessage(), "custom")}
               className="w-full bg-green-500 hover:bg-green-600 text-white mt-4"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
@@ -181,7 +193,13 @@ export default function WhatsAppWidget({
             {/* Practice Info */}
             <div className="text-xs text-gray-500 text-center mt-3 pt-3 border-t">
               📍 Burton Joyce, Nottinghamshire<br />
-              📞 0115 931 2935<br />
+              📞 <a
+                href="tel:+441159312935"
+                className="text-green-600 hover:underline"
+                onClick={() => trackPhoneClick('whatsapp_widget_footer', '+441159312935')}
+              >
+                0115 931 2935
+              </a><br />
               🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
             </div>
           </CardContent>

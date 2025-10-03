@@ -27,6 +27,7 @@ export const useConversionTracking = () => {
     sessionDuration: 0
   });
   const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const [isClinicIp, setIsClinicIp] = useState<boolean>(false);
 
   // Track time on page
   useEffect(() => {
@@ -58,6 +59,23 @@ export const useConversionTracking = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Detect clinic IP once per session (for internal traffic tagging)
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/ip-check');
+        if (!cancelled && res.ok) {
+          const data = await res.json();
+          setIsClinicIp(Boolean(data?.isClinicIp));
+        }
+      } catch {
+        // silent fail
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
   // Track click count
   const incrementClickCount = useCallback(() => {
     setMetrics(prev => ({
@@ -79,6 +97,7 @@ export const useConversionTracking = () => {
         // Location context
         is_nottingham_visitor: isNottingham,
         detected_location: area || 'unknown',
+        is_clinic_ip: isClinicIp,
 
         // Engagement metrics
         time_on_page: metrics.timeOnPage,
@@ -102,7 +121,7 @@ export const useConversionTracking = () => {
     storeLocalConversion(conversionEvent);
 
     console.log('[Conversion Tracked]', eventType, conversionEvent.metadata);
-  }, [isNottingham, area, metrics, sessionId, incrementClickCount]);
+  }, [isNottingham, area, isClinicIp, metrics, sessionId, incrementClickCount]);
 
   // Send to analytics providers
   const sendToAnalytics = useCallback((event: ConversionEvent) => {
@@ -211,6 +230,7 @@ export const useConversionTracking = () => {
     trackBookingAttempt,
     metrics,
     sessionId,
-    isNottingham
+    isNottingham,
+    isClinicIp
   };
 };

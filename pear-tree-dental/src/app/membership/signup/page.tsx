@@ -190,7 +190,7 @@ export default function MembershipSignupPage() {
         "All adults get Complete Care Plus benefits",
         "Children under 18 included free",
         "Same address requirement",
-        "10% discount on all treatments",
+        "10% discount on selected treatments",
         "Simplified billing for whole family",
         "Priority family appointments"
       ],
