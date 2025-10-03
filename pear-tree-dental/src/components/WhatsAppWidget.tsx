@@ -25,8 +25,8 @@ export default function WhatsAppWidget({
     // Get current page path for context-aware messaging
     setCurrentPage(window.location.pathname);
 
-    // Show widget after page loads
-    const timer = setTimeout(() => setIsVisible(true), 2000);
+    // Show widget after page loads (5s delay)
+    const timer = setTimeout(() => setIsVisible(true), 5000);
     return () => clearTimeout(timer);
   }, []);
 
