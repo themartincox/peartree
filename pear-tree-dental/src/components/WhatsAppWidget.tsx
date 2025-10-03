@@ -14,7 +14,7 @@ interface WhatsAppWidgetProps {
 }
 
 export default function WhatsAppWidget({
-  phoneNumber = "447123456789", // Replace with actual practice WhatsApp number
+  phoneNumber = "447525114953", // WhatsApp number (E.164 without +)
   position = "bottom-right",
   className = ""
 }: WhatsAppWidgetProps) {

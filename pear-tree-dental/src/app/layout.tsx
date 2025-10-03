@@ -90,7 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
 
           <LazyLocationDetection />
-          <WhatsAppWidget position="bottom-right" />
+          <WhatsAppWidget position="bottom-right" phoneNumber="447525114953" />
         </ClientProviders>
 
         <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />
