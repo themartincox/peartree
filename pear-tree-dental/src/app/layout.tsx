@@ -5,8 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import NavShell from "@/components/navigation/NavShell";
-import NavEnhancer from "@/components/navigation/NavEnhancer";
+import SmartNav from "@/components/Navigation";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
@@ -92,8 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* ⭐ Ensure the target for #navigation exists */}
           <div id="navigation">
-            <NavShell />
-            <NavEnhancer />
+            <SmartNav />
           </div>
 
           <main id="main-content" className="min-h-screen" role="main">
