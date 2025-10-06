@@ -5,8 +5,8 @@ import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import dynamic from "next/dynamic";
 import NavShell from "@/components/navigation/NavShell";
+import NavEnhancer from "@/components/navigation/NavEnhancer";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
@@ -36,9 +36,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const NavEnhancer = dynamic(() => import("@/components/navigation/NavEnhancer"), {
-    ssr: false,
-  });
   return (
     <html lang="en">
       <head>
