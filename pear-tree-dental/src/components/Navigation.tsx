@@ -547,12 +547,12 @@ const Navigation = () => {
                   className="bg-pear-primary text-white font-bold px-4 py-2 h-10 border-2 border-white hover:bg-pear-primary/90"
                 >
                   <CalendarDays className="w-4 h-4 mr-2 hidden sm:block" />
-                  Book
+                  Book Appointment
                 </Button>
               </Link>
               <Link href="/membership">
                 <Button size="sm" className="bg-white text-pear-gold hover:bg-white/90 font-semibold px-4 py-2 h-10">
-                  Membership
+                 Explore Membership
                 </Button>
               </Link>
             </div>

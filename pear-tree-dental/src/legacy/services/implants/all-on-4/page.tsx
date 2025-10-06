@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "complete mouth restoration",
     "All-on-4 Nottingham",
     "full mouth implants",
-    "immediate load implants"
+    "immediate load implants",
     "Zygomatic Implants Nottingham"
   ],
   openGraph: {
