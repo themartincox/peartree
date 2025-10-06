@@ -67,7 +67,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         >
           <div className="relative h-full w-full overflow-hidden">
             <Image
-              src="/images/heroes/hero-home-new-family.webp"
+              src="/images/heroes/hero-home-family-left.webp"
               alt=""
               fill
               priority

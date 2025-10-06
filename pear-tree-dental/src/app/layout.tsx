@@ -66,9 +66,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="preload"
           as="image"
-          href="/images/heroes/hero-home-new-family.webp"
+          href="/images/heroes/hero-home-family-left.webp"
           media="(max-width: 1023px)"
-          imagesrcset="/images/heroes/hero-home-new-family.webp 320w, /images/heroes/hero-home-new-family.webp 480w, /images/heroes/hero-home-new-family.webp 640w, /images/heroes/hero-home-new-family.webp 768w, /images/heroes/hero-home-new-family.webp 960w"
+          imagesrcset="/images/heroes/hero-home-family-left.webp 320w, /images/heroes/hero-home-family-left.webp 480w, /images/heroes/hero-home-family-left.webp 640w, /images/heroes/hero-home-family-left.webp 768w, /images/heroes/hero-home-family-left.webp 960w, /images/heroes/hero-home-family-left.webp 1024w"
           imagesizes="100vw"
         />
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
