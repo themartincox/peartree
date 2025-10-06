@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 interface PageTransitionProps {
   children: ReactNode;
@@ -52,6 +52,25 @@ const childVariants = {
 
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
+  const [reduceMotion, setReduceMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduceMotion(mql.matches);
+    const onChange = () => setReduceMotion(mql.matches);
+    if (typeof mql.addEventListener === "function") mql.addEventListener("change", onChange);
+    else if (typeof (mql as any).addListener === "function") (mql as any).addListener(onChange);
+    return () => {
+      if (typeof mql.removeEventListener === "function") mql.removeEventListener("change", onChange);
+      else if (typeof (mql as any).removeListener === "function") (mql as any).removeListener(onChange);
+    };
+  }, []);
+
+  if (reduceMotion) {
+    // Respect reduced motion: render without animations
+    return <div className="min-h-screen">{children}</div>;
+  }
 
   return (
     <AnimatePresence mode="wait" initial={false}>

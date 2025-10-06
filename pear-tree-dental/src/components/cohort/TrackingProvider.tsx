@@ -113,13 +113,7 @@ function startPageTimeTracking(): () => void {
 
 // Enhanced tracking provider
 export default function TrackingProvider({ children }: { children: React.ReactNode }) {
-  console.log('[TrackingProvider] Component rendering...'); // Added for debugging
   useEffect(() => {
-    // Explicitly check for Simple Analytics availability
-    if (typeof window !== 'undefined') {
-      console.log('[TrackingProvider] window.sa_event available:', typeof (window as any).sa_event === 'function');
-    }
-
     // Track page view
     trackEvent('page_view', {
       path: window.location.pathname,
@@ -154,35 +148,38 @@ export default function TrackingProvider({ children }: { children: React.ReactNo
       }
     };
 
-    // Track scroll depth
+    // Track scroll depth (throttled via rAF to avoid forced reflow)
     let maxScrollPercentage = 0;
-    const handleScroll = () => {
+    let ticking = false;
+    const measureAndTrack = () => {
+      ticking = false;
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (scrollHeight <= 0) return;
       const scrollPercentage = Math.round((scrollTop / scrollHeight) * 100);
 
-      // Update max scroll and track at 25%, 50%, 75%, and 100%
       if (scrollPercentage > maxScrollPercentage) {
+        const prev = maxScrollPercentage;
         maxScrollPercentage = scrollPercentage;
-
-        if (scrollPercentage >= 25 && maxScrollPercentage < 25) {
-          trackEvent('scroll_depth', { depth: 25 });
-        } else if (scrollPercentage >= 50 && maxScrollPercentage < 50) {
-          trackEvent('scroll_depth', { depth: 50 });
-        } else if (scrollPercentage >= 75 && maxScrollPercentage < 75) {
-          trackEvent('scroll_depth', { depth: 75 });
-        } else if (scrollPercentage >= 90 && maxScrollPercentage < 90) {
-          trackEvent('scroll_depth', { depth: 90 });
-        }
+        if (prev < 25 && scrollPercentage >= 25) trackEvent('scroll_depth', { depth: 25 });
+        if (prev < 50 && scrollPercentage >= 50) trackEvent('scroll_depth', { depth: 50 });
+        if (prev < 75 && scrollPercentage >= 75) trackEvent('scroll_depth', { depth: 75 });
+        if (prev < 90 && scrollPercentage >= 90) trackEvent('scroll_depth', { depth: 90 });
+      }
+    };
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(measureAndTrack);
       }
     };
 
-    document.addEventListener('click', handleClick);
-    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClick, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      document.removeEventListener('click', handleClick);
-      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClick as any);
+      window.removeEventListener('scroll', handleScroll as any);
       endTimeTracking();
     };
   }, []);

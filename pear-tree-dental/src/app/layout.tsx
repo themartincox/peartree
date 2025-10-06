@@ -45,6 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
 
+        {/* Preconnect to analytics CDN (non-blocking, improves first call) */}
+        <link rel="preconnect" href="https://scripts.simpleanalyticscdn.com" crossOrigin="" />
+
         {/* ⭐ Preload desktop hero image ONLY on ≥1024px to help desktop LCP without double-preloading mobile */}
         <link
           rel="preload"
@@ -54,6 +57,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           // type="image/webp" // uncomment if correct
           imagesrcset="/images/heroes/hero-home-new-family.webp 750w, /images/heroes/hero-home-new-family.webp 900w, /images/heroes/hero-home-new-family.webp 1050w, /images/heroes/hero-home-new-family.webp 1200w"
           imagesizes="(min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
+        />
+        {/* ⭐ Preload mobile hero image ONLY on <1024px to reduce mobile LCP delay */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/heroes/hero-home-new-family.webp"
+          media="(max-width: 1023px)"
+          imagesrcset="/images/heroes/hero-home-new-family.webp 320w, /images/heroes/hero-home-new-family.webp 480w, /images/heroes/hero-home-new-family.webp 640w, /images/heroes/hero-home-new-family.webp 768w, /images/heroes/hero-home-new-family.webp 960w"
+          imagesizes="100vw"
         />
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
         <link rel="preconnect" href="https://images.ctfassets.net" crossOrigin="" />
