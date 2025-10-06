@@ -58,14 +58,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           imagesrcset="/images/heroes/hero-home-new-family.webp 750w, /images/heroes/hero-home-new-family.webp 900w, /images/heroes/hero-home-new-family.webp 1050w, /images/heroes/hero-home-new-family.webp 1200w"
           imagesizes="(min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
         />
-        {/* ⭐ Preload mobile hero image ONLY on <1024px to reduce mobile LCP delay */}
+        {/* ⭐ Preload mobile hero via Next/Image optimized URLs so the browser grabs the exact variant it will render */}
         <link
           rel="preload"
           as="image"
-          href="/images/heroes/hero-home-family-left.webp"
           media="(max-width: 1023px)"
-          imagesrcset="/images/heroes/hero-home-family-left.webp 320w, /images/heroes/hero-home-family-left.webp 480w, /images/heroes/hero-home-family-left.webp 640w, /images/heroes/hero-home-family-left.webp 768w, /images/heroes/hero-home-family-left.webp 960w, /images/heroes/hero-home-family-left.webp 1024w"
-          imagesizes="100vw"
+          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=45"
+          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=45 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=45 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=45 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=45 1080w"
+          imagesizes="85vw"
+          // type="image/webp"
         />
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
         <link rel="preconnect" href="https://images.ctfassets.net" crossOrigin="" />
