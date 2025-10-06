@@ -171,66 +171,74 @@ export default function ImplantsPage() {
           className="overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-pear-gold/20"
         >
           {implant.image === "all-on-4" ? (
-            // Existing All-on-4 picture
-            <div className="aspect-[4/3] relative overflow-hidden">
-              <picture>
-                <source
-                  media="(min-width: 768px)"
-                  srcSet="/images/implants/all-on-4-large.webp"
-                  type="image/webp"
-                />
-                <source
-                  media="(min-width: 480px)"
-                  srcSet="/images/implants/all-on-4-medium.webp"
-                  type="image/webp"
-                />
-                <source
-                  srcSet="/images/implants/all-on-4-small.webp"
-                  type="image/webp"
-                />
+            // Existing All-on-4 picture wrapped in link
+            <Link href={implant.url} aria-label={`View ${implant.title}`} className="block">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <picture>
+                  <source
+                    media="(min-width: 768px)"
+                    srcSet="/images/implants/all-on-4-large.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    media="(min-width: 480px)"
+                    srcSet="/images/implants/all-on-4-medium.webp"
+                    type="image/webp"
+                  />
+                  <source
+                    srcSet="/images/implants/all-on-4-small.webp"
+                    type="image/webp"
+                  />
+                  <Image
+                    src="/images/implants-all-on-4.JPG"
+                    alt="All-on-4 dental implants full arch restoration"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+            </Link>
+          ) : implant.image === "single-implant" ? (
+            <Link href={implant.url} aria-label={`View ${implant.title}`} className="block">
+              <div className="aspect-[4/3] relative overflow-hidden">
                 <Image
-                  src="/images/implants-all-on-4.JPG"
-                  alt="All-on-4 dental implants full arch restoration"
+                  src="/images/implants/single-implant.webp"
+                  alt="Single dental implant with crown"
                   fill
                   className="object-cover"
                   sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
                   loading="lazy"
                 />
-              </picture>
-            </div>
-          ) : implant.image === "single-implant" ? (
-            <div className="aspect-[4/3] relative overflow-hidden">
-              <Image
-                src="/images/implants/single-implant.webp"
-                alt="Single dental implant with crown"
-                fill
-                className="object-cover"
-                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
-                loading="lazy"
-              />
-            </div>
+              </div>
+            </Link>
           ) : implant.image === "multiple-implants" ? (
-            <div className="aspect-[4/3] relative overflow-hidden">
-              <Image
-                src="/images/implants/multiple-implants.webp"
-                alt="Multiple dental implants with individual crowns"
-                fill
-                className="object-cover"
-                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
-                loading="lazy"
-              />
-            </div>
+            <Link href={implant.url} aria-label={`View ${implant.title}`} className="block">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="/images/implants/multiple-implants.webp"
+                  alt="Multiple dental implants with individual crowns"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                  loading="lazy"
+                />
+              </div>
+            </Link>
           ) : implant.image === "implant-bridge" ? (
-            <div className="aspect-[4/3] relative overflow-hidden">
-              <Image
-                src="/images/implants/implant-bridge.webp"
-                alt="Implant-supported dental bridge"
-                fill
-                className="object-cover"
-                sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
-                loading="lazy"
-              />
-            </div>
+            <Link href={implant.url} aria-label={`View ${implant.title}`} className="block">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <Image
+                  src="/images/implants/implant-bridge.webp"
+                  alt="Implant-supported dental bridge"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 480px) 300px, (max-width: 768px) 400px, 500px"
+                  loading="lazy"
+                />
+              </div>
+            </Link>
           ) : null}
 
           <CardContent className="p-6">

@@ -352,7 +352,7 @@ export default function AllOn4Page() {
               <div className="flex flex-col sm:flex-row gap-4 items-start">
                 <div className="bg-white border-2 border-orange-200 rounded-lg p-4">
                   <div className="text-sm text-gray-600">Starting from</div>
-                  <div className="text-3xl font-bold text-orange-600">£POA/div>
+                  <div className="text-3xl font-bold text-orange-600">£POA</div>
                   <div className="text-sm text-gray-600">Per arch</div>
                 </div>
                 <div className="flex flex-col gap-3">
