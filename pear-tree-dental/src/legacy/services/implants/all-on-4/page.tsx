@@ -27,7 +27,7 @@ import {
 
 export const metadata: Metadata = {
   title: "All-on-4 Dental Implants - Full Arch Restoration | Pear Tree Dental",
-  description: "All-on-4 dental implants in Burton Joyce. Replace entire arch of teeth with just 4 strategically placed implants. From £15,000. Same day teeth available.",
+  description: "All-on-4 dental implants in Nottingham. Replace entire arch of teeth with just 4 strategically placed implants. Same day teeth available.",
   keywords: [
     "All-on-4 implants Burton Joyce",
     "full arch dental implants",
@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "All-on-4 Nottingham",
     "full mouth implants",
     "immediate load implants"
+    "Zygomatic Implants Nottingham"
   ],
   openGraph: {
     title: "All-on-4 Dental Implants - Full Arch Restoration | Pear Tree Dental",
@@ -166,7 +167,7 @@ export default function AllOn4Page() {
     },
     {
       feature: "Cost",
-      allOn4: "From £15,000",
+      allOn4: "£POA 100% Customised",
       traditional: "From £25,000+",
       dentures: "From £875"
     }
@@ -208,7 +209,7 @@ export default function AllOn4Page() {
     {
       aspect: "Angled Implants",
       description: "Posterior implants placed at 30-45 degree angles",
-      benefit: "Maximizes bone contact and avoids anatomical structures"
+      benefit: "Maximises bone contact and avoids anatomical structures"
     },
     {
       aspect: "Immediate Loading",
@@ -217,7 +218,7 @@ export default function AllOn4Page() {
     },
     {
       aspect: "Tilted Design",
-      description: "Strategic implant positioning to optimize support",
+      description: "Strategic implant positioning to optimise support",
       benefit: "Better force distribution and stability"
     }
   ];
@@ -251,7 +252,7 @@ export default function AllOn4Page() {
       <EnhancedServiceSchema
         serviceName="All-on-4 Dental Implants"
         description="Revolutionary full arch restoration using 4 strategically placed implants to replace entire upper or lower arch of teeth"
-        price="From £15,000"
+        price="From £POA 100% Customised"
         category="Advanced Implant Dentistry"
         duration="Same day teeth, 3-6 months total treatment"
         preparation="Comprehensive planning, 3D imaging, computer-guided surgery"
@@ -351,7 +352,7 @@ export default function AllOn4Page() {
               <div className="flex flex-col sm:flex-row gap-4 items-start">
                 <div className="bg-white border-2 border-orange-200 rounded-lg p-4">
                   <div className="text-sm text-gray-600">Starting from</div>
-                  <div className="text-3xl font-bold text-orange-600">£15,000</div>
+                  <div className="text-3xl font-bold text-orange-600">£POA/div>
                   <div className="text-sm text-gray-600">Per arch</div>
                 </div>
                 <div className="flex flex-col gap-3">
@@ -380,7 +381,7 @@ export default function AllOn4Page() {
                   </div>
                   <h3 className="text-2xl font-semibold text-pear-primary">Same Day Transformation</h3>
                   <p className="text-gray-600">
-                    All-on-4 revolutionizes implant dentistry by providing immediate
+                    All-on-4 revolutionises implant dentistry by providing immediate
                     teeth on the day of surgery with minimal implants needed.
                   </p>
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -645,12 +646,12 @@ export default function AllOn4Page() {
       {/* Final CTA */}
       <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-orange-600 to-amber-600 text-white overflow-hidden">
+          <Card className="bg-gradient-to-r from-orange-600 to-amber-600 text-orange overflow-hidden">
             <CardContent className="p-12 text-center relative">
               <h2 className="heading-serif text-3xl sm:text-4xl font-bold mb-6">
                 Transform Your Life in One Day
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-orange/90 text-lg mb-8 max-w-2xl mx-auto">
                 Experience the revolutionary All-on-4 solution. Walk in with failing teeth
                 or dentures, walk out with a beautiful, functional smile.
               </p>
@@ -668,7 +669,7 @@ export default function AllOn4Page() {
               </div>
 
               <div className="text-sm text-white/80">
-                From £15,000 per arch • Same day teeth • 20+ year lifespan
+                £POA 100% Custom to your needs • Same day teeth • 20+ year lifespan
               </div>
             </CardContent>
           </Card>
