@@ -5,7 +5,8 @@ import Script from "next/script";
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import SmartNav from "@/components/Navigation"; // ✅ use SmartNav later
+import dynamic from "next/dynamic";
+import NavShell from "@/components/navigation/NavShell";
 import PageTransition from "@/components/PageTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
@@ -35,6 +36,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const NavEnhancer = dynamic(() => import("@/components/navigation/NavEnhancer"), {
+    ssr: false,
+  });
   return (
     <html lang="en">
       <head>
@@ -91,7 +95,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* ⭐ Ensure the target for #navigation exists */}
           <div id="navigation">
-            <SmartNav />
+            <NavShell />
+            <NavEnhancer />
           </div>
 
           <main id="main-content" className="min-h-screen" role="main">
