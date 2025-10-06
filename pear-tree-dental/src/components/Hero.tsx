@@ -44,8 +44,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             src="/images/heroes/pear-tree-home-hero-full.webp"
             alt=""
             fill
-            loading="eager"
-            fetchPriority="high"
+            // Desktop/tablet decorative background should not compete with LCP
+            loading="lazy"
             quality={85}
             sizes="100vw"
             className="object-cover object-[12%_center]"
@@ -72,8 +72,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               fill
               priority
               fetchPriority="high"
-              quality={55}
-              sizes="(min-width: 1024px) 0px, (min-width: 768px) 42vw, (min-width: 640px) 46vw, 85vw"
+              quality={45}
+              sizes="(min-width: 1024px) 0px, 85vw"
               className="object-cover opacity-50 object-[12%_center]"
             />
           </div>
@@ -89,8 +89,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             width={1200}
             height={900}
             quality={85}
-            loading="eager"
-            fetchPriority="high"
+            loading="lazy"
             sizes="(min-width:1536px) 1320px, (min-width:1280px) 1155px, (min-width:1024px) 990px, 825px"
             className="w-[57vw] min-w-[660px] max-w-[1320px] xl:w-[66vw] 2xl:w-[75vw] h-auto object-contain"
           />
