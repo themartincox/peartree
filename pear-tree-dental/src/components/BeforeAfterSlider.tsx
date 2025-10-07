@@ -15,6 +15,7 @@ interface BeforeAfterSliderProps {
   description?: string;
   treatmentType?: string;
   className?: string;
+  aspectClass?: string; // Tailwind aspect ratio class, e.g., 'aspect-[16/9]'
 }
 
 export default function BeforeAfterSlider({
@@ -26,6 +27,7 @@ export default function BeforeAfterSlider({
   description,
   treatmentType,
   className = "",
+  aspectClass = "aspect-[16/9]",
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -129,7 +131,7 @@ export default function BeforeAfterSlider({
       <div className="relative">
         <div
           ref={containerRef}
-          className="relative aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white"
+          className={`relative ${aspectClass} rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-xl border-4 border-white`}
           onMouseDown={handleMouseDown}
           onTouchStart={handleTouchStart}
         >

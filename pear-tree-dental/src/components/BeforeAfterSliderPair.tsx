@@ -19,6 +19,7 @@ interface BeforeAfterSliderPairProps {
   sectionTitle?: string;
   sectionDescription?: string;
   className?: string;
+  sliderAspectClass?: string;
 }
 
 export default function BeforeAfterSliderPair({
@@ -26,7 +27,8 @@ export default function BeforeAfterSliderPair({
   secondarySlider,
   sectionTitle,
   sectionDescription,
-  className = ""
+  className = "",
+  sliderAspectClass = "aspect-[16/9]"
 }: BeforeAfterSliderPairProps) {
   return (
     <div className={`space-y-8 ${className}`}>
@@ -59,6 +61,7 @@ export default function BeforeAfterSliderPair({
             description={primarySlider.description}
             treatmentType={primarySlider.treatmentType}
             className="w-full"
+            aspectClass={sliderAspectClass}
           />
         </div>
 
@@ -73,6 +76,7 @@ export default function BeforeAfterSliderPair({
             description={secondarySlider.description}
             treatmentType={secondarySlider.treatmentType}
             className="w-full"
+            aspectClass={sliderAspectClass}
           />
         </div>
       </div>

@@ -177,6 +177,7 @@ export default function NottinghamTeethStraighteningPage() {
           <BeforeAfterSliderPair
             sectionTitle="Clear Aligner Transformations in Nottingham"
             sectionDescription="See how Invisalign and ClearCorrect aligners can create confident, natural smiles."
+            sliderAspectClass="aspect-[16/7]"
             primarySlider={{
               beforeImage: '/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp',
               afterImage: '/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp',
@@ -305,6 +306,7 @@ export default function NottinghamTeethStraighteningPage() {
           <BeforeAfterSliderPair
             sectionTitle="More Smile Improvements"
             sectionDescription="From minor spacing to complex cases, clear aligners can deliver impressive changes."
+            sliderAspectClass="aspect-[16/7]"
             primarySlider={{
               beforeImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp',
               afterImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp',
