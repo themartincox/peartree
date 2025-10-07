@@ -5,6 +5,8 @@ const nextConfig = {
   // Essential image configuration for Netlify / Next
   images: {
     formats: ["image/avif", "image/webp"], // allow AVIF/WebP
+    // Add a 960w rung so high-DPR phones can pick 960 instead of 1080 when appropriate
+    deviceSizes: [320, 420, 640, 750, 828, 960, 1080, 1200, 1920, 2048, 3840],
     remotePatterns: [
       { protocol: "https", hostname: "source.unsplash.com" },
       { protocol: "https", hostname: "images.unsplash.com" },

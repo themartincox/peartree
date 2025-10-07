@@ -31,7 +31,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  // …your existing metadata…
+  metadataBase: new URL("https://peartree.dental"),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -64,9 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="preload"
           as="image"
           media="(max-width: 1023px)"
-          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=35"
-          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=35 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=35 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=35 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=35 1080w"
-          imagesizes="80vw"
+          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=30"
+          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=30 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=30 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=30 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=960&q=30 960w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=30 1080w"
+          imagesizes="75vw"
           // type="image/webp"
         />
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:

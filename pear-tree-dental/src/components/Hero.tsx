@@ -72,8 +72,8 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               fill
               priority
               fetchPriority="high"
-              quality={35}
-              sizes="(min-width: 1024px) 0px, 80vw"
+              quality={30}
+              sizes="(min-width: 1024px) 0px, 75vw"
               className="object-cover opacity-50 object-[12%_center]"
             />
           </div>
