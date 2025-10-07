@@ -285,7 +285,7 @@ export default function BuccalCorridorCorrectionPage() {
               </div>
 
               <div className="relative">
-                <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl overflow-hidden">
+                <div className="aspect-[1/1] bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl overflow-hidden">
                   {/* Top Image - BCC-smile */}
                   <div className="h-1/2 relative border-b border-white/20">
                     <div className="absolute inset-0 p-4">
