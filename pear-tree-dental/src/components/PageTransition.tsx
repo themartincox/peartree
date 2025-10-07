@@ -53,6 +53,7 @@ const childVariants = {
 export default function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname();
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
 
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
@@ -67,8 +68,18 @@ export default function PageTransition({ children }: PageTransitionProps) {
     };
   }, []);
 
+  useEffect(() => {
+    // Flip after first commit so subsequent route changes animate
+    setFirstRender(false);
+  }, []);
+
   if (reduceMotion) {
     // Respect reduced motion: render without animations
+    return <div className="min-h-screen">{children}</div>;
+  }
+
+  if (firstRender) {
+    // Initial page load: render statically, keep route-change animations later
     return <div className="min-h-screen">{children}</div>;
   }
 

@@ -90,10 +90,26 @@ const Navigation = () => {
 
   // Scroll flag (>100px)
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
+    let last = false;
+    let ticking = false;
+    const measure = () => {
+      ticking = false;
+      const scrolled = window.scrollY > SCROLL_THRESHOLD;
+      if (scrolled !== last) {
+        last = scrolled;
+        setIsScrolled(scrolled);
+      }
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(measure);
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    // Initial measure
+    measure();
+    return () => window.removeEventListener("scroll", onScroll as any);
   }, []);
 
   // Journey enter/exit events from TreatmentJourney
