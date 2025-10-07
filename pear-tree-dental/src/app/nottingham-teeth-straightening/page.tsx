@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import BeforeAfterSliderPair from '@/components/BeforeAfterSliderPair';
 import { Button } from '@/components/ui/button';
 import {
   MapPin,
@@ -170,6 +171,34 @@ export default function NottinghamTeethStraighteningPage() {
         </div>
       </section>
 
+      {/* Before & After: Clear Aligner Transformations */}
+      <section className="py-16 bg-white text-pear-primary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSliderPair
+            sectionTitle="Clear Aligner Transformations in Nottingham"
+            sectionDescription="See how Invisalign and ClearCorrect aligners can create confident, natural smiles."
+            primarySlider={{
+              beforeImage: '/images/before-after/orthodontics-invisalign-whitening-enlighten-before.webp',
+              afterImage: '/images/before-after/orthodontics-invisalign-whitening-enlighten-after.webp',
+              beforeAlt: 'Invisalign case - before',
+              afterAlt: 'Invisalign case - after',
+              title: 'Invisalign Results',
+              description: 'Discreet alignment with predictable 3D planning',
+              treatmentType: 'Invisalign',
+            }}
+            secondarySlider={{
+              beforeImage: '/images/before-after/orthodontics-clearcorrect-before.webp',
+              afterImage: '/images/before-after/orthodontics-clearcorrect-after.webp',
+              beforeAlt: 'ClearCorrect case - before',
+              afterAlt: 'ClearCorrect case - after',
+              title: 'ClearCorrect Results',
+              description: 'Comfortable clear aligners with excellent value',
+              treatmentType: 'ClearCorrect',
+            }}
+          />
+        </div>
+      </section>
+
       {/* Clear Aligner Systems */}
       <section className="py-16 bg-white text-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -267,6 +296,34 @@ export default function NottinghamTeethStraighteningPage() {
               </Card>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Before & After: More Smile Improvements */}
+      <section className="py-16 bg-white text-pear-primary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSliderPair
+            sectionTitle="More Smile Improvements"
+            sectionDescription="From minor spacing to complex cases, clear aligners can deliver impressive changes."
+            primarySlider={{
+              beforeImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp',
+              afterImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp',
+              beforeAlt: 'Clear aligner composite case - before',
+              afterAlt: 'Clear aligner composite case - after',
+              title: 'Aligners + Cosmetic Refinement',
+              description: 'Alignment complemented by whitening and edge refinements',
+              treatmentType: 'Advanced Aligners',
+            }}
+            secondarySlider={{
+              beforeImage: '/images/before-after/orthodontics-clearcorrect-before.webp',
+              afterImage: '/images/before-after/orthodontics-clearcorrect-after.webp',
+              beforeAlt: 'ClearCorrect case - before',
+              afterAlt: 'ClearCorrect case - after',
+              title: 'ClearCorrect Case',
+              description: 'Balanced correction with comfortable staging',
+              treatmentType: 'ClearCorrect',
+            }}
+          />
         </div>
       </section>
 
