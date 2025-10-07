@@ -307,23 +307,52 @@ const ServicesPage = async () => {
                         <h4 className="text-sm font-semibold mb-3 opacity-90">Featured Treatments</h4>
                         {featuredTreatments.length ? (
                           <ul className="space-y-4">
-                            {featuredTreatments.map((treatment) => (
-                              <li key={treatment.slug}>
-                                <Link
-                                  href={`/services/${category.slug}/${treatment.slug}`}
-                                  className="group block rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
-                                >
-                                  <p className="text-base font-semibold text-white group-hover:text-white">
-                                    {treatment.title}
-                                  </p>
-                                  {treatment.excerpt && (
-                                    <p className="text-sm text-white/90 line-clamp-2">
-                                      {treatment.excerpt}
+                            {featuredTreatments.map((treatment) => {
+                              const isImplants = category.slug === 'dental-implants';
+                              const isOrthodontics = category.slug === 'orthodontics';
+                              const isRestorative = category.slug === 'restorative-dentistry';
+                              // Background image mapping per category/treatment
+                              const implantMap: Record<string, string> = {
+                                'single-implant': '/images/heroes/implant-hero.webp',
+                                'implant-bridge': '/images/heroes/implant-hero.webp',
+                                'all-on-4': '/images/heroes/implant-hero.webp',
+                              };
+                              const bgUrl = isImplants
+                                ? implantMap[treatment.slug] ?? '/images/heroes/implant-hero.webp'
+                                : isOrthodontics
+                                ? '/images/orthodontics-invisalign-treatment.webp'
+                                : isRestorative
+                                ? '/images/restorative-dental-treatment.webp'
+                                : '';
+                              return (
+                                <li key={treatment.slug}>
+                                  <Link
+                                    href={`/services/${category.slug}/${treatment.slug}`}
+                                    className="group relative block overflow-hidden rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
+                                  >
+                                    {bgUrl && (
+                                      <span
+                                        aria-hidden
+                                        className="pointer-events-none absolute inset-0 opacity-15"
+                                        style={{
+                                          backgroundImage: `url(${bgUrl})`,
+                                          backgroundSize: 'cover',
+                                          backgroundPosition: 'center',
+                                        }}
+                                      />
+                                    )}
+                                    <p className="relative text-base font-semibold text-white group-hover:text-white">
+                                      {treatment.title}
                                     </p>
-                                  )}
-                                </Link>
-                              </li>
-                            ))}
+                                    {treatment.excerpt && (
+                                      <p className="relative text-sm text-white/90 line-clamp-2">
+                                        {treatment.excerpt}
+                                      </p>
+                                    )}
+                                  </Link>
+                                </li>
+                              );
+                            })}
                           </ul>
                         ) : (
                           <p className="text-sm text-white/90">

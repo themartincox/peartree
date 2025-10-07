@@ -132,11 +132,11 @@ export default function NottinghamTeethStraighteningPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-dental-green hover:bg-dental-green/90 text-dental-navy font-semibold px-8 py-4"
+                className="bg-pear-gold hover:bg-pear-gold/90 text-white font-semibold px-8 py-4"
               >
-                <Link href="tel:01159312935">
-                  <Phone className="h-5 w-5 mr-2" />
-                  Book Consultation: 0115 931 2935
+                <Link href="/book">
+                  <CalendarDays className="h-5 w-5 mr-2" />
+                  Start Your New Smile Journey
                 </Link>
               </Button>
               <Button
@@ -525,9 +525,8 @@ export default function NottinghamTeethStraighteningPage() {
               </Button>
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4"
+                className="bg-white text-pear-primary hover:bg-white/90 px-8 py-4"
               >
                 <Link href="/book">
                   Book Online Consultation
