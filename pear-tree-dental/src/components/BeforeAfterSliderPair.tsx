@@ -20,6 +20,7 @@ interface BeforeAfterSliderPairProps {
   sectionDescription?: string;
   className?: string;
   sliderAspectClass?: string;
+  sliderContainerClass?: string;
 }
 
 export default function BeforeAfterSliderPair({
@@ -28,7 +29,8 @@ export default function BeforeAfterSliderPair({
   sectionTitle,
   sectionDescription,
   className = "",
-  sliderAspectClass = "aspect-[16/9]"
+  sliderAspectClass = "aspect-[16/9]",
+  sliderContainerClass = ""
 }: BeforeAfterSliderPairProps) {
   return (
     <div className={`space-y-8 ${className}`}>
@@ -51,7 +53,7 @@ export default function BeforeAfterSliderPair({
       {/* Sliders Container */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Primary Slider */}
-        <div className="w-full">
+        <div className={`w-full ${sliderContainerClass}`}>
           <BeforeAfterSlider
             beforeImage={primarySlider.beforeImage}
             afterImage={primarySlider.afterImage}
@@ -66,7 +68,7 @@ export default function BeforeAfterSliderPair({
         </div>
 
         {/* Secondary Slider */}
-        <div className="w-full">
+        <div className={`w-full ${sliderContainerClass}`}>
           <BeforeAfterSlider
             beforeImage={secondarySlider.beforeImage}
             afterImage={secondarySlider.afterImage}
