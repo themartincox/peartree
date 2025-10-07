@@ -45,8 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <VoiceSearchSchema />
         <link rel="manifest" href="/manifest.json" />
 
-        {/* Preconnect to analytics CDN (non-blocking, improves first call) */}
+        {/* Preconnect to analytics domains (non-blocking, helps first beacon) */}
         <link rel="preconnect" href="https://scripts.simpleanalyticscdn.com" crossOrigin="" />
+        <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" crossOrigin="" />
 
         {/* ⭐ Preload desktop hero image ONLY on ≥1024px to help desktop LCP without double-preloading mobile */}
         <link
@@ -63,9 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="preload"
           as="image"
           media="(max-width: 1023px)"
-          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=45"
-          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=45 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=45 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=45 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=45 1080w"
-          imagesizes="85vw"
+          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=35"
+          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=35 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=35 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=35 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=35 1080w"
+          imagesizes="80vw"
           // type="image/webp"
         />
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
@@ -104,7 +105,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <LazyLocationDetection />
         </ClientProviders>
 
-        <Script strategy="afterInteractive" src="https://scripts.simpleanalyticscdn.com/latest.js" />
+        <Script strategy="lazyOnload" src="https://scripts.simpleanalyticscdn.com/latest.js" />
       </body>
     </html>
   );
