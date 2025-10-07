@@ -27,11 +27,27 @@ import {
   PiggyBank
 } from "lucide-react";
 
+import { membershipPlans as centralMembershipPlans } from "@/data/pricing";
+
+// Map local UI plans to central pricing (single source of truth)
+function priceForPlan(key: string): string {
+  // Map local keys to central planIds
+  const idByKey: Record<string, string> = {
+    essentialMaintenance: "plan-a",
+    completeCare: "plan-c",
+    family: "family",
+  };
+  const planId = idByKey[key];
+  if (!planId) return "";
+  const found = centralMembershipPlans.find((p) => p.planId === planId);
+  return found?.price ?? "";
+}
+
 // Memoize membership data to prevent recreation on each render
 const membershipPlans = {
   essentialMaintenance: {
     name: "ESSENTIAL MAINTENANCE",
-    price: "£10.95",
+    price: priceForPlan("essentialMaintenance"),
     period: "/month",
     dailyCost: "Just 37p per day",
     savings: "120",
@@ -47,7 +63,7 @@ const membershipPlans = {
   },
   completeCare: {
     name: "COMPLETE CARE",
-    price: "£19.95",
+    price: priceForPlan("completeCare"),
     period: "/month",
     dailyCost: "Just 67p per day",
     savings: "177",
@@ -63,7 +79,7 @@ const membershipPlans = {
   },
   family: {
     name: "FAMILY PLAN",
-    price: "£49.50",
+    price: priceForPlan("family"),
     period: "/month",
     dailyCost: "Just £1.65 per day",
     savings: "400+",
