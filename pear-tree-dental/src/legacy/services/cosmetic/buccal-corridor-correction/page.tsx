@@ -286,43 +286,35 @@ export default function BuccalCorridorCorrectionPage() {
 
               <div className="relative">
                 <div className="aspect-square bg-gradient-to-br from-soft-pink/20 to-soft-lavender/20 rounded-3xl overflow-hidden">
-                  {/* Top Image - BCC-smile optimized */}
+                  {/* Top Image - BCC-smile */}
                   <div className="h-1/2 relative border-b border-white/20">
-                    <div className="h-full flex items-center justify-center p-4">
-                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
-                        <picture className="block w-full h-full">
-                          <source
-                            media="(min-width: 768px)"
-                            srcSet="/images/buccal-corridor/BCC-smile-medium.webp"
-                            type="image/webp"
-                          />
-                          <source
-                            srcSet="/images/buccal-corridor/BCC-smile-thumb.webp"
-                            type="image/webp"
-                          />
-                          <Image
-                            src="/images/buccal-corridor/BCC-smile.png"
-                            alt="Buccal corridor correction - enhanced smile result"
-                            width={200}
-                            height={200}
-                            className="w-full h-full object-cover"
-                            sizes="(max-width: 768px) 200px, 400px"
-                          />
-                        </picture>
+                    <div className="absolute inset-0 p-4">
+                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden relative">
+                        <Image
+                          src="/images/buccal-corridor/BCC-smile-large.webp"
+                          alt="Buccal corridor correction - enhanced smile result"
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                     </div>
                   </div>
 
-                  {/* Bottom Image - BCC-before.webp */}
+                  {/* Bottom Image - BCC-before */}
                   <div className="h-1/2 relative">
-                    <div className="h-full flex items-center justify-center p-4">
-                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden">
+                    <div className="absolute inset-0 p-4">
+                      <div className="w-full h-full bg-white/10 rounded-2xl overflow-hidden relative">
                         <Image
                           src="/images/before-after/BCC-before-large.webp"
                           alt="Before buccal corridor correction treatment"
-                          width={200}
-                          height={150}
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="(min-width: 1024px) 50vw, 100vw"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                     </div>
