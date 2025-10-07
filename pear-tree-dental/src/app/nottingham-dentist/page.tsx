@@ -751,7 +751,7 @@ export default function NottinghamDentistPage() {
                 size="lg"
                 className="border-white text-dental-green hover:bg-white hover:text-dental-green px-8 py-4"
               >
-                <Link href="/contact">
+                <Link href="/book">
                   Book Online Appointment
                 </Link>
               </Button>

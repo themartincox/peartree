@@ -33,6 +33,7 @@ import {
   DollarSign,
   Zap
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Composite Bonding in Gedling - Affordable Smile Improvements for Working Families | Pear Tree Dental",
@@ -86,7 +87,7 @@ export default function GedlingCompositeBondingPage() {
       description: "Repair chips, cracks, or discoloration on individual teeth",
       treatment: "One tooth composite restoration",
       duration: "30-45 minutes",
-      pricing: "From £120",
+      pricing: getTreatmentPrice("Composite Edge Bonding"),
       benefits: "Quick fix, natural appearance",
       icon: Target
     },
@@ -95,7 +96,7 @@ export default function GedlingCompositeBondingPage() {
       description: "Close small gaps between front teeth",
       treatment: "Multiple teeth shaped and bonded",
       duration: "1-2 hours",
-      pricing: "From £200 per tooth",
+      pricing: getTreatmentPrice("Composite Veneers"),
       benefits: "Instant gap closure, conservative",
       icon: Smile
     },
@@ -104,7 +105,7 @@ export default function GedlingCompositeBondingPage() {
       description: "Repair worn or chipped tooth edges",
       treatment: "Rebuild tooth edges with composite",
       duration: "1-1.5 hours",
-      pricing: "From £150 per tooth",
+      pricing: getTreatmentPrice("Composite Edge Bonding"),
       benefits: "Restore tooth length, improved function",
       icon: Award
     },

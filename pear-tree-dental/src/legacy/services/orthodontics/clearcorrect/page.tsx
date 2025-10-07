@@ -30,7 +30,7 @@ import {
 
 export const metadata: Metadata = {
   title: "ClearCorrect Clear Aligners - Affordable Teeth Straightening | Pear Tree Dental",
-  description: "ClearCorrect clear aligners in Burton Joyce. Affordable invisible teeth straightening from £2,400. Effective treatment for crowding, gaps, and bite issues.",
+  description: "ClearCorrect clear aligners in Burton Joyce. Affordable invisible teeth straightening from £2,000. Effective treatment for crowding, gaps, and bite issues.",
   keywords: [
     "ClearCorrect Burton Joyce",
     "clear aligners Nottingham",
@@ -59,7 +59,7 @@ export default function ClearCorrectPage() {
     },
     {
       question: "How much does ClearCorrect cost?",
-      answer: "ClearCorrect treatment starts from £2,400 for simple cases and ranges up to £3,800 for more complex cases. This is typically 20-30% less expensive than Invisalign while providing similar results."
+      answer: "ClearCorrect treatment starts from £2,000 for simple cases and ranges up to £3,800 for more complex cases. This is typically 20-30% less expensive than Invisalign while providing similar results."
     },
     {
       question: "How long does ClearCorrect treatment take?",

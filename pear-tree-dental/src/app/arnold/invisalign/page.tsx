@@ -25,7 +25,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Invisalign in Arnold - Clear Aligners Near You | Pear Tree Dental",
-  description: "Invisalign clear aligners for Arnold residents. Only 15 minutes to Pear Tree Dental in Burton Joyce. Premium invisible braces from £2,800. Free parking available.",
+  description: "Invisalign clear aligners for Arnold residents. Only 15 minutes to Pear Tree Dental in Burton Joyce. Premium invisible braces from £2,100. Free parking available.",
   keywords: [
     "Invisalign Arnold",
     "clear aligners Arnold",
@@ -53,7 +53,7 @@ export default function ArnoldInvisalignPage() {
     },
     {
       question: "Is Invisalign available privately for adults in Arnold?",
-      answer: "Yes, we offer comprehensive Invisalign treatment for adults and teens. Treatment typically ranges from £2,800-£4,500 depending on complexity, with flexible payment plans available."
+      answer: "Yes, we offer comprehensive Invisalign treatment for adults and teens. Treatment typically ranges from £2,100-£4,500 depending on complexity, with flexible payment plans available."
     },
     {
       question: "Do you offer same-day Invisalign consultations for Arnold patients?",

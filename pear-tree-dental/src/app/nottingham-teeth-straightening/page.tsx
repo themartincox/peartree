@@ -22,7 +22,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'Teeth Straightening Nottingham - Invisalign & ClearCorrect | Pear Tree Dental',
-  description: 'Professional teeth straightening in Nottingham. Invisalign and ClearCorrect clear aligners. Discreet, comfortable orthodontic treatment from £2,500.',
+  description: 'Professional teeth straightening in Nottingham. Invisalign and ClearCorrect clear aligners. Discreet, comfortable orthodontic treatment from £2,000.',
   keywords: [
     'teeth straightening Nottingham',
     'Invisalign Nottingham',

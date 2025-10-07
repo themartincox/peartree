@@ -182,7 +182,7 @@ function MembershipSuccessContent() {
                   Back to Home
                 </Button>
               </Link>
-              <Link href="/contact">
+              <Link href="/book">
                 <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90">
                   <Calendar className="w-4 h-4 mr-2" />
                   Book Appointment

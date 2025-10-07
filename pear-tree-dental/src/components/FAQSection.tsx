@@ -127,7 +127,7 @@ const FAQSection = () => {
         {
           id: "orth4",
           question: "How much do Invisalign aligners cost?",
-          answer: "Invisalign treatment typically ranges from £2,800-£4,500 depending on the complexity of your case. We offer flexible payment plans to spread the cost, and our membership plans provide 10% discounts on all treatments."
+          answer: "Invisalign treatment typically ranges from £2,100-£4,500 depending on the complexity of your case. We offer flexible payment plans to spread the cost, and our membership plans provide 10% discounts on all treatments."
         },
         {
           id: "orth5",

@@ -290,10 +290,10 @@ const ServicesPage = async () => {
                             src={category.image}
                             alt={`${category.title} at Pear Tree Dental`}
                             fill
-                            className="object-cover opacity-20"
+                            className="object-cover opacity-40"
                             sizes="(max-width: 1024px) 100vw, 33vw"
                           />
-                          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-90`} />
+                          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-70`} />
                         </div>
                       )}
 
@@ -305,13 +305,13 @@ const ServicesPage = async () => {
                               <li key={treatment.slug}>
                                 <Link
                                   href={`/services/${category.slug}/${treatment.slug}`}
-                                  className="group block rounded-xl bg-white/10 px-4 py-3 transition hover:bg-white/20"
+                                  className="group block rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
                                 >
-                                  <p className="text-base font-semibold group-hover:text-white/90">
+                                  <p className="text-base font-semibold text-white group-hover:text-white">
                                     {treatment.title}
                                   </p>
                                   {treatment.excerpt && (
-                                    <p className="text-sm text-white/80 line-clamp-2">
+                                    <p className="text-sm text-white/90 line-clamp-2">
                                       {treatment.excerpt}
                                     </p>
                                   )}
@@ -320,7 +320,7 @@ const ServicesPage = async () => {
                             ))}
                           </ul>
                         ) : (
-                          <p className="text-sm text-white/80">
+                          <p className="text-sm text-white/90">
                             We&apos;re curating featured treatments for this category. Explore all options inside the category page.
                           </p>
                         )}

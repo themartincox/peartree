@@ -31,7 +31,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Invisalign Clear Aligners - Premium Teeth Straightening | Pear Tree Dental",
-  description: "Invisalign clear aligners in Burton Joyce. Premium invisible teeth straightening from £2,800. World's most advanced clear aligner system with proven results.",
+  description: "Invisalign clear aligners in Burton Joyce. Premium invisible teeth straightening from £2,100. World's most advanced clear aligner system with proven results.",
   keywords: [
     "Invisalign Burton Joyce",
     "Invisalign Nottingham",
@@ -60,7 +60,7 @@ export default function InvisalignPage() {
     },
     {
       question: "How much does Invisalign cost?",
-      answer: "Invisalign treatment ranges from £2,800 for simple cases to £4,500 for comprehensive cases. The investment reflects the advanced technology, premium materials, and extensive treatment planning included."
+      answer: "Invisalign treatment ranges from £2,100 for simple cases to £4,500 for comprehensive cases. The investment reflects the advanced technology, premium materials, and extensive treatment planning included."
     },
     {
       question: "How long does Invisalign treatment take?",

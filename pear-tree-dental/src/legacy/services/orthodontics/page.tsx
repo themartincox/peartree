@@ -32,7 +32,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Orthodontics Burton Joyce | Invisalign & Clear Aligners | Pear Tree Dental",
-  description: "Orthodontic treatment in Burton Joyce and Nottingham. Invisalign, ClearCorrect clear aligners. Straighten teeth invisibly. Free consultation. Treatment from £2,400.",
+  description: "Orthodontic treatment in Burton Joyce and Nottingham. Invisalign, ClearCorrect clear aligners. Straighten teeth invisibly. Free consultation. Treatment from £2,000.",
   keywords: [
     "orthodontics Burton Joyce",
     "Invisalign Nottingham",
@@ -83,7 +83,7 @@ export default function OrthodonticsPage() {
     },
     {
       question: "How much do clear aligners cost?",
-      answer: "Clear aligner treatment starts from £2,400 for ClearCorrect and £2,800 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer flexible payment plans and 10% membership discounts."
+      answer: "Clear aligner treatment starts from £2,000 for ClearCorrect and £2,100 for Invisalign. The exact cost depends on the complexity of your case and treatment duration. We offer flexible payment plans and 10% membership discounts."
     },
     {
       question: "How long does clear aligner treatment take?",
@@ -113,7 +113,7 @@ export default function OrthodonticsPage() {
       <EnhancedServiceSchema
         serviceName="Orthodontics & Clear Aligners"
         description="Invisible teeth straightening with Invisalign and ClearCorrect clear aligners for all ages"
-        price="From £2,400"
+        price="From £2,000"
         category="Orthodontics & Teeth Straightening"
         duration="6-18 months treatment time"
         preparation="Digital impressions, treatment planning, aligner fabrication"

@@ -32,6 +32,7 @@ import {
   Crown,
   Zap
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Dental Crowns in Mapperley - Quality Restorations for Busy Families | Pear Tree Dental",
@@ -82,7 +83,7 @@ export default function MapperleyDentalCrownsPage() {
       description: "High-quality metal-free crowns with natural appearance",
       materials: "Premium porcelain bonded to tooth-colored base",
       durability: "10-15 years typical lifespan",
-      pricing: "From £450",
+      pricing: getTreatmentPrice("Dental Crowns"),
       benefits: "Natural look, proven durability, good value",
       icon: Crown
     },
@@ -91,7 +92,7 @@ export default function MapperleyDentalCrownsPage() {
       description: "Premium crowns with superior aesthetics",
       materials: "High-strength ceramic with translucent qualities",
       durability: "12-20 years typical lifespan",
-      pricing: "From £750",
+      pricing: getTreatmentPrice("Dental Crowns"),
       benefits: "Outstanding appearance, biocompatible",
       icon: Award
     },
@@ -100,7 +101,7 @@ export default function MapperleyDentalCrownsPage() {
       description: "Computer-designed crowns completed in one visit",
       materials: "High-quality ceramic created in-house",
       durability: "10-15 years typical lifespan",
-      pricing: "From £650",
+      pricing: getTreatmentPrice("Dental Crowns"),
       benefits: "Convenient, no temporary crown needed",
       icon: Zap
     },
