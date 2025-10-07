@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function NottinghamTeethStraighteningPage() {
   return (
-    <div className="min-h-screen bg-dental-navy text-white">
+    <div className="min-h-screen bg-gradient-to-b from-pinky to-white text-pear-primary">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -109,20 +109,20 @@ export default function NottinghamTeethStraighteningPage() {
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-dental-navy via-dental-navy/95 to-dental-green/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-soft-pink via-soft-lavender to-pear-gold/20"></div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex justify-center mb-6">
-              <Smile className="h-16 w-16 text-dental-green" />
+              <Smile className="h-16 w-16 text-pear-gold" />
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-pear-primary">
               Teeth Straightening in{' '}
-              <span className="text-dental-green">Nottingham</span>
+              <span className="text-pear-gold">Nottingham</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl mb-8 text-dental-navy/80 leading-relaxed">
+            <p className="text-xl sm:text-2xl mb-8 text-pear-primary/80 leading-relaxed">
               Straighten your teeth discreetly with Invisalign & ClearCorrect.
               <br className="hidden sm:block" />
               Clear aligners for a perfect smile - from £2,500.
@@ -171,91 +171,97 @@ export default function NottinghamTeethStraighteningPage() {
       </section>
 
       {/* Clear Aligner Systems */}
-      <section className="py-16 bg-white text-dental-navy">
+      <section className="py-16 bg-white text-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-4">
+            <h2 className="text-3xl font-bold text-center mb-4 text-pear-primary">
               Clear Aligner Systems Available in Nottingham
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p className="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
               We offer the leading clear aligner systems for discreet, comfortable teeth straightening.
             </p>
 
             <div className="grid md:grid-cols-2 gap-8">
               {/* Invisalign */}
-              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
-                <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Card className="relative overflow-hidden p-8 border-2 border-pear-gold/30 hover:border-pear-gold/60 transition-colors">
+                <div className="pointer-events-none absolute inset-0 opacity-10">
+                  <Image src="/images/Invisalign-aligner.png" alt="Invisalign" fill className="object-cover" />
+                </div>
+                <CardHeader className="relative text-center pb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">Invisalign</CardTitle>
-                  <p className="text-gray-600">The world's most advanced clear aligner system</p>
+                  <CardTitle className="text-2xl text-pear-primary">Invisalign</CardTitle>
+                  <p className="text-gray-700">The world's most advanced clear aligner system</p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative">
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Virtually invisible clear aligners</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Removable for eating and cleaning</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Predictable results with 3D planning</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Treats complex cases effectively</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>SmartTrack material for comfort</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">From £3,500</p>
-                    <p className="text-sm text-gray-600">Complete treatment including retainers</p>
+                  <div className="text-center p-4 bg-pear-gold/10 rounded-lg">
+                    <p className="text-2xl font-bold text-pear-primary">From £3,500</p>
+                    <p className="text-sm text-gray-700">Complete treatment including retainers</p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* ClearCorrect */}
-              <Card className="p-8 border-2 border-dental-green/20 hover:border-dental-green/40 transition-colors">
-                <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-dental-green to-dental-green/80 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Card className="relative overflow-hidden p-8 border-2 border-pear-gold/30 hover:border-pear-gold/60 transition-colors">
+                <div className="pointer-events-none absolute inset-0 opacity-10">
+                  <Image src="/images/clearcorrect-logo.png" alt="ClearCorrect" fill className="object-contain" />
+                </div>
+                <CardHeader className="relative text-center pb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pear-gold to-pear-gold/80 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Smile className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-dental-green">ClearCorrect</CardTitle>
-                  <p className="text-gray-600">Professional clear aligners with excellent value</p>
+                  <CardTitle className="text-2xl text-pear-primary">ClearCorrect</CardTitle>
+                  <p className="text-gray-700">Professional clear aligners with excellent value</p>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative">
                   <div className="space-y-4 mb-6">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Clear, comfortable aligners</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Excellent value for money</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Effective for most orthodontic cases</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Gradual, comfortable movement</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-dental-green mt-0.5 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-pear-gold mt-0.5 flex-shrink-0" />
                       <span>Professional monitoring throughout</span>
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-dental-green/10 rounded-lg">
-                    <p className="text-2xl font-bold text-dental-green">From £2,500</p>
-                    <p className="text-sm text-gray-600">Complete treatment including retainers</p>
+                  <div className="text-center p-4 bg-pear-gold/10 rounded-lg">
+                    <p className="text-2xl font-bold text-pear-primary">From £2,500</p>
+                    <p className="text-sm text-gray-700">Complete treatment including retainers</p>
                   </div>
                 </CardContent>
               </Card>
@@ -265,7 +271,7 @@ export default function NottinghamTeethStraighteningPage() {
       </section>
 
       {/* Benefits of Clear Aligners */}
-      <section className="py-16 bg-gray-50 text-dental-navy">
+      <section className="py-16 bg-gray-50 text-pear-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">
@@ -438,7 +444,7 @@ export default function NottinghamTeethStraighteningPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Crowded Teeth</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Crowded Teeth - Malocclusion</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">When there isn't enough space for all teeth to align properly</p>
@@ -447,7 +453,7 @@ export default function NottinghamTeethStraighteningPage() {
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Gaps Between Teeth</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Gaps Between Teeth - Diastema</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">Spaces between teeth that affect appearance and function</p>
@@ -456,7 +462,7 @@ export default function NottinghamTeethStraighteningPage() {
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Overbite</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Overbite - Deep bite</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">Upper teeth extend too far over the lower teeth</p>
@@ -465,7 +471,7 @@ export default function NottinghamTeethStraighteningPage() {
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Underbite</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Underbite - Class III malocclusion</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">Lower teeth protrude past the upper teeth</p>
@@ -474,7 +480,7 @@ export default function NottinghamTeethStraighteningPage() {
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Crossbite</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Crossbite - Anterior or posterior crossbite</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">Upper and lower teeth don't align properly when biting</p>
@@ -483,7 +489,7 @@ export default function NottinghamTeethStraighteningPage() {
 
               <Card className="p-6">
                 <CardHeader>
-                  <CardTitle className="text-lg text-dental-green">Open Bite</CardTitle>
+                  <CardTitle className="text-lg text-pear-gold">Open Bite - Lack of vertical overlap</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">Upper and lower teeth don't touch when the mouth is closed</p>
@@ -495,7 +501,7 @@ export default function NottinghamTeethStraighteningPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-dental-green text-white">
+      <section className="py-16 bg-gradient-to-br from-soft-pink via-soft-lavender to-pear-gold text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">
@@ -510,7 +516,7 @@ export default function NottinghamTeethStraighteningPage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-dental-green hover:bg-gray-100 font-semibold px-8 py-4"
+                className="bg-white text-pear-primary hover:bg-gray-100 font-semibold px-8 py-4"
               >
                 <Link href="tel:01159312935">
                   <Phone className="h-5 w-5 mr-2" />
@@ -521,7 +527,7 @@ export default function NottinghamTeethStraighteningPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-dental-green hover:bg-white hover:text-dental-green px-8 py-4"
+                className="border-white text-white hover:bg-white hover:text-pear-primary px-8 py-4"
               >
                 <Link href="/book">
                   Book Online Consultation
