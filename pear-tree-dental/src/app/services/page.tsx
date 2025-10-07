@@ -50,7 +50,8 @@ const serviceDecorations: ServiceDecoration[] = [
     slug: "restorative",
     contentfulSlug: "restorative-dentistry",
     label: "Restorative Dentistry",
-    description: "Repair, strengthen or replace teeth with crowns, bridges, dentures and advanced restorative treatments.",
+    description:
+      "From fillings and crowns to bridges, restorative dentistry repairs damaged teeth and restores your natural smile. Our Nottingham clinic uses modern techniques and materials to rebuild teeth comfortably and ensure long-term oral health.",
     icon: ShieldCheck,
     theme: "medical",
     image: "/images/restorative-dental-treatment.webp",
@@ -60,7 +61,8 @@ const serviceDecorations: ServiceDecoration[] = [
     slug: "cosmetic",
     contentfulSlug: "cosmetic-dentistry",
     label: "Cosmetic Dentistry",
-    description: "Smile makeovers, veneers, bonding and whitening designed around your goals and lifestyle.",
+    description:
+      "Transform your smile with cosmetic dentistry at Pear Tree Dental. Our services include ultra-thin veneers, Enlighten teeth whitening and complete smile makeovers. Expect lasting improvements at our clinic near Nottingham.",
     icon: Sparkles,
     theme: "cosmetic",
     image: "/images/cosmetic-dentistry-services.webp",
@@ -70,7 +72,8 @@ const serviceDecorations: ServiceDecoration[] = [
     slug: "implants",
     contentfulSlug: "dental-implants",
     label: "Dental Implants",
-    description: "Permanent, natural-looking tooth replacement options from a single implant to full-arch smiles.",
+    description:
+      "Restore your smile and confidence with implant dentistry. Our Nottingham clinic offers single implants to full-arch solutions using advanced 3D planning. Enjoy secure, natural-feeling replacements with personalised care.",
     icon: Crown,
     theme: "medical",
     image: "/images/dental-implants-procedure.webp",
@@ -80,7 +83,8 @@ const serviceDecorations: ServiceDecoration[] = [
     slug: "orthodontics",
     contentfulSlug: "orthodontics",
     label: "Orthodontics",
-    description: "Discreet clear aligners, retainers and specialist orthodontics for straighter smiles at every age.",
+    description:
+      "Pear Tree Dental offers both traditional braces and modern clear aligners. Using digital imaging, we tailor plans for adults and teens to straighten teeth comfortably and improve bites for lasting confidence.",
     icon: Smile,
     theme: "cosmetic",
     image: "/images/orthodontics-invisalign-treatment.webp",
@@ -298,7 +302,9 @@ const ServicesPage = async () => {
                       )}
 
                       <div className="relative h-full p-8 sm:p-10 text-white">
-                        <h3 className="text-lg font-semibold mb-4">Featured Treatments</h3>
+                        <p className="text-xs uppercase tracking-widest text-white/80 mb-1">{category.title}</p>
+                        <h3 className="text-xl font-bold mb-2">{category.title} at Pear Tree Dental</h3>
+                        <h4 className="text-sm font-semibold mb-3 opacity-90">Featured Treatments</h4>
                         {featuredTreatments.length ? (
                           <ul className="space-y-4">
                             {featuredTreatments.map((treatment) => (
