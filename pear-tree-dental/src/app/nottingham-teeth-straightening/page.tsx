@@ -188,13 +188,13 @@ export default function NottinghamTeethStraighteningPage() {
               treatmentType: 'Invisalign',
             }}
             secondarySlider={{
-              beforeImage: '/images/before-after/orthodontics-clearcorrect-before.webp',
-              afterImage: '/images/before-after/orthodontics-clearcorrect-after.webp',
-              beforeAlt: 'ClearCorrect case - before',
-              afterAlt: 'ClearCorrect case - after',
-              title: 'ClearCorrect Results',
-              description: 'Comfortable clear aligners with excellent value',
-              treatmentType: 'ClearCorrect',
+              beforeImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-before.webp',
+              afterImage: '/images/before-after/orthondontics-invisalign-whitening-boutique-composite-bonding-after.webp',
+              beforeAlt: 'Buccal corridor correction - before',
+              afterAlt: 'Buccal corridor correction - after',
+              title: 'Buccal Corridor Correction',
+              description: 'Widen the smile corridor for a fuller, more balanced aesthetic.',
+              treatmentType: 'Buccal Corridor Correction',
             }}
           />
         </div>
