@@ -114,12 +114,78 @@ export const fallbackFeaturedTreatments: Map<string, ServiceTreatmentSummary[]> 
         parent: { slug: "dental-implants", title: "Dental Implants" },
       },
       {
+        sys: { id: "fallback-implant-bridge" },
+        slug: "implant-bridge",
+        title: "Implant Bridge",
+        excerpt: "Replace several missing teeth with a secure, natural-feeling implant bridge.",
+        sortOrder: 2,
+        parent: { slug: "dental-implants", title: "Dental Implants" },
+      },
+      {
         sys: { id: "fallback-all-on-4" },
         slug: "all-on-4",
         title: "All-on-4 Implants",
         excerpt: "Full-arch smile restoration in as little as one day.",
-        sortOrder: 2,
+        sortOrder: 3,
         parent: { slug: "dental-implants", title: "Dental Implants" },
+      },
+    ],
+  ],
+  [
+    "orthodontics",
+    [
+      {
+        sys: { id: "fallback-invisalign" },
+        slug: "invisalign",
+        title: "Invisalign",
+        excerpt: "Clear, removable aligners for discreet teeth straightening.",
+        sortOrder: 1,
+        parent: { slug: "orthodontics", title: "Orthodontics" },
+      },
+      {
+        sys: { id: "fallback-clearcorrect" },
+        slug: "clearcorrect",
+        title: "ClearCorrect",
+        excerpt: "Affordable clear aligners with proven, comfortable results.",
+        sortOrder: 2,
+        parent: { slug: "orthodontics", title: "Orthodontics" },
+      },
+      {
+        sys: { id: "fallback-retainers" },
+        slug: "retainers",
+        title: "Retainers",
+        excerpt: "Keep your new smile stable with comfortable retainers.",
+        sortOrder: 3,
+        parent: { slug: "orthodontics", title: "Orthodontics" },
+      },
+    ],
+  ],
+  [
+    "restorative-dentistry",
+    [
+      {
+        sys: { id: "fallback-dental-crowns" },
+        slug: "dental-crowns",
+        title: "Dental Crowns",
+        excerpt: "Strengthen and protect damaged teeth with natural-looking crowns.",
+        sortOrder: 1,
+        parent: { slug: "restorative-dentistry", title: "Restorative Dentistry" },
+      },
+      {
+        sys: { id: "fallback-white-fillings" },
+        slug: "white-fillings",
+        title: "White Fillings",
+        excerpt: "Seamless, tooth-coloured restorations for cavities and repairs.",
+        sortOrder: 2,
+        parent: { slug: "restorative-dentistry", title: "Restorative Dentistry" },
+      },
+      {
+        sys: { id: "fallback-root-canal" },
+        slug: "root-canal-treatment",
+        title: "Root Canal Therapy",
+        excerpt: "Relieve pain and save teeth with gentle endodontic care.",
+        sortOrder: 3,
+        parent: { slug: "restorative-dentistry", title: "Restorative Dentistry" },
       },
     ],
   ],
@@ -218,6 +284,57 @@ registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
   'veneers/ultra-thin',
   () => import('@/legacy/services/cosmetic/veneers/ultra-thin/page'),
+);
+
+// Orthodontics featured routes
+registerTreatmentFallback(
+  ['orthodontics'],
+  'invisalign',
+  () => import('@/legacy/services/orthodontics/invisalign/page'),
+);
+registerTreatmentFallback(
+  ['orthodontics'],
+  'clearcorrect',
+  () => import('@/legacy/services/orthodontics/clearcorrect/page'),
+);
+registerTreatmentFallback(
+  ['orthodontics'],
+  'retainers',
+  () => import('@/legacy/services/orthodontics/page'),
+);
+
+// Restorative featured routes (map to category page)
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'dental-crowns',
+  () => import('@/legacy/services/restorative/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'white-fillings',
+  () => import('@/legacy/services/restorative/page'),
+);
+registerTreatmentFallback(
+  ['restorative', 'restorative-dentistry'],
+  'root-canal-treatment',
+  () => import('@/legacy/services/restorative/page'),
+);
+
+// Implants featured routes
+registerTreatmentFallback(
+  ['dental-implants', 'implants'],
+  'single-implant',
+  () => import('@/legacy/services/implants/page'),
+);
+registerTreatmentFallback(
+  ['dental-implants', 'implants'],
+  'implant-bridge',
+  () => import('@/legacy/services/implants/page'),
+);
+registerTreatmentFallback(
+  ['dental-implants', 'implants'],
+  'all-on-4',
+  () => import('@/legacy/services/implants/all-on-4/page'),
 );
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],
