@@ -241,6 +241,13 @@ const ServicesPage = async () => {
         ) : (
           <div className="grid gap-8">
             {decoratedCategories.map((category) => {
+              // Canonicalize category path for routing (handle CMS aliases)
+              const slugAlias: Record<string, string> = {
+                'implant-dentistry': 'dental-implants',
+                'implants': 'dental-implants',
+                'emergency-dentist': 'emergency-dentistry',
+              };
+              const baseSlug = (category as any).contentfulSlug || slugAlias[category.slug] || category.slug;
               // Robust lookup across possible slugs (CMS vs local) and per-category fallbacks
               const possibleKeys = [
                 category.slug,
@@ -297,7 +304,7 @@ const ServicesPage = async () => {
                         ) : null}
 
                         <div>
-                          <Link href={`/services/${category.slug}`}>
+                          <Link href={`/services/${baseSlug}`}>
                             <Button className="bg-pear-primary text-white hover:bg-pear-primary/90">
                               View {category.title}
                               <ArrowRight className="ml-2 h-4 w-4" />
@@ -337,10 +344,10 @@ const ServicesPage = async () => {
                             {featuredTreatments.map((treatment) => {
                               return (
                                 <li key={treatment.slug}>
-                                  <Link
-                                    href={`/services/${category.slug}/${treatment.slug}`}
-                                    className="group relative block overflow-hidden rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
-                                  >
+                                <Link
+                                  href={`/services/${baseSlug}/${treatment.slug}`}
+                                  className="group relative block overflow-hidden rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
+                                >
                                     <p className="relative z-10 text-base font-semibold text-white group-hover:text-white">
                                       {treatment.title}
                                     </p>
