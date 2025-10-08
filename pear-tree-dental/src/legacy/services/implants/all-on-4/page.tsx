@@ -356,10 +356,14 @@ export default function AllOn4Page() {
                   <div className="text-sm text-gray-600">Per arch</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold">
-                    Book All-on-4 Consultation
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                  <Link href="/book">
+                    <Button asChild size="lg" className="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-semibold">
+                      <span>
+                        Book All-on-4 Consultation
+                        <ArrowRight className="w-5 h-5 ml-2 inline" />
+                      </span>
+                    </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white">
                     Call 0115 931 2935
                   </Button>
@@ -657,10 +661,14 @@ export default function AllOn4Page() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
-                  Book All-on-4 Consultation
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link href="/book">
+                  <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-semibold">
+                    <span>
+                      Book All-on-4 Consultation
+                      <ArrowRight className="w-5 h-5 ml-2 inline" />
+                    </span>
+                  </Button>
+                </Link>
                 <Link href="/services/treatment-comparison">
                   <Button size="lg" variant="outline" className="border-white text-orange-600 hover:bg-white hover:text-orange-600">
                     Compare All Treatment Options

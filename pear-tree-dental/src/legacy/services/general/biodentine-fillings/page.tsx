@@ -282,10 +282,14 @@ export default function BiodentineFillingPage() {
                   <div className="text-sm text-gray-600">Per filling</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold">
-                    Book Biodentine Filling
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                  <Link href="/book">
+                    <Button asChild size="lg" className="bg-gradient-to-r from-green-500 to-teal-500 text-white font-semibold">
+                      <span>
+                        Book Biodentine Filling
+                        <ArrowRight className="w-5 h-5 ml-2 inline" />
+                      </span>
+                    </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-green-500 text-green-600 hover:bg-green-500 hover:text-white">
                     Call 0115 931 2935
                   </Button>

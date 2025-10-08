@@ -53,11 +53,15 @@ export default function ImplantBridgePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold">
-                <Calendar className="w-5 h-5 mr-2" />
-                Book Consultation
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="/book">
+                <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-semibold">
+                  <span>
+                    <Calendar className="w-5 h-5 mr-2 inline" />
+                    Book Consultation
+                    <ArrowRight className="w-5 h-5 ml-2 inline" />
+                  </span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

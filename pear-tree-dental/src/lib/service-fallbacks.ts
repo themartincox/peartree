@@ -100,6 +100,30 @@ export const fallbackFeaturedTreatments: Map<string, ServiceTreatmentSummary[]> 
         sortOrder: 1,
         parent: { slug: "general-dentistry", title: "General Dentistry" },
       },
+      {
+        sys: { id: "fallback-routine-exam" },
+        slug: "routine-exam",
+        title: "Routine Examination",
+        excerpt: "Comprehensive dental check-up to keep your oral health on track.",
+        sortOrder: 2,
+        parent: { slug: "general-dentistry", title: "General Dentistry" },
+      },
+      {
+        sys: { id: "fallback-scale-polish" },
+        slug: "scale-and-polish",
+        title: "Scale & Polish",
+        excerpt: "Professional cleaning to remove plaque and surface stains.",
+        sortOrder: 3,
+        parent: { slug: "general-dentistry", title: "General Dentistry" },
+      },
+      {
+        sys: { id: "fallback-air-flow" },
+        slug: "air-flow-stain-removal",
+        title: "Air Flow Stain Removal",
+        excerpt: "Advanced stain removal for a brighter, cleaner smile.",
+        sortOrder: 4,
+        parent: { slug: "general-dentistry", title: "General Dentistry" },
+      },
     ],
   ],
   [
@@ -186,6 +210,35 @@ export const fallbackFeaturedTreatments: Map<string, ServiceTreatmentSummary[]> 
         excerpt: "Relieve pain and save teeth with gentle endodontic care.",
         sortOrder: 3,
         parent: { slug: "restorative-dentistry", title: "Restorative Dentistry" },
+      },
+    ],
+  ],
+  [
+    "emergency-dentistry",
+    [
+      {
+        sys: { id: "fallback-toothache" },
+        slug: "toothache-relief",
+        title: "Toothache Relief",
+        excerpt: "Same-day diagnosis and pain relief for urgent dental problems.",
+        sortOrder: 1,
+        parent: { slug: "emergency-dentistry", title: "Emergency Dentistry" },
+      },
+      {
+        sys: { id: "fallback-broken-tooth" },
+        slug: "broken-tooth-repair",
+        title: "Broken Tooth Repair",
+        excerpt: "Immediate repairs to restore comfort and function.",
+        sortOrder: 2,
+        parent: { slug: "emergency-dentistry", title: "Emergency Dentistry" },
+      },
+      {
+        sys: { id: "fallback-same-day" },
+        slug: "same-day-appointment",
+        title: "Same-Day Appointment",
+        excerpt: "Priority emergency appointments when you need us most.",
+        sortOrder: 3,
+        parent: { slug: "emergency-dentistry", title: "Emergency Dentistry" },
       },
     ],
   ],
@@ -335,6 +388,40 @@ registerTreatmentFallback(
   ['dental-implants', 'implants'],
   'all-on-4',
   () => import('@/legacy/services/implants/all-on-4/page'),
+);
+
+// General featured routes
+registerTreatmentFallback(
+  ['general', 'general-dentistry'],
+  'routine-exam',
+  () => import('@/legacy/services/general/page'),
+);
+registerTreatmentFallback(
+  ['general', 'general-dentistry'],
+  'scale-and-polish',
+  () => import('@/legacy/services/hygiene/page'),
+);
+registerTreatmentFallback(
+  ['general', 'general-dentistry'],
+  'air-flow-stain-removal',
+  () => import('@/legacy/services/hygiene/airflow-stain-removal/page'),
+);
+
+// Emergency featured routes
+registerTreatmentFallback(
+  ['emergency', 'emergency-dentistry', 'emergency-dentist'],
+  'toothache-relief',
+  () => import('@/legacy/services/emergency/page'),
+);
+registerTreatmentFallback(
+  ['emergency', 'emergency-dentistry', 'emergency-dentist'],
+  'broken-tooth-repair',
+  () => import('@/legacy/services/emergency/page'),
+);
+registerTreatmentFallback(
+  ['emergency', 'emergency-dentistry', 'emergency-dentist'],
+  'same-day-appointment',
+  () => import('@/legacy/services/emergency/page'),
 );
 registerTreatmentFallback(
   ['cosmetic', 'cosmetic-dentistry'],

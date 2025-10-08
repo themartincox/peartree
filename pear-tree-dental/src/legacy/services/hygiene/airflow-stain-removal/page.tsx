@@ -248,10 +248,14 @@ export default function AirFlowStainRemovalPage() {
                   <div className="text-sm text-gray-600">Per session</div>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold">
-                    Book Air Flow Treatment
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
+                  <Link href="/book">
+                    <Button asChild size="lg" className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold">
+                      <span>
+                        Book Air Flow Treatment
+                        <ArrowRight className="w-5 h-5 ml-2 inline" />
+                      </span>
+                    </Button>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white">
                     Call 0115 931 2935
                   </Button>
@@ -406,10 +410,14 @@ export default function AirFlowStainRemovalPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
-                  Book Air Flow Treatment
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
+                <Link href="/book">
+                  <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-white/90 font-semibold">
+                    <span>
+                      Book Air Flow Treatment
+                      <ArrowRight className="w-5 h-5 ml-2 inline" />
+                    </span>
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="border-white text-blue-600 hover:bg-white hover:text-blue-600">
                   Learn About Other Hygiene Services
                 </Button>

@@ -241,11 +241,21 @@ const ServicesPage = async () => {
         ) : (
           <div className="grid gap-8">
             {decoratedCategories.map((category) => {
-              const featuredTreatments =
-                featured.get(category.slug) ??
-                (category as any).contentfulSlug ? featured.get((category as any).contentfulSlug) : undefined ??
-                featured.get(category.slug.replace(/-pear-tree$/, "")) ??
-                [];
+              // Robust lookup across possible slugs (CMS vs local)
+              const possibleKeys = [
+                category.slug,
+                (category as any).contentfulSlug as string | undefined,
+                category.slug.replace(/-pear-tree$/, ""),
+              ].filter(Boolean) as string[];
+
+              let featuredTreatments = [] as typeof featured extends Map<string, infer V> ? V : any[];
+              for (const key of possibleKeys) {
+                const list = featured.get(key);
+                if (list && (Array.isArray(list) ? list.length > 0 : true)) {
+                  featuredTreatments = list as any;
+                  break;
+                }
+              }
               const Icon = category.icon;
               const gradient = themeClasses[category.theme];
               const iconClasses = iconBg[category.theme];
@@ -315,44 +325,17 @@ const ServicesPage = async () => {
                         {featuredTreatments.length ? (
                           <ul className="space-y-4">
                             {featuredTreatments.map((treatment) => {
-                              const isImplants = category.slug === 'dental-implants';
-                              const isOrthodontics = category.slug === 'orthodontics';
-                              const isRestorative = category.slug === 'restorative-dentistry';
-                              // Background image mapping per category/treatment
-                              const implantMap: Record<string, string> = {
-                                'single-implant': '/images/heroes/implant-hero.webp',
-                                'implant-bridge': '/images/heroes/implant-hero.webp',
-                                'all-on-4': '/images/heroes/implant-hero.webp',
-                              };
-                              const bgUrl = isImplants
-                                ? implantMap[treatment.slug] ?? '/images/heroes/implant-hero.webp'
-                                : isOrthodontics
-                                ? '/images/orthodontics-invisalign-treatment.webp'
-                                : isRestorative
-                                ? '/images/restorative-dental-treatment.webp'
-                                : '';
                               return (
                                 <li key={treatment.slug}>
                                   <Link
                                     href={`/services/${category.slug}/${treatment.slug}`}
                                     className="group relative block overflow-hidden rounded-xl bg-black/25 backdrop-blur-[1px] px-4 py-3 transition hover:bg-black/35 border border-white/10"
                                   >
-                                    {bgUrl && (
-                                      <span
-                                        aria-hidden
-                                        className="pointer-events-none absolute inset-0 opacity-15"
-                                        style={{
-                                          backgroundImage: `url(${bgUrl})`,
-                                          backgroundSize: 'cover',
-                                          backgroundPosition: 'center',
-                                        }}
-                                      />
-                                    )}
-                                    <p className="relative text-base font-semibold text-white group-hover:text-white">
+                                    <p className="relative z-10 text-base font-semibold text-white group-hover:text-white">
                                       {treatment.title}
                                     </p>
                                     {treatment.excerpt && (
-                                      <p className="relative text-sm text-white/90 line-clamp-2">
+                                      <p className="relative z-10 text-sm text-white/90 line-clamp-2">
                                         {treatment.excerpt}
                                       </p>
                                     )}

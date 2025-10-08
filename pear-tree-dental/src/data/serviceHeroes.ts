@@ -49,7 +49,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Smile Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "View Before & After",
@@ -79,7 +79,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Checkup",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Our Services",
@@ -104,7 +104,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Treatment Options",
@@ -181,7 +181,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Hygiene Appointment",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Hygiene Services",
@@ -301,7 +301,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Wedding Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "View Wedding Packages",
@@ -329,7 +329,7 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
     ],
     primaryCTA: {
       text: "Book Wedding Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "View Wedding Packages",
@@ -362,7 +362,7 @@ export function getServiceHeroConfig(route: string): ServiceHeroConfig {
     ],
     primaryCTA: {
       text: "Book Consultation",
-      href: "/book-appointment"
+      href: "/book"
     },
     secondaryCTA: {
       text: "Our Services",

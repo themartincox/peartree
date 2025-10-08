@@ -232,10 +232,14 @@ export default function HygieneServicesPage() {
 
               {/* Primary CTA */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold group">
-                  Book Hygiene Appointment
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                <Link href="/book">
+                  <Button asChild size="lg" className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold group">
+                    <span>
+                      Book Hygiene Appointment
+                      <ArrowRight className="w-5 h-5 ml-2 inline group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" className="border-cyan-500 text-cyan-600 hover:bg-cyan-500 hover:text-white">
                   Call 0115 931 2935
                 </Button>
