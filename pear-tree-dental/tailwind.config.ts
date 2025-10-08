@@ -6,6 +6,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/legacy/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   // Safelist for dynamic classes that might be purged
   safelist: [
