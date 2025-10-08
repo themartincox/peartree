@@ -184,6 +184,7 @@ const ServicesPage = async () => {
       image: decoration?.image ?? null,
       theme: decoration?.theme ?? "primary",
       features: decoration?.features ?? [],
+      contentfulSlug: decoration?.contentfulSlug ?? undefined,
       sys: category.sys,
     };
   });
@@ -240,7 +241,11 @@ const ServicesPage = async () => {
         ) : (
           <div className="grid gap-8">
             {decoratedCategories.map((category) => {
-              const featuredTreatments = featured.get(category.slug) ?? [];
+              const featuredTreatments =
+                featured.get(category.slug) ??
+                (category as any).contentfulSlug ? featured.get((category as any).contentfulSlug) : undefined ??
+                featured.get(category.slug.replace(/-pear-tree$/, "")) ??
+                [];
               const Icon = category.icon;
               const gradient = themeClasses[category.theme];
               const iconClasses = iconBg[category.theme];
@@ -288,18 +293,20 @@ const ServicesPage = async () => {
                     </div>
 
                     <div className="relative border-t border-pear-primary/10 bg-white lg:border-l lg:border-t-0">
-                      {category.image && (
-                        <div className="absolute inset-0">
+                      {/* Panel background image (with fallback for implants) */}
+                      <div className="absolute inset-0">
+                        {(category.image || category.slug === 'dental-implants' || category.slug === 'implants') && (
                           <Image
-                            src={category.image}
-                            alt={`${category.title} at Pear Tree Dental`}
+                            src={category.image ?? '/images/heroes/implant-hero.webp'}
+                            alt={`${category.title} background`}
                             fill
                             className="object-cover opacity-40"
                             sizes="(max-width: 1024px) 100vw, 33vw"
                           />
-                          <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-70`} />
-                        </div>
-                      )}
+                        )}
+                        {/* Always apply a colored gradient overlay for legibility */}
+                        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-70`} />
+                      </div>
 
                       <div className="relative h-full p-8 sm:p-10 text-white">
                         <p className="text-xs uppercase tracking-widest text-white/80 mb-1">{category.title}</p>
