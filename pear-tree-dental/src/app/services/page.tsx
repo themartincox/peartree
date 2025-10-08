@@ -241,7 +241,7 @@ const ServicesPage = async () => {
         ) : (
           <div className="grid gap-8">
             {decoratedCategories.map((category) => {
-              // Robust lookup across possible slugs (CMS vs local)
+              // Robust lookup across possible slugs (CMS vs local) and per-category fallbacks
               const possibleKeys = [
                 category.slug,
                 (category as any).contentfulSlug as string | undefined,
@@ -250,9 +250,14 @@ const ServicesPage = async () => {
 
               let featuredTreatments = [] as typeof featured extends Map<string, infer V> ? V : any[];
               for (const key of possibleKeys) {
-                const list = featured.get(key);
-                if (list && (Array.isArray(list) ? list.length > 0 : true)) {
-                  featuredTreatments = list as any;
+                const cmsList = featured.get(key) as any[] | undefined;
+                if (cmsList && cmsList.length > 0) {
+                  featuredTreatments = cmsList;
+                  break;
+                }
+                const fallbackList = fallbackFeaturedTreatments.get(key) as any[] | undefined;
+                if (fallbackList && fallbackList.length > 0) {
+                  featuredTreatments = fallbackList;
                   break;
                 }
               }
@@ -305,15 +310,20 @@ const ServicesPage = async () => {
                     <div className="relative border-t border-pear-primary/10 bg-white lg:border-l lg:border-t-0">
                       {/* Panel background image (with fallback for implants) */}
                       <div className="absolute inset-0">
-                        {(category.image || category.slug === 'dental-implants' || category.slug === 'implants') && (
-                          <Image
-                            src={category.image ?? '/images/heroes/implant-hero.webp'}
-                            alt={`${category.title} background`}
-                            fill
-                            className="object-cover opacity-40"
-                            sizes="(max-width: 1024px) 100vw, 33vw"
-                          />
-                        )}
+                        {(() => {
+                          const slug = category.slug || '';
+                          const isImplants = /implant/.test(slug);
+                          const bg = category.image ?? (isImplants ? '/images/heroes/implant-hero.webp' : undefined);
+                          return bg ? (
+                            <Image
+                              src={bg}
+                              alt={`${category.title} background`}
+                              fill
+                              className="object-cover opacity-40"
+                              sizes="(max-width: 1024px) 100vw, 33vw"
+                            />
+                          ) : null;
+                        })()}
                         {/* Always apply a colored gradient overlay for legibility */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-70`} />
                       </div>
