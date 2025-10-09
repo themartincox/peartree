@@ -5,7 +5,7 @@
 
 // Services that are allowed to be indexed (e.g., high-priority services)
 export const INDEX_PRIORITY_SERVICES = [
-  ''dental-implants'-implants',
+  'dental-implants',
   'composite-bonding',
   'teeth-whitening',
   'clearcorrect'
