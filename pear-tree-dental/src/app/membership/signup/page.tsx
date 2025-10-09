@@ -1742,7 +1742,7 @@ export default function MembershipSignupPage() {
                         <ul className="space-y-3 text-blue-700 mt-4">
                           <li className="flex items-start space-x-3">
                             <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">1</div>
-                            <span><strong>Monthly payments:</strong> You'll pay {currentPlan.price} every month by Direct Debit. Payments continue until you cancel with 1 month's notice.</span>
+                            <span><strong>Monthly payments:</strong> You'll pay {currentPlan.price} every month by Direct Debit, your first payment will have an additional £10 admin fee added. Payments continue until you cancel with 1 month's notice.</span>
                           </li>
                           <li className="flex items-start space-x-3">
                             <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">2</div>
