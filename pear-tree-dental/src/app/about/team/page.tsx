@@ -93,6 +93,11 @@ const supportTeam = [
 
 const nurses = [
   {
+    name: "Caitlin Swinscoe",
+    role: "Dental Nurse",
+    image: "https://ext.same-assets.com/523564123/4087775093.jpeg"
+  },
+  {
     name: "Amy Simpson",
     role: "Dental Nurse",
     image: "https://ext.same-assets.com/523564123/2699379883.jpeg"
@@ -103,9 +108,9 @@ const nurses = [
     image: "/images/team/madiyah-qadeer.webp"
   },
   {
-    name: "Caitlin Swinscoe",
+    name: "Sarah Simpson",
     role: "Dental Nurse",
-    image: "https://ext.same-assets.com/523564123/4087775093.jpeg"
+    image: "/images/team/sarah-simpson.webp"
   },
   {
     name: "Hannah Buckley",
@@ -116,11 +121,6 @@ const nurses = [
     name: "Katy Parkes",
     role: "Apprentice Dental Nurse",
     image: "https://ext.same-assets.com/523564123/1108163630.jpeg"
-  },
-  {
-    name: "Sarah Simpson",
-    role: "Dental Nurse",
-    image: "/images/team/sarah-simpson.webp"
   }
 ];
 
