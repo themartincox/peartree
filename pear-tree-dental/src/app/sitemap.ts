@@ -2,7 +2,7 @@
 export const dynamic = "force-dynamic";
 
 import type { MetadataRoute } from 'next';
-import { fetchBlogPosts, fetchCategorySlugs, fetchTreatmentSlugs, contentfulHealthCheck } from '@/lib/contentful'
+import { fetchBlogPosts, contentfulHealthCheck } from '@/lib/contentful'
 import { fetchIndexableServiceLocationPaths } from '@/lib/sitemap-serviceLocation'
 import { fetchCategorySlugs, fetchTreatmentSlugs } from '@/lib/services'
 
