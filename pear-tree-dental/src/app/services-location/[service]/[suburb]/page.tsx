@@ -15,6 +15,7 @@ import {
   fillTemplate,
   replacePlaceholdersInRichText,
 } from "@/lib/contentful";
+import { flags } from "@/lib/contentful";
 import { richTextRenderOptions } from "@/lib/richTextRenderOptions";
 import type { ITestimonialFields } from "@/types/contentful";
 import type { Entry } from "contentful";
@@ -123,7 +124,17 @@ export async function generateStaticParams() {
 }
 
 export default async function LocalServicePage({ params }: Props) {
+  // If running with mocked Contentful, fail closed to avoid 500s from missing data
+  if (flags.USE_MOCK) {
+    notFound();
+  }
+
   try {
+    // Also fail closed if Contentful is unavailable
+    const healthy = await contentfulHealthCheck();
+    if (!healthy) {
+      notFound();
+    }
     const [service, location, template] = await Promise.all([
       fetchServiceBySlug(params.service),
       fetchLocationBySlug(params.suburb, 2),
