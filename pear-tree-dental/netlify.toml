@@ -195,3 +195,69 @@
   for = "/proxy.js"
   [headers.values]
   Cache-Control = "public, max-age=31536000, immutable"
+
+# ---- Consolidated redirects moved from _redirects files ----
+
+# Category normalisation for services-location
+[[redirects]]
+  from = "/services-location/cosmetic/:suburb"
+  to = "/services-location/cosmetic-dentistry/:suburb"
+  status = 301
+
+[[redirects]]
+  from = "/services-location/general/:suburb"
+  to = "/services-location/general-dentistry/:suburb"
+  status = 301
+
+[[redirects]]
+  from = "/services-location/restorative/:suburb"
+  to = "/services-location/restorative-dentistry/:suburb"
+  status = 301
+
+# Veneers child variants -> Parent
+[[redirects]]
+  from = "/services/cosmetic-dentistry/veneers/composite"
+  to = "/services/cosmetic-dentistry/veneers"
+  status = 301
+
+[[redirects]]
+  from = "/services/cosmetic-dentistry/veneers/porcelain"
+  to = "/services/cosmetic-dentistry/veneers"
+  status = 301
+
+[[redirects]]
+  from = "/services/cosmetic-dentistry/veneers/ultra-thin"
+  to = "/services/cosmetic-dentistry/veneers"
+  status = 301
+
+# Dentures child variants -> Parent
+[[redirects]]
+  from = "/services/restorative-dentistry/dentures/cobalt-chrome-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative-dentistry/dentures/complete-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative-dentistry/dentures/hybrid-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative-dentistry/dentures/partial-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative-dentistry/dentures/valplast-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+# Implant bridge alias
+[[redirects]]
+  from = "/services/implants/implant-bridge"
+  to = "/services/dental-implants/implant-bridge"
+  status = 301

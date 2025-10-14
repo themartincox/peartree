@@ -2,12 +2,8 @@
 export const dynamic = "force-dynamic";
 
 import type { MetadataRoute } from 'next';
-import {
-  fetchBlogPosts,
-  fetchPriorityLocations,
-  fetchAllLocations,
-  contentfulHealthCheck,
-} from '@/lib/contentful'
+import { fetchBlogPosts, fetchCategorySlugs, fetchTreatmentSlugs, contentfulHealthCheck } from '@/lib/contentful'
+import { fetchIndexableServiceLocationPaths } from '@/lib/sitemap-serviceLocation'
 import { fetchCategorySlugs, fetchTreatmentSlugs } from '@/lib/services'
 
 // Helper function to safely convert dates to ISO string
@@ -73,10 +69,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const [blogPosts, categories, treatments] = await Promise.all([
+    const [blogPosts, categories, treatments, serviceLocationPaths] = await Promise.all([
       fetchBlogPosts(100),
       fetchCategorySlugs(),
       fetchTreatmentSlugs(),
+      fetchIndexableServiceLocationPaths(),
     ]);
 
     const blogUrls = blogPosts.map(post => ({
@@ -102,14 +99,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       }));
 
-    // IMPORTANT: Do not emit services-location or fabricated blog service/suburb URLs.
-    // Only include canonical, directly indexable URLs here.
+    // Include only content-rich, indexable service-location URLs
+    const serviceLocationUrls = serviceLocationPaths.map((p) => ({
+      url: `https://peartree.dental${p.path}`,
+      lastModified: toISO(p.updatedAt),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }));
 
     return [
       ...baseUrls,
       ...categoryUrls,
       ...treatmentUrls,
       ...blogUrls,
+      ...serviceLocationUrls,
     ];
   } catch (error) {
     console.error('Error generating sitemap:', error);
