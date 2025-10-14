@@ -1,0 +1,24 @@
+# === Pear Tree Dental — Canonical Redirects & Cleanup ===
+
+# Trailing slash for blog (comment out if you use trailingSlash: false and want /blog without slash)
+/blog   /blog/   301
+
+# --- Category normalisation for services-location ---
+/services-location/cosmetic/:suburb             /services-location/cosmetic-dentistry/:suburb            301
+/services-location/general/:suburb              /services-location/general-dentistry/:suburb             301
+/services-location/restorative/:suburb          /services-location/restorative-dentistry/:suburb         301
+
+# --- Veneers child variants -> Parent ---
+/services/cosmetic-dentistry/veneers/composite      /services/cosmetic-dentistry/veneers                301
+/services/cosmetic-dentistry/veneers/porcelain      /services/cosmetic-dentistry/veneers                301
+/services/cosmetic-dentistry/veneers/ultra-thin     /services/cosmetic-dentistry/veneers                301
+
+# --- Dentures child variants -> Parent ---
+/services/restorative-dentistry/dentures/cobalt-chrome-dentures  /services/restorative-dentistry/dentures   301
+/services/restorative-dentistry/dentures/complete-dentures       /services/restorative-dentistry/dentures   301
+/services/restorative-dentistry/dentures/hybrid-dentures         /services/restorative-dentistry/dentures   301
+/services/restorative-dentistry/dentures/partial-dentures        /services/restorative-dentistry/dentures   301
+/services/restorative-dentistry/dentures/valplast-dentures       /services/restorative-dentistry/dentures   301
+
+# --- Implant bridge alias ---
+/services/implants/implant-bridge         /services/dental-implants/implant-bridge                       301

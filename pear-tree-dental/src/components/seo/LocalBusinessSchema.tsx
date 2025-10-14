@@ -403,7 +403,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": "5",
-          "bestRating": "5"
+          "bestRating": "5",
+          "worstRating": "1"
         },
         "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean.",
         "datePublished": "2024-06-15"

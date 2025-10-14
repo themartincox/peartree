@@ -73,8 +73,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   try {
-    const mode = process.env.GENERATION_MODE || 'priority';
-
     const [blogPosts, categories, treatments] = await Promise.all([
       fetchBlogPosts(100),
       fetchCategorySlugs(),
@@ -104,57 +102,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.7,
       }));
 
-    let serviceSubset = categories;
-    let locationSubset = [] as Awaited<ReturnType<typeof fetchAllLocations>>;
-
-    if (mode === 'priority') {
-      locationSubset = await fetchPriorityLocations();
-      if (!locationSubset.length) {
-        locationSubset = await fetchAllLocations();
-      }
-      serviceSubset = categories.slice(0, Math.min(6, categories.length));
-    } else if (mode === 'full') {
-      locationSubset = await fetchAllLocations();
-      serviceSubset = categories;
-    } else {
-      const allLocations = await fetchAllLocations();
-      const majorLocations = allLocations.filter(loc => loc.fields.tier === 'major');
-      locationSubset = majorLocations.length ? majorLocations : allLocations.slice(0, 20);
-      serviceSubset = categories.slice(0, Math.min(10, categories.length));
-    }
-
-    const selectedLocations = locationSubset.slice(0, mode === 'full' ? 50 : locationSubset.length);
-
-    const serviceLocationUrls: MetadataRoute.Sitemap = [];
-    const blogServiceSuburbUrls: MetadataRoute.Sitemap = [];
-
-    for (const service of serviceSubset) {
-      for (const location of selectedLocations) {
-        const serviceSlug = service.slug;
-        const locationSlug = location.fields.slug;
-
-        serviceLocationUrls.push({
-          url: `https://peartree.dental/services-location/${serviceSlug}/${locationSlug}`,
-          lastModified: new Date(),
-          changeFrequency: 'monthly' as const,
-          priority: 0.6,
-        });
-
-        blogServiceSuburbUrls.push({
-          url: `https://peartree.dental/blog/${serviceSlug}/${locationSlug}`,
-          lastModified: new Date(),
-          changeFrequency: 'monthly' as const,
-          priority: 0.6,
-        });
-      }
-    }
+    // IMPORTANT: Do not emit services-location or fabricated blog service/suburb URLs.
+    // Only include canonical, directly indexable URLs here.
 
     return [
       ...baseUrls,
       ...categoryUrls,
       ...treatmentUrls,
-      ...serviceLocationUrls,
-      ...blogServiceSuburbUrls,
       ...blogUrls,
     ];
   } catch (error) {

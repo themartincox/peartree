@@ -162,6 +162,15 @@ export default async function LocalServicePage({ params }: Props) {
         })
       : null;
 
+    // Thin-content guard: ensure we only serve substantial pages
+    const MIN_BODY_WORDS = 300;
+    const bodyText = bodyDoc ? extractTextFromRichText(bodyDoc) : '';
+    const bodyWordCount = bodyText.trim().split(/\s+/).filter(Boolean).length;
+    if (bodyWordCount < MIN_BODY_WORDS) {
+      console.warn(`Thin content for services-location ${params.service}/${params.suburb} (words=${bodyWordCount})`);
+      notFound();
+    }
+
     const testimonials = (location!.fields.localTestimonials || [])
       .map((t: Entry<ITestimonialFields>) => ({
         author: t.fields.author || "Anonymous",
