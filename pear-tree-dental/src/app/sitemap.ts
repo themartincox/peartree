@@ -4,6 +4,7 @@ export const dynamic = "force-dynamic";
 import type { MetadataRoute } from 'next';
 import { fetchBlogPosts, contentfulHealthCheck } from '@/lib/contentful'
 import { fetchIndexableServiceLocationPaths } from '@/lib/sitemap-serviceLocation'
+import { collectAppStaticRoutes, collectFallbackServiceRoutes } from '@/lib/sitemap-fallbacks'
 import { fetchCategorySlugs, fetchTreatmentSlugs } from '@/lib/services'
 
 // Helper function to safely convert dates to ISO string
@@ -61,20 +62,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Check if Contentful is healthy before fetching
+  // Always include filesystem static routes and in-repo fallback service routes
+  const fsStatic = await collectAppStaticRoutes().catch(() => []);
+  const fallbackServiceRoutes = collectFallbackServiceRoutes();
+
+  // Check if Contentful is healthy before fetching dynamic data
   const isContentfulHealthy = await contentfulHealthCheck();
-  if (!isContentfulHealthy) {
-    console.warn('Contentful health check failed, returning base sitemap only');
-    return baseUrls;
-  }
 
   try {
-    const [blogPosts, categories, treatments, serviceLocationPaths] = await Promise.all([
-      fetchBlogPosts(100),
-      fetchCategorySlugs(),
-      fetchTreatmentSlugs(),
-      fetchIndexableServiceLocationPaths(),
-    ]);
+    const [blogPosts, categories, treatments, serviceLocationPaths] = isContentfulHealthy
+      ? await Promise.all([
+          fetchBlogPosts(100),
+          fetchCategorySlugs(),
+          fetchTreatmentSlugs(),
+          fetchIndexableServiceLocationPaths(),
+        ])
+      : [[], [], [], []] as any;
 
     const blogUrls = blogPosts.map(post => ({
       url: `https://peartree.dental/patient-education/${post.fields.slug}`,
@@ -107,15 +110,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-    return [
+    // Merge all, then dedupe by URL
+    const merged: MetadataRoute.Sitemap = [
       ...baseUrls,
+      ...fsStatic,
+      ...fallbackServiceRoutes,
       ...categoryUrls,
       ...treatmentUrls,
       ...blogUrls,
       ...serviceLocationUrls,
     ];
+
+    const seen = new Set<string>();
+    const deduped = merged.filter((u) => {
+      const url = (u as any).url;
+      if (!url) return false;
+      if (seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    });
+
+    return deduped;
   } catch (error) {
     console.error('Error generating sitemap:', error);
-    return baseUrls;
+    // Fallback to base + filesystem + in-repo service fallbacks
+    const nowFallback: MetadataRoute.Sitemap = [
+      ...baseUrls,
+      ...await collectAppStaticRoutes().catch(() => []),
+      ...collectFallbackServiceRoutes(),
+    ];
+    // Deduplicate
+    const seen = new Set<string>();
+    return nowFallback.filter((u) => {
+      const url = (u as any).url;
+      if (!url) return false;
+      if (seen.has(url)) return false;
+      seen.add(url);
+      return true;
+    });
   }
 }
