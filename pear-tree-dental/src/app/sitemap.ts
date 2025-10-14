@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 import type { MetadataRoute } from 'next';
 import { fetchBlogPosts, contentfulHealthCheck } from '@/lib/contentful'
 import { fetchIndexableServiceLocationPaths } from '@/lib/sitemap-serviceLocation'
-import { collectAppStaticRoutes, collectFallbackServiceRoutes } from '@/lib/sitemap-fallbacks'
+import { collectAppStaticRoutes, collectFallbackServiceRoutes, collectAllRegisteredFallbackRoutes } from '@/lib/sitemap-fallbacks'
 import { fetchCategorySlugs, fetchTreatmentSlugs } from '@/lib/services'
 
 // Helper function to safely convert dates to ISO string
@@ -65,6 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Always include filesystem static routes and in-repo fallback service routes
   const fsStatic = await collectAppStaticRoutes().catch(() => []);
   const fallbackServiceRoutes = collectFallbackServiceRoutes();
+  const registryFallbackRoutes = collectAllRegisteredFallbackRoutes();
 
   // Check if Contentful is healthy before fetching dynamic data
   const isContentfulHealthy = await contentfulHealthCheck();
@@ -115,6 +116,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ...baseUrls,
       ...fsStatic,
       ...fallbackServiceRoutes,
+      ...registryFallbackRoutes,
       ...categoryUrls,
       ...treatmentUrls,
       ...blogUrls,
@@ -138,6 +140,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           base: baseUrls.length,
           fsStatic: fsStatic.length,
           fallbacks: fallbackServiceRoutes.length,
+          fallbacksRegistry: registryFallbackRoutes.length,
           categories: categoryUrls.length,
           treatments: treatmentUrls.length,
           blog: blogUrls.length,

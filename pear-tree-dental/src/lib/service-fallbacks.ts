@@ -629,3 +629,21 @@ export async function renderTreatmentFallback(
     return null;
   }
 }
+
+// Sitemap helpers: expose what fallbacks are registered so we can include them
+export function getRegisteredCategoryFallbackSlugs(): string[] {
+  return Array.from(categoryFallbackLoaders.keys());
+}
+
+export function getRegisteredTreatmentFallbackPairs(): { category: string; treatment: string }[] {
+  const out: { category: string; treatment: string }[] = [];
+  for (const key of treatmentFallbackLoaders.keys()) {
+    const idx = key.indexOf('/')
+    if (idx > -1) {
+      out.push({ category: key.slice(0, idx), treatment: key.slice(idx + 1) });
+    } else {
+      out.push({ category: key, treatment: '' });
+    }
+  }
+  return out;
+}

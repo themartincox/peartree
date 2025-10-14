@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { promises as fs } from 'node:fs'
-import { fallbackCategories, fallbackFeaturedTreatments } from '@/lib/service-fallbacks'
+import { fallbackCategories, fallbackFeaturedTreatments, getRegisteredCategoryFallbackSlugs, getRegisteredTreatmentFallbackPairs } from '@/lib/service-fallbacks'
 
 export type SimpleSitemapUrl = { url: string; lastModified?: string | Date; changeFrequency?: 'weekly'|'monthly'|'yearly'; priority?: number }
 
@@ -76,6 +76,38 @@ export function collectFallbackServiceRoutes(): SimpleSitemapUrl[] {
   const veneerChildren = ['porcelain', 'composite', 'ultra-thin']
   for (const child of veneerChildren) {
     urls.push({ url: `${base}/services/${veneerParent}/veneers/${child}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
+  }
+
+  // Deduplicate
+  const seen = new Set<string>()
+  const out: SimpleSitemapUrl[] = []
+  for (const u of urls) {
+    if (seen.has(u.url)) continue
+    seen.add(u.url)
+    out.push(u)
+  }
+  return out
+}
+
+// Include every registered fallback mapping from service-fallbacks registry
+export function collectAllRegisteredFallbackRoutes(): SimpleSitemapUrl[] {
+  const base = 'https://peartree.dental'
+  const now = new Date()
+  const urls: SimpleSitemapUrl[] = []
+
+  try {
+    const cats = getRegisteredCategoryFallbackSlugs()
+    for (const c of cats) {
+      urls.push({ url: `${base}/services/${c}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 })
+    }
+
+    const pairs = getRegisteredTreatmentFallbackPairs()
+    for (const p of pairs) {
+      if (!p.treatment) continue
+      urls.push({ url: `${base}/services/${p.category}/${p.treatment}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
+    }
+  } catch {
+    // best effort only
   }
 
   // Deduplicate
