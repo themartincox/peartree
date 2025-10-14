@@ -59,13 +59,14 @@ export function collectFallbackServiceRoutes(): SimpleSitemapUrl[] {
   // categories
   for (const c of fallbackCategories) {
     if (!c?.slug) continue
-    urls.push({ url: `${base}/services/${c.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 })
+    const cat = canonicalCategory(c.slug)
+    urls.push({ url: `${base}/services/${cat}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 })
   }
 
   // treatments (featured)
   for (const [cat, treatments] of fallbackFeaturedTreatments.entries()) {
     for (const t of treatments) {
-      const parent = t.parent?.slug || cat
+      const parent = canonicalCategory(t.parent?.slug || cat)
       if (!parent || !t.slug) continue
       urls.push({ url: `${base}/services/${parent}/${t.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
     }
@@ -98,13 +99,15 @@ export function collectAllRegisteredFallbackRoutes(): SimpleSitemapUrl[] {
   try {
     const cats = getRegisteredCategoryFallbackSlugs()
     for (const c of cats) {
-      urls.push({ url: `${base}/services/${c}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 })
+      const cat = canonicalCategory(c)
+      urls.push({ url: `${base}/services/${cat}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 })
     }
 
     const pairs = getRegisteredTreatmentFallbackPairs()
     for (const p of pairs) {
       if (!p.treatment) continue
-      urls.push({ url: `${base}/services/${p.category}/${p.treatment}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
+      const cat = canonicalCategory(p.category)
+      urls.push({ url: `${base}/services/${cat}/${p.treatment}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
     }
   } catch {
     // best effort only
@@ -119,4 +122,24 @@ export function collectAllRegisteredFallbackRoutes(): SimpleSitemapUrl[] {
     out.push(u)
   }
   return out
+}
+function canonicalCategory(slug: string): string {
+  const map: Record<string, string> = {
+    general: 'general-dentistry',
+    'general-dentistry': 'general-dentistry',
+    cosmetic: 'cosmetic-dentistry',
+    'cosmetic-dentistry': 'cosmetic-dentistry',
+    restorative: 'restorative-dentistry',
+    'restorative-dentistry': 'restorative-dentistry',
+    implants: 'dental-implants',
+    'dental-implants': 'dental-implants',
+    orthodontics: 'orthodontics',
+    hygiene: 'hygiene',
+    emergency: 'emergency-dentistry',
+    'emergency-dentist': 'emergency-dentistry',
+    'emergency-dentistry': 'emergency-dentistry',
+    // Special case: nested category used for keys
+    'teeth-whitening': 'cosmetic-dentistry',
+  };
+  return map[slug] || slug;
 }

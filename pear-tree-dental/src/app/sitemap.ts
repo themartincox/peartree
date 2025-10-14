@@ -14,6 +14,26 @@ const toISO = (input?: string | number | Date) => {
   return Number.isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString();
 };
 
+// Canonicalize category slugs to avoid duplicate URLs
+function canonicalCategory(slug: string): string {
+  const map: Record<string, string> = {
+    general: 'general-dentistry',
+    'general-dentistry': 'general-dentistry',
+    cosmetic: 'cosmetic-dentistry',
+    'cosmetic-dentistry': 'cosmetic-dentistry',
+    restorative: 'restorative-dentistry',
+    'restorative-dentistry': 'restorative-dentistry',
+    implants: 'dental-implants',
+    'dental-implants': 'dental-implants',
+    orthodontics: 'orthodontics',
+    hygiene: 'hygiene',
+    emergency: 'emergency-dentistry',
+    'emergency-dentist': 'emergency-dentistry',
+    'emergency-dentistry': 'emergency-dentistry',
+  };
+  return map[slug] || slug;
+}
+
 // Optimized sitemap generation
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Base URLs that are always included
@@ -88,7 +108,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     const categoryUrls = categories.map(category => ({
-      url: `https://peartree.dental/services/${category.slug}`,
+      url: `https://peartree.dental/services/${canonicalCategory(category.slug)}`,
       lastModified: toISO(category.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
@@ -97,7 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const treatmentUrls = treatments
       .filter(treatment => treatment.parentSlug)
       .map(treatment => ({
-        url: `https://peartree.dental/services/${treatment.parentSlug}/${treatment.slug}`,
+        url: `https://peartree.dental/services/${canonicalCategory(treatment.parentSlug!)}/${treatment.slug}`,
         lastModified: toISO(treatment.updatedAt),
         changeFrequency: 'weekly' as const,
         priority: 0.7,
