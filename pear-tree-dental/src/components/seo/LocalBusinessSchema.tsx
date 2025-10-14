@@ -387,29 +387,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "bestRating": "5",
       "worstRating": "1",
       "ratingCount": "127"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "itemReviewed": {
-          "@type": "LocalBusiness",
-          "@id": "https://peartree.dental/#organization",
-          "name": "Pear Tree Dental Centre"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sarah M."
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "reviewBody": "Excellent service and very professional team. The new patient welcome was thorough and the facilities are modern and clean.",
-        "datePublished": "2024-06-15"
-      }
-    ]
+    }
   };
 
   if (includeDentistSpecific) {
