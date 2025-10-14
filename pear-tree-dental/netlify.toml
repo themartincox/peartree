@@ -26,9 +26,9 @@
   CONTENTFUL_BLOG_TEMPLATE_TYPE_ID = "blogTemplate"
   CONTENTFUL_BLOG_POST_TYPE_ID = "pageBlogPost"
   GENERATION_MODE = "fallback"
-  USE_MOCK_DATA = "true"
+  USE_MOCK_DATA = "false"
   NEXT_PUBLIC_CONTENTFUL_USE_PREVIEW = "false"
-  NEXT_PUBLIC_USE_MOCK_DATA = "true"
+  NEXT_PUBLIC_USE_MOCK_DATA = "false"
  ENABLE_AB = "false"
 
 #[[plugins]]
@@ -214,19 +214,36 @@
   to = "/services-location/restorative-dentistry/:suburb"
   status = 301
 
-# Veneers child variants -> Parent
+# Veneers child variants (keep as separate pages)
+# Ensure legacy 'cosmetic' slugs redirect to canonical 'cosmetic-dentistry' while preserving child path
 [[redirects]]
-  from = "/services/cosmetic-dentistry/veneers/composite"
+  from = "/services/cosmetic/veneers/composite"
+  to = "/services/cosmetic-dentistry/veneers/composite"
+  status = 301
+
+[[redirects]]
+  from = "/services/cosmetic/veneers/porcelain"
+  to = "/services/cosmetic-dentistry/veneers/porcelain"
+  status = 301
+
+[[redirects]]
+  from = "/services/cosmetic/veneers/ultra-thin"
+  to = "/services/cosmetic-dentistry/veneers/ultra-thin"
+  status = 301
+
+# Also handle legacy 'cosmetic' category slugs for the same child pages
+[[redirects]]
+  from = "/services/cosmetic/veneers/composite"
   to = "/services/cosmetic-dentistry/veneers"
   status = 301
 
 [[redirects]]
-  from = "/services/cosmetic-dentistry/veneers/porcelain"
+  from = "/services/cosmetic/veneers/porcelain"
   to = "/services/cosmetic-dentistry/veneers"
   status = 301
 
 [[redirects]]
-  from = "/services/cosmetic-dentistry/veneers/ultra-thin"
+  from = "/services/cosmetic/veneers/ultra-thin"
   to = "/services/cosmetic-dentistry/veneers"
   status = 301
 
@@ -253,6 +270,32 @@
 
 [[redirects]]
   from = "/services/restorative-dentistry/dentures/valplast-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+# Also handle legacy 'restorative' category slugs for dentures child pages
+[[redirects]]
+  from = "/services/restorative/dentures/cobalt-chrome-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative/dentures/complete-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative/dentures/hybrid-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative/dentures/partial-dentures"
+  to = "/services/restorative-dentistry/dentures"
+  status = 301
+
+[[redirects]]
+  from = "/services/restorative/dentures/valplast-dentures"
   to = "/services/restorative-dentistry/dentures"
   status = 301
 

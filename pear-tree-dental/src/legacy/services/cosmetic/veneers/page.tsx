@@ -54,7 +54,7 @@ export const metadata: Metadata = {
 export default function VeneersPage() {
   const breadcrumbItems = [
     { name: "Services", href: "/services" },
-    { name: "Cosmetic Dentistry", href: "/services/cosmetic" },
+    { name: "Cosmetic Dentistry", href: "/services/cosmetic-dentistry" },
     { name: "Dental Veneers" }
   ];
 
@@ -69,7 +69,7 @@ export default function VeneersPage() {
       lifespan: "10-15 years",
       color: "soft-pink",
       icon: Microscope,
-      href: "/services/cosmetic/veneers/ultra-thin",
+      href: "/services/cosmetic-dentistry/veneers/ultra-thin",
       features: [
         "0.2mm thickness - thinner than a contact lens",
         "Minimal to no tooth preparation",
@@ -95,7 +95,7 @@ export default function VeneersPage() {
       lifespan: "10-20 years",
       color: "pear-gold",
       icon: Crown,
-      href: "/services/cosmetic/veneers/porcelain",
+      href: "/services/cosmetic-dentistry/veneers/porcelain",
       features: [
         "Superior durability and strength",
         "Excellent stain resistance",
@@ -121,7 +121,7 @@ export default function VeneersPage() {
       lifespan: "5-7 years",
       color: "dental-green",
       icon: Zap,
-      href: "/services/cosmetic/veneers/composite",
+      href: "/services/cosmetic-dentistry/veneers/composite",
       features: [
         "Completed in one visit",
         "Most budget-friendly option",

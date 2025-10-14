@@ -71,6 +71,13 @@ export function collectFallbackServiceRoutes(): SimpleSitemapUrl[] {
     }
   }
 
+  // Explicitly include key nested veneer variants as separate pages
+  const veneerParent = 'cosmetic-dentistry'
+  const veneerChildren = ['porcelain', 'composite', 'ultra-thin']
+  for (const child of veneerChildren) {
+    urls.push({ url: `${base}/services/${veneerParent}/veneers/${child}`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 })
+  }
+
   // Deduplicate
   const seen = new Set<string>()
   const out: SimpleSitemapUrl[] = []
@@ -81,4 +88,3 @@ export function collectFallbackServiceRoutes(): SimpleSitemapUrl[] {
   }
   return out
 }
-

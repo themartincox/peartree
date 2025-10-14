@@ -130,6 +130,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return true;
     });
 
+    // Log counts to help verify in build logs
+    try {
+      console.log(
+        '[sitemap] counts',
+        JSON.stringify({
+          base: baseUrls.length,
+          fsStatic: fsStatic.length,
+          fallbacks: fallbackServiceRoutes.length,
+          categories: categoryUrls.length,
+          treatments: treatmentUrls.length,
+          blog: blogUrls.length,
+          serviceLocations: serviceLocationUrls.length,
+          total: deduped.length,
+          contentfulHealthy: isContentfulHealthy,
+        }),
+      );
+    } catch {}
+
     return deduped;
   } catch (error) {
     console.error('Error generating sitemap:', error);
