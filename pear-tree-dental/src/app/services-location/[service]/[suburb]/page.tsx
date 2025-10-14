@@ -171,13 +171,19 @@ export default async function LocalServicePage({ params }: Props) {
       notFound();
     }
 
-    const testimonials = (location!.fields.localTestimonials || [])
-      .map((t: Entry<ITestimonialFields>) => ({
-        author: t.fields.author || "Anonymous",
-        reviewBody: extractTextFromRichText(t.fields.quote),
-        rating: undefined,
-      }))
-      .filter(t => t.reviewBody.length > 0);
+    let testimonials: { author: string; reviewBody: string; rating?: number }[] = [];
+    try {
+      testimonials = (location!.fields.localTestimonials || [])
+        .map((t: Entry<ITestimonialFields>) => ({
+          author: t.fields.author || "Anonymous",
+          reviewBody: extractTextFromRichText(t.fields.quote),
+          rating: undefined,
+        }))
+        .filter((t) => t.reviewBody && t.reviewBody.length > 0);
+    } catch (e) {
+      console.warn(`Testimonials render failed for ${params.service}/${params.suburb}:`, (e as Error)?.message);
+      testimonials = [];
+    }
 
     const canonical = `https://peartree.dental/services-location/${params.service}/${params.suburb}`;
 
@@ -192,6 +198,40 @@ export default async function LocalServicePage({ params }: Props) {
         suburbName: l.fields.suburb,
         city: l.fields.city,
       }));
+
+    // Pre-render potentially fragile rich text to catch any renderer errors and fail closed
+    let mainBody: React.ReactNode = null;
+    try {
+      mainBody = bodyDoc
+        ? documentToReactComponents(bodyDoc, richTextRenderOptions)
+        : <p>Welcome to Pear Tree Dental — your trusted dental care provider.</p>;
+    } catch (e) {
+      console.warn(`Rich text render failed for ${params.service}/${params.suburb}:`, (e as Error)?.message);
+      notFound();
+    }
+
+    let uniqueLocalSection: React.ReactNode = null;
+    if (location!.fields.uniqueLocalContent) {
+      try {
+        uniqueLocalSection = documentToReactComponents(
+          replacePlaceholdersInRichText(location!.fields.uniqueLocalContent, {
+            service: serviceName,
+            suburb: suburbName,
+            city: cityName,
+            reviewsCount: 500,
+            reviewsRating: 5,
+            membershipUrl: '/membership',
+            contactUrl: '/contact',
+            bookingUrl: '/book',
+          }),
+          richTextRenderOptions,
+        );
+      } catch (e) {
+        console.warn(`Unique local content render failed for ${params.service}/${params.suburb}:`, (e as Error)?.message);
+        // Do not error the page; omit the section to avoid 500s
+        uniqueLocalSection = null;
+      }
+    }
 
     return (
       <article className="container mx-auto px-4 py-8">
@@ -212,30 +252,14 @@ export default async function LocalServicePage({ params }: Props) {
 
         <h1 className="text-4xl font-bold mb-6">{h1}</h1>
 
-        <div className="prose max-w-none">
-          {bodyDoc
-            ? documentToReactComponents(bodyDoc, richTextRenderOptions)
-            : <p>Welcome to Pear Tree Dental — your trusted dental care provider.</p>}
-        </div>
+        <div className="prose max-w-none">{mainBody}</div>
 
-        {location!.fields.uniqueLocalContent && (
+        {uniqueLocalSection && (
           <section className="mt-8 bg-gray-50 p-6 rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
               About Pear Tree Dental in {location!.fields.suburb}
             </h2>
-            {documentToReactComponents(
-              replacePlaceholdersInRichText(location!.fields.uniqueLocalContent, {
-                service: serviceName,
-                suburb: suburbName,
-                city: cityName,
-                reviewsCount: 500,
-                reviewsRating: 5,
-                membershipUrl: '/membership',
-                contactUrl: '/contact',
-                bookingUrl: '/book',
-              }),
-              richTextRenderOptions
-            )}
+            {uniqueLocalSection}
           </section>
         )}
 
