@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, Badge } from "@/components/ui" as any;
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Star, Quote, ThumbsUp, Verified } from "lucide-react";
 
 type Review = {
@@ -115,4 +116,3 @@ export default function ReviewsGrid({ reviews }: { reviews: Review[] }) {
     </>
   );
 }
-

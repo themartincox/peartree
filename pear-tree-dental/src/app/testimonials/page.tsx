@@ -27,6 +27,8 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import ReviewsGrid from "@/components/ReviewsGrid";
+import { promises as fs } from "node:fs";
+import path from "node:path";
 
 export const metadata: Metadata = {
   title: "Google Reviews - 5 Star Patient Reviews | Pear Tree Dental Burton Joyce",
@@ -94,9 +96,52 @@ function sanitizeJson(input: string): string {
 
 let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
 
+async function loadReviewsFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src", "data", "reviews.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const parsed = JSON.parse(raw);
+    const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
+    return gbp.map((r: any, i: number) => ({
+      id: i + 1,
+      author: r?.reviewer?.displayName || "Anonymous",
+      rating: (() => {
+        switch (r?.starRating) {
+          case "FIVE":
+            return 5;
+          case "FOUR":
+            return 4;
+          case "THREE":
+            return 3;
+          case "TWO":
+            return 2;
+          case "ONE":
+            return 1;
+          default:
+            return 5;
+        }
+      })(),
+      date: (() => {
+        try {
+          const dt = new Date(r?.createTime);
+          return dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+        } catch {
+          return r?.createTime || "";
+        }
+      })(),
+      review: r?.comment || "",
+      verified: true,
+      response: r?.reviewReply?.comment
+        ? { author: "Pear Tree Dental", text: r.reviewReply.comment, date: r?.reviewReply?.updateTime ?? "" }
+        : undefined,
+    }));
+  } catch {
+    return [] as any[];
+  }
+}
+
 export default async function TestimonialsPage() {
-  // Use statically mapped reviews from googleReviews.ts (sourced from reviews.json at build time)
-  mappedReviews = googleReviews;
+  mappedReviews = await loadReviewsFromFile();
   // Use explicit headline stats requested: 515+ out of 545
   const reviewStats = { averageRating: 4.9, totalReviews: 545, fiveStarCount: 515 };
   const stats = [
