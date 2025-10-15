@@ -155,15 +155,15 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
 
               <MobileGoogleReviews />
 
-              {/* Mobile: Awards finalist badge below reviews widget (subtle, ~20% width) */}
-              <div className="mt-4">
+              {/* Mobile: Awards finalist badge below reviews widget (subtle, ~25% width), centered */}
+              <div className="mt-2 flex justify-center">
                 <Image
                   src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
                   alt="Private Dentistry Awards 2025 finalist"
                   width={300}
                   height={300}
-                  className="w-1/5 min-w-[72px] h-auto opacity-80"
-                  sizes="(max-width: 767px) 20vw"
+                  className="w-1/4 min-w-[84px] h-auto opacity-85"
+                  sizes="(max-width: 767px) 25vw"
                 />
               </div>
             </div>
