@@ -95,47 +95,66 @@ function sanitizeJson(input: string): string {
 let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
 
 async function loadReviewsFromFile() {
-  try {
-    // Bundle-time JSON import so it works in serverless/edge environments
-    const raw: any = (await import("@/data/reviews.json")).default;
-    const gbp = Array.isArray(raw) ? raw : raw?.reviews ?? [];
-    return gbp.map((r: any, i: number) => ({
-      id: i + 1,
-      author: r?.reviewer?.displayName || "Anonymous",
-      rating: (() => {
-        switch (r?.starRating) {
-          case "FIVE":
-            return 5;
-          case "FOUR":
-            return 4;
-          case "THREE":
-            return 3;
-          case "TWO":
-            return 2;
-          case "ONE":
-            return 1;
-          default:
-            return 5;
-        }
-      })(),
-      date: (() => {
-        try {
-          const dt = new Date(r?.createTime);
-          return dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-        } catch {
-          return r?.createTime || "";
-        }
-      })(),
-      review: r?.comment || "",
-      verified: true,
-      response: r?.reviewReply?.comment
-        ? { author: "Pear Tree Dental", text: r.reviewReply.comment, date: r?.reviewReply?.updateTime ?? "" }
-        : undefined,
-    }));
-  } catch (e) {
-    console.warn("[testimonials] Failed to load reviews.json", (e as Error).message);
-    return [] as any[];
+  // Prefer public file to avoid bundling JSON; supports quick swaps without code changes
+  const candidates = [
+    process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')}/reviews.json` : '',
+    'https://peartree.dental/reviews.json',
+    'http://localhost:3000/reviews.json',
+  ].filter(Boolean) as string[];
+
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { cache: 'no-store', next: { revalidate: 0 } });
+      if (!res.ok) continue;
+      const raw = await res.text();
+      // Tolerate minor edits: strip trailing commas/comments
+      const sanitized = raw
+        .replace(/^\uFEFF/, '')
+        .replace(/\/\/.*$/gm, '')
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/,\s*([}\]])/g, '$1')
+        .trim();
+      const parsed = JSON.parse(sanitized);
+      const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
+      if (!Array.isArray(gbp) || gbp.length === 0) continue;
+      return gbp.map((r: any, i: number) => ({
+        id: i + 1,
+        author: r?.reviewer?.displayName || 'Anonymous',
+        rating: (() => {
+          switch (r?.starRating) {
+            case 'FIVE':
+              return 5;
+            case 'FOUR':
+              return 4;
+            case 'THREE':
+              return 3;
+            case 'TWO':
+              return 2;
+            case 'ONE':
+              return 1;
+            default:
+              return 5;
+          }
+        })(),
+        date: (() => {
+          try {
+            const dt = new Date(r?.createTime);
+            return dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+          } catch {
+            return r?.createTime || '';
+          }
+        })(),
+        review: r?.comment || '',
+        verified: true,
+        response: r?.reviewReply?.comment
+          ? { author: 'Pear Tree Dental', text: r.reviewReply.comment, date: r?.reviewReply?.updateTime ?? '' }
+          : undefined,
+      }));
+    } catch (e) {
+      // try next candidate
+    }
   }
+  return [] as any[];
 }
 
 export default async function TestimonialsPage() {
