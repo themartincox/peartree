@@ -26,6 +26,7 @@ import {
   Verified
 } from "lucide-react";
 import Image from "next/image";
+import { headers } from "next/headers";
 import ReviewsGrid from "@/components/ReviewsGrid";
 
 export const metadata: Metadata = {
@@ -95,12 +96,17 @@ function sanitizeJson(input: string): string {
 let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
 
 async function loadReviewsFromFile() {
-  // Prefer public file to avoid bundling JSON; supports quick swaps without code changes
-  const candidates = [
-    process.env.NEXT_PUBLIC_SITE_URL ? `${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')}/reviews.json` : '',
-    'https://peartree.dental/reviews.json',
-    'http://localhost:3000/reviews.json',
-  ].filter(Boolean) as string[];
+  // Resolve current origin from request headers (works on Netlify/Vercel/Node)
+  const h = headers();
+  const host = h.get('x-forwarded-host') || h.get('host');
+  const proto = h.get('x-forwarded-proto') || 'https';
+  const origin = host ? `${proto}://${host}` : '';
+
+  const candidates: string[] = [];
+  if (origin) candidates.push(`${origin}/reviews.json`);
+  if (process.env.NEXT_PUBLIC_SITE_URL) candidates.push(`${process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')}/reviews.json`);
+  candidates.push('https://peartree.dental/reviews.json');
+  candidates.push('http://localhost:3000/reviews.json');
 
   for (const url of candidates) {
     try {
