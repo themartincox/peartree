@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import { googleReviews, googleReviewsStats } from "@/data/googleReviews";
+import { promises as fs } from "node:fs";
+import path from "node:path";
+import { googleReviews as fallbackGoogleReviews } from "@/data/googleReviews";
 import {
   Star,
   Quote,
@@ -29,7 +31,7 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Google Reviews - 5 Star Patient Reviews | Pear Tree Dental Burton Joyce",
-  description: "Read our genuine 5-star Google reviews from real patients at Pear Tree Dental Burton Joyce. See why we're rated as one of the top dental practices in Nottinghamshire with 450+ excellent reviews.",
+  description: "Read our genuine 5-star Google reviews from real patients at Pear Tree Dental Burton Joyce. See why we're the top rated dentist in Nottingham 2025 with 500+ 5-star Google reviews.",
   keywords: [
     "Google reviews Pear Tree Dental",
     "5 star dentist Burton Joyce",
@@ -52,19 +54,97 @@ export const metadata: Metadata = {
   }
 };
 
-// Fallback values in case data is undefined
-const reviewStats = {
-  averageRating: googleReviewsStats?.averageRating || 5.0,
-  totalReviews: googleReviewsStats?.totalReviews || 450,
-  fiveStarCount: googleReviewsStats?.fiveStarCount || 428
-};
+// Normalize Google Business Profile JSON into the page's expected shape
+function mapStar(star: string | undefined): number {
+  switch (star) {
+    case "FIVE":
+      return 5;
+    case "FOUR":
+      return 4;
+    case "THREE":
+      return 3;
+    case "TWO":
+      return 2;
+    case "ONE":
+      return 1;
+    default:
+      return 5;
+  }
+}
+
+function fmt(d?: string): string {
+  try {
+    if (!d) return "";
+    const dt = new Date(d);
+    return dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  } catch {
+    return d || "";
+  }
+}
+
+function sanitizeJson(input: string): string {
+  // remove BOM
+  let s = input.replace(/^\uFEFF/, "");
+  // strip // and /* */ comments
+  s = s.replace(/\/\/.*$/gm, "").replace(/\/\*[\s\S]*?\*\//g, "");
+  // remove trailing commas before } or ]
+  s = s.replace(/,\s*([}\]])/g, "$1");
+  // trim stray non-printables at end
+  return s.trim();
+}
+
+async function loadReviewsFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src", "data", "reviews.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const sanitized = sanitizeJson(raw);
+    const parsed = JSON.parse(sanitized);
+    const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
+    return gbp.map((r: any, i: number) => ({
+      id: i + 1,
+      author: r?.reviewer?.displayName || "Anonymous",
+      rating: mapStar(r?.starRating),
+      date: fmt(r?.createTime),
+      review: r?.comment || "",
+      verified: true,
+      response: r?.reviewReply?.comment
+        ? { author: "Pear Tree Dental", text: r.reviewReply.comment, date: fmt(r.reviewReply.updateTime) }
+        : undefined,
+    }));
+  } catch (e) {
+    // Fallback to curated in-repo reviews on any error
+    return (fallbackGoogleReviews || []).map((r, i) => ({
+      id: r.id ?? i + 1,
+      author: r.author,
+      rating: r.rating,
+      date: r.date,
+      review: r.review,
+      verified: true,
+      response: r.response,
+    }));
+  }
+}
+
+let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
+
+const reviewStats = (() => {
+  const total = mappedReviews.length;
+  const sum = mappedReviews.reduce((acc, r) => acc + (r.rating || 0), 0);
+  const avg = total ? Math.round((sum / total) * 10) / 10 : 5.0;
+  const fiveStar = mappedReviews.filter((r) => r.rating === 5).length;
+  return {
+    averageRating: avg,
+    totalReviews: total,
+    fiveStarCount: fiveStar,
+  };
+})();
 
 const stats = [
   {
     icon: Star,
     value: `${reviewStats.averageRating}/5`,
     label: "Google Rating",
-    detail: `From ${reviewStats.totalReviews}+ reviews`
+    detail: `500+ 5-star Google reviews`
   },
   {
     icon: ThumbsUp,
@@ -82,11 +162,12 @@ const stats = [
     icon: Verified,
     value: "500+",
     label: "Verified Reviews",
-    detail: "One of the Top Rated Dentists in Nottingham"
+    detail: "Top rated dentist Nottingham 2025"
   }
 ];
 
-export default function TestimonialsPage() {
+export default async function TestimonialsPage() {
+  mappedReviews = await loadReviewsFromFile();
   const renderStars = (rating: number) => {
     return [...Array(5)].map((_, i) => (
       <Star
@@ -97,7 +178,7 @@ export default function TestimonialsPage() {
   };
 
   // Ensure we have reviews data or use an empty array as fallback
-  const reviews = googleReviews || [];
+  const reviews = mappedReviews;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background/30 to-white">
@@ -134,7 +215,7 @@ export default function TestimonialsPage() {
             <div className="flex items-center justify-center space-x-2 mb-6">
               <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-blue-200">
                 <img
-                  src="https://logo.clearbit.com/google.com"
+                  src="/images/google-logo-mini.webp"
                   alt="Google"
                   className="w-4 h-4 mr-2"
                 />
@@ -206,7 +287,7 @@ export default function TestimonialsPage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center space-x-2">
                       <img
-                        src="https://logo.clearbit.com/google.com"
+                        src="/images/google-logo-mini.webp"
                         alt="Google"
                         className="w-5 h-5"
                       />
@@ -394,3 +475,5 @@ export default function TestimonialsPage() {
     </div>
   );
 }
+// Always render dynamically so edits to reviews.json are reflected immediately
+export const dynamic = "force-dynamic";
