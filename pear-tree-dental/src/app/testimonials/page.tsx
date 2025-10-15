@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import EnhancedServiceSchema from "@/components/seo/EnhancedServiceSchema";
-import { promises as fs } from "node:fs";
-import path from "node:path";
-import { googleReviews as fallbackGoogleReviews } from "@/data/googleReviews";
+import { googleReviews, googleReviewsStats } from "@/data/googleReviews";
 import {
   Star,
   Quote,
@@ -28,6 +26,7 @@ import {
   Verified
 } from "lucide-react";
 import Image from "next/image";
+import ReviewsGrid from "@/components/ReviewsGrid";
 
 export const metadata: Metadata = {
   title: "Google Reviews - 5 Star Patient Reviews | Pear Tree Dental Burton Joyce",
@@ -93,47 +92,13 @@ function sanitizeJson(input: string): string {
   return s.trim();
 }
 
-async function loadReviewsFromFile() {
-  try {
-    const filePath = path.join(process.cwd(), "src", "data", "reviews.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    const sanitized = sanitizeJson(raw);
-    const parsed = JSON.parse(sanitized);
-    const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
-    return gbp.map((r: any, i: number) => ({
-      id: i + 1,
-      author: r?.reviewer?.displayName || "Anonymous",
-      rating: mapStar(r?.starRating),
-      date: fmt(r?.createTime),
-      review: r?.comment || "",
-      verified: true,
-      response: r?.reviewReply?.comment
-        ? { author: "Pear Tree Dental", text: r.reviewReply.comment, date: fmt(r.reviewReply.updateTime) }
-        : undefined,
-    }));
-  } catch (e) {
-    // Fallback to curated in-repo reviews on any error
-    return (fallbackGoogleReviews || []).map((r, i) => ({
-      id: r.id ?? i + 1,
-      author: r.author,
-      rating: r.rating,
-      date: r.date,
-      review: r.review,
-      verified: true,
-      response: r.response,
-    }));
-  }
-}
-
 let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
 
 export default async function TestimonialsPage() {
-  mappedReviews = await loadReviewsFromFile();
-  const total = mappedReviews.length;
-  const sum = mappedReviews.reduce((acc, r) => acc + (r.rating || 0), 0);
-  const averageRating = total ? Math.round((sum / total) * 10) / 10 : 5.0;
-  const fiveStarCount = mappedReviews.filter((r) => r.rating === 5).length;
-  const reviewStats = { averageRating, totalReviews: total, fiveStarCount };
+  // Use statically mapped reviews from googleReviews.ts (sourced from reviews.json at build time)
+  mappedReviews = googleReviews;
+  // Use explicit headline stats requested: 515+ out of 545
+  const reviewStats = { averageRating: 4.9, totalReviews: 545, fiveStarCount: 515 };
   const stats = [
     { icon: Star, value: `${reviewStats.averageRating}/5`, label: "Google Rating", detail: `500+ 5-star Google reviews` },
     { icon: ThumbsUp, value: `${reviewStats.fiveStarCount}`, label: "5-Star Reviews", detail: "95% of all reviews" },
@@ -251,92 +216,7 @@ export default async function TestimonialsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {reviews.map((review) => (
-              <Card key={review.id} className="hover:shadow-xl transition-all duration-300 border border-gray-200 bg-white/90">
-                <CardContent className="p-6">
-                  {/* Google Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2">
-                      <img
-                        src="/images/google-logo-mini.webp"
-                        alt="Google"
-                        className="w-5 h-5"
-                      />
-                      <span className="text-sm font-medium text-blue-600">Google Review</span>
-                    </div>
-                    {review.verified && (
-                      <Badge variant="secondary" className="bg-blue-50 text-blue-600 border-blue-200">
-                        <Verified className="w-3 h-3 mr-1" />
-                        Verified
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* Rating */}
-                  <div className="flex items-center space-x-1 mb-4">
-                    {renderStars(review.rating)}
-                    <span className="text-sm font-medium text-gray-600 ml-2">
-                      {review.date}
-                    </span>
-                  </div>
-
-                  {/* Review Text */}
-                  <div className="relative mb-4">
-                    <Quote className="absolute -top-2 -left-2 w-6 h-6 text-blue-200" />
-                    <p className="text-gray-700 leading-relaxed pl-4">
-                      {review.review}
-                    </p>
-                  </div>
-
-                  {/* Author */}
-                  <div className="border-t pt-4">
-                    <div className="flex items-center justify-between">
-                      <div className="font-semibold text-pear-primary">{review.author}</div>
-                      {review.helpful && (
-                        <div className="flex items-center space-x-1 text-xs text-gray-500">
-                          <ThumbsUp className="w-3 h-3" />
-                          <span>{review.helpful} found helpful</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Practice Response */}
-                  {review.response && (
-                    <div className="mt-4 bg-blue-50 rounded-lg p-3 border-l-4 border-blue-200">
-                      <div className="text-xs font-semibold text-blue-600 mb-1">
-                        Response from {review.response.author}
-                      </div>
-                      <p className="text-sm text-gray-700">{review.response.text}</p>
-                      <div className="text-xs text-gray-500 mt-1">
-                        {review.response.date}
-                      </div>
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Load More / View All on Google */}
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-              asChild
-            >
-              <a
-                href="https://www.google.com/search?q=Pear+Tree+Dental+Burton+Joyce+reviews"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink className="w-5 h-5 mr-2" />
-                View All {reviewStats.totalReviews}+ Reviews on Google
-              </a>
-            </Button>
-          </div>
+          <ReviewsGrid reviews={reviews} />
         </div>
       </section>
 
