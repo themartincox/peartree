@@ -127,47 +127,19 @@ async function loadReviewsFromFile() {
 
 let mappedReviews: Array<{ id: number; author: string; rating: number; date: string; review: string; verified: boolean; response?: { author: string; text: string; date: string } }> = [];
 
-const reviewStats = (() => {
-  const total = mappedReviews.length;
-  const sum = mappedReviews.reduce((acc, r) => acc + (r.rating || 0), 0);
-  const avg = total ? Math.round((sum / total) * 10) / 10 : 5.0;
-  const fiveStar = mappedReviews.filter((r) => r.rating === 5).length;
-  return {
-    averageRating: avg,
-    totalReviews: total,
-    fiveStarCount: fiveStar,
-  };
-})();
-
-const stats = [
-  {
-    icon: Star,
-    value: `${reviewStats.averageRating}/5`,
-    label: "Google Rating",
-    detail: `500+ 5-star Google reviews`
-  },
-  {
-    icon: ThumbsUp,
-    value: `${reviewStats.fiveStarCount}`,
-    label: "5-Star Reviews",
-    detail: "95% of all reviews"
-  },
-  {
-    icon: Users,
-    value: "25,000+",
-    label: "Happy Patients",
-    detail: "Since 1999"
-  },
-  {
-    icon: Verified,
-    value: "500+",
-    label: "Verified Reviews",
-    detail: "Top rated dentist Nottingham 2025"
-  }
-];
-
 export default async function TestimonialsPage() {
   mappedReviews = await loadReviewsFromFile();
+  const total = mappedReviews.length;
+  const sum = mappedReviews.reduce((acc, r) => acc + (r.rating || 0), 0);
+  const averageRating = total ? Math.round((sum / total) * 10) / 10 : 5.0;
+  const fiveStarCount = mappedReviews.filter((r) => r.rating === 5).length;
+  const reviewStats = { averageRating, totalReviews: total, fiveStarCount };
+  const stats = [
+    { icon: Star, value: `${reviewStats.averageRating}/5`, label: "Google Rating", detail: `500+ 5-star Google reviews` },
+    { icon: ThumbsUp, value: `${reviewStats.fiveStarCount}`, label: "5-Star Reviews", detail: "95% of all reviews" },
+    { icon: Users, value: "25,000+", label: "Happy Patients", detail: "Since 1999" },
+    { icon: Verified, value: "500+", label: "Verified Reviews", detail: "Top rated dentist Nottingham 2025" },
+  ];
   const renderStars = (rating: number) => {
     return [...Array(5)].map((_, i) => (
       <Star
