@@ -130,13 +130,21 @@ export default function ClientGoogleReviews() {
       <div
         className={`fixed z-40 shadow-md hover:shadow-lg right-6 bg-white/80 hover:bg-white rounded-xl border border-gray-200 transition-all duration-500 transform ${
           isHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
-        } flex items-center justify-center w-[100px]`}
+        } flex flex-col items-center justify-start w-[100px] p-1 space-y-2`}
         style={{ top: `${badgeTop}px` }}
         aria-hidden={isHidden}
       >
         <Image
           src="/images/pear-tree-dental-best-dental-clinic-nottingham-nottinghamshire.webp"
           alt="Award badge recognising Pear Tree Dental as Nottingham's best dental clinic"
+          width={400}
+          height={400}
+          className="w-full h-auto rounded-lg shadow-sm opacity-80 hover:opacity-100 transition-opacity duration-300"
+          sizes="(min-width: 1024px) 100px"
+        />
+        <Image
+          src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
+          alt="Private Dentistry Awards 2025 finalist badge"
           width={400}
           height={400}
           className="w-full h-auto rounded-lg shadow-sm opacity-80 hover:opacity-100 transition-opacity duration-300"

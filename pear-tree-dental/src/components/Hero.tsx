@@ -154,6 +154,18 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               </Button>
 
               <MobileGoogleReviews />
+
+              {/* Mobile: Awards finalist badge below reviews widget (subtle, ~20% width) */}
+              <div className="mt-4">
+                <Image
+                  src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
+                  alt="Private Dentistry Awards 2025 finalist"
+                  width={300}
+                  height={300}
+                  className="w-1/5 min-w-[72px] h-auto opacity-80"
+                  sizes="(max-width: 767px) 20vw"
+                />
+              </div>
             </div>
           </div>
 
