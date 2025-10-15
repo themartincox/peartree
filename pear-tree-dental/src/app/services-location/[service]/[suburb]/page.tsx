@@ -45,17 +45,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ]);
     if (!service || !location || !template) return fallback;
 
-    const title = fillTemplate(template.fields.seoTitleTemplate, service, location);
-    const description = fillTemplate(template.fields.seoDescriptionTemplate, service, location);
     const url = `https://peartree.dental/services-location/${params.service}/${params.suburb}`;
+
+    // Build safe params for templating
+    const tplParams = {
+      service: (service as any)?.fields?.serviceName || (service as any)?.fields?.title || params.service,
+      suburb: (location as any)?.fields?.suburb || params.suburb,
+      city: (location as any)?.fields?.city || "",
+    } as Record<string, string>;
+
+    let title = fallback.title as string | undefined;
+    let description = fallback.description as string | undefined;
+    try {
+      if ((template as any)?.fields?.seoTitleTemplate) {
+        title = fillTemplate((template as any).fields.seoTitleTemplate, tplParams);
+      }
+      if ((template as any)?.fields?.seoDescriptionTemplate) {
+        description = fillTemplate((template as any).fields.seoDescriptionTemplate, tplParams);
+      }
+    } catch (e) {
+      // Fall back silently on templating errors
+      title = fallback.title as string | undefined;
+      description = fallback.description as string | undefined;
+    }
 
     return {
       title,
       description,
       alternates: { canonical: url },
       openGraph: {
-        title,
-        description,
+        title: title || undefined,
+        description: description || undefined,
         type: "article",
         url,
         siteName: "Pear Tree Dental",
@@ -63,8 +83,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title,
-        description,
+        title: title || undefined,
+        description: description || undefined,
       },
       robots: { index: true, follow: true },
     };

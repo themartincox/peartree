@@ -33,23 +33,22 @@ let client: ContentfulClientApi | null = null;
 if (flags.USE_MOCK || flags.FAST_BUILD) {
   client = null; // all calls return empty results
 } else {
-  if (!space) throw new Error("CONTENTFUL_SPACE_ID is not set");
-  if (!accessToken) {
-    throw new Error(
-      `Missing Contentful token: set ${
-        flags.USE_PREVIEW
-          ? "CONTENTFUL_PREVIEW_TOKEN (or CONTENTFUL_ACCESS_TOKEN)"
-          : "CONTENTFUL_DELIVERY_TOKEN"
-      }`
+  if (!space || !accessToken) {
+    // Fail-soft: do NOT throw at module init (can break route evaluation). Log and operate in mock mode.
+    // eslint-disable-next-line no-console
+    console.warn(
+      `[contentful:init] Missing credentials (space=${String(!!space)} token=${String(!!accessToken)}). Operating in mock mode.`,
     );
+    client = null;
+  } else {
+    client = createClient({
+      space,
+      environment,
+      accessToken,
+      host, // preview uses preview.contentful.com
+      retryOnError: true,
+    });
   }
-  client = createClient({
-    space,
-    environment,
-    accessToken,
-    host, // preview uses preview.contentful.com
-    retryOnError: true,
-  });
 }
 
 // Concurrency limiter
