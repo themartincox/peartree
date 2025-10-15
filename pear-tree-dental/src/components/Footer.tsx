@@ -30,7 +30,7 @@ const Footer = () => {
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
                 <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-current" />
               </div>
-              <span className="text-xs sm:text-sm text-white/80">500+ Google Reviews</span>
+              <span className="text-xs sm:text-sm text-white/80">Top rated dentist Nottingham 2025 · 500+ 5-star Google reviews</span>
             </div>
           </div>
 

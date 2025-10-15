@@ -98,7 +98,7 @@ export default function NottinghamDentistPage() {
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
-              "reviewCount": "245",
+              "reviewCount": "500",
               "bestRating": "5"
             },
             "hasOfferCatalog": {

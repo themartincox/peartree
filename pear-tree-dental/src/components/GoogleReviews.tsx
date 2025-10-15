@@ -10,7 +10,7 @@ export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
   // Get stats with fallbacks
   const stats = {
     averageRating: googleReviewsStats?.averageRating || 4.9,
-    totalReviews: googleReviewsStats?.totalReviews || 510,
+    totalReviews: googleReviewsStats?.totalReviews || 500,
   };
 
   // Render stars
@@ -36,7 +36,7 @@ export default function GoogleReviews({ className = "" }: GoogleReviewsProps) {
 
       {/* Line 2 */}
       <div className="flex items-center space-x-1 text-xs text-gray-600">
-        <span>From {stats.totalReviews}+ reviews</span>
+        <span>{stats.totalReviews}+ 5-star Google reviews</span>
         <Image
           src="/images/google-logo-mini.webp"
           alt="Google"

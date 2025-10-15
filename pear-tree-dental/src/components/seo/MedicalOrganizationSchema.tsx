@@ -154,7 +154,7 @@ export default function MedicalOrganizationSchema({
       "ratingValue": "4.9",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": "127"
+      "ratingCount": "500"
     },
 
     // Payment Options
