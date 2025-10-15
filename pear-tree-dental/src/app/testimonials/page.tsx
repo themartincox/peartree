@@ -122,8 +122,15 @@ async function loadReviewsFromFile() {
         .trim();
       const parsed = JSON.parse(sanitized);
       const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
-      if (!Array.isArray(gbp) || gbp.length === 0) continue;
-      return gbp.map((r: any, i: number) => ({
+      if (!Array.isArray(gbp) || gbp.length === 0) {
+        console.warn(`[testimonials] reviews.json at ${url} returned no items`);
+        continue;
+      }
+      // Sort newest first by createTime if present
+      const arr = [...gbp].sort((a: any, b: any) =>
+        new Date(b?.createTime || 0).getTime() - new Date(a?.createTime || 0).getTime()
+      );
+      const mapped = arr.map((r: any, i: number) => ({
         id: i + 1,
         author: r?.reviewer?.displayName || 'Anonymous',
         rating: (() => {
@@ -156,7 +163,9 @@ async function loadReviewsFromFile() {
           ? { author: 'Pear Tree Dental', text: r.reviewReply.comment, date: r?.reviewReply?.updateTime ?? '' }
           : undefined,
       }));
+      return mapped;
     } catch (e) {
+      console.warn(`[testimonials] Failed to load ${url}:`, (e as Error)?.message);
       // try next candidate
     }
   }
