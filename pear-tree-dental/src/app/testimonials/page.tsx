@@ -27,8 +27,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import ReviewsGrid from "@/components/ReviewsGrid";
-import { promises as fs } from "node:fs";
-import path from "node:path";
 
 export const metadata: Metadata = {
   title: "Google Reviews - 5 Star Patient Reviews | Pear Tree Dental Burton Joyce",
@@ -98,10 +96,9 @@ let mappedReviews: Array<{ id: number; author: string; rating: number; date: str
 
 async function loadReviewsFromFile() {
   try {
-    const filePath = path.join(process.cwd(), "src", "data", "reviews.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    const parsed = JSON.parse(raw);
-    const gbp = Array.isArray(parsed) ? parsed : parsed?.reviews ?? [];
+    // Bundle-time JSON import so it works in serverless/edge environments
+    const raw: any = (await import("@/data/reviews.json")).default;
+    const gbp = Array.isArray(raw) ? raw : raw?.reviews ?? [];
     return gbp.map((r: any, i: number) => ({
       id: i + 1,
       author: r?.reviewer?.displayName || "Anonymous",
@@ -135,7 +132,8 @@ async function loadReviewsFromFile() {
         ? { author: "Pear Tree Dental", text: r.reviewReply.comment, date: r?.reviewReply?.updateTime ?? "" }
         : undefined,
     }));
-  } catch {
+  } catch (e) {
+    console.warn("[testimonials] Failed to load reviews.json", (e as Error).message);
     return [] as any[];
   }
 }
