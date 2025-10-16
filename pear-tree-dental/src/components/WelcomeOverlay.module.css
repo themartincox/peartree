@@ -61,5 +61,4 @@
 
 @media (prefers-reduced-motion: reduce) {
   .overlay, .content { animation: none !important; }
-  .overlay { display: none; }
 }

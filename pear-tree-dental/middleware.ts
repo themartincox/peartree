@@ -33,6 +33,15 @@ export function middleware(request: NextRequest) {
 
   const reqHeaders = new Headers(request.headers);
 
+  // --- A/B variant assignment (homepage welcome overlay) ---
+  // Cookie-free: set header only for SSR; no persistence
+  const urlPath = request.nextUrl.pathname || "/";
+  const isHomepage = urlPath === "/";
+  if (isHomepage) {
+    // Force Variant B on homepage (welcome overlay)
+    reqHeaders.set("x-ptd-variant", "B");
+  }
+
   if (ENABLE_COHORT) {
     const city = request.geo?.city || "";
     const region = request.geo?.region || "";
@@ -84,6 +93,8 @@ export function middleware(request: NextRequest) {
   }
 
   const res = NextResponse.next({ request: { headers: reqHeaders } });
+
+  // No cookies used for variant assignment
 
   if (ENABLE_COHORT) {
     res.headers.set("x-ptd-cohort", reqHeaders.get("x-ptd-cohort") || "");
