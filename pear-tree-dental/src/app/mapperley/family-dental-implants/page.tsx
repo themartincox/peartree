@@ -33,6 +33,7 @@ import {
   DollarSign,
   Circle
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Family Dental Implants in Mapperley - Practical Tooth Replacement for Working Families | Pear Tree Dental",
@@ -86,7 +87,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
       description: "Replace one missing tooth with permanent implant solution",
       treatment: "Implant, abutment, and crown",
       timeframe: "3-6 months total treatment",
-      pricing: "From £2,400",
+      pricing: getTreatmentPrice("Single Dental Implant"),
       benefits: "Preserves adjacent teeth, most natural feel",
       icon: Circle
     },
@@ -104,7 +105,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
       description: "Replace 3-4 missing teeth with 2 implants supporting bridge",
       treatment: "2 implants supporting 3-4 crowns",
       timeframe: "3-6 months treatment",
-      pricing: "From £4,800",
+      pricing: getTreatmentPrice("Implant Bridge"),
       benefits: "Cost-effective for multiple teeth",
       icon: Crown
     },
@@ -113,7 +114,7 @@ export default function MapperleyFamilyDentalImplantsPage() {
       description: "Replace full arch of teeth with 4 implants",
       treatment: "4 implants supporting full arch",
       timeframe: "Same day or 3-month process",
-      pricing: "From £12,000",
+      pricing: getTreatmentPrice("All-on-4 Implants"),
       benefits: "Complete transformation, fixed teeth",
       icon: Award
     }

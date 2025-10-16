@@ -12,10 +12,12 @@ const practiceInfo: AnyRecord =
 // Map service slugs to the treatment names used in pricing.ts
 const SERVICE_NAME_MAP: Record<string, string> = {
   'dental-implants': 'Single Dental Implant',
-  'composite-bonding': 'Composite Bonding',
+  'composite-bonding': 'Composite Edge Bonding',
   'teeth-whitening': 'Teeth Whitening',
-  'clearcorrect': 'ClearCorrect',
-  'dental-crowns': 'Dental Crown',
+  'clearcorrect': 'ClearCorrect Clear Aligners',
+  'dental-crowns': 'Dental Crowns',
+  'dental-bridges': 'Ceramic Bridge',
+  'dentures': 'Acrylic Partial Dentures',
   'childrens-dentistry': 'Routine Exam',
   'emergency-dentistry': 'Emergency Appointment'
 };

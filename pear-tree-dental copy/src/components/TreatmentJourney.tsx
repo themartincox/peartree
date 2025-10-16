@@ -157,21 +157,26 @@ const TreatmentJourney: React.FC = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const journeyTop = containerRef.current?.offsetTop || 0;
-      const journeyHeight = containerRef.current?.offsetHeight || 0;
-      const journeyBottom = journeyTop + journeyHeight;
 
-      // Calculate journey progress (0-1)
-      const progress = Math.max(0, Math.min(1, (scrollY - journeyTop) / (journeyHeight - window.innerHeight)));
+      // Start journey interaction when scrolled past header
+      const headerHeight = 200; // Approximate header height
+      const journeyStart = journeyTop + headerHeight;
 
-      if (progress < 0.1) {
+      if (scrollY < journeyStart) {
         setScrollPhase('initial');
         setShowJourneyContent(false);
-      } else if (progress < 0.9) {
+      } else {
         setScrollPhase('journey-active');
         setShowJourneyContent(true);
-      } else {
-        setScrollPhase('journey-complete');
-        setShowJourneyContent(false);
+
+        // End journey when scrolled past 80% of journey height
+        const journeyHeight = containerRef.current?.offsetHeight || 0;
+        const journeyEnd = journeyTop + (journeyHeight * 0.8);
+
+        if (scrollY > journeyEnd) {
+          setScrollPhase('journey-complete');
+          setShowJourneyContent(false);
+        }
       }
     };
 
@@ -179,7 +184,7 @@ const TreatmentJourney: React.FC = () => {
     handleScroll(); // Initial call
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
+  }, [isMobile, reviewsHeight]);
 
   // listen to sticky reviews widget height
   useEffect(() => {
@@ -553,7 +558,7 @@ useEffect(() => {
 
           .mobile-sticky-header {
             position: sticky;
-            top: ${reviewsHeight + GAP_PX}px;
+            top: var(--mobile-journey-top);
             z-index: 200;
             background: var(--pear-background);
             padding: 1rem 0;

@@ -37,7 +37,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Nottingham Dental Care: What Local Patients Really Value | Pear Tree Dental",
+  title: "Nottingham Dental Care: What Local Patients Really Value | Pear Tree Dental | Orthodontics East Midlands",
   description: "Explore what patients in Nottingham say about local dental care – from parking and pricing to modern facilities and appointment access. Find the right practice for you.",
   keywords: [
     "Nottingham dental care",
@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     "private dentist Nottingham",
     "dental care Nottingham",
     "Nottingham dentist feedback"
+"east midlands orthodontics"
   ],
   openGraph: {
     title: "Nottingham Dental Care: What Local Patients Really Value | Pear Tree Dental",
