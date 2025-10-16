@@ -126,6 +126,11 @@ const TreatmentJourney: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isInJourneySection, setIsInJourneySection] = useState(false);
 
+  // Mobile-specific scroll interaction states
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrollPhase, setScrollPhase] = useState<'initial' | 'journey-active' | 'journey-complete'>('initial');
+  const [showJourneyContent, setShowJourneyContent] = useState(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -133,6 +138,48 @@ const TreatmentJourney: React.FC = () => {
 
   const GAP_PX = 8;
   const [reviewsHeight, setReviewsHeight] = useState(0);
+
+  // Mobile detection and scroll interaction setup
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Mobile scroll interaction handler
+  useEffect(() => {
+    if (!isMobile || !containerRef.current) return;
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const journeyTop = containerRef.current?.offsetTop || 0;
+      const journeyHeight = containerRef.current?.offsetHeight || 0;
+      const journeyBottom = journeyTop + journeyHeight;
+
+      // Calculate journey progress (0-1)
+      const progress = Math.max(0, Math.min(1, (scrollY - journeyTop) / (journeyHeight - window.innerHeight)));
+
+      if (progress < 0.1) {
+        setScrollPhase('initial');
+        setShowJourneyContent(false);
+      } else if (progress < 0.9) {
+        setScrollPhase('journey-active');
+        setShowJourneyContent(true);
+      } else {
+        setScrollPhase('journey-complete');
+        setShowJourneyContent(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
 
   // listen to sticky reviews widget height
   useEffect(() => {
@@ -155,6 +202,10 @@ const TreatmentJourney: React.FC = () => {
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--journey-top",
+      `${reviewsHeight + GAP_PX}px`
+    );
+    document.documentElement.style.setProperty(
+      "--mobile-journey-top",
       `${reviewsHeight + GAP_PX}px`
     );
   }, [reviewsHeight]);
@@ -244,8 +295,9 @@ useEffect(() => {
     <section className="treatment-journey-section py-0 bg-pear-background relative z-10">
       <div className="h-16 md:h-16 bg-pear-background w-full" />
 
-      {isInJourneySection && (
-        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[300] hidden lg:block animate-in fade-in duration-300">
+      {/* Desktop Navigation Dots - unchanged */}
+      {isInJourneySection && !isMobile && (
+        <div className="fixed right-6 top-1/2 -translate-y-1/2 z-[300] animate-in fade-in duration-300">
           <div className="flex flex-col space-y-2">
             {journeySteps.map((step, index) => (
               <button
@@ -272,17 +324,32 @@ useEffect(() => {
         </div>
       )}
 
+      {/* Mobile Scroll Interaction Overlay */}
+      {isMobile && scrollPhase !== 'initial' && (
+        <div className="fixed top-0 left-0 right-0 z-[250] bg-pear-background transition-all duration-500 ease-out">
+          {/* Mobile journey content will be rendered here */}
+        </div>
+      )}
+
       {/* TALL CONTAINER drives stacked-sticky */}
       <div
         ref={containerRef}
-        className="relative z-20 pb-6 md:pb-5 lg:pb-2"
-        style={{ height: `calc(${journeySteps.length} * 100svh)` }}
+        className={`relative z-20 pb-6 md:pb-5 lg:pb-2 transition-all duration-500 ${
+          isMobile && scrollPhase === 'journey-active' ? 'mobile-journey-active' : ''
+        }`}
+        style={{
+          height: isMobile
+            ? '300vh' // Increased height for mobile scroll interaction
+            : `calc(${journeySteps.length} * 100svh)`
+        }}
       >
-        {/* header */}
+        {/* header - hidden on mobile during journey */}
         <div
           ref={headerRef}
           data-journey-header
-          className="z-40 bg-pear-background py-6 sm:py-8 border-b border-gray-100 w-full"
+          className={`z-40 bg-pear-background py-6 sm:py-8 border-b border-gray-100 w-full transition-all duration-500 ${
+            isMobile && scrollPhase !== 'initial' ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
@@ -307,11 +374,14 @@ useEffect(() => {
           }`}
         </div>
 
-        {/* STICKY STACK */}
+        {/* STICKY STACK - Modified for mobile interaction */}
         {journeySteps.map((step, index) => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
           const z = 100 + index; // later steps above earlier steps
+
+          // Mobile-specific positioning
+          const mobileStickyTop = reviewsHeight + GAP_PX;
 
           return (
             <div
@@ -319,7 +389,21 @@ useEffect(() => {
               ref={(el) => {
                 stepRefs.current[index] = el;
               }}
-className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items-start justify-center pt-10 lg:pt-8 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"              style={{ zIndex: z }}
+              className={`${
+                isMobile
+                  ? 'mobile-journey-step'
+                  : `sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items-start justify-center pt-10 lg:pt-8 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]`
+              }`}
+              style={{
+                zIndex: z,
+                ...(isMobile && {
+                  position: 'sticky',
+                  top: `${mobileStickyTop}px`,
+                  height: '100svh',
+                  backgroundColor: 'var(--pear-background)',
+                  overflow: 'visible',
+                })
+              }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
@@ -333,11 +417,13 @@ className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items
                       isReverse ? "lg:col-start-2" : ""
                     }`}
                   >
-                    <div className="flex items-center space-x-3 sm:space-x-4">
+                    <div className={`flex items-center space-x-3 sm:space-x-4 ${isMobile ? 'mobile-sticky-header' : ''}`}>
                       <div
                         className={`w-12 h-12 sm:w-16 sm:h-16 ${
                           COLOR_CLASSES[index % COLOR_CLASSES.length]
-                        } rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0`}
+                        } rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0 ${
+                          isMobile ? 'mobile-icon-box shadow-md' : ''
+                        }`}
                       >
                         <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                       </div>
@@ -454,10 +540,57 @@ className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items
           backface-visibility: hidden;
           -webkit-backface-visibility: hidden;
         }
+
+        /* Mobile Journey Interaction Styles */
+        @media (max-width: 1023px) {
+          .mobile-journey-active {
+            margin-top: -100vh; /* Pull content up to start journey interaction */
+          }
+
+          .mobile-journey-step {
+            transition: transform 0.3s ease-out;
+          }
+
+          .mobile-sticky-header {
+            position: sticky;
+            top: ${reviewsHeight + GAP_PX}px;
+            z-index: 200;
+            background: var(--pear-background);
+            padding: 1rem 0;
+            margin-bottom: 1rem;
+          }
+
+          .mobile-icon-box {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+          }
+
+          /* Smooth transition between phases */
+          .treatment-journey-section.mobile-journey-active {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          /* Hide header during mobile journey */
+          .treatment-journey-section.mobile-journey-active [data-journey-header] {
+            opacity: 0;
+            transform: translateY(-100%);
+            pointer-events: none;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .treatment-journey-section * {
             transition: none !important;
             animation: none !important;
+          }
+
+          @media (max-width: 1023px) {
+            .mobile-journey-step,
+            .mobile-sticky-header,
+            .mobile-icon-box {
+              transition: none !important;
+            }
           }
         }
       `}</style>
