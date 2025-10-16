@@ -100,7 +100,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
         {/* ------------------------ */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           {/* MOBILE / TABLET */}
-          <div className="lg:hidden py-8 sm:py-12 relative">
+          <div className="lg:hidden relative flex flex-col min-h-[100svh] pt-8 sm:pt-12 pb-[calc(env(safe-area-inset-bottom,0)+12px)]">
             <h1
               className="heading-serif text-[2.6rem] sm:text-6xl md:text-7xl font-bold
                          text-pear-primary drop-shadow-md leading-[1.05] mb-6"
@@ -129,8 +129,20 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 Trusted since 1990.
               </p>
             </div>
+            {/* Awards badge: left-aligned under the paragraph to occupy white space */}
+            <div className="w-3/4 mx-0 mt-2">
+              <Image
+                src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
+                alt="Private Dentistry Awards 2025 finalist"
+                width={300}
+                height={300}
+                className="w-[180px] h-auto opacity-85"
+                sizes="(max-width: 767px) 180px"
+              />
+            </div>
 
-            <div className="flex flex-col space-y-4 w-full max-w-md mt-[60px]">
+            {/* Bottom group: CTAs + Reviews pinned towards viewport bottom */}
+            <div className="flex flex-col space-y-4 w-full max-w-md mt-auto">
               <Button
                 asChild
                 size="lg"
@@ -154,18 +166,6 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               </Button>
 
               <MobileGoogleReviews />
-
-              {/* Mobile: Awards finalist badge below reviews widget (subtle, ~25% width), centered */}
-              <div className="mt-2 flex justify-center">
-                <Image
-                  src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
-                  alt="Private Dentistry Awards 2025 finalist"
-                  width={300}
-                  height={300}
-                  className="w-1/4 min-w-[84px] h-auto opacity-85"
-                  sizes="(max-width: 767px) 25vw"
-                />
-              </div>
             </div>
           </div>
 

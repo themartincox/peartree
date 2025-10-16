@@ -1,0 +1,19 @@
+# Robots.txt file for Pear Tree Dental (peartree.dental)
+# Last updated: October 02, 2025
+
+User-agent: *
+Allow: /
+Disallow: /dentalhub/
+Disallow: /test-form/
+Disallow: /member2/
+Disallow: /rivendell/
+Disallow: /jobstobedone/
+Crawl-delay: 1
+
+# Allow all image crawlers
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /uploads/
+
+# Sitemaps (use static index as canonical source)
+Sitemap: https://peartree.dental/sitemap-index.xml
