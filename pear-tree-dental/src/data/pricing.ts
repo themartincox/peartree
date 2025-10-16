@@ -19,6 +19,7 @@ export interface MembershipPlan {
   includes: string[];
   popular?: boolean;
   planId: string;
+  hidden?: boolean;
 }
 
 // Membership Plans
@@ -37,6 +38,20 @@ export const membershipPlans: MembershipPlan[] = [
     ],
     popular: true,
     planId: "family"
+  },
+  {
+    name: "Child Plan",
+    price: "£5.20",
+    period: "/month",
+    description: "Specialised dental care for children under 18",
+    includes: [
+      "2 check ups per year",
+      "Fluoride treatments included",
+      "Fissure sealants when required",
+      "Worldwide Emergency Dental Cover"
+    ],
+    planId: "child",
+    hidden: true
   },
   {
     name: "Essential Maintenance Plan",

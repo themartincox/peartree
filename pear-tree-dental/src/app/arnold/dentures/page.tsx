@@ -26,6 +26,7 @@ import {
   Zap,
   Target
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Dentures in Arnold - Premium Denture Solutions | Pear Tree Dental",
@@ -78,7 +79,7 @@ export default function ArnoldDenturesPage() {
       name: "Complete Dentures",
       description: "Full replacement when all teeth are missing",
       features: ["Custom-made acrylic", "Natural gum coloring", "Perfect bite alignment", "Comfortable fit"],
-      price: "From £750",
+      price: getTreatmentPrice("Complete Acrylic Dentures"),
       duration: "4-6 weeks",
       icon: Crown,
       suitable: "All teeth missing"
@@ -87,7 +88,7 @@ export default function ArnoldDenturesPage() {
       name: "Partial Dentures",
       description: "Replace multiple missing teeth",
       features: ["Metal or acrylic framework", "Clips to existing teeth", "Natural tooth matching", "Removable design"],
-      price: "From £450",
+      price: getTreatmentPrice("Acrylic Partial Dentures"),
       duration: "3-4 weeks",
       icon: Settings,
       suitable: "Some natural teeth remaining"
@@ -96,7 +97,7 @@ export default function ArnoldDenturesPage() {
       name: "Flexible Dentures",
       description: "Valplast thermoplastic dentures",
       features: ["Metal-free design", "Flexible comfortable fit", "Natural pink gums", "Stain resistant"],
-      price: "From £850",
+      price: getTreatmentPrice("Valplast Dentures"),
       duration: "3-4 weeks",
       icon: Heart,
       suitable: "Sensitive gums or metal allergies"

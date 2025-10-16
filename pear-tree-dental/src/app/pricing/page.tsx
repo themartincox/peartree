@@ -122,7 +122,7 @@ export default function PricingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {membershipPlans.map((plan, index) => (
+            {membershipPlans.filter(p => !p.hidden).map((plan, index) => (
               <Card key={plan.name} className={`relative ${plan.popular ? 'border-2 border-pear-gold' : ''}`}>
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">

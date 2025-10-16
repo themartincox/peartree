@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import GoogleReviews from "./GoogleReviews";
 import { Star } from "lucide-react";
 
@@ -44,7 +44,15 @@ function SingleLineGoogleReviews() {
 export default function MobileGoogleReviews() {
   const [isSticky, setIsSticky] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [journeyActive, setJourneyActive] = useState(false);
   const triggerRef = useRef<HTMLDivElement | null>(null);
+  const stickyRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    return () => {
+      window.dispatchEvent(new CustomEvent('reviews:unsticky'));
+    };
+  }, []);
 
   // Measure header height dynamically
   useEffect(() => {
@@ -68,6 +76,19 @@ export default function MobileGoogleReviews() {
     };
   }, []);
 
+  // Listen for Treatment Journey enter/exit to coordinate behaviour
+  useEffect(() => {
+    const handleEnter = () => setJourneyActive(true);
+    const handleExit = () => setJourneyActive(false);
+
+    window.addEventListener("journey:enter", handleEnter);
+    window.addEventListener("journey:exit", handleExit);
+    return () => {
+      window.removeEventListener("journey:enter", handleEnter);
+      window.removeEventListener("journey:exit", handleExit);
+    };
+  }, []);
+
   // Observe scroll to toggle sticky mode
   useEffect(() => {
     const handleScroll = () => {
@@ -75,19 +96,37 @@ export default function MobileGoogleReviews() {
       if (!trigger) return;
 
       const rect = trigger.getBoundingClientRect();
-      // When the top of the trigger passes the header + small gap, activate sticky
       const stickyThreshold = (headerHeight || 0) + 8; // 8px gap below header
-      if (rect.top <= stickyThreshold) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+      const nextSticky = rect.top <= stickyThreshold;
+      setIsSticky(nextSticky);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, [headerHeight]);
+
+  useEffect(() => {
+    const notify = () => {
+      if (!stickyRef.current) return;
+      const height = stickyRef.current.offsetHeight || 0;
+      const position = journeyActive ? "top" : "below-nav";
+      window.dispatchEvent(
+        new CustomEvent('reviews:sticky', { detail: { height, position } })
+      );
+    };
+
+    if (!isSticky) {
+      window.dispatchEvent(new CustomEvent('reviews:unsticky'));
+      return;
+    }
+
+    notify();
+    window.addEventListener('resize', notify);
+    return () => {
+      window.removeEventListener('resize', notify);
+    };
+  }, [isSticky, journeyActive]);
 
   return (
     <div className="w-full mx-auto">
@@ -107,8 +146,12 @@ export default function MobileGoogleReviews() {
       {/* Sticky rendering as single line when scrolled past threshold */}
       {isSticky && (
         <div
+          ref={stickyRef}
           className="fixed left-0 right-0 z-50"
-          style={{ top: `${headerHeight}px` }}
+          style={{
+            top: journeyActive ? 0 : headerHeight,
+            paddingTop: journeyActive ? "env(safe-area-inset-top, 0px)" : 0
+          }}
         >
           <SingleLineGoogleReviews />
         </div>

@@ -46,8 +46,8 @@ export const metadata: Metadata = {
     "NG1 dental care",
     "private dentist Nottingham",
     "dental care Nottingham",
-    "Nottingham dentist feedback"
-"east midlands orthodontics"
+    "Nottingham dentist feedback",
+    "east midlands orthodontics"
   ],
   openGraph: {
     title: "Nottingham Dental Care: What Local Patients Really Value | Pear Tree Dental",

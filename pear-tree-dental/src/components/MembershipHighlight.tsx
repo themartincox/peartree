@@ -36,6 +36,7 @@ function priceForPlan(key: string): string {
     essentialMaintenance: "plan-a",
     completeCare: "plan-c",
     family: "family",
+    child: "child",
   };
   const planId = idByKey[key];
   if (!planId) return "";
@@ -96,7 +97,7 @@ const membershipPlans = {
   },
   child: {
     name: "CHILD PLAN",
-    price: "£5.20",
+    price: priceForPlan("child"),
     period: "/month",
     dailyCost: "Just 17p per day",
     savings: "180",

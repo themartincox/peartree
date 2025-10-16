@@ -27,6 +27,7 @@ import {
   Smile,
   Layers
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Orthodontics in Arnold - Comprehensive Teeth Straightening | Pear Tree Dental",
@@ -79,7 +80,7 @@ export default function ArnoldOrthodonticsPage() {
       name: "Invisalign",
       description: "World's most advanced clear aligner system",
       features: ["Virtually invisible", "Removable convenience", "SmartTrack material", "Predictable results"],
-      price: "From £2,800",
+      price: getTreatmentPrice("Invisalign"),
       duration: "6-18 months",
       icon: Eye,
       suitability: "All ages, complex cases",
@@ -89,7 +90,7 @@ export default function ArnoldOrthodonticsPage() {
       name: "ClearCorrect",
       description: "Professional clear aligner alternative",
       features: ["Excellent value", "Clear and comfortable", "Effective results", "Flexible treatment"],
-      price: "From £2,400",
+      price: getTreatmentPrice("ClearCorrect Clear Aligners"),
       duration: "8-16 months",
       icon: Target,
       suitability: "Adults and teens",

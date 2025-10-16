@@ -133,10 +133,6 @@ const TreatmentJourney: React.FC = () => {
 
   const GAP_PX = 8;
   const [reviewsHeight, setReviewsHeight] = useState(0);
-  const [navHeight, setNavHeight] = useState(0);
-  const [isDesktop, setIsDesktop] = useState<boolean>(
-    typeof window !== "undefined" ? window.innerWidth >= 1024 : false
-  );
 
   // listen to sticky reviews widget height
   useEffect(() => {
@@ -155,36 +151,13 @@ const TreatmentJourney: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const measureNav = () => {
-      const nav = document.querySelector("#secondary-nav") as HTMLElement | null;
-      const height = nav ? Math.round(nav.getBoundingClientRect().height) : 0;
-      setNavHeight(height);
-    };
-
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-      measureNav();
-    };
-
-    measureNav();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   // expose top offset for sticky
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const mobileTop = reviewsHeight + GAP_PX;
-    const desktopTop = navHeight + 10;
-    const appliedTop = isDesktop ? desktopTop : mobileTop;
-
-    document.documentElement.style.setProperty("--journey-top", `${appliedTop}px`);
-    document.documentElement.style.setProperty("--mobile-journey-top", `${mobileTop}px`);
-  }, [isDesktop, navHeight, reviewsHeight]);
+    document.documentElement.style.setProperty(
+      "--journey-top",
+      `${reviewsHeight + GAP_PX}px`
+    );
+  }, [reviewsHeight]);
 
   // IO for section presence + active step
   useEffect(() => {
@@ -199,21 +172,22 @@ const TreatmentJourney: React.FC = () => {
 
     const topOffset = -(reviewsHeight + GAP_PX);
     const stepObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visible) {
-          const idx = steps.indexOf(visible.target as HTMLDivElement);
-          if (idx !== -1) setActiveStep(idx);
-        }
-      },
-      {
-        root: null,
-        rootMargin: `${topOffset}px 0px -20% 0px`,
-        threshold: [0.5, 0.75],
-      }
-    );
+  (entries) => {
+    const visible = entries
+      .filter((e) => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) {
+      const idx = steps.indexOf(visible.target as HTMLDivElement);
+      if (idx !== -1) setActiveStep(idx);
+    }
+  },
+  {
+    root: null,
+    // Keep the existing top offset for sticky widgets...
+    rootMargin: `${topOffset}px 0px -20% 0px`, // <-- adds bottom leeway
+    threshold: [0.5, 0.75],                     // <-- easier to remain "active"
+  }
+);
 
     steps.forEach((el) => stepObserver.observe(el));
 
@@ -222,17 +196,6 @@ const TreatmentJourney: React.FC = () => {
       stepObserver.disconnect();
     };
   }, [journeySteps.length, reviewsHeight]);
-
-  // Broadcast journey enter/exit for coordinated UI (e.g., nav, reviews)
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const eventName = isInJourneySection ? "journey:enter" : "journey:exit";
-    window.dispatchEvent(new CustomEvent(eventName));
-
-    return () => {
-      window.dispatchEvent(new CustomEvent("journey:exit"));
-    };
-  }, [isInJourneySection]);
 
   // progress from active index
   useEffect(() => {
@@ -249,31 +212,33 @@ const TreatmentJourney: React.FC = () => {
     });
   }, [activeStep]);
 
+
   const scrollToStep = (idx: number) => {
     const el = stepRefs.current[idx];
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  useEffect(() => {
-    const recalc = () => {
-      if (!containerRef.current) return;
-      const headerH = headerRef.current?.offsetHeight ?? 0;
+useEffect(() => {
+  const recalc = () => {
+    if (!containerRef.current) return;
+    const headerH = headerRef.current?.offsetHeight ?? 0;
 
-      const root = getComputedStyle(document.documentElement);
-      const topPx = parseInt(root.getPropertyValue("--journey-top")) || 0;
+    const root = getComputedStyle(document.documentElement);
+    const topPx = parseInt(root.getPropertyValue("--journey-top")) || 0;
 
-      const vh = window.innerHeight;
-      const buffer = 24;
-      const total = headerH + journeySteps.length * vh + topPx + buffer;
+    const vh = window.innerHeight;
+    // Track = header + N*vh + top offset + small buffer
+    const buffer = 24; // tweak if you see a tiny clip
+    const total = headerH + journeySteps.length * vh + topPx + buffer;
 
-      containerRef.current.style.height = `${total}px`;
-    };
+    containerRef.current.style.height = `${total}px`;
+  };
 
-    recalc();
-    window.addEventListener("resize", recalc);
-    return () => window.removeEventListener("resize", recalc);
-  }, [journeySteps.length, reviewsHeight, isDesktop, navHeight]);
+  recalc();
+  window.addEventListener("resize", recalc);
+  return () => window.removeEventListener("resize", recalc);
+}, [journeySteps.length, reviewsHeight]);
 
   return (
     <section className="treatment-journey-section py-0 bg-pear-background relative z-10">
@@ -307,11 +272,13 @@ const TreatmentJourney: React.FC = () => {
         </div>
       )}
 
+      {/* TALL CONTAINER drives stacked-sticky */}
       <div
         ref={containerRef}
         className="relative z-20 pb-6 md:pb-5 lg:pb-2"
         style={{ height: `calc(${journeySteps.length} * 100svh)` }}
       >
+        {/* header */}
         <div
           ref={headerRef}
           data-journey-header
@@ -332,16 +299,19 @@ const TreatmentJourney: React.FC = () => {
           </div>
         </div>
 
+
+        {/* sr live region */}
         <div aria-live="polite" className="sr-only">
           {`Step ${activeStep + 1} of ${journeySteps.length}: ${
             journeySteps[activeStep]?.title ?? ""
           }`}
         </div>
 
+        {/* STICKY STACK */}
         {journeySteps.map((step, index) => {
           const Icon = step.icon;
           const isReverse = index % 2 === 1;
-          const z = 100 + index;
+          const z = 100 + index; // later steps above earlier steps
 
           return (
             <div
@@ -349,8 +319,7 @@ const TreatmentJourney: React.FC = () => {
               ref={(el) => {
                 stepRefs.current[index] = el;
               }}
-              className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items-start justify-center pt-10 lg:pt-0 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"
-              style={{ zIndex: z }}
+className="sticky top-[var(--journey-top)] h-[100svh] flex items-center lg:items-start justify-center pt-10 lg:pt-8 bg-pear-background overflow-visible contain-paint scroll-mt-[var(--journey-top)]"              style={{ zIndex: z }}
             >
               <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div
@@ -358,6 +327,7 @@ const TreatmentJourney: React.FC = () => {
                     isReverse ? "lg:grid-flow-col-dense" : ""
                   }`}
                 >
+                  {/* TEXT */}
                   <div
                     className={`space-y-4 sm:space-y-6 ${
                       isReverse ? "lg:col-start-2" : ""
@@ -411,6 +381,7 @@ const TreatmentJourney: React.FC = () => {
                     )}
                   </div>
 
+                  {/* MEDIA */}
                   <div className={`${isReverse ? "lg:col-start-1" : "lg:col-start-2"}`}>
                     <Card className="overflow-hidden shadow-2xl">
                       <div className="aspect-[4/3] relative journey-media">
@@ -471,11 +442,12 @@ const TreatmentJourney: React.FC = () => {
       <style jsx global>{`
         :root {
           --journey-top: 8px;
-          --mobile-journey-top: 8px;
         }
+        /* Ensure parents don't kill sticky */
         .treatment-journey-section {
           overflow: visible !important;
         }
+        /* Flicker guards */
         .journey-media {
           will-change: transform;
           transform: translateZ(0);

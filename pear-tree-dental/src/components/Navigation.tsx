@@ -112,15 +112,27 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", onScroll as any);
   }, []);
 
-  // Journey enter/exit events from TreatmentJourney
+  // Respond to reviews widget sticky state to coordinate nav (mobile only)
   useEffect(() => {
-    const onEnter = () => setInJourney(true);
-    const onExit = () => setInJourney(false);
-    window.addEventListener("journey:enter", onEnter);
-    window.addEventListener("journey:exit", onExit);
+    const onSticky = (event: Event) => {
+      if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+      const detail = (event as CustomEvent).detail ?? {};
+      if (detail.position === "top") {
+        setInJourney(true);
+      } else {
+        setInJourney(false);
+      }
+    };
+    const onUnsticky = () => {
+      if (typeof window === "undefined" || window.innerWidth >= 1024) return;
+      setInJourney(false);
+    };
+
+    window.addEventListener("reviews:sticky", onSticky as EventListener);
+    window.addEventListener("reviews:unsticky", onUnsticky);
     return () => {
-      window.removeEventListener("journey:enter", onEnter);
-      window.removeEventListener("journey:exit", onExit);
+      window.removeEventListener("reviews:sticky", onSticky as EventListener);
+      window.removeEventListener("reviews:unsticky", onUnsticky);
     };
   }, []);
 

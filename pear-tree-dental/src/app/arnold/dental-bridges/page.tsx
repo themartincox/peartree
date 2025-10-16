@@ -25,6 +25,7 @@ import {
   Settings,
   Layers
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Dental Bridges in Arnold - Traditional Tooth Replacement | Pear Tree Dental",
@@ -104,7 +105,7 @@ export default function ArnoldDentalBridgesPage() {
       name: "Implant-Supported Bridge",
       description: "Bridge supported by dental implants",
       features: ["No natural tooth preparation", "Maximum preservation", "Ultimate stability", "Long-term solution"],
-      price: "From £3,500",
+      price: getTreatmentPrice("Implant Bridge"),
       duration: "3-6 months",
       icon: Crown,
       suitability: "Multiple missing teeth, preserve natural teeth"

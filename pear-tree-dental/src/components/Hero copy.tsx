@@ -129,7 +129,6 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 Trusted since 1990.
               </p>
             </div>
-
             {/* Awards badge: left-aligned under the paragraph to occupy white space */}
             <div className="w-3/4 mx-0 mt-1 max-[380px]:w-full">
               <Image

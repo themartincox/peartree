@@ -24,6 +24,7 @@ import {
   Eye,
   Smile
 } from "lucide-react";
+import { getTreatmentPrice } from "@/data/pricing";
 
 export const metadata: Metadata = {
   title: "Porcelain Veneers in Arnold - Premium Smile Makeover | Pear Tree Dental",
@@ -76,7 +77,7 @@ export default function ArnoldPorcelainVeneersPage() {
       name: "Ultra-Thin Veneers",
       description: "Minimal prep veneers as thin as 0.3mm",
       benefits: ["Minimal tooth removal", "Reversible option", "Quick placement"],
-      price: "From £750",
+      price: getTreatmentPrice("Ultra-thin, Contact-lens, Veneers"),
       duration: "2-3 weeks",
       icon: Sparkles
     },
@@ -84,7 +85,7 @@ export default function ArnoldPorcelainVeneersPage() {
       name: "Premium Porcelain",
       description: "Traditional porcelain veneers for complete transformation",
       benefits: ["Maximum durability", "Perfect aesthetics", "10-year guarantee"],
-      price: "From £950",
+      price: getTreatmentPrice("Porcelain Veneers"),
       duration: "3-4 weeks",
       icon: Crown
     },
@@ -92,7 +93,7 @@ export default function ArnoldPorcelainVeneersPage() {
       name: "Composite Veneers",
       description: "Same-day composite resin veneers",
       benefits: ["Completed in one visit", "More affordable", "Repairable"],
-      price: "From £350",
+      price: getTreatmentPrice("Composite Veneers"),
       duration: "Same day",
       icon: Smile
     }
