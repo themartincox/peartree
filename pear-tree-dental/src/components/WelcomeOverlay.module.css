@@ -6,22 +6,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: overlayWelcomeFadeOut 0.5s ease-in-out 0.5s forwards;
+  /* 750ms fade, 1250ms delay (hold), total ~2s */
+  animation: overlayWelcomeFadeOut 0.75s ease-in-out 1.25s forwards;
 }
 
 .content {
   animation: overlaySlideUp 0.6s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.text {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 300;
-  color: #374151;
-  text-align: center;
+.heading {
+  margin: 0;
   padding: 0 1rem;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.1;
+}
+
+.topLine {
+  display: block;
+  font-size: clamp(1.5rem, 4.5vw, 2.75rem);
+  font-weight: 300;
+  color: #374151;
+  letter-spacing: -0.01em;
+}
+
+.brandLine {
+  display: block;
+  font-size: clamp(2.2rem, 6.5vw, 4rem);
+  font-weight: 400;
+  color: #374151;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  margin-top: 0.2rem;
+}
+
+.awardImage {
+  margin-top: 0.75rem;
+  width: clamp(160px, 55vw, 320px);
+  height: auto;
 }
 
 @keyframes overlayWelcomeFadeOut {
@@ -38,4 +62,3 @@
   .overlay, .content { animation: none !important; }
   .overlay { display: none; }
 }
-

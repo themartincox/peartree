@@ -11,8 +11,8 @@ export default function WelcomeScreenVariantB() {
     const prev = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
-    // Hold for ~0.5s then allow CSS fade (0.5s), unmount after ~1s total
-    const total = 1500; // 750ms hold + 750ms fade
+    // Hold for 1250ms then allow CSS fade for 750ms, unmount after ~2.0s total
+    const total = 2000; // 1250ms hold + 750ms fade
     const timer = setTimeout(() => {
       setVisible(false);
       document.body.style.overflow = prev;
@@ -29,7 +29,17 @@ export default function WelcomeScreenVariantB() {
   return (
     <div className={styles.overlay} aria-hidden>
       <div className={styles.content}>
-        <h1 className={styles.text}>Welcome to Pear Tree Dental</h1>
+        <h1 className={styles.heading}>
+          <span className={styles.topLine}>Welcome To</span>
+          <span className={styles.brandLine}>Pear Tree Dental</span>
+        </h1>
+        <img
+          className={styles.awardImage}
+          src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
+          alt="Private Dentistry Awards Finalist"
+          loading="eager"
+          decoding="async"
+        />
       </div>
     </div>
   );
