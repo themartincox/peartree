@@ -103,7 +103,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
           <div className="lg:hidden relative flex flex-col min-h-[100svh] pt-8 sm:pt-12 pb-[calc(env(safe-area-inset-bottom,0)+12px)]">
             <h1
               className="heading-serif text-[2.6rem] sm:text-6xl md:text-7xl font-bold
-                         text-pear-primary drop-shadow-md leading-[1.05] mb-6"
+                         text-pear-primary drop-shadow-md leading-[1.05] mb-6 max-[380px]:text-[2.3rem] max-[380px]:mb-4"
             >
               Expert dental care
               <br />
@@ -118,10 +118,10 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             </h1>
 
             {/* MOBILE-ONLY bounded text container (1/2 width, centred region) */}
-            <div className="w-3/4 mx-0 mb-8">
+            <div className="w-3/4 mx-0 mb-8 max-[380px]:w-full max-[380px]:mb-6">
               <p
                 className="text-lg sm:text-xl text-pear-primary font-normal leading-relaxed
-                           drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)]"
+                           drop-shadow-[1px_1px_2px_rgba(0,0,0,0.25)] max-[380px]:text-base max-[380px]:leading-snug"
               >
                 <br />
                 Award-winning modern dental care at Nottingham&apos;s top-rated dental clinic.
@@ -130,14 +130,14 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               </p>
             </div>
             {/* Awards badge: left-aligned under the paragraph to occupy white space */}
-            <div className="w-3/4 mx-0 mt-2">
+            <div className="w-3/4 mx-0 mt-1 max-[380px]:w-full">
               <Image
                 src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
                 alt="Private Dentistry Awards 2025 finalist"
                 width={300}
                 height={300}
-                className="w-[180px] h-auto opacity-85"
-                sizes="(max-width: 767px) 180px"
+                className="w-[90px] h-auto opacity-85 max-[380px]:w-[84px]"
+                sizes="(max-width: 767px) 90px"
               />
             </div>
 
