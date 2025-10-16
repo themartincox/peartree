@@ -137,14 +137,15 @@ export const generalTreatments: TreatmentPrice[] = [
 
 // Cosmetic Dentistry
 export const cosmeticTreatments: TreatmentPrice[] = [
-  { name: "Teeth Whitening", price: "From £400", popular: true, category: "cosmetic" },
+  { name: "Teeth Whitening", price: "From £350", popular: true, category: "cosmetic" },
   { name: "Enlighten Whitening", price: "£650", category: "cosmetic" },
-  { name: "Composite Veneers", price: "From £200 per tooth", category: "cosmetic" },
+  { name: "Composite Veneers", price: "From £300 per tooth", category: "cosmetic" },
   { name: "Porcelain Veneers", price: "From £750 per tooth", category: "cosmetic" },
+  { name: "Ultra-thin, Contact-lens, Veneers", price: "£950 per tooth", category: "cosmetic" },
   { name: "Composite Edge Bonding", price: "From £150 per tooth", category: "cosmetic" },
   { name: "Wedding Day Smile", price: "From £350", category: "cosmetic" },
-  { name: "Buccal Corridor Correction", price: "From £2,500", category: "cosmetic" },
-  { name: "Smile Makeover", price: "From £2,500", category: "cosmetic" }
+  { name: "Buccal Corridor Correction", price: "From £2500", category: "cosmetic" },
+  { name: "Smile Makeover", price: "From £2500", category: "cosmetic" }
 ];
 
 // Restorative Dentistry
@@ -153,22 +154,22 @@ export const restorativeTreatments: TreatmentPrice[] = [
   { name: "Ceramic Bridge", price: "From £710 per unit", category: "restorative" },
   { name: "Acrylic Partial Dentures", price: "From £750 per arch", category: "restorative" },
   { name: "Complete Acrylic Dentures", price: "From £850 per arch", category: "restorative" },
-  { name: "Valplast Dentures", price: "From £1,100 per arch", category: "restorative" },
-  { name: "Cobalt Chrome Dentures", price: "From £1,100", category: "restorative" },
-  { name: "Hybrid Dentures", price: "From £1,800", category: "restorative" }
+  { name: "Valplast Dentures", price: "From £1100 per arch", category: "restorative" },
+  { name: "Cobalt Chrome Dentures", price: "From £1100", category: "restorative" },
+  { name: "Hybrid Dentures", price: "From £1800", category: "restorative" }
 ];
 
 // Orthodontic Treatments
 export const orthodonticTreatments: TreatmentPrice[] = [
-  { name: "ClearCorrect Clear Aligners", price: "From £2,000", category: "orthodontic" },
-  { name: "Invisalign", price: "From £2,100", popular: true, category: "orthodontic" },
+  { name: "ClearCorrect Clear Aligners", price: "From £2400", category: "orthodontic" },
+  { name: "Invisalign", price: "From £2800", popular: true, category: "orthodontic" },
   { name: "Retainers", price: "From £150 per arch", category: "orthodontic" }
 ];
 
 // Implant Dentistry
 export const implantTreatments: TreatmentPrice[] = [
-  { name: "Single Dental Implant", price: "From £3,000", popular: true, category: "implant" },
-  { name: "Implant Bridge", price: "From £8,000", category: "implant" },
+  { name: "Single Dental Implant", price: "From £2500", popular: true, category: "implant" },
+  { name: "Implant Bridge", price: "From £8500", category: "implant" },
   { name: "All-on-4 Implants", price: "POA", description: "Price on Application", category: "implant" }
 ];
 
