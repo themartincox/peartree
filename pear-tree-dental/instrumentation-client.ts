@@ -1,9 +1,32 @@
 import posthog from "posthog-js"
 
-posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-  api_host: "/ingest",
-  ui_host: "https://eu.posthog.com",
-  defaults: '2025-05-24',
-  capture_exceptions: true, // This enables capturing exceptions using Error Tracking, set to false if you don't want this
-  debug: process.env.NODE_ENV === "development",
-});
+const globalScope = globalThis as typeof globalThis & {
+  __posthogCookielessInitialized?: boolean
+}
+
+const apiKey = process.env.NEXT_PUBLIC_POSTHOG_KEY
+
+if (typeof window !== "undefined" && apiKey && !globalScope.__posthogCookielessInitialized) {
+  posthog.init(apiKey, {
+    api_host: "/ingest",
+    ui_host: "https://eu.posthog.com",
+    capture_pageview: true,
+    persistence: "memory",                 // 🍪 no cookies/localStorage
+    disable_session_recording: true,      // 🔒 no session recording
+    opt_out_capturing_by_default: true,   // 🚫 nothing until consent
+    autocapture: true,
+    capture_exceptions: true,
+    debug: process.env.NODE_ENV === "development",
+    bootstrap: {
+      distinctID: undefined,
+      isIdentifiedID: false,
+      featureFlags: {},
+    },
+    sanitize_properties: (props) => {
+      delete props.$ip
+      return props
+    },
+  })
+
+  globalScope.__posthogCookielessInitialized = true
+}
