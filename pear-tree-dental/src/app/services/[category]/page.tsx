@@ -136,11 +136,11 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
 
   const { category, treatments } = data;
 
-  if (resolvedSlug === 'restorative') {
+  if (['restorative', 'restorative-dentistry'].includes(resolvedSlug)) {
     category.heroImage = {
       url: '/images/heroes/restorative/veneers.webp',
-      description: 'Veneers',
-      title: 'Veneers'
+      description: 'Veneers — Restorative Dentistry',
+      title: 'Veneers — Restorative Dentistry'
     };
   }
 
@@ -172,6 +172,8 @@ export default async function ServiceCategoryPage({ params }: { params: Promise<
               src={category.heroImage.url}
               alt={category.heroImage.description ?? `${category.title} at Pear Tree Dental`}
               fill
+              priority={['restorative', 'restorative-dentistry'].includes(resolvedSlug)}
+              fetchPriority={['restorative', 'restorative-dentistry'].includes(resolvedSlug) ? 'high' : undefined}
               sizes="100vw"
               className="object-cover opacity-30"
             />

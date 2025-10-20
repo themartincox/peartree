@@ -88,8 +88,9 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             alt="Smiling family at Pear Tree Dental"
             width={1200}
             height={900}
+            priority
+            fetchPriority="high"
             quality={85}
-            loading="lazy"
             sizes="(min-width:1536px) 1320px, (min-width:1280px) 1155px, (min-width:1024px) 990px, 825px"
             className="w-[57vw] min-w-[660px] max-w-[1320px] xl:w-[66vw] 2xl:w-[75vw] h-auto object-contain"
           />

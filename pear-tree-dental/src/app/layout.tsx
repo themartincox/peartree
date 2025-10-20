@@ -49,26 +49,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://scripts.simpleanalyticscdn.com" crossOrigin="" />
         <link rel="preconnect" href="https://queue.simpleanalyticscdn.com" crossOrigin="" />
 
-        {/* ⭐ Preload desktop hero image ONLY on ≥1024px to help desktop LCP without double-preloading mobile */}
-        <link
-          rel="preload"
-          as="image"
-          href="/images/heroes/hero-home-new-family.webp"
-          media="(min-width: 1024px)"
-          // type="image/webp" // uncomment if correct
-          imagesrcset="/images/heroes/hero-home-new-family.webp 750w, /images/heroes/hero-home-new-family.webp 900w, /images/heroes/hero-home-new-family.webp 1050w, /images/heroes/hero-home-new-family.webp 1200w"
-          imagesizes="(min-width:1536px) 1200px, (min-width:1280px) 1050px, (min-width:1024px) 900px, 750px"
-        />
-        {/* ⭐ Preload mobile hero via Next/Image optimized URLs so the browser grabs the exact variant it will render */}
-        <link
-          rel="preload"
-          as="image"
-          media="(max-width: 1023px)"
-          href="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=30"
-          imagesrcset="/_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=640&q=30 640w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=750&q=30 750w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=828&q=30 828w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=960&q=30 960w, /_next/image?url=%2Fimages%2Fheroes%2Fhero-home-family-left.webp&w=1080&q=30 1080w"
-          imagesizes="75vw"
-          // type="image/webp"
-        />
+        {/* Note: Avoid global preloads of hero images to prevent unused-preload warnings on non-home pages.
+            Use Next/Image `priority` on the specific page components instead (see Hero.tsx). */}
         {/* If your LCP image ever comes from a remote host (e.g., Contentful), add a preconnect:
         <link rel="preconnect" href="https://images.ctfassets.net" crossOrigin="" />
         */}

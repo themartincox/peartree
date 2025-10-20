@@ -7,6 +7,14 @@ export function PosthogProvider() {
     const apiKey = process.env.NEXT_PUBLIC_POSTHOG_KEY
     if (!apiKey) return
 
+    // Guard against duplicate initialization across re-mounts/navigation
+    if (typeof window !== "undefined" && (window as any).__PH_INITIALIZED__) {
+      return
+    }
+    if (typeof window !== "undefined") {
+      ;(window as any).__PH_INITIALIZED__ = true
+    }
+
     posthog.init(apiKey, {
       api_host: "/ingest",
       ui_host: "https://eu.posthog.com",
