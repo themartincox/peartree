@@ -89,8 +89,8 @@ export const serviceHeroes: Record<string, ServiceHeroConfig> = {
   },
 
   "/services/restorative": {
-    heroImage: "/images/heroes/restorative-dentistry-hero.webp",
-    heroImageAlt: "Dental restoration procedure showing crown and filling treatments",
+    heroImage: "/images/heroes/restorative/veneers.webp",
+    heroImageAlt: "Veneers — Restorative Dentistry",
     badgeText: "Restorative Dentistry",
     badgeIcon: "Wrench",
     title: "Restore Your",
