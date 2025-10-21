@@ -39,6 +39,7 @@ export default function ContactFormCard({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [subject, setSubject] = useState<string>('new website contact General Enquiry');
   const formRef = useRef<HTMLFormElement>(null);
 
   // const { trackBookingAttempt, trackLocationConversion, trackServiceInterest } = useConversionTracking(); // <-- STEP 2: Commented out
@@ -53,7 +54,25 @@ export default function ContactFormCard({
     setFocusedField(null);
   };
 
+  const SERVICE_LABELS: Record<string, string> = {
+    'general-checkup': 'General Check-up',
+    'emergency-care': 'Emergency Dental Care',
+    'teeth-whitening': 'Teeth Whitening',
+    'invisalign': 'Invisalign',
+    'dental-implants': 'Dental Implants',
+    'veneers': 'Veneers',
+    'membership': 'Membership Plans',
+    'other': 'General Enquiry',
+  };
+
   const handleServiceSelect = (service: string) => {
+    // NHS subject remains a special case
+    if (service === 'new-nhs-patient') {
+      setSubject('New NHS Patient Enquiry');
+      return;
+    }
+    const label = SERVICE_LABELS[service] || 'General Enquiry';
+    setSubject(`new website contact ${label}`);
     // trackServiceInterest(service, ...); // <-- STEP 4: Commented out
   };
 
@@ -196,6 +215,7 @@ export default function ContactFormCard({
   action="/forms.html"
 >
               <input type="hidden" name="form-name" value="contact-form" />
+              <input type="hidden" name="subject" value={subject} />
               <div className="hidden"><input name="bot-field" /></div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -228,6 +248,7 @@ export default function ContactFormCard({
                     <SelectItem value="invisalign">Invisalign</SelectItem>
                     <SelectItem value="dental-implants">Dental Implants</SelectItem>
                     <SelectItem value="veneers">Veneers</SelectItem>
+                    <SelectItem value="new-nhs-patient">New NHS Patients</SelectItem>
                     <SelectItem value="membership">Membership Plans</SelectItem>
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
