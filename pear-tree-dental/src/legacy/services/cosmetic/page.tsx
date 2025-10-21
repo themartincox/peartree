@@ -167,37 +167,55 @@ export default function CosmeticDentistryPage() {
       />
 
       {/* Hero Section */}
-      {/* Hero Section with Video and Optimized Placeholder */}
-      {/* Note: heroImage serves as poster/placeholder while video loads for better UX */}
-      <ServiceHero
-        title="Transform Your"
-        subtitle="Smile"
-        description="Discover the confidence that comes with a beautiful smile. Our expert cosmetic dentistry treatments combine artistry with advanced techniques to create naturally stunning results."
-        heroVideo="/videos/heroes/cosmetic-dentistry-hero.mp4"
-        heroVideoType="mp4"
-        heroImage="/images/heroes/cosmetic/cosmetic-dentistry-hero-placeholder.webp"
-        heroImageAlt="Cosmetic dentistry transformation results"
-        badgeText="Cosmetic Dentistry"
-        badgeIcon="Sparkles"
-        keyBenefits={[
-          { text: "Beautiful results", icon: "Star" },
-          { text: "Boost confidence", icon: "Heart" },
-          { text: "Expert care", icon: "Award" },
-          { text: "Natural looking", icon: "Eye" }
-        ]}
-        primaryCTA={{
-          text: "Book Smile Consultation",
-          href: "/book"
-        }}
-        secondaryCTA={{
-          text: "View Treatments",
-          href: "#services",
-          icon: "ArrowRight"
-        }}
-        gradientFrom="soft-pink/10"
-        gradientTo="soft-lavender/10"
-        textColor="pear-primary"
-      />
+      {/* Hero Section with subtle left-column watermark (page-only experiment) */}
+      <div className="relative">
+        {/* Overlay motif on top, limited to left/content column on desktop */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 w-full lg:w-7/12 z-20"
+          style={{
+            backgroundImage: "url('/images/motif-bg-test.png')",
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition: '2rem center', // inset motif from the left
+          }}
+        />
+
+        {/* Keep hero content above base stacking context */}
+        <div className="relative z-30">
+          {/* Hero Section with Video and Optimized Placeholder */}
+          {/* Note: heroImage serves as poster/placeholder while video loads for better UX */}
+          <ServiceHero
+            title="Transform Your"
+            subtitle="Smile"
+            description="Discover the confidence that comes with a beautiful smile. Our expert cosmetic dentistry treatments combine artistry with advanced techniques to create naturally stunning results."
+            heroVideo="/videos/heroes/cosmetic-dentistry-hero.mp4"
+            heroVideoType="mp4"
+            heroImage="/images/heroes/cosmetic/cosmetic-dentistry-hero-placeholder.webp"
+            heroImageAlt="Cosmetic dentistry transformation results"
+            badgeText="Cosmetic Dentistry"
+            badgeIcon="Sparkles"
+            keyBenefits={[
+              { text: "Beautiful results", icon: "Star" },
+              { text: "Boost confidence", icon: "Heart" },
+              { text: "Expert care", icon: "Award" },
+              { text: "Natural looking", icon: "Eye" }
+            ]}
+            primaryCTA={{
+              text: "Book Smile Consultation",
+              href: "/book"
+            }}
+            secondaryCTA={{
+              text: "View Treatments",
+              href: "#services",
+              icon: "ArrowRight"
+            }}
+            gradientFrom="soft-pink/10"
+            gradientTo="soft-lavender/10"
+            textColor="pear-primary"
+          />
+        </div>
+      </div>
 
       {/* Services Grid */}
       <section id="services" className="py-16 bg-white">

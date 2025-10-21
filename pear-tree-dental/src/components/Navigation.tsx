@@ -628,11 +628,12 @@ const Navigation = () => {
                 </div>
 
                 <div className="flex flex-col space-y-6 mt-6 mobile-nav-content overflow-y-auto pb-8">
+                  {/* Mobile sheet header logo (updated icon) */}
                   <Link href="/" className="flex items-center space-x-3" onClick={closeMobileMenu}>
                     <div className="w-8 h-8 text-pear-primary">
                       <Image
-                        src="/images/dental-motif-logo.png"
-                        alt="Pear Tree Dental Logo"
+                        src="/images/pear-tree-dental-icon.webp"
+                        alt="Pear Tree Dental Icon"
                         width={32}
                         height={32}
                         className="w-full h-full object-contain"
