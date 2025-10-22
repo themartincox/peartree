@@ -455,8 +455,8 @@ export default function ArnoldOrthodonticsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/orthodontics-before-case-1.webp"
-              afterImage="/images/orthodontics-after-case-1.webp"
+              beforeImage="/images/before-after/orthodontics-clearcorrect-before.webp"
+              afterImage="/images/before-after/orthodontics-clearcorrect-after.webp"
               beforeAlt="Before orthodontic treatment - crooked and crowded teeth"
               afterAlt="After orthodontic treatment - perfectly straight smile"
               title="Comprehensive Orthodontic Transformation"

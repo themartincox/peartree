@@ -562,8 +562,8 @@ export default function PrivateDentistWestBridgfordOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/west-bridgford-before-case-1.webp"
-              afterImage="/images/west-bridgford-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before modern dental treatment - older style dental work"
               afterAlt="After modern dental treatment - natural-looking, precision results"
               title="Modern Dental Excellence"

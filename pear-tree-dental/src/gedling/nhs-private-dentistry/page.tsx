@@ -558,8 +558,8 @@ export default function GedlingNHSPrivateDentistryPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/nhs-private-dental-before-case-1.webp"
-              afterImage="/images/nhs-private-dental-after-case-1.webp"
+              beforeImage="/images/before-after/repair-restore-before.webp"
+              afterImage="/images/before-after/repair-restore-after.webp"
               beforeAlt="Before flexible NHS & private care - dental issues affecting confidence and function"
               afterAlt="After flexible NHS & private care - healthy, attractive smile achieved cost-effectively"
               title="Smart NHS & Private Treatment Combination"

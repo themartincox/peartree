@@ -535,8 +535,8 @@ export default function GedlingFamilyDentistryPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/family-dental-before-case-1.webp"
-              afterImage="/images/family-dental-after-case-1.webp"
+              beforeImage="/images/before-after/dental-hygienist-airflow-stain-removal-before.webp"
+              afterImage="/images/before-after/dental-hygienist-airflow-stain-removal-after.webp"
               beforeAlt="Before family dental care - various dental issues affecting family health"
               afterAlt="After family dental care - healthy, confident family smiles"
               title="Complete Family Dental Transformation"

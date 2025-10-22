@@ -561,8 +561,8 @@ export default function FamilyDentistCarltonOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/carlton-family-before-case-1.webp"
-              afterImage="/images/carlton-family-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before modern family dental care - traditional treatment"
               afterAlt="After modern family dental care - natural-looking family results"
               title="Modern Family Dental Excellence"

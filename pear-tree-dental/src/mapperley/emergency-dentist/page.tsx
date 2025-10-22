@@ -524,8 +524,8 @@ export default function MapperleyEmergencyDentistPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/emergency-dental-before-case-1.webp"
-              afterImage="/images/emergency-dental-after-case-1.webp"
+              beforeImage="/images/before-after/repair-restore-before.webp"
+              afterImage="/images/before-after/repair-restore-after.webp"
               beforeAlt="Before emergency treatment - broken front tooth causing pain and embarrassment"
               afterAlt="After emergency treatment - perfectly repaired tooth, natural appearance restored"
               title="Same-Day Emergency Tooth Repair"

@@ -561,8 +561,8 @@ export default function CommunityDentistMapperleyOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/mapperley-community-before-case-1.webp"
-              afterImage="/images/mapperley-community-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before modern community dental care - traditional local treatment"
               afterAlt="After modern community dental care - natural-looking, precision results"
               title="Modern Community Dental Excellence"

@@ -672,8 +672,8 @@ export default function MapperleyFamilyPreventiveCare() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/family-preventive-care-before-case-1.webp"
-              afterImage="/images/family-preventive-care-after-case-1.webp"
+              beforeImage="/images/before-after/dental-hygienist-airflow-stain-removal-before.webp"
+              afterImage="/images/before-after/dental-hygienist-airflow-stain-removal-after.webp"
               beforeAlt="Before family preventive care - various dental issues developing across family members"
               afterAlt="After family preventive care - healthy, well-maintained teeth for entire family"
               title="Long-Term Family Health Success"

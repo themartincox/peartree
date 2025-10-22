@@ -423,8 +423,8 @@ export default function ArnoldRootCanalPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/root-canal-before-case-1.webp"
-              afterImage="/images/root-canal-after-case-1.webp"
+              beforeImage="/images/before-after/repair-restore-before.webp"
+              afterImage="/images/before-after/repair-restore-after.webp"
               beforeAlt="Before root canal treatment - infected tooth with abscess"
               afterAlt="After root canal treatment - healthy restored tooth with crown"
               title="Root Canal Treatment Success"

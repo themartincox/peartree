@@ -375,8 +375,8 @@ export default function ArnoldDentalCrownsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/crown-before-case-1.webp"
-              afterImage="/images/crown-after-case-1.webp"
+              beforeImage="/images/before-after/dental-bridge-before.webp"
+              afterImage="/images/before-after/dental-bridge-after.webp"
               beforeAlt="Before dental crown - damaged and discolored tooth"
               afterAlt="After dental crown - perfect natural-looking restoration"
               title="Same-Day CEREC Crown Restoration"

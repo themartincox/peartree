@@ -561,8 +561,8 @@ export default function ExecutiveDentistNottinghamCityOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/nottingham-city-executive-before-case-1.webp"
-              afterImage="/images/nottingham-city-executive-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before executive dental care - city centre complications"
               afterAlt="After executive dental care - professional, precision results"
               title="Executive Dental Excellence"

@@ -560,8 +560,8 @@ export default function PrivateDentistNottinghamOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/nottingham-before-case-1.webp"
-              afterImage="/images/nottingham-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before escaping city centre dental - older style treatment"
               afterAlt="After modern dental care - natural-looking, precision results"
               title="Escape to Better Dental Care"

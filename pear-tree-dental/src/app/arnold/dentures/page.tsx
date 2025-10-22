@@ -433,8 +433,8 @@ export default function ArnoldDenturesPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/dentures-before-case-1.webp"
-              afterImage="/images/dentures-after-case-1.webp"
+              beforeImage="/images/before-after/dental-denture-before.webp"
+              afterImage="/images/before-after/dental-denture-after.webp"
               beforeAlt="Before dentures - missing multiple teeth"
               afterAlt="After dentures - complete natural-looking smile"
               title="Complete Denture Transformation"

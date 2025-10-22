@@ -333,8 +333,8 @@ export default function ArnoldInvisalignPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/invisalign-before-case-1.webp"
-              afterImage="/images/invisalign-after-case-1.webp"
+              beforeImage="/images/before-after/orthodontics-clearcorrect-before.webp"
+              afterImage="/images/before-after/orthodontics-clearcorrect-after.webp"
               beforeAlt="Before Invisalign treatment - crowded teeth"
               afterAlt="After Invisalign treatment - perfectly straight smile"
               title="Invisalign Transformation"

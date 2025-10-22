@@ -555,8 +555,8 @@ export default function HonestValueDentistNetherfieldOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/netherfield-working-family-before-case-1.webp"
-              afterImage="/images/netherfield-working-family-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before honest value dental care - unreliable traditional treatment"
               afterAlt="After honest value dental care - reliable, quality results"
               title="Honest Value Dental Excellence"

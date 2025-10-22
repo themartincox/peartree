@@ -561,8 +561,8 @@ export default function EfficientFamilyDentistBinghamOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/bingham-family-before-case-1.webp"
-              afterImage="/images/bingham-family-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before efficient family dental care - traditional time-consuming treatment"
               afterAlt="After efficient family dental care - natural-looking, same-day results"
               title="Efficient Family Dental Excellence"

@@ -625,8 +625,8 @@ export default function MapperleyChildrensDentistryPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/childrens-dentistry-before-case-1.webp"
-              afterImage="/images/childrens-dentistry-after-case-1.webp"
+              beforeImage="/images/before-after/dental-hygienist-airflow-stain-removal-before.webp"
+              afterImage="/images/before-after/dental-hygienist-airflow-stain-removal-after.webp"
               beforeAlt="Before children's preventive care - early cavity formation and poor oral hygiene"
               afterAlt="After children's preventive care - healthy, cavity-free teeth with excellent oral hygiene"
               title="Prevention-Focused Children's Care Success"

@@ -347,8 +347,8 @@ export default function ArnoldPorcelainVeneersPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/veneers-before-case-1.webp"
-              afterImage="/images/veneers-after-case-1.webp"
+              beforeImage="/images/before-after/dental-composite-bond-before.webp"
+              afterImage="/images/before-after/dental-composite-bond-after.webp"
               beforeAlt="Before porcelain veneers - worn and discoloured teeth"
               afterAlt="After porcelain veneers - perfect natural-looking smile"
               title="Complete Smile Transformation"

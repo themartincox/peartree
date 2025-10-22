@@ -669,8 +669,8 @@ export default function MapperleyCompleteSmileMakeoversPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/complete-smile-makeover-before-case-1.webp"
-              afterImage="/images/complete-smile-makeover-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before complete smile makeover - multiple dental issues affecting confidence"
               afterAlt="After complete smile makeover - beautiful, natural, confident smile transformation"
               title="Affordable Complete Smile Transformation"

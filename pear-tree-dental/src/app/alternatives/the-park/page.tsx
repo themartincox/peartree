@@ -561,8 +561,8 @@ export default function PremiumDentistTheParkOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/the-park-premium-before-case-1.webp"
-              afterImage="/images/the-park-premium-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before premium dental care - standard quality treatment"
               afterAlt="After premium dental care - exceptional, natural-looking results"
               title="Premium Dental Excellence"

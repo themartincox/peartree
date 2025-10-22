@@ -630,8 +630,8 @@ export default function MapperleyDentalCrownsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/dental-crowns-before-case-1.webp"
-              afterImage="/images/dental-crowns-after-case-1.webp"
+              beforeImage="/images/before-after/dental-bridge-before.webp"
+              afterImage="/images/before-after/dental-bridge-after.webp"
               beforeAlt="Before crown treatment - damaged, unsightly tooth affecting confidence"
               afterAlt="After crown treatment - natural-looking, strong crown restoring function and appearance"
               title="Quality Crown Restoration Success"

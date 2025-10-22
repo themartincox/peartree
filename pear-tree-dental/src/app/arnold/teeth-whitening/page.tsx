@@ -361,8 +361,8 @@ export default function ArnoldTeethWhiteningPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/whitening-before-case-1.webp"
-              afterImage="/images/whitening-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before professional teeth whitening - discoloured teeth"
               afterAlt="After professional teeth whitening - bright white smile"
               title="Professional Whitening Transformation"

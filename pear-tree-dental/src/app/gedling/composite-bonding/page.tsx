@@ -650,8 +650,8 @@ export default function GedlingCompositeBondingPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/composite-bonding-before-case-1.webp"
-              afterImage="/images/composite-bonding-after-case-1.webp"
+              beforeImage="/images/before-after/dental-composite-bond-before.webp"
+              afterImage="/images/before-after/dental-composite-bond-after.webp"
               beforeAlt="Before composite bonding - chipped, gapped teeth affecting confidence"
               afterAlt="After composite bonding - beautiful, seamless smile transformation"
               title="Affordable Same-Day Smile Makeover"

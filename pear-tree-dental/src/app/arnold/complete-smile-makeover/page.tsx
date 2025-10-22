@@ -409,8 +409,8 @@ export default function ArnoldCompleteSmileMakeoverPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/makeover-before-case-1.webp"
-              afterImage="/images/makeover-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before complete smile makeover - damaged and discolored teeth"
               afterAlt="After complete smile makeover - perfect natural-looking transformation"
               title="Complete Smile Transformation"

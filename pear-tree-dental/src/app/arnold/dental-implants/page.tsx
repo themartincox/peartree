@@ -361,8 +361,8 @@ export default function ArnoldDentalImplantsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/implant-before-case-1.webp"
-              afterImage="/images/implant-after-case-1.webp"
+              beforeImage="/images/before-after/single-dental-implant-before.webp"
+              afterImage="/images/before-after/single-dental-implant-after.webp"
               beforeAlt="Before dental implant - missing front tooth"
               afterAlt="After dental implant - perfect natural-looking replacement"
               title="Single Implant Transformation"

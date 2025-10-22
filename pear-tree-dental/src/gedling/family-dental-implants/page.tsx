@@ -658,8 +658,8 @@ export default function GedlingFamilyDentalImplantsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/family-dental-implants-before-case-1.webp"
-              afterImage="/images/family-dental-implants-after-case-1.webp"
+              beforeImage="/images/before-after/single-dental-implant-before.webp"
+              afterImage="/images/before-after/single-dental-implant-after.webp"
               beforeAlt="Before dental implant - missing tooth affecting function and adjacent teeth"
               afterAlt="After dental implant - natural-looking, fully functional tooth replacement"
               title="Practical Family Implant Success"

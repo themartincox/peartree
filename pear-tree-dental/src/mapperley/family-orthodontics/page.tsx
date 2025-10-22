@@ -553,8 +553,8 @@ export default function MapperleyFamilyOrthodonticsPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/family-orthodontics-before-case-1.webp"
-              afterImage="/images/family-orthodontics-after-case-1.webp"
+              beforeImage="/images/before-after/orthodontics-clearcorrect-before.webp"
+              afterImage="/images/before-after/orthodontics-clearcorrect-after.webp"
               beforeAlt="Before family orthodontic treatment - crooked teeth affecting confidence"
               afterAlt="After family orthodontic treatment - beautiful straight smiles for the whole family"
               title="Affordable Family Orthodontic Success"

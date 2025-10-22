@@ -561,8 +561,8 @@ export default function RuralDentistEastBridgfordOverviewPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/east-bridgford-rural-before-case-1.webp"
-              afterImage="/images/east-bridgford-rural-after-case-1.webp"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
               beforeAlt="Before modern rural dental care - traditional countryside treatment"
               afterAlt="After modern rural dental care - natural-looking, precision results"
               title="Modern Rural Dental Excellence"

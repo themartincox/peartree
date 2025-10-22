@@ -471,8 +471,8 @@ export default function NottinghamCompositeBondingPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/bonding-before-case-1.webp"
-              afterImage="/images/bonding-after-case-1.webp"
+              beforeImage="/images/before-after/dental-composite-bond-before.webp"
+              afterImage="/images/before-after/dental-composite-bond-after.webp"
               beforeAlt="Before composite bonding - chipped and gapped front teeth"
               afterAlt="After composite bonding - perfect symmetrical smile"
               title="Composite Bonding Transformation"

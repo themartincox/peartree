@@ -434,8 +434,8 @@ export default function ArnoldDentalBridgesPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/bridge-before-case-1.webp"
-              afterImage="/images/bridge-after-case-1.webp"
+              beforeImage="/images/before-after/dental-bridge-before.webp"
+              afterImage="/images/before-after/dental-bridge-after.webp"
               beforeAlt="Before dental bridge - missing front teeth"
               afterAlt="After dental bridge - natural-looking tooth replacement"
               title="Traditional Bridge Restoration"

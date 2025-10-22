@@ -545,10 +545,10 @@ export default function MapperleyAffordableTeethWhiteningPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/affordable-whitening-before-case-1.webp"
-              afterImage="/images/affordable-whitening-after-case-1.webp"
-              beforeAlt="Before affordable professional whitening - stained, discolored teeth"
-              afterAlt="After affordable professional whitening - bright, white, confident smile"
+              beforeImage="/images/before-after/whitening-enlighten-composite-edge-bonding-before.webp"
+              afterImage="/images/before-after/whitening-enlighten-composite-edge-bonding-after.webp"
+              beforeAlt="Before professional whitening — stained, discolored teeth"
+              afterAlt="After professional whitening — bright, white, confident smile"
               title="Affordable Professional Whitening Success"
               description="Mapperley working family's amazing transformation with payment plan"
               treatmentType="Professional Home Whitening Kit"

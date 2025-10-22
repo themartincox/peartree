@@ -658,8 +658,8 @@ export default function GedlingFlexiblePaymentDentistryPage() {
 
           <div className="max-w-3xl mx-auto">
             <BeforeAfterSlider
-              beforeImage="/images/flexible-payment-dentistry-before-case-1.webp"
-              afterImage="/images/flexible-payment-dentistry-after-case-1.webp"
+              beforeImage="/images/before-after/dental-composite-bond-before.webp"
+              afterImage="/images/before-after/dental-composite-bond-after.webp"
               beforeAlt="Before affordable payment plan treatment - dental issues affecting confidence and health"
               afterAlt="After affordable payment plan treatment - healthy, confident smile achieved through flexible financing"
               title="Accessible Quality Care Success"
