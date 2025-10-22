@@ -5,7 +5,7 @@ const VoiceSearchSchema = () => {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "DentalClinic",
+        "@type": ["DentalClinic", "LocalBusiness"],
         "@id": "https://peartree.dental/#dentist",
         "name": "Pear Tree Dental Centre",
         "alternateName": ["Pear Tree Dental", "Burton Joyce Dentist"],
@@ -98,7 +98,7 @@ const VoiceSearchSchema = () => {
           "reviewCount": "500",
           "bestRating": "5",
           "worstRating": "1",
-          "itemReviewed": { "@id": "https://peartree.dental/#dentist" }
+          "itemReviewed": { "@id": "https://peartree.dental/#localbusiness" }
         },
         "sameAs": [
           "https://www.facebook.com/peartreeDental",
