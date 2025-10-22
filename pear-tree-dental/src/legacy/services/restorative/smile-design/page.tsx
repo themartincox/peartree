@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   title: "Digital Smile Design - Preview Your Perfect Smile | Pear Tree Dental",
   description: "See exactly how your new smile will look with our digital smile design technology in Burton Joyce. FREE consultation worth £150. Book your smile preview today.",
   keywords: [
-    "digital smile design Burton Joyce",
+    "digital smile design Nottingham",
     "smile preview Nottingham",
     "virtual smile makeover",
     "cosmetic dentistry consultation Burton Joyce",
@@ -72,14 +72,18 @@ export default function SmileDesignPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="btn-gold text-white font-semibold group">
-                  <CalendarDays className="w-5 h-5 mr-2" />
-                  Book FREE Consultation
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <Button asChild size="lg" className="btn-gold text-white font-semibold group">
+                  <a href="/book">
+                    <CalendarDays className="w-5 h-5 mr-2" />
+                    Book FREE Consultation
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </a>
                 </Button>
-                <Button size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Call 0115 931 2935
+                <Button asChild size="lg" variant="outline" className="border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white">
+                  <a href="tel:01159312935">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call 0115 931 2935
+                  </a>
                 </Button>
               </div>
 
@@ -103,11 +107,12 @@ export default function SmileDesignPage() {
             {/* Hero Image */}
             <div className="relative">
               <Card className="overflow-hidden shadow-2xl">
-                <div className="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <div className="text-center">
-                    <h3 className="text-xl font-bold text-gray-700 mb-2">SMILE DESIGN HERO IMAGE</h3>
-                    <p className="text-gray-600">Before/after smile transformation with digital preview</p>
-                  </div>
+                <div className="relative aspect-[4/3]">
+                  <img
+                    src="/images/heroes/restorative/veneers.webp"
+                    alt="Digital smile design preview — veneers transformation"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </Card>
 
@@ -157,7 +162,7 @@ export default function SmileDesignPage() {
               {
                 icon: Crown,
                 title: "Treatment Planning",
-                description: "Personalized treatment options with clear timelines and expected outcomes",
+                description: "Personalised treatment options with clear timelines and expected outcomes",
                 value: "Worth £25"
               },
               {
@@ -218,7 +223,7 @@ export default function SmileDesignPage() {
                 Advanced Digital Smile Design
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Using cutting-edge technology, we can show you exactly how different treatments will transform your smile.
+                Using cutting-edge technology, we can show you how different treatments will transform your smile.
                 No guesswork, no surprises – just clear visual results.
               </p>
 
@@ -328,7 +333,7 @@ export default function SmileDesignPage() {
           </div>
 
           <div className="text-center mt-8">
-            <p className="text-gray-600 mb-4">All treatments include 10% discount with membership plans</p>
+            <p className="text-gray-600 mb-4">Select treatments include 10% discount with membership plans</p>
             <Button size="lg" className="bg-pear-primary hover:bg-pear-primary/90 text-white">
               Explore Treatment Options
             </Button>
