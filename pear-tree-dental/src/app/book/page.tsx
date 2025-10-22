@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ContactFormCard from "@/components/ContactFormCard";
 import Image from "next/image";
-import Link from "next/link";
 import { Clock } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -41,42 +40,18 @@ export default function BookPage() {
           </p>
         </div>
 
-        {/* Visual intro with clinic image + trust badge */}
-        <section className="max-w-5xl mx-auto mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            <div className="relative md:col-span-2 aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-              <Image
-                src="/images/pear-tree-dental-building-NG145AE.webp"
-                alt="Pear Tree Dental, Burton Joyce — exterior of the practice"
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 66vw"
-              />
-            </div>
-            <div className="text-center space-y-4">
-              <div className="relative w-40 h-40 mx-auto">
-                <Image
-                  src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
-                  alt="Private Dentistry Awards finalist"
-                  fill
-                  className="object-contain"
-                  sizes="160px"
-                />
-              </div>
-              <div className="space-y-2">
-                <Link href="/contact" className="text-pear-primary font-semibold underline-offset-2 hover:underline">
-                  Contact the team
-                </Link>
-                <div>
-                  <a href="tel:01159312935" className="text-pear-primary font-semibold underline-offset-2 hover:underline">
-                    Call 0115 931 2935
-                  </a>
-                </div>
-              </div>
-            </div>
+        {/* Awards badge (keep visible, remove clinic picture) */}
+        <div className="flex justify-center mb-10">
+          <div className="relative w-40 h-40">
+            <Image
+              src="/images/pear-tree-dental-private-dentistry-awards-finalist.webp"
+              alt="Private Dentistry Awards finalist"
+              fill
+              className="object-contain"
+              sizes="160px"
+            />
           </div>
-        </section>
+        </div>
 
         {/* Option A: Online booking embed */}
         <section aria-labelledby="online-booking" className="max-w-4xl mx-auto mt-8">
