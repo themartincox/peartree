@@ -13,6 +13,7 @@ export default function MedicalOrganizationSchema({
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": ["DentistOffice", "MedicalOrganization", "LocalBusiness"],
+    "@id": "https://peartree.dental/#medicalorg",
     "name": "Pear Tree Dental Centre",
     "alternateName": "Pear Tree Dental",
     "url": "https://peartree.dental",
@@ -154,7 +155,8 @@ export default function MedicalOrganizationSchema({
       "ratingValue": "4.9",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": "500"
+      "ratingCount": "500",
+      "itemReviewed": { "@id": "https://peartree.dental/#medicalorg" }
     },
 
     // Payment Options

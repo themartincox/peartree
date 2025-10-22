@@ -8,6 +8,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "DentistOffice", "MedicalOrganization"],
+    "@id": "https://peartree.dental/#localbusiness",
     "name": "Pear Tree Dental Centre",
     "alternateName": ["Pear Tree Dental", "Private Dentist Nottingham"],
     "description": "Private dental practice serving Nottinghamshire offering comprehensive family and cosmetic dental care including general dentistry, cosmetic treatments, dental implants, Invisalign, and emergency care. Trusted by families across Nottingham, Burton Joyce, West Bridgford, Bingham, and East Bridgford.",
@@ -386,7 +387,8 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "ratingValue": "4.9",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": "500"
+      "ratingCount": "500",
+      "itemReviewed": { "@id": "https://peartree.dental/#localbusiness" }
     }
   };
 
