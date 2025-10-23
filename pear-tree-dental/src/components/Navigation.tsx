@@ -450,7 +450,7 @@ const Navigation = () => {
                       <div className="space-y-2">
                         <div className="text-pear-primary font-semibold">Services</div>
                         <div className="ml-4 space-y-1">
-                          {services.map((service) => (
+                          {SERVICES.map((service) => (
                             <Link
                               key={service.title}
                               href={service.href}
@@ -474,7 +474,7 @@ const Navigation = () => {
                       <div className="space-y-2">
                         <div className="text-pear-primary font-semibold">About</div>
                         <div className="ml-4 space-y-1">
-                          {about.map((item) => (
+                          {ABOUT.map((item) => (
                             <Link
                               key={item.title}
                               href={item.href}
@@ -525,7 +525,7 @@ const Navigation = () => {
                           </div>
                         }
                       >
-                        <LazyNavigationItems services={services} about={about} onItemClick={closeMobileMenu} />
+                        <LazyNavigationItems services={SERVICES} about={ABOUT} onItemClick={closeMobileMenu} />
                       </Suspense>
                     )}
                   </div>
@@ -665,7 +665,7 @@ const Navigation = () => {
                         </div>
                       }
                     >
-                      <LazyNavigationItems services={services} about={about} onItemClick={closeMobileMenu} />
+                      <LazyNavigationItems services={SERVICES} about={ABOUT} onItemClick={closeMobileMenu} />
                     </Suspense>
                   )}
 
