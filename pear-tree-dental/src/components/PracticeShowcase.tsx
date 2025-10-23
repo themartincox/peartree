@@ -127,7 +127,7 @@ const PracticeShowcase = () => {
                     <div className="w-12 h-12 bg-soft-blue/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                       <Users className="w-6 h-6 text-soft-blue" />
                     </div>
-                    <h5 className="font-semibold text-pear-primary text-sm">Expert Team</h5>
+                    <h4 className="font-semibold text-pear-primary text-sm">Expert Team</h4>
                     <p className="text-xs text-gray-600 mt-1">Highly qualified dentists</p>
                   </Card>
                 </Link>
@@ -136,7 +136,7 @@ const PracticeShowcase = () => {
                   <div className="w-12 h-12 bg-soft-pink/10 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <Heart className="w-6 h-6 text-soft-pink" />
                   </div>
-                  <h5 className="font-semibold text-pear-primary text-sm">Patient Care</h5>
+                  <h4 className="font-semibold text-pear-primary text-sm">Patient Care</h4>
                   <p className="text-xs text-gray-600 mt-1">Comfort-focused approach</p>
                 </Card>
               </div>
