@@ -123,14 +123,40 @@ useEffect(() => {
     }
   ];
 
-  // Auto-rotate reviews
+  // Visibility tracking for rotation efficiency
+  const [isInView, setIsInView] = useState(true);
+  const [isPageVisible, setIsPageVisible] = useState(true);
+
+  // Observe widget visibility in viewport
   useEffect(() => {
+    if (!widgetRef.current || typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        setIsInView(entry?.isIntersecting ?? true);
+      },
+      { root: null, threshold: 0.1 }
+    );
+    io.observe(widgetRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  // Track page visibility (tab hidden)
+  useEffect(() => {
+    const update = () => setIsPageVisible(typeof document !== 'undefined' ? document.visibilityState === 'visible' : true);
+    update();
+    document.addEventListener('visibilitychange', update);
+    return () => document.removeEventListener('visibilitychange', update);
+  }, []);
+
+  // Auto-rotate reviews (pause when hidden/offscreen)
+  useEffect(() => {
+    if (!isInView || !isPageVisible) return; // pause interval when not visible
     const interval = setInterval(() => {
       setCurrentReview((prev) => (prev + 1) % reviews.length);
     }, 4000);
-
     return () => clearInterval(interval);
-  }, [reviews.length]);
+  }, [reviews.length, isInView, isPageVisible]);
 
   // Scroll behavior and nav height measurement
   useEffect(() => {
