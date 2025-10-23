@@ -18,6 +18,25 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CalendarDays, Phone, Star, Sparkles, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Hoisted static navigation data to avoid recreating on each render
+const SERVICES = [
+  { title: "General Dentistry", href: "/services/general", description: "Comprehensive dental care for your everyday needs", theme: "medical" },
+  { title: "Restorative Dentistry", href: "/services/restorative", description: "Repair and restore your teeth to optimal health", theme: "medical" },
+  { title: "Cosmetic Dentistry", href: "/services/cosmetic", description: "Transform your smile with aesthetic treatments", theme: "cosmetic" },
+  { title: "Implant Dentistry", href: "/services/implants", description: "Permanent tooth replacement solutions", theme: "cosmetic" },
+  { title: "Orthodontics", href: "/services/orthodontics", description: "Invisalign and ClearCorrect aligners", theme: "cosmetic" },
+  { title: "Emergency Dentistry", href: "/services/emergency", description: "Urgent dental care when you need it most", theme: "emergency", isEmergency: true },
+];
+
+const ABOUT = [
+  { title: "Our Team", href: "/about/team", description: "Meet our experienced dental professionals" },
+  { title: "Our Practice", href: "/about/practice", description: "State-of-the-art facilities in Burton Joyce" },
+  { title: "Patient Reviews", href: "/testimonials", description: "Real testimonials from our satisfied patients" },
+  { title: "Smile Gallery", href: "/smile-gallery", description: "Before & after smile transformations" },
+  { title: "Dental Education", href: "/patient-education", description: "Helpful guides and oral health resources" },
+  { title: "Pricing", href: "/pricing", description: "Transparent dental treatment pricing" },
+];
+
 // Lazy load non-critical navigation components (mobile sheet content)
 const LazyNavigationItems = lazy(() =>
   import("@/components/navigation/LazyNavigationItems").then((m) => m)
@@ -149,24 +168,7 @@ const Navigation = () => {
   const primaryVisible = !isScrolled;                // hide after 100px
   const secondaryVisible = isScrolled && !inJourney; // show after 100px, but hide while Journey active
 
-  // Menu data
-  const services = [
-    { title: "General Dentistry", href: "/services/general", description: "Comprehensive dental care for your everyday needs", theme: "medical" },
-    { title: "Restorative Dentistry", href: "/services/restorative", description: "Repair and restore your teeth to optimal health", theme: "medical" },
-    { title: "Cosmetic Dentistry", href: "/services/cosmetic", description: "Transform your smile with aesthetic treatments", theme: "cosmetic" },
-    { title: "Implant Dentistry", href: "/services/implants", description: "Permanent tooth replacement solutions", theme: "cosmetic" },
-    { title: "Orthodontics", href: "/services/orthodontics", description: "Invisalign and ClearCorrect aligners", theme: "cosmetic" },
-    { title: "Emergency Dentistry", href: "/services/emergency", description: "Urgent dental care when you need it most", theme: "emergency", isEmergency: true },
-  ];
-
-  const about = [
-    { title: "Our Team", href: "/about/team", description: "Meet our experienced dental professionals" },
-    { title: "Our Practice", href: "/about/practice", description: "State-of-the-art facilities in Burton Joyce" },
-    { title: "Patient Reviews", href: "/testimonials", description: "Real testimonials from our satisfied patients" },
-    { title: "Smile Gallery", href: "/smile-gallery", description: "Before & after smile transformations" },
-    { title: "Dental Education", href: "/patient-education", description: "Helpful guides and oral health resources" },
-    { title: "Pricing", href: "/pricing", description: "Transparent dental treatment pricing" },
-  ];
+  // Use hoisted menu data
 
   return (
     <>
@@ -230,7 +232,7 @@ const Navigation = () => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent role="menu" aria-label="Dental services">
                     <ul className="grid w-[600px] gap-3 p-4 md:grid-cols-3" role="none">
-                      {[services[2], services[0], services[1]].map((service) => (
+                      {[SERVICES[2], SERVICES[0], SERVICES[1]].map((service) => (
                         <li key={service.title} role="none">
                           <NavigationMenuLink asChild>
                             <Link
@@ -253,7 +255,7 @@ const Navigation = () => {
                           </NavigationMenuLink>
                         </li>
                       ))}
-                      {[services[3], services[4], services[5]].map((service) => (
+                      {[SERVICES[3], SERVICES[4], SERVICES[5]].map((service) => (
                         <li key={service.title} role="none">
                           <NavigationMenuLink asChild>
                             <Link
@@ -301,7 +303,7 @@ const Navigation = () => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-80 gap-3 p-4">
-                      {about.map((item) => (
+                      {ABOUT.map((item) => (
                         <li key={item.title}>
                           <NavigationMenuLink asChild>
                             <Link
