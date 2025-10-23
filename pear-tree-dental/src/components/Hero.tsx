@@ -161,7 +161,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-2 border-pear-gold text-pear-primary hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
+                className="border-2 border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white font-semibold px-8 py-4 text-lg w-full"
                 onClick={handleMembershipClick}
               >
                 <Link href="/membership">View Membership Plans →</Link>
@@ -206,7 +206,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-2 border-pear-gold text-pear-gold hover:bg-pear-gold hover:text-white font-semibold px-8 py-4 text-lg w-full"
+                  className="border-2 border-pear-primary text-pear-primary hover:bg-pear-primary hover:text-white font-semibold px-8 py-4 text-lg w-full"
                   onClick={handleMembershipClick}
                 >
                   <Link href="/membership">View Membership Plans →</Link>
