@@ -81,7 +81,7 @@ const PracticeShowcase = () => {
                 </div>
 
                 <div className="space-y-4 relative z-10">
-                  <h4 className="font-semibold text-pear-primary text-lg">Visit Our Practice</h4>
+                  <h3 className="font-semibold text-pear-primary text-lg">Visit Our Practice</h3>
 
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">

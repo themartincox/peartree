@@ -521,7 +521,7 @@ const FAQSection = () => {
                 </Button>
               </Link>
               <Link href="/membership">
-                <Button size="lg" className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
+                <Button size="lg" className="btn-gold text-dental-navy font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base">
                   <Star className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   Join Membership Plan
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform" />

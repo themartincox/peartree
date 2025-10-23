@@ -45,7 +45,7 @@ export default function ImplantBridgePage() {
 
             <h1 className="heading-serif text-4xl sm:text-6xl font-bold text-pear-primary mb-6">
               Replace Multiple Teeth
-              <span className="text-purple-600 block">with Implant Bridge</span>
+              <span className="text-purple-600 block">with an Implant Bridge</span>
             </h1>
 
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
