@@ -288,7 +288,7 @@ const Navigation = () => {
                 <NavigationMenuItem>
                   <Link
                     href="/membership"
-                    className="inline-flex h-10 items-center rounded-md bg-pear-gold px-3 text-sm font-semibold text-white shadow hover:bg-white hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-gold/40 transition-colors"
+                    className="inline-flex h-10 items-center rounded-md bg-pear-gold px-3 text-sm font-semibold text-pear-primary shadow hover:bg-white hover:text-pear-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-pear-gold/40 transition-colors"
                   >
                     Membership Plan
                   </Link>

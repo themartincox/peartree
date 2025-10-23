@@ -417,7 +417,7 @@ const MembershipHighlight = () => {
                   <Button
                     asChild
                     size="lg"
-                    className="btn-gold text-white font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
+                    className="btn-gold text-pear-primary font-semibold group w-full sm:w-auto h-12 sm:h-auto text-sm sm:text-base"
                     onClick={handlePlanDetailsClick}
                   >
                     <Link href={activeTab === "family" ? "/membership#family-plan" :
@@ -474,7 +474,7 @@ const MembershipHighlight = () => {
             <Button
               asChild
               size="lg"
-              className="btn-gold text-white px-8 py-4"
+              className="btn-gold text-pear-primary px-8 py-4"
               onClick={handleExploreClick}
             >
               <Link href="/membership#plans">

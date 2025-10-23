@@ -113,7 +113,7 @@ const Footer = () => {
               <Link href="/services/emergency" className="block text-xs sm:text-sm bg-red-600 hover:bg-red-700 text-white font-semibold rounded-full px-4 py-2 text-center transition-colors">
                 🚨 Dental Pain?
               </Link>
-              <Link href="/membership" className="block text-xs sm:text-sm bg-pear-gold hover:bg-pear-gold-dark text-dental-navy font-semibold rounded-full px-4 py-2 text-center transition-colors">
+              <Link href="/membership" className="block text-xs sm:text-sm bg-pear-gold hover:bg-pear-gold-dark text-pear-primary font-semibold rounded-full px-4 py-2 text-center transition-colors">
                 Join Membership Plan
               </Link>
               <Link href="/book" className="block text-xs sm:text-sm bg-white hover:bg-gray-100 text-pear-primary font-semibold rounded-full px-4 py-2 text-center transition-colors">
@@ -154,17 +154,17 @@ const Footer = () => {
         <Separator className="my-6 sm:my-8 bg-white/20" />
 
         {/* Bottom Footer */}
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-xs sm:text-sm text-white/60">
             <span>© 2025 Pear Tree Dental. All rights reserved.</span>
             <div className="flex flex-wrap justify-center space-x-3 sm:space-x-4">
-              <Link href="/privacy" className="hover:text-white transition-colors">
+              <Link href="/privacy" className="hover:text-white transition-colors inline-block px-3 py-2">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
+              <Link href="/terms" className="hover:text-white transition-colors inline-block px-3 py-2">
                 Terms of Service
               </Link>
-              <Link href="/complaints" className="hover:text-white transition-colors">
+              <Link href="/complaints" className="hover:text-white transition-colors inline-block px-3 py-2">
                 Complaints Procedure
               </Link>
             </div>

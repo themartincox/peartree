@@ -249,7 +249,7 @@ const ServiceNavigation = () => {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-pear-gold to-pear-gold/80 hover:from-pear-gold/90 hover:to-pear-gold text-dental-navy font-semibold px-8"
+                className="bg-gradient-to-r from-pear-gold to-pear-gold/80 hover:from-pear-gold/90 hover:to-pear-gold text-pear-primary font-semibold px-8"
               >
                 Join Our Membership Plan
               </Button>
