@@ -73,7 +73,7 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
               priority
               fetchPriority="high"
               quality={30}
-              sizes="(min-width: 1024px) 0px, 75vw"
+              sizes="100vw"
               className="object-cover opacity-50 object-[12%_center]"
             />
           </div>
@@ -88,7 +88,6 @@ const Hero = ({ nonLocalBanner = null }: HeroProps) => {
             alt="Smiling family at Pear Tree Dental"
             width={1200}
             height={900}
-            priority
             fetchPriority="high"
             quality={85}
             sizes="(min-width:1536px) 1320px, (min-width:1280px) 1155px, (min-width:1024px) 990px, 825px"

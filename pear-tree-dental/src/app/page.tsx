@@ -204,8 +204,8 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         pageUrl="/"
       />
 
-      <ClientGoogleReviews />
       <Hero />
+      <ClientGoogleReviews />
       <PracticeShowcase />
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
