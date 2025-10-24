@@ -22,7 +22,7 @@ export default function NotFound() {
             </video>
             {/* Overlayed caption at bottom of video */}
             <div className="absolute inset-x-0 bottom-3 sm:bottom-4 flex justify-center pointer-events-none">
-              <h1 className="heading-serif font-bold text-pear-gold bg-white/70 backdrop-blur-sm rounded-xl px-3 py-1 sm:px-6 sm:py-3 text-2xl sm:text-4xl shadow-lg">
+              <h1 className="heading-serif font-bold text-pear-primary bg-white/20 backdrop-blur-sm rounded-xl px-3 py-1 sm:px-6 sm:py-3 text-2xl sm:text-4xl shadow-lg">
                 Oops, nothing to see here
               </h1>
             </div>
@@ -32,9 +32,9 @@ export default function NotFound() {
         {/* Text Message */}
         <div className="mb-8">
           {/* Title moved as overlay on video */}
-          <h1 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-gold mb-6">
+          <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-gold mb-6">
             but remember to floss!
-          </h1>
+          </h2>
           <p className="text-lg text-gray-600 mb-8">
             The page you're looking for seems to have wandered off like a loose tooth.
             Let's get you back to our homepage for some proper dental care!
