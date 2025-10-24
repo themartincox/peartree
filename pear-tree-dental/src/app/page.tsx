@@ -47,8 +47,7 @@ const VoiceSearchOptimization = dynamicImport(
   },
 );
 
-import ServerSideABWrapper from "@/components/ServerSideABWrapper";
-import { getVariant } from "@/lib/ab-testing";
+import ClientABWrapper from "@/components/ClientABWrapper";
 import ServiceFAQSchema from "@/components/seo/ServiceFAQSchema";
 
 // --- Service Data Mapping ---
@@ -126,7 +125,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage(): Promise<React.JSX.Element> {
-  const variant = await getVariant();
 
   let categories;
   try {
@@ -196,13 +194,15 @@ export default async function HomePage(): Promise<React.JSX.Element> {
   ];
 
   return (
-    <ServerSideABWrapper variant={variant}>
-      {/* Server-side SEO schema must remain outside client boundaries */}
+    <>
+      {/* Server-side SEO schema must remain server-rendered */}
       <ServiceFAQSchema
         serviceName="Pear Tree Dental Practice"
         faqs={homepageFAQs}
         pageUrl="/"
       />
+      {/* Client-only A/B overlay that does not affect SSG */}
+      <ClientABWrapper />
 
       <Hero />
       <ClientGoogleReviews />
@@ -213,6 +213,6 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <ClientLazyMembershipHighlight />
       <VoiceSearchOptimization />
       <ClientLazyFAQSection />
-    </ServerSideABWrapper>
+    </>
   );
 }
