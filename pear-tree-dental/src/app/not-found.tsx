@@ -32,9 +32,9 @@ export default function NotFound() {
         {/* Text Message */}
         <div className="mb-8">
           {/* Title moved as overlay on video */}
-          <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-gold mb-6">
+          <h1 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-gold mb-6">
             but remember to floss!
-          </h2>
+          </h1>
           <p className="text-lg text-gray-600 mb-8">
             The page you're looking for seems to have wandered off like a loose tooth.
             Let's get you back to our homepage for some proper dental care!
