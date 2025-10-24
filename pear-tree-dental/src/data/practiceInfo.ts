@@ -7,10 +7,10 @@ export const practiceInfo = {
     county: "Nottingham",
     postcode: "NG14 5AE",
     full: "22 Nottingham Road, Burton Joyce, Nottingham NG14 5AE",
-    what3words: "///your.what3words.address", // Placeholder
+    what3words: "///sunblock.deputy.volume", // Placeholder
     gps: {
-      latitude: 52.9819,
-      longitude: -1.0254
+      latitude: 52.98581295915206,
+      longitude: -1.0399123773469436
     }
   },
   contact: {

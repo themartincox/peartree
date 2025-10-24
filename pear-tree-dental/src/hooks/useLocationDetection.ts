@@ -16,15 +16,9 @@ export const useLocationDetection = (): LocationInfo & { requestLocation: () => 
   });
 
   useEffect(() => {
-    // Start detection immediately and silently
-    detectUserLocationSilently();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const detectUserLocationSilently = async () => {
+    // Lightweight, no-permission, no-network path heuristic only
     try {
-      // Method 1: Check URL parameters for Nottingham-specific pages (instant)
-      const currentPath = window.location.pathname;
+      const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
       const nottinghamPaths = [
         '/nottingham-dentist',
         '/emergency-dentist-nottingham',
@@ -32,24 +26,26 @@ export const useLocationDetection = (): LocationInfo & { requestLocation: () => 
         '/nottingham-smile-design',
         '/nottingham-teeth-straightening'
       ];
+      const isNottinghamPath = nottinghamPaths.some((p) => currentPath.includes(p));
+      setLocationInfo({
+        isNottingham: isNottinghamPath,
+        isDetected: true,
+        area: isNottinghamPath ? 'Nottingham' : undefined,
+        postcode: isNottinghamPath ? 'NG1-NG17' : undefined,
+      });
+    } catch {
+      setLocationInfo((prev) => ({ ...prev, isDetected: true }));
+    }
+  }, []);
 
-      if (nottinghamPaths.some(path => currentPath.includes(path))) {
-        setLocationInfo({
-          isNottingham: true,
-          isDetected: true,
-          area: 'Nottingham',
-          postcode: 'NG1-NG17'
-        });
-        return;
-      }
-
-      // Method 2: Silent geolocation detection (no timeout warnings)
-      if (navigator.geolocation) {
+  // Heavy detection kept behind explicit request for potential future use
+  const detectUserLocationSilently = async () => {
+    try {
+      if (typeof navigator !== 'undefined' && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
             const isNottinghamArea = checkIfNottinghamCoordinates(latitude, longitude);
-
             setLocationInfo({
               isNottingham: isNottinghamArea,
               isDetected: true,
@@ -58,25 +54,14 @@ export const useLocationDetection = (): LocationInfo & { requestLocation: () => 
             });
           },
           () => {
-            // GPS failed - try IP detection silently
-            detectByIPSilently();
+            // Geolocation denied/failed; do not fallback to network to stay resource-free
+            setLocationInfo((prev) => ({ ...prev, isDetected: true }));
           },
-          {
-            timeout: 3000, // Shorter timeout for faster fallback
-            enableHighAccuracy: false, // Faster, less battery usage
-            maximumAge: 300000 // Use cached location for 5 minutes
-          }
+          { timeout: 3000, enableHighAccuracy: false, maximumAge: 300000 }
         );
-      } else {
-        // No geolocation - try IP detection
-        detectByIPSilently();
       }
-    } catch (error) {
-      // Silent failure - just mark as not Nottingham
-      setLocationInfo({
-        isNottingham: false,
-        isDetected: true
-      });
+    } catch {
+      setLocationInfo((prev) => ({ ...prev, isDetected: true }));
     }
   };
 
@@ -94,49 +79,12 @@ export const useLocationDetection = (): LocationInfo & { requestLocation: () => 
     return distance <= radius;
   };
 
+  // Deprecated IP fallback removed to avoid network use on load
   const detectByIPSilently = async () => {
-    try {
-      // Silent IP-based detection with short timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
-
-      const response = await fetch('/api/location-detect', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        signal: controller.signal
-      });
-
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const data = await response.json();
-        const isNottingham = data.city?.toLowerCase().includes('nottingham') ||
-                            data.region?.toLowerCase().includes('nottingham') ||
-                            data.area?.toLowerCase().includes('nottingham');
-
-        setLocationInfo({
-          isNottingham,
-          isDetected: true,
-          area: isNottingham ? 'Nottingham' : data.city || 'Unknown',
-          postcode: data.postcode || 'Unknown'
-        });
-      } else {
-        // Fallback - assume not Nottingham
-        setLocationInfo({
-          isNottingham: false,
-          isDetected: true
-        });
-      }
-    } catch (error) {
-      // Silent failure - just mark as not Nottingham
-      setLocationInfo({
-        isNottingham: false,
-        isDetected: true
-      });
-    }
+    setLocationInfo((prev) => ({ ...prev, isDetected: true }));
   };
 
-  return { ...locationInfo, requestLocation: detectUserLocationSilently };
+  const requestLocation = detectUserLocationSilently; // exposed but never auto-triggered
+
+  return { ...locationInfo, requestLocation };
 };
