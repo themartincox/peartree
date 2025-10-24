@@ -131,7 +131,7 @@ export default function LocationSlideIn() {
         `motion-reduce:transition-none`
       }
     >
-      <div className="text-sm text-pear-gold">
+      <div className="text-sm text-pear-primary">
         See how close you are to Nottingham’s top-rated dentist
       </div>
       {state === "done" && miles !== null && (
@@ -142,10 +142,10 @@ export default function LocationSlideIn() {
         <div className="mt-3 flex flex-col gap-2">
           <button
             onClick={readLocation}
-            className="px-3 py-2 rounded-xl border bg-dental-green border-dental-green text-white transition-all duration-200 hover:bg-pear-gold hover:text-dental-green hover:border-pear-gold hover:-translate-y-0.5"
-            aria-label="Share my location"
+            className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-pear-gold transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-gold hover:-translate-y-0.5"
+            aria-label="Show me"
           >
-            Share my location
+            Show me
           </button>
           <button
             onClick={() => setOpen(false)}
