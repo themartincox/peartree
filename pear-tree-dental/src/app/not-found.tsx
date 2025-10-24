@@ -11,7 +11,7 @@ export default function NotFound() {
           <div className="relative w-full max-w-lg lg:max-w-5xl mx-auto">
             {/* Your 404 Video */}
             <video
-              className="w-full aspect-[4/3] rounded-2xl shadow-2xl object-cover xl:my-[100px] xl:py-[0px]"
+              className="w-full aspect-[4/3] rounded-2xl shadow-2xl object-cover xl:my-[50px] xl:py-[0px]"
               autoPlay
               loop
               muted
@@ -20,14 +20,18 @@ export default function NotFound() {
               <source src="/videos/404-video.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            {/* Overlayed caption at bottom of video */}
+            <div className="absolute inset-x-0 bottom-3 sm:bottom-4 flex justify-center pointer-events-none">
+              <div className="bg-black/55 text-white rounded-full px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base">
+                Oops, nothing to see here
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Text Message */}
         <div className="mb-8">
-          <h1 className="heading-serif text-4xl sm:text-5xl font-bold text-pear-primary mb-4 xl:my-[1px] xl:py-[11px]">
-            Oops, nothing to see here,
-          </h1>
+          {/* Title moved as overlay on video */}
           <h2 className="heading-serif text-3xl sm:text-4xl font-bold text-pear-gold mb-6">
             but remember to floss!
           </h2>
