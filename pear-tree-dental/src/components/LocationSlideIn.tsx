@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useId } from "react";
 import { LocationSession } from "@/lib/location-session";
 import { haversineMiles } from "@/lib/haversine";
 import { practiceInfo } from "@/data/practiceInfo";
@@ -110,6 +110,8 @@ export default function LocationSlideIn() {
 
   // Subtle slide-in animation control
   const [entered, setEntered] = useState(false);
+  const useIdTitle = useId();
+  const useIdDesc = useId();
   useEffect(() => {
     if (open) {
       const t = setTimeout(() => setEntered(true), 10);
@@ -124,6 +126,8 @@ export default function LocationSlideIn() {
     <div
       role="dialog"
       aria-modal="false"
+      aria-labelledby={useIdTitle}
+      aria-describedby={useIdDesc}
       className={
         `fixed bottom-4 right-4 z-50 max-w-sm w-[92vw] sm:w-48 rounded-2xl shadow-xl border bg-white/85 backdrop-blur-sm p-4 text-sm ` +
         `motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out ` +
@@ -131,10 +135,12 @@ export default function LocationSlideIn() {
         `motion-reduce:transition-none`
       }
     >
+      {/* Accessible name/description for dialog (screen-reader only title) */}
+      <h2 id={useIdTitle} className="sr-only">See how close you are to Nottingham’s top-rated dentist</h2>
       {state === "done" && miles !== null ? (
-        <div className="text-xs mt-1 text-gray-700">{message}</div>
+        <div id={useIdDesc} className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
       ) : (
-        <div className="text-sm text-pear-primary">
+        <div id={useIdDesc} className="text-sm text-pear-primary">
           See how close you are to Nottingham’s top-rated dentist
         </div>
       )}

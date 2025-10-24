@@ -13,9 +13,9 @@ if (!ENCRYPTION_KEY) {
 
 // Replace with your real encrypted values:
 const encryptedSortCode =
-  '5bddb651db177080341ed3cd241b5a19:e0de08bb7fec6100e6732c260892e26a:0dd1d68a5f808d0c'; // e.g., 'iv:authTag:encrypted'
+  'c7d9959273320e42a841820d3c19fc15:0bf17a0a4a77682fe53c0555296bdfcf:28f2f2beb658815a'; // e.g., 'iv:authTag:encrypted'
 const encryptedAccountNumber =
-  '3d0c6654e47297f298d8d0d73e614a6c:67ff86d4701461c66213a9940d177539:2b589a56812352de'; // e.g., 'iv:authTag:encrypted'
+  'cd02f7f28a74c72cf5ad545f582f2dee:1e0608f4f18abc25df0228e2a9f8669e:743904edaf050265'; // e.g., 'iv:authTag:encrypted'
 
 try {
   console.log('Attempting decryption...');
