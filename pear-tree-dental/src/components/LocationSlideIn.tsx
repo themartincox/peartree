@@ -113,6 +113,17 @@ export default function LocationSlideIn() {
 
   const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${CLINIC.lat},${CLINIC.lng}`;
 
+  // Ensure miles is computed if we have coords but miles is still null (race-safety on slower devices)
+  useEffect(() => {
+    if (state === "done" && miles == null) {
+      const c = LocationSession.get();
+      if (c) {
+        const d = haversineMiles({ lat: c.lat, lng: c.lng }, CLINIC);
+        if (!Number.isNaN(d)) setMiles(d);
+      }
+    }
+  }, [state, miles, CLINIC]);
+
   // Subtle slide-in animation control
   const [entered, setEntered] = useState(false);
   const useIdTitle = useId();
@@ -184,7 +195,7 @@ export default function LocationSlideIn() {
           <a href="/book" className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-primary hover:-translate-y-0.5">
             Book now
           </a>
-          <button onClick={() => setOpen(false)} className="px-3 py-2 rounded-xl border w-full">
+          <button onClick={() => setOpen(false)} className="px-2 py-1 rounded-xl border w-full text-xs">
             Close
           </button>
         </div>
