@@ -26,16 +26,6 @@ export default function LocationSlideIn() {
 
     // Respect reduced motion by not animating; still delay logic
     const show = async () => {
-      // Already have coords? No prompt; show a friendly message silently
-      if (LocationSession.get()) {
-        const c = LocationSession.get()!;
-        const d = haversineMiles({ lat: c.lat, lng: c.lng }, CLINIC);
-        setMiles(d);
-        setState("done");
-        setOpen(true);
-        return;
-      }
-
       try {
         // @ts-ignore: PermissionName union
         const p = await navigator.permissions?.query?.({ name: "geolocation" as PermissionName });
@@ -151,14 +141,15 @@ export default function LocationSlideIn() {
         `motion-reduce:transition-none`
       }
     >
-      {/* Accessible name/description for dialog (screen-reader only title) */}
+      {/* Accessible name/description for dialog */}
       <h2 id={useIdTitle} className="sr-only">See how close you are to Nottingham’s top-rated dental clinic</h2>
-      {state === "done" && miles !== null ? (
-        <div id={useIdDesc} className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
-      ) : (
-        <div id={useIdDesc} className="text-sm text-pear-primary">
-          See how close you are to Nottingham’s top-rated dental clinic
-        </div>
+      {/* Always show the visible heading so the copy is present on open */}
+      <div id={useIdDesc} className="text-sm text-pear-primary">
+        See how close you are to Nottingham’s top-rated dental clinic
+      </div>
+      {/* Contextual description (distance message once calculated) */}
+      {state === "done" && miles !== null && (
+        <div className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
       )}
 
       {state === "ready" && (
