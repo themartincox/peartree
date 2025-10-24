@@ -22,9 +22,9 @@ export default function NotFound() {
             </video>
             {/* Overlayed caption at bottom of video */}
             <div className="absolute inset-x-0 bottom-3 sm:bottom-4 flex justify-center pointer-events-none">
-              <div className="bg-black/55 text-white rounded-full px-3 py-1 sm:px-4 sm:py-2 text-sm sm:text-base">
+              <h1 className="heading-serif font-bold text-pear-gold bg-white/70 backdrop-blur-sm rounded-xl px-3 py-1 sm:px-6 sm:py-3 text-2xl sm:text-4xl shadow-lg">
                 Oops, nothing to see here
-              </div>
+              </h1>
             </div>
           </div>
         </div>
