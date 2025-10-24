@@ -40,7 +40,12 @@ export default function LocationSlideIn() {
         // @ts-ignore: PermissionName union
         const p = await navigator.permissions?.query?.({ name: "geolocation" as PermissionName });
         if (p?.state === "granted") {
-          readLocation();
+          // Permission is granted, but wait for explicit user click to read
+          if (!LocationSession.wasPromptShown()) {
+            setState("ready");
+            setOpen(true);
+            LocationSession.markPromptShown();
+          }
           return;
         }
         if (p?.state === "denied") {
@@ -136,7 +141,7 @@ export default function LocationSlideIn() {
       }
     >
       {/* Accessible name/description for dialog (screen-reader only title) */}
-      <h2 id={useIdTitle} className="sr-only">See how close you are to Nottingham’s top-rated dentist</h2>
+      <h2 id={useIdTitle} className="sr-only">See how close you are to Nottingham’s top-rated dental clinic</h2>
       {state === "done" && miles !== null ? (
         <div id={useIdDesc} className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
       ) : (
