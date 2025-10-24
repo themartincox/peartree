@@ -125,23 +125,21 @@ export default function LocationSlideIn() {
       role="dialog"
       aria-modal="false"
       className={
-        `fixed bottom-4 right-4 z-50 max-w-sm w-[92vw] sm:w-96 rounded-2xl shadow-xl border bg-white p-4 ` +
+        `fixed bottom-4 right-4 z-50 max-w-sm w-[92vw] sm:w-48 rounded-2xl shadow-xl border bg-white/90 backdrop-blur-sm p-4 ` +
         `motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out ` +
         `${entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'} ` +
         `motion-reduce:transition-none`
       }
     >
       <div className="text-base font-semibold">
-        Want to see how close you are from Nottingham’s top-rated dental clinic?
+        See how close you are to Nottingham’s top-rated dentist
       </div>
-      <div className="text-sm mt-1 text-gray-700">
-        {state === "done" && miles !== null
-          ? message
-          : "Find out how far you are from Nottingham’s top-rated dental clinic."}
-      </div>
+      {state === "done" && miles !== null && (
+        <div className="text-sm mt-1 text-gray-700">{message}</div>
+      )}
 
       {state === "ready" && (
-        <div className="mt-3 flex gap-2">
+        <div className="mt-3 flex flex-col gap-2">
           <button
             onClick={readLocation}
             className="px-3 py-2 rounded-xl border bg-black text-white"
@@ -151,7 +149,7 @@ export default function LocationSlideIn() {
           </button>
           <button
             onClick={() => setOpen(false)}
-            className="px-3 py-2 rounded-xl border"
+            className="px-2 py-1 rounded-xl border text-xs"
             aria-label="No thanks"
           >
             No thanks
@@ -162,19 +160,19 @@ export default function LocationSlideIn() {
       {state === "requesting" && <div className="mt-3 text-sm">Checking…</div>}
 
       {state === "done" && (
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-3 flex flex-col gap-2">
           <a
             href={mapsHref}
-            className="px-3 py-2 rounded-xl border"
+            className="px-3 py-2 rounded-xl border w-full text-center"
             target="_blank"
             rel="noopener noreferrer"
           >
             Check drive time
           </a>
-          <a href="/book" className="px-3 py-2 rounded-xl border bg-black text-white">
+          <a href="/book" className="px-3 py-2 rounded-xl border bg-black text-white w-full text-center">
             Book now
           </a>
-          <button onClick={() => setOpen(false)} className="px-3 py-2 rounded-xl border">
+          <button onClick={() => setOpen(false)} className="px-3 py-2 rounded-xl border w-full">
             Close
           </button>
         </div>
@@ -191,7 +189,7 @@ export default function LocationSlideIn() {
       )}
 
       <p className="mt-3 text-xs text-gray-500">
-        We only use your location to personalise this visit. Nothing is stored after you leave.
+        <a href="/privacy" className="underline">Privacy</a>
       </p>
     </div>
   );
