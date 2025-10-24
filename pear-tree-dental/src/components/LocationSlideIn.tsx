@@ -125,24 +125,24 @@ export default function LocationSlideIn() {
       role="dialog"
       aria-modal="false"
       className={
-        `fixed bottom-4 right-4 z-50 max-w-sm w-[92vw] sm:w-48 rounded-2xl shadow-xl border bg-white/90 backdrop-blur-sm p-4 ` +
+        `fixed bottom-4 right-4 z-50 max-w-sm w-[92vw] sm:w-48 rounded-2xl shadow-xl border bg-white/85 backdrop-blur-sm p-4 text-sm ` +
         `motion-safe:transition-all motion-safe:duration-300 motion-safe:ease-out ` +
         `${entered ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'} ` +
         `motion-reduce:transition-none`
       }
     >
-      <div className="text-base font-semibold">
+      <div className="text-sm text-pear-gold">
         See how close you are to Nottingham’s top-rated dentist
       </div>
       {state === "done" && miles !== null && (
-        <div className="text-sm mt-1 text-gray-700">{message}</div>
+        <div className="text-xs mt-1 text-gray-700">{message}</div>
       )}
 
       {state === "ready" && (
         <div className="mt-3 flex flex-col gap-2">
           <button
             onClick={readLocation}
-            className="px-3 py-2 rounded-xl border bg-black text-white"
+            className="px-3 py-2 rounded-xl border bg-dental-green border-dental-green text-white transition-all duration-200 hover:bg-pear-gold hover:text-dental-green hover:border-pear-gold hover:-translate-y-0.5"
             aria-label="Share my location"
           >
             Share my location
@@ -163,13 +163,13 @@ export default function LocationSlideIn() {
         <div className="mt-3 flex flex-col gap-2">
           <a
             href={mapsHref}
-            className="px-3 py-2 rounded-xl border w-full text-center"
+            className="px-3 py-2 rounded-xl border w-full text-center transition-colors duration-200 hover:bg-slate-50"
             target="_blank"
             rel="noopener noreferrer"
           >
             Check drive time
           </a>
-          <a href="/book" className="px-3 py-2 rounded-xl border bg-black text-white w-full text-center">
+          <a href="/book" className="px-3 py-2 rounded-xl border bg-dental-green border-dental-green text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-dental-green hover:border-pear-gold hover:-translate-y-0.5">
             Book now
           </a>
           <button onClick={() => setOpen(false)} className="px-3 py-2 rounded-xl border w-full">
