@@ -12,10 +12,9 @@ import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 import MedicalPracticeSchema from "@/components/seo/MedicalPracticeSchema";
 import ServiceAreaSchema from "@/components/seo/ServiceAreaSchema";
 import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
-import dynamic from "next/dynamic";
 
 import ClientProviders from "@/components/ClientProviders";
-const LocationSlideIn = dynamic(() => import("@/components/LocationSlideIn"), { ssr: false });
+import LocationSlideIn from "@/components/LocationSlideIn";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
