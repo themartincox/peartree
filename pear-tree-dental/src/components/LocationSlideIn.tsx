@@ -141,7 +141,7 @@ export default function LocationSlideIn() {
         <div id={useIdDesc} className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
       ) : (
         <div id={useIdDesc} className="text-sm text-pear-primary">
-          See how close you are to Nottingham’s top-rated dentist
+          See how close you are to Nottingham’s top-rated dental clinic
         </div>
       )}
 
