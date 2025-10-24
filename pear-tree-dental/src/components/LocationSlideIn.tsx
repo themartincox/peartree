@@ -131,18 +131,19 @@ export default function LocationSlideIn() {
         `motion-reduce:transition-none`
       }
     >
-      <div className="text-sm text-pear-primary">
-        See how close you are to Nottingham’s top-rated dentist
-      </div>
-      {state === "done" && miles !== null && (
+      {state === "done" && miles !== null ? (
         <div className="text-xs mt-1 text-gray-700">{message}</div>
+      ) : (
+        <div className="text-sm text-pear-primary">
+          See how close you are to Nottingham’s top-rated dentist
+        </div>
       )}
 
       {state === "ready" && (
         <div className="mt-3 flex flex-col gap-2">
           <button
             onClick={readLocation}
-            className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-pear-gold transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-gold hover:-translate-y-0.5"
+            className="px-3 py-2 rounded-xl border bg-pear-gold border-pear-gold text-pear-primary transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-gold hover:-translate-y-0.5"
             aria-label="Show me"
           >
             Show me
@@ -169,7 +170,7 @@ export default function LocationSlideIn() {
           >
             Check drive time
           </a>
-          <a href="/book" className="px-3 py-2 rounded-xl border bg-dental-green border-dental-green text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-dental-green hover:border-pear-gold hover:-translate-y-0.5">
+          <a href="/book" className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-primary hover:-translate-y-0.5">
             Book now
           </a>
           <button onClick={() => setOpen(false)} className="px-3 py-2 rounded-xl border w-full">
