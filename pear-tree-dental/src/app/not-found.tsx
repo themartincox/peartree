@@ -5,10 +5,10 @@ import { Home } from "lucide-react";
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pear-background via-white to-pear-background flex items-center justify-center px-4">
-      <div className="max-w-2xl mx-auto text-center">
+      <div className="max-w-2xl lg:max-w-5xl mx-auto text-center">
         {/* Video Section */}
         <div className="mb-8">
-          <div className="relative w-full max-w-lg mx-auto">
+          <div className="relative w-full max-w-lg lg:max-w-5xl mx-auto">
             {/* Your 404 Video */}
             <video
               className="w-full aspect-[4/3] rounded-2xl shadow-2xl object-cover xl:my-[100px] xl:py-[0px]"
