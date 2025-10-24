@@ -89,7 +89,9 @@ export default function LocationSlideIn() {
         const coords = { lat: pos.coords.latitude, lng: pos.coords.longitude, ts: Date.now() };
         LocationSession.set(coords);
         const d = haversineMiles(coords, CLINIC);
-        setMiles(d);
+        if (Number.isFinite(d)) {
+          setMiles(d);
+        }
         setState("done");
         setOpen(true);
       },
@@ -103,13 +105,13 @@ export default function LocationSlideIn() {
 
   const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${CLINIC.lat},${CLINIC.lng}`;
 
-  // Ensure miles is computed if we have coords but miles is still null (race-safety on slower devices)
+  // Ensure miles is computed if we have coords but miles is still null (race-safety)
   useEffect(() => {
-    if (state === "done" && miles == null) {
+    if ((state === "done" || state === "requesting" || state === "ready") && miles == null) {
       const c = LocationSession.get();
       if (c) {
         const d = haversineMiles({ lat: c.lat, lng: c.lng }, CLINIC);
-        if (!Number.isNaN(d)) setMiles(d);
+        if (Number.isFinite(d)) setMiles(d);
       }
     }
   }, [state, miles, CLINIC]);
@@ -148,8 +150,10 @@ export default function LocationSlideIn() {
         See how close you are to Nottingham’s top-rated dental clinic
       </div>
       {/* Contextual description (distance message once calculated) */}
-      {state === "done" && miles !== null && (
-        <div className="text-xs mt-1 text-gray-700" aria-live="polite">{message}</div>
+      {state === "done" && (
+        <div className="text-xs mt-1 text-gray-700" aria-live="polite">
+          {miles == null ? 'Calculating distance…' : message}
+        </div>
       )}
 
       {state === "ready" && (
