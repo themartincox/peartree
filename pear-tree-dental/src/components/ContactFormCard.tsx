@@ -39,7 +39,9 @@ export default function ContactFormCard({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [subject, setSubject] = useState<string>('new website contact General Enquiry');
+  const DEFAULT_SUBJECT = 'new website contact General Enquiry';
+  const [subject, setSubject] = useState<string>(DEFAULT_SUBJECT);
+  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
   const formRef = useRef<HTMLFormElement>(null);
 
   // const { trackBookingAttempt, trackLocationConversion, trackServiceInterest } = useConversionTracking(); // <-- STEP 2: Commented out
@@ -66,6 +68,8 @@ export default function ContactFormCard({
   };
 
   const handleServiceSelect = (service: string) => {
+    setSelectedService(service);
+
     // NHS subject remains a special case
     if (service === 'new-nhs-patient') {
       setSubject('New NHS Patient Enquiry');
@@ -94,6 +98,8 @@ export default function ContactFormCard({
         if (formRef.current) {
           formRef.current.reset();
         }
+        setSelectedService(undefined);
+        setSubject(DEFAULT_SUBJECT);
       } else {
         throw new Error(`Form submission failed: ${response.statusText}`);
       }
@@ -239,7 +245,11 @@ export default function ContactFormCard({
               </div>
               <div>
                 <Label htmlFor="service">Service Interest</Label>
-                <Select name="service" onValueChange={handleServiceSelect}>
+                <Select
+                  name="service"
+                  value={selectedService || undefined}
+                  onValueChange={handleServiceSelect}
+                >
                   <SelectTrigger><SelectValue placeholder="Select a service" /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="general-checkup">General Check-up</SelectItem>
