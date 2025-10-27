@@ -14,10 +14,7 @@ export const revalidate = 300;
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
 const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'));
-const PWAInstall = dynamicImport(
-  () => import("@/components/PWAInstall"),
-  { ssr: false },
-);
+const PWAInstall = dynamicImport(() => import("@/components/PWAInstall"));
 
 // Loaders for dynamic components
 import {

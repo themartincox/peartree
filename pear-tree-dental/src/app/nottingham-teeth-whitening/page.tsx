@@ -15,10 +15,7 @@ import {
   Users,
 } from "lucide-react";
 
-const PWAInstall = dynamicImport(
-  () => import("@/components/PWAInstall"),
-  { ssr: false },
-);
+const PWAInstall = dynamicImport(() => import("@/components/PWAInstall"));
 
 export const metadata: Metadata = {
   title: "Teeth Whitening Nottingham | Expert Dentist-Led Whitening | Pear Tree Dental",
