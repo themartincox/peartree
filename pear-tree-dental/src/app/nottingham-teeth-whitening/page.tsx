@@ -4,7 +4,6 @@ import { practiceInfo } from "@/data/practiceInfo";
 import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import reviewsData from "@/data/reviews.json";
 import {
   Award,
   CalendarDays,
@@ -35,13 +34,6 @@ export const metadata: Metadata = {
       "Transform your smile with Enlighten Evolution 3 and Boutique whitening at Pear Tree Dental in Nottingham. Safe, predictable and sensitivity-aware.",
     url: "https://peartree.dental/nottingham-teeth-whitening",
   },
-};
-
-type GoogleReview = {
-  reviewer?: { displayName?: string };
-  starRating?: string;
-  comment?: string;
-  createTime?: string;
 };
 
 const { address, contact, name: practiceName } = practiceInfo;
@@ -95,17 +87,23 @@ const sliderPairs = [
   },
 ];
 
-const highlightedReviewers = ["David Higgins", "Victoria Willis", "John Meharg"];
-
-const selectedReviews = highlightedReviewers
-  .map((targetName) =>
-    (reviewsData.reviews as GoogleReview[]).find(
-      (review) =>
-        review?.reviewer?.displayName?.toLowerCase() === targetName.toLowerCase() &&
-        review.comment?.trim()
-    )
-  )
-  .filter((review): review is GoogleReview => Boolean(review));
+const featuredReviews: Array<{ name: string; comment: string }> = [
+  {
+    name: "David Higgins",
+    comment:
+      "Lovely experience with friendly staff, ten out of ten. You have transformed my teeth and my smile. Thank you Javaad and the Pear Tree team!",
+  },
+  {
+    name: "Victoria Willis",
+    comment:
+      "I’ve been coming here for just over 13 years. Everyone at the surgery is wonderful, especially Javaad who is always patient and kind. I have lost the fear of visiting the dentist.",
+  },
+  {
+    name: "John Meharg",
+    comment:
+      "My dentist was very gentle and the treatment was pain free. I felt completely looked after throughout my visit.",
+  },
+];
 
 export default function NottinghamTeethWhiteningPage() {
   return (
@@ -529,7 +527,7 @@ export default function NottinghamTeethWhiteningPage() {
         </div>
       </section>
 
-      {selectedReviews.length > 0 && (
+      {featuredReviews.length > 0 && (
         <section className="bg-white py-16 sm:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
@@ -542,8 +540,8 @@ export default function NottinghamTeethWhiteningPage() {
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {selectedReviews.map((review) => (
-                <Card key={review.reviewer?.displayName} className="border-pear-primary/10 bg-slate-50">
+              {featuredReviews.map((review) => (
+                <Card key={review.name} className="border-pear-primary/10 bg-slate-50">
                   <CardHeader className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Star className="h-5 w-5 text-pear-gold" />
@@ -552,9 +550,7 @@ export default function NottinghamTeethWhiteningPage() {
                       <Star className="h-5 w-5 text-pear-gold" />
                       <Star className="h-5 w-5 text-pear-gold" />
                     </div>
-                    <CardTitle className="text-lg text-pear-primary">
-                      {review.reviewer?.displayName}
-                    </CardTitle>
+                    <CardTitle className="text-lg text-pear-primary">{review.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600">{review.comment}</p>
