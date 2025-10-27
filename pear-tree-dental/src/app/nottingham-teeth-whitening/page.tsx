@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 const PWAInstall = dynamicImport(() => import("@/components/PWAInstall"));
+const VideoHero = dynamicImport(() => import("@/components/VideoHero"));
 
 export const metadata: Metadata = {
   title: "Teeth Whitening Nottingham | Expert Dentist-Led Whitening | Pear Tree Dental",
@@ -89,6 +90,9 @@ const sliderPairs = [
     },
   },
 ];
+
+const firstSliderPair = sliderPairs[0];
+const secondSliderPair = sliderPairs[1];
 
 const featuredReviews: Array<{ name: string; comment: string }> = [
   {
@@ -175,73 +179,89 @@ export default function NottinghamTeethWhiteningPage() {
         }}
       />
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-dental-navy via-dental-navy/95 to-emerald-900/60 py-20 text-white lg:py-28">
+      <section className="relative overflow-hidden pink-haze py-20 text-white lg:py-28">
         <div className="absolute inset-0 bg-[url('/images/heroes/whitening/Whitening-hero-image.png')] bg-cover bg-center opacity-10 mix-blend-soft-light" />
-        <div className="absolute inset-0 bg-dental-navy/80" />
+        <div className="absolute inset-0 bg-white/10" />
 
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 flex justify-center">
-              <Sparkles className="h-14 w-14 text-pear-gold" />
-            </div>
-            <h1 className="heading-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Transform Your Smile with Teeth Whitening in Nottingham
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl">
-              Unlock a brighter future with safe, dentist-led whitening at {practiceName}. Our
-              Enlighten Evolution 3 and Boutique systems deliver predictable results with comfort in
-              mind.
-            </p>
+          <div className="relative z-10 mx-auto max-w-6xl">
+            <div className="grid items-center gap-12 lg:grid-cols-2">
+              <div className="text-center lg:text-left">
+                <div className="mb-6 flex justify-center lg:justify-start">
+                  <Sparkles className="h-14 w-14 text-pear-gold" />
+                </div>
+                <h1 className="heading-serif text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                  Transform Your Smile with Teeth Whitening in Nottingham
+                </h1>
+                <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80 sm:text-xl lg:mx-0">
+                  Unlock a brighter future with safe, dentist-led whitening at {practiceName}. Our
+                  Enlighten Evolution 3 and Boutique systems deliver predictable results with comfort in
+                  mind.
+                </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-pear-gold px-8 py-4 text-dental-navy hover:bg-pear-gold/90"
-              >
-                <Link href={phoneHref}>Call {contact.phone} to book</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white px-8 py-4 text-white hover:bg-white/10"
-              >
-                <Link href="/book">Book online</Link>
-              </Button>
-            </div>
-            <div className="mt-6 flex justify-center">
-              <PWAInstall
-                className="w-full max-w-sm"
-                buttonText="Install Pear Tree Dental"
-                dense
-              />
-            </div>
+                <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-pear-gold px-8 py-4 text-pear-primary hover:bg-pear-gold/90"
+                  >
+                    <Link href={phoneHref}>Call {contact.phone} to book</Link>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-pear-gold px-8 py-4 text-pear-primary hover:bg-pear-gold/90"
+                  >
+                    <Link href="/book">Book online</Link>
+                  </Button>
+                </div>
 
-            <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
-                  Dentist-led care
-                </p>
-                <p className="mt-2 text-sm text-white/75">
-                  GDC-registered clinicians plan every whitening journey.
-                </p>
+                <div className="mt-6 flex justify-center lg:justify-start">
+                  <PWAInstall
+                    className="w-full max-w-sm"
+                    buttonText="Install Pear Tree Dental"
+                    dense
+                  />
+                </div>
+
+                <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:max-w-none">
+                  <div className="rounded-2xl border border-white/10 bg-white/10 p-4 text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
+                      Dentist-led care
+                    </p>
+                    <p className="mt-2 text-sm text-white/75">
+                      GDC-registered clinicians plan every whitening journey.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/10 p-4 text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
+                      Sensitivity aware
+                    </p>
+                    <p className="mt-2 text-sm text-white/75">
+                      Custom trays and desensitising support keep you comfortable.
+                    </p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/10 p-4 text-left">
+                    <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
+                      Long-lasting results
+                    </p>
+                    <p className="mt-2 text-sm text-white/75">
+                      Personalised top-up plans make it easy to maintain your new shade.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
-                  Sensitivity aware
-                </p>
-                <p className="mt-2 text-sm text-white/75">
-                  Custom trays and desensitising support keep you comfortable.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
-                <p className="text-sm font-semibold uppercase tracking-wide text-pear-gold">
-                  Long-lasting results
-                </p>
-                <p className="mt-2 text-sm text-white/75">
-                  Personalised top-up plans make it easy to maintain your new shade.
-                </p>
+
+              <div className="relative flex justify-center lg:justify-end">
+                <div className="w-full max-w-xl">
+                  <VideoHero
+                    videoSrc="/videos/heroes/teeth-whitening-hero.mp4"
+                    posterImage="/images/heroes/whitening/Whitening-hero-image.png"
+                    fallbackImage="/images/heroes/whitening/Whitening-hero-image.png"
+                    altText="Professional teeth whitening transformation video"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -311,17 +331,16 @@ export default function NottinghamTeethWhiteningPage() {
             </p>
           </div>
 
-          <div className="mt-12 space-y-16">
-            {sliderPairs.map((pair, idx) => (
+          {firstSliderPair && (
+            <div className="mt-12">
               <BeforeAfterSliderPair
-                key={`slider-pair-${idx}`}
-                primarySlider={pair.primarySlider}
-                secondarySlider={pair.secondarySlider}
+                primarySlider={firstSliderPair.primarySlider}
+                secondarySlider={firstSliderPair.secondarySlider}
                 sliderAspectClass="aspect-[4/3]"
                 sliderContainerClass="mx-auto max-w-[320px] sm:max-w-[360px] md:max-w-[420px]"
               />
-            ))}
-          </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -426,6 +445,30 @@ export default function NottinghamTeethWhiteningPage() {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
+              More Whitening Transformations
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Different starting points, same focus on healthy, confident results. Swipe to explore another patient journey.
+            </p>
+          </div>
+
+          {secondSliderPair && (
+            <div className="mt-12">
+              <BeforeAfterSliderPair
+                primarySlider={secondSliderPair.primarySlider}
+                secondarySlider={secondSliderPair.secondarySlider}
+                sliderAspectClass="aspect-[4/3]"
+                sliderContainerClass="mx-auto max-w-[320px] sm:max-w-[360px] md:max-w-[420px]"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -650,19 +693,14 @@ export default function NottinghamTeethWhiteningPage() {
               <Button asChild size="lg" className="bg-pear-gold text-dental-navy hover:bg-pear-gold/90">
                 <Link href={phoneHref}>Call {contact.phone}</Link>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10"
-              >
-                <Link href={emailHref}>Email {contact.email}</Link>
+              <Button asChild size="lg" className="bg-soft-pink text-white hover:bg-soft-pink/90">
+                <Link href="/contact">Contact</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-white text-pear-primary hover:bg-pear-gold"
               >
                 <Link href="/book">Book online</Link>
               </Button>
