@@ -14,7 +14,10 @@ export async function fetchServiceLocationFromContentful(
   locationSlug: string,
   opts: AdapterOptions = {}
 ): Promise<any | null> {
-  const client = getContentfulClient();
+  const client = await getContentfulClient();
+  if (!client || typeof (client as any).getEntries !== 'function') {
+    return null;
+  }
   const slug = `${serviceSlug}/${locationSlug}`;
   const contentType =
     process.env.CONTENTFUL_SERVICE_LOCATION_TYPE_ID || 'serviceLocation';
@@ -24,11 +27,16 @@ export async function fetchServiceLocationFromContentful(
     setTimeout(() => resolve(null), timeoutMs)
   );
 
-  const fetchPromise = (client.getEntries({
-    content_type: contentType,
-    'fields.slug': slug,
-    include: 3
-  }) as unknown) as Promise<any>;
+  const fetchPromise = ((client as any)
+    .getEntries({
+      content_type: contentType,
+      'fields.slug': slug,
+      include: 3
+    })
+    .catch((error: unknown) => {
+      console.error('Error fetching service location from Contentful:', error);
+      return null;
+    })) as Promise<any>;
 
   const res: any = await Promise.race([fetchPromise, timeoutPromise]);
   if (!res || !res.items || res.items.length === 0) return null;
