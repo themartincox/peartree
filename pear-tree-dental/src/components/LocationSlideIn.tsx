@@ -146,15 +146,21 @@ export default function LocationSlideIn() {
       {/* Accessible name/description for dialog */}
       <h2 id={useIdTitle} className="sr-only">See how close you are to Nottingham’s top-rated dental clinic</h2>
       {/* Always show the visible heading so the copy is present on open */}
-      <div id={useIdDesc} className="text-sm text-pear-primary">
-        See how close you are to Nottingham’s top-rated dental clinic
+      <div
+        id={useIdDesc}
+        aria-live="polite"
+        className={
+          state === "done"
+            ? "text-xs mt-1 text-gray-700"
+            : "text-sm text-pear-primary"
+        }
+      >
+        {state === "done"
+          ? miles == null
+            ? "Calculating distance…"
+            : message
+          : "See how close you are to Nottingham’s top-rated dental clinic"}
       </div>
-      {/* Contextual description (distance message once calculated) */}
-      {state === "done" && (
-        <div className="text-xs mt-1 text-gray-700" aria-live="polite">
-          {miles == null ? 'Calculating distance…' : message}
-        </div>
-      )}
 
       {state === "ready" && (
         <div className="mt-3 flex flex-col gap-2">
