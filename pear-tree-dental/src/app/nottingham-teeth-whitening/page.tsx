@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamicImport from "next/dynamic";
 import Link from "next/link";
 import { practiceInfo } from "@/data/practiceInfo";
 import BeforeAfterSliderPair from "@/components/BeforeAfterSliderPair";
@@ -13,6 +14,11 @@ import {
   Star,
   Users,
 } from "lucide-react";
+
+const PWAInstall = dynamicImport(
+  () => import("@/components/PWAInstall"),
+  { ssr: false },
+);
 
 export const metadata: Metadata = {
   title: "Teeth Whitening Nottingham | Expert Dentist-Led Whitening | Pear Tree Dental",
@@ -206,6 +212,13 @@ export default function NottinghamTeethWhiteningPage() {
               >
                 <Link href="/book">Book online</Link>
               </Button>
+            </div>
+            <div className="mt-6 flex justify-center">
+              <PWAInstall
+                className="w-full max-w-sm"
+                buttonText="Install Pear Tree Dental"
+                dense
+              />
             </div>
 
             <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">

@@ -61,47 +61,6 @@ export default function ServiceWorkerRegistration() {
     }
   };
 
-  // PWA Install Prompt
-  const [deferredPrompt, setDeferredPrompt] = useState<Event | null>(null);
-  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
-
-  useEffect(() => {
-    const handler = (e: Event) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-      setShowInstallPrompt(true);
-    };
-
-    window.addEventListener('beforeinstallprompt', handler);
-
-    // Check if app is already installed
-    if (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) {
-      setShowInstallPrompt(false);
-    }
-
-    return () => window.removeEventListener('beforeinstallprompt', handler);
-  }, []);
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
-
-    // Show the install prompt
-    (deferredPrompt as any).prompt();
-
-    // Wait for the user's response
-    const { outcome } = await (deferredPrompt as any).userChoice;
-
-    if (outcome === 'accepted') {
-      console.log('[PWA] User accepted the install prompt');
-    } else {
-      console.log('[PWA] User dismissed the install prompt');
-    }
-
-    // Clear the deferred prompt
-    setDeferredPrompt(null);
-    setShowInstallPrompt(false);
-  };
-
   return (
     <>
       {/* Update Available Banner */}
@@ -131,48 +90,6 @@ export default function ServiceWorkerRegistration() {
                 </svg>
               </button>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* Install App Prompt */}
-      {showInstallPrompt && (
-        <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-50">
-          <div className="flex items-start">
-            <div className="flex-shrink-0">
-              <div className="w-10 h-10 bg-pear-primary rounded-lg flex items-center justify-center text-white text-xl">
-                🦷
-              </div>
-            </div>
-            <div className="ml-3 flex-1">
-              <h3 className="text-sm font-medium text-gray-900">Install Pear Tree Dental</h3>
-              <p className="mt-1 text-xs text-gray-500">
-                Add our app to your home screen for quick access to dental services, appointment booking, and offline features.
-              </p>
-              <div className="mt-3 flex space-x-2">
-                <button
-                  onClick={handleInstallClick}
-                  className="bg-pear-primary text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-800 transition-colors"
-                >
-                  Install
-                </button>
-                <button
-                  onClick={() => setShowInstallPrompt(false)}
-                  className="text-gray-400 hover:text-gray-600 transition-colors text-xs"
-                >
-                  Not now
-                </button>
-              </div>
-            </div>
-            <button
-              onClick={() => setShowInstallPrompt(false)}
-              className="flex-shrink-0 ml-2 text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close install prompt"
-            >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </button>
           </div>
         </div>
       )}

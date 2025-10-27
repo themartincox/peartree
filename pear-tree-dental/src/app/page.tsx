@@ -14,6 +14,10 @@ export const revalidate = 300;
 
 // Add ClientGoogleReviews wrapper with 'use client' directive
 const ClientGoogleReviews = dynamicImport(() => import('@/components/ClientGoogleReviews'));
+const PWAInstall = dynamicImport(
+  () => import("@/components/PWAInstall"),
+  { ssr: false },
+);
 
 // Loaders for dynamic components
 import {
@@ -207,6 +211,9 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       <Hero />
       <ClientGoogleReviews />
       <PracticeShowcase />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <PWAInstall className="mt-6 max-w-md sm:mx-auto" buttonText="Install Pear Tree Dental" />
+      </div>
       {/* Pass the dynamic, mapped services to the component */}
       <ServicesOverview services={servicesForOverview} />
       <ClientLazyTreatmentJourney />
