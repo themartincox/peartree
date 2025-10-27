@@ -155,8 +155,7 @@ export default function MedicalOrganizationSchema({
       "ratingValue": "4.9",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": "500",
-      "itemReviewed": { "@id": "https://peartree.dental/#medicalorg" }
+      "ratingCount": "500"
     },
 
     // Payment Options

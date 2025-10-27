@@ -97,8 +97,7 @@ const VoiceSearchSchema = () => {
           "ratingValue": "4.9",
           "reviewCount": "500",
           "bestRating": "5",
-          "worstRating": "1",
-          "itemReviewed": { "@id": "https://peartree.dental/#localbusiness" }
+          "worstRating": "1"
         },
         "sameAs": [
           "https://www.facebook.com/peartreeDental",

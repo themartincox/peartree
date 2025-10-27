@@ -387,8 +387,7 @@ export default function LocalBusinessSchema({ includeDentistSpecific = false }: 
       "ratingValue": "4.9",
       "bestRating": "5",
       "worstRating": "1",
-      "ratingCount": "500",
-      "itemReviewed": { "@id": "https://peartree.dental/#localbusiness" }
+      "ratingCount": "500"
     }
   };
 
