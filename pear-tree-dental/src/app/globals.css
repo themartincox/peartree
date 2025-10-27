@@ -823,9 +823,9 @@ button[aria-pressed="true"] {
   color: white;
 }
 
-/* ARIA Live Region Styling */
-[aria-live="polite"],
-[aria-live="assertive"] {
+/* Hide only intentionally screen-reader-only live regions */
+[aria-live="polite"].sr-only,
+[aria-live="assertive"].sr-only {
   position: absolute;
   left: -10000px;
   width: 1px;
