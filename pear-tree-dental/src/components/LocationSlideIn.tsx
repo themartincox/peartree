@@ -150,13 +150,6 @@ export default function LocationSlideIn() {
       <div id={useIdDesc} className={`text-sm text-pear-primary ${state === 'done' || state === 'requesting' ? 'hidden' : ''}`}>
         See how close you are to Nottingham’s top-rated dental clinic
       </div>
-      {/* Contextual description (distance message once calculated) */}
-      {state === "done" && (
-        <div className="text-xs mt-1 text-gray-700" aria-live="polite">
-          {miles == null ? 'Calculating distance…' : message}
-        </div>
-      )}
-
       {state === "ready" && (
         <div className="mt-3 flex flex-col gap-2">
           <button
@@ -179,22 +172,27 @@ export default function LocationSlideIn() {
       {state === "requesting" && <div className="mt-3 text-sm">Checking…</div>}
 
       {state === "done" && (
-        <div className="mt-3 flex flex-col gap-2">
-          <a
-            href={mapsHref}
-            className="px-3 py-2 rounded-xl border w-full text-center transition-colors duration-200 hover:bg-slate-50"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Check drive time
-          </a>
-          <a href="/book" className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-primary hover:-translate-y-0.5">
-            Book now
-          </a>
-          <button onClick={() => setOpen(false)} className="px-2 py-1 rounded-xl border w-full text-xs">
-            Close
-          </button>
-        </div>
+        <>
+          <div className="text-xs mt-1 text-gray-700" aria-live="polite">
+            {miles == null ? 'Calculating distance…' : message}
+          </div>
+          <div className="mt-3 flex flex-col gap-2">
+            <a
+              href={mapsHref}
+              className="px-3 py-2 rounded-xl border w-full text-center transition-colors duration-200 hover:bg-slate-50"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Check drive time
+            </a>
+            <a href="/book" className="px-3 py-2 rounded-xl border bg-pear-primary border-pear-primary text-white w-full text-center transition-all duration-200 hover:bg-pear-gold hover:text-pear-primary hover:border-pear-primary hover:-translate-y-0.5">
+              Book now
+            </a>
+            <button onClick={() => setOpen(false)} className="px-2 py-1 rounded-xl border w-full text-xs">
+              Close
+            </button>
+          </div>
+        </>
       )}
 
       {(state === "denied" || state === "error") && (
