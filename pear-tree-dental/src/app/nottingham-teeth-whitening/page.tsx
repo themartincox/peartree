@@ -241,7 +241,7 @@ export default function NottinghamTeethWhiteningPage() {
       <section className="bg-white py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
-            <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
               Why Teeth Whitening Matters
             </h2>
             <p className="mt-4 text-lg text-gray-600">
@@ -273,12 +273,12 @@ export default function NottinghamTeethWhiteningPage() {
                   "Top-up guidance helps you maintain your new shade for 12–36 months depending on habits.",
               },
             ].map((item) => (
-              <Card key={item.title} className="border-pear-primary/10 bg-white shadow-sm">
+              <Card key={item.title} className="border-soft-pink/20 bg-white shadow-sm">
                 <CardHeader className="flex flex-row items-center gap-3">
-                  <div className="rounded-xl bg-pear-primary/10 p-2 text-pear-primary">
+                  <div className="rounded-xl bg-soft-pink/10 p-2 text-soft-pink">
                     <CheckCircle className="h-6 w-6" />
                   </div>
-                  <CardTitle className="text-xl text-pear-primary">{item.title}</CardTitle>
+                  <CardTitle className="text-xl text-soft-pink">{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">{item.detail}</p>
@@ -289,10 +289,36 @@ export default function NottinghamTeethWhiteningPage() {
         </div>
       </section>
 
+      <section className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
+              Real Patients. Life-Changing Results
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Explore genuine smile makeovers that combine whitening with aligners, bonding, and
+              precision finishing. Slide to compare each transformation.
+            </p>
+          </div>
+
+          <div className="mt-12 space-y-16">
+            {sliderPairs.map((pair, idx) => (
+              <BeforeAfterSliderPair
+                key={`slider-pair-${idx}`}
+                primarySlider={pair.primarySlider}
+                secondarySlider={pair.secondarySlider}
+                sliderAspectClass="aspect-[4/3]"
+                sliderContainerClass="mx-auto max-w-[320px] sm:max-w-[360px] md:max-w-[420px]"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-slate-50 py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
-            <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
               Our Professional Whitening Systems
             </h2>
             <p className="mt-4 text-lg text-gray-600">
@@ -303,11 +329,11 @@ export default function NottinghamTeethWhiteningPage() {
           </div>
 
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
-            <Card className="h-full border-pear-primary/10 bg-white shadow-md">
+            <Card className="h-full border-soft-pink/20 bg-white shadow-md">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="heading-serif text-2xl text-pear-primary">
+                    <CardTitle className="heading-serif text-2xl text-soft-pink">
                       Enlighten Evolution 3
                     </CardTitle>
                     <p className="mt-2 text-gray-600">
@@ -337,18 +363,18 @@ export default function NottinghamTeethWhiteningPage() {
                     <li>Clear plan for maintaining your results long-term.</li>
                   </ul>
                 </div>
-                <p className="rounded-xl bg-pear-primary/10 p-4 text-sm text-pear-primary">
+                <p className="rounded-xl bg-soft-pink/10 p-4 text-sm text-soft-pink">
                   Results vary per person. We’ll recommend the safest, most effective protocol for you
                   at your consultation.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="h-full border-pear-primary/10 bg-white shadow-md">
+            <Card className="h-full border-soft-pink/20 bg-white shadow-md">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
-                    <CardTitle className="heading-serif text-2xl text-pear-primary">
+                    <CardTitle className="heading-serif text-2xl text-soft-pink">
                       Boutique Whitening
                     </CardTitle>
                     <p className="mt-2 text-gray-600">
@@ -393,32 +419,7 @@ export default function NottinghamTeethWhiteningPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
-              Real Pear Tree Whitening Results
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Explore real patient journeys combining whitening with aligners, bonding, and smile
-              refinement. Slide to compare the before and after.
-            </p>
-          </div>
-
-          <div className="mt-12 space-y-16">
-            {sliderPairs.map((pair, idx) => (
-              <BeforeAfterSliderPair
-                key={`slider-pair-${idx}`}
-                primarySlider={pair.primarySlider}
-                secondarySlider={pair.secondarySlider}
-                sliderAspectClass="aspect-[4/3]"
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-dental-navy py-16 text-white sm:py-20">
+      <section className="pink-haze py-16 text-white sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
             <h2 className="heading-serif text-3xl font-bold text-white sm:text-4xl">
@@ -486,7 +487,7 @@ export default function NottinghamTeethWhiteningPage() {
       <section className="bg-slate-50 py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl text-center">
-            <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
               Your Personalised Whitening Journey
             </h2>
             <p className="mt-4 text-lg text-gray-600">
@@ -513,12 +514,12 @@ export default function NottinghamTeethWhiteningPage() {
                   "Review appointment to track shade changes, refresh comfort advice, and plan top-up gel use and lifestyle habits for long-term brightness.",
               },
             ].map((item, index) => (
-              <div key={item.step} className="flex flex-col gap-4 rounded-2xl border border-pear-primary/10 bg-white p-6 shadow-sm md:flex-row md:items-start md:gap-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pear-primary text-lg font-semibold text-white">
+              <div key={item.step} className="flex flex-col gap-4 rounded-2xl border border-soft-pink/20 bg-white p-6 shadow-sm md:flex-row md:items-start md:gap-6">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-soft-pink text-lg font-semibold text-white">
                   {index + 1}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-pear-primary">{item.step}</h3>
+                  <h3 className="text-xl font-semibold text-soft-pink">{item.step}</h3>
                   <p className="mt-3 text-gray-600">{item.detail}</p>
                 </div>
               </div>
@@ -531,9 +532,9 @@ export default function NottinghamTeethWhiteningPage() {
         <section className="bg-white py-16 sm:py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
-                Loved by Nottingham Patients
-              </h2>
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
+              Loved by Nottingham Patients
+            </h2>
               <p className="mt-4 text-lg text-gray-600">
                 Real Google reviews from patients who trust {practiceName} with their smiles.
               </p>
@@ -541,7 +542,7 @@ export default function NottinghamTeethWhiteningPage() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
               {featuredReviews.map((review) => (
-                <Card key={review.name} className="border-pear-primary/10 bg-slate-50">
+                <Card key={review.name} className="border-soft-pink/20 bg-slate-50">
                   <CardHeader className="space-y-2">
                     <div className="flex items-center gap-2">
                       <Star className="h-5 w-5 text-pear-gold" />
@@ -550,7 +551,7 @@ export default function NottinghamTeethWhiteningPage() {
                       <Star className="h-5 w-5 text-pear-gold" />
                       <Star className="h-5 w-5 text-pear-gold" />
                     </div>
-                    <CardTitle className="text-lg text-pear-primary">{review.name}</CardTitle>
+                    <CardTitle className="text-lg text-soft-pink">{review.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-gray-600">{review.comment}</p>
@@ -565,7 +566,7 @@ export default function NottinghamTeethWhiteningPage() {
       <section className="bg-slate-100 py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="heading-serif text-3xl font-bold text-pear-primary sm:text-4xl">
+            <h2 className="heading-serif text-3xl font-bold text-soft-pink sm:text-4xl">
               Teeth Whitening FAQs
             </h2>
             <p className="mt-4 text-lg text-gray-600">
@@ -612,9 +613,9 @@ export default function NottinghamTeethWhiteningPage() {
                   "No. Shop-bought kits are not custom-fitted and use different formulations. Dentist-supervised whitening is safer, more predictable, and tailored to you.",
               },
             ].map((item) => (
-              <Card key={item.question} className="border-pear-primary/15 bg-white">
+              <Card key={item.question} className="border-soft-pink/20 bg-white">
                 <CardHeader>
-                  <CardTitle className="text-lg text-pear-primary">{item.question}</CardTitle>
+                  <CardTitle className="text-lg text-soft-pink">{item.question}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600">{item.answer}</p>
