@@ -173,16 +173,8 @@ export default function LocationSlideIn() {
 
       {state === "done" && (
         <>
-          <div
-            aria-live="polite"
-            style={{
-              border: "2px solid red",
-              padding: "10px",
-              marginTop: "4px",
-              fontSize: "12px",
-            }}
-          >
-            DEBUG: {miles == null ? "Calculating distance…" : message}
+          <div aria-live="polite" className="mt-2 text-sm text-pear-primary">
+            {miles == null ? "Calculating distance…" : message}
           </div>
           <div className="mt-3 flex flex-col gap-2">
             <a
