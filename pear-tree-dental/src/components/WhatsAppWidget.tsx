@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle, X, Phone, Calendar, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,15 +23,13 @@ export default function WhatsAppWidget({
   const [currentPage, setCurrentPage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const { trackConversion, trackPhoneClick } = useConversionTracking();
+  const pathname = usePathname();
 
   useEffect(() => {
-    // Get current page path for context-aware messaging
-    setCurrentPage(window.location.pathname);
-
-    // Show widget after page loads (5s delay)
+    if (pathname) setCurrentPage(pathname);
     const timer = setTimeout(() => setIsVisible(true), 5000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   const getContextualMessage = () => {
     const baseMessage = "Hello! I'm interested in dental services at Pear Tree Dental.";
