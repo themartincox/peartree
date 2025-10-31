@@ -100,7 +100,7 @@ export default function WhatsAppWidget({
     {
       icon: Calendar,
       title: "Book Appointment",
-      message: "Hi! I'd like to book a dental appointment at Pear Tree Dental. What's your next available slot?"
+      message: "Hi! I'd like to book a dental appointment at Pear Tree Dental. When's your next available slot?"
     },
     {
       icon: Phone,
@@ -200,7 +200,7 @@ export default function WhatsAppWidget({
               >
                 0115 931 2935
               </a><br />
-              🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
+              🕒 Mon-Fri: 8AM-6PM, Sat/Sun: Closed
             </div>
           </CardContent>
         </Card>
