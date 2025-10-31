@@ -13,7 +13,7 @@ if (typeof window !== "undefined" && apiKey && !globalScope.__posthogCookielessI
     capture_pageview: true,
     persistence: "memory",                 // 🍪 no cookies/localStorage
     disable_session_recording: true,      // 🔒 no session recording
-    opt_out_capturing_by_default: true,   // 🚫 nothing until consent
+    opt_out_capturing_by_default: false,  // Allow cookieless autocapture without explicit opt-in
     autocapture: true,
     capture_exceptions: true,
     debug: process.env.NODE_ENV === "development",
@@ -28,5 +28,8 @@ if (typeof window !== "undefined" && apiKey && !globalScope.__posthogCookielessI
     },
   })
 
+  if (typeof window !== "undefined") {
+    ;(window as any).__PH_INITIALIZED__ = true
+  }
   globalScope.__posthogCookielessInitialized = true
 }

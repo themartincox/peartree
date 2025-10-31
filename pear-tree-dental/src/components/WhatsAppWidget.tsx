@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle, X, Phone, Calendar, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { useConversionTracking } from "@/hooks/useConversionTracking";
 
 interface WhatsAppWidgetProps {
@@ -24,6 +23,8 @@ export default function WhatsAppWidget({
   const [isVisible, setIsVisible] = useState(false);
   const { trackConversion, trackPhoneClick } = useConversionTracking();
   const pathname = usePathname();
+  const widgetTitleId = useId();
+  const widgetDescId = useId();
 
   useEffect(() => {
     if (pathname) setCurrentPage(pathname);
@@ -129,7 +130,13 @@ export default function WhatsAppWidget({
     <div className={`fixed ${positionClasses[position]} z-50 ${className}`}>
       {/* Chat Widget */}
       {isOpen && (
-        <Card className="mb-4 w-80 shadow-2xl border-2 border-green-200 animate-in slide-in-from-bottom-4 duration-300">
+        <Card
+          className="mb-4 w-80 shadow-2xl border-2 border-green-200 animate-in slide-in-from-bottom-4 duration-300"
+          role="dialog"
+          aria-modal="false"
+          aria-labelledby={widgetTitleId}
+          aria-describedby={widgetDescId}
+        >
           <CardHeader className="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-t-lg pb-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
@@ -137,7 +144,9 @@ export default function WhatsAppWidget({
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <CardTitle className="text-lg">Pear Tree Dental</CardTitle>
+                  <CardTitle className="text-lg" id={widgetTitleId}>
+                    Pear Tree Dental
+                  </CardTitle>
                   <p className="text-sm text-green-100">Usually replies instantly</p>
                 </div>
               </div>
@@ -146,6 +155,7 @@ export default function WhatsAppWidget({
                 size="sm"
                 onClick={() => setIsOpen(false)}
                 className="text-green-100 hover:bg-white/20 h-8 w-8 p-0"
+                aria-label="Close WhatsApp chat options"
               >
                 <X className="w-4 h-4" />
               </Button>
@@ -153,7 +163,7 @@ export default function WhatsAppWidget({
           </CardHeader>
 
           <CardContent className="p-4 space-y-3">
-            <div className="text-sm text-gray-600 mb-4">
+            <div className="text-sm text-gray-600 mb-4" id={widgetDescId}>
               👋 Hi! How can we help you today? Choose a quick option or send a custom message:
             </div>
 
@@ -166,6 +176,7 @@ export default function WhatsAppWidget({
                     key={index}
                     onClick={() => openWhatsApp(msg.message, "quick", msg.title)}
                     className="w-full text-left p-3 rounded-lg border border-gray-200 hover:border-green-300 hover:bg-green-50 transition-colors group"
+                    aria-label={`Open WhatsApp with message: ${msg.title}`}
                   >
                     <div className="flex items-center space-x-3">
                       <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
@@ -184,6 +195,7 @@ export default function WhatsAppWidget({
             <Button
               onClick={() => openWhatsApp(getContextualMessage(), "custom")}
               className="w-full bg-green-500 hover:bg-green-600 text-white mt-4"
+              aria-label="Open WhatsApp with a custom message tailored to this page"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Send Custom Message
@@ -199,7 +211,7 @@ export default function WhatsAppWidget({
               >
                 0115 931 2935
               </a><br />
-              🕒 Mon-Fri: 8AM-6PM, Sat/Sun: Closed
+              🕒 Mon-Fri: 8AM-6PM, Sat: 8AM-2PM
             </div>
           </CardContent>
         </Card>
@@ -211,6 +223,8 @@ export default function WhatsAppWidget({
           onClick={() => setIsOpen(!isOpen)}
           className="h-14 w-14 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-2xl border-4 border-white transition-all duration-300 hover:scale-110"
           size="lg"
+          aria-label={isOpen ? "Close WhatsApp chat widget" : "Open WhatsApp chat widget"}
+          aria-expanded={isOpen}
         >
           {isOpen ? (
             <X className="w-6 h-6" />
@@ -221,14 +235,14 @@ export default function WhatsAppWidget({
 
         {/* Notification Badge */}
         {!isOpen && (
-          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
+          <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center" aria-hidden="true">
             <span className="text-xs font-bold text-white">!</span>
           </div>
         )}
 
         {/* WhatsApp Tooltip */}
         {!isOpen && (
-          <div className="absolute bottom-full right-0 mb-2 opacity-0 hover:opacity-100 transition-opacity">
+          <div className="absolute bottom-full right-0 mb-2 opacity-0 hover:opacity-100 transition-opacity" aria-hidden="true">
             <div className="bg-gray-900 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap">
               Chat with us on WhatsApp
               <div className="absolute top-full right-4 border-4 border-transparent border-t-gray-900"></div>
