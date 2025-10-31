@@ -15,6 +15,7 @@ import VoiceSearchSchema from "@/components/seo/VoiceSearchSchema";
 
 import ClientProviders from "@/components/ClientProviders";
 import LocationSlideIn from "@/components/LocationSlideIn";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
@@ -85,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
 
           <LocationSlideIn />
-          {/* WhatsApp widget intentionally disabled for now */}
+          <WhatsAppWidget />
         </ClientProviders>
 
         <Script strategy="lazyOnload" src="https://scripts.simpleanalyticscdn.com/latest.js" />
