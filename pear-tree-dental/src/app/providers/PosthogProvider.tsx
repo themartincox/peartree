@@ -21,7 +21,7 @@ export function PosthogProvider() {
       capture_pageview: true,
       persistence: "memory",                 // 🍪 no cookies/localStorage
       disable_session_recording: true,      // 🔒 no session recording
-      opt_out_capturing_by_default: true,   // 🚫 nothing until consent
+      opt_out_capturing_by_default: false,  // Allow cookieless autocapture without explicit opt-in
       autocapture: true,
       bootstrap: {
         distinctID: undefined,
